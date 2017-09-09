@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1055;&#1088;&#1086;&#1074;&#1077;&#1088;&#1080;&#1090;&#1100;&#1050;&#1086;&#1085;&#1090;&#1088;&#1072;&#1075;&#1077;&#1085;&#1090;&#1086;&#1074;&#1056;&#1077;&#1075;&#1083;&#1072;&#1084;&#1077;&#1085;&#1090;&#1085;&#1086;&#1077;&#1047;&#1072;&#1076;&#1072;&#1085;&#1080;&#1077;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25EF_25F0_25EE_25E2_25E5_25F0_25E8_25F2_25FC_25EA_25EE_25ED_25F2_25F0_25E0_25E3_25E5_25ED_25F2_25EE0147F01DF9" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_проверкаконтрагентовпроверитьконтрагентоврегламентноезадание"></a><h1>ПроверитьКонтрагентовРегламентноеЗадание</h1>
+
+<pre> Метод регламентного задания по проверке контрагентов в справочнике.
+   В модели сервиса обновляет состояния контрагентов по каждой записи регистра.
+   В локальном режима записывает недостающих контрагентов в регистр и обновляет состояния по каждой записи регистра.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура ПроверитьКонтрагентовРегламентноеЗадание() Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> ПроверкаКонтрагентов.ПроверитьКонтрагентовРегламентноеЗадание()</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

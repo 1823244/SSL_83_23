@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.31. &#1054;&#1090;&#1087;&#1088;&#1072;&#1074;&#1082;&#1072; SMS</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.31. _25EE_25F2_25EF_25F0_25E0_25E2_25EA_25E0 sms.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_отправка_sms_1"></a><h1>3.31. Отправка SMS</h1>
+
+<p class="Paragraph0c">Подсистема «Отправка SMS» предназначена для отправки
+сообщений пользователям посредством SMS.</p>
+
+<p class="Paragraph0c">Для отправки SMS потребуется заключение договора с любым
+поставщиком услуг, поддерживаемым подсистемой:</p>
+
+<p class="MsoListBullet">&#9679; 
+Билайн;</p>
+
+<p class="MsoListBullet">&#9679; 
+МТС.</p>
+
+<p class="Paragraph0c">Список поддерживаемых поставщиков услуг может быть
+расширен при внедрении.</p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Paragraph0c">Если в конфигурации не используется подсистема «Настройки
+программы», то в командном интерфейсе администратора необходимо разместить
+общую форму <span class="Interface">НастройкаОтправкиSMS</span> (см. пример
+размещения в форме <span class="Interface">Органайзер</span> обработки <span class="Interface">ПанельАдминистрированияБСП</span> демонстрационной
+конфигурации).</p>
+
+<a name="issogl2_расширение_списка_поддерживаемых_провайдеров_sms"><h3>Расширение списка поддерживаемых провайдеров SMS</h3></a>
+
+<p class="Paragraph0c">Для расширения списка поддерживаемых провайдеров
+необходимо:</p>
+
+<p class="MsoListBullet">&#9679; 
+Добавить провайдера в перечисление <span class="Interface">ПровайдерыSMS</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+В процедурах <span class="Interface">ОтправитьSMS </span>и
+<span class="Interface">СтатусДоставки </span>общего модуля <span class="Interface">ОтправкаSMSПереопределяемый</span> и в процедуре <span class="Interface">ПриПолученииАдресаПровайдераВИнтернете</span> общего модуля <span class="Interface">ОтправкаSMSКлиентПереопределяемый</span> написать свою реализацию.</p>
+
+<p class="Paragraph0c">Пример:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> ОтправитьSMS<span class="operator">(</span>ПараметрыОтправки<span class="operator">,</span> Результат<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="keyword">Если</span> ПараметрыОтправки<span class="operator">.</span>Провайдер <span class="operator">=</span> Перечисления<span class="operator">.</span>ПровайдерыSMS<span class="operator">.</span>_ДемоДругойПровайдер <span class="keyword">Тогда</span>
+        <span class="comment">// отправка смс через провайдера _ДемоДругойПровайдер</span>
+        <span class="comment">// ...</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="keyword">Процедура</span> СтатусДоставки<span class="operator">(</span>ИдентификаторСообщения<span class="operator">,</span> Провайдер<span class="operator">,</span> Логин<span class="operator">,</span> Пароль<span class="operator">,</span> Результат<span class="operator">)</span> <span class="keyword">Экспорт</span> 
+    <span class="keyword">Если</span> Провайдер <span class="operator">=</span> Перечисления<span class="operator">.</span>ПровайдерыSMS<span class="operator">.</span>_ДемоДругойПровайдер <span class="keyword">Тогда</span>
+        <span class="comment">// проверка статуса отправки смс через провайдера _ДемоДругойПровайдер</span>
+        <span class="comment">// ...</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="keyword">Процедура</span> ПриПолученииАдресаПровайдераВИнтернете<span class="operator">(</span>Провайдер<span class="operator">,</span> АдресВИнтернете<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="keyword">Если</span> Провайдер <span class="operator">=</span> ПредопределенноеЗначение<span class="operator">(</span><span class="string">&quot;Перечисление.ПровайдерыSMS._ДемоДругойПровайдер&quot;</span><span class="operator">)</span> <span class="keyword">Тогда</span>
+        АдресВИнтернете <span class="operator">=</span> <span class="string">&quot;http://yandex.ru/search/?text=рассылка%20смс&quot;</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Objectname">Таблица 3.65.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПолныеПрава</span> (из
+  подсистемы «Базовая функциональность»)</p>
+  <p class="TextinTable81">Отправка SMS, запрос статуса доставки</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ОтправкаSMS</span></p>
+  <p class="TextinTable81">Отправка SMS, запрос статуса доставки</p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<p class="Paragraph0c">Программный интерфейс подсистемы доступен через экспортные
+функции общего модулей <span class="Interface">ОтправкаSMS </span>и <span class="Interface">ОтправкаSMSКлиент</span>.</p>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Все объекты метаданных подсистемы, содержащие данные,
+рекомендуется включить в планы обмена распределенной ИБ (РИБ).</p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

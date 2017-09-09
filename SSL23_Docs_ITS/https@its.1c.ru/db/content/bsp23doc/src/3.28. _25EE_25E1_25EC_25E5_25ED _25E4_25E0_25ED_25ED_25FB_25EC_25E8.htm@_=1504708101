@@ -1,0 +1,3217 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.28. &#1054;&#1073;&#1084;&#1077;&#1085; &#1076;&#1072;&#1085;&#1085;&#1099;&#1084;&#1080;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.28. _25EE_25E1_25EC_25E5_25ED _25E4_25E0_25ED_25ED_25FB_25EC_25E8.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_обмен_данными"></a><h1>3.28. Обмен данными</h1>
+
+<p class="Paragraph0c"><a name="_обновление_версии_иб"></a>Подсистема «Обмен
+данными» объединяет функциональность, связанную с обменом информацией между
+различными информационными базами:</p>
+
+<p class="MsoListBullet">&#9679; 
+распределенные информационные базы (РИБ);</p>
+
+<p class="MsoListBullet">&#9679; 
+обмен данными через универсальный формат;</p>
+
+<p class="MsoListBullet">&#9679; 
+обмен данными по правилам обмена (правила обмена
+создаются при помощи конфигурации «Конвертация данных», редакция 2.1);</p>
+
+<p class="MsoListBullet">&#9679; 
+обмен данными без правил обмена.</p>
+
+<p class="Paragraph0c">Поддерживается обмен данными между конфигурациями,
+работающими в модели сервиса, а также между конфигурациями, работающими в
+модели сервиса и в локальном режиме. Обмен данными может быть односторонним или
+двусторонним и выполняться автоматически (по некоторому расписанию) или вручную
+по требованию пользователя. Для транспорта сообщений обмена могут быть
+использованы различные каналы связи: сетевой каталог, электронная почта, FTP,
+обмен через Интернет (веб-сервис). При использовании правил обмена доступно
+выполнение обмена через внешнее соединение к информационной
+базе-корреспонденту.</p>
+
+<p class="Paragraph0c">Подсистема «Обмен данными» не является самостоятельно
+функционирующей подсистемой. Для ее использования необходимо разработать в
+конфигурации прикладные планы обмена согласно предлагаемой методике и провести
+дополнительную настройку библиотечных объектов. </p>
+
+<p class="Paragraph0c">Если требуется выполнять обмен данными в модели сервиса,
+то дополнительно необходимо встроить подсистему «Обмен данными в модели
+сервиса».</p>
+
+<p class="Paragraph0c">Подсистема «Обмен данными» совместно с подсистемой «Обмен
+данными в модели сервиса» позволяет поддержать пять сценариев обмена данными:</p>
+
+<p class="Number81">1. 
+Обмен данными между различающимися
+конфигурациями, работающими в локальном режиме.</p>
+
+<p class="Number81">2. 
+Обмен данными между различающимися конфигурациями,
+одна из которых работает в модели сервиса, а вторая – в локальном режиме.</p>
+
+<p class="Number81">3. 
+Обмен данными между различающимися
+конфигурациями, работающими в модели сервиса.</p>
+
+<p class="Number81">4. 
+Автономная работа в модели сервиса.</p>
+
+<p class="Number81">5. 
+Обмен в распределенной информационной базе.</p>
+
+<p class="Paragraph0c">Поддерживаемые сценарии обмена данными наглядно
+представлены на рисунке ниже.</p>
+
+<p class="Picture"><IMG src="_img/bb4930f70ba50b6391a4d4b0238cf1d5/image016.gif@_=1504708101" WIDTH="367" ALT HEIGHT="352"><IMG src="_img/bb4930f70ba50b6391a4d4b0238cf1d5/image017.gif@_=1504708101" WIDTH="360" ALT HEIGHT="346"></p>
+
+<p class="Paragraph0c">Подсистема предоставляет в распоряжение разработчика
+четыре вида обмена данными:</p>
+
+<p class="MsoListBullet">&#9679; 
+обмен данными в распределенной информационной
+базе (<span class="Interface">РИБ</span>) – используется стандартный механизм платформы
+для организации обмена в распределенной информационной базе;</p>
+
+<p class="MsoListBullet">&#9679; 
+обмен данными через универсальный формат (<span class="Interface">ОУФ</span>) – позволяет организовать обмен между различающимися
+конфигурациями с использованием модуля (<span class="Interface">менеджер обмена</span>),
+в котором прописана логика приведения данных конфигурации к структуре,
+описанной в формате (<span class="Interface">конфигурация – формат</span>), а
+также обратный процесс преобразования (<span class="Interface">формат – конфигурация</span>);</p>
+
+<p class="MsoListBullet">&#9679; 
+универсальный обмен данными по правилам (<span class="Interface">УОП</span>) – позволяет организовать обмен между различающимися
+конфигурациями с использованием правил обмена данными, в которых прописана
+логика преобразования данных одной конфигурации в данные другой конфигурации;</p>
+
+<p class="MsoListBullet">&#9679; 
+универсальный обмен данными без использования
+правил обмена (<span class="Interface">УО</span>) – позволяет организовать обмен
+между различающимися конфигурациями. При выборе данного вида обмена следует
+учитывать основное требование: необходимо, чтобы объекты, которые участвуют в
+обмене, в обеих базах имели идентичную структуру метаданных.</p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<a name="issogl2_принятие_решения_о_виде_обмена_данными"><h3>Принятие решения о виде обмена данными</h3></a>
+
+<p class="Paragraph0c">Перед внедрением подсистемы следует принять решение о виде
+обмена данными, который необходимо реализовать. Возможности и особенности
+поддерживаемых видов обмена приведены в таблице ниже.</p>
+
+<p class="Objectname">Таблица 3.51.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Характеристика</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">ОУФ</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">УОП</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">УО</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">РИБ</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td colspan="5" valign="top">
+  <p class="TextinTable81"><span class="Interface">Режим использования</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Работа в локальном режиме</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Работа в модели сервиса</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="5" valign="top">
+  <p class="TextinTable81"><span class="Interface">Поддерживаемые каналы связи</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Через сетевой или локальный каталог</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Через <span class="Interface">ftp-сервер</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Через электронную почту (<span class="Interface">e-mail</span>)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Обмен через Интернет (<span class="Interface">web-сервис</span>)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Обмен через прямое подключение к информационной
+  базе-корреспонденту (<span class="Interface">COM-соединение</span>)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="5" valign="top">
+  <p class="TextinTable81"><span class="Interface">Особенности взаимодействия
+  конфигураций</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Существует разделение баз на главную и подчиненную</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Конфигурации обменивающихся информационных баз
+  идентичны как по структуре метаданных, так и по прикладной бизнес-логике</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–*</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Требуется разработка логики преобразования данных</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Логика конвертации данных на стороне конфигурации № 1
+  не зависит от внутреннего устройства и бизнес-логики конфигурации № 2</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="5" valign="top">
+  <p class="TextinTable81"><span class="Interface">Прочие возможности</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Настройка ограничения и направления миграции данных по
+  узлам</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Предварительный просмотр загружаемых данных и
+  сопоставление объектов информационных баз</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Warningword">Примечание</p>
+
+<p class="Notes">* Конфигурации обменивающихся информационных баз должны быть
+идентичны только в части структуры метаданных данных, которые участвуют в
+обмене.</p>
+
+<p class="Paragraph0c">В зависимости от вида обмена технологии внедрения и
+настройки подсистемы в конфигурации различаются.</p>
+
+<a name="issogl2_настройка_для_работы_в_локальном_режиме"><h3>Настройка для работы в локальном режиме</h3></a>
+
+<p class="Paragraph0c">Для использования подсистемы в конфигурации необходимо:</p>
+
+<p class="MsoListBullet">&#9679; 
+разместить в командном интерфейсе общую команду <span class="Interface">СинхронизацияДанных</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+в форме редактирования настроек системы
+поместить поле, связанное с константами <span class="Interface">ИспользоватьСинхронизациюДанных</span>,
+<span class="Interface">ПрефиксУзлаРаспределеннойИнформационнойБазы</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+выполнить публикацию веб-сервиса <span class="Interface">Exchange</span> (если предполагается использование обмена через
+Интернет).</p>
+
+<p class="Paragraph0c">Пример размещения объектов подсистемы в командном
+интерфейсе можно посмотреть в демонстрационной конфигурации.</p>
+
+<p class="Paragraph0c">В общем модуле <span class="Interface">ОбменДаннымиПереопределяемый</span>
+необходимо задать возвращаемое значение функции <span class="Interface">ПрефиксИнформационнойБазыПоУмолчанию</span>.
+В качестве возвращаемого значения функции следует указать строку префикса – <span class="Interface">Строка, 2</span>. Длина префикса не должна превышать двух
+символов. Значение функции будет использоваться для задания префикса
+информационной базы по умолчанию в помощнике настройки обмена данными.</p>
+
+<a name="issogl2_настройка_для_работы_в_модели_сервиса"><h3>Настройка для работы в модели сервиса</h3></a>
+
+<p class="MsoListBullet">&#9679; 
+Разместить в командном интерфейсе общую команду <span class="Interface">АвтономнаяРабота</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+Разместить в командном интерфейсе общую команду <span class="Interface">АвтономнаяРаботаВМоделиСервиса</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+Разместить в командном интерфейсе общую команду <span class="Interface">СинхронизацияДанныхВМоделиСервиса</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+Выполнить внутреннюю неразделенную публикацию
+веб-сервисов <span class="Interface">RemoteAdministrationOfExchange</span>, <span class="Interface">RemoteAdministrationOfExchange_2_0_1_6</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+Выполнить внутреннюю неразделенную и внешнюю
+разделенную публикацию веб-сервисов <span class="Interface">Exchange</span>, <span class="Interface">Exchange_2_0_1_6 и InterfaceVersion</span>.</p>
+
+<p class="Paragraph0c">Пример файла разделенной публикации веб-сервисов <span class="Interface">Exchange</span>, <span class="Interface">Exchange_2_0_1_6 и
+InterfaceVersion</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;point xmlns=&quot;http://v8.1c.ru/8.2/virtual-resource-system&quot;
+        xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;
+        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        base=&quot;/demo&quot;
+        ib=&quot;Srvr=&amp;quot;server1C&amp;quot;;Ref=&amp;quot;demo&amp;quot;;&quot;&gt;
+    &lt;zones&gt;
+        &lt;zone specify=&quot;false&quot; safe=&quot;true&quot;/&gt;
+        &lt;zone specify=&quot;true&quot; safe=&quot;true&quot;/&gt;
+    &lt;/zones&gt;
+    &lt;ws&gt;
+        &lt;point name=&quot;Exchange&quot;
+                alias=&quot;exchange.1cws&quot;/&gt;
+        &lt;point name=&quot;Exchange_2_0_1_6&quot;
+                alias=&quot;exchange_2_0_1_6.1cws&quot;/&gt;
+        &lt;point name=&quot;InterfaceVersion&quot;
+                alias=&quot;InterfaceVersion.1cws&quot;/&gt;
+    &lt;/ws&gt;
+&lt;/point&gt;
+</pre>
+
+<p class="Paragraph0c">Пример файла неразделенной публикации веб-сервисов <span class="Interface">RemoteAdministrationOfExchange</span>, <span class="Interface">RemoteAdministrationOfExchange_2_0_1_6</span>, <span class="Interface">Exchange</span>, <span class="Interface">Exchange_2_0_1_6</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;point xmlns=&quot;http://v8.1c.ru/8.2/virtual-resource-system&quot;
+        xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;
+        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        base=&quot;/demo_ws&quot;
+        ib=&quot;Srvr=&amp;quot;server1C&amp;quot;;Ref=&amp;quot;demo&amp;quot;;&quot;
+        enable=&quot;false&quot;&gt;
+    &lt;ws&gt;
+        &lt;point name=&quot;Exchange&quot;
+                alias=&quot;exchange.1cws&quot;/&gt;
+        &lt;point name=&quot;Exchange_2_0_1_6&quot;
+                alias=&quot;exchange_2_0_1_6.1cws&quot;/&gt;
+        &lt;point name=&quot;RemoteAdministrationOfExchange&quot;
+                alias=&quot;RemoteAdministrationOfExchange.1cws&quot;/&gt;
+        &lt;point name=&quot;RemoteAdministrationOfExchange_2_0_1_6&quot;
+                alias=&quot;RemoteAdministrationOfExchange_2_0_1_6.1cws&quot;/&gt;
+    &lt;/ws&gt;
+&lt;/point&gt;
+</pre>
+
+<a name="issogl2_автономная_работа_в_модели_сервиса"><h3>Автономная работа в модели сервиса</h3></a>
+
+<p class="Paragraph0c">Одним из возможных сценариев использования подсистемы
+обмена данными является сценарий автономной работы в модели сервиса. Этот
+сценарий позволяет работать с информационной базой без постоянного подключения
+к Интернету и при необходимости выполнять синхронизацию данных с Интернетом.</p>
+
+<p class="Paragraph0c">Для организации автономной работы в конфигурации
+необходимо:</p>
+
+<p class="MsoListBullet">&#9679; 
+создать план обмена РИБ согласно этой
+документации; </p>
+
+<p class="MsoListBullet">&#9679; 
+план обмена должен быть разделенным (входить в
+состав реквизита-разделителя конфигурации <span class="Interface">ОбластьДанныхОсновныеДанные</span>);
+</p>
+
+<p class="MsoListBullet">&#9679; 
+для плана обмена должен быть установлен признак <span class="Interface">Распределенная ИБ</span>; </p>
+
+<p class="MsoListBullet">&#9679; 
+тип кода плана обмена: <span class="Interface">Строка</span>,
+36, переменная;</p>
+
+<p class="MsoListBullet">&#9679; 
+в модуле менеджера плана обмена функция <span class="Interface">ПланОбменаИспользуетсяВМоделиСервиса</span> должна возвращать
+значение <span class="Interface">Истина</span>.</p>
+
+<p class="Warningword">Важно!</p>
+
+<p class="Notes">В конфигурации может быть создан только один план обмена,
+который предназначен для обслуживания автономной работы в модели сервиса.</p>
+
+<p class="Paragraph0c">В состав плана обмена автономной работы не рекомендуется
+включать объекты метаданных классификаторов с потенциально большим объемом
+данных (например, адресный классификатор), т. к. обновление таких
+классификаторов требует много времени на синхронизацию и порождает большой
+трафик данных. Данные таких классификаторов рекомендуется загружать в
+автономное рабочее место из альтернативных источников, например с сайта «1С», и
+только при необходимости.</p>
+
+<p class="Paragraph0c">Обмен данными с автономным рабочим местом имеет следующие
+особенности:</p>
+
+<p class="MsoListBullet">&#9679; 
+информация о пользователях и доступе к данным
+мигрирует только сверху вниз – из сервиса в автономное рабочее место. Все
+изменения, сделанные в автономном рабочем месте, игнорируются и приводятся в
+соответствие со значениями в сервисе;</p>
+
+<p class="MsoListBullet">&#9679; 
+информация общих данных (классификаторов банков,
+классификаторов валют и пр.) мигрирует только сверху вниз – из сервиса в
+автономное рабочее место. Все изменения, сделанные в автономном рабочем месте,
+игнорируются и приводятся в соответствие со значениями в сервисе.</p>
+
+<a name="issogl2_разработка_планов_обмена"><h3>Разработка планов обмена</h3></a>
+
+<p class="Paragraph0c">Для организации обмена в локальном режиме и обмена в
+модели сервиса используется одна технология. Поэтому разработка планов обмена и
+других объектов метаданных будет одинаковой для двух режимов использования.
+Особенности и различия будут отражены отдельно. </p>
+
+<p class="Paragraph0c">План обмена может содержать реквизиты и табличные части.
+Состав плана обмена определяет набор объектов метаданных, которые будут
+участвовать в обмене данными.</p>
+
+<p class="Paragraph0c">В общем модуле <span class="Interface">ОбменДаннымиПереопределяемый</span>
+в тело процедуры <span class="Interface">ПолучитьПланыОбмена</span> следует
+добавить код, относящийся к новому плану обмена:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> ПолучитьПланыОбмена<span class="operator">(</span>ПланыОбменаПодсистемы<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    ПланыОбменаПодсистемы<span class="operator">.</span>Добавить<span class="operator">(</span>Метаданные<span class="operator">.</span>ПланыОбмена<span class="operator">.</span><span class="operator">&lt;</span>ИмяПланаОбмена<span class="operator">&gt;</span><span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<a name="issogl2_реквизиты_и_свойства_плана_обмена"><h3>Реквизиты и свойства плана обмена</h3></a>
+
+<p class="Paragraph0c">Наименование для плана обмена необходимо назначать согласно
+общим правилам наименования объектов метаданных. Свойства плана обмена
+необходимо задать согласно приведенной ниже таблице.</p>
+
+<p class="Objectname">Таблица 3.52.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Свойство</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">План обмена ОУФ, УОП и УО</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">План обмена РИБ</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Имя</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Обмен&lt;Источник&gt;&lt;Приемник&gt;</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Не регламентируется</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Распределенная ИБ</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Ложь</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Истина</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Состав</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. описание ниже</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. описание ниже</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Код</span> (тип, длина)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Строка</span>, 9, переменная</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Строка</span>, 9, переменная</p>
+  <p class="TextinTable81">(<span class="Interface">Строка</span>, 36, переменная)*</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Наименование</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Строка</span>, 150</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Строка</span>, 150</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Макеты</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. описание ниже</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. описание ниже</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Notes">* Если план обмена используется для организации автономной
+работы в модели сервиса. </p>
+
+<p class="Paragraph0c">Для плана обмена допустимо создавать произвольное
+количество реквизитов и табличных частей. Все реквизиты и табличные части плана
+обмена можно использовать в правилах регистрации объектов на узлах. Правила
+регистрации настраиваются при помощи конфигурации «Конвертация данных». Правила
+регистрации используются как для универсальных обменов, так и для обмена в РИБ.</p>
+
+<p class="Paragraph0c">Для планов обмена может быть предусмотрен набор реквизитов
+для переключения режимов выгрузки объектов метаданных
+(реквизиты-переключатели). Например, для переключения режима выгрузки
+информации, связанной с контрагентами, создается реквизит-переключатель,
+который управляет режимом выгрузки сразу для нескольких объектов метаданных:
+справочники <span class="Interface">Контрагенты</span>, <span class="Interface">Договоры
+контрагентов</span>. Количество таких реквизитов-переключателей не ограничено.
+Тип реквизита-переключателя строго регламентирован – <span class="Interface">ПеречислениеСсылка.РежимыВыгрузкиОбъектовОбмена</span>.</p>
+
+<p class="Paragraph0c">Если план обмена используется для организации обменов
+данными в модели сервиса и является разделенным, то для такого плана обмена
+следует создать реквизит <span class="Interface">РегистрироватьИзменения</span>:</p>
+
+<p class="Objectname">Таблица 3.53.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td>
+   <p class="TextinTable81"><span class="Interface">Имя</span></p>
+   </td>
+   <td>
+   <p class="TextinTable81"><span class="Interface">Тип</span></p>
+   </td>
+   <td>
+   <p class="TextinTable81"><span class="Interface">Индексировать</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td>
+  <p class="TextinTable81"><span class="Interface">РегистрироватьИзменения</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Булево</span></p>
+  </td>
+  <td>
+  <p class="TextinTable81">Да</p>
+  </td>
+ </tr>
+</table>
+
+<a name="_состав_плана_обмена"></a><a name="issogl2_состав_плана_обмена"><h3>Состав плана обмена</h3></a>
+
+<p class="Paragraph0c">Для планов обмена <span class="Interface">УОП</span>
+рекомендуется исключить все объекты метаданных подсистемы, кроме регистра
+сведений <span class="Interface">СоответствияОбъектовИнформационныхБаз</span>.</p>
+
+<p class="Warningword">Важно! </p>
+
+<p class="Notes">Все элементы состава плана обмена должны иметь признак
+авторегистрации <span class="Interface">Запретить</span> вне зависимости от
+наличия правил регистрации для объектов.</p>
+
+<p class="Paragraph0c">Для остальных планов обмена рекомендуется исключить все
+объекты метаданных подсистемы.</p>
+
+<p class="Paragraph0c">Если для объекта метаданных требуется ограничить миграцию
+элементов при обмене, то для этого объекта необходимо создать правила
+регистрации при помощи конфигурации «Конвертация данных». Если правило
+регистрации для объекта метаданных не создано, то считается, что миграция объектов
+такого типа не ограничена, даже если признак авторегистрации установлен в
+значение <span class="Interface">Запретить</span>. </p>
+
+<p class="Paragraph0c">Рекомендации по включению объектов других подсистем
+библиотеки в состав планов обмена приведены в разделах «Использование при
+разработке конфигурации», «Настройка обмена данными» соответствующих подсистем.</p>
+
+<a name="issogl2_режим_совместимости_для_планов_обмена_уоп"><h3>Режим совместимости для планов обмена УОП</h3></a>
+
+<p class="Paragraph0c">Этот режим предназначен для поддержания обратной
+совместимости обмена данными между конфигурациями на базе БСП версии 2.0 и ниже
+– с одной стороны и конфигурациями на базе БСП 2.1 и выше – с другой.</p>
+
+<p class="Paragraph0c">Для конфигураций, рассчитанных только на локальный режим
+работы, необходимо принять решение по поводу включения режима совместимости. </p>
+
+<p class="Paragraph0c">Для конфигураций, рассчитанных на работу в модели сервиса,
+режим совместимости отключается принудительно (его нельзя включить).</p>
+
+<p class="Paragraph0c">По умолчанию для новых правил конвертации режим
+совместимости с конфигурациями на базе БСП версии 2.0 и более ранних отключен.
+При необходимости поддержать обмен данными с такими конфигурациями следует
+установить режим совместимости в значение «Версия БСП 2.0». Режим совместимости
+устанавливается в конфигурации «Конвертация данных» версии 2.1.6 и выше в
+свойствах конвертации на закладке <span class="Interface">Дополнительно</span>.
+Значение сохраняется в правилах обмена. </p>
+
+<p class="Paragraph0c">Для существующих правил конвертации по умолчанию режим
+совместимости установлен в значение «Версия БСП 2.0». </p>
+
+<p class="Paragraph0c">При включенном режиме совместимости становится недоступным
+<a href="#_режим_отладки">режим
+отладки</a>, а также <a href="#_безопасное_выполнение_кода">режим безопасного выполнения кода
+обработчиков</a>.</p>
+
+<p class="Paragraph0c">В таблице приведены варианты использования режимов обмена
+данными.</p>
+
+<p class="Objectname">Таблица 3.54.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Режим совместимости</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Режим отладки</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Выполнение кода обработчиков</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td rowspan="2" valign="top">
+  <p class="TextinTable81">Отключен*</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Отключен*</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Код обработчиков выгрузки и загрузки выполняется из обработок
+  в составе конфигурации</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Включен</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Код обработчиков выгрузки и загрузки выполняется из
+  внешних обработок</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Включен</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Недоступен</p>
+  <p class="TextinTable81">(Отключен)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Код обработчиков выполняется:</p>
+  <p class="BulletTab">&#9679; 
+  при загрузке – из файла сообщения обмена,</p>
+  <p class="BulletTab">&#9679; 
+  при выгрузке – из правил обмена</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Notes">* Режимы совместимости и отладки всегда отключены в модели
+сервиса.</p>
+
+<a name="_безопасное_выполнение_кода"></a><a name="issogl2_безопасное_выполнение_кода_обработчиков_для_планов_обмена_уоп"><h3>Безопасное выполнение кода обработчиков для планов обмена УОП</h3></a>
+
+<p class="Paragraph0c">При отключенных режимах совместимости и <a href="#_режим_отладки">отладки</a>
+код обработчиков выгрузки и загрузки выполняется из обработок в составе
+конфигурации. Это обеспечивает высокий уровень безопасности обмена данными,
+прежде всего в модели сервиса. </p>
+
+<p class="Paragraph0c">При включенном режиме совместимости код обработчиков
+загрузки зачитывается и выполняется из сообщения обмена данными, что является
+небезопасным.</p>
+
+<p class="Paragraph0c">При отключенном режиме совместимости необходимо:</p>
+
+<p class="MsoListBullet">&#9679; 
+в инструменте «Конвертация данных» версии 2.1.6
+и выше:</p>
+
+<p class="MsoListBullet2">&#9679;  отключить
+режим совместимости в свойствах конвертации;</p>
+
+<p class="MsoListBullet2">&#9679;  сохранить
+правила конвертации объектов, установить флажок сохранения кода обработчиков
+выгрузки в текстовый документ и указать путь к нему (при этом модуль загрузки
+необходимо сформировать из второго комплекта правил аналогичным образом);</p>
+
+<p class="MsoListBullet">&#9679; 
+в конфигурации:</p>
+
+<p class="MsoListBullet2">&#9679;  загрузить
+правила конвертации, сохраненные в «Конвертации данных»;</p>
+
+<p class="MsoListBullet2">&#9679;  создать
+обработки в составе конфигурации. Рекомендуемые имена обработок: <span class="Interface">ОбработчикиЗагрузкиИз&lt;ИмяКонфигурации&gt;</span> и <span class="Interface">ОбработчикиВыгрузкиВ&lt;ИмяКонфигурации&gt;</span>;</p>
+
+<p class="MsoListBullet2">&#9679;  добавить
+функции в модуль менеджера плана обмена (см. ниже);</p>
+
+<p class="MsoListBullet2">&#9679;  скопировать
+текст модулей из выгруженных ранее файлов в модули созданных обработок.</p>
+
+<a name="issogl2_модуль_менеджера_плана_обмена"><h3>Модуль менеджера плана обмена</h3></a>
+
+<p class="Paragraph0c">В модуле менеджера плана обмена должны быть обязательно
+объявлены следующие экспортные процедуры:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ОпределитьНастройки(Настройки,
+ИдентификаторНастройки</span>) – процедура-обработчик, позволяющая переопределить
+настройки плана обмена, задаваемые по умолчанию в функции <span class="Interface">ОбменДаннымиСервер.НастройкиПланаОбменаПоУмолчанию</span>.
+Параметры:</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">Настройки – Структура</span> – ключом является имя настройки,
+значением – значение настройки:</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ПредупреждатьОНесоответствииВерсийПланаОбмена – Булево</span> –
+признак необходимости проверки на расхождение версий в правилах конвертации,
+используется только для <span class="Interface">УОП</span>, проверка выполняется
+при загрузке комплекта правил, при отправке данных и при получении данных;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ПутьКФайлуКомплектаПравилНаПользовательскомСайте – Строка </span>–
+содержит путь к файлу комплекта правил в виде архива на пользовательском сайте
+в разделе конфигурации;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ПутьКФайлуКомплектаПравилВКаталогеШаблонов – Строка </span>–
+содержит относительный путь к файлу комплекта правил в каталоге шаблонов «1С:Предприятия»;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ЗаголовокКомандыДляСозданияНовогоОбменаДанными – Строка </span>–
+содержит представление команды, выводимое в пользовательском интерфейсе при
+создании новой настройки обмена данными;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ЗаголовокПомощникаСозданияОбмена – Строка </span>– содержит
+представление заголовка формы помощника создания обмена данными, выводимое в
+пользовательском интерфейсе;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">НаименованиеКонфигурацииКорреспондента – Строка </span>–
+содержит наименование конфигурации корреспондента выводимое в пользовательском
+интерфейсе;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ЗаголовокУзлаПланаОбмена – Строка </span>– содержит
+представление узла плана обмена, выводимое в пользовательском интерфейсе;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ВариантыНастроекОбмена – Массив </span>– список возможных
+настроек плана обмена, используется для создания заготовленных шаблонов с
+заполненными настройками планов обмена;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ОтображатьНастройкуОтборовНаУзле – Булево</span> – признак
+отображения настроек отборов на узле в помощнике создания обмена;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ОтображатьЗначенияПоУмолчаниюНаУзле – Булево</span> – признак
+отображения значений по умолчанию в помощнике создания обмена;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ОтображатьНастройкуОтборовНаУзлеБазыКорреспондента – Булево</span>
+– признак отображения настроек отборов на узле базы-корреспондента в помощнике
+создания обмена;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ОтображатьЗначенияПоУмолчаниюНаУзлеБазыКорреспондента – Булево</span>
+– признак отображения значений по умолчанию базы-корреспондента в помощнике
+создания обмена;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ИдентификаторНастройки – Строка</span> – уточняет вариант
+настройки, список возможных значений которых был объявлен в параметре <span class="Interface">Настройки</span> - <span class="Interface">ВариантыНастроекОбмена</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ОбработчикПроверкиПараметровУчета(Отказ,
+Получатель, Сообщение)</span> – обработчик вызывается помощником настройки
+обмена при настройке обмена данными через веб-сервис. В обработчике необходимо
+определить алгоритм проверки параметров учета в конфигурации. Если в результате
+проверки выяснится, что параметры учета не настроены или настроены не
+полностью, то в обработчике необходимо переменной <span class="Interface">Отказ</span>
+установить значение <span class="Interface">Истина</span>. Дополнительно можно
+назначить переменной <span class="Interface">Сообщение</span> описание для
+пользователя, какие именно настройки необходимо заполнить. Параметры:</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">Отказ</span>. Тип: <span class="Interface">Булево</span>. Если в
+информационной базе заданы не все настройки параметров учета, необходимые для
+правильной работы обмена данными, то нужно установить этот флажок;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">Получатель</span>. Тип: <span class="Interface">ПланОбменаСсылка</span>.
+Ссылка на узел плана обмена, для которого выполняется настройка обмена данными;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">Сообщение</span>. Тип: <span class="Interface">Строка</span>.
+Сообщение пользователю о действиях, которые необходимо выполнить для правильной
+настройки параметров учета в конфигурации.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПолучитьДополнительныеДанныеДляКорреспондента(ДополнительныеДанные)</span>
+– процедура-обработчик получения произвольных дополнительных данных,
+используемых при настройке обмена в базе-корреспонденте. Полученные данные могут
+быть использованы в обработчике <span class="Interface">ПриСозданииНаСервере</span>
+в форме настройки узла плана обмена <span class="Interface">ФормаНастройкиЗначенийПоУмолчаниюБазыКорреспондента</span>
+при настройке обмена данными с использованием помощника. Параметры:</p>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">ДополнительныеДанные –
+Структура</span> – дополнительные данные, которые будут использованы в
+базе-корреспонденте при настройке обмена; в качестве значений структуры
+применимы только значения, поддерживающие XDTO-сериализацию.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПриПодключенииККорреспонденту(ВерсияКорреспондента)</span>
+– обработчик события при подключении к корреспонденту. Событие возникает при
+успешном подключении к корреспонденту и получении версии конфигурации
+корреспондента при настройке обмена с использованием помощника через прямое
+подключение или при подключении к корреспонденту через Интернет. В обработчике
+можно проанализировать версию корреспондента и, если настройка обмена не
+поддерживается с корреспондентом указанной версии, вызвать исключение.
+Параметры:</p>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">ВерсияКорреспондента</span>
+(только чтение) – <span class="Interface">Строка</span> – версия конфигурации
+корреспондента, например &quot;2.1.5.1&quot;.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПриОтправкеДанныхОтправителя(Отправитель,
+Игнорировать)</span> – обработчик события при отправке данных узла-отправителя.
+Событие возникает при отправке данных узла-отправителя из текущей базы в
+базу-корреспондент, до помещения данных узла в сообщение обмена. В обработчике
+можно изменить отправляемые данные или вовсе отказаться от отправки данных
+узла. Параметры:</p>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">Отправитель</span> – тип
+значения зависит от текущего состояния обмена данными с другой программой:</p>
+
+<p class="MsoListBullet3">&#9679; 
+при настройке нового обмена данными – <span class="Interface">Структура</span> – содержит настройки отборов на узле;</p>
+
+<p class="MsoListBullet3">&#9679; 
+при выполнении обмена данными – <span class="Interface">ПланОбменаОбъект</span> – узел плана обмена, от имени которого
+выполняется отправка данных;</p>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">Игнорировать – Булево</span>
+– признак отказа от выгрузки данных узла. Если в обработчике установить значение
+этого параметра в значение <span class="Interface">Истина</span>, то отправка
+данных узла выполнена не будет. Значение по умолчанию – <span class="Interface">Ложь</span>.
+При настройке нового обмена параметр не используется.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПриПолученииДанныхОтправителя(Отправитель,
+Игнорировать)</span> – обработчик события при получении данных
+узла-отправителя. Событие возникает при получении данных узла-отправителя,
+когда данные узла прочитаны из сообщения обмена, но не записаны в
+информационную базу. В обработчике можно изменить полученные данные или вовсе
+отказаться от получения данных узла. Параметры:</p>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">Отправитель</span> – тип
+значения зависит от текущего состояния обмена данными с другой программой:</p>
+
+<p class="MsoListBullet3">&#9679; 
+при настройке нового обмена данными – <span class="Interface">Структура</span> – содержит настройки отборов на узле;</p>
+
+<p class="MsoListBullet3">&#9679; 
+при выполнении обмена данными – <span class="Interface">ПланОбменаОбъект</span> – узел плана обмена, от имени которого
+выполняется отправка данных;</p>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">Игнорировать – Булево</span>
+– признак отказа от выгрузки данных узла. Если в обработчике установить значение
+этого параметра в значение <span class="Interface">Истина</span>, то отправка
+данных узла выполнена не будет. Значение по умолчанию – <span class="Interface">Ложь</span>.
+При настройке нового обмена параметр не используется.</p>
+
+<p class="Paragraph0c">В модуле менеджера плана обмена должны быть обязательно
+объявлены следующие экспортные функции:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">НастройкаОтборовНаУзле(ВерсияКорреспондента,
+ИмяФормы, ИдентификаторНастройки)</span> – возвращает структуру отборов на узле
+плана обмена со значениями по умолчанию; структура настроек повторяет состав
+реквизитов шапки и табличных частей плана обмена; для реквизитов шапки
+используются аналогичные по ключу и значению элементы структуры, а для
+табличных частей используются структуры, содержащие массивы значений полей табличных
+частей плана обмена. Возвращает <span class="Interface">Неопределено</span>, если
+отборы на узле не предусмотрены. Параметры:</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ВерсияКорреспондента – </span>см. описание для процедуры <span class="Interface">ПриПодключенииККорреспонденту</span>;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ИмяФормы – Строка</span> – имя используемой формы настройки
+узла. Возможно, например, использование различных форм для разных версий
+корреспондента;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ИдентификаторНастройки – </span>см. описание для процедуры <span class="Interface">ОпределитьНастройки</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">НастройкаОтборовНаУзлеБазыКорреспондента(ВерсияКорреспондента,
+ИмяФормы, ИдентификаторНастройки)</span> – возвращает структуру отборов на узле
+плана обмена со значениями по умолчанию для базы корреспондента обмена. Структура
+настроек повторяет состав реквизитов шапки и табличных частей плана обмена базы
+корреспондента; для реквизитов шапки используются аналогичные по ключу и
+значению элементы структуры, а для табличных частей используются структуры, содержащие
+массивы значений полей табличных частей плана обмена (только для обмена через
+внешнее соединение). Возвращает <span class="Interface">Неопределено</span>, если
+отборы на узле не предусмотрены. Параметры: см. описание для функции <span class="Interface">НастройкаОтборовНаУзле</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ЗначенияПоУмолчаниюНаУзле(ВерсияКорреспондента,
+ИмяФормы, ИдентификаторНастройки</span>) – возвращает структуру отборов на узле
+плана обмена со значениями по умолчанию. Структура настроек повторяет состав
+реквизитов шапки плана обмена; для реквизитов шапки используются аналогичные по
+ключу и значению элементы структуры (только для обмена по правилам). Возвращает
+<span class="Interface">Неопределено</span>, если значения по умолчанию на узле
+не предусмотрены. Параметры: см. описание для функции <span class="Interface">НастройкаОтборовНаУзле</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ЗначенияПоУмолчаниюНаУзлеБазыКорреспондента(ВерсияКорреспондента,
+ИмяФормы, ИдентификаторНастройки</span>) – возвращает структуру отборов на узле
+плана обмена со значениями по умолчанию для базы корреспондента обмена. Структура
+настроек повторяет состав реквизитов шапки плана обмена; для реквизитов шапки
+используются аналогичные по ключу и значению элементы структуры (только для
+обмена по правилам через внешнее соединение). Возвращает <span class="Interface">Неопределено</span>,
+если значения по умолчанию на узле не предусмотрены. Параметры: см. описание
+для функции <span class="Interface">НастройкаОтборовНаУзле</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ОписаниеОграниченийПередачиДанных(НастройкаОтборовНаУзле,
+ВерсияКорреспондента, ИдентификаторНастройки)</span> – возвращает строку
+описания ограничений миграции данных для пользователя; прикладной разработчик
+на основе установленных отборов на узле должен сформировать строку описания
+ограничений, удобную для восприятия пользователем. Возвращает пустую строку,
+если ограничения миграции данных для узла не предусмотрены. Параметры:</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">НастройкаОтборовНаУзле – Структура</span> – структура отборов
+на узле плана обмена полученная при помощи функции <span class="Interface">НастройкаОтборовНаУзле</span>;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ВерсияКорреспондента – </span>см. описание для процедуры <span class="Interface">ПриПодключенииККорреспонденту</span>;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ИдентификаторНастройки – </span>см. описание для процедуры <span class="Interface">ОпределитьНастройки</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ОписаниеОграниченийПередачиДанныхБазыКорреспондента(НастройкаОтборовНаУзле,
+ВерсияКорреспондента, ИдентификаторНастройки)</span> – возвращает строку
+описания ограничений миграции данных для базы корреспондента, которая
+отображается пользователю; прикладной разработчик на основе установленных отборов
+на узле базы корреспондента обмена должен сформировать строку описания
+ограничений, удобную для восприятия пользователем (только для обмена через
+внешнее соединение). Возвращает пустую строку, если ограничения миграции данных
+для узла не предусмотрены. Параметры: см. описание для функции <span class="Interface">ОписаниеОграниченийПередачиДанных</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ОписаниеЗначенийПоУмолчанию(ЗначенияПоУмолчаниюНаУзле,
+ВерсияКорреспондента, ИдентификаторНастройки)</span> – возвращает
+пользовательское представление значений по умолчанию в виде строки. Возвращает
+пустую строку, если значения по умолчанию на узле не предусмотрены. Параметры:</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ЗначенияПоУмолчаниюНаУзле – Структура</span> – структура
+значений по умолчанию на узле плана обмена, полученная при помощи функции <span class="Interface">ЗначенияПоУмолчаниюНаУзле</span>;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ВерсияКорреспондента</span> –<span class="Interface"> </span>см.
+описание для процедуры <span class="Interface">ПриПодключенииККорреспонденту</span>;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ИдентификаторНастройки</span> –<span class="Interface"> </span>см.
+описание для процедуры <span class="Interface">ОпределитьНастройки</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ОписаниеЗначенийПоУмолчаниюБазыКорреспондента
+(ЗначенияПоУмолчаниюНаУзле</span>, <span class="Interface">ВерсияКорреспондента</span>,
+<span class="Interface">ИдентификаторНастройки)</span> – возвращает
+пользовательское представление значений по умолчанию в виде строки для базы
+корреспондента обмена (только для обмена через внешнее соединение). Возвращает
+пустую строку, если значения по умолчанию на узле не предусмотрены. Параметры:
+см. описание для функции <span class="Interface">ЗначенияПоУмолчаниюНаУзле</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ИмяФайлаНастроекДляПриемника</span>
+– имя файла настроек по умолчанию. В этот файл будут выгружены настройки обмена
+для приемника; значение должно быть одинаковым в плане обмена источника и
+приемника.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ИспользуемыеТранспортыСообщенийОбмена</span>
+– возвращает массив используемых транспортов сообщений для текущего плана
+обмена; значение должно быть одинаковым в плане обмена источника и приемника.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ИмяФормыСозданияНачальногоОбраза</span>
+– возвращает пользовательскую форму для создания начального образа базы. Эта
+форма будет открыта после завершения настройки обмена с помощью помощника для
+планов обмена РИБ. Для планов обмена универсального обмена функция должна
+возвращать пустую строку.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ИспользоватьПомощникСозданияОбменаДанными</span>
+– определяет, будет ли использоваться помощник для создания новых узлов плана
+обмена.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">КорреспондентВМоделиСервиса</span>
+– возвращает признак того, что план обмена поддерживает обмен данными с
+корреспондентом, работающим в модели сервиса. Если признак установлен, то
+становится возможным создать обмен данными, когда текущая информационная база
+работает в локальном режиме, а корреспондент – в модели сервиса.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">КраткаяИнформацияПоОбмену(ИдентификаторНастройки)</span>
+– возвращает строку с кратким описанием обмена данными, которое выводится на
+первой странице «Помощника создания обмена данными». Параметры:</p>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">ИдентификаторНастройки – </span>см.
+описание для процедуры <span class="Interface">ОпределитьНастройки</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПодробнаяИнформацияПоОбмену(ИдентификаторНастройки)</span>
+– возвращает ссылку на веб-страницу или полный путь к форме внутри конфигурации
+строкой. Параметры:<span class="Interface"> </span>см. описание для процедуры <span class="Interface">КраткаяИнформацияПоОбмену</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ОбщиеДанныеУзлов(ВерсияКорреспондента,
+ИмяФормы)</span> – возвращает имена реквизитов и табличных частей плана обмена,
+перечисленные через запятую, которые являются общими для пары обменивающихся конфигураций.
+Например, если для плана обмена предусмотрено ограничение миграции данных по
+организациям в обе стороны, то табличная часть плана обмена, в которой
+перечислены разрешенные организации, считается общей. Возвращает пустую строку,
+если общие данные узлов не предусмотрены. Параметры:</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ВерсияКорреспондента – </span>см. описание для процедуры <span class="Interface">ПриПодключенииККорреспонденту</span>;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ИмяФормы – Строка</span> – имя используемой формы настройки
+узла. Возможно, например, использование различных форм для разных версий
+корреспондента.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПланОбменаИспользуетсяВМоделиСервиса</span>
+– возвращает признак использования плана обмена для организации обмена в модели
+сервиса. Если признак установлен, то в сервисе можно включить обмен данными с использованием
+этого плана обмена, а также можно использовать этот план обмена для организации
+автономной работы в модели сервиса. Если признак не установлен, то план обмена
+будет использоваться только для обмена в локальном режиме работы конфигурации.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПояснениеДляНастройкиПараметровУчета</span>
+– возвращает пояснение о последовательности действий пользователя для настройки
+параметров учета в текущей информационной базе.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПояснениеДляНастройкиПараметровУчетаБазыКорреспондента(ВерсияКорреспондента)</span>
+– возвращает пояснение о последовательности действий пользователя для настройки
+параметров учета в базе-корреспонденте. Параметры: см. описание для процедуры <span class="Interface">ПриПодключенииККорреспонденту</span>.</p>
+
+<p class="Paragraph0c">Для всех видов обмена кроме РИБ в модуле менеджера плана
+обмена должны быть обязательно объявлены следующие процедуры и функции:</p>
+
+<p class="MsoListBullet">&#9679; 
+Процедура <span class="Interface">НастроитьИнтерактивнуюВыгрузку(Получатель,
+Параметры),</span> предназначенная для настройки параметров работы помощника
+обмена данными на этапе интерактивного дополнения выборки выгружаемых данных. Для
+настройки доступны три типовых варианта добавления данных к выгрузке («Не
+добавлять», «Добавить все документы за период», «Добавить данные с произвольным
+отбором») и один дополнительный вариант по переопределяемому сценарию узла. Каждый
+вариант можно отключить, изменить название, подсказку и т. д. При отключении
+всех вариантов этап интерактивного дополнения выборки выгружаемых данных будет
+целиком пропущен. Подробное описание и пример использования см. в демонстрационной
+конфигурации, модуль менеджера плана обмена <span class="Interface">_ДемоОбменСБиблиотекойСтандартныхПодсистем</span>.
+Параметры:</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">Получатель – ПланОбменаСсылка</span> – узел, для которого
+производится настройка;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">Параметры – Структура</span> – параметры для изменения. Для
+настройки необходимо установить значения свойств в необходимые значения.</p>
+
+<p class="MsoListBullet">&#9679; 
+Функция<span class="Interface"> ПредставлениеОтбораИнтерактивнойВыгрузки(Получатель,
+Параметры)</span> – возвращает представление отбора для варианта дополнения
+выгрузки по сценарию узла. Параметры:</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">Получатель – ПланОбменаСсылка</span> – узел, для которого
+запрашивается представление;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">Параметры – Структура</span> – описывает текущие параметры
+отбора, для которых запрашивается представление, поля структуры соответствуют
+аналогичным полям, заполняемым в процедуре <span class="Interface">НастроитьИнтерактивнуюВыгрузку</span>.
+Подробное описание и пример использования см. в демонстрационной конфигурации,
+модуль менеджера плана обмена <span class="Interface">_ДемоОбменСБиблиотекойСтандартныхПодсистем</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+Функция<span class="Interface"> ИмяКонфигурацииИсточника</span>
+– имя конфигурации-источника (как задано в свойстве <span class="Interface">Имя</span>
+в метаданных) для точной идентификации имени этой конфигурации при настройке
+синхронизации данных в модели сервиса. Значение должно различаться в плане
+обмена источника и приемника.</p>
+
+<p class="Paragraph0c">В модуле менеджера плана обмена дополнительно могут
+содержаться процедуры и функции, наличие которых зависит от вида обмена
+данными.</p>
+
+<p class="Paragraph0c">Пример реализации функций можно посмотреть в
+демонстрационной конфигурации в планах обмена <span class="Interface">_ДемоОбменСБиблиотекойСтандартныхПодсистем</span>,
+<span class="Interface">_ДемоОбменВРаспределеннойИнформационнойБазе</span>.</p>
+
+<p class="Paragraph0c">Для обмена через универсальный формат в модуле менеджера
+плана обмена дополнительно должны быть обязательно объявлены следующие
+экспортные функции и процедуры:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ФорматОбмена</span> –
+функция, возвращает имя используемого формата в виде строки (пример: http://v8.1c.ru/edi/edi_stnd/EnterpriseData);</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПолучитьВерсииФорматаОбмена(ВерсииФормата)</span>
+– процедура, заполняет соответствие номеров поддерживаемых версий формата
+данных и ссылок на общие модули, реализующих логику обмена через конкретную
+версию формата.</p>
+
+<p class="Paragraph0c">Пример реализации функций можно посмотреть в
+демонстрационной конфигурации в плане обмена <span class="Interface">_ДемоСинхронизацияДанныхЧерезУниверсальныйФормат</span>.</p>
+
+<a name="issogl2_формы_плана_обмена"><h3>Формы плана обмена</h3></a>
+
+<p class="Paragraph0c">Формы узла и списка плана обмена создаются по усмотрению разработчика.
+Если для плана обмена предполагается использовать ограничение миграции данных
+по узлам, то для этого следует в форме узла предусмотреть редактирование
+настроек ограничения миграции данных. </p>
+
+<p class="Paragraph0c">В форме узла должен быть определен обработчик <span class="Interface">ПриЗакрытии</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ПриЗакрытии<span class="operator">(</span><span class="operator">)</span>
+    Оповестить<span class="operator">(</span><span class="string">&quot;Запись_УзелПланаОбмена&quot;</span><span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Если предполагается использование формы узла для обмена
+данными в модели сервиса, то при работе в этом режиме рекомендуется скрывать от
+пользователя код и наименование узла.</p>
+
+<p class="Paragraph0c">Дополнительно необходимо разработать произвольные формы
+плана обмена. Эти формы используются на этапе настройки обмена данными
+помощником настройки.</p>
+
+<p class="Paragraph0c">Возможность использования форм для планов обмена в
+зависимости от вида обмена представлена в таблице 3.55.</p>
+
+<p class="Objectname">Таблица 3.55.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Имя формы узла плана обмена</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">УОП</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">УО</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">РИБ</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ФормаНастройкиУзлов</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ФормаНастройкиУзла</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ФормаНастройкиУзлаБазыКорреспондента</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ФормаНастройкиЗначенийПоУмолчанию</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ФормаНастройкиЗначенийПоУмолчаниюБазы-Корреспондента</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ФормаСозданияНачальногоОбраза</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Необходимость использования форм для планов обмена в
+зависимости от поддерживаемых транспортов сообщений представлена в таблице
+ниже. Если необходимо поддерживать несколько транспортов сообщений, то признаки
+использования нужно складывать по условию <span class="Interface">ИЛИ</span>. В
+общем случае, когда поддерживаются все транспорты, необходимо использовать все
+перечисленные формы.</p>
+
+<p class="Objectname">Таблица 3.56.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Имя формы узла плана обмена</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Обмен через сетевой каталог,
+  e-mail, FTP</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Обмен через внешнее соединение</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Обмен через веб-сервис</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ФормаНастройкиУзлов</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ФормаНастройкиУзла</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ФормаНастройкиУзлаБазыКорреспондента</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ФормаНастройкиЗначенийПоУмолчанию</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ФормаНастройкиЗначенийПоУмолчаниюБазыКорреспондента</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ФормаСозданияНачальногоОбраза</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Для реквизитов настроечных форм можно назначать
+функциональные опции, позволяющие оперативно изменять состав настроек узла в
+зависимости от общих установок приложения. Например, в форме значений по
+умолчанию можно указать ставку НДС для получаемых данных, если в них не
+проставлено необходимое значение. Необходимость заполнения этого реквизита, его
+видимость могут управляться соответствующей функциональной опцией.</p>
+
+<a name="issogl3_разработка_формы_форманастройкиузлов"><h4>Разработка формы «ФормаНастройкиУзлов»</h4></a>
+
+<p class="Paragraph0c">Если для плана обмена планируется использовать обмен
+данными через веб-сервис или обмен данными в модели сервиса и для плана обмена
+предусмотрены фильтры ограничения миграции данных, то необходимо создать
+произвольную форму плана обмена с предопределенным именем <span class="Interface">ФормаНастройкиУзлов</span>. Она вызывается помощником настройки
+обмена данными для задания ограничения миграции данных. Для случая, когда
+необходимо поддержать настройку обмена с базой-корреспондентом разных версий,
+можно создать несколько форм настройки узлов. Имя используемой формы в
+зависимости от версии корреспондента определяет функция, расположенная в модуле
+менеджера плана обмена <span class="Interface">ОбщиеДанныеУзлов</span>.</p>
+
+<p class="Paragraph0c">Для реквизитов формы, которые размещены в форме и
+определяют признак модифицированности формы, следует установить свойство <span class="Interface">Сохраняемые данные</span>. </p>
+
+<p class="Paragraph0c">Табличные части в форме должны именоваться как
+соответствующие табличные части планов обмена текущей базы и
+базы-корреспондента. Табличная часть должна содержать три поля: <span class="Interface">Использовать</span> (<span class="Interface">Булево</span>), <span class="Interface">Представление</span> (<span class="Interface">Строка</span>,
+неограниченной длины), <span class="Interface">УникальныйИдентификаторСсылки</span>
+(<span class="Interface">Строка</span>, неограниченной длины). Заполнение
+табличных частей в форме выполняется автоматически по данным текущей
+информационной базы и данным базы-корреспондента. </p>
+
+<p class="Paragraph0c">Форма условно разделяется на три части: общие данные
+узлов, данные этой информационной базы и данные базы-корреспондента. Общие
+данные узлов одинаковы для двух обменивающихся информационных баз. Реквизиты и
+табличные части плана обмена, которые относятся к общим данным, определяет
+функция, расположенная в модуле менеджера плана обмена <span class="Interface">ОбщиеДанныеУзлов</span>.</p>
+
+<p class="Paragraph0c">Если необходимо раздельно вводить информацию об
+одноименных реквизитах планов обмена этой информационной базы и
+базы-корреспондента, то нужно добавить в форму реквизиты <span class="Interface">ИменаРеквизитов</span>
+и <span class="Interface">ИменаРеквизитовБазыКорреспондента</span> произвольного
+типа. В обработчике формы <span class="Interface">ПриСозданииНаСервере</span>
+задать значения этих реквизитов. Они должны содержать значения типа <span class="Interface">Структура</span>: ключом является имя реквизита плана обмена, а
+значением – имя реквизита формы, который используется для ввода значения этого
+реквизита.</p>
+
+<p class="Paragraph0c">Например, в этой информационной базе есть план обмена с
+табличной частью <span class="Interface">Организации</span>, и у плана обмена
+базы-корреспондента тоже задан такой реквизит. Было принято решение, что отбор
+по организациям необходимо устанавливать независимо для каждой из
+информационных баз. То есть организации не являются общими данными узлов, и в
+форме должно быть два списка организаций. Для этого нужно добавить в форму
+реквизиты, описанные выше, и заполнить их значения следующим образом:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">ИменаРеквизитов <span class="operator">=</span> <span class="keyword">Новый</span> Структура<span class="operator">;</span>
+ИменаРеквизитов<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;Организации&quot;</span><span class="operator">,</span> <span class="string">&quot;ОрганизацииЭтойПрограммы&quot;</span><span class="operator">)</span><span class="operator">;</span>
+ИменаРеквизитовБазыКорреспондента <span class="operator">=</span> <span class="keyword">Новый</span> Структура<span class="operator">;</span>
+ИменаРеквизитовБазыКорреспондента<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;Организации&quot;</span><span class="operator">,</span> <span class="string">&quot;ОрганизацииДругойПрограммы&quot;</span><span class="operator">)</span><span class="operator">;</span></pre>
+
+<p class="Paragraph0c">Это означает, что для выбора организаций этой
+информационной базы будет использоваться реквизит формы <span class="Interface">ОрганизацииЭтойПрограммы</span>,
+а для выбора организаций базы-корреспондента будет использоваться реквизит <span class="Interface">ОрганизацииДругойПрограммы</span>.</p>
+
+<p class="Paragraph0c">В обработчике формы <span class="Interface">ПриСозданииНаСервере</span>
+необходимо предусмотреть задание значений по умолчанию для реквизитов формы.
+Также нужно определить значение реквизита <span class="Interface">ОписаниеКонтекста</span>.</p>
+
+<p class="Paragraph0c">В модуле формы обязательно наличие следующих обработчиков:
+</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Процедура</span> ПриСозданииНаСервере<span class="operator">(</span>Отказ<span class="operator">,</span> СтандартнаяОбработка<span class="operator">)</span>
+    <span class="keyword">Если</span> Параметры<span class="operator">.</span>Свойство<span class="operator">(</span><span class="string">&quot;ПолучитьЗначенияПоУмолчанию&quot;</span><span class="operator">)</span> <span class="keyword">Тогда</span>
+        <span class="comment">// Задание значений по умолчанию</span>
+        ...
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+    ОбменДаннымиСервер<span class="operator">.</span>ФормаНастройкиУзловПриСозданииНаСервере<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> Отказ<span class="operator">)</span><span class="operator">;</span>
+    ПолучитьОписаниеКонтекста<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ПередЗакрытием<span class="operator">(</span>Отказ<span class="operator">,</span> СтандартнаяОбработка<span class="operator">)</span>
+    ОбменДаннымиКлиент<span class="operator">.</span>ФормаНастройкиПередЗакрытием<span class="operator">(</span>Отказ<span class="operator">,</span> ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">В форме необходимо реализовать команду <span class="Interface">ЗаписатьИЗакрыть</span> с обработчиком команды:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ЗаписатьИЗакрыть<span class="operator">(</span>Команда<span class="operator">)</span>
+    ПолучитьОписаниеКонтекста<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    ОбменДаннымиКлиент<span class="operator">.</span>ФормаНастройкиУзловКомандаЗакрытьФорму<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Описание контекста формы хранится в реквизите формы <span class="Interface">ОписаниеКонтекста</span>. Значение реквизита <span class="Interface">ОписаниеКонтекста</span> используется в помощнике настройки
+обмена для отображения значений настроек. Обновлять описание контекста следует
+при создании формы на сервере и перед закрытием формы.</p>
+
+<a name="issogl3_разработка_формы_форманастройкиузла"><h4>Разработка формы «ФормаНастройкиУзла»</h4></a>
+
+<p class="Paragraph0c">Если для плана обмена предусмотрены фильтры ограничения
+миграции данных, то должна быть создана произвольная форма с предопределенным
+именем <span class="Interface">ФормаНастройкиУзла</span>. Она вызывается
+помощником настройки обмена данными для задания ограничения миграции данных.
+Для случая, когда необходимо поддержать настройку обмена с
+базой-корреспондентом разных версий, можно создать несколько форм настройки.
+Имя используемой формы в зависимости от версии корреспондента определяет
+функция, расположенная в модуле менеджера плана обмена, – <span class="Interface">НастройкаОтборовНаУзле</span>.</p>
+
+<p class="Paragraph0c">Состав реквизитов формы повторяет состав реквизитов шапки
+и табличных частей плана обмена. Для формы определены обязательные реквизиты
+формы: <span class="Interface">НастройкаОтборовНаУзле</span> произвольного типа и
+<span class="Interface">ВерсияКорреспондента</span> (<span class="Interface">Строка</span>,
+неограниченной длины). Для реквизитов формы, которые размещены в форме и
+определяют признак модифицированности формы, следует установить свойство <span class="Interface">Сохраняемые данные</span>. </p>
+
+<p class="Paragraph0c">В модуле формы обязательно наличие следующих обработчиков:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Процедура</span> ПриСозданииНаСервере<span class="operator">(</span>Отказ<span class="operator">,</span> СтандартнаяОбработка<span class="operator">)</span>
+    ОбменДаннымиСервер<span class="operator">.</span>ФормаНастройкиУзлаПриСозданииНаСервере<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> <span class="string">&quot;_ДемоОбменСБиблиотекойСтандартныхПодсистем&quot;</span><span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ПередЗакрытием<span class="operator">(</span>Отказ<span class="operator">,</span> СтандартнаяОбработка<span class="operator">)</span>
+    ОбменДаннымиКлиент<span class="operator">.</span>ФормаНастройкиПередЗакрытием<span class="operator">(</span>Отказ<span class="operator">,</span> ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span> 
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> КомандаОК<span class="operator">(</span>Команда<span class="operator">)</span>
+    ОбменДаннымиКлиент<span class="operator">.</span>ФормаНастройкиУзлаКомандаЗакрытьФорму<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">В качестве второго параметра процедуры <span class="Interface">ФормаНастройкиУзлаПриСозданииНаСервере</span> следует
+использовать имя плана обмена (<span class="Interface">Строка</span>), как оно
+задано в конфигураторе. В свойствах формы для обработчиков событий <span class="Interface">ПриСозданииНаСервере</span> и <span class="Interface">ПередЗакрытием</span>
+необходимо задать соответствующие процедуры модуля формы.</p>
+
+<a name="issogl3_разработка_формы_форманастройкиузлабазыкорреспондента"><h4>Разработка формы «ФормаНастройкиУзлаБазыКорреспондента»</h4></a>
+
+<p class="Paragraph0c">Если для плана обмена планируется использовать обмен
+данными через внешнее соединение и для плана обмена предусмотрены фильтры
+ограничения миграции данных, то необходимо создать произвольную форму плана
+обмена с предопределенным именем <span class="Interface">ФормаНастройкиУзлаБазыКорреспондента</span>.
+Она вызывается помощником настройки обмена данными для задания ограничения
+миграции данных на узле в базе-корреспонденте. Для случая, когда необходимо
+поддержать настройку обмена с базой-корреспондентом разных версий, можно
+создать несколько форм настройки. Имя используемой формы в зависимости от
+версии корреспондента определяет функция, расположенная в модуле менеджера
+плана обмена, – <span class="Interface">НастройкаОтборовНаУзлеБазыКорреспондента</span>.</p>
+
+<p class="Paragraph0c">Состав реквизитов формы повторяет состав реквизитов шапки
+и табличных частей плана обмена базы-корреспондента. Для формы определены три
+обязательных реквизита формы: <span class="Interface">НастройкаОтборовНаУзле</span>
+(тип <span class="Interface">Произвольный</span>), <span class="Interface">ПараметрыВнешнегоСоединения</span>
+(тип <span class="Interface">Произвольный</span>) и <span class="Interface">ВерсияКорреспондента</span>
+(<span class="Interface">Строка</span>, неограниченной длины). Для реквизитов
+формы, которые размещены в форме и определяют признак модифицированности формы,
+следует установить свойство <span class="Interface">Сохраняемые данные</span>. </p>
+
+<p class="Paragraph0c">В модуле формы обязательно наличие следующих обработчиков:
+</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Процедура</span> ПриСозданииНаСервере<span class="operator">(</span>Отказ<span class="operator">,</span> СтандартнаяОбработка<span class="operator">)</span>
+    ОбменДаннымиСервер<span class="operator">.</span>ФормаНастройкиУзлаБазыКорреспондентаПриСозданииНаСервере<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> <span class="string">&quot;_ДемоОбменСБиблиотекойСтандартныхПодсистем&quot;</span><span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> КомандаОК<span class="operator">(</span>Команда<span class="operator">)</span>
+    ОбменДаннымиКлиент<span class="operator">.</span>ФормаНастройкиУзлаКомандаЗакрытьФорму<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ПередЗакрытием<span class="operator">(</span>Отказ<span class="operator">,</span> СтандартнаяОбработка<span class="operator">)</span>
+    ОбменДаннымиКлиент<span class="operator">.</span>ФормаНастройкиПередЗакрытием<span class="operator">(</span>Отказ<span class="operator">,</span> ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">В качестве второго параметра процедуры <span class="Interface">ФормаНастройкиУзлаБазыКорреспондентаПриСозданииНаСервере</span>
+следует использовать имя плана обмена (<span class="Interface">Строка</span>),
+как оно задано в конфигураторе. В свойствах формы для обработчиков событий <span class="Interface">ПриСозданииНаСервере</span> и <span class="Interface">ПередЗакрытием</span>
+необходимо задать соответствующие процедуры модуля формы.</p>
+
+<p class="Paragraph0c">Все реквизиты формы должны иметь примитивный тип, кроме
+описанных особо (см. выше). Реквизитам ссылочных типов плана обмена должны
+соответствовать реквизиты формы типа <span class="Interface">Строка</span>
+(неограниченной длины). Реквизит формы, который отображает данные реквизита
+ссылочного типа плана обмена, будем условно называть <em>отображаемым
+реквизитом</em>. Для каждого отображаемого реквизита следует создать по одному
+дополнительному реквизиту. Дополнительный реквизит используется для сохранения
+уникального идентификатора ссылки объекта базы-корреспондента. Имя
+дополнительного реквизита строго регламентировано и складывается из имени
+отображаемого реквизита и постфикса <span class="Interface">_Ключ</span>. Тип
+дополнительного реквизита – <span class="Interface">Строка</span> (неограниченной
+длины). </p>
+
+<p class="Paragraph0c">Отображаемые реквизиты предназначены для получения
+значений ссылочных типов базы-корреспондента. Сами данные ссылочного типа
+базы-корреспондента не могут быть отображены, поэтому отображаемый реквизит
+содержит только представление данных базы-корреспондента. В текущей реализации
+подсистемы обмена возможна работа только с объектами базы-корреспондента типа <span class="Interface">Справочник</span>.</p>
+
+<p class="Paragraph0c">Наряду с отображаемыми реквизитами в форме могут
+использоваться реквизиты примитивных типов и перечислений. Для реквизитов с
+типом перечислений требуется, чтобы в конфигурации первой базы и конфигурации
+базы-корреспондента присутствовал один и тот же тип перечисления.</p>
+
+<p class="Paragraph0c">Интерактивный выбор и задание значений для отображаемых
+реквизитов не являются стандартными и переопределяются с использованием
+соответствующих обработчиков событий элементов формы. Для задания значения
+отображаемого реквизита, расположенного в форме, следует определить обработчик
+события <span class="Interface">НачалоВыбора</span> для связанного элемента
+формы. Также следует определить обработчик <span class="Interface">ОбработкаВыбора</span>.
+Если отображаемый реквизит является реквизитом формы, то обработчик <span class="Interface">ОбработкаВыбора</span> следует определять для формы. Если
+отображаемый реквизит является колонкой реквизита формы, то обработчик <span class="Interface">ОбработкаВыбора</span> следует определять для соответствующей
+таблицы формы.</p>
+
+<p class="Paragraph0c">Пример вызова обработчиков для случая, когда отображаемый
+реквизит является колонкой реквизита формы:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ОрганизацииОрганизацияНачалоВыбора<span class="operator">(</span>Элемент<span class="operator">,</span> ДанныеВыбора<span class="operator">,</span> СтандартнаяОбработка<span class="operator">)</span>
+    ОбменДаннымиКлиент<span class="operator">.</span>ОбработчикВыбораЭлементовБазыКорреспондентаНачалоВыбора<span class="operator">(</span><span class="string">&quot;Организация&quot;</span><span class="operator">,</span> <span class="string">&quot;Справочник.Организации&quot;</span><span class="operator">,</span> Элементы<span class="operator">.</span>Организации<span class="operator">,</span> СтандартнаяОбработка<span class="operator">,</span> ПараметрыВнешнегоСоединения<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ОрганизацииОбработкаВыбора<span class="operator">(</span>Элемент<span class="operator">,</span> ВыбранноеЗначение<span class="operator">,</span> СтандартнаяОбработка<span class="operator">)</span>
+    ОбменДаннымиКлиент<span class="operator">.</span>ОбработчикВыбораЭлементовБазыКорреспондентаОбработкаВыбора<span class="operator">(</span>Элемент<span class="operator">,</span> ВыбранноеЗначение<span class="operator">,</span> Организации<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Примеры вызова обработчиков для случая, когда отображаемый
+реквизит является реквизитом формы:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> НоменклатураНачалоВыбора<span class="operator">(</span>Элемент<span class="operator">,</span> ДанныеВыбора<span class="operator">,</span> СтандартнаяОбработка<span class="operator">)</span>
+    ОбменДаннымиКлиент<span class="operator">.</span>ОбработчикВыбораЭлементовБазыКорреспондентаНачалоВыбора<span class="operator">(</span><span class="string">&quot;Номенклатура&quot;</span><span class="operator">,</span> <span class="string">&quot;Справочник._ДемоНоменклатура&quot;</span><span class="operator">,</span> ЭтотОбъект<span class="operator">,</span> СтандартнаяОбработка<span class="operator">,</span> ПараметрыВнешнегоСоединения<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ОбработкаВыбора<span class="operator">(</span>ВыбранноеЗначение<span class="operator">,</span> ИсточникВыбора<span class="operator">)</span>
+    ОбменДаннымиКлиент<span class="operator">.</span>ОбработчикВыбораЭлементовБазыКорреспондентаОбработкаВыбора<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> ВыбранноеЗначение<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="MsoListBullet">&#9679; 
+Процедура <span class="Interface">ОбменДаннымиКлиент.ОбработчикВыбораЭлементовБазыКорреспондентаНачалоВыбора(ИмяРеквизита,
+ИмяТаблицы, Владелец, СтандартнаяОбработка, ПараметрыВнешнегоСоединения</span>).
+Параметры:</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ИмяРеквизита – Строка</span> – имя отображаемого реквизита
+формы, для которого требуется установить значение;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ИмяТаблицы – Строка</span> – полное имя таблицы базы
+корреспондента, которая выступает источником данных для выбора значения;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">Владелец – Управляемая форма</span>, <span class="Interface">Таблица
+формы</span>. Если процедура вызывается из обработчика события поля формы, то в
+качестве значения следует использовать текущую управляемую форму. Если
+процедура вызывается из обработчика события поля таблицы формы, то следует
+указывать текущую таблицу формы;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">СтандартнаяОбработка – Булево</span> – флажок стандартной
+обработки; параметр дублирует одноименный флажок обработчика события <span class="Interface">НачалоВыбора</span>.</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ПараметрыВнешнегоСоединения</span> – произвольный – параметр
+дублирует одноименный реквизит формы.</p>
+
+<p class="MsoListBullet">&#9679; 
+Процедура <span class="Interface">ОбменДаннымиКлиент.ОбработчикВыбораЭлементовБазыКорреспондентаОбработкаВыбора(Элемент,
+ВыбранноеЗначение, ДанныеФормыКоллекция)</span>. Параметры:</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">Элемент – Управляемая форма</span>, <span class="Interface">Таблица
+формы</span> – элемент, которому адресовано событие обработки выбора. Если процедура
+вызывается из обработчика события формы, то в качестве значения следует использовать
+текущую управляемую форму. Если процедура вызывается из обработчика события
+таблицы формы, то следует указывать текущую таблицу формы;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ВыбранноеЗначение – Структура</span> – параметр дублирует
+одноименный параметр обработчика события <span class="Interface">ОбработкаВыбора</span>;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ДанныеФормыКоллекция </span>(необязательный). Параметр
+указывается, когда процедура вызывается для таблицы формы. В параметр
+передается таблица формы, для которой вызывается событие <span class="Interface">ОбработкаВыбора</span>.</p>
+
+<a name="issogl3_разработка_формы_форманастройкизначенийпоумолчанию"><h4>Разработка формы «ФормаНастройкиЗначенийПоУмолчанию»</h4></a>
+
+<p class="Paragraph0c">Если для плана обмена требуется задавать значения по
+умолчанию, то должна быть создана произвольная форма с предопределенным именем <span class="Interface">ФормаНастройкиЗначенийПоУмолчанию</span>. Разработка формы
+аналогична разработке формы <span class="Interface">ФормаНастройкиУзла</span>.</p>
+
+<a name="issogl3_разработка_формы_форманастройкизначенийпоумолчаниюбазыкорреспондента"><h4>Разработка формы «ФормаНастройкиЗначенийПоУмолчаниюБазыКорреспондента»</h4></a>
+
+<p class="Paragraph0c">Если для плана обмена планируется использовать обмен
+данными через внешнее соединение и есть потребность задавать значения по
+умолчанию для базы-корреспондента, то необходимо создать произвольную форму
+плана обмена с предопределенным именем <span class="Interface">ФормаНастройкиЗначенийПоУмолчаниюБазыКорреспондента</span>.
+Методика создания формы аналогична методике для формы <span class="Interface">ФормаНастройкиУзлаБазыКорреспондента</span>.
+Для случая, когда необходимо поддержать настройку обмена с
+базой-корреспондентом разных версий, можно создать несколько форм настройки.
+Имя используемой формы в зависимости от версии корреспондента определяет
+функция, расположенная в модуле менеджера плана обмена, – <span class="Interface">ЗначенияПоУмолчаниюНаУзлеБазыКорреспондента</span>.</p>
+
+<p class="Paragraph0c">Для формы определены два обязательных реквизита формы: <span class="Interface">ЗначенияПоУмолчаниюНаУзле</span> (тип <span class="Interface">Произвольный</span>)
+и <span class="Interface">ВерсияКорреспондента</span> (<span class="Interface">Строка</span>,
+неограниченной длины). Для реквизитов формы, которые размещены в форме и
+определяют признак модифицированности формы, следует установить свойство <span class="Interface">Сохраняемые данные</span>.</p>
+
+<a name="issogl3_разработка_формы_формасозданияначальногообраза"><h4>Разработка формы «ФормаСозданияНачальногоОбраза»</h4></a>
+
+<p class="Paragraph0c">Дополнительно для плана обмена РИБ возможно определить
+форму создания первоначального образа подчиненного узла с произвольным именем.
+Эта форма не является обязательной. Она либо используется для вызова
+стандартного окна создания начального образа, либо может переопределять стандартный
+процесс создания первоначального образа. Имя формы должно быть указано в
+функции <span class="Interface">ИмяФормыСозданияНачальногоОбраза</span> модуля
+менеджера плана обмена. </p>
+
+<a name="issogl3_обязательные_для_заполнения_реквизиты_формы"><h4>Обязательные для заполнения реквизиты формы</h4></a>
+
+<p class="Paragraph0c">Если некоторые из реквизитов плана обмена являются обязательными
+для заполнения, то в формах настроек для этих реквизитов следует установить
+свойство <span class="Interface">Проверка заполнения</span> в значение <span class="Interface">Выдавать ошибку</span>. При создании обмена данными с
+использованием помощника система потребует заполнения этих реквизитов.</p>
+
+<p class="Paragraph0c">Пример реализации форм можно посмотреть в демонстрационной
+конфигурации в планах обмена <span class="Interface">_ДемоОбменСБиблиотекойСтандартныхПодсистем</span>
+и <span class="Interface">_ДемоОбменВРаспределеннойИнформационнойБазе</span>.</p>
+
+<a name="issogl3_настройка_отправки_данных_в_помощнике_интерактивной_выгрузки_дополнительная_форма_настройки"><h4>Настройка отправки данных в помощнике интерактивной выгрузки. Дополнительная форма настройки</h4></a>
+
+<p class="Paragraph0c">При использовании помощника интерактивного обмена
+существует возможность программной настройки этапа отправки данных для
+включения в состав передаваемой информации объектов, определенных
+пользователем, например «все документы за прошлый месяц». При этом к данным
+пользователя автоматически применяются и общие ограничения узла, например отбор
+по организациям. По умолчанию предлагаются три варианта дополнения отправляемых
+данных: не добавлять, добавить документы с отбором за период, добавить
+произвольные данные (документы и НСИ).</p>
+
+<p class="Paragraph0c">Отключение, настройка предопределенных вариантов,
+изменение их порядка в форме, определение дополнительного сценария настройки
+производятся в процедуре <span class="Interface">НастроитьИнтерактивнуюВыгрузку</span>
+менеджера плана обмена. Для настройки необходимо изменить параметры,
+предлагаемые по умолчанию. Также нужно создать форму для редактирования
+настроек отбора дополнительных данных по сценарию узла. Полное имя этой формы
+требуется указать в соответствующем поле параметров.</p>
+
+<p class="Paragraph0c">Эта форма будет открыта для выбора из помощника
+интерактивного обмена с установленными параметрами, описывающими текущий отбор.
+Форма должна вернуть результатом выбора структуру, описывающую отбор,
+измененный пользователем. </p>
+
+<p class="Paragraph0c">Состав параметров открытия, описание результата выбора и
+пример реализации настройки можно увидеть в демонстрационной конфигурации. В
+модуле менеджера плана обмена <span class="Interface">_ДемоОбменСБиблиотекойСтандартныхПодсистем</span>
+демонстрируется настройка поведения помощника интерактивного обмена. В форме <span class="Interface">НастройкаВыгрузки</span> этого плана обмена демонстрируются прием,
+обработка и обратная передача помощнику отредактированных параметров отбора.</p>
+
+<a name="_макет_правил_регистрации"></a><a name="issogl2_макет_правил_регистрации"><h3>Макет правил регистрации</h3></a>
+
+<p class="Paragraph0c">План обмена может содержать только один макет правил
+регистрации. Наличие макета правил регистрации рекомендуется, но не является обязательным.
+Наличие макета свидетельствует о необходимости выполнять ограничение миграции
+данных при обмене. </p>
+
+<p class="Paragraph0c">Правила регистрации хранятся в текстовом макете, в который
+помещается информация из файла правил в формате XML. Исходный файл правил
+формируется при помощи конфигурации «Конвертация данных», редакция 2.1.
+Кодировка файла: UTF-8.</p>
+
+<p class="Paragraph0c">Для размещения/обновления правил регистрации в макете
+необходимо:</p>
+
+<p class="MsoListBullet">&#9679; 
+открыть файл правил XML в конфигурации как
+текстовый документ (с помощью команды меню <span class="Interface">Файл – Открыть</span>);
+</p>
+
+<p class="MsoListBullet">&#9679; 
+скопировать в буфер обмена содержимое файла; </p>
+
+<p class="MsoListBullet">&#9679; 
+вставить в макет плана обмена данные из буфера
+обмена.</p>
+
+<p class="Paragraph0c">Имя макета правил регистрации для всех планов обмена
+строго регламентировано и должно принимать значение <span class="Interface">ПравилаРегистрации</span>.</p>
+
+<a name="issogl2_макеты_правил_обмена_для_планов_обмена_уоп"><h3>Макеты правил обмена для планов обмена УОП</h3></a>
+
+<p class="Paragraph0c">План обмена может содержать один или несколько макетов
+правил обмена. Наличие макетов правил обмена рекомендуется, но не является
+обязательным. Правила обмена хранятся в текстовом макете, в который помещается
+информация из файла правил обмена в формате XML. Исходный файл правил
+формируется при помощи конфигурации «Конвертация данных», редакция 2.1.
+Кодировка файла: UTF-8.</p>
+
+<p class="Paragraph0c">Для размещения правил обмена в макете необходимо выполнить
+ту же последовательность действий, что и при добавлении правил регистрации (см.
+раздел «<a href="#_макет_правил_регистрации">Макет
+правил регистрации</a>»).</p>
+
+<p class="Paragraph0c">Имя макета правил обмена должно соответствовать шаблону: <span class="Interface">ПравилаОбмена&lt;Приемник&gt;&lt;ВерсияПриемника&gt;</span>,
+где <span class="Interface">&lt;Приемник&gt;</span> – имя конфигурации-приемника,
+<span class="Interface">&lt;ВерсияПриемника&gt;</span> – номер версии
+конфигурации-приемника. </p>
+
+<p class="Paragraph0c">Например, <span class="Interface">ПравилаОбменаБухгалтерияПредприятия_1_6_18</span>.</p>
+
+<p class="Paragraph0c">Обязательным является наличие макета с именем <span class="Interface">ПравилаОбмена</span>. Правила обмена из этого макета будут
+использоваться как правила обмена по умолчанию при настройке обмена данными с
+использованием помощника настройки.</p>
+
+<a name="issogl2_создание_подписок_на_события"><h3>Создание подписок на события</h3></a>
+
+<p class="Paragraph0c">Для работы подсистемы обмена данными необходимо создать
+подписки на события. Подписки на события создаются для работы механизма
+регистрации изменения данных.</p>
+
+<p class="Paragraph0c">Механизм регистрации изменения данных используется не
+только для реализации прикладной логики ограничений миграции данных. Он также
+обеспечивает соблюдение особого порядка регистрации данных при выполнении
+обновления информационной базы, а также позволяет оптимизировать процесс
+регистрации данных при выполнении загрузки данных при обмене по правилам (УОП)
+и через универсальный формат (ОУФ).</p>
+
+<p class="Paragraph0c">Для каждого плана обмена создается свой набор подписок на
+события. В общем случае для одного плана обмена может быть создано шесть подписок
+на события. Параметры подписок следует задать согласно таблице, приведенной
+ниже. Имя подписки на событие строго регламентировано и определяется по
+шаблону: <span class="Interface">&lt;ИмяПланаОбмена&gt;&lt;ВидПодписки&gt;</span>,
+где <span class="Interface">&lt;ИмяПланаОбмена&gt;</span> – имя плана обмена, для
+которого создается подписка на событие; <span class="Interface">&lt;ВидПодписки&gt;</span>
+– вид подписки на событие (выбирается из таблицы, приведенной ниже).</p>
+
+<p class="Paragraph0c">Подписки на события для обмена данными:</p>
+
+<p class="Objectname">Таблица 3.57.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Вид подписки</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Источник</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Событие</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">РегистрацияДокумента</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Элементы типа: <span class="Interface">ДокументОбъект</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Перед записью</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Регистрация</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Элементы типа: <span class="Interface">СправочникОбъект</span>,
+  <span class="Interface">ПланВидовХарактеристикОбъект</span>, <span class="Interface">ПланСчетовОбъект</span>, <span class="Interface">ПланВидовРасчетаОбъект</span>,
+  <span class="Interface">БизнесПроцессОбъект</span>, <span class="Interface">ЗадачаОбъект</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Перед записью</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">РегистрацияНабора</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Элементы типа: <span class="Interface">РегистрСведенийНаборЗаписей</span>,
+  <span class="Interface">РегистрНакопленияНаборЗаписей</span>, <span class="Interface">РегистрБухгалтерииНаборЗаписей</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Перед записью</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">РегистрацияНабораРасчета</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Элементы типа: <span class="Interface">РегистрРасчетаНаборЗаписей</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Перед записью</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">РегистрацияКонстанты</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Элементы типа: <span class="Interface">КонстантаМенеджерЗначения</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Перед записью</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">РегистрацияУдаления</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Элементы типа: <span class="Interface">ДокументОбъект</span>,
+  <span class="Interface">СправочникОбъект</span>, <span class="Interface">ПланВидовХарактеристикОбъект</span>,
+  <span class="Interface">ПланСчетовОбъект</span>, <span class="Interface">ПланВидовРасчетаОбъект</span>,
+  <span class="Interface">БизнесПроцессОбъект</span>, <span class="Interface">ЗадачаОбъект</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Перед удалением</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Для назначения обработчиков событий подписок в
+конфигурации требуется создать общий модуль с атрибутами: <span class="Interface">Сервер</span>, <span class="Interface">Внешнее соединение</span>,
+<span class="Interface">Клиент (обычное приложение)</span>, <span class="Interface">Вызов сервера</span>. Имена и количество таких общих модулей не
+регламентированы. </p>
+
+<p class="Paragraph0c">В процедуре – обработчике события подписки следует
+прописать вызов процедуры регистрации из общего модуля <span class="Interface">ОбменДаннымиСобытия</span>.
+Имя и параметры процедуры регистрации зависят от вида подписки. Для выбора
+процедуры регистрации следует воспользоваться таблицей, приведенной ниже. В
+качестве первого параметра процедуры регистрации следует указать имя плана
+обмена, все остальные параметры повторяют параметры процедуры – обработчика
+события подписки, из которой выполняется вызов.</p>
+
+<p class="Objectname">Таблица 3.58.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Вид подписки</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Процедура – обработчика события</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">РегистрацияДокумента</span></p>
+  </td>
+  <td valign="top">
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">ОбменДаннымиСобытия.МеханизмРегистрацииОбъектовПередЗаписьюДокумента(&quot;&lt;ИмяПланаОбмена&gt;&quot;,   Источник, Отказ, РежимЗаписи, РежимПроведения);</pre>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Регистрация</span></p>
+  </td>
+  <td valign="top">
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">ОбменДаннымиСобытия.МеханизмРегистрацииОбъектовПередЗаписью(&quot;&lt;ИмяПланаОбмена&gt;&quot;,   Источник, Отказ);</pre>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">РегистрацияНабора</span></p>
+  </td>
+  <td valign="top">
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">ОбменДаннымиСобытия.МеханизмРегистрацииОбъектовПередЗаписьюРегистра(&quot;&lt;ИмяПланаОбмена&gt;&quot;,   Источник, Отказ, Замещение);</pre>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">РегистрацияНабораРасчета</span></p>
+  </td>
+  <td valign="top">
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">ОбменДаннымиСобытия.МеханизмРегистрацииОбъектовПередЗаписьюРегистра(&quot;&lt;ИмяПланаОбмена&gt;&quot;,   Источник, Отказ, Замещение);</pre>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">РегистрацияКонстанты</span></p>
+  </td>
+  <td valign="top">
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">ОбменДаннымиСобытия.МеханизмРегистрацииОбъектовПередЗаписьюКонстанты(&quot;&lt;ИмяПланаОбмена&gt;&quot;,   Источник, Отказ);</pre>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">РегистрацияУдаления</span></p>
+  </td>
+  <td valign="top">
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">ОбменДаннымиСобытия.МеханизмРегистрацииОбъектовПередУдалением(&quot;&lt;ИмяПланаОбмена&gt;&quot;,   Источник, Отказ);</pre>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Ниже перечислены объекты метаданных, которые не должны
+использоваться в качестве источников событий подписок:</p>
+
+<p class="MsoListBullet">&#9679; 
+регистр сведений <span class="Interface">СоответствияОбъектовИнформационныхБаз</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+константа <span class="Interface">НастройкиПодчиненногоУзлаРИБ</span>.</p>
+
+<a name="issogl2_настройка_общих_команд"><h3>Настройка общих команд</h3></a>
+
+<p class="Paragraph0c">Для перечисленных в таблице общих команд при
+первоначальном встраивании подсистемы необходимо задать свойство <span class="Interface">Тип параметра команды</span>. Следует задать составной тип со
+ссылками на планы обмена согласно таблице 3.59.</p>
+
+<p class="Objectname">Таблица 3.59.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Имя команды</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">ОУФ</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">УОП</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">УО</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">РИБ</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Синхронизировать</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">СинхронизироватьСДополнительнымиПараметрами</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">НастроитьПараметрыТранспортаСообщенийОбмена</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ЗагрузитьПравилаКонвертацииОбъектов</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">-</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ЗагрузитьПравилаРегистрацииОбъектов</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ЗагрузитьКомплектПравил</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">-</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">-</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">-</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">СценарииСинхронизации</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">СобытияОтправки</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">СобытияПолучения</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПолучитьНастройкиСинхронизацииДляДругойПрограммы</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">–</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">СоставОтправляемыхДанных</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">УдалитьНастройкуСинхронизации</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">+</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Для конфигураций, работающих в локальном режиме,
+дополнительно можно создать отдельные команды для открытия помощников создания
+обменов данными. Для этого необходимо создать общую команду. Имя команды
+следует задавать согласно прикладному смыслу команды, например, <span class="Interface">ПомощникНастройкиОбменаДаннымиСБухгалтерией</span>. В модуле
+команды в процедуре – обработчике команды записать код вида:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">ОбменДаннымиКлиент<span class="operator">.</span>ОткрытьПомощникНастройкиОбменаДанными<span class="operator">(</span><span class="string">&quot;_ДемоОбменСБиблиотекойСтандартныхПодсистем&quot;</span><span class="operator">)</span><span class="operator">;</span></pre>
+
+<p class="Paragraph0c">В качестве параметра процедуры <span class="Interface">ОткрытьПомощникНастройкиОбменаДанными</span>
+надо использовать имя плана обмена, для которого требуется открыть помощник.
+Для каждого плана обмена рекомендуется создать по одной такой команде (создание
+команды не является обязательным: помощник настройки обмена можно также вызвать
+из меню <span class="Interface">Создать</span> в форме управления обменами
+данных).</p>
+
+<p class="Paragraph0c">Для конфигураций, работающих в модели сервиса, создавать
+отдельные команды для открытия помощников настройки обмена данными не
+требуется.</p>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Для настройки прав доступа пользователей к данным
+подсистемы «Обмен данными» следует использовать роли:</p>
+
+<p class="Objectname">Таблица 3.60.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"> </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ВыполнениеСинхронизацииДанных</span></p>
+  <p class="BulletTab">&#9679; 
+  Интерактивный обмен данными (запуск вручную).</p>
+  <p class="BulletTab">&#9679; 
+  Мониторинг обмена данными</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"> </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПолныеПрава</span> (из
+  подсистемы «Базовая функциональность»)</p>
+  <p class="BulletTab">&#9679; 
+  Включение и отключение подсистемы «Обмен
+  данными».</p>
+  <p class="BulletTab">&#9679; 
+  Добавление и изменение обменов данными.</p>
+  <p class="BulletTab">&#9679; 
+  Включение и отключение обменов данными.</p>
+  <p class="BulletTab">&#9679; 
+  Изменение префикса информационной базы.</p>
+  <p class="BulletTab">&#9679; 
+  Интерактивный обмен данными (запуск вручную).</p>
+  <p class="BulletTab">&#9679; 
+  Мониторинг обмена данными.</p>
+  <p class="BulletTab">&#9679; 
+  Удаление помеченных на удаление объектов
+  подсистемы</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Дополнительно следует создать вспомогательные роли или
+использовать подходящие роли, существующие в конфигурации, для обеспечения
+доступа к данным, которые не относятся к подсистеме «Обмен данными», но
+требуются для работы с ней.</p>
+
+<p class="Objectname">Таблица 3.61.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Вспомогательные роли и их
+   назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"> </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">&lt;ДобавлениеИзменениеУзловПлановОбмена&gt;</span></p>
+  <p class="TextinTable81">Роль для изменения планов обмена конфигурации</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"> </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">&lt;ЧтениеУзловПлановОбмена&gt;</span></p>
+  <p class="TextinTable81">Роль для чтения узлов планов обмена конфигурации</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Примеры настройки прав доступа пользователей при работе в
+локальном режиме приведены ниже.</p>
+
+<p class="Objectname">Таблица 3.62.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Группа пользователей и ее
+   функции</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Состав ролей</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"> </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Администратор:</p>
+  <p class="BulletTab">&#9679; 
+  включение/отключение подсистемы в конфигурации;</p>
+  <p class="BulletTab">&#9679; 
+  удаление помеченных элементов подсистемы;</p>
+  <p class="BulletTab">&#9679; 
+  назначение префикса узла распределенной информационной
+  базы</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ПолныеПрава</span> (из
+  подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">АдминистраторСистемы</span>
+  (из подсистемы «Базовая функциональность»)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"> </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Администратор обмена:</p>
+  <p class="BulletTab">&#9679; 
+  создание новых обменов данными;</p>
+  <p class="BulletTab">&#9679; 
+  изменение существующих обменов данными;</p>
+  <p class="BulletTab">&#9679; 
+  выполнение обмена;</p>
+  <p class="BulletTab">&#9679; 
+  мониторинг обмена</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЗапускТонкогоКлиента</span>
+  (из подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ПросмотрЖурналаРегистрации</span>
+  (из подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">&lt;ДобавлениеИзменениеУзловПлановОбмена&gt;</span>,</p>
+  <p class="BulletTab">&#9679; 
+  Для создания начального образа узла РИБ также
+  требуется наличие права <span class="Interface">Администрирование данных</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"> </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Пользователь обмена: </p>
+  <p class="BulletTab">&#9679; 
+  выполнение обмена;</p>
+  <p class="BulletTab">&#9679; 
+  мониторинг обмена</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЗапускТонкогоКлиента</span>
+  (из подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ПросмотрЖурналаРегистрации</span>
+  (из подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ВыполнениеСинхронизацииДанных</span>,</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">&lt;ЧтениеУзловПлановОбмена&gt;</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Также следует учитывать, что при создании и выполнении
+обмена данными через внешнее соединение в базе-корреспонденте должен
+использоваться пользователь с ролями <span class="Interface">АдминистраторСистемы</span>
+и <span class="Interface">ПолныеПрава</span>.</p>
+
+<a name="issogl3_настройка_прав_доступа_пользователей_при_внедрении_подсистемы_версионирование_объектов"><h4>Настройка прав доступа пользователей при внедрении подсистемы «Версионирование объектов»</h4></a>
+
+<p class="Paragraph0c">При внедрении подсистемы «Версионирование объектов» она
+используется для регистрации конфликтов и запретов загрузки данных по
+установленной дате. Для их просмотра необходимо назначить роль <span class="Interface">ЧтениеИнформацииОВерсияхОбъектов</span>.</p>
+
+<a name="issogl3_настройка_прав_доступа_пользователей_при_работе_в_модели_сервиса"><h4>Настройка прав доступа пользователей при работе в модели сервиса</h4></a>
+
+<p class="Paragraph0c">При работе конфигурации в модели сервиса пользователям
+областей данных необходимо назначить роль <span class="Interface">ВыполнениеСинхронизацииДанных</span>.
+Настройка обменов данными выполняется администратором абонента в контексте
+конфигурации «Менеджер сервиса».</p>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<p class="Paragraph0c">В процессе обмена данными при чтении файла сообщения
+обмена важно не выполнять дополнительных проверок на заполнение реквизитов
+объектов. Для этого в обработчиках событий <span class="Interface">ПередЗаписью</span>,
+<span class="Interface">ПриЗаписи</span> и <span class="Interface">ПередУдалением</span>
+для каждого объекта метаданных, который участвует в обмене, следует
+использовать конструкцию: </p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Если</span> ОбменДанными<span class="operator">.</span>Загрузка <span class="keyword">Тогда</span>
+   <span class="keyword">Возврат</span><span class="operator">;</span>
+<span class="keyword">КонецЕсли</span><span class="operator">;</span></pre>
+
+<p class="Paragraph0c">Этот код следует располагать в самом начале обработчиков <span class="Interface">ПередЗаписью</span>, <span class="Interface">ПриЗаписи</span> и <span class="Interface">ПередУдалением</span> в модуле объекта, а также в подписках на
+события этих типов.</p>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Объекты метаданных подсистемы должны быть включены в
+состав планов обмена в соответствии с описанием в разделе «<a href="#_состав_плана_обмена">Состав
+плана обмена</a>».</p>
+
+<a name="issogl2_общие_сведения_для_всех_видов_обмена_данными"><h3>Общие сведения для всех видов обмена данными</h3></a>
+
+<a name="issogl3_топология_обмена_данными"><h4>Топология обмена данными</h4></a>
+
+<p class="Paragraph0c">Подсистема не накладывает ограничений на топологию обмена
+и на порядок настройки обмена в гетерогенных системах. Следует создавать обмены
+таким образом, чтобы избежать возникновения волн миграции данных. Волны
+миграции данных – это явление, при котором наблюдается бесконечная миграция
+изменений данных между информационными базами, участвующими в обмене. Они
+возникают в случае неправильной настройки топологии обмена (в разрезе
+информационных баз, планов обмена, объектов метаданных). Волны миграции данных
+имеют тенденцию к постоянному увеличению при работе пользователей в
+обменивающихся информационных базах.</p>
+
+<p class="Picture"><IMG src="_img/bb4930f70ba50b6391a4d4b0238cf1d5/image018.gif@_=1504708101" WIDTH="410" ALT HEIGHT="247"><IMG src="_img/bb4930f70ba50b6391a4d4b0238cf1d5/image019.gif@_=1504708101" WIDTH="408" ALT HEIGHT="276"></p>
+
+<p class="Paragraph0c">На рисунке показаны четыре ИБ, между которыми настроен
+обмен. Каждая ИБ имеет свой уникальный префикс (код): A, B, C и D. Благодаря
+этому может быть настроена произвольная топология обмена. На рисунке показаны
+сочетания пар предопределенного узла и узла ИБ-корреспондента для каждой ИБ: A-B,
+A-C и др. Красным цветом показан обмен, который может спровоцировать
+возникновение волн миграции данных. При создании топологии обмена следует
+избегать таких обменов.</p>
+
+<a name="issogl3_использование_значений_по_умолчанию_в_обмене_данными"><h4>Использование значений по умолчанию в обмене данными</h4></a>
+
+<p class="Paragraph0c">В процессе обмена данными может возникнуть необходимость
+дополнить данные, полученные от корреспондента. Например, документ не может
+быть проведен, пока в нем не указана валюта взаиморасчетов. В исходных данных,
+полученных от корреспондента, валюта не предусмотрена. Поэтому значение валюты
+необходимо подставить в документ на этапе загрузки данных. Это значение можно,
+например, запомнить в свойствах узла плана обмена. На этапе настройки обмена
+можно будет задать необходимые значения. Для выбора значений по умолчанию в
+помощнике используются формы <span class="Interface">ФормаНастройкиЗначенийПоУмолчанию</span>
+и <span class="Interface">ФормаНастройкиЗначенийПоУмолчаниюБазыКорреспондента</span>.
+В случае обмена по правилам использование значений по умолчанию производится в
+обработчиках правил обмена – например, в обработчике правила конвертации
+объекта «После загрузки».</p>
+
+<p class="Paragraph0c">Желательно проектировать обмен данными таким образом,
+чтобы при настройке обмена от пользователя не требовалось указывать эти
+значения. Все необходимые настройки должны устанавливаться системой или вообще
+отсутствовать. Только в исключительных случаях допускается выводить настройки
+значений по умолчанию на пользователя. Иными словами, в правильно
+спроектированном обмене данными формы <span class="Interface">ФормаНастройкиЗначенийПоУмолчанию</span>
+и <span class="Interface">ФормаНастройкиЗначенийПоУмолчаниюБазыКорреспондента</span>
+должны отсутствовать.</p>
+
+<a name="issogl3_коды_узлов_плана_обмена"><h4>Коды узлов плана обмена</h4></a>
+
+<p class="Paragraph0c">В локальном режиме работы коды узлов планов обмена
+совпадают с префиксами информационных баз, участвующих в обмене.
+Предопределенному узлу плана обмена назначается код, равный префиксу текущей
+информационной базы. Коды узлов назначаются системой в момент создания новой
+настройки обмена данными. </p>
+
+<p class="Paragraph0c">В модели сервиса коды узлов планов обмена соответствуют
+номерам областей данных, которым они принадлежат, с префиксом «S». Префикс «S»
+используется для разделения множества кодов узлов, работающих в модели сервиса,
+и множества кодов узлов, работающих в локальном режиме. Предопределенному узлу
+плана обмена назначается код, равный номеру текущей области данных, с префиксом
+«S». Код предопределенного узла назначается системой в момент создания области
+данных.</p>
+
+<a name="issogl3_настройка_каталогов_обмена_данными_для_работы_в_модели_сервиса"><h4>Настройка каталогов обмена данными для работы в модели сервиса</h4></a>
+
+<p class="Paragraph0c">Для информационной базы, которая работает в модели
+сервиса, необходимо задать значение константы <span class="Interface">КаталогСообщенийОбменаДаннымиДляWindows
+</span>или значение константы <span class="Interface">КаталогСообщенийОбменаДаннымиДляLinux</span>,
+если сервер «1С:Предприятия» работает под управлением ОС MS Windows или ОС
+Linux соответственно. Если кластер сервера «1С:Предприятия» развернут на
+нескольких машинах с разными ОС, то необходимо задать значение обеих констант.
+В этом случае значения констант должны указывать на один и тот же сетевой
+каталог.</p>
+
+<p class="Warningword">Важно! </p>
+
+<p class="Notes">Если две информационные базы, между которыми настроен обмен
+данными, расположены в одной локальной сети или на одной машине, то
+рекомендуется, чтобы константы <span class="Interface">КаталогСообщенийОбменаДаннымиДляWindows
+</span>и <span class="Interface">КаталогСообщенийОбменаДаннымиДляLinux </span>в
+обеих базах указывали на один и тот же каталог обмена. Это позволит повысить
+производительность обмена данными.</p>
+
+<p class="Paragraph0c">Если кластер сервера «1С:Предприятия» работает на одном
+физическом сервере, то задание значений констант не является обязательным. В
+качестве каталога временных файлов для сообщений обмена будет использоваться
+временный каталог пользователя, от имени которого запущен сервер
+«1С:Предприятия».</p>
+
+<a name="issogl3_обновление_правил_обмена"><h4>Обновление правил обмена</h4></a>
+
+<p class="Paragraph0c">В процессе разработки конфигурации в нее могут быть
+внесены изменения, которые потребуют изменения правил обмена (только для <span class="Interface">УОП</span>) и правил регистрации. Кроме того, правила обмена и
+правила регистрации могут быть изменены ввиду исправления ошибок в самих
+правилах. Правила следует также обновлять при изменении внутреннего формата
+правил. Для обновления правил необходимо выполнить обновление соответствующих
+макетов правил и обработок в конфигураторе. При изменении версии конфигурации
+обновление правил будет выполнено автоматически подсистемой обновления версии
+ИБ. Обновлению подлежат только типовые правила, загруженные из макета
+конфигурации. Нетиповые правила, загруженные из внешнего файла, не обновляются.</p>
+
+<p class="Warningword">Важно!</p>
+
+<p class="Notes">Правила обмена загружаются в информационную базу. Поэтому при
+разработке правил обмена без изменения версии конфигурации автоматического
+обновления правил не произойдет. В таком случае необходимо выполнять обновление
+правил вручную. Для этого следует зайти в форму загрузки правил (команда <span class="Interface">Открыть правила конвертации объектов</span> или <span class="Interface">Открыть правила регистрации объектов</span>) и перечитать
+правила из макета конфигурации или из внешнего файла.</p>
+
+<a name="issogl3_сценарий_выгрузки_объектов_при_необходимости"><h4>Сценарий выгрузки объектов «При необходимости»</h4></a>
+
+<p class="Paragraph0c">Для универсального обмена данными по правилам обмена и для
+обмена через универсальный формат подсистема позволяет использовать сценарий
+обмена <span class="Interface">При необходимости</span>. Суть сценария
+заключается в том, что объекты выгружаются не всегда, а только в случае, если
+на объект имеются ссылки из ранее выгруженных объектов. Например, справочник <span class="Interface">Номенклатура</span> может содержать значительное количество
+элементов, при этом обмениваться необходимо не всеми элементами, а только теми,
+которые выгружаются вместе с документами прихода/расхода номенклатуры. Если
+элемент номенклатуры был выгружен хотя бы один раз, то изменения элемента
+постоянно синхронизируются между обменивающимися конфигурациями.</p>
+
+<p class="Paragraph0c">Для использования сценария на примере справочника
+номенклатуры в системе необходимо:</p>
+
+<p class="MsoListBullet">&#9679; 
+создать в плане обмена отдельный реквизит шапки
+– переключатель режима выгрузки с именем <span class="Interface">РежимВыгрузкиНоменклатуры</span>,
+тип <span class="Interface">ПеречислениеСсылка.РежимыВыгрузкиОбъектовОбмена</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+значение реквизита <span class="Interface">РежимВыгрузкиНоменклатуры</span>
+установить в значение <span class="Interface">Перечисления.РежимыВыгрузкиОбъектовОбмена.ВыгружатьПриНеобходимости</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+создать правило регистрации объекта (ПРО) для
+справочника номенклатуры, в котором дополнительно задать значение поля переключателя
+режима равным <span class="Interface">РежимВыгрузкиНоменклатуры</span>.</p>
+
+<p class="Paragraph0c">Для одного переключателя режима выгрузки <span class="Interface">РежимВыгрузкиНоменклатуры</span> можно использовать несколько
+объектов метаданных. Например, при выгрузке номенклатуры также можно выгружать
+единицы измерения номенклатуры. Единицы измерения номенклатуры в этом случае
+будут тоже выгружаться только при необходимости.</p>
+
+<a name="issogl3_обработчик_события_регистрация_изменений_начальной_выгрузки_данных"><h4>Обработчик события «Регистрация изменений начальной выгрузки данных»</h4></a>
+
+<p class="Paragraph0c">Для универсального обмена данными с использованием правил
+обмена, обмена через универсальный формат и для универсального обмена данными
+без правил обмена предусмотрен обработчик события «Регистрация изменений
+начальной выгрузки данных». Он не используется для обменов в РИБ.</p>
+
+<p class="Paragraph0c">Обработчик располагается в общем модуле <span class="Interface">ОбменДаннымиПереопределяемый</span> и используется для
+переопределения стандартной обработки регистрации изменений начальной выгрузки
+данных. При стандартной обработке будут зарегистрированы изменения всех данных
+из состава плана обмена. Если для плана обмена предусмотрены фильтры
+ограничения миграции данных, то использование этого обработчика позволит
+повысить производительность начальной выгрузки данных (в некоторых случаях в
+среднем в 2–4 раза по сравнению со стандартной обработкой).</p>
+
+<p class="Paragraph0c">В обработчике можно реализовать регистрацию изменений с
+учетом фильтров ограничения миграции данных. Если для плана обмена используются
+ограничения миграции по дате или по дате и организациям, то можно
+воспользоваться универсальной процедурой <span class="Interface">ОбменДаннымиСевер.ЗарегистрироватьДанныеПоДатеНачалаВыгрузкиИОрганизациям</span>.
+Пример реализации обработчика можно посмотреть в демонстрационной конфигурации.</p>
+
+<a name="issogl3_обработчик_события_при_выгрузке_данных_для_планов_обмена_оуф_уоп_и_уо"><h4>Обработчик события «При выгрузке данных» для планов обмена ОУФ, УОП и УО</h4></a>
+
+<p class="Paragraph0c">Обработчик располагается в общем модуле <span class="Interface">ОбменДаннымиПереопределяемый</span> и используется для
+переопределения стандартной процедуры выгрузки данных в файл сообщения обмена.
+При стандартной обработке данные будут выгружены в файл в соответствии с видом
+плана обмена – с использованием правил конвертации или с использованием
+платформенной XML-сериализации данных. В данном обработчике может быть
+реализована произвольная логика выгрузки данных: выборка данных для выгрузки,
+сериализация данных в файл сообщения или сериализация данных в поток. После
+выполнения обработчика выгруженные данные будут отправлены получателю
+подсистемой обмена данными. Формат сообщения для выгрузки может быть
+произвольным.</p>
+
+<a name="issogl3_обработчик_события_при_загрузке_данных_для_планов_обмена_оуф_уоп_и_уо"><h4>Обработчик события «При загрузке данных» для планов обмена ОУФ, УОП и УО</h4></a>
+
+<p class="Paragraph0c">Обработчик располагается в общем модуле <span class="Interface">ОбменДаннымиПереопределяемый</span> и используется для
+переопределения стандартной процедуры загрузки данных из файла сообщения
+обмена. При стандартной обработке данные будут загружены из файла в
+соответствии с видом плана обмена – с использованием правил конвертации или с
+использованием платформенной XML-сериализации данных. В данном обработчике
+может быть реализована произвольная логика загрузки данных: необходимые
+проверки перед загрузкой данных, сериализация данных из файла сообщения или сериализация
+данных из потока. Формат сообщения для загрузки может быть произвольным.</p>
+
+<a name="issogl3_общие_данные_узлов"><h4>Общие данные узлов</h4></a>
+
+<p class="Paragraph0c">Для планов обмена двух обменивающихся информационных баз
+могут быть выделены так называемые общие данные узлов. Общие данные узлов – это
+реквизиты, которые присутствуют в планах обмена обеих конфигураций и значения
+которых должны быть одинаковыми в узлах обмена информационных
+баз-корреспондентов.</p>
+
+<p class="Paragraph0c">В качестве примера использования механизма общих данных
+узлов можно рассмотреть задачу разработки обмена с настройкой <span class="Interface">Дата начала выгрузки документов</span>. Если в обеих конфигурациях
+в модуле менеджера плана обмена реквизит, управляющей данной настройкой, будет
+объявлен как общие данные узлов, то автоматически будет поддерживаться
+синхронность данной настройки в информационных базах-корреспондентах.</p>
+
+<p class="Paragraph0c">Не рекомендуется включать в общие данные узлов реквизиты
+ссылочного типа, если объекты данных, соответствующие этим типам, могут иметь
+разные уникальные идентификаторы в информационных базах, участвующих в обмене.</p>
+
+<a name="issogl3_коллизии_изменения_данных"><h4>Коллизии изменения данных</h4></a>
+
+<p class="Paragraph0c">При настроенном обмене между двумя базами возникают
+ситуации, когда одни и те же данные изменяются одновременно (в промежутке между
+выполнением сеанса обмена данными) в обеих информационных базах. Это приводит к
+возникновению двух различающихся версий одинаковых данных в обменивающихся
+информационных базах. Такая ситуация называется коллизией (конфликтом)
+изменения данных. </p>
+
+<p class="Paragraph0c">При возникновении коллизии изменения данных в
+информационную базу будет загружена та версия, которая имеет более высокий приоритет.
+При одинаковом приоритете обеих версий приоритет будет назначен автоматически,
+исходя из значений по умолчанию в зависимости от вида обмена данными:</p>
+
+<p class="MsoListBullet">&#9679; 
+РИБ – изменения данных в главном узле имеют
+приоритет по отношению к изменениям данных в подчиненном узле;</p>
+
+<p class="MsoListBullet">&#9679; 
+ОУФ, УО, УОП – приоритет имеют данные,
+загружаемые из другой информационной базы.</p>
+
+<p class="Paragraph0c">Разработчик имеет возможность переопределить приоритеты
+для возникающих коллизий при помощи процедуры <span class="Interface">ОбменДаннымиПереопределяемый.ПриКоллизииИзмененийДанных</span>
+(подробнее см. комментарий к процедуре).</p>
+
+<p class="Paragraph0c">Следует учитывать, что для однозначного определения
+разрешения коллизии необходимо устанавливать приоритеты при возникновении
+коллизий изменения данных таким образом, чтобы они были противоположными для
+двух обменивающихся информационных баз. То есть если в первой информационной
+базе в случае коллизии данные принимаются, то во второй информационной базе при
+коллизии они должны быть отклонены.</p>
+
+<a name="issogl2_риб"><h3>РИБ</h3></a>
+
+<a name="_особенности_создания_начального"></a><a name="issogl3_особенности_создания_начального_образа_подчиненного_узла_распределенной_иб"><h4>Особенности создания начального образа подчиненного узла распределенной ИБ</h4></a>
+
+<p class="Paragraph0c">Если объект метаданных нужно использовать только на момент
+создания начального образа подчиненного узла в распределенной ИБ, то этот
+объект метаданных требуется включить в состав плана обмена с отключенным
+признаком авторегистрации. Также необходимо исключить его из состава всех
+подписок на события подсистемы «Обмен данными».</p>
+
+<p class="Paragraph0c">Например, справочник номенклатуры не должен
+синхронизироваться между узлами РИБ. В каждом узле справочник номенклатуры
+специфичен и ведется независимо от других узлов. Однако вновь создаваемый
+подчиненный узел должен содержать заполненный по умолчанию справочник
+номенклатуры (обязательная структура папок и элементов).</p>
+
+<a name="issogl2_обмен_через_универсальный_формат"><h3>Обмен через универсальный формат</h3></a>
+
+<p class="Paragraph0c">Процедуры и функции, полностью описывающие правила
+выгрузки данных из информационной базы в формат обмена и правила загрузки
+данных из формата обмена в информационную базу, разрабатываются в общем модуле
+– модуле менеджера обмена через универсальный формат.</p>
+
+<p class="Paragraph0c">Модуль создается автоматически с помощью конфигурации
+«Конвертация данных», редакция 3.0, на основе настроенных правил обмена либо
+вручную в конфигураторе.</p>
+
+<p class="Paragraph0c">При описании структуры модуля используются следующие
+сокращения:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПОД</span> – правило
+обработки данных;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПКО</span> – правило
+конвертации объекта;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПКПД</span> – правило
+конвертации предопределенных данных;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПКС</span> – правило
+конвертации свойства.</p>
+
+<p class="Paragraph0c">Модуль состоит из нескольких крупных разделов, каждый из
+которых содержит свою группу процедур и функций.</p>
+
+<p class="Paragraph0c"><span class="af1">Комментарий</span>. Первая строка модуля
+содержит комментарий с наименованием конвертации. Эта строка необходима для
+идентификации модуля при использовании команды <span class="Interface">Загрузка
+обработчиков</span> в программе «Конвертация данных», редакция 3.0.</p>
+
+<p class="Paragraph0c"><span class="af1">Процедуры конвертации</span>. Содержит
+предопределенные процедуры, которые выполняются на разных этапах синхронизации
+данных: перед конвертацией, после конвертации, перед отложенным заполнением.</p>
+
+<p class="Paragraph0c"><span class="af1">Правила обработки данных (ПОД)</span>. Содержит
+процедуры и функции, которые описывают правила обработки данных.</p>
+
+<p class="Paragraph0c"><span class="af1">Правила конвертации объектов (ПКО)</span>.
+Содержит процедуры и функции, которые описывают правила конвертации объектов, а
+также правила конвертации свойств данных объектов.</p>
+
+<p class="Paragraph0c"><span class="af1">Правила конвертации предопределенных данных (ПКПД)</span>.
+Содержит процедуру, заполняющую правила конвертации предопределенных данных.</p>
+
+<p class="Paragraph0c"><span class="af1">Алгоритмы</span>. Содержит произвольные
+алгоритмы, которые вызываются из других правил (ПОД или ПКО).</p>
+
+<p class="Paragraph0c"><span class="af1">Параметры</span>. Содержит логику заполнения
+параметров конвертации.</p>
+
+<p class="Paragraph0c"><span class="af1">Общего назначения</span>. Содержит процедуры и
+функции, которые широко используются в правилах и алгоритмах.</p>
+
+<p class="Paragraph0c">Ниже описаны параметры процедур и функций, которые
+используются в нескольких видах процедур модуля менеджера.</p>
+
+<p class="Paragraph0c"><span class="af1">КомпонентыОбмена</span>. <span class="Interface">Тип
+– Структура</span>. Содержит параметры и правила обмена, инициализированные в
+рамках выполнения сеанса обмена.</p>
+
+<p class="Paragraph0c"><span class="af1">НаправлениеОбмена</span>. <span class="Interface">Тип – Строка</span>. Либо «Отправка», либо «Получение».</p>
+
+<p class="Paragraph0c"><span class="af1">ДанныеИБ</span>. <span class="Interface">Тип – СправочникОбъект</span>
+либо <span class="Interface">ДокументОбъект</span>. </p>
+
+<a name="issogl3_процедуры_связанные_с_событиями_конвертации"><h4>Процедуры, связанные с событиями конвертации</h4></a>
+
+<p class="Paragraph0c">Предусмотрены три предопределенные процедуры, которые
+вызываются в процессе конвертации:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПередКонвертацией</span>.
+Вызывается перед выполнением синхронизации данных. Обычно в этой процедуре размещается
+логика инициализации различных параметров конвертации, заполнения значений по
+умолчанию и т. д. Параметры: <span class="Interface">КомпонентыОбмена</span>. </p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПослеКонвертации</span>.
+Вызывается после выполнения синхронизации данных, но до выполнения отложенного
+заполнения. Параметры: <span class="Interface">КомпонентыОбмена</span>. </p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПередОтложеннымЗаполнением</span>.
+Вызывается перед выполнением отложенного заполнения. Здесь может быть
+расположена логика сортировки или корректировки таблицы объектов, подлежащих
+отложенному заполнению. Параметры: <span class="Interface">КомпонентыОбмена</span>.</p>
+
+<a name="issogl3_процедуры_под"><h4>Процедуры ПОД</h4></a>
+
+<p class="Paragraph0c"><span class="af1">ЗаполнитьПравилаОбработкиДанных</span>.
+Экспортная процедура, в которой располагается логика заполнения правил
+обработки данных. Содержит вызовы других процедур, которые добавляют в таблицу
+правил правило обработки конкретного объекта (см. ниже процедуры <span class="Interface">ДобавитьПОД</span>). Параметры: <span class="Interface">НаправлениеОбмена</span>,
+<span class="Interface">ПравилаОбработкиДанных</span> (таблица значений,
+инициализированная в рамках выполнения сеанса обмена). </p>
+
+<p class="Paragraph0c"><span class="af1">ДобавитьПОД_&lt;ИмяПОД&gt;</span>. Набор
+процедур, которые наполняют таблицу ПОД правилами для конкретных объектов. Количество
+таких процедур соответствует количеству ПОД, предусмотренных для данной
+конвертации в программе «Конвертация данных», редакция 3.0. Параметры: <span class="Interface">ПравилаОбработкиДанных</span> (таблица значений,
+инициализированная в рамках выполнения сеанса обмена). </p>
+
+<p class="Paragraph0c"><span class="af1">ПОД_&lt;ИмяПОД&gt;_ПриОбработке</span>.
+Процедура содержит текст обработчика <span class="Interface">ПриОбработке</span>
+для конкретного ПОД. Обработчик предназначен для реализации логики конвертации
+на уровне объектов. Например, назначить конкретному объекту определенное ПКО в
+зависимости от содержимого объекта. Параметры:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ДанныеИБ</span> либо <span class="Interface">ДанныеXDTO</span> (в зависимости от направления обмена): </p>
+
+<p class="MsoListBullet2">&#9679;  при
+отправке – объект (<span class="Interface">СправочникОбъект</span>, <span class="Interface">ДокументОбъект</span>);</p>
+
+<p class="MsoListBullet2">&#9679;  при
+получении – структуру с описанием объекта XDTO.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ИспользованиеПКО</span>.
+Тип – <span class="Interface">Структура</span>. Ключ содержит строку с именем
+ПКО, а значение типа <span class="Interface">Булево</span> (<span class="Interface">Истина</span> – ПКО используется, <span class="Interface">Ложь</span>
+– ПКО не используется).</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">КомпонентыОбмена</span>.</p>
+
+<p class="Paragraph0c"><span class="af1">ПОД_&lt;ИмяПОД&gt;_ВыборкаДанных</span>.
+Функция содержит текст обработчика <span class="Interface">ПриВыгрузке</span>.
+Обработчик предназначен для реализации произвольного алгоритма выборки объектов,
+подлежащих выгрузке. Возвращаемое значение: массив объектов, подлежащих
+выгрузке. В массиве могут содержаться как ссылки на объекты информационной
+базы, так и структура с данными для выгрузки. Параметры: <span class="Interface">КомпонентыОбмена</span>.
+</p>
+
+<a name="issogl3_процедуры_пко"><h4>Процедуры ПКО</h4></a>
+
+<p class="Paragraph0c"><span class="af1">ЗаполнитьПравилаКонвертацииОбъектов</span>.
+Экспортная процедура, в которой располагается логика заполнения правил
+конвертации объектов. Содержит вызовы других процедур, которые добавляют в
+таблицу правил правило конвертации конкретного объекта (см. ниже процедуры <span class="Interface">ДобавитьПКО</span>). Параметры: <span class="Interface">НаправлениеОбмена</span>,
+<span class="Interface">ПравилаКонвертации</span> (таблица значений,
+инициализированная в рамках выполнения сеанса обмена). </p>
+
+<p class="Paragraph0c"><span class="af1">ДобавитьПКО_&lt;ИмяПКО&gt;</span>. Набор
+процедур, которые наполняют таблицу ПКО правилами для конкретных объектов.
+Количество таких процедур соответствует количеству ПКО, предусмотренных для
+данной конвертации в программе «Конвертация данных», редакция 3.0. Параметры: <span class="Interface">ПравилаКонвертации</span> (таблица значений, инициализированная
+в рамках выполнения сеанса обмена). </p>
+
+<p class="Paragraph0c"><span class="af1">ПКО_&lt;ИмяПКО&gt;_ПриОтправкеДанных</span>. Процедура
+содержит текст обработчика <span class="Interface">ПриОтправке</span> для
+конкретного ПКО. Обработчик используется при выгрузке данных. Предназначен для
+реализации логики конвертации данных, содержащихся в объекте информационной
+базы, в описание объекта XDTO. Параметры: </p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ДанныеИБ</span>. Тип – <span class="Interface">СправочникОбъект</span>, <span class="Interface">ДокументОбъект</span>.
+Обрабатываемый объект информационной базы.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ДанныеXDTO</span>. Тип – <span class="Interface">Структура</span>. Предназначен для доступа к данным объекта
+XDTO.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">КомпонентыОбмена</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">СтекВыгрузки</span>. Тип –
+<span class="Interface">Массив</span>. Содержит ссылки на выгружаемые объекты с
+учетом вложенности. </p>
+
+<p class="Paragraph0c"><span class="af1">ПКО_&lt;ИмяПКО&gt;_ПриКонвертацииДанныхXDTO</span>.
+Процедура содержит текст обработчика <span class="Interface">ПриКонвертацииДанныхXDTO</span>
+для конкретного ПКО. Обработчик используется при загрузке данных. Предназначен
+для реализации произвольной логики конвертации данных XDTO. Параметры: </p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ДанныеXDTO</span>. Тип – <span class="Interface">Структура</span>. Свойства объекта XDTO, прошедшие
+предварительную обработку для упрощения доступа к ним. </p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПолученныеДанные</span>.
+Тип – <span class="Interface">СправочникОбъект</span>, <span class="Interface">ДокументОбъект</span>.
+Объект информационной базы, сформированный путем конвертации данных XDTO. Не
+записан в информационную базу. </p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">КомпонентыОбмена</span>. </p>
+
+<p class="Paragraph0c"><span class="af1">ПКО_&lt;ИмяПКО&gt;_ПередЗаписьюПолученныхДанных</span>.
+Процедура содержит текст обработчика <span class="Interface">ПередЗаписьюПолученныхДанных</span>
+для конкретного ПКО. Обработчик используется при загрузке данных. Предназначена
+для реализации дополнительной логики, которую необходимо выполнить перед
+записью объекта в информационную базу. Например, нужно ли загрузить изменения в
+существующие данные ИБ либо следует загрузить их как новые данные. Параметры: </p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПолученныеДанные</span>.
+Тип – <span class="Interface">СправочникОбъект</span>, <span class="Interface">ДокументОбъект</span>.
+Элемент данных, сформированный путем конвертации данных XDTO.</p>
+
+<p class="Bullet0">Записывается в случае, если эти данные являются для
+информационной базы новыми (параметр <span class="Interface">ДанныеИБ</span>
+содержит значение <span class="Interface">Неопределено</span>).</p>
+
+<p class="Bullet0">В противном случае <span class="Interface">ПолученныеДанные</span>
+замещают собой <span class="Interface">ДанныеИБ</span> (все свойства из <span class="Interface">ПолученныеДанные</span> переносятся в <span class="Interface">ДанныеИБ</span>).</p>
+
+<p class="Bullet0">Если стандартное замещение данных ИБ полученными данными не
+требуется, следует прописать свою логику переноса, после чего установить
+параметру <span class="Interface">ПолученныеДанные</span> значение <span class="Interface">Неопределено</span>:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ДанныеИБ</span>. Тип – <span class="Interface">СправочникОбъект</span>, <span class="Interface">ДокументОбъект</span>.
+Элемент данных информационной базы, соответствующий полученным данным. Если
+соответствующие данные не найдены, содержит <span class="Interface">Неопределено</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">КонвертацияСвойств</span>.
+Тип – <span class="Interface">Таблица значений</span>. Содержит правила конвертации
+свойств текущего объекта, инициализированные в рамках выполнения сеанса обмена.
+</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">КомпонентыОбмена</span>.</p>
+
+<a name="issogl3_процедуры_пкпд"><h4>Процедуры ПКПД</h4></a>
+
+<p class="Paragraph0c"><span class="Interface">ЗаполнитьПравилаКонвертацииПредопределенныхДанных</span>.
+Экспортная процедура, в которой располагается логика заполнения правил конвертации
+предопределенных данных. Параметры: <span class="Interface">НаправлениеОбмена</span>,
+<span class="Interface">ПравилаКонвертации</span> (таблица значений,
+инициализированная в рамках выполнения сеанса обмена). </p>
+
+<a name="issogl3_алгоритмы"><h4>Алгоритмы</h4></a>
+
+<p class="Paragraph0c">В программе «Конвертация данных», редакция 3.0 есть
+возможность создавать произвольные алгоритмы, которые вызываются из
+обработчиков ПОД и ПКПД. Наименование, параметры и содержимое алгоритмов
+определяются при разработке правил.</p>
+
+<a name="issogl3_параметры"><h4>Параметры</h4></a>
+
+<p class="Paragraph0c"><span class="af1">ЗаполнитьПараметрыКонвертации</span>.
+Экспортная процедура, в которой происходит заполнение структуры с параметрами конвертации.
+Параметры: <span class="Interface">ПараметрыКонвертации</span> (тип – <span class="Interface">Структура</span>). </p>
+
+<a name="issogl3_процедуры_и_функции_общего_назначения"><h4>Процедуры и функции общего назначения</h4></a>
+
+<p class="Paragraph0c"><span class="af1">ВыполнитьПроцедуруМодуляМенеджера</span>.
+Параметры: <span class="Interface">ИмяПроцедуры</span> (строка), <span class="Interface">Параметры</span> (структура). Экспортная процедура, которая
+предназначена для вызова неэкспортной процедуры модуля, имя и параметры которой
+получены на вход. Позволяет выполнить вызов процедуры или функции по строке без
+использования метода <span class="Interface">Выполнить</span>.</p>
+
+<p class="Paragraph0c"><span class="af1">ВыполнитьФункциюМодуляМенеджера</span>.
+Параметры: <span class="Interface">ИмяПроцедуры</span> (строка), <span class="Interface">Параметры</span> (структура). Функция, назначение аналогично <span class="Interface">ВыполнитьПроцедуруМодуляМенеджера</span>. Отличие в том, что
+она вызывает функцию и возвращает ее значение.</p>
+
+<a name="issogl2_универсальный_обмен_по_правилам"><h3>Универсальный обмен по правилам</h3></a>
+
+<a name="issogl3_безопасное_выполнение_кода_обработчиков_при_использовании_обработки_универсальныйобменданнымиxml"><h4>Безопасное выполнение кода обработчиков при использовании обработки «УниверсальныйОбменДаннымиXML»</h4></a>
+
+<p class="Paragraph0c">Для конфигураций, обменивающихся при помощи обработки <span class="Interface">УниверсальныйОбменДаннымиXML</span> (УОД), можно повысить
+уровень безопасности путем выполнения кода обработчиков загрузки из обработки в
+составе конфигурации. Для того чтобы сгенерировать модуль с кодом обработчиков
+загрузки, необходимо:</p>
+
+<p class="Number81">1. 
+Запустить базу-источник и сформировать файл
+выгрузки на основании правил обмена.</p>
+
+<p class="Number81">2. 
+Запустить базу-приемник, запустить в ней УОД и
+на основании файла выгрузки сформировать текст модуля обработчиков загрузки.</p>
+
+<p class="Number81">3. 
+Скопировать полученный текст модуля в обработку
+в составе конфигурации.</p>
+
+<p class="Number81">4. 
+Подключить полученную обработку при помощи
+конструкции вида:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">УОД <span class="operator">=</span> Обработки<span class="operator">.</span>УниверсальныйОбменДаннымиXML<span class="operator">.</span>Создать<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+УОД<span class="operator">.</span>ФлагРежимОтладкиОбработчиков <span class="operator">=</span> <span class="keyword">Истина</span><span class="operator">;</span>
+УОД<span class="operator">.</span>ИмяФайлаВнешнейОбработкиОбработчиковСобытий <span class="operator">=</span> «<span class="operator">&lt;</span>ИмяОбработки<span class="operator">&gt;</span>»<span class="operator">;</span>
+УОД<span class="operator">.</span>ВыполнитьЗагрузку<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span></pre>
+
+<a name="_режим_отладки"></a><a name="issogl3_режим_отладки"><h4>Режим отладки</h4></a>
+
+<p class="Paragraph0c">Режим отладки позволяет разрабатывать и выполнять отладку
+кода обработчиков с использованием конфигуратора в случае обмена по правилам
+конвертации. В этом режиме код обработчиков выгрузки и/или загрузки выполняется
+из внешних обработок, что позволяет вносить в него изменения без перезапуска
+конфигурации. Для использования данного режима необходимо:</p>
+
+<p class="MsoListBullet">&#9679; 
+В инструменте «Конвертация данных» версии 2.1.6
+и выше:</p>
+
+<p class="MsoListBullet2">&#9679;  Отключить
+режим совместимости в свойствах конвертации.</p>
+
+<p class="MsoListBullet2">&#9679;  Сохранить
+правила конвертации объектов.</p>
+
+<p class="MsoListBullet2">&#9679;  Сформировать
+отладочные модули, содержащие код обработчиков, и скопировать их в модуль
+внешней обработки.</p>
+
+<p class="MsoListBullet">&#9679; 
+В конфигурации:</p>
+
+<p class="MsoListBullet2">&#9679;  Загрузить
+правила конвертации, сохраненные в КД.</p>
+
+<p class="MsoListBullet2">&#9679;  В
+настройках правил конвертации включить режим отладки.</p>
+
+<p class="MsoListBullet2">&#9679;  Подключить
+внешние обработки, сформированные в КД.</p>
+
+<p class="MsoListBullet2">&#9679;  Запустить
+обмен данными.</p>
+
+<p class="MsoListBullet2">&#9679;  При
+этом в режиме <span class="Interface">Конфигуратор</span> можно открыть подключенную
+внешнюю обработку, отлаживать и дорабатывать ее код.</p>
+
+<p class="MsoListBullet">&#9679; 
+Имеется возможность перенести все сделанные в
+обработке изменения в правила обмена, используя инструмент «Конвертация данных»
+версии 2.1.6 и выше.</p>
+
+<p class="Paragraph0c">Режим отладки недоступен при работе в модели сервиса по
+соображениям безопасности.</p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

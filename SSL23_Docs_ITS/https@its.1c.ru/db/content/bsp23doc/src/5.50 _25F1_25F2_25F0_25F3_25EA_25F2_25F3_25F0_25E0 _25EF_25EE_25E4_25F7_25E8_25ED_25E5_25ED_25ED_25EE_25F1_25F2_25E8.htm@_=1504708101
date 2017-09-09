@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>5.50 &#1057;&#1090;&#1088;&#1091;&#1082;&#1090;&#1091;&#1088;&#1072; &#1087;&#1086;&#1076;&#1095;&#1080;&#1085;&#1077;&#1085;&#1085;&#1086;&#1089;&#1090;&#1080;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="5.50 _25F1_25F2_25F0_25F3_25EA_25F2_25F3_25F0_25E0 _25EF_25EE_25E4_25F7_25E8_25ED_25E5_25ED_25ED_25EE_25F1_25F2_25E8.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<h1>5.50 Структура подчиненности</h1>
+
+<p class="Paragraph0c">Отчет<span class="Interface"> Связанные документы</span> предоставляет
+оперативный и наглядный доступ ко всей цепочке взаимосвязанных с точки зрения
+бизнес&#8209;логики документов. Документы считаются взаимосвязанными, если один
+документ ссылается на другой. <span class="Note">Например,
+клиент заказал товар, для отражения данного события в программе был создан
+документ <b>Демо: Заказ покупателя</b>,
+затем на основании документа <b>Демо: Заказ покупателя</b> был сформирован
+документ <b>Демо: Счет на оплату покупателю</b>, клиент оплатил этот счет,
+товар был ему отпущен и на основании документа <b>Демо: Счет на оплату
+покупателю</b> был сформирован документ <b>Демо: Реализация товаров</b>.</span>
+</p>
+
+<p class="Paragraph0c">В программе взаимосвязь документов выглядит так: в одном
+документе (назовем его дочерним) в качестве какого-либо реквизита указан другой
+документ (назовем его родительским). Отчет позволяет из какого-либо одного
+документа увидеть всю цепочку взаимосвязанных с ним документов.</p>
+
+<p class="Paragraph0c">Отчет можно сформировать для следующих документов программы:</p>
+
+<p class="Bullet1">&#9632; 
+<span class="Note"><b>Демо: Заказ покупателя</b></span>;</p>
+
+<p class="Bullet1">&#9632; 
+<span class="Note"><b>Демо: Счет на оплату покупателю</b></span>;</p>
+
+<p class="Bullet1">&#9632; 
+<span class="Note"><b>Демо: Реализация товаров</b></span>.</p>
+
+<p class="Bullet1">&#9632; 
+А также для списков:</p>
+
+<p class="Bullet1">&#9632; 
+<span class="Note"><b>Демо: Договоры контрагентов</b></span>.</p>
+
+<p class="Paragraph0c">Отчет формируется командой <span class="Interface">Связанные
+документы</span> на панели навигации документа. </p>
+
+<p class="Paragraph0c">В отчет попадают все дочерние и все родительские документы
+текущего документа. В наглядной форме представлена взаимосвязь этих документов.
+</p>
+
+<p class="Paragraph0c">Документ, для которого сформирован отчет, отображается
+жирным шрифтом. </p>
+
+<p class="Paragraph0c">Дерево родительских документов строится вверх и вправо от
+документа, для которого формируется отчет. </p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image3679.png@_=1504708101" WIDTH="800" ALT HEIGHT="281"></p>
+
+<p class="Paragraph0c">Дерево дочерних документов строится вниз и вправо от
+документа, для которого формируется отчет. </p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image3681.png@_=1504708101" WIDTH="797" ALT HEIGHT="480"></p>
+
+<p class="Paragraph0c">При помощи двойного щелчка мышью на любом выведенном в
+отчете документе можно открыть данный документ для просмотра. </p>
+
+<p class="Paragraph0c">С помощью кнопки <span class="Interface">Обновить</span>
+можно переформировать отчет. </p>
+
+<p class="Paragraph0c">С помощью кнопки <span class="Interface">Вывести для
+текущего</span> можно сформировать отчет <span class="Interface">Связанные
+документы</span> для выделенного документа.</p>
+
+<a name="issogl1_роли_для_работы_со_связанными_документами"><h2>Роли для работы со связанными документами</h2></a>
+
+<p class="Paragraph0c">Для формирования отчета <span class="Interface">Связанные
+документы</span> в программе предусмотрены следующие роли:</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Роль</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Краткое описание</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Просмотр отчета Связанные
+  документы</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Предоставляет возможность
+  формирования отчета <span class="Interface">Связанные документы</span>.</p>
+  </td>
+ </tr>
+</table>
+	</body>
+</html>

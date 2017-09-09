@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.11. &#1043;&#1088;&#1072;&#1092;&#1080;&#1082;&#1080; &#1088;&#1072;&#1073;&#1086;&#1090;&#1099;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.11. _25E3_25F0_25E0_25F4_25E8_25EA_25E8 _25F0_25E0_25E1_25EE_25F2_25FB.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<h1>3.11. Графики работы</h1>
+
+<p class="Paragraph0c">Подсистема «Графики работы» предназначена для хранения
+графиков, по которым работает предприятие. Для каждого графика можно указать,
+какие дни являются рабочими. Графики работы можно использовать как для указания
+работы компании в целом, так и отдельных ее частей. Например, график работы
+склада по выдаче товаров.</p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Paragraph0c">В командном интерфейсе ответственного за ведение
+нормативно-справочной информации необходимо поместить справочник <span class="Interface">Календари</span>. См. пример в демонстрационной конфигурации в
+разделе «Справочники».</p>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Для настройки прав доступа пользователей к данным
+подсистемы «Графики работы» следует использовать роли, приведенные ниже.</p>
+
+<p class="Objectname">Таблица 3.20.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1.</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ЧтениеГрафиковРаботы </span>(из
+  подсистемы «Базовая функциональность»)</p>
+  <p class="TextinTable81">Чтение календарей и графиков</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">2.</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ДобавлениеИзменениеГрафиковРаботы</span></p>
+  <p class="TextinTable81">Добавление и изменение календарей и графиков</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">3.</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПолныеПрава</span> (из
+  подсистемы «Базовая функциональность»)</p>
+  <p class="TextinTable81">Удаление помеченных на удаление объектов подсистемы</p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<p class="Paragraph0c">Подсистема используется совместно с подсистемой
+«Календарные графики», которая, в свою очередь, представляет программный
+интерфейс экспортными функциями общего модуля <span class="Interface">КалендарныеГрафики</span>.</p>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Все объекты метаданных подсистемы, содержащие данные,
+рекомендуется включать в планы обмена распределенной ИБ (РИБ).</p>
+	</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+	<head>
+		<!--[if lt IE 7]><html class="ie ie6"><![endif]-->
+		<!--[if IE 7]><html class="ie ie7"><![endif]-->
+		<!--[if IE 8]><html class="ie ie8"><![endif]-->
+		<!--[if IE 9]><html class="ie ie9"><![endif]-->
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title id="w_title" class="w">403 Доступ запрещен</title>		<!--[if gte IE 8]>--><!--<![endif]-->
+		
+				<meta name="robots" content="noarchive">
+		<meta name="googlebot" content="noarchive">
+		<link rel="search" type="application/opensearchdescription+xml" title="1С:ИТС" href="../../search/opensearch.xml">
+		<!--[]-->
+		<script type="text/javascript">
+window.deferred=[];window.errors=[];;
+function getCookie(n){n=n.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, '\\$1');var r=new RegExp('(?:^|; )' + n + '=([^;]+)(?:; |$)');var m=document.cookie.match(r);if(m)return m[1];};
+</script>		<script type="text/javascript">
+			deferred.push(function(){if(document.activeElement == document.body)SSP.DOM.focus(SSP.DOM.byId('w_content'));});
+		</script>
+		<script type="text/javascript">
+(function(){
+	var d = document, styles = {"core":"../../common/page/css.css_","its":"../../common/page/css/its.css_"};
+	for(var css in styles)
+	{
+		var t = window.getCookie ? parseInt(window.getCookie('CSS_' + css.toUpperCase()), 10) : null;
+		d.write('<' + 'link rel="stylesheet" type="text/css" href="' + styles[css] + (t ? '?_=' + t : '') + '">');
+	}
+})();
+</script><noscript><link rel="stylesheet" type="text/css" href="../../common/page/css.css_"><link rel="stylesheet" type="text/css" href="../../common/page/css/its.css_"></noscript>		<!--[if lt IE 9]>
+			<script onload="this.loaded=true" type="text/javascript" src="../../static/html5shiv.js"></script>
+			<script onload="this.loaded=true" type="text/javascript" src="../../static/wgxpath.js"></script>
+		<![endif]-->
+				<script type="text/javascript">
+(function(){
+	var d = document, scripts = {"core":"../../common/page/js.js_","its":"../../common/page/js/its.js_"}, late = /*@cc_on true || @*/window.opera;
+	for(var js in scripts)
+	{
+		var t = window.getCookie ? parseInt(window.getCookie('JS_' + js.toUpperCase()), 10) : null;
+		scripts[js] = scripts[js] + (t ? '?_=' + t : '');
+		if(!late)
+			d.write('<' + 'script type="text/javascript" onload="this.loaded=true" defer src="' + scripts[js] + '"></' + 'script>');
+	}
+	late && setTimeout(
+		function()
+		{
+			var o = (function(){return function(){this.loaded=true;};})();
+			for(var js in scripts)
+			{
+				var s = d.createElement('SCRIPT');
+				s.type = 'text/javascript';
+				s.onload = o;
+				s.async = false;
+				s.src = scripts[js];
+				d.body.appendChild(s);
+			}
+		},
+		0
+	);
+})();
+</script>				<link id="favicon_static" type="image/x-icon" rel="shortcut icon" href="../../favicon.ico">
+	</head>
+	<body onload="_gzip_check()" class="scrolly ru its page page_error">
+		<div id="header">
+			<!--noindex-->
+			<table id="header_table">
+				<tr>
+					<td id="logo_its"><a href="../../default.htm" class="inline-block prerender" target="_top"><span id="logo_its_img" class="inline-block"></span></a></td>
+					<td id="about_its"><a href="../aboutits" class="inline-block prerender" target="_top"><span>Информационно-технологическое<br>сопровождение&nbsp;пользователей<br>1С:Предприятия</span></a></td>
+					<td id="search"><div id="w_search" class="w"><div id="w_search_wrapper">
+	<form id="search_form" name="search_form" method="GET" action="/db/morphmerged/search/all" autocomplete="off" target="_top">
+		<input id="search_input" type="text" name="query" value="" spellcheck="false" data-autocomplete-notrim data-autocomplete-autosubmit data-autocomplete-cache>
+		<div id="search_controls">
+			<input id="search_reset" type="reset" value="" title="Очистить">
+			<input id="search_submit" type="submit" value="" title="Искать">
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+	deferred.push(function(){
+		App.Search.init(false);
+		var autocomplete = '/search/autocomplete.json?query={query}';
+		var userType = SSP.Bus.cookie('USER_TYPE');
+		var searchNew = SSP.Bus.cookie('SEARCH_NEW');
+		
+		if(searchNew === '0')
+			autocomplete = '/db/suggest.json?searchText={query}';
+		
+		SSP.Form.initAutocomplete('search_input', autocomplete);
+	});
+</script></div></td>
+					<td id="div_arrow"><span id="div_arrow_img" class="inline-block"></span></td>
+					<td id="user_login" class="authorized"><div id="w_user_login" class="w"><script type="text/javascript">
+	deferred.push(function(){App.User.init(true, 'BITRIX_SM_LOGIN', 'SUBSCRIBE_PERIOD', 'PARTWEB_LOGIN', 'FRESH_LOGIN', 'BITRIX_SM_UIDH', '../../user/auth/ping.json', 1380);});
+</script>
+<div id="personal_info">
+	<div id="login"><script type="text/javascript">
+		if(!window.SSP)
+			try{var login = getCookie('BITRIX_SM_LOGIN');
+			if(login && login.match(/^[a-z0-9~!@#&\?\*\(\)\[\]\{\}'":;,\.\+=\\\/_-]+$/i))
+				document.write(login.replace(/"/g, '&quot;') + '<style>#personal_info{display:block!important}#login{display:block!important;height:26px}</style>');
+			}catch(e){};
+	</script></div>
+	<div id="access_info">
+		<a id="access_limited" href="../../dostup" target="_top">Доступ&nbsp;ограничен</a>
+		<span id="access_till">доступ&nbsp;до&nbsp;<b id="subscribe_period"></b></span>
+	</div>
+	<div id="personal_links">
+		<a href="../../personal/default.htm" target="_top">Личный&nbsp;кабинет</a><span>&nbsp;&nbsp;&nbsp;</span><a id="logout_link" href="../../login/@action=logout" target="_top">Выйти</a>
+	</div>
+</div>
+<noscript><style>#personal_info{display:block!important}#login{display:block!important;height:26px}</style></noscript>
+</div></td>
+					<td id="div_ret"><span id="div_ret_img" class="inline-block"></span></td>
+					<td id="logo_1c"><a href="../../../1c.ru/default.htm" class="inline-block" target="_top"><span id="logo_1c_img" class="inline-block"></span></a></td>
+				</tr>
+			</table>
+			<!--/noindex-->
+			<div id="navchain"><div id="navchain_inner">
+<div id="w_navchain" class="w"><!--noindex-->
+<a class="inline-block" href="../../default.htm" target="_top">Главная</a>
+<!--/noindex-->
+<span class="inline-block">403 Доступ запрещен</span>
+</div><!--noindex--><div id="w_toplinks" class="w"><a id="w_basket_count" class="inline-block" style="display:none" href="edit" target="popup"></a>
+<span id="w_searchlink" class="w"><a class="inline-block" id="search_link" href="../morphmerged/search" style="display:none" target="_top" rel="nofollow"><span class="inline-block"></span> Результаты поиска</a>
+<script type="text/javascript">
+deferred.push(function()
+{
+	if(SSP.Bus.cookie('SEARCH'))
+		document.getElementById('search_link').style.display = '';
+});
+</script>
+<noscript><style>#search_link{display:inline-block!important}</style></noscript></span><a class="inline-block" href="../aboutits" target="_top">Об ИС 1С:ИТС</a>
+</div><!--/noindex-->			</div></div>
+		</div>
+<div id="w_content" class="l">			<h1 id="w_title_header" class="w">403 Доступ запрещен</h1>			<div id="padding">&nbsp;</div>
+</div>		<!--noindex-->
+		<div id="footer">
+			<div id="copyright">
+				&copy; ООО «1С». Все права защищены<br>
+				<a href="../../terms_of_use/default.htm" target="_top">Информация об ограничениях</a>
+			</div>
+			<div id="contact">
+				<a href="mailto:web-its@1c.ru" target="_blank"><span id="contact_mailto_img" class="inline-block"></span>&nbsp;web-its@1c.ru</a><br>
+				<a href="javascript:" id="other_sites_link" onClick="document.getElementById('w_bottomlinks').style.display='block'">Другие сайты фирмы «1С»&#x25bc;</a>
+			</div>
+			<div id="w_bottomlinks" class="w" onMouseOver="return SSP.Widget.prototype.show.call(this, SSP.DOM.fixEvent(event))" onMouseOut="return SSP.Widget.prototype.hide.call(this, SSP.DOM.fixEvent(event))"><ul class="clean">
+	<li><a href="../../../www.1c.ru/default.htm" target="_top">www.1с.ru</a></li>
+	<li><a href="../../../v8.1c.ru/default.htm" target="_top">1С:Предприятие 8</a></li>
+	<li><a href="../../../solutions.1c.ru/default.htm" target="_top">1С Отраслевые решения</a></li>
+	<li><a href="../../../www.buh.ru/default.htm" target="_top">БУХ.1С.ru</a></li>
+	<li><a href="../../../link.1c.ru/default.htm" target="_top">1С:Линк</a></li>
+	<li><a href="../../../consulting.1c.ru/default.htm" target="_top">1С:Консалтинг</a></li>
+	<li><a href="../../../dist.1c.ru/default.htm" target="_top">1С:Дистрибьюция</a></li>
+	<li><a href="../../../www.1csoft.ru/default.htm" target="_top">1Софт</a></li>
+	<li><a href="../../../online.1c.ru/default.htm" target="_top">1С-Онлайн</a></li>
+	<li><a href="../../../www.1c-interes.ru/default.htm" target="_top">1С Интерес</a></li>
+	<li><a href="../../../edu.1c.ru/default.htm" target="_top">1С:Образование</a></li>
+	<li><a href="../../../obr.1c.ru/default.htm" target="_top">Образовательные программы</a></li>
+	<li><a href="../../../games.1c.ru/default.htm" target="_top">1С:Игры</a></li>
+</ul></div>		</div>
+		<div id="w_popup" class="w box-shadow"><div id="popup_controls">
+	<span id="popup_title"></span><a id="popup_close" href="javascript:"></a>
+</div>
+<div id="popup" tabindex="-1" class="l loading"></div>
+<script type="text/javascript">
+	deferred.push(function(){
+		App.Popup.init();
+	});
+</script></div>		<script type="text/javascript">
+			deferred.push(function(){SSP.DOM.listen(document, 'click', App.Handler.bodyClick);});
+		</script>
+		<script type="text/javascript">
+			deferred.push(function(){App.Stat.init('UA-9034550-2', '38953945', '39255945', 'GA_PARAMS', 'USER_TYPE', false);});
+		</script>
+			<noscript>
+			<div><img src="../../../https@mc.yandex.ru/watch/38953945" style="position:absolute; left:-9999px;" alt=""></div>
+		</noscript>
+			<noscript><style>
+			.noscript{display:inherit!important}
+			.script{display:none!important}
+			.w.loading > *,.l.loading > *{visibility:inherit}
+			.w.loading,.l.loading{cursor:inherit;background:inherit;background-position:inherit}
+			.l.loading{margin:inherit;padding:inherit}
+			#other_sites_link {display:none}
+			#contact {margin-top:12px}
+		</style></noscript>
+		<script type="text/javascript">
+			deferred.push(function(){App.Handler.initBodyCopy('ООО «1С»')});
+		</script>
+		<script type="text/javascript">
+			function _gzip_check()
+			{
+				if(document.cookie.match('GUNZIP=1'))
+					return;
+				
+				var links = document.getElementsByTagName('LINK');
+				for(var i = 0; i < links.length; i++)
+					if(links[i].rel === 'stylesheet'
+					&& (!links[i].media || links[i].media === 'all')
+					&& (links[i].href.indexOf('/') === 0 || links[i].href.indexOf(location.protocol + '//' + location.hostname + '/') === 0))
+					{
+						var styleSheet = links[i].styleSheet || links[i].sheet;
+						var rules = styleSheet ? (styleSheet.rules || styleSheet.cssRules) : null;
+						if(!styleSheet || rules.length === 0)
+						{
+							var date = new Date();
+							date.setYear(date.getFullYear() + 1);
+							document.cookie = 'GUNZIP=1; expires=' + date.toGMTString() + '; path=/; domain=' + location.hostname;
+							location.reload();
+							return;
+						}
+					}
+			}
+		</script>
+		<!--/noindex-->
+	</body>
+</html>

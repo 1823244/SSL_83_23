@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1054;&#1073;&#1098;&#1077;&#1082;&#1090;XDTO&#1048;&#1079;&#1044;&#1072;&#1085;&#1085;&#1099;&#1093;XDTO</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25EE_25E1_25FA_25E5_25EA_25F2xdto_25E8_25E7_25E4_25E0_25ED_25ED_25FB_25F5xdto.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_обменданнымиxdtoсерверобъектxdtoизданныхxdto"></a><h1>ОбъектXDTOИзДанныхXDTO</h1>
+
+<pre> Выполняет преобразование структуры с данными в объект XDTO указанного типа в соответствии с правилами.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция ОбъектXDTOИзДанныхXDTO(
+		КомпонентыОбмена,
+		Знач Источник,
+		Знач ТипXDTO,
+		Приемник = Неопределено,
+		СсылкиИзОбъекта = Неопределено,
+		ПроведеноЗаполнениеСвойств = Ложь) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  КомпонентыОбмена - Структура - содержит все правила и параметры обмена.
+  Источник         - Структура - источник данных, которые необходимо преобразовать в объект XDTO.
+  ТипXDTO          - Строка - тип объекта или тип значения XDTO, к которому надо преобразовать данные.
+  Приемник         - ОбъектXDTO - объект, в который будет помещен результат.
+  СсылкиИзОбъекта  - Массив - содержит общий список выгруженных по ссылкам объектов.
+  ПроведеноЗаполнениеСвойств - Булево - параметр для определения заполненности общих составных свойств.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = ОбменДаннымиXDTOСервер.ОбъектXDTOИзДанныхXDTO(КомпонентыОбмена, Источник, ТипXDTO, Приемник, СсылкиИзОбъекта, ПроведеноЗаполнениеСвойств)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

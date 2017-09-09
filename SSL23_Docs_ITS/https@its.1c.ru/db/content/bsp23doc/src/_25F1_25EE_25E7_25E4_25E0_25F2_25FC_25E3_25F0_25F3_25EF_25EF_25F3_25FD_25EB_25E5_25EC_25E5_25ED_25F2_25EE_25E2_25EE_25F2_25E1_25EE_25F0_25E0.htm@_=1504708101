@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1057;&#1086;&#1079;&#1076;&#1072;&#1090;&#1100;&#1043;&#1088;&#1091;&#1087;&#1087;&#1091;&#1069;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074;&#1054;&#1090;&#1073;&#1086;&#1088;&#1072;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25F1_25EE_25E7_25E4_25E0_25F2_25FC_25E3_25F0_25F3_25EF_25EF_25F3_25FD_25EB_25E5_25EC_25E5_25ED_25F2_25EE_25E2_25EE_25F2_25E1_25EE_25F0_25E0.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_общегоназначенияклиентсерверсоздатьгруппуэлементовотбора"></a><h1>СоздатьГруппуЭлементовОтбора</h1>
+
+<pre> Добавить группу отбора в коллекцию КоллекцияЭлементов.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция СоздатьГруппуЭлементовОтбора(Знач КоллекцияЭлементов, Представление, ТипГруппы) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  КоллекцияЭлементов - контейнер с элементами и группами отбора, например.
+                      Список.Отбор.Элементы или группа в отборе.
+  ТипГруппы          - ТипГруппыЭлементовОтбораКомпоновкиДанных - тип группы.
+  Представление      - Строка - представление группы.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = ОбщегоНазначенияКлиентСервер.СоздатьГруппуЭлементовОтбора(КоллекцияЭлементов, Представление, ТипГруппы)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Тонкий клиент, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

@@ -1,0 +1,1398 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.33. &#1055;&#1077;&#1095;&#1072;&#1090;&#1100;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.33. _25EF_25E5_25F7_25E0_25F2_25FC.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_печать"></a><h1>3.33. Печать</h1>
+
+<p class="Paragraph0c">Подсистема «Печать» предназначена для формирования
+печатных форм объектов на основе табличных макетов (формат MXL) или макетов
+офисных документов в форматах Microsoft Word и OpenOffice.org Writer.</p>
+
+<p class="Paragraph0c">Подсистема предоставляет инструменты для размещения команд
+печати на формах в подменю <span class="Interface">Печать</span>, форму
+предпросмотра печатных форм, а также различные сервисные возможности по
+сохранению печатных форм в файлы, отправке по электронной почте и формированию
+изображений QR-кодов. Кроме того, в подсистему входит рабочее место по
+редактированию макетов печатных форм.</p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Paragraph0c">Необходимо принять решение по поводу состава объектов
+конфигурации (справочников, документов и т. п.), которые требуется выводить на
+печать, и в каком виде должны формироваться печатные формы. Затем создать для
+них команды печати, разработав описательную часть, логику формирования печатной
+формы, и внести изменения в модули форм, в которых предполагается выводить
+команды печати.</p>
+
+<p class="Paragraph0c">Описательная часть находится в процедуре <span class="Interface">ДобавитьКомандыПечати</span>, а логика формирования печатной
+формы зависит от того, в каком виде должны формироваться печатные формы:</p>
+
+<p class="MsoListBullet">&#9679; 
+Формирование печатной формы в формате табличного
+документа (с предварительным просмотром или сразу на принтер).</p>
+
+<p class="MsoListBullet">&#9679; 
+Формирование комплекта табличных документов (с
+предварительным просмотром или сразу на принтер).</p>
+
+<p class="MsoListBullet">&#9679; 
+Формирование печатных форм с интерактивным
+запросом дополнительных параметров у пользователя.</p>
+
+<p class="MsoListBullet">&#9679; 
+Вывод табличного документа в один из популярных
+форматов (Microsoft Word, Microsoft Excel, Adobe PDF, OpenOffice.org Writer,
+HTML, текстовый документ и другие).</p>
+
+<p class="MsoListBullet">&#9679; 
+Формирование печатной формы в виде офисных
+документов в форматах Microsoft Word и OpenOffice.org Writer (для тех случаев,
+когда возможностей табличного макета недостаточно).</p>
+
+<a name="_подготовительные_действия"></a><a name="issogl2_подготовительные_действия"><h3>Подготовительные действия</h3></a>
+
+<p class="Paragraph0c">На первом этапе нужно внедрить подсистему в те объекты, в
+которых предполагается использовать команды печати:</p>
+
+<p class="Number81">1. 
+В формах каждого объекта, где необходимо
+разместить команду печати, в процедуре <span class="Interface">ПриСозданииНаСервере</span>
+добавить следующий код:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Процедура</span> ПриСозданииНаСервере<span class="operator">(</span>Отказ<span class="operator">,</span> СтандартнаяОбработка<span class="operator">)</span>
+    <span class="comment">// СтандартныеПодсистемы.Печать</span>
+    УправлениеПечатью<span class="operator">.</span>ПриСозданииНаСервере<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.Печать</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Bullet0">По умолчанию команды печати располагаются на командной панели
+формы, но размещение можно переопределить, указав второй параметр в вызове <span class="Interface">УправлениеПечатью.ПриСозданииНаСервере</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    УправлениеПечатью<span class="operator">.</span>ПриСозданииНаСервере<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> Элементы<span class="operator">.</span>ГруппаКомандПечати<span class="operator">)</span><span class="operator">;</span></pre>
+
+<p class="Bullet0">Динамическое создание команд печати на форме может замедлять
+ее открытие, поэтому размещать команды печати рекомендуется в статической
+группе команд вида <span class="Interface">Подменю</span>.</p>
+
+<p class="Number81">2. 
+В форме объекта, куда размещается команда
+печати, добавить код подключаемых обработчиков:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.Печать</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> Подключаемый_ВыполнитьКомандуПечати<span class="operator">(</span>Команда<span class="operator">)</span>
+    УправлениеПечатьюКлиент<span class="operator">.</span>ВыполнитьПодключаемуюКомандуПечати<span class="operator">(</span>Команда<span class="operator">,</span> ЭтотОбъект<span class="operator">,</span> Объект<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> Подключаемый_ОбновитьКоманды<span class="operator">(</span><span class="operator">)</span>
+    УправлениеПечатьюКлиентСервер<span class="operator">.</span>ОбновитьКоманды<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> Объект<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="comment">// Конец СтандартныеПодсистемы.Печать</span></pre>
+
+<p class="Number81">3. 
+В форме списка объекта, куда размещается команда
+печати, добавить код подключаемых обработчиков:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.Печать</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> Подключаемый_ВыполнитьКомандуПечати<span class="operator">(</span>Команда<span class="operator">)</span>
+    УправлениеПечатьюКлиент<span class="operator">.</span>ВыполнитьПодключаемуюКомандуПечати<span class="operator">(</span>Команда<span class="operator">,</span> ЭтотОбъект<span class="operator">,</span> Элементы<span class="operator">.</span>Список<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> Подключаемый_ОбновитьКоманды<span class="operator">(</span><span class="operator">)</span>
+    УправлениеПечатьюКлиентСервер<span class="operator">.</span>ОбновитьКоманды<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> Объект<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="comment">// Конец СтандартныеПодсистемы.Печать</span></pre>
+
+<p class="Warningword">Важно!</p>
+
+<p class="Notes">Поле <span class="Interface">Ссылка</span> динамического списка
+формы должно быть доступно в обработчике команды. Для этого необходимо у
+реквизита формы, содержащего динамический список, у поля <span class="Interface">Ссылка</span>
+поставить флажок <span class="Interface">Использовать всегда</span>.</p>
+
+<p class="Number81">4. 
+Добавить экспортную процедуру <span class="Interface">ДобавитьКомандыПечати</span> в модуль менеджера:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Заполняет список команд печати.</span>
+<span class="comment">// </span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//   КомандыПечати – ТаблицаЗначений – состав полей см. в функции УправлениеПечатью.СоздатьКоллекциюКомандПечати</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> ДобавитьКомандыПечати<span class="operator">(</span>КомандыПечати<span class="operator">)</span> <span class="keyword">Экспорт</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Number81">5. 
+Добавить выбранные объекты в параметр <span class="Interface">СписокОбъектов</span> в процедуре <span class="Interface">ПриОпределенииОбъектовСКомандамиПечати</span>
+общего модуля <span class="Interface">УправлениеПечатьюПереопределяемый</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Определяет объекты, в которых есть процедура ДобавитьКомандыПечати().</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//  СписокОбъектов - Массив - список менеджеров объектов.</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> ПриОпределенииОбъектовСКомандамиПечати<span class="operator">(</span>СписокОбъектов<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    СписокОбъектов<span class="operator">.</span>Добавить<span class="operator">(</span>Справочники<span class="operator">.</span>_ДемоКонтактныеЛицаПартнеров<span class="operator">)</span><span class="operator">;</span>
+    СписокОбъектов<span class="operator">.</span>Добавить<span class="operator">(</span>Справочники<span class="operator">.</span>_ДемоКонтрагенты<span class="operator">)</span><span class="operator">;</span>
+    ...
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Warningword">Важно!</p>
+
+<p class="Notes">Подменю <span class="Interface">Печать</span> в формах журналов
+документов по умолчанию заполняется командами документов, входящих в журнал. В
+случаях, когда команды печати необходимо брать непосредственно в модуле
+менеджера журнала документов, необходимо сделать соответствующую вставку кода в
+процедуре <span class="Interface">ПриПолученииНастроекСпискаКомандПечати</span>
+общего модуля <span class="Interface">УправлениеПечатьюПереопределяемый</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Дополнительные настройки списка команд печати.</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//  НастройкиСписка - Структура - модификаторы списка команд печати.</span>
+<span class="comment">//   * МенеджерКомандПечати     - МенеджерОбъекта - менеджер объекта, в котором формируется список команд печати;</span>
+<span class="comment">//   * АвтоматическоеЗаполнение - Булево - заполнять команды печати из объектов, входящих в состав журнала.</span>
+<span class="comment">//                                         Значение по умолчанию: Истина.</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> ПриПолученииНастроекСпискаКомандПечати<span class="operator">(</span>НастройкиСписка<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="keyword">Если</span> НастройкиСписка<span class="operator">.</span>МенеджерКомандПечати <span class="operator">=</span> ЖурналыДокументов<span class="operator">.</span>_ДемоСкладскиеДокументы <span class="keyword">Тогда</span>
+        НастройкиСписка<span class="operator">.</span>АвтоматическоеЗаполнение <span class="operator">=</span> <span class="keyword">Ложь</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<a name="issogl2_разработка_команд_печати"><h3>Разработка команд печати</h3></a>
+
+<p class="Paragraph0c">Затем необходимо разработать описательную часть,
+перечислив команды печати для каждого объекта в процедуре <span class="Interface">ДобавитьКомандыПечати</span>, указав представление,
+идентификатор и другие параметры (подробнее см. таблицу ниже). Например:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// Счет на оплату</span>
+    КомандаПечати <span class="operator">=</span> КомандыПечати<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    КомандаПечати<span class="operator">.</span>МенеджерПечати <span class="operator">=</span> <span class="string">&quot;Документ._ДемоСчетНаОплатуПокупателю&quot;</span><span class="operator">;</span>
+    КомандаПечати<span class="operator">.</span>Идентификатор <span class="operator">=</span> <span class="string">&quot;СчетЗаказ&quot;</span><span class="operator">;</span>
+    КомандаПечати<span class="operator">.</span>Представление <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Счет на оплату'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    КомандаПечати<span class="operator">.</span>ПроверкаПроведенияПередПечатью <span class="operator">=</span> <span class="keyword">Истина</span><span class="operator">;</span> </pre>
+
+<p class="Paragraph0c">Параметры команды печати:</p>
+
+<p class="Objectname">Таблица 3.67.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Параметр</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Тип</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Описание</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Идентификатор</span> (обязательный)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Строка</span> или <span class="Interface">Массив</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Идентификатор команды печати, по которому менеджер
+  печати определяет печатную форму, которую необходимо сформировать. Пример:</p>
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">КомандаПечати.Идентификатор = &quot;СчетЗаказ&quot;;</pre>
+  <p class="TextinTable81">Для печати нескольких печатных форм можно указывать
+  одновременно несколько их идентификаторов (строкой, через запятую либо массивом
+  строк), например:</p>
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">КомандаПечати.Идентификатор = &quot;СчетЗаказ,ГарантийноеПисьмо&quot;;</pre>
+  <p class="TextinTable81">Если необходимо задать количество копий печати для
+  печатной формы, то ее идентификатор нужно продублировать столько раз, сколько
+  копий необходимо сформировать. При этом следует учитывать, что порядок следования
+  печатных форм в комплекте будет соответствовать порядку идентификаторов
+  печатных форм, указанных в этом параметре. Пример (2 счета на оплату + 1 гарантийное
+  письмо):</p>
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">КомандаПечати.Идентификатор = &quot;СчетЗаказ,СчетЗаказ,ГарантийноеПисьмо&quot;;</pre>
+  <p class="TextinTable81">Идентификатор печатной формы может содержать в себе и
+  альтернативный менеджер печати, если он отличается от указанного в параметре <span class="Interface">МенеджерПечати</span>, например:</p>
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">КомандаПечати.Идентификатор = &quot;СчетЗаказ,Обработка._ДемоПечатнаяФорма.ГарантийноеПисьмо&quot;;</pre>
+  <p class="TextinTable81">В этом примере <span class="Interface">ГарантийноеПисьмо</span>
+  формируется в менеджере печати <span class="Interface">Обработка._ДемоПечатнаяФорма</span>,
+  а <span class="Interface">СчетЗаказ</span> – в менеджере печати, указанном в
+  параметре <span class="Interface">МенеджерПечати</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Представление</span> (обязательный)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Строка</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Представление команды в меню <span class="Interface">Печать</span>.
+  Пример:</p>
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">КомандаПечати.Представление = НСтр(&quot;ru = 'Счет на   оплату'&quot;);</pre>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">МенеджерПечати</span> (необязательный)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Строка</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Имя объекта, в модуле менеджера которого располагается
+  процедура <span class="Interface">Печать</span>, формирующая табличные
+  документы для этой команды. Например:</p>
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">КомандаПечати.МенеджерПечати = &quot;Документ._ДемоСчетНаОплатуПокупателю&quot;;</pre>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ТипыОбъектовПечати</span></p>
+  <p class="TextinTable81">(необязательный)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Массив</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Список типов объектов, для которых предназначена
+  команда печати. Параметр предназначен для команд печати в журналах
+  документов, где требуется проверка передаваемого типа объекта перед вызовом
+  менеджера печати.</p>
+  <p class="TextinTable81">Если список не заполнен, то при автоматическом
+  создании списка команд печати в журнале документов он заполняется типом объекта,
+  из которого была импортирована команда печати</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Обработчик</span></p>
+  <p class="TextinTable81">(необязательный)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Строка</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Клиентский обработчик команды, в который необходимо
+  передать управление вместо стандартного обработчика команды печать.
+  Используется, например, когда печатная форма формируется на клиенте.</p>
+  <p class="TextinTable81">Формат
+  &quot;&lt;ИмяОбщегоМодуля&gt;.&lt;ИмяПроцедуры&gt;&quot; используется, когда
+  процедура размещена в общем модуле.</p>
+  <p class="TextinTable81">Формат &quot;&lt;ИмяПроцедуры&gt;&quot; используется,
+  когда процедура размещена в модуле основной формы отчета или обработки,
+  указанной в <span class="Interface">МенеджерПечати</span>.</p>
+  <p class="TextinTable81">Пример:</p>
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">КомандаПечати.Обработчик =   &quot;_ДемоСтандартныеПодсистемыКлиент.ПечатьСчетовНаОплатуПокупателю&quot;;</pre>
+  <p class="TextinTable81">Пример обработчика в модуле формы:</p>
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">
+// Формирует печатную форму &lt;представление   печатной формы&gt;.
+//
+// Параметры:
+//     ПараметрыПечати - Структура - Сведения о печатной форме.
+//       *   ОбъектыПечати - Массив - Массив ссылок выбранных объектов.
+//       *   Форма - УправляемаяФорма - Форма, из которой вызвана команда печати.
+//       *   ДополнительныеПараметры - Структура - Дополнительные параметры печати.
+//         Прочие ключи структуры соответствуют колонкам таблицы КомандыПечати,
+//         подробнее см. в функции УправлениеПечатью.СоздатьКоллекциюКомандПечати.
+//
+&amp;НаКлиенте
+Функция &lt;ИмяФункции&gt;(ПараметрыПечати)   Экспорт
+    //   Обработчик печати.
+КонецФункции
+</pre>
+  <p class="TextinTable81">Следует иметь в виду, что обработчик вызывается при
+  помощи метода <span class="Interface">Вычислить</span>, поэтому в качестве
+  обработчика может выступать только функция. При этом возвращаемое значение
+  функции никак в дальнейшем не используется подсистемой.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Порядок</span></p>
+  <p class="TextinTable81">(необязательный)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Число</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Значение от 1 до 100, указывающее порядок размещения
+  команды по отношению к другим командам. Сортировка команд меню <span class="Interface">Печать</span> осуществляется сначала по полю <span class="Interface">Порядок</span>, затем по представлению.</p>
+  <p class="TextinTable81">Значение по умолчанию: 50</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Картинка</span></p>
+  <p class="TextinTable81">(необязательный)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Картинка</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Картинка, которая отображается возле команды в меню <span class="Interface">Печать</span>. Пример:</p>
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">КомандаПечати.Картинка = БиблиотекаКартинок.ФорматPDF;</pre>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">СписокФорм</span></p>
+  <p class="TextinTable81">(необязательный)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Строка</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Имена форм, в которых должна отображаться команда,
+  через запятую. Если параметр не указан, то команда печати будет отображаться
+  во всех формах объекта, где встроена подсистема «Печать». Пример: </p>
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">КомандаПечати.СписокФорм =   &quot;ФормаДокумента,ФормаСписка&quot;</pre>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ЗаголовокФормы</span></p>
+  <p class="TextinTable81">(необязательный)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Строка</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Произвольная строка, переопределяющая стандартных
+  заголовок формы «Печать документов». Пример: </p>
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">КомандаПечати.ЗаголовокФормы = НСтр(&quot;ru =   'Настраиваемый комплект'&quot;);</pre>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ФункциональныеОпции</span></p>
+  <p class="TextinTable81">(необязательный)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Строка</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Имена функциональных опций, от которых зависит доступность
+  команды печати, через запятую</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПроверкаПроведенияПередПечатью</span></p>
+  <p class="TextinTable81">(необязательный)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Булево</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Признак необходимости проверки проведенности
+  документов перед печатью. Если параметр не указан, то проверка проведенности
+  не выполняется. Пример: </p>
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">КомандаПечати.ПроверкаПроведенияПередПечатью = Истина;</pre>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">СразуНаПринтер</span></p>
+  <p class="TextinTable81">(необязательный)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Булево</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Признак необходимости печати документов без
+  предварительного просмотра, сразу на принтер. Если параметр не указан, то при
+  выборе команды печати открывается форма предварительного просмотра «Печать
+  документов». Пример: </p>
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">КомандаПечати.СразуНаПринтер = Истина;</pre>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ФорматСохранения</span></p>
+  <p class="TextinTable81">(необязательный)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ТипФайлаТабличногоДокумента</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Применяется для быстрого сохранения печатной формы
+  (без дополнительных действий) в различные форматы, отличные от mxl. Если параметр
+  не указан, то формируется обычный mxl. Пример:</p>
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">КомандаПечати.ФорматСохранения =   ТипФайлаТабличногоДокумента.PDF;</pre>
+  <p class="TextinTable81">При выборе команды печати сразу открывается
+  сформированный в формате pdf документ</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПереопределитьПользовательскиеНастройкиКоличества</span></p>
+  <p class="TextinTable81">(необязательный)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Булево</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Признак необходимости отключения в форме <span class="Interface">ПечатьДокументов</span> механизма сохранения/восстановления
+  выбранного пользователем количества экземпляров на печать. Если параметр не
+  указан, то механизм сохранения/восстановления настроек будет работать при
+  открытии формы <span class="Interface">ПечатьДокументов</span>. Пример:</p>
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">КомандаПечати.ПереопределитьПользовательскиеНастройкиКоличества   = Истина;</pre>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ДополнитьКомплектВнешнимиПечатнымиФормами</span></p>
+  <p class="TextinTable81">(необязательный)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Булево</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Признак необходимости дополнить комплект документов
+  всеми подключенными к объекту внешними печатными формами (подсистема «ДополнительныеОтчетыИОбработки»).
+  Если параметр не указан, внешние печатные формы не добавляются в комплект.
+  Пример:</p>
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">КомандаПечати.ДополнитьКомплектВнешнимиПечатнымиФормами =   Истина;</pre>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ФиксированныйКомплект</span></p>
+  <p class="TextinTable81">(необязательный)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Булево</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Признак необходимости блокировки от изменения
+  пользователем состава комплекта документов. Если параметр не указан, то
+  пользователь сможет исключать отдельные печатные формы из комплекта в форме <span class="Interface">ПечатьДокументов</span>, а также изменять их количество.
+  Пример:</p>
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">КомандаПечати.ФиксированныйКомплект = Истина;</pre>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ДополнительныеПараметры</span></p>
+  <p class="TextinTable81">(необязательный)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Структура</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Произвольные параметры для передачи в менеджер печати</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">НеВыполнятьЗаписьВФорме</span></p>
+  <p class="TextinTable81">(необязательный)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Булево</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Признак необходимости отключения механизма записи
+  объекта перед выполнением команды печати. Используется в исключительных
+  случаях. Если параметр не указан, производится запись объекта, в случае если
+  в форме объекта установлен признак модифицированности. Пример:</p>
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">КомандаПечати. НеВыполнятьЗаписьВФорме= Истина;</pre>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ТребуетсяРасширениеРаботыСФайлами</span></p>
+  <p class="TextinTable81">(необязательный)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Булево</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Признак необходимости подключения расширения работы с
+  файлами перед выполнением команды. Если параметр не указан, подключение
+  расширения работы с файлами выполняться не будет</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Также имеется возможность скрывать команду печати, если
+она не подходит для выбранного пользователем объекта. Для этого необходимо:</p>
+
+<p class="MsoListBullet">&#9679; 
+при описании команды печати воспользоваться
+процедурой <span class="Interface">ДобавитьУсловиеВидимостиКоманды</span> общего
+модуля <span class="Interface">УправлениеПечатью</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> ДобавитьКомандыПечати<span class="operator">(</span>КомандыПечати<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    КомандаПечати <span class="operator">=</span> КомандыПечати<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    КомандаПечати<span class="operator">.</span>Идентификатор <span class="operator">=</span> <span class="string">&quot;ВыдачаЗарплаты&quot;</span><span class="operator">;</span>
+    КомандаПечати<span class="operator">.</span>Представление <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Выдача зарплаты'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    УправлениеПечатью<span class="operator">.</span>ДобавитьУсловиеВидимостиКоманды<span class="operator">(</span>КомандаПечати<span class="operator">,</span> <span class="string">&quot;ХозяйственнаяОперация&quot;</span><span class="operator">,</span>
+        Перечисления<span class="operator">.</span>_ДемоХозяйственныеОперации<span class="operator">.</span>ВыдачаЗарплаты<span class="operator">,</span> ВидСравнения<span class="operator">.</span>Равно<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="MsoListBullet">&#9679; 
+в формах, где используются условия видимости
+команд печати:</p>
+
+<p class="MsoListBullet2">&#9679;  разместить
+процедуру <span class="Interface">Подключаемый_ОбновитьКоманды</span> (см. «<span class="MsoHyperlink"><a href="#_подготовительные_действия">Подготовительные
+действия</a>»</span>);</p>
+
+<p class="MsoListBullet2">&#9679;  вставить
+вызов процедуры <span class="Interface">ОбновитьКоманды</span> общего модуля <span class="Interface">УправлениеПечатьюКлиентСервер</span> в событии <span class="Interface">ПриЧтенииНаСервере</span> в форме объекта/документа;</p>
+
+<p class="MsoListBullet2">&#9679;  вставить
+вызовы процедуры <span class="Interface">НачатьОбновлениеКоманд </span>общего
+модуля <span class="Interface">УправлениеПечатьюКлиент</span> в событиях <span class="Interface">ПриИзменении</span> реквизитов, участвующих в условиях
+видимости, а также в событиях <span class="Interface">ПриОткрытии</span> формы
+объекта/документа и <span class="Interface">ПриАктивизацииСтроки</span> формы
+списка объектов/документов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> СписокПриАктивизацииСтроки<span class="operator">(</span>Элемент<span class="operator">)</span>
+    УправлениеПечатьюКлиент<span class="operator">.</span>НачатьОбновлениеКоманд<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="MsoListBullet">&#9679; 
+у динамических списков для реквизитов, участвующих
+в условиях видимости команд печати необходимо установить флажок <span class="Interface">Использовать всегда</span>.</p>
+
+<p class="Paragraph0c">Разработка команд печати существенно отличается в
+зависимости от того, в каком виде должна формироваться печатная форма:</p>
+
+<p class="MsoListBullet">&#9679; 
+Для формирования печатной формы в формате табличного
+документа или комплекта табличных документов см. раздел «<a href="#_разработка_процедуры_«печать»">Разработка
+процедуры «Печать»</a>».</p>
+
+<p class="MsoListBullet">&#9679; 
+Для вывода табличного документа в один из
+популярных форматов (Microsoft Word, Microsoft Excel, Adobe PDF, OpenOffice.org
+Writer, HTML, текстовый документ и другие) см. раздел «<a href="#_разработка_процедуры_«печать»">Разработка
+процедуры «Печать»</a>».</p>
+
+<p class="MsoListBullet">&#9679; 
+Для формирования печатных форм с интерактивным
+запросом дополнительных параметров у пользователя см. раздел «<a href="#_формирование_печатной_формы">Формирование
+печатной формы в клиентском контексте</a>».</p>
+
+<p class="MsoListBullet">&#9679; 
+Для формирования печатной формы в виде офисных
+документов в форматах Microsoft Word и OpenOffice.org Writer см. раздел «<a href="#_использование_макетов_в">Использование
+макетов в формате офисных документов при формировании печатных форм</a>».</p>
+
+<a name="_разработка_процедуры_«печать»"></a><a name="issogl2_разработка_процедуры_печать"><h3>Разработка процедуры «Печать»</h3></a>
+
+<p class="Number81">1. 
+В модуль менеджера печати, указанного в
+параметре <span class="Interface">МенеджерПечати</span>, добавить экспортную
+процедуру <span class="Interface">Печать</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Формирует печатные формы.</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//  МассивОбъектов – Массив – ссылки на объекты, которые нужно распечатать;</span>
+<span class="comment">//  ПараметрыПечати – Структура – дополнительные настройки печати;</span>
+<span class="comment">//  КоллекцияПечатныхФорм – ТаблицаЗначений – сформированные табличные документы (выходной параметр)</span>
+<span class="comment">//  ОбъектыПечати – СписокЗначений – значение – ссылка на объект;</span>
+<span class="comment">//                                            представление – имя области, в которой был выведен объект (выходной параметр);</span>
+<span class="comment">//  ПараметрыВывода – Структура – дополнительные параметры сформированных табличных документов (выходной параметр).</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> Печать<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> ПараметрыПечати<span class="operator">,</span> КоллекцияПечатныхФорм<span class="operator">,</span> ОбъектыПечати<span class="operator">,</span> ПараметрыВывода<span class="operator">)</span> <span class="keyword">Экспорт</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Number81">2. 
+Разместить в конфигурации макет табличного
+документа согласно инструкциям раздела «<a href="#_размещение_макетов_печатных">Размещение макетов печатных форм в конфигурации</a>».</p>
+
+<p class="Number81">3. 
+Добавить функцию, формирующую печатную форму
+(табличный документ), например:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Функция</span> ПечатьСчетаЗаказа<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> ОбъектыПечати<span class="operator">)</span>
+    . . .
+    <span class="keyword">Возврат</span> ТабличныйДокумент<span class="operator">;</span>
+<span class="keyword">КонецФункции</span></pre>
+
+<p class="Number81">4. 
+В процедуре <span class="Interface">Печать</span>
+разместить код для идентификации требуемой печатной формы и вызова функции по
+ее формированию (созданную на шаге 3). Например:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    НужноПечататьМакет <span class="operator">=</span> УправлениеПечатью<span class="operator">.</span>НужноПечататьМакет<span class="operator">(</span>КоллекцияПечатныхФорм<span class="operator">,</span> <span class="string">&quot;СчетЗаказ&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">Если</span> НужноПечататьМакет <span class="keyword">Тогда</span>
+        УправлениеПечатью<span class="operator">.</span>ВывестиТабличныйДокументВКоллекцию<span class="operator">(</span>
+        КоллекцияПечатныхФорм<span class="operator">,</span>
+        <span class="string">&quot;СчетЗаказ&quot;</span><span class="operator">,</span>
+        НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Счет на оплату'&quot;</span><span class="operator">)</span><span class="operator">,</span>
+        ПечатьСчетаЗаказа<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> ОбъектыПечати<span class="operator">)</span><span class="operator">,</span>
+        <span class="operator">,</span>
+        <span class="string">&quot;Документ._ДемоСчетНаОплатуПокупателю.ПФ_MXL_СчетЗаказ&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span></pre>
+
+<p class="Paragraph0c">Параметры процедуры <span class="Interface">Печать</span>:</p>
+
+<p class="Objectname">Таблица 3.68.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Параметр</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Описание</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">МассивОбъектов</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Массив ссылок на объекты, для которых нужно
+  сформировать табличные документы</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПараметрыПечати</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Произвольные параметры, переданные при вызове команды
+  печати</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">КоллекцияПечатныхФорм</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Служебная таблица значений. Через нее передаются имена
+  макетов, для которых должны быть сформированы табличные документы. Возвращаются
+  синонимы макетов (представление), сформированные табличные документы с
+  указанием количества экземпляров, картинка для отображения на закладке соответствующего
+  табличного документа в форме печати документов</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ОбъектыПечати</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Список значений, в котором обработчик печати
+  устанавливает соответствие между объектами и именами областей печати
+  табличного документа: значение – <span class="Interface">Объект</span>, представление
+  – имя области, в которой был выведен объект</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПараметрыВывода</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Структура с предопределенными ключами, через которую
+  обработчик печати может вернуть параметры:</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ПараметрыОтправки</span>
+  – структура, содержащая информацию для заполнения письма при отправке
+  печатной формы по электронной почте. Содержит следующие поля (описание см. в
+  общем модуле конфигурации <span class="Interface">РаботаСПочтовымиСообщениямиКлиент</span>
+  в процедуре <span class="Interface">ОткрытьФормуОтправкиПочтовогоСообщения</span>):</p>
+  <p class="BulltTab2">&#9679; 
+  <span class="Interface">Получатель</span>,</p>
+  <p class="BulltTab2">&#9679; 
+  <span class="Interface">Тема</span>,</p>
+  <p class="BulltTab2"><span class="Interface">&#9679; 
+  </span><span class="Interface">Текст</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Процедура <span class="Interface">Печать</span> может
+формировать один или несколько табличных документов за один вызов. Процедура
+может быть реализована следующим образом:</p>
+
+<p class="MsoListBullet">&#9679; 
+При необходимости устанавливаются <span class="Interface">ПараметрыВывода</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+Если формируется больше одного табличного
+документа, то рекомендуется получить необходимые данные до формирования табличных
+документов.</p>
+
+<p class="MsoListBullet">&#9679; 
+При формировании табличного документа для
+нескольких объектов необходимо позаботиться о правильном порядке этих объектов
+в табличном документе. В процедуру <span class="Interface">Печать</span> в
+параметр <span class="Interface">МассивОбъектов</span> передается массив объектов
+в том порядке, в котором их выбрал пользователь, однако «правильный» порядок
+вывода может быть иным – например, в документах, как правило, упорядочивание
+выполняется по полю <span class="Interface">МоментВремени</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+Если для каждого табличного документа данные
+получаются разными запросами, то желательно, чтобы документы упорядочивались
+одинаково.</p>
+
+<p class="Paragraph0c">В связи с тем, что макет может быть отредактирован
+пользователем в режиме <span class="Interface">1С:Предприятие</span> и параметры
+в нем могут быть изменены или удалены, для повышения устойчивости кода
+формирования печатной формы рекомендуется избегать явного присвоения значений
+параметров в областях печати. Вместо этого следует использовать процедуру <span class="Interface">ЗаполнитьЗначенияСвойств</span>.</p>
+
+<p class="Paragraph0c">Неправильно:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">ОбластьПечати<span class="operator">.</span>Параметры<span class="operator">.</span>Организация <span class="operator">=</span> ДанныеПечати<span class="operator">.</span>Организация<span class="operator">;</span>
+ОбластьПечати<span class="operator">.</span>Параметры<span class="operator">.</span>Контрагент <span class="operator">=</span> ДанныеПечати<span class="operator">.</span>Контрагент<span class="operator">;</span></pre>
+
+<p class="Paragraph0c">Правильно:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">ЗаполнитьЗначенияСвойств<span class="operator">(</span>ОбластьПечати<span class="operator">.</span>Параметры<span class="operator">,</span> ДанныеПечати<span class="operator">)</span><span class="operator">;</span> </pre>
+
+<p class="Paragraph0c">Для каждого макета, для которого в обработчике
+предусмотрено формирование табличного документа, необходимо проверить, нужно ли
+формировать табличный документ. Проверка осуществляется вызовом функции <span class="Interface">УправлениеПечатью.НужноПечататьМакет</span> с параметрами.</p>
+
+<p class="Paragraph0c">Сформированный табличный документ добавляется в коллекцию
+вызовом процедуры <span class="Interface">УправлениеПечатью.ВывестиТабличныйДокументВКоллекцию</span>
+с параметрами.</p>
+
+<p class="Paragraph0c">Пример реализации процедуры <span class="Interface">Печать</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> Печать<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> ПараметрыПечати<span class="operator">,</span> КоллекцияПечатныхФорм<span class="operator">,</span> ОбъектыПечати<span class="operator">,</span> ПараметрыВывода<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="comment">// Проверяем, нужно ли для макета СчетЗаказ формировать табличный документ.</span>
+    <span class="keyword">Если</span> УправлениеПечатью<span class="operator">.</span>НужноПечататьМакет<span class="operator">(</span>КоллекцияПечатныхФорм<span class="operator">,</span> <span class="string">&quot;СчетЗаказ&quot;</span><span class="operator">)</span> <span class="keyword">Тогда</span>
+        <span class="comment">// Формируем табличный документ и добавляем его в коллекцию печатных форм.</span>
+        УправлениеПечатью<span class="operator">.</span>ВывестиТабличныйДокументВКоллекцию<span class="operator">(</span>КоллекцияПечатныхФорм<span class="operator">,</span>
+            <span class="string">&quot;СчетЗаказ&quot;</span><span class="operator">,</span> <span class="string">&quot;Счет заказ&quot;</span><span class="operator">,</span> ПечатьСчетаЗаказ<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> ОбъектыПечати<span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Пример реализации функции, формирующей табличный документ:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Функция</span> ПечатьСчетаЗаказ<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> ОбъектыПечати<span class="operator">)</span>
+    <span class="comment">// Создаем табличный документ и устанавливаем имя параметров печати.</span>
+    ТабличныйДокумент <span class="operator">=</span> <span class="keyword">Новый</span> ТабличныйДокумент<span class="operator">;</span>
+    ТабличныйДокумент<span class="operator">.</span>ИмяПараметровПечати <span class="operator">=</span> <span class="string">&quot;ПараметрыПечати_СчетЗаказ&quot;</span><span class="operator">;</span>
+    <span class="comment">// Получаем запросом необходимые данные.</span>
+    Запрос <span class="operator">=</span> <span class="keyword">Новый</span> Запрос<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Запрос<span class="operator">.</span>Текст <span class="operator">=</span>
+    <span class="string">&quot;ВЫБРАТЬ</span>
+<span class="string">    |    СчетНаОплатуПокупателю.Ссылка КАК Ссылка,</span>
+<span class="string">    ......................</span>
+<span class="string">    |ГДЕ</span>
+<span class="string">    |    СчетНаОплатуПокупателю.Ссылка В(&amp;МассивОбъектов)</span>
+<span class="string">    ......................</span>
+<span class="string">    |&quot;</span><span class="operator">;</span>
+    Запрос<span class="operator">.</span>УстановитьПараметр<span class="operator">(</span><span class="string">&quot;МассивОбъектов&quot;</span><span class="operator">,</span> МассивОбъектов<span class="operator">)</span><span class="operator">;</span>
+    Шапка <span class="operator">=</span> Запрос<span class="operator">.</span><span class="keyword">Выполнить</span><span class="operator">(</span><span class="operator">)</span><span class="operator">.</span><span class="keyword">Выбрать</span><span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    ПервыйДокумент <span class="operator">=</span> <span class="keyword">Истина</span><span class="operator">;</span>
+    <span class="keyword">Пока</span> Шапка<span class="operator">.</span>Следующий<span class="operator">(</span><span class="operator">)</span> <span class="keyword">Цикл</span>
+        <span class="keyword">Если</span> <span class="keyword">Не</span> ПервыйДокумент <span class="keyword">Тогда</span>
+            <span class="comment">// Все документы нужно выводить на разных страницах.</span>
+            ТабличныйДокумент<span class="operator">.</span>ВывестиГоризонтальныйРазделительСтраниц<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+        <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+        ПервыйДокумент <span class="operator">=</span> <span class="keyword">Ложь</span><span class="operator">;</span>
+        <span class="comment">// Запомним номер строки, с которой начали выводить текущий документ.</span>
+        НомерСтрокиНачало <span class="operator">=</span> ТабличныйДокумент<span class="operator">.</span>ВысотаТаблицы <span class="operator">+</span> <span class="number">1</span><span class="operator">;</span>
+        <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+        <span class="comment">// В табличном документе необходимо задать имя области, в которую был </span>
+        <span class="comment">// выведен объект. Нужно для возможности печати комплектов документов.</span>
+        УправлениеПечатью<span class="operator">.</span>ЗадатьОбластьПечатиДокумента<span class="operator">(</span>ТабличныйДокумент<span class="operator">,</span> 
+            НомерСтрокиНачало<span class="operator">,</span> ОбъектыПечати<span class="operator">,</span> Шапка<span class="operator">.</span>Ссылка<span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЦикла</span><span class="operator">;</span>
+    <span class="keyword">Возврат</span> ТабличныйДокумент<span class="operator">;</span>
+<span class="keyword">КонецФункции</span></pre>
+
+<p class="Paragraph0c">При разработке печатной формы можно предусмотреть
+ограничение ее вывода (на принтер, в буфер обмена, сохранение в файл). Для
+этого при формировании табличного документа необходимо установить у него
+соответствующее значение в свойстве <span class="Interface">Вывод</span>,
+например:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">ТабличныйДокумент<span class="operator">.</span>Вывод <span class="operator">=</span> ИспользованиеВывода<span class="operator">.</span>Запретить</pre>
+
+<a name="_формирование_печатной_формы"></a><a name="issogl2_формирование_печатной_формы_в_клиентском_контексте"><h3>Формирование печатной формы в клиентском контексте</h3></a>
+
+<p class="Paragraph0c">В отдельных случаях для формирования некоторых печатных
+форм может потребоваться клиентский контекст. Например, для запроса
+дополнительных параметров печатной формы у пользователя непосредственно перед
+печатью. В таких случаях механизм формирования печатной формы необходимо
+размещать в клиентском модуле, а при описании команды печати в процедуре <span class="Interface">ДобавитьКомандыПечати</span> использовать параметр <span class="Interface">Обработчик</span> для передачи управления в этот модуль.</p>
+
+<p class="Paragraph0c">Принцип создания команд, использующих клиентский контекст,
+несколько отличается от основного. Процедура <span class="Interface">Печать</span>
+модуля менеджера объекта не вызывается механизмами подсистемы, поэтому
+создавать ее для такой команды не требуется.</p>
+
+<p class="Paragraph0c">Процесс создания такой команды выглядит следующим образом:</p>
+
+<p class="Number81">1. 
+В модуле менеджера объекта в процедуре <span class="Interface">ДобавитьКомандыПечати</span> добавить описание команды (с использованием
+параметра <span class="Interface">Обработчик</span>), например:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// Счет на оплату в Microsoft Word</span>
+    КомандаПечати <span class="operator">=</span> КомандыПечати<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    КомандаПечати<span class="operator">.</span>МенеджерПечати <span class="operator">=</span> <span class="string">&quot;Документ._ДемоСчетНаОплатуПокупателю&quot;</span><span class="operator">;</span>
+    КомандаПечати<span class="operator">.</span>Идентификатор <span class="operator">=</span> <span class="string">&quot;СчетНаОплату(MSWord)&quot;</span><span class="operator">;</span>
+    КомандаПечати<span class="operator">.</span>Представление <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Счет на оплату в Microsoft Word'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    КомандаПечати<span class="operator">.</span>Картинка <span class="operator">=</span> БиблиотекаКартинок<span class="operator">.</span>ФорматWord2007<span class="operator">;</span>
+    КомандаПечати<span class="operator">.</span>ПроверкаПроведенияПередПечатью <span class="operator">=</span> <span class="keyword">Истина</span><span class="operator">;</span>
+    КомандаПечати<span class="operator">.</span>Обработчик <span class="operator">=</span> <span class="string">&quot;_ДемоСтандартныеПодсистемыКлиент.ПечатьСчетовНаОплатуПокупателю&quot;</span><span class="operator">;</span></pre>
+
+<p class="Warningword">Примечание</p>
+
+<p class="Notes">Менеджер печати может быть использован для получения данных на
+печать (см. раздел «<a href="#_использование_макетов_в">Использование макетов в формате офисных документов при
+формировании печатных форм</a>»).</p>
+
+<p class="Number81">2. 
+Добавить клиентскую экспортную функцию
+формирования печатной формы с единственным параметром, в который подсистема
+«Печать» будет передавать структуру параметров команды. Имя функции может быть
+произвольным, например:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Функция</span> ПечатьСчетовНаОплатуПокупателю<span class="operator">(</span>ПараметрыПечати<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="operator">.</span>
+    <span class="operator">.</span>
+    <span class="operator">.</span>
+<span class="keyword">КонецФункции</span></pre>
+
+<p class="Warningword">Примечание 1</p>
+
+<p class="Notes">Из этой функции подсистема «Печать» не ожидает никакого
+результата. Использование функции вместо процедуры обусловлено тем, что ее
+вызов осуществляется при помощи метода <span class="Interface">Вычислить()</span>.</p>
+
+<p class="Warningword">Примечание 2</p>
+
+<p class="Notes">Для вывода печатных форм на принтер пользователь должен обладать
+правом «Вывод». При разработке клиентских команд печати следует учитывать
+наличие этого права.</p>
+
+<p class="Paragraph0c">Если клиентский контекст предполагает только запрос
+дополнительных параметров, а формирование табличного документа выполняется на
+сервере, то необходимо также выполнить <a href="#_разработка_процедуры_«печать»">инструкцию по разработке процедуры Печать</a>, а из клиентской функции
+выполнять передачу управления в процедуру <span class="Interface">УправлениеПечатьюКлиент.ВыполнитьКомандуПечати</span>.</p>
+
+<a name="issogl2_вывод_в_печатную_форму_изображения_qr-кода_по_заданной_текстовой_строке"><h3>Вывод в печатную форму изображения QR-кода по заданной текстовой строке</h3></a>
+
+<p class="Paragraph0c">В некоторых случаях в печатной форме документа полезно
+разместить изображение QR-кода, содержащего закодированные данные. Общий
+принцип встраивания функционала следующий:</p>
+
+<p class="Number81">1. 
+В макете печатной формы разместить рисунок типа <span class="Interface">Картинка</span>.</p>
+
+<p class="Number81">2. 
+В модуле менеджера печати вызвать интерфейсный
+метод <span class="Interface">УправлениеПечатью.ДанныеQRКода</span>, передав в
+качестве параметра текстовую строку, которую необходимо закодировать с помощью
+QR-кода. </p>
+
+<p class="Number81">3. 
+Полученный результат (двоичные данные)
+программно вывести в рисунок типа <span class="Interface">Картинка</span>.</p>
+
+<p class="Paragraph0c">Пример реализации см. в демонстрационной конфигурации, в
+модуле менеджера документа <span class="Interface">_ДемоСчетНаОплатуПокупателю</span>
+в процедуре <span class="Interface">ПечатьКвитанции</span> и макете <span class="Interface">ПФ_MXL_Квитанция</span>.</p>
+
+<a name="_использование_макетов_в"></a><a name="issogl2_размещение_макетов_печатных_форм_в_конфигурации"><h3>Размещение макетов печатных форм в конфигурации</h3></a>
+
+<p class="Paragraph0c">Макеты печатных форм рекомендуется размещать при объекте,
+в котором реализована логика формирования печатных форм. К имени макета следует
+добавить специальный префикс:</p>
+
+<p class="MsoListBullet">&#9679; 
+макеты табличных документов – <span class="Interface">ПФ_MXL</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+макет Microsoft Word – <span class="Interface">ПФ</span><span class="Interface">_DOC</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+макет OpenOffice.org Writer <span class="Interface">ПФ</span><span class="Interface">_ODT</span>.</p>
+
+<p class="Bullet0">Например, <span class="Interface">_ДемоПФ_ODT_СчетНаОплату</span>.</p>
+
+<p class="Paragraph0c">В процедурах формирования печатных форм для получения
+макета следует использовать процедуру <span class="Interface">УправлениеПечатью.ПолучитьМакет(&lt;Путь
+к макету&gt;)</span>, где путь к макету может быть:</p>
+
+<p class="MsoListBullet">&#9679; 
+для макетов в документах: <span class="Interface">Документ.&lt;Имя
+документа&gt;.&lt;Имя макетов&gt;</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+для макетов в обработках: <span class="Interface">Обработка.&lt;Имя
+обработки&gt;.&lt;Имя макета&gt;;</span></p>
+
+<p class="MsoListBullet">&#9679; 
+для общих макетов: <span class="Interface">ОбщийМакет.&lt;Имя
+макета&gt;.</span></p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">Например<span class="operator">,</span> УправлениеПечатью<span class="operator">.</span>ПолучитьМакет<span class="operator">(</span><span class="string">&quot;Документ._ДемоСчетНаОплатуПокупателю.ПФ_MXL_СчетЗаказ&quot;</span><span class="operator">)</span><span class="operator">;</span></pre>
+
+<a name="_разработка_печатных_форм"></a><a name="issogl2_разработка_печатных_форм_с_использованием_макетов_в_формате_офисных_документов_microsoft_word_и_openoffice_writer"><h3>Разработка печатных форм с использованием макетов в формате офисных документов (Microsoft Word и OpenOffice Writer)</h3></a>
+
+<p class="Paragraph0c">Помимо макетов в формате табличного документа (mxl), можно
+использовать макеты в форматах Microsoft Word (doc) и OpenOffice Writer (odt).
+Особенностью использования таких макетов при формировании печатных форм
+является использование клиентского контекста (подробности в разделе «<a href="#_формирование_печатной_формы">Формирование
+печатной формы в клиентском контексте</a>»).</p>
+
+<p class="Paragraph0c">В общем виде разработка такой печатной формы выглядит следующим
+образом:</p>
+
+<p class="Number81">1. 
+Создание макета печатной формы.</p>
+
+<p class="Number81">2. 
+Создание процедуры подготовки данных для печати.</p>
+
+<p class="Number81">3. 
+Создание описания команды печати.</p>
+
+<p class="Number81">4. 
+Создание обработчика команды печати.</p>
+
+<a name="issogl3_создание_макета_печатной_формы"><h4>Создание макета печатной формы</h4></a>
+
+<p class="Paragraph0c">Макет печатной формы может быть подготовлен в одном из
+форматов: Microsoft Word или OpenOffice.org Writer. Макет представляет собой
+обычный офисный документ, состоящий из одной или нескольких областей следующих
+типов: </p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">СтрокаТаблицы</span> –
+используется для вывода множества строк;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Список</span> –
+используется для вывода множества строк;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Общая</span> –
+используется однократно.</p>
+
+<p class="Paragraph0c">Области выделяются при помощи разделителей специального
+вида:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">{v8 Область<span class="operator">.</span><span class="operator">&lt;</span>Имя области<span class="operator">&gt;</span>}
+...
+{<span class="operator">/</span>v8 Область<span class="operator">.</span><span class="operator">&lt;</span>Имя области<span class="operator">&gt;</span>}</pre>
+
+<p class="Paragraph0c">Каждая область может содержать в себе маркеры параметров
+для подстановки значений из информационной базы:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">{v8 <span class="operator">&lt;</span>Имя параметра<span class="operator">&gt;</span>}</pre>
+
+<p class="Paragraph0c">Макет необходимо разместить в конфигурации (см. «<a href="#_размещение_макетов_печатных">Размещение
+макетов печатных форм в конфигурации</a>»).</p>
+
+<a name="issogl3_создание_процедуры_подготовки_данных_для_печати"><h4>Создание процедуры подготовки данных для печати</h4></a>
+
+<p class="Paragraph0c">В модуле менеджера объекта необходимо добавить экспортную
+процедуру <span class="Interface">ПолучитьДанныеПечати</span></p>
+
+<p class="Paragraph0c">Описание параметров функции <span class="Interface">ПолучитьДанныеПечати</span>:</p>
+
+<p class="Objectname">Таблица 3.69.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Параметр функции</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Описание</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">МассивДокументов</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Массив ссылок на объекты, для которых запрашиваются
+  данные для печати</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">МассивИменМакетов</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Массив имен макетов, в которые подставляются данные
+  для печати</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ДополнительныеПараметры</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Структура с дополнительными параметрами</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Возвращаемое значение функции – соответствие с двумя
+ключами: <span class="Interface">Данные</span> и <span class="Interface">Макеты</span>.
+В ключе <span class="Interface">Данные</span> находится соответствие в формате: </p>
+
+<p class="MsoListBullet">&#9679; 
+ключ – ссылка на объект информационной базы;</p>
+
+<p class="MsoListBullet">&#9679; 
+значение – структура, где ключ – имя макета, а
+значение – структура с данными объекта (формат выбирается самостоятельно).</p>
+
+<p class="Paragraph0c">В ключе <span class="Interface">Макеты</span> находится структура
+с тремя ключами: <span class="Interface">ОписаниеОбластей</span>, <span class="Interface">ТипыМакетов</span> и <span class="Interface">ДвоичныеДанныеМакетов</span>.
+В ключе <span class="Interface">ОписаниеОбластей</span> содержится структура, в
+которой в качестве ключа выступает имя макета, а значением является структура,
+содержащая описание области макета, формируемая с помощью вспомогательной
+функции <span class="Interface">ДобавитьОписаниеОбласти</span>.</p>
+
+<p class="Picture"><IMG src="_img/bb4930f70ba50b6391a4d4b0238cf1d5/image024.gif@_=1504708101" WIDTH="496" ALT HEIGHT="420"></p>
+
+<p class="Paragraph0c">В ключе <span class="Interface">ДвоичныеДанныеМакетов</span>
+находится соответствие, в котором ключом является имя макета, а значение
+содержит двоичные данные макета офисного документа.</p>
+
+<a name="issogl3_создание_описания_команды_печати"><h4>Создание описания команды печати</h4></a>
+
+<p class="Paragraph0c">В модуле менеджера объекта в процедуре <span class="Interface">ДобавитьКомандыПечати</span> надо добавить описание команды (с
+использованием параметра <span class="Interface">Обработчик</span>), например:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// Счет на оплату в Microsoft Word</span>
+    КомандаПечати <span class="operator">=</span> КомандыПечати<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    КомандаПечати<span class="operator">.</span>МенеджерПечати <span class="operator">=</span> <span class="string">&quot;Документ._ДемоСчетНаОплатуПокупателю&quot;</span><span class="operator">;</span>
+    КомандаПечати<span class="operator">.</span>Идентификатор <span class="operator">=</span> <span class="string">&quot;СчетНаОплату(MSWord)&quot;</span><span class="operator">;</span>
+    КомандаПечати<span class="operator">.</span>Представление <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Счет на оплату в Microsoft Word'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    КомандаПечати<span class="operator">.</span>Картинка <span class="operator">=</span> БиблиотекаКартинок<span class="operator">.</span>ФорматWord2007<span class="operator">;</span>
+    КомандаПечати<span class="operator">.</span>ПроверкаПроведенияПередПечатью <span class="operator">=</span> <span class="keyword">Истина</span><span class="operator">;</span>
+    КомандаПечати<span class="operator">.</span>Обработчик <span class="operator">=</span> <span class="string">&quot;_ДемоСтандартныеПодсистемыКлиент.ПечатьСчетовНаОплатуПокупателю&quot;</span><span class="operator">;</span></pre>
+
+<p class="Paragraph0c">Описание параметров процедуры <span class="Interface">ДобавитьКомандыПечати</span>
+см. в разделе «<span class="MsoHyperlink"><a href="#_разработка_команд_печати">Разработка
+команд печати</a>».</span></p>
+
+<a name="issogl3_создание_обработчика_команды_печати"><h4>Создание обработчика команды печати</h4></a>
+
+<p class="Paragraph0c">В параметре <span class="Interface">Обработчик</span>
+необходимо указать имя функции, которой будет передано управление при
+выполнении команды печати. В клиентском общем модуле необходимо создать эту
+функцию и в ней реализовать подготовку печатной формы.</p>
+
+<p class="Paragraph0c">Для заполнения структуры описания областей макета
+необходимо использовать процедуру <span class="Interface">УправлениеПечатью.ДобавитьОписаниеОбласти</span>.
+Первым параметром в ней выступает структура с описанием областей, вторым – имя
+области, как она задана в макете, третьим – тип области.</p>
+
+<p class="Paragraph0c">В макете имеются предопределенные области: <span class="Interface">ВерхнийКолонтитул</span> и <span class="Interface">НижнийКолонтитул</span>,
+их можно использовать наравне с другими областями.</p>
+
+<p class="Paragraph0c">Пример реализации см. в демонстрационной конфигурации, в
+модуле менеджера документа <span class="Interface">_ДемоСчетНаОплатуПокупателю</span>
+в процедуре <span class="Interface">ДобавитьКомандыПечати</span> (в описании
+команд <span class="Interface">Счет на оплату в Microsoft Word</span> и <span class="Interface">Счет на оплату в OpenOffice.org Writer</span>), в процедуре <span class="Interface">ПолучитьДанныеПечати</span>, а также в функции <span class="Interface">ПечатьСчетовНаОплатуПокупателю</span> модуля <span class="Interface">_ДемоСтандартныеПодсистемыКлиент</span>.</p>
+
+<p class="Warningword">Важно!</p>
+
+<p class="Notes">Формирование печатных форм в формате офисных документов
+недоступно в базовых версиях конфигураций (из-за ограничений платформы
+«1С:Предприятие», связанных с недоступностью COM-соединений). В базовых версиях
+конфигураций следует воздержаться от разработки таких команд печати.</p>
+
+<a name="issogl2_размещение_в_командном_интерфейсе"><h3>Размещение в командном интерфейсе</h3></a>
+
+<p class="Number81">1. 
+Для редактирования макетов печатных форм следует
+разместить в командном интерфейсе ответственного за изменение макетов регистр
+сведений <span class="Interface">ПользовательскиеМакетыПечати</span>.</p>
+
+<p class="Number81">2. 
+В персональных настройках пользователя следует
+разместить:</p>
+
+<p class="MsoListBullet2">&#9679; 
+Команду настройки каталога печати с кодом:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">ОткрытьФорму<span class="operator">(</span><span class="string">&quot;РегистрСведений.ПользовательскиеМакетыПечати.Форма.НастройкаКаталогаФайловПечати&quot;</span><span class="operator">)</span><span class="operator">;</span></pre>
+
+<p class="MsoListBullet2">&#9679; 
+Команду для задания действия при выборе макета:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">ОткрытьФорму<span class="operator">(</span><span class="string">&quot;РегистрСведений.ПользовательскиеМакетыПечати.Форма.ВыбораРежимаОткрытияМакета&quot;</span><span class="operator">)</span><span class="operator">;</span></pre>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Для настройки прав доступа пользователей к данным
+подсистемы «Печать» следует использовать роли, указанные ниже.</p>
+
+<p class="Objectname">Таблица 3.70.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ИзменениеМакетовПечатныхФорм</span></p>
+  <p class="TextinTable81">Редактирование макетов печатных форм</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ВыводНаПринтерФайлБуферОбмена</span>
+  (из подсистемы «Базовая функциональность»)</p>
+  <p class="TextinTable81">Используется для разрешения вывода печатных форм на
+  принтер и отправки их по электронной почте</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Дополнительно следует создать вспомогательные роли или
+использовать подходящие роли, существующие в конфигурации, для обеспечения
+доступа к данным.</p>
+
+<p class="Objectname">Таблица 3.71.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">№</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Вспомогательные роли и их
+  назначение</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">&lt;ВыводПечатнойФормыНаПринтер&gt;</span></p>
+  <p class="TextinTable81">Просмотр команды вывода печатных форм на принтер</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Пример настройки прав доступа пользователей:</p>
+
+<p class="Objectname">Таблица 3.72.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Группа пользователей и ее
+   функции</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Состав ролей</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Ответственный за поддержку макетов печатных форм</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">БазовыеПрава</span> (из
+  подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЗапускТонкогоКлиента</span>
+  (из подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ИзменениеМакетовПечатныхФорм</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Пользователь, которому разрешено получать и формировать
+  печатные формы, а также выводить их на печать и пользоваться командами
+  «быстрой печати» на принтер</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">БазовыеПрава</span> или <span class="Interface">БазовыеПраваВнешнегоПользователя</span> (из подсистемы
+  «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЗапускТонкогоКлиента</span>
+  (из подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ВыводНаПринтерФайлБуферОбмена</span>
+  (из подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">&lt;ВыводПечатнойФормыНаПринтер&gt;</span></p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<a name="issogl2_разработка_команд_печати_в_расширении_конфигурации"><h3>Разработка команд печати в расширении конфигурации</h3></a>
+
+<p class="Paragraph0c">Вместо поставки внешних печатных форм в виде внешних
+обработок рекомендуется вести их разработку с помощью расширений конфигурации.
+Для поставки команд печати внешних печатных форм в расширении конфигурации
+необходимо:</p>
+
+<p class="Number81">1. 
+Добавить в расширение конфигурации обработку и
+включить ее в состав подсистемы <span class="Interface">ПодключаемыеОтчетыИОбработки</span>.</p>
+
+<p class="Number81">2. 
+В модуле менеджера обработки определить
+процедуру <span class="Interface">ПриОпределенииНастроек</span> в соответствии с
+шаблоном <A href="3.4. _25E1_25E0_25E7_25EE_25E2_25E0_25FF _25F4_25F3_25ED_25EA_25F6_25E8_25EE_25ED_25E0_25EB_25FC_25ED_25EE_25F1_25F2_25FC.htm@_=1504708101#_подключение_отчетов_и">подключения
+отчетов и обработок к другим объектам метаданных</a> и реализовать
+команды печати:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">#Область ПрограммныйИнтерфейс</span>
+<span class="comment">// Определяет состав программного интерфейса для интеграции с конфигурацией.</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//   Настройки - Структура - Настройки интеграции этого объекта.</span>
+<span class="comment">//       См. возвращаемое значение функции ПодключаемыеКоманды.НастройкиПодключаемыхОтчетовИОбработок().</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> ПриОпределенииНастроек<span class="operator">(</span>Настройки<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    Настройки<span class="operator">.</span>Размещение<span class="operator">.</span>Добавить<span class="operator">(</span>Метаданные<span class="operator">.</span>Документы<span class="operator">.</span>ИмяДокумента<span class="operator">)</span><span class="operator">;</span>
+    Настройки<span class="operator">.</span>ДобавитьКомандыПечати <span class="operator">=</span> <span class="keyword">Истина</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="comment">// Заполняет список команд печати.</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//   КомандыПечати - ТаблицаЗначений - Подробнее см. в УправлениеПечатью.СоздатьКоллекциюКомандПечати().</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> ДобавитьКомандыПечати<span class="operator">(</span>КомандыПечати<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="comment">// Код по добавлению команд печати.</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="preprocessor">#КонецОбласти</span>
+<span class="comment">// Формирует печатные формы.</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//  МассивОбъектов – Массив – ссылки на объекты, которые нужно распечатать;</span>
+<span class="comment">//  ПараметрыПечати – Структура – дополнительные настройки печати;</span>
+<span class="comment">//  КоллекцияПечатныхФорм – ТаблицаЗначений – сформированные табличные документы (выходной параметр)</span>
+<span class="comment">//  ОбъектыПечати – СписокЗначений – значение – ссылка на объект;</span>
+<span class="comment">//                                            представление – имя области, в которой был выведен объект (выходной параметр);</span>
+<span class="comment">//  ПараметрыВывода – Структура – дополнительные параметры сформированных табличных документов (выходной параметр).</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> Печать<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> ПараметрыПечати<span class="operator">,</span> КоллекцияПечатныхФорм<span class="operator">,</span> ОбъектыПечати<span class="operator">,</span> ПараметрыВывода<span class="operator">)</span> <span class="keyword">Экспорт</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Аналогичным образом в расширение конфигурации можно
+включить сразу несколько обработок с внешними печатными формами. Кроме того,
+предусмотрена возможность разрабатывать команды печати в отчетах. Например, это
+может потребоваться, если для формирования печатной формы используется система
+компоновки данных (СКД).</p>
+
+<p class="Paragraph0c">См. примеры в демонстрационной конфигурации: обработка <span class="Interface">_ДемоПодключаемыеКомандыПечатьСчетовНаОплатуПокупателю</span> в
+составе расширения <span class="Interface">_ДемоПодключаемыеКоманды</span> и
+обработка <span class="Interface">_ДемоПечатьКарточкиОрганизации</span> в составе
+конфигурации.</p>
+
+<p class="Paragraph0c">При необходимости, разработанные таким образом обработки
+также можно перенести без каких-либо доработок из расширения конфигурации в
+состав самой конфигурации.</p>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Все объекты метаданных подсистемы, содержащие данные,
+рекомендуется включать в планы обмена распределенной ИБ (РИБ).</p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

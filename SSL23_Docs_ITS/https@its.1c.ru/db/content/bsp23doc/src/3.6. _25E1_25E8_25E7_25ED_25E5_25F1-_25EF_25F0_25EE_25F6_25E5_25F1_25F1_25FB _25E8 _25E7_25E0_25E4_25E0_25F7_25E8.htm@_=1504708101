@@ -1,0 +1,700 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.6. &#1041;&#1080;&#1079;&#1085;&#1077;&#1089;-&#1087;&#1088;&#1086;&#1094;&#1077;&#1089;&#1089;&#1099; &#1080; &#1079;&#1072;&#1076;&#1072;&#1095;&#1080;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.6. _25E1_25E8_25E7_25ED_25E5_25F1-_25EF_25F0_25EE_25F6_25E5_25F1_25F1_25FB _25E8 _25E7_25E0_25E4_25E0_25F7_25E8.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_бизнес-процессы_и_задачи"></a><h1>3.6. Бизнес-процессы и задачи</h1>
+
+<p class="Paragraph0c">Подсистема «Бизнес-процессы и задачи» предназначена для
+управления жизненным циклом задач, возникающих в системе как результат
+выполнения бизнес-процессов или интерактивного ввода пользователями системы.
+Задачи могут быть адресованы исполнителю или группе исполнителей как
+персонально (персональная адресация), так и с использованием ролей исполнителей
+(ролевая адресация). В подсистему входят пять функциональных блоков: настройка
+ролевой адресации, создание, исполнение, контроль и автоматический мониторинг
+задач. </p>
+
+<p class="Paragraph0c">Подсистема также предоставляет базовую функциональность,
+облегчающую разработку произвольных бизнес-процессов в конфигурации.</p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<a name="issogl2_определение_состава_ролей_исполнителей_и_объектов_адресации_в_конфигурации"><h3>Определение состава ролей исполнителей и объектов адресации в конфигурации</h3></a>
+
+<p class="Paragraph0c">Необходимость в ролевой адресации обусловлена, как
+правило, применением в конфигурации бизнес-процессов. Подсистема
+«Бизнес-процессы и задачи» предоставляет разработчикам бизнес-процессов
+возможности по созданию ролей исполнителей, участвующих в бизнес-процессах, а
+также предъявляет определенные требования к разработке самих бизнес-процессов в
+конфигурации.</p>
+
+<p class="Paragraph0c">Справочник <span class="Interface">РолиИсполнителей</span>
+содержит «плоский» список ролей исполнителей, участвующих в бизнес-процессах.
+Например, <span class="Interface">Руководитель компании</span>, <span class="Interface">Менеджер продаж</span>, <span class="Interface">Разработчик</span>
+и т. п. Для каждой роли в этом справочнике необходимо создать предопределенный
+элемент, указав значения реквизитов <span class="Interface">Имя</span> и <span class="Interface">Наименование</span>. Значения остальных реквизитов элементов
+справочника должны устанавливаться в процедуре обновления информационной базы. </p>
+
+<p class="Paragraph0c">С подсистемой поставляется одна предопределенная роль <span class="Interface">Координатор выполнения задач</span>, которая используется для
+получения адресатов уведомления в функциональном блоке автоматического
+мониторинга задач. Например, код процедуры обновления для установки реквизитов
+роли <span class="Interface">Координатор выполнения задач </span>выглядит так:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    ВсеОбъектыАдресации <span class="operator">=</span> ПланыВидовХарактеристик<span class="operator">.</span>ОбъектыАдресацииЗадач<span class="operator">.</span>ВсеОбъектыАдресации<span class="operator">;</span>
+    РольОбъект <span class="operator">=</span> Справочники<span class="operator">.</span>РолиИсполнителей<span class="operator">.</span>ОтветственныйЗаКонтрольИсполнения<span class="operator">.</span>ПолучитьОбъект<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    РольОбъект<span class="operator">.</span>ИспользуетсяБезОбъектовАдресации <span class="operator">=</span> <span class="keyword">Истина</span><span class="operator">;</span>
+    РольОбъект<span class="operator">.</span>ИспользуетсяСОбъектамиАдресации <span class="operator">=</span> <span class="keyword">Истина</span><span class="operator">;</span>
+    РольОбъект<span class="operator">.</span>ТипыОсновногоОбъектаАдресации <span class="operator">=</span> ВсеОбъектыАдресации<span class="operator">;</span>
+    РольОбъект<span class="operator">.</span>Записать<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span></pre>
+
+<p class="Paragraph0c">В определенных случаях указания одной только роли
+исполнителя бывает недостаточно, чтобы определить список исполнителей задачи.
+Тогда вместе с ролью нужно еще указывать основной и/или дополнительный <em>объект
+адресации</em>. Объектом адресации может быть любой справочник конфигурации,
+например <span class="Interface">Проекты</span> или <span class="Interface">Подразделения</span>.
+Список возможных типов объектов адресации для ролей, определенных в справочнике
+<span class="Interface">РолиИсполнителей</span>, содержится в плане видов
+характеристик (ПВХ) <span class="Interface">ОбъектыАдресацииЗадач</span>. Для
+каждого объекта адресации в этом ПВХ необходимо создать один предопределенный
+элемент, указав значения реквизитов <span class="Interface">Имя</span>, <span class="Interface">Наименование</span> и <span class="Interface">Тип</span>.
+Например, если необходимо, чтобы пользователь вместе с ролью <span class="Interface">Руководитель проекта</span> всегда указывал проект (элемент
+справочника <span class="Interface">Проекты</span>), то нужно сделать следующее:</p>
+
+<p class="MsoListBullet">&#9679; 
+создать предопределенный элемент ПВХ <span class="Interface">ОбъектыАдресацииЗадач</span>, у которого в составе типов
+указать ссылку на справочник <span class="Interface">Проекты</span>; </p>
+
+<p class="MsoListBullet">&#9679; 
+в реквизите <span class="Interface">ТипыОсновногоОбъектаАдресации</span>
+роли <span class="Interface">Руководитель проекта</span> указать ссылку на этот
+элемент ПВХ;</p>
+
+<p class="MsoListBullet">&#9679; 
+реквизит <span class="Interface">ИспользуетсяБезОбъектовАдресации</span>
+роли <span class="Interface">Руководитель проекта</span> установить в значение <span class="Interface">Ложь</span>, а <span class="Interface">ИспользуетсяСОбъектамиАдресации</span>
+– в значение <span class="Interface">Истина</span>.</p>
+
+<p class="Paragraph0c">Не рекомендуется создавать элементы ПВХ <span class="Interface">ОбъектыАдресацииЗадач</span> с составным типом данных. Вместо
+этого необходимо создавать несколько предметно-ориентированных ролей, каждая из
+которых соответствует объекту адресации одного типа. Исключение составляет предопределенный
+элемент <span class="Interface">ВсеОбъектыАдресации</span>, который поставляется
+вместе с подсистемой. Состав типов предопределенного элемента «Все объекты
+адресации» должен всегда совпадать с составом типов ПВХ <span class="Interface">ОбъектыАдресацииЗадач</span>.
+</p>
+
+<p class="Paragraph0c">Не следует создавать предопределенный элемент ПВХ <span class="Interface">ОбъектыАдресацииЗадач</span>, когда используется только один
+объект адресации. Вместо этого необходимо у элемента <span class="Interface">ВсеОбъектыАдресации</span>
+изменить наименование на представление этого объекта адресации (например, <span class="Interface">Организация</span>) и указать его тип.</p>
+
+<p class="Paragraph0c">Добавление новых элементов ПВХ <span class="Interface">ОбъектыАдресацииЗадач</span>
+или редактирование существующих в режиме <span class="Interface">1С:Предприятие</span>
+недоступно.</p>
+
+<p class="Paragraph0c">При разработке бизнес-процессов, позволяющих
+организовывать взаимодействие с внешними пользователями (партнерами,
+респондентами и др. – подробнее см. раздел «<A href="3.37. _25EF_25EE_25EB_25FC_25E7_25EE_25E2_25E0_25F2_25E5_25EB_25E8.htm@_=1504708101#_пользователи">Пользователи</a>»),
+необходимо принять решение по поводу состава ролей, доступных для выбора
+внешним пользователям. Например, это могут быть: <span class="Interface">Служба
+техподдержки</span>, <span class="Interface">Менеджер по продажам</span>, <span class="Interface">Служба доставки</span> и т. п. Как правило, внешним
+пользователям недоступны имена конкретных сотрудников компании, поэтому в
+качестве исполнителя они могут указывать только предназначенные для них роли
+исполнителей. Например, код процедуры обновления для ограничения назначения
+роли <span class="Interface">МенеджерПоПродажам </span>выглядит так:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    РольОбъект <span class="operator">=</span> Справочники<span class="operator">.</span>РолиИсполнителей<span class="operator">.</span>МенеджерПоПродажам<span class="operator">.</span>ПолучитьОбъект<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    РольОбъект<span class="operator">.</span>ИспользуетсяБезОбъектовАдресации <span class="operator">=</span> <span class="keyword">Истина</span><span class="operator">;</span>
+  НазначениеРоли <span class="operator">=</span> РольОбъект<span class="operator">.</span>Назначение<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+  НазначениеРоли<span class="operator">.</span>ТипПользователей <span class="operator">=</span> Справочники<span class="operator">.</span>Партнеры<span class="operator">.</span>ПустаяСсылка<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+  НазначениеРоли <span class="operator">=</span> РольОбъект<span class="operator">.</span>Назначение<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+  НазначениеРоли<span class="operator">.</span>ТипПользователей <span class="operator">=</span> Справочники<span class="operator">.</span>КонтактныеЛицаПартнеров<span class="operator">.</span>ПустаяСсылка<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    РольОбъект<span class="operator">.</span>Записать<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span></pre>
+
+<a name="issogl2_настройка_отложенного_старта_для_бизнес-процессов"><h3>Настройка отложенного старта для бизнес-процессов</h3></a>
+
+<p class="Paragraph0c">Подсистема также позволяет создавать бизнес-процессы,
+старт которых может быть отложен на определенный срок. Все бизнес-процессы,
+которые могут быть добавлены для отложенного старта, необходимо включить в
+состав определяемого типа <span class="Interface">ОтложенныеБизнесПроцессы</span>.
+В состав данного типа по умолчанию уже включен поставляемый бизнес-процесс <span class="Interface">Задание</span>.</p>
+
+<p class="Paragraph0c">Для настройки отложенного старта бизнес-процесса
+необходимо разместить в форме бизнес-процесса соответствующую команду,
+вызывающую метод программного интерфейса <span class="Interface">БизнесПроцессыИЗадачиКлиент.НастроитьОтложенныйСтарт</span>,
+которая и вызывает форму настройки.</p>
+
+<p class="Paragraph0c">Бизнес-процессы, которым настроен отложенный старт,
+периодически анализируются на необходимость их старта регламентным заданием <span class="Interface">СтартОтложенныхПроцессов</span>.</p>
+
+<a name="issogl2_размещение_в_командном_интерфейсе"><h3>Размещение в командном интерфейсе</h3></a>
+
+<p class="Paragraph0c">Если в конфигурации не используется подсистема «Настройки
+программы», то на рабочем месте администратора программы необходимо разместить
+константы:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ИспользоватьБизнесПроцессыИЗадачи</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ИспользоватьПодчиненныеБизнесПроцессы</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ИзменятьЗаданияЗаднимЧислом</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ИспользоватьДатуИВремяВСрокахЗадач</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ИспользоватьДатуНачалаЗадач</span>.</p>
+
+<p class="Paragraph0c">См. пример в форме <span class="Interface">Органайзер</span>
+обработки <span class="Interface">ПанельАдминистрированияБСП</span>.</p>
+
+<p class="Paragraph0c">Для использования в конфигурации функционального блока
+настройки ролевой адресации необходимо:</p>
+
+<p class="MsoListBullet">&#9679; 
+разместить в командном интерфейсе рабочего места
+администратора системы команду <span class="Interface">РолиИИсполнителиЗадач </span>регистра
+сведений <span class="Interface">ИсполнителиЗадач</span>; </p>
+
+<p class="MsoListBullet">&#9679; 
+перечислить в составе типов определяемого типа <span class="Interface">ОбъектАдресации</span> ссылки на справочники конфигурации,
+которые являются объектами адресации (состав типов команды должен совпадать с
+составом типов ПВХ <span class="Interface">ОбъектыАдресацииЗадач</span>).</p>
+
+<p class="Paragraph0c">Для использования в конфигурации функционального блока
+создания задач необходимо:</p>
+
+<p class="MsoListBullet">&#9679; 
+принять решение по поводу допустимых типов
+объектов метаданных, на основании которых в конфигурации будет возможно
+создавать задачи, буквально находясь в форме объекта. Такие объекты называются
+предметами задач. В качестве предметов могут выступать любые справочники,
+документы, планы видов характеристик и задачи; </p>
+
+<p class="MsoListBullet">&#9679; 
+указать состав типов предметов задач:</p>
+
+<p class="MsoListBullet2">&#9679;  в
+реквизите <span class="Interface">Вводится на основании</span> бизнес-процесса <span class="Interface">Задание</span>;</p>
+
+<p class="MsoListBullet2">&#9679;  в
+свойстве <span class="Interface">Тип </span>определяемого типа <span class="Interface">ПредметЗадачи</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+указать все типы бизнес-процессов в свойстве <span class="Interface">Тип </span>определяемого типа <span class="Interface">БизнесПроцесс</span>.</p>
+
+<p class="Paragraph0c">Для использования в конфигурации функционального блока
+исполнения задач необходимо:</p>
+
+<p class="MsoListBullet">&#9679; 
+разместить в командном интерфейсе исполнителя
+задач команду <span class="Interface">МоиЗадачи</span> задачи <span class="Interface">ЗадачаИсполнителя</span> и отчеты <span class="Interface">Задачи</span>,
+<span class="Interface">ЗадачиИстекающиеНаДату</span>; </p>
+
+<p class="MsoListBullet">&#9679; 
+для размещения списка своих задач на рабочем
+столе предназначена форма <span class="Interface">МоиЗадачиДляРабочегоСтола</span>
+задачи <span class="Interface">ЗадачаИсполнителя</span>.</p>
+
+<p class="Paragraph0c">Для использования в конфигурации функционального блока
+контроля исполнения необходимо разместить в командном интерфейсе:</p>
+
+<p class="MsoListBullet">&#9679; 
+команду <span class="Interface">МоиБизнесПроцессы</span>
+регистра сведений <span class="Interface">СписокБизнесПроцессов</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+команду <span class="Interface">ВсеЗадачи</span>
+задачи <span class="Interface">ЗадачаИсполнителя</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+отчеты <span class="Interface">ЗадачиИстекающиеНаДату</span>,
+<span class="Interface">ПросроченныеЗадачи</span>, <span class="Interface">Задачи</span>,
+<span class="Interface">ЗависшиеЗадачи</span> и <span class="Interface">БизнесПроцессы</span>.</p>
+
+<a name="issogl2_особые_случаи_внедрения_подсистемы"><h3>Особые случаи внедрения подсистемы</h3></a>
+
+<p class="MsoListBullet">&#9679; 
+<A href="3.59. _25EE_25F1_25EE_25E1_25FB_25E5 _25F1_25EB_25F3_25F7_25E0_25E8 _25E2_25ED_25E5_25E4_25F0_25E5_20EA087B14A#_внедрение_подсистем_«бизнес-процесс">Внедрение подсистем «Бизнес-процессы и
+задачи» и «Управление доступом»</a>.</p>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Для настройки прав доступа пользователей к данным
+подсистемы «Бизнес-процессы и задачи» следует использовать роли, приведенные
+ниже.</p>
+
+<p class="Objectname">Таблица 3.12.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">№</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ДобавлениеИзменениеРолейИсполнителей</span></p>
+  <p class="TextinTable81">Добавление и изменение ролей исполнителей, объектов
+  адресации. Изменение исполнителей ролей по объектам адресации. Просмотр
+  отчетов подсистемы</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПолныеПрава</span> (из
+  подсистемы «Базовая функциональность»)</p>
+  <p class="TextinTable81">Включение и отключение использования бизнес-процессов
+  и задач. Удаление помеченных на удаление объектов подсистемы</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">3. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ДобавлениеИзменениеЗаданий</span></p>
+  <p class="TextinTable81">Добавление и изменение бизнес-процессов <span class="Interface">Задание</span>. Просмотр отчетов: <span class="Interface">Список
+  истекающих задач</span>, <span class="Interface">Список просроченных задач</span>,
+  <span class="Interface">Задачи</span>. </p>
+  <p class="TextinTable81">Роль содержит тексты ограничений доступа, которые
+  используют возможности подсистемы «Управление доступом»</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">4. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ИзменениеВыполнениеЗадач</span></p>
+  <p class="TextinTable81">Изменение и выполнение задач. Просмотр отчетов: <span class="Interface">Список истекающих задач</span>, <span class="Interface">Задачи</span>.
+  </p>
+  <p class="TextinTable81">Роль содержит тексты ограничений доступа, которые
+  используют возможности подсистемы «Управление доступом»</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">5. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ЧтениеЗаданий</span></p>
+  <p class="TextinTable81">Чтение бизнес-процессов <span class="Interface">Задание</span>.
+  Чтение задач. Просмотр отчетов: <span class="Interface">Список истекающих задач</span>,
+  <span class="Interface">Список просроченных задач</span>, <span class="Interface">Задачи</span>.</p>
+  <p class="TextinTable81">Роль содержит тексты ограничений доступа, которые используют
+  возможности подсистемы «Управление доступом»</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Дополнительно следует создать ряд ролей с текстами
+ограничения доступа, а также ряд вспомогательных ролей (или использовать
+подходящие роли, существующие в конфигурации) для обеспечения доступа к данным,
+которые не относятся к подсистеме «Бизнес-процессы и задачи», но требуются для
+работы с ней.</p>
+
+<p class="Objectname">Таблица 3.13.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">№</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Вспомогательные роли и их
+  назначение</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">&lt;ЧтениеБизнесПроцессов&gt;</span></p>
+  <p class="TextinTable81">Роль или группа ролей для чтения других
+  бизнес-процессов конфигурации</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">&lt;ДобавлениеИзменениеБизнесПроцессов&gt;</span></p>
+  <p class="TextinTable81">Роль или группа ролей для добавления и изменения
+  других бизнес-процессов конфигурации</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">3. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">&lt;ДобавлениеИзменениеИсполнителейРолейПоОбъектамАдресации&gt;</span></p>
+  <p class="TextinTable81">Изменение исполнителей ролей по разрешенным объектам
+  адресации. Просмотр отчетов подсистемы. Пример настройки прав к объектам
+  метаданных см. в демонстрационной конфигурации: роль <span class="Interface">_ДемоДобавлениеИзменениеИсполнителейРолейПоОбъектамАдресации</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Примеры настройки прав доступа пользователей приведены
+ниже.</p>
+
+<p class="Objectname">Таблица 3.14.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Группа пользователей и ее функции</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Состав ролей</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Администратор</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ПолныеПрава </span>(из
+  подсистемы «Базовая функциональность»)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Ответственный за ведение списка ролей и назначение на
+  них исполнителей</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">БазовыеПрава</span> (из
+  подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЗапускТонкогоКлиента</span>
+  (из подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ДобавлениеИзменениеРолейИсполнителей</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">3. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Руководитель подразделения:</p>
+  <p class="BulletTab">&#9679; 
+  назначение исполнителей на роли в своем
+  подразделении,</p>
+  <p class="BulletTab">&#9679; 
+  выдача заданий,</p>
+  <p class="BulletTab">&#9679; 
+  контроль выполнения задач,</p>
+  <p class="BulletTab">&#9679; 
+  просмотр отчетов по задачам подразделения</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">БазовыеПрава </span>(из
+  подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЗапускТонкогоКлиента</span>
+  (из подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">&lt;ДобавлениеИзменениеИсполнителейРолейПоОбъектамАдресации&gt;</span>,</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ДобавлениеИзменениеЗаданий</span>,</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ИзменениеВыполнениеЗадач</span>,</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">&lt;ДобавлениеИзменениеБизнесПроцессов&gt;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">4. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Сотрудник подразделения:</p>
+  <p class="BulletTab">&#9679; 
+  исполнение задач,</p>
+  <p class="BulletTab">&#9679; 
+  просмотр отчетов по своим задачам</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">БазовыеПрава</span> (из
+  подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЗапускТонкогоКлиента</span>
+  (из подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЧтениеЗаданий</span>,</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ИзменениеВыполнениеЗадач</span>,</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">&lt;ЧтениеБизнесПроцессов&gt;</span></p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<p class="Paragraph0c">Подсистема предоставляет базовую функциональность для
+разработки произвольных бизнес-процессов в конфигурации. </p>
+
+<a name="issogl2_требования_к_метаданным_бизнес-процессов"><h3>Требования к метаданным бизнес-процессов</h3></a>
+
+<p class="Paragraph0c">Для унификации бизнес-процессов по общим реквизитам
+необходимо соблюдать следующие требования к метаданным бизнес-процессов:</p>
+
+<p class="MsoListBullet">&#9679; 
+реквизит <span class="Interface">Номер</span>
+бизнес-процесса должен быть типа <span class="Interface">Строка</span>, длина –
+11;</p>
+
+<p class="MsoListBullet">&#9679; 
+у бизнес-процесса должны быть определены
+обязательные реквизиты:</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">Автор</span> (<span class="Interface">СправочникСсылка.Пользователи</span>)
+– ответственный за данный экземпляр бизнес-процесса. Например, для бизнес-процесса
+<span class="Interface">Задание</span> автором по умолчанию является
+пользователь, инициировавший бизнес-процесс. Если бизнес-процесс позволяет
+организовать взаимодействие с внешними пользователями (партнерами,
+респондентами и др.), то реквизит <span class="Interface">Автор</span> может быть
+типа <span class="Interface">СправочникСсылка, ВнешниеПользователи </span>или
+составного типа:<span class="Interface"> СправочникСсылка.Пользователи</span> и<span class="Interface"> СправочникСсылка.ВнешниеПользователи</span>;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ДатаЗавершения</span> (<span class="Interface">Дата</span>) –
+дата фактического завершения бизнес-процесса;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">Наименование</span> (<span class="Interface">Строка</span>, <span class="Interface">250</span>, переменная длина) – текстовое описание экземпляра
+бизнес-процесса. Например, в бизнес-процессе <span class="Interface">Задание</span>
+в качестве наименования выступает текст задачи;</p>
+
+<p class="MsoListBullet">&#9679; 
+в свойстве <span class="Interface">Задачи</span>
+бизнес-процесса следует указывать задачу <span class="Interface">ЗадачаИсполнителя</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+в свойство <span class="Interface">Поля блокировки
+данных</span> необходимо включить стандартный реквизит <span class="Interface">ГлавнаяЗадача</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+если предполагается использовать механизмы
+остановки и продолжения бизнес-процессов, то в бизнес-процессе следует определить
+реквизит <span class="Interface">Состояние</span> (<span class="Interface">ПеречислениеСсылка.СостоянияБизнесПроцессов</span>)
+и разместить на форме бизнес-процесса команды остановки и продолжения по
+аналогии с бизнес-процессом <span class="Interface">Задание</span>; </p>
+
+<p class="MsoListBullet">&#9679; 
+если предполагается использовать иерархию
+бизнес-процессов, то в бизнес-процессе следует определить реквизит <span class="Interface">ГлавнаяЗадача</span> (<span class="Interface">ЗадачаСсылка.ЗадачаИсполнителя</span>)
+и вывести его на форме бизнес-процесса по аналогии с бизнес-процессом <span class="Interface">Задание</span>. Реквизит <span class="Interface">ГлавнаяЗадача</span>
+необходимо включить в свойство <span class="Interface">Поля блокировки данных</span>.</p>
+
+<p class="Paragraph0c">В модуле менеджера бизнес-процесса должны быть определены
+три экспортные процедуры и функции:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ФормаВыполненияЗадачи</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПриПеренаправленииЗадачи</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ОбработкаВыполненияПоУмолчанию</span>.</p>
+
+<p class="Paragraph0c">Назначение, описание и пример их использования см. в
+модуле менеджера бизнес-процесса <span class="Interface">Задание</span>.</p>
+
+<p class="Paragraph0c">Список всех бизнес-процессов, в модулях менеджеров которых
+определены эти процедуры и функции, необходимо перечислить в процедуре <span class="Interface">ПриОпределенииБизнесПроцессов</span> общего модуля <span class="Interface">БизнесПроцессыИЗадачиПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Если бизнес-процесс связан с некоторым
+объектом-основанием, в разрезе которого должен ограничиваться доступ к
+экземплярам бизнес-процесса, то такой бизнес-процесс должен иметь реквизит со
+ссылкой на объект-основание. Например, это может быть реквизит <span class="Interface">Предмет</span> составного типа, как у бизнес-процесса <span class="Interface">Задание</span>. </p>
+
+<p class="Paragraph0c">Для вывода понятных представлений бизнес-процессов в виде
+«Согласовать техпроект по Такси от 01.04.2014 (Задание)» следует также создать
+две подписки на события менеджеров бизнес-процессов <span class="Interface">ОбработкаПолученияПолейПредставления</span>
+и <span class="Interface">ОбработкаПолученияПредставления</span>. В качестве
+обработчиков подписок указать процедуры общего модуля <span class="Interface">БизнесПроцессыИЗадачиКлиентСервер</span>:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ОбработкаПолученияПолейПредставленияБизнесПроцесса</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ОбработкаПолученияПредставленияБизнесПроцесса</span>.</p>
+
+<p class="Paragraph0c">В качестве примера см. подписки на события <span class="Interface">ПолучитьПоляПредставленияБизнесПроцесса</span> и <span class="Interface">ПолучитьПредставлениеБизнесПроцесса</span>.</p>
+
+<a name="issogl2_разработка_прикладных_форм_выполнения_задач"><h3>Разработка прикладных форм выполнения задач</h3></a>
+
+<p class="Paragraph0c">Бизнес-процессы могут подменять форму выполнения задач по
+умолчанию, которая реализована в задаче <span class="Interface">ЗадачаИсполнителя</span>,
+и использовать свою прикладную форму. Для создания удобного пользовательского
+интерфейса исполнителя задачи рекомендуется использовать прикладные формы,
+сгенерированные в точках действия карты маршрута бизнес-процесса. </p>
+
+<p class="Paragraph0c">Внешний вид прикладной формы выполнения задачи
+рекомендуется выстраивать сверху вниз по порядку:</p>
+
+<p class="Number81">1. 
+Опциональное информационное поле с информацией о
+дате и результате выполнения задачи. Поле спрятано, если задача еще выполняется.</p>
+
+<p class="Number81">2. 
+Информация об отправителе задачи (как правило,
+это поле с автором бизнес-процесса), общие параметры выполнения задачи, такие
+как <span class="Interface">Крайний срок</span>, <span class="Interface">Важность</span>,
+<span class="Interface">Дата начала</span>.</p>
+
+<p class="Number81">3. 
+Содержание задачи, которое может включать
+текстовое описание постановки задачи, ссылку на предмет задачи, а также другие
+реквизиты бизнес-процесса (группа <span class="Interface">Содержание</span>).</p>
+
+<p class="Number81">4. 
+Результат выполнения задачи, который обязательно
+включает поля с исполнителем и датой фактического выполнения задачи. Результат
+может быть многовариантным; представляться как текстовым описанием, так и
+специализированными элементами управления формы (флажки, переключатели, списки
+выбора и т. п.). В этой же группе в правом нижнем углу формы также следует
+размещать в виде кнопок команды для выбора варианта выполнения задачи.
+Например: <span class="Interface">Выполнено</span>, <span class="Interface">Отменено</span>,
+<span class="Interface">Утверждено</span>, <span class="Interface">Отработано</span>
+и т. п. Выполнение такой команды приводит к закрытию формы задачи и переходу бизнес-процесса
+к следующей точке маршрута.</p>
+
+<p class="Picture"><IMG src="_img/bb4930f70ba50b6391a4d4b0238cf1d5/image006.png@_=1504708101" WIDTH="800" ALT HEIGHT="614"></p>
+
+<p class="Paragraph0c">Примеры прикладных форм можно посмотреть в базовом
+бизнес-процессе <span class="Interface">Задание</span>.</p>
+
+<p class="Paragraph0c">Для подключения прикладных форм выполнения задач в модуле
+менеджера бизнес-процесса необходимо определить экспортную функцию-обработчик <span class="Interface">ФормаВыполненияЗадачи</span>. Функция <span class="Interface">ФормаВыполненияЗадачи</span>
+вызывается каждый раз перед открытием формы задачи. Возвращаемое значение функции
+– структура с ключами <span class="Interface">ИмяФормы</span> и <span class="Interface">ПараметрыФормы</span>, значения которых используются для
+открытия формы с помощью метода контекста <span class="Interface">ОткрытьФорму</span>.
+</p>
+
+<p class="Paragraph0c">Пример реализации функции <span class="Interface">ФормаВыполненияЗадачи</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Функция</span> ФормаВыполненияЗадачи<span class="operator">(</span>ЗадачаСсылка<span class="operator">,</span> ТочкаМаршрутаСсылка<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    Результат <span class="operator">=</span> <span class="keyword">Новый</span> Структура<span class="operator">;</span>
+    <span class="keyword">Если</span> ТочкаМаршрутаСсылка <span class="operator">=</span> БизнесПроцессы<span class="operator">.</span>Задание<span class="operator">.</span>ТочкиМаршрута<span class="operator">.</span><span class="keyword">Выполнить</span> <span class="keyword">Тогда</span>
+        Результат<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;ПараметрыФормы&quot;</span><span class="operator">,</span> <span class="keyword">Новый</span> Структура<span class="operator">(</span><span class="string">&quot;Ключ&quot;</span><span class="operator">,</span> ЗадачаСсылка<span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+        Результат<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;ИмяФормы&quot;</span><span class="operator">,</span> <span class="string">&quot;БизнесПроцесс.Поручение.Форма.Выполнить&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+    <span class="keyword">Возврат</span> Результат<span class="operator">;</span>
+<span class="keyword">КонецФункции</span></pre>
+
+<p class="Paragraph0c">Дополнительные рекомендации по разработке метаданных и
+прикладных форм выполнения задач:</p>
+
+<p class="MsoListBullet">&#9679; 
+Рекомендуется давать имена формам выполнения
+задач по определенному шаблону: <span class="Interface">Действие&lt;ИмяТочкиМаршрута&gt;</span>.
+Например, <span class="Interface">ДействиеВыполнить</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+Прикладная форма выполнения задачи обязательно
+должна содержать основной реквизит <span class="Interface">Объект</span> типа <span class="Interface">ЗадачаОбъект.ЗадачаИсполнителя</span>, а также может содержать
+произвольный набор дополнительных реквизитов, среди которых, как правило, есть
+реквизиты бизнес-процесса и объектов, связанных с процессом выполнения задачи. </p>
+
+<p class="MsoListBullet">&#9679; 
+Если в форме присутствуют реквизиты
+бизнес-процесса (или других связанных объектов), то чтение и запись этих
+реквизитов рекомендуется выполнять в привилегированном режиме. Это позволит
+работать с формой задачи тем пользователям, которые при своей повседневной
+работе с системой не имеют прав на чтение или запись реквизитов
+бизнес-процесса, но, тем не менее, косвенно должны иметь к ним доступ из формы
+задачи. </p>
+
+<p class="Paragraph0c">Пример:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Процедура</span> ПрочитатьРеквизитыБизнесПроцесса<span class="operator">(</span><span class="operator">)</span>
+    ЗадачаОбъект <span class="operator">=</span> РеквизитФормыВЗначение<span class="operator">(</span><span class="string">&quot;Объект&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    УстановитьПривилегированныйРежим<span class="operator">(</span><span class="keyword">Истина</span><span class="operator">)</span><span class="operator">;</span>
+    ЗаданиеОбъект <span class="operator">=</span> ЗадачаОбъект<span class="operator">.</span>БизнесПроцесс<span class="operator">.</span>ПолучитьОбъект<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    ЗаданиеВыполнено <span class="operator">=</span> ЗаданиеОбъект<span class="operator">.</span>Выполнено<span class="operator">;</span>
+    ЗаданиеРезультатВыполнения <span class="operator">=</span> ЗаданиеОбъект<span class="operator">.</span>РезультатВыполнения<span class="operator">;</span>
+    ЗаданиеСодержание <span class="operator">=</span> ЗаданиеОбъект<span class="operator">.</span>Содержание<span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c"> </p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Процедура</span> ЗаписатьРеквизитыБизнесПроцесса<span class="operator">(</span>ЗадачаОбъект<span class="operator">)</span>
+    УстановитьПривилегированныйРежим<span class="operator">(</span><span class="keyword">Истина</span><span class="operator">)</span><span class="operator">;</span>
+    ЗаданиеОбъект <span class="operator">=</span> ЗадачаОбъект<span class="operator">.</span>БизнесПроцесс<span class="operator">.</span>ПолучитьОбъект<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    ЗаблокироватьДанныеДляРедактирования<span class="operator">(</span>ЗаданиеОбъект<span class="operator">.</span>Ссылка<span class="operator">)</span><span class="operator">;</span>
+    ЗаданиеОбъект<span class="operator">.</span>Выполнено <span class="operator">=</span> ЗаданиеВыполнено<span class="operator">;</span>
+    ЗаданиеОбъект<span class="operator">.</span>Записать<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Все объекты метаданных подсистемы, содержащие данные,
+рекомендуется включать в планы обмена распределенной ИБ (РИБ). Исключение из
+этого правила:</p>
+
+<p class="MsoListBullet">&#9679; 
+Константу <span class="Interface">ДатаУведомленияОНовыхЗадачах</span>
+не следует включать в планы обмена РИБ, если требуется независимо уведомлять
+исполнителей о новых задачах в узлах РИБ.</p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

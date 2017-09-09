@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1055;&#1088;&#1086;&#1074;&#1077;&#1088;&#1080;&#1090;&#1100;&#1050;&#1086;&#1076;&#1057;&#1087;&#1088;&#1072;&#1074;&#1086;&#1095;&#1085;&#1080;&#1082;&#1072;&#1055;&#1086;&#1054;&#1088;&#1075;&#1072;&#1085;&#1080;&#1079;&#1072;&#1094;&#1080;&#1080;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25EF_25F0_25EE_25E2_25E5_25F0_25E8_25F2_25FC_25EA_25EE_25E4_25F1_25EF_25F0_25E0_25E2_25EE_25F7_25ED027E815D5E" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_префиксацияобъектовсобытияпроверитькодсправочникапоорганизации"></a><h1>ПроверитьКодСправочникаПоОрганизации</h1>
+
+<pre> Выполняет проверку модифицированности реквизита Организация элемента справочника.
+ Если реквизит Организация изменен, то Код элемента обнуляется.
+ Это необходимо для назначения нового кода элементу.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура ПроверитьКодСправочникаПоОрганизации(Источник, Отказ) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  Источник - СправочникОбъект - источник события подписки.
+  Отказ    - Булево - флаг отказа.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> ПрефиксацияОбъектовСобытия.ПроверитьКодСправочникаПоОрганизации(Источник, Отказ)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

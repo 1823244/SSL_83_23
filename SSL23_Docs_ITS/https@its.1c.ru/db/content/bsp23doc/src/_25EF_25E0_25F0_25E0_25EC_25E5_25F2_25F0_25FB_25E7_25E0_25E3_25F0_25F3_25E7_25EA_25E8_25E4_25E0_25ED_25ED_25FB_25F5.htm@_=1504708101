@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1055;&#1072;&#1088;&#1072;&#1084;&#1077;&#1090;&#1088;&#1099;&#1047;&#1072;&#1075;&#1088;&#1091;&#1079;&#1082;&#1080;&#1044;&#1072;&#1085;&#1085;&#1099;&#1093;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25EF_25E0_25F0_25E0_25EC_25E5_25F2_25F0_25FB_25E7_25E0_25E3_25F0_25F3_25E7_25EA_25E8_25E4_25E0_25ED_25ED_25FB_25F5.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_загрузкаданныхизфайлаклиентпараметрызагрузкиданных"></a><h1>ПараметрыЗагрузкиДанных</h1>
+
+<pre> Создает новую структуру параметров для загрузки данных из файла в табличную часть.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция ПараметрыЗагрузкиДанных() Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Возвращаемое значение</span></p>
+<pre>   Структура - параметры для открытия формы загрузки данных в табличную часть:
+    * ПолноеИмяТабличнойЧасти - Строка   - полный путь к табличной части документа, 
+                                           в виде "ИмяДокумента.ИмяТабличнойЧасти".
+    * Заголовок               - Строка   - заголовок формы загрузки данных из файла.
+    * ИмяМакетаСШаблоном      - Строка   - имя макета с шаблоном для ввода данных.
+    * Представление           - Строка   - заголовок окна в форме загрузке данных.
+    * ДополнительныеПараметры - ЛюбойТип - Любые дополнительные сведения, которые будут переданы
+                                           в процедуру сопоставления данных.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = ЗагрузкаДанныхИзФайлаКлиент.ПараметрыЗагрузкиДанных()</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Тонкий клиент, Толстый клиент</pre>
+	</body>
+</html>

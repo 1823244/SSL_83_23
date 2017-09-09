@@ -1,0 +1,398 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.58. &#1069;&#1083;&#1077;&#1082;&#1090;&#1088;&#1086;&#1085;&#1085;&#1072;&#1103; &#1087;&#1086;&#1076;&#1087;&#1080;&#1089;&#1100;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.58. _25FD_25EB_25E5_25EA_25F2_25F0_25EE_25ED_25ED_25E0_25FF _25EF_25EE_25E4_25EF_25E8_25F1_25FC.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<h1>3.58. Электронная подпись</h1>
+
+<p class="Paragraph0c">Подсистема «Электронная подпись» предоставляет программный
+и пользовательский интерфейс для работы со средствами криптографии. Поддерживаются
+электронная подпись, проверка электронной подписи, проверка сертификатов,
+шифрование и расшифровка.</p>
+
+<p class="Paragraph0c">Кроме того, подсистема позволяет оформить заявление на
+выпуск нового сертификата квалифицированной электронной подписи в
+удостоверяющем центре ООО «НПЦ «1С» (<a href="../../../../../ca.1c.ru/default.htm" target="_blank">http://ca.1c.ru</a>)
+с помощью удобного помощника.</p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Paragraph0c">Принять решение по поводу объектов конфигурации ссылочного
+типа (справочников, документов и т. п.), в которых должны быть реализованы
+команды по подписанию и проверке электронной подписи. Также необходимо определиться
+с местом размещения этих команд в формах объектов.</p>
+
+<p class="Paragraph0c">В выбранных объектах метаданных добавить реквизиты
+согласно таблице 3.116.</p>
+
+<p class="Objectname">Таблица 3.118.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Реквизит </span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Тип</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Подсказка</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПодписанЭП</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Булево</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Признак того, что файл подписан электронно</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81">Табличная часть <span class="Interface">ЭлектронныеПодписи</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ДатаПодписи</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Дата</span> (Дата и время)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Дата установки подписи</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ИмяФайлаПодписи</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Строка</span> (длиной 260)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Имя файла подписи (служебное поле)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Комментарий</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Строка</span> (неограниченной
+  длины)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Комментарий к подписи</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">КомуВыданСертификат</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Строка</span> (неограниченной
+  длины)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Владелец сертификата (фамилия имя, организация, должность)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Отпечаток</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Строка</span> (длиной 28)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Отпечаток сертификата (служебное поле)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Подпись</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ХранилищеЗначения</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Двоичные данные подписи (служебное поле)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">УстановившийПодпись</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">СправочникСсылка.Пользователи</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Пользователь, установивший подпись</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Сертификат</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ХранилищеЗначения</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Двоичные данные сертификата (служебное поле)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ДатаПроверкиПодписи</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Дата</span> (Дата и время)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Дата последней проверки подписи</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПодписьВерна</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Булево</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Результат последней проверки подписи</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Пример настройки реквизитов можно посмотреть в
+демонстрационной конфигурации в справочнике <span class="Interface">ВерсииФайлов</span>.</p>
+
+<p class="Paragraph0c">Добавить функциональную опцию <span class="Interface">ИспользоватьЭлектронныеПодписи&lt;ИмяБиблиотеки&gt;</span>,
+включив в нее реквизиты и табличные части объектов метаданных, описанные выше
+(пример можно посмотреть в функциональной опции <span class="Interface">_ДемоИспользоватьЭлектронныеПодписиБСП</span>).</p>
+
+<p class="Paragraph0c">Реализовать команды по подписанию и проверке электронной
+подписи с использованием экспортных функций общего модуля <span class="Interface">ЭлектроннаяПодписьКлиент</span>. Пример реализации команд можно
+посмотреть в демонстрационной конфигурации – команды <span class="Interface">Подписать</span>
+и <span class="Interface">Проверить</span> в форме элемента справочника <span class="Interface">Файлы</span>.</p>
+
+<p class="Paragraph0c">Принять решение по поводу объектов конфигурации ссылочного
+типа (справочников, документов и т. п.), в которых должны быть реализованы
+команды по шифрованию и расшифровке. Также определиться с местом размещения
+этих команд в формах объектов.</p>
+
+<p class="Paragraph0c">В выбранных объектах метаданных добавить реквизиты
+согласно таблице 3.117.</p>
+
+<p class="Objectname">Таблица 3.119.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Реквизит </span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Тип</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Подсказка</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Зашифрован</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Булево</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Признак того, что файл зашифрован</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81">Табличная часть <span class="Interface">СертификатыШифрования</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Отпечаток</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Строка длиной 28</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Отпечаток сертификата (служебное поле)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Представление</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Строка неограниченной длины</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Владелец сертификата (фамилия имя, организация,
+  должность)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Сертификат</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ХранилищеЗначения</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Двоичные данные сертификата (служебное поле)</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Пример настройки реквизитов можно посмотреть в
+демонстрационной конфигурации в справочнике <span class="Interface">Файлы</span>.</p>
+
+<p class="Paragraph0c">Добавить функциональную опцию <span class="Interface">ИспользоватьШифрование&lt;ИмяБиблиотеки&gt;</span>,
+включив в нее реквизиты и табличные части объектов метаданных, описанные выше
+(пример можно посмотреть в функциональной опции <span class="Interface">_ДемоИспользоватьШифрованиеБСП</span>).</p>
+
+<p class="Paragraph0c">Реализовать команды по шифрованию и расшифровке с
+использованием экспортных функций общего модуля <span class="Interface">ЭлектроннаяПодписьКлиент</span>.
+Пример реализации команд можно посмотреть в демонстрационной конфигурации –
+команды <span class="Interface">Зашифровать</span> и <span class="Interface">Расшифровать</span>
+в форме элемента справочника <span class="Interface">Файлы</span>.</p>
+
+<p class="Paragraph0c">В интерфейсе персональных настроек пользователя разместить
+команду открытия общей формы <span class="Interface">НастройкиЭлектроннойПодписиИШифрования</span>
+с помощью процедуры <span class="Interface">ОткрытьНастройкиЭлектроннойПодписиИШифрования</span>
+общего модуля <span class="Interface">ЭлектроннаяПодписьКлиент</span>. См. пример
+в демонстрационной конфигурации в общей форме <span class="Interface">_ДемоМоиНастройки</span>.</p>
+
+<p class="Paragraph0c">В случае если в конфигурации не используется подсистема
+«Настройки программы», в рабочем месте администратора программы необходимо
+разместить константы <span class="Interface">ИспользоватьЭлектронныеПодписи</span>,
+<span class="Interface">ИспользоватьШифрование</span> и команду открытия общей
+формы <span class="Interface">НастройкиЭлектроннойПодписиИШифрования</span> с
+помощью процедуры <span class="Interface">ОткрытьНастройкиЭлектроннойПодписиИШифрования</span>
+общего модуля <span class="Interface">ЭлектроннаяПодписьКлиент</span>. См. пример
+в демонстрационной конфигурации в форме <span class="Interface">ОбщиеНастройки</span>
+обработки <span class="Interface">ПанельАдминистрированияБСП</span>.</p>
+
+<p class="Paragraph0c">Для работы помощника, позволяющего оформить заявление на
+выпуск сертификата, требуется внедрить подсистемы «Контактная информация»,
+«Адресный классификатор», «Печать» и «Работа с контрагентами». Если этого не
+сделать, помощник будет скрыт. Также можно внедрить подсистему «Организации».
+Для эффективного использования помощника необходимо в общий модуль <span class="Interface">ЭлектроннаяПодписьПереопределяемый</span> вписать код в
+процедуры <span class="Interface">ПриЗаполненииРеквизитовОрганизацииВЗаявленииНаСертификат</span>,
+<span class="Interface">ПриЗаполненииРеквизитовВладельцаВЗаявленииНаСертификат</span>,
+<span class="Interface">ПриЗаполненииРеквизитовРуководителяВЗаявленииНаСертификат</span>,
+<span class="Interface">ПриЗаполненииРеквизитовПартнераВЗаявленииНаСертификат</span>.
+Пример можно посмотреть в демонстрационной конфигурации.</p>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Для настройки прав доступа пользователей к данным
+подсистемы «Электронная подпись» следует использовать следующие роли:</p>
+
+<p class="Objectname">Таблица 3.120.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ДобавлениеИзменениеЭлектронныхПодписейИШифрование</span>
+  (+ <span class="Interface">БазовыеПрава</span>)</p>
+  <p class="TextinTable81">Просмотр сертификатов, программ электронной подписи и
+  шифрования, настроек подсистемы. Добавление заявления на выпуск сертификата.
+  Выполнение подписания, проверки подписей, шифрования, расшифровки и остальных
+  операций. Изменение некоторых свойств своих сертификатов в справочнике</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПолныеПрава</span> (из
+  подсистемы «Базовая функциональность»)</p>
+  <p class="TextinTable81">Изменение всех доступных свойств любых сертификатов в
+  справочнике.</p>
+  <p class="TextinTable81">Изменение административных настроек подсистемы:</p>
+  <p class="BulletTab">&#9679; 
+  включение/отключение подписания/шифрования;</p>
+  <p class="BulletTab">&#9679; 
+  настройка списка программ электронной подписи
+  и шифрования;</p>
+  <p class="BulletTab">&#9679; 
+  включение/отключение выполнения операций на
+  сервере</p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<p class="Paragraph0c">Программный интерфейс подсистемы представлен экспортными
+процедурами и функциями общих модулей <span class="Interface">ЭлектроннаяПодпись&lt;*&gt;</span>
+в стандартных областях <span class="Interface">ПрограммныйИнтерфейс</span>.</p>
+
+<p class="Paragraph0c">Код проверки подписи реализуется по месту, т. к. зависит
+от прикладных характеристик подписываемого объекта. Пример реализации кода
+можно посмотреть в справочнике <span class="Interface">Файлы</span> – в команде <span class="Interface">ПроверитьВсе</span> в форме элемента.</p>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Для настройки обмена данными следует руководствоваться
+общими правилами.</p>
+
+<p class="Paragraph0c">В планы обмена распределенной информационной базы (РИБ)
+рекомендуется включать все объекты метаданных подсистемы, кроме:</p>
+
+<p class="MsoListBullet">&#9679; 
+константы <span class="Interface">ПроверятьЭлектронныеПодписиНаСервере</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+константы <span class="Interface">СоздаватьЭлектронныеПодписиНаСервере</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+регистра сведений <span class="Interface">ПутиКПрограммамЭлектроннойПодписиИШифрованияНаСерверахLinux</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+объектов метаданных, имена которых начинаются с <span class="Interface">Удалить</span>.</p>
+	</body>
+</html>

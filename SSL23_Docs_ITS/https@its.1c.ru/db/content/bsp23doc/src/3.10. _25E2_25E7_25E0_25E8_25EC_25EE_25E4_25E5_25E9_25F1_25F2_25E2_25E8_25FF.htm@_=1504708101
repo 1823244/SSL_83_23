@@ -1,0 +1,303 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.10. &#1042;&#1079;&#1072;&#1080;&#1084;&#1086;&#1076;&#1077;&#1081;&#1089;&#1090;&#1074;&#1080;&#1103;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.10. _25E2_25E7_25E0_25E8_25EC_25EE_25E4_25E5_25E9_25F1_25F2_25E2_25E8_25FF.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_взаимодействия"></a><h1>3.10. Взаимодействия</h1>
+
+<p class="Paragraph0c">Подсистема «Взаимодействия» предназначена для
+планирования, регистрации, упорядочивания взаимодействий и работы с
+результатами взаимодействий. Взаимодействия включают переписку по электронной
+почте, регистрацию звонков и встреч. Подсистема обеспечивает подбор и создание
+новых контактов взаимодействий.</p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Paragraph0c">Если в конфигурации не используется подсистема «Настройки
+программы», то на рабочем месте администратора программы необходимо разместить
+константы:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ИспользоватьПочтовыйКлиент</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ОтправлятьПисьмаВФорматеHTML</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ИспользоватьПрочиеВзаимодействия</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ИспользоватьПризнакРассмотрено</span>.</p>
+
+<p class="Paragraph0c">См. пример в форме <span class="Interface">Органайзер</span>
+обработки <span class="Interface">ПанельАдминистрированияБСП</span>.</p>
+
+<p class="Paragraph0c">В форме персональных настроек разместить вызов команды <span class="Interface">ЖурналДокументов.Взаимодействия.Команда.НастройкиРаботыСПочтой</span>.
+Пример размещения см. в демонстрационной конфигурации в общей форме <span class="Interface">_ДемоМоиНастройки</span>.</p>
+
+<p class="Paragraph0c">Разместить в командном интерфейсе пользователей,
+использующих подсистему, журнал документов <span class="Interface">Взаимодействия</span>.
+</p>
+
+<a name="issogl2_определение_типов_предметов_и_контактов_взаимодействий"><h3>Определение типов предметов и контактов взаимодействий</h3></a>
+
+<p class="Paragraph0c">Необходимо принять решение по поводу состава объектов
+метаданных, которые могут выступать в качестве контактов взаимодействий.
+Например, это могут быть физические лица, партнеры, контактные лица партнеров и
+т. п. Расширить тип определяемого типа <span class="Interface">КонтактВзаимодействия</span>
+допустимыми типами контактов.</p>
+
+<p class="Paragraph0c">Если предусматривается создание контактов напрямую из форм
+документов взаимодействий, то для форм объектов метаданных, определенных как
+контакты необходимо:</p>
+
+<p class="MsoListBullet">&#9679; 
+добавить реквизит формы <span class="Interface">НеобходимоОповещение</span>
+типа <span class="Interface">Булево</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+добавить реквизит формы <span class="Interface">ОбъектОснование</span>
+типа <span class="Interface">Произвольный</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+добавить в обработчик события <span class="Interface">ПриСозданииНаСервере</span> вызов следующей процедуры:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">Взаимодействия<span class="operator">.</span>ПодготовитьОповещения<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> Параметры<span class="operator">,</span> <span class="keyword">Ложь</span><span class="operator">)</span><span class="operator">;</span></pre>
+
+<p class="MsoListBullet">&#9679; 
+добавить в обработчик события формы <span class="Interface">ПослеЗаписи</span> вызов следующей процедуры: </p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    ВзаимодействияКлиент<span class="operator">.</span>КонтактПослеЗаписи<span class="operator">(</span>Форма<span class="operator">,</span> Объект<span class="operator">,</span> ПараметрыЗаписи<span class="operator">,</span> ИмяОбъектаОтправителяСообщения<span class="operator">)</span><span class="operator">;</span></pre>
+
+<p class="Paragraph0c">Необходимо принять решение по поводу состава объектов
+метаданных, которые могут выступать в качестве предметов взаимодействий.
+Например, это могут быть проекты, заказы клиентов, заказ поставщику и т. п. Расширить
+тип определяемого типа <span class="Interface">ПредметВзаимодействия</span>
+допустимыми типами предметов.</p>
+
+<p class="Paragraph0c">Если предусматривается создание предметов на основании
+документов взаимодействий, то для форм объектов метаданных, определенных как
+контакты, необходимо:</p>
+
+<p class="MsoListBullet">&#9679; 
+добавить реквизит формы <span class="Interface">НеобходимоОповещение</span>
+типа <span class="Interface">Булево</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+добавить реквизит формы <span class="Interface">ВзаимодействиеОснование</span>
+составного типа, включающего в себя типы тех документов взаимодействий, на
+основании которых создаются предметы взаимодействий;</p>
+
+<p class="MsoListBullet">&#9679; 
+добавить в обработчик события <span class="Interface">ПриСозданииНаСервере</span> вызов следующей процедуры:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">Взаимодействия<span class="operator">.</span>ПодготовитьОповещения<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span>Параметры<span class="operator">,</span><span class="keyword">Ложь</span><span class="operator">)</span><span class="operator">;</span></pre>
+
+<p class="MsoListBullet">&#9679; 
+добавить в обработчик события формы <span class="Interface">ПослеЗаписи</span> вызов следующей процедуры: </p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">    ВзаимодействияКлиент.ВзаимодействиеПредметПослеЗаписи(Форма, Объект, ПараметрыЗаписи, ИмяОбъектаОтправителяСообщения);</pre>
+
+<a name="issogl2_настройка_модуля_менеджера_предметов_взаимодействий"><h3>Настройка модуля менеджера предметов взаимодействий</h3></a>
+
+<p class="Paragraph0c">В модуле менеджера каждого объекта метаданных,
+определенного как «предмет взаимодействий», необходимо реализовать экспортную
+функцию <span class="Interface">ТекстЗапросаПоКонтактам</span>, в которой
+сформировать текст запроса по контактам, содержащимся в предмете
+взаимодействий. Например, ссылки на контакты взаимодействий могут иметься в
+реквизитах шапки и табличных частей предметов взаимодействий. </p>
+
+<p class="Paragraph0c">Функция принимает два необязательных параметра. В первом
+параметре <span class="Interface">ТекстВременнаяТаблица</span> типа <span class="Interface">Строка</span> может находиться часть текста запроса, отвечающая
+за помещение результата запроса во временную таблицу. Второй параметр <span class="Interface">Объединить</span> типа <span class="Interface">Булево</span>
+указывает на режим формирования запроса. Если данный параметр имеет значение <span class="Interface">Истина</span>, то формируемый в функции запрос является частью
+другого запроса и должен начинаться с конструкции <span class="Interface">ОБЪЕДИНИТЬ</span>.
+Возвращаемое значение – <span class="Interface">Строка</span>, содержащая в себе
+текст запроса по контактам предмета взаимодействий.</p>
+
+<p class="Paragraph0c">Пример реализации такой функции можно посмотреть в модуле
+менеджера документа <span class="Interface">_ДемоЗаказПокупателя</span> в
+демонстрационной конфигурации.</p>
+
+<p class="Paragraph0c">Для тех предметов взаимодействий, для которых
+предполагается использовать механизм активности предметов и текущий статус
+подразумевает активность предмета, необходимо устанавливать признак активности
+в регистр сведений <span class="Interface">СостоянияПредметовВзаимодействий</span>.
+Например, как это сделано в процедуре <span class="Interface">ПриЗаписи</span>
+модуля объекта документа <span class="Interface">_ДемоЗаказПокупателя</span>.</p>
+
+<a name="issogl2_настройка_переопределяемых_модулей"><h3>Настройка переопределяемых модулей</h3></a>
+
+<p class="Paragraph0c">При необходимости можно вписать реализацию в функции
+переопределяемых модулей подсистемы:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ВзаимодействияКлиентПереопределяемый</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ВзаимодействияКлиентСерверПереопределяемый</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ВзаимодействияПереопределяемый</span>.</p>
+
+<a name="issogl2_настройка_форм_списков_предметов_взаимодействий."><h3>Настройка форм списков предметов взаимодействий.</h3></a>
+
+<p class="Paragraph0c">Для того чтобы появилась возможность устанавливать предмет
+взаимодействий путем множественного перетаскивания в форму списка предмета,
+необходимо выполнить следующие действия:</p>
+
+<p class="MsoListBullet">&#9679; 
+у элемента формы списка установить флаг <span class="Interface">РазрешитьПеретаскивание</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+в обработчике события <span class="Interface">ПроверкаПеретаскивания</span>
+элемента формы списка разместить следующий код:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">ВзаимодействияКлиент<span class="operator">.</span>СписокПредметПроверкаПеретаскивания<span class="operator">(</span>Элемент<span class="operator">,</span> ПараметрыПеретаскивания<span class="operator">,</span> СтандартнаяОбработка<span class="operator">,</span> Строка<span class="operator">,</span> Поле<span class="operator">)</span><span class="operator">;</span></pre>
+
+<p class="MsoListBullet">&#9679; 
+в обработчике события <span class="Interface">Перетаскивание</span>
+элемента формы списка разместить следующий код:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">ВзаимодействияКлиент<span class="operator">.</span>СписокПредметПеретаскивание<span class="operator">(</span>Элемент<span class="operator">,</span> ПараметрыПеретаскивания<span class="operator">,</span> СтандартнаяОбработка<span class="operator">,</span> Строка<span class="operator">,</span> Поле<span class="operator">)</span><span class="operator">;</span></pre>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Для настройки прав доступа пользователей к данным
+подсистемы «Взаимодействия» следует использовать роль, приведенную ниже.</p>
+
+<p class="Objectname">Таблица 3.18.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="MsoListNumber">1.   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ДобавлениеИзменениеВзаимодействий</span></p>
+  <p class="TextinTable81">Чтение, добавление, изменение взаимодействий</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Пример настройки прав доступа пользователей приведен ниже.</p>
+
+<p class="Objectname">Таблица 3.19.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">№</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Группа пользователей и ее
+  функции</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Состав ролей</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="MsoListNumber">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Ответственный за ведение взаимодействий</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">БазовыеПрава</span> (из
+  подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЗапускТонкогоКлиента</span>
+  (из подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЧтениеУчетныхЗаписейЭлектроннойПочты</span>
+  (из подсистемы «Работа с почтовыми сообщениями»),</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ДобавлениеИзменениеВзаимодействий</span></p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl2_особые_случаи_внедрения_подсистемы"><h3>Особые случаи внедрения подсистемы</h3></a>
+
+<p class="MsoListBullet">&#9679; 
+<A href="3.59. _25EE_25F1_25EE_25E1_25FB_25E5 _25F1_25EB_25F3_25F7_25E0_25E8 _25E2_25ED_25E5_25E4_25F0_25E5_20EA087B14A#_внедрение_подсистем_«взаимодействия">Внедрение подсистем «Взаимодействия» и
+«Управление доступом»</a>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<A href="3.59. _25EE_25F1_25EE_25E1_25FB_25E5 _25F1_25EB_25F3_25F7_25E0_25E8 _25E2_25ED_25E5_25E4_25F0_25E5_20EA087B14A#_внедрение_подсистемы_«взаимодействи">Внедрение подсистемы «Взаимодействия» без
+подсистемы «Электронная подпись»</a>.</p>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Все объекты метаданных подсистемы рекомендуется включать в
+планы обмена распределенной ИБ (РИБ), планы обмена автономных рабочих мест, а
+также в планы обмена по правилам конвертации, за исключением следующих
+регистров сведений:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">СостоянияПапокПисем</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">СостоянияПредметовВзаимодействий</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">СостоянияКонтактовВзаимодействий</span>.</p>
+
+<p class="Paragraph0c">В этих регистрах хранятся данные по состояниям документов
+взаимодействий (количество нерассмотренных и дата последнего взаимодействия),
+выводимые на панель навигации рабочего места ответственного за ведение
+взаимодействия. Для того чтобы эти данные были корректными, в процессе
+получения данных необходимо накапливать информацию о папках, предметах и
+контактах загруженных документов подсистемы взаимодействий. </p>
+
+<p class="Paragraph0c">А при завершении обмена выполнить перерасчет состояний при
+помощи следующих процедур:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Взаимодействия.РассчитатьРассмотреноПоКонтактам</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Взаимодействия.РассчитатьРассмотреноПоПредметам</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Взаимодействия.РассчитатьРассмотреноПоПапкам</span>.</p>
+
+<p class="Paragraph0c">Еще один регистр сведений, не включаемый в план обмена – <span class="Interface">ЗаблокированныеДляПолученияУчетныеЗаписи</span>. Регистр
+предназначен для предотвращения дублирования получаемых писем при конкурентной
+работе с коллективными учетными записями.</p>
+
+<p class="Paragraph0c">Не включается в план обмена регистр сведений <span class="Interface">Удалить_АктивныеПредметыВзаимодействий</span>. </p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

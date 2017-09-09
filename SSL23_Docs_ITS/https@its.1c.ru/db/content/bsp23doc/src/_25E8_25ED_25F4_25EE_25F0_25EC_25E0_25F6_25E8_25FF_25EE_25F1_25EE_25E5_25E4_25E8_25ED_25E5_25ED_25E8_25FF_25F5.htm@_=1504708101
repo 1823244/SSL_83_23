@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1048;&#1085;&#1092;&#1086;&#1088;&#1084;&#1072;&#1094;&#1080;&#1103;&#1054;&#1057;&#1086;&#1077;&#1076;&#1080;&#1085;&#1077;&#1085;&#1080;&#1103;&#1093;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25E8_25ED_25F4_25EE_25F0_25EC_25E0_25F6_25E8_25FF_25EE_25F1_25EE_25E5_25E4_25E8_25ED_25E5_25ED_25E8_25FF_25F5.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_соединенияибинформацияосоединениях"></a><h1>ИнформацияОСоединениях</h1>
+
+<pre> Возвращает информацию о текущих соединениях с информационной базой.
+ При необходимости записывает сообщение в журнал регистрации.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция ИнформацияОСоединениях(ПолучатьСтрокуСоединения = Ложь,
+	СообщенияДляЖурналаРегистрации = Неопределено, ПортКластера = 0) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = СоединенияИБ.ИнформацияОСоединениях(ПолучатьСтрокуСоединения, СообщенияДляЖурналаРегистрации, ПортКластера)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

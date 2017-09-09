@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1047;&#1072;&#1087;&#1086;&#1083;&#1085;&#1080;&#1090;&#1100;&#1054;&#1073;&#1083;&#1072;&#1089;&#1090;&#1080;&#1055;&#1077;&#1088;&#1089;&#1086;&#1085;&#1072;&#1083;&#1100;&#1085;&#1099;&#1093;&#1044;&#1072;&#1085;&#1085;&#1099;&#1093;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25E7_25E0_25EF_25EE_25EB_25ED_25E8_25F2_25FC_25EE_25E1_25EB_25E0_25F1_25F2_25E8_25EF_25E5_25F0_25F1025F7D1D52" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_защитаперсональныхданныхпереопределяемыйзаполнитьобластиперсональныхданных"></a><h1>ЗаполнитьОбластиПерсональныхДанных</h1>
+
+<pre> Процедура обеспечивает составление коллекции областей персональных данных.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура ЗаполнитьОбластиПерсональныхДанных(ОбластиПерсональныхДанных) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  ОбластиПерсональныхДанных - таблица значений с полями:
+   Имя - идентификатор области данных.
+   Представление - пользовательское представление области данных.
+   Родитель - идентификатор родительской области данных.</pre>
+<p class="Paragraph0c"><span class="Bold">Расположение</span></p>
+<pre> Общий модуль ЗащитаПерсональныхДанныхПереопределяемый</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

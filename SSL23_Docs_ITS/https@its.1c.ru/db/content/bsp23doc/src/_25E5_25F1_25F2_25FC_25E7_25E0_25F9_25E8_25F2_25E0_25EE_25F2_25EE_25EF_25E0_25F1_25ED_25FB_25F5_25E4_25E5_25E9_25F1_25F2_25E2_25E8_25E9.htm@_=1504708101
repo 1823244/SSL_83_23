@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1045;&#1089;&#1090;&#1100;&#1047;&#1072;&#1097;&#1080;&#1090;&#1072;&#1054;&#1090;&#1054;&#1087;&#1072;&#1089;&#1085;&#1099;&#1093;&#1044;&#1077;&#1081;&#1089;&#1090;&#1074;&#1080;&#1081;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25E5_25F1_25F2_25FC_25E7_25E0_25F9_25E8_25F2_25E0_25EE_25F2_25EE_25EF_25E0_25F1_25ED_25FB_25F5_25E4_25E5_25E9_25F1_25F2_25E2_25E8_25E9.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_общегоназначенияестьзащитаотопасныхдействий"></a><h1>ЕстьЗащитаОтОпасныхДействий</h1>
+
+<pre> Проверяет наличие механизма платформы, предупреждающего об опасных действиях.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция ЕстьЗащитаОтОпасныхДействий() Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Возвращаемое значение</span></p>
+<pre>  Булево - если Истина, тогда работает механизм предупреждений безопасности.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = ОбщегоНазначения.ЕстьЗащитаОтОпасныхДействий()</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

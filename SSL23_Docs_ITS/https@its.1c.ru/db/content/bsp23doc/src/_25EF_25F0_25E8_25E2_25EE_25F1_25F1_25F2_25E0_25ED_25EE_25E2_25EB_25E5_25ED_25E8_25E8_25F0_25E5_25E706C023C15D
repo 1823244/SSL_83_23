@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1055;&#1088;&#1080;&#1042;&#1086;&#1089;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1083;&#1077;&#1085;&#1080;&#1080;&#1056;&#1077;&#1079;&#1077;&#1088;&#1074;&#1085;&#1086;&#1081;&#1050;&#1086;&#1087;&#1080;&#1080;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25EF_25F0_25E8_25E2_25EE_25F1_25F1_25F2_25E0_25ED_25EE_25E2_25EB_25E5_25ED_25E8_25E8_25F0_25E5_25E7_25E5_25F0_25E2_25ED_25EE_25E9_25EA_25EE_25EF_25E8_25E8.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_обменданнымисерверпривосстановлениирезервнойкопии"></a><h1>ПриВосстановленииРезервнойКопии</h1>
+
+<pre> Выполняет синхронизацию номеров отправленных и полученных сообщений
+ для двух баз (номеру отправленного сообщения в этой базе присваивается значение номера принятого сообщения из
+ базы-корреспондента).</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура ПриВосстановленииРезервнойКопии(Знач ПараметрыРезервнойКопии) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>   ПараметрыРезервнойКопии - ФиксированнаяСтруктура - свойства структуры:
+     * Отправитель                 - ПланОбменаСсылка - узел, от имени которого было сформировано и отправлено
+                                                        сообщение обмена.
+     * НомерПринятого              - Число            - номер принятого сообщения в базе-корреспонденте.
+     * ВосстановленаРезервнаяКопия - Булево           - признак восстановления этой базы из резервной копии.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> ОбменДаннымиСервер.ПриВосстановленииРезервнойКопии(ПараметрыРезервнойКопии)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>5.51 &#1058;&#1077;&#1082;&#1091;&#1097;&#1080;&#1077; &#1076;&#1077;&#1083;&#1072;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="5.51 _25F2_25E5_25EA_25F3_25F9_25E8_25E5 _25E4_25E5_25EB_25E0.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<h1>5.51 Текущие дела</h1>
+
+<p class="Paragraph0c">Программа позволяет выводить список текущих дел
+пользователя (внешнего пользователя) на <span class="Interface">Начальной
+странице</span>: новые письма, задачи, заявки, несогласованные заказы и т.п.
+Список дел может включать в себя важные и обычные дела, однострочные и
+многострочные, с количественными показателями и без. Список дел сгруппирован по
+разделам командного интерфейса, предусмотрена возможность настраивать видимость
+и порядок отображения, автоматическое обновление через заданный интервал.
+Важные дела выделяются цветом.</p>
+
+<p class="Paragraph0c">В списке текущих дел на <span class="Interface">Начальной
+странице</span> выводятся напоминания о необходимости обновления ряда
+классификаторов (Адресный классификатор, классификатор банков, курсы валют),
+индекса полнотекстового поиска, о настройке резервного копирования, обновлении
+программы (в подчиненном узле РИБ), предупреждения при синхронизации данных,
+уведомление о редактируемых файлах и новых электронных письмах.</p>
+
+<p class="Paragraph0c">Дела отображаются в виде ссылок, перейдя по которым, можно
+открыть соответствующие списки, документы или другие объекты программы. </p>
+
+<a name="issogl1_список_текущие_дела"><h2>Список Текущие дела</h2></a>
+
+<p class="Paragraph0c">При первом открытии программа производит поиск текущих
+дел. Процесс может занимать некоторое время.</p>
+
+<p class="Paragraph0c">По умолчанию текущие дела отображаются в свернутом виде –
+в виде разделов. При этом важные дела отображаются и в свернутом разделе: значком
+<IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image3683.png@_=1504708101" WIDTH="11" ALT HEIGHT="19"> отображаются свернутые разделы, в которых
+имеются важные дела. </p>
+
+<p class="Paragraph0c">Нажав на значки <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image3685.png@_=1504708101" WIDTH="15" ALT HEIGHT="21">или
+<IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image3683.png@_=1504708101" WIDTH="11" ALT HEIGHT="19">,
+можно развернуть разделы. </p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image3687.png@_=1504708101" WIDTH="800" ALT HEIGHT="498"></p>
+
+<p class="Paragraph0c">С помощью
+соответствующей кнопки можно <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image3689.png@_=1504708101" WIDTH="31" ALT HEIGHT="31"> <span class="Interface">Обновить</span> список дел.</p>
+
+<p class="Paragraph0c">На <span class="Interface">Начальной странице</span> внешнего пользователя также отображаются текущие дела – выводятся
+новые задачи, анкеты и другие предметы, требующие внимания, при этом доступна
+только кнопка <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image3689.png@_=1504708101" WIDTH="31" ALT HEIGHT="31"> <span class="Interface">Обновить</span>.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image3691.png@_=1504708101" WIDTH="800" ALT HEIGHT="438"></p>
+
+<a name="issogl1_настройка_списка_текущие_дела"><h2>Настройка списка Текущие дела</h2></a>
+
+<p class="Paragraph0c">С помощью кнопки <span class="Interface">Настроить</span> в
+нижней части списка текущих дел можно управлять списком дел и разделов. Список
+состоит из вкладок:</p>
+
+<p class="Bullet1">&#9632; 
+<span class="Interface">Отображаемые дела</span> –
+предназначена для настройки списка текущих дел;</p>
+
+<p class="Bullet1">&#9632; 
+<span class="Interface">Другое</span> –
+предназначена для настройки обновления списка текущих дел.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image3693.png@_=1504708101" WIDTH="800" ALT HEIGHT="467"></p>
+
+<a name="issogl2_отображаемые_дела"><h3>Отображаемые дела</h3></a>
+
+<p class="Paragraph0c">На этой вкладке настройки текущих дел с помощью флажков
+можно управлять видимостью списка дел. </p>
+
+<p class="Paragraph0c">С помощью кнопки <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image3695.png@_=1504708101" WIDTH="31" ALT HEIGHT="29"> <span class="Interface">Установить флажки</span>
+можно сделать видимыми все разделы и дела. </p>
+
+<p class="Paragraph0c">С помощью кнопки <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image3697.png@_=1504708101" WIDTH="29" ALT HEIGHT="29"> <span class="Interface">Снять флажки</span>
+можно скрыть все разделы и дела. </p>
+
+<p class="Paragraph0c">С помощью кнопок <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image3699.png@_=1504708101" WIDTH="30" ALT HEIGHT="28"> и <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image3701.png@_=1504708101" WIDTH="29" ALT HEIGHT="31"> можно менять очередность дел и разделов в
+списке.</p>
+
+<p class="Paragraph0c">Для подтверждения нажмите кнопку <span class="Interface">ОК</span>.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image3703.png@_=1504708101" WIDTH="635" ALT HEIGHT="681"></p>
+
+<a name="issogl2_обновление_списка_дел"><h3>Обновление списка дел</h3></a>
+
+<p class="Paragraph0c">На вкладке <span class="Interface">Другое</span> можно
+отрегулировать частоту обновления списка текущих дел. </p>
+
+<p class="Paragraph0c">Включите флажок <span class="Interface">Обновлять
+автоматически каждые</span> 5 <span class="Interface">минут</span> (по
+умолчанию). При необходимости укажите другое число минут – доступны значения <span class="Interface">5</span>, <span class="Interface">10</span> или <span class="Interface">30</span> минут. </p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image3705.png@_=1504708101" WIDTH="467" ALT HEIGHT="346"></p>
+
+<p class="Paragraph0c">Также <span class="Interface">Обновить список дел</span>
+можно на <span class="Interface">Начальной странице</span> в любой момент с
+помощью кнопки <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image3689.png@_=1504708101" WIDTH="31" ALT HEIGHT="31">.</p>
+
+<a name="issogl1_исключение_дублирования_информации"><h2>Исключение дублирования информации</h2></a>
+
+<p class="Paragraph0c">Если какое-то из дел дублирует информацию, отображаемую на
+<span class="Interface">Начальной странице</span>, то следует выбрать только одну
+из возможностей программы: отключить дело из списка <span class="Interface">Текущие
+дела</span> или скрыть информацию с <span class="Interface">Начальной страницы</span>.</p>
+
+<a name="issogl1_роли_для_работы_со_списком_текущих_дел"><h2>Роли для работы со списком текущих дел</h2></a>
+
+<p class="Paragraph0c">Для работы со списком текущих дел программе предусмотрены
+следующие роли:</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Роль</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Краткое описание</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Использование текущих дел</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Дает право на просмотр
+  списка текущих дел и на его настройку.</p>
+  </td>
+ </tr>
+</table>
+	</body>
+</html>

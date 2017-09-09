@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1055;&#1088;&#1077;&#1076;&#1083;&#1072;&#1075;&#1072;&#1090;&#1100;&#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1091;&#1056;&#1072;&#1089;&#1096;&#1080;&#1088;&#1077;&#1085;&#1080;&#1103;&#1056;&#1072;&#1073;&#1086;&#1090;&#1099;&#1057;&#1060;&#1072;&#1081;&#1083;&#1072;&#1084;&#1080;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25EF_25F0_25E5_25E4_25EB_25E0_25E3_25E0_25F2_25FC_25F3_25F1_25F2_25E0_25ED_25EE_25E2_25EA_25F3_25F0090188BD1A" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_общегоназначенияклиентпредлагатьустановкурасширенияработысфайлами"></a><h1>ПредлагатьУстановкуРасширенияРаботыСФайлами</h1>
+
+<pre> Возвращает пользовательскую настройку "Предлагать установку расширения работы с файлами".</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция ПредлагатьУстановкуРасширенияРаботыСФайлами() Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Возвращаемое значение</span></p>
+<pre>   Булево</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = ОбщегоНазначенияКлиент.ПредлагатьУстановкуРасширенияРаботыСФайлами()</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Тонкий клиент, Толстый клиент</pre>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1056;&#1072;&#1079;&#1083;&#1086;&#1078;&#1080;&#1090;&#1100;&#1055;&#1086;&#1083;&#1085;&#1086;&#1077;&#1048;&#1084;&#1103;&#1060;&#1072;&#1081;&#1083;&#1072;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25F0_25E0_25E7_25EB_25EE_25E6_25E8_25F2_25FC_25EF_25EE_25EB_25ED_25EE_25E5_25E8_25EC_25FF_25F4_25E0_25E9_25EB_25E0.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_общегоназначенияклиентсерверразложитьполноеимяфайла"></a><h1>РазложитьПолноеИмяФайла</h1>
+
+<pre> Раскладывает полное имя файла на составляющие.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция РазложитьПолноеИмяФайла(Знач ПолноеИмяФайла, ЭтоПапка = Ложь) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  ПолноеИмяФайла - Строка - полный путь к файлу.
+  ЭтоПапка - Булево - признак того, что требуется разложить полное имя папки, а не файла.</pre>
+<p class="Paragraph0c"><span class="Bold">Возвращаемое значение</span></p>
+<pre>   Структура - имя файла, разложенное на составные части(аналогично свойствам объекта Файл):
+  ПолноеИмя - Содержит полный путь к файлу, т.е. полностью соответствует входному параметру ПолноеИмяФайла.
+  Путь - Содержит путь к каталогу, в котором лежит файл.
+  Имя - Содержит имя файла с расширением, без пути к файлу.
+  Расширение - Содержит расширение файла.
+  ИмяБезРасширения - Содержит имя файла без расширения и без пути к файлу.
+   Пример: если ПолноеИмяФайла = "c:\temp\test.txt", то структура заполнится следующим образом:
+    ПолноеИмя: "c:\temp\test.txt".
+    Путь: "c:\temp\"
+    Имя: "test.txt"
+    Расширение: ".txt"
+    ИмяБезРасширения: "test".</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = ОбщегоНазначенияКлиентСервер.РазложитьПолноеИмяФайла(ПолноеИмяФайла, ЭтоПапка)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Тонкий клиент, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

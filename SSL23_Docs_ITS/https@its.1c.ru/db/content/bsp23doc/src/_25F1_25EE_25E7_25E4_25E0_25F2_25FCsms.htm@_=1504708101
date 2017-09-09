@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1057;&#1086;&#1079;&#1076;&#1072;&#1090;&#1100;SMS</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25F1_25EE_25E7_25E4_25E0_25F2_25FCsms.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_управлениеконтактнойинформациейклиентсоздатьsms"></a><h1>СоздатьSMS</h1>
+
+<pre> Создает письмо по контактной информации.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура СоздатьSMS(Знач ЗначенияПолей, Знач Представление = "", ОжидаемыйВид = Неопределено, ИсточникКонтактнойИнформации = "") Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>    ЗначенияПолей - Строка, Структура, Соответствие, СписокЗначений - контактная информация.
+    Представление - Строка  - представление. Используется, если невозможно определить представление из параметра.
+                    ЗначенияПолей (отсутствие поля "Представление").
+    ОжидаемыйВид  - СправочникСсылка.ВидыКонтактнойИнформации, ПеречислениеСсылка.ТипыКонтактнойИнформации, Структура
+                    Используется для определения типа, если его невозможно вычислить по полю ЗначенияПолей.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> УправлениеКонтактнойИнформациейКлиент.СоздатьSMS(ЗначенияПолей, Представление, ОжидаемыйВид, ИсточникКонтактнойИнформации)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Тонкий клиент, Толстый клиент</pre>
+	</body>
+</html>

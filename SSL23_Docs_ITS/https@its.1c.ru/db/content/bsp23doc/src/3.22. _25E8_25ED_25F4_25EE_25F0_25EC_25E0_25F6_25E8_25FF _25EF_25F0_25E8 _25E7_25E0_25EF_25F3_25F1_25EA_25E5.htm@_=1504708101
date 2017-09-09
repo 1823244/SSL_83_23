@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.22. &#1048;&#1085;&#1092;&#1086;&#1088;&#1084;&#1072;&#1094;&#1080;&#1103; &#1087;&#1088;&#1080; &#1079;&#1072;&#1087;&#1091;&#1089;&#1082;&#1077;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.22. _25E8_25ED_25F4_25EE_25F0_25EC_25E0_25F6_25E8_25FF _25EF_25F0_25E8 _25E7_25E0_25EF_25F3_25F1_25EA_25E5.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<h1>3.22. Информация при запуске</h1>
+
+<p class="Paragraph0c">Подсистема «Информация при запуске» отображает
+HTML-страницы с различной информацией при запуске программы (например,
+рекламу). Страницы содержатся в макетах обработки <span class="Interface">ИнформацияПриЗапуске</span>.
+Каждый макет содержит стартовую страницу, а также может содержать другие
+страницы, ссылки которых указаны в стартовой странице. Для каждого макета на
+командной панели обработки автоматически создается команда, по щелчку по которой
+осуществляется переход к странице с информацией.</p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Paragraph0c">Определить набор страниц с информацией, которая должна
+выводиться при запуске программы.</p>
+
+<p class="Paragraph0c">Каждый набор страниц запаковать в ZIP-архив таким образом,
+чтобы стартовая страница была в корне этого архива.</p>
+
+<p class="Paragraph0c">Загрузить архивы в обработку <span class="Interface">ИнформацияПриЗапуске</span>,
+добавив их в виде макетов из двоичных данных.</p>
+
+<p class="Paragraph0c">Описать настройки каждого макета (архива) в макете <span class="Interface">Описатель</span> обработки <span class="Interface">ИнформацияПриЗапуске</span>,
+указав свойства:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Имя макета</span> – имя
+макета, как оно задано в метаданных;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Раздел</span> –
+наименование подменю, в котором будет размещена команда вызова информации,
+размещенной в макете. Если наименование подменю не указано, то команда будет
+размещена прямо в командной панели;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Наименование</span> –
+наименование команды, по щелчку по которой будет осуществлен переход к странице
+с информацией;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Имя стартового файла</span>
+– имя стартовой HTML-страницы в ZIP-архиве. Указывается только имя, без слешей
+и имени архива;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Дата начала показа</span>
+– дата начала действия этой строки;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Дата окончания показа</span>
+– дата окончания действия этой строки;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Включать в показ при
+открытии</span> – используется для определения стартовой страницы, отображаемой
+при открытии обработки. Если «0» или &quot;&quot; (не указано), то не показывать
+при открытии. «1» – включать в первую очередь, «2» – включать во вторую
+очередь. При прочих равных (в случае возникновения конкуренции) страница
+выбирается случайным образом;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Показывать в ПРОФ</span> –
+если <span class="Interface">Истина</span>, то информация будет показана в
+локальном режиме в версии ПРОФ;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Показывать в базовой</span>
+– если <span class="Interface">Истина</span>, то информация будет показана в
+локальном режиме в базовой версии;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Показывать в модели
+сервиса</span> – если <span class="Interface">Истина</span>, то информация будет
+показана в модели сервиса.</p>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Для настройки прав доступа дополнительных действий не
+требуется.</p>
+
+<p class="Objectname">Таблица 3.40.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1.</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">БазовыеПрава или БазовыеПраваВнешнегоПользователя</span></p>
+  <p class="TextinTable81">Просмотр информации</p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Регистр сведений <span class="Interface">ПакетыИнформацииПриЗапуске</span>
+рекомендуется включать только в состав начального образа подчиненного узла
+распределенной ИБ (см. раздел «<A href="3.28. _25EE_25E1_25EC_25E5_25ED _25E4_25E0_25ED_25ED_25FB_25EC_25E8.htm@_=1504708101#_особенности_создания_начального">Особенности создания начального образа
+подчиненного узла распределенной ИБ</a>»).</p>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1055;&#1088;&#1086;&#1074;&#1077;&#1088;&#1080;&#1090;&#1100;&#1048;&#1084;&#1103;&#1052;&#1077;&#1090;&#1086;&#1076;&#1072;&#1050;&#1086;&#1085;&#1092;&#1080;&#1075;&#1091;&#1088;&#1072;&#1094;&#1080;&#1080;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25EF_25F0_25EE_25E2_25E5_25F0_25E8_25F2_25FC_25E8_25EC_25FF_25EC_25E5_25F2_25EE_25E4_25E0_25EA_25EE_25ED_25F4_25E8_25E3_25F3_25F0_25E0_25F6_25E8_25E8.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_работавбезопасномрежимепроверитьимяметодаконфигурации"></a><h1>ПроверитьИмяМетодаКонфигурации</h1>
+
+<pre> Проверяет, что переданное имя является именем экспортной процедуры конфигурации.
+ Может использоваться для проверки, что переданная строка не содержит произвольного алгоритма
+ на встроенном языке 1С:Предприятия перед использованием его в операторах Выполнить() и Вычислить()
+ при их использовании для динамического вызова методов код конфигурации.
+ В случае, если переданная строка не соответствует имени метода конфигурации - генерируется.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура ПроверитьИмяМетодаКонфигурации(Знач ИмяМетода) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> РаботаВБезопасномРежиме.ПроверитьИмяМетодаКонфигурации(ИмяМетода)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1055;&#1088;&#1080;&#1054;&#1087;&#1088;&#1077;&#1076;&#1077;&#1083;&#1077;&#1085;&#1080;&#1080;&#1053;&#1072;&#1089;&#1090;&#1088;&#1086;&#1077;&#1082;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25EF_25F0_25E8_25EE_25EF_25F0_25E5_25E4_25E5_25EB_25E5_25ED_25E8_25E8_25ED_25E0_25F1_25F2_25F0_25EE_25E5_25EA_1.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_пользователипереопределяемыйприопределениинастроек"></a><h1>ПриОпределенииНастроек</h1>
+
+<pre> Переопределяет стандартное поведение подсистемы Пользователи.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура ПриОпределенииНастроек(Настройки) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  Настройки - Структура - со свойствами:
+   * ОбщиеНастройкиВхода - Булево - начальное значение Истина, если установить Ложь,
+          тогда в панели администрирования "Настройки прав и пользователей" возможность
+          открытия формы настроек входа будет скрыта, как и настройка ограничения срока действия
+          в карточках пользователя и внешнего пользователя. Для базовых версий конфигурации всегда Ложь.
+   * РедактированиеРолей - Булево - начальное значение Истина, если установить Ложь, тогда
+          интерфейс изменения ролей в карточках пользователя, внешнего пользователя и
+          группы внешних пользователей будет скрыт (в том числе для администратора).</pre>
+<p class="Paragraph0c"><span class="Bold">Расположение</span></p>
+<pre> Общий модуль ПользователиПереопределяемый</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

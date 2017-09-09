@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1044;&#1086;&#1073;&#1072;&#1074;&#1080;&#1090;&#1100;&#1050;&#1086;&#1083;&#1083;&#1077;&#1082;&#1094;&#1080;&#1102;&#1057;&#1086;&#1093;&#1088;&#1072;&#1085;&#1103;&#1077;&#1084;&#1099;&#1093;&#1047;&#1085;&#1072;&#1095;&#1077;&#1085;&#1080;&#1081;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25E4_25EE_25E1_25E0_25E2_25E8_25F2_25FC_25EA_25EE_25EB_25EB_25E5_25EA_25F6_25E8_25FE_25F1_25EE_25F5030B4CDD91" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_дополнительныеотчетыиобработкивбезопасномрежимеинтерфейсдобавитьколлекциюсохраняемыхзначений"></a><h1>ДобавитьКоллекциюСохраняемыхЗначений</h1>
+
+<pre> Добавляет в таблицу параметров коллекцию сохраняемых значений.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура ДобавитьКоллекциюСохраняемыхЗначений(Этап) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  Этап - СтрокаТаблицыЗначений, возвращенная методами ДобавитьМетодКонфигурации
+    или ДобавитьМетодОбработки.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> ДополнительныеОтчетыИОбработкиВБезопасномРежимеИнтерфейс.ДобавитьКоллекциюСохраняемыхЗначений(Этап)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.2. &#1040;&#1085;&#1072;&#1083;&#1080;&#1079; &#1078;&#1091;&#1088;&#1085;&#1072;&#1083;&#1072; &#1088;&#1077;&#1075;&#1080;&#1089;&#1090;&#1088;&#1072;&#1094;&#1080;&#1080;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.2. _25E0_25ED_25E0_25EB_25E8_25E7 _25E6_25F3_25F0_25ED_25E0_25EB_25E0 _25F0_25E5_25E3_25E8_25F1_25F2_25F0_25E0_25F6_25E8_25E8.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<h1>3.2. Анализ журнала регистрации</h1>
+
+<p class="Paragraph0c">Подсистема «Анализ журнала регистрации» предназначена для
+диагностики работы программы на основе данных журнала регистрации. Включает в
+себя следующие варианты отчетов:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Анализ активности
+пользователей (пользователя)</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Контроль журнала
+регистрации</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Продолжительность работы
+регламентных заданий</span>.</p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Paragraph0c">Разместить в командном интерфейсе администратора отчет <span class="Interface">АнализЖурналаРегистрации</span>.</p>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Для настройки прав доступа пользователей к данным
+подсистемы «Анализ журнала регистрации» следует использовать роль, указанную
+ниже.</p>
+
+<p class="Objectname">Таблица 3.3.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПолныеПрава</span> (из
+  подсистемы «Базовая функциональность»)</p>
+  <p class="TextinTable81">Просмотр отчетов по журналу регистрации</p>
+  </td>
+ </tr>
+</table>
+
+<a name="_использование_при_разработке"></a><a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<p class="Paragraph0c">Программный интерфейс подсистемы представлен модулем
+менеджера отчета <span class="Interface">АнализЖурналаРегистрации</span>.</p>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Для настройки обмена данными никаких действий не
+требуется, так как подсистема не предоставляет собственных данных.</p>
+	</body>
+</html>

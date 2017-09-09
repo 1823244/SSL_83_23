@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>5.56 &#1062;&#1077;&#1085;&#1090;&#1088; &#1084;&#1086;&#1085;&#1080;&#1090;&#1086;&#1088;&#1080;&#1085;&#1075;&#1072;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="5.56 _25F6_25E5_25ED_25F2_25F0 _25EC_25EE_25ED_25E8_25F2_25EE_25F0_25E8_25ED_25E3_25E0.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<h1>5.56 Центр мониторинга</h1>
+
+<p class="Paragraph0c">Программа обеспечивает сбор, анализ и хранение
+технологической информации, обезличенной статистики использования конфигурации,
+а также различных настроек прикладного решения. С ее помощью выполняется
+передача собранной обезличенной статистики в единый центр контроля качества.</p>
+
+<p class="Paragraph0c">Отчеты об использовании программы, автоматически
+переданные разработчикам, помогут им определить, над чем следует поработать в
+первую очередь. Собранные сведения являются обезличенными и содержат только
+статистические показатели. Подготовка и отправка отчетов не замедлит работу
+программы.</p>
+
+<a name="issogl1_настройки_программы"><h2>Настройки программы</h2></a>
+
+<p class="Paragraph0c">Для выполнения передачи собранной обезличенной статистики
+в разделе <span class="Note"><b>Администрирование</b></span>
+<span class="Interface">–</span> <span class="Interface">Поддержка и обслуживание –
+Центр мониторинга</span> необходимо произвести соответствующие настройки.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image3891.png@_=1504708101" WIDTH="800" ALT HEIGHT="641"></p>
+
+<p class="Paragraph0c">С помощью переключателя выберите:</p>
+
+<p class="Bullet1">&#9632; 
+<span class="Interface">Разрешить автоматическую
+отправку сведений об использовании программы в фирму «1С»</span> (выбрано по
+умолчанию, рекомендуется);</p>
+
+<p class="Bullet1">&#9632; 
+<span class="Interface">Разрешить отправку
+сведений стороннему разработчику</span> – в этом случае необходимо заполнить <span class="Interface">Адрес сервиса</span>, например, <span class="Note"><b><a href="../../../../../https@pult1c.ru/pult/v1/packet/default.htm" target="_blank">https://pult1C.ru/pult/v1/packet/</a></b></span><span class="Paragraph0c0">. В качестве
+такого сервиса можно использовать программу </span><span class="Interface">Центр контроля качества</span><span class="Paragraph0c0">, входящую в </span><span class="Interface">Корпоративный Инструментальный пакет</span><span class="Paragraph0c0">.</span></p>
+
+<p class="Bullet1">&#9632; 
+<span class="Interface">Запретить отправку
+сведений</span> – не рекомендуется, т.к. статистика необходима разработчикам
+для анализа работы программы, при этом передача статистики не замедляет ее
+работу.</p>
+	</body>
+</html>

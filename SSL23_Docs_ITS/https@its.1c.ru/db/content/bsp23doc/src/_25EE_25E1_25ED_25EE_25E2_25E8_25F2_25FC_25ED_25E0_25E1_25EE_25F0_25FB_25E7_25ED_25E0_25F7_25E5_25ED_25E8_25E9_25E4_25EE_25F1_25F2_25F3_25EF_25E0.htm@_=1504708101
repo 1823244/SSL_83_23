@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1054;&#1073;&#1085;&#1086;&#1074;&#1080;&#1090;&#1100;&#1053;&#1072;&#1073;&#1086;&#1088;&#1099;&#1047;&#1085;&#1072;&#1095;&#1077;&#1085;&#1080;&#1081;&#1044;&#1086;&#1089;&#1090;&#1091;&#1087;&#1072;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25EE_25E1_25ED_25EE_25E2_25E8_25F2_25FC_25ED_25E0_25E1_25EE_25F0_25FB_25E7_25ED_25E0_25F7_25E5_25ED_25E8_25E9_25E4_25EE_25F1_25F2_25F3_25EF_25E0.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_управлениедоступомобновитьнаборызначенийдоступа"></a><h1>ОбновитьНаборыЗначенийДоступа</h1>
+
+<pre> Выполняет обновление наборов значений доступа объекта, если они изменились.
+ Наборы обновляются в табличной части (если используется) и
+ в регистре сведений НаборыЗначенийДоступа.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура ОбновитьНаборыЗначенийДоступа(СсылкаИлиОбъект, ОбновлениеИБ = Ложь) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  СсылкаИлиОбъект - СправочникСсылка, ДокументСсылка и другие типы ссылок - ссылка или объект, 
+                    для которого заполняются наборы значений доступа.
+  ОбновлениеИБ    - Булево - если Истина, то необходимо выполнять запись данных, 
+                            не выполняя лишних, избыточных действий с данными.
+                            См. <A href="_25E7_25E0_25EF_25E8_25F1_25E0_25F2_25FC_25E4_25E0_25ED_25ED_25FB_25E5.htm@_=1504708101#_обновлениеинформационнойбазызаписатьданные">ОбновлениеИнформационнойБазы.ЗаписатьДанные</a>.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> УправлениеДоступом.ОбновитьНаборыЗначенийДоступа(СсылкаИлиОбъект, ОбновлениеИБ)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

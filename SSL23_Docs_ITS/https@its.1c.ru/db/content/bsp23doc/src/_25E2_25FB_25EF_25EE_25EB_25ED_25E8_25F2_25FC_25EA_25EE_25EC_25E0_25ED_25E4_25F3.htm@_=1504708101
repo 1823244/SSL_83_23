@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1042;&#1099;&#1087;&#1086;&#1083;&#1085;&#1080;&#1090;&#1100;&#1050;&#1086;&#1084;&#1072;&#1085;&#1076;&#1091;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25E2_25FB_25EF_25EE_25EB_25ED_25E8_25F2_25FC_25EA_25EE_25EC_25E0_25ED_25E4_25F3.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_подключаемыекомандывыполнитькоманду"></a><h1>ВыполнитьКоманду</h1>
+
+<p class="Paragraph0c"><span class="Bold">1. Для вызова с сервера</span></p>
+<pre> Обработчик команды формы, требующей контекстный вызов сервера.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура ВыполнитьКоманду(Знач Форма, Знач ПараметрыВызова, Знач Источник, Результат) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>   Форма - УправляемаяФорма - Форма, из которой выполняется команда.
+   ПараметрыКоманды - Структура - Параметры команды.
+   Результат - Структура - Результат выполнения команды.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> ПодключаемыеКоманды.ВыполнитьКоманду(Форма, ПараметрыВызова, Источник, Результат)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre><pre>
+
+</pre>
+<p class="Paragraph0c"><span class="Bold">2. Для вызова с клиента</span></p>
+<pre> Обработчик команды формы.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура ВыполнитьКоманду(Форма, Команда, Источник) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>   Форма - УправляемаяФорма - Форма, из которой выполняется команда.
+   Команда - КомандаФормы - Выполняемая команда.
+   Источник - ТаблицаФормы, ДанныеФормыСтруктура - Объект или список формы с полем "Ссылка".</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> ПодключаемыеКомандыКлиент.ВыполнитьКоманду(Форма, Команда, Источник)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Тонкий клиент, Толстый клиент</pre>
+	</body>
+</html>

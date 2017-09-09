@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1059;&#1076;&#1072;&#1083;&#1080;&#1090;&#1100;&#1044;&#1072;&#1085;&#1085;&#1099;&#1077;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25F3_25E4_25E0_25EB_25E8_25F2_25FC_25E4_25E0_25ED_25ED_25FB_25E5.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_обновлениеинформационнойбазыудалитьданные"></a><h1>УдалитьДанные</h1>
+
+<pre> Удаляет переданный объект.
+ Для использования в обработчиках обновления.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура УдалитьДанные(Знач Данные, Знач РегистрироватьНаУзлахПлановОбмена = Неопределено, 
+	Знач ВключитьБизнесЛогику = Ложь) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  Данные                            - Произвольный - объект, который необходимо удалить.
+  РегистрироватьНаУзлахПлановОбмена - Булево       - включает регистрацию на узлах планов обмена при записи объекта.
+  ВключитьБизнесЛогику              - Булево       - включает бизнес-логику при записи объекта.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> ОбновлениеИнформационнойБазы.УдалитьДанные(Данные, РегистрироватьНаУзлахПлановОбмена, ВключитьБизнесЛогику)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

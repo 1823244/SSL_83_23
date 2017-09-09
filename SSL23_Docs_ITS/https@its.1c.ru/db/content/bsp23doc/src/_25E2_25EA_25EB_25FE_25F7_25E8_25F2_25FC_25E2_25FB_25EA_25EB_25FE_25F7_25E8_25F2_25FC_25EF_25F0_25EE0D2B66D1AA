@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1042;&#1082;&#1083;&#1102;&#1095;&#1080;&#1090;&#1100;&#1042;&#1099;&#1082;&#1083;&#1102;&#1095;&#1080;&#1090;&#1100;&#1055;&#1088;&#1086;&#1074;&#1077;&#1088;&#1082;&#1091;&#1050;&#1086;&#1085;&#1090;&#1088;&#1072;&#1075;&#1077;&#1085;&#1090;&#1086;&#1074;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25E2_25EA_25EB_25FE_25F7_25E8_25F2_25FC_25E2_25FB_25EA_25EB_25FE_25F7_25E8_25F2_25FC_25EF_25F0_25EE0CC5899DD3" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_проверкаконтрагентоввключитьвыключитьпроверкуконтрагентов"></a><h1>ВключитьВыключитьПроверкуКонтрагентов</h1>
+
+<pre> Включение или отключение использования сервиса путем установки значения константе
+             ИспользоватьПроверкуКонтрагентов.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура ВключитьВыключитьПроверкуКонтрагентов(ВключитьПроверку) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  ИспользоватьСервис  - Булево - Истина, чтобы включить использование сервиса. Ложь - чтобы отключить.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> ПроверкаКонтрагентов.ВключитьВыключитьПроверкуКонтрагентов(ВключитьПроверку)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

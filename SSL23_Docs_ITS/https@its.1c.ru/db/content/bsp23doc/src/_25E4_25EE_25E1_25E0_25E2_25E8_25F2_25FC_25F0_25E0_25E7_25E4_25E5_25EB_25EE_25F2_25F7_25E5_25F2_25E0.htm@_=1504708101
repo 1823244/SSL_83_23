@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1044;&#1086;&#1073;&#1072;&#1074;&#1080;&#1090;&#1100;&#1056;&#1072;&#1079;&#1076;&#1077;&#1083;&#1054;&#1090;&#1095;&#1077;&#1090;&#1072;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25E4_25EE_25E1_25E0_25E2_25E8_25F2_25FC_25F0_25E0_25E7_25E4_25E5_25EB_25EE_25F2_25F7_25E5_25F2_25E0.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_проверкаконтрагентовдобавитьразделотчета"></a><h1>ДобавитьРазделОтчета</h1>
+
+<pre> Процедура добавляет новый раздел в отчет.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура ДобавитьРазделОтчета(СтруктураПараметров, НазваниеРаздела, НомерРаздела, ТабличныйДокумент, ДополнительныеПараметры = Неопределено) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  СтруктураПараметров  - Структура - Параметры формирования отчета. 
+  Для проверки контрагентов в отчете важно наличие ключа "ДанныеДляПроверкиКонтрагентов".
+  Данный ключ формируется в процедуре ДобавитьПараметрыДляПроверкиКонтрагентов.
+  НазваниеРаздела   - Строка  - Название раздела отчета.
+  НомерРаздела   - Число  - Номер раздела отчета.
+  ТабличныйДокумент  - ТабличныйДокумент - Раздел отчета.
+  ДополнительныеПараметры  - Произвольный - Дополнительные данные, связанные с разделом отчета.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> ПроверкаКонтрагентов.ДобавитьРазделОтчета(СтруктураПараметров, НазваниеРаздела, НомерРаздела, ТабличныйДокумент, ДополнительныеПараметры)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

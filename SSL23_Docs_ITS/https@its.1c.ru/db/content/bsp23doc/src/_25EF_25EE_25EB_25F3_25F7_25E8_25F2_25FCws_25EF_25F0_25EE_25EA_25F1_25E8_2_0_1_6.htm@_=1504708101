@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1055;&#1086;&#1083;&#1091;&#1095;&#1080;&#1090;&#1100;WS&#1055;&#1088;&#1086;&#1082;&#1089;&#1080;_2_0_1_6</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25EF_25EE_25EB_25F3_25F7_25E8_25F2_25FCws_25EF_25F0_25EE_25EA_25F1_25E8_2_0_1_6.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_обменданнымисерверполучитьwsпрокси_2_0_1_6"></a><h1>ПолучитьWSПрокси_2_0_1_6</h1>
+
+<pre> Функция возвращает объект WSПрокси веб-сервиса Exchange_2_0_1_6, созданный с переданными параметрами.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция ПолучитьWSПрокси_2_0_1_6(СтруктураНастроек, СтрокаСообщенияОбОшибке = "", СообщениеПользователю = "") Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  СтруктураНастроек - Структура - параметры для WSПрокси;
+    * WSURLВебСервиса - Строка - месторасположение wsdl.
+    * WSИмяСервиса - Строка - имя сервиса.
+    * WSURLПространстваИменСервиса - Строка - URI пространства имен web-сервиса.
+    * WSИмяПользователя - Строка - имя пользователя для входа на сервер.
+    * WSПароль - Строка - пароль пользователя.
+    * WSТаймаут - Число - таймаут на операции выполняемые через полученное прокси.
+  СтрокаСообщенияОбОшибке - строка - содержит подробное описание ошибки в случае неуспешного подключения;
+  СтрокаСообщенияПользователю - строка - содержит краткое описание ошибки в случае неуспешного подключения.</pre>
+<p class="Paragraph0c"><span class="Bold">Возвращаемое значение</span></p>
+<pre>  WSПрокси</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = ОбменДаннымиСервер.ПолучитьWSПрокси_2_0_1_6(СтруктураНастроек, СтрокаСообщенияОбОшибке, СообщениеПользователю)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

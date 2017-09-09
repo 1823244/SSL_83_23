@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1054;&#1090;&#1082;&#1088;&#1099;&#1090;&#1100;&#1060;&#1086;&#1088;&#1084;&#1091;&#1055;&#1088;&#1086;&#1074;&#1077;&#1088;&#1082;&#1080;&#1054;&#1073;&#1085;&#1086;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25EE_25F2_25EA_25F0_25FB_25F2_25FC_25F4_25EE_25F0_25EC_25F3_25EF_25F0_25EE_25E2_25E5_25F0_25EA_25E8_25EE_25E1_25ED_25EE_25E2_25EB_25E5_25ED_25E8_25FF.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_адресныйклассификаторклиентоткрытьформупроверкиобновления"></a><h1>ОткрытьФормуПроверкиОбновления</h1>
+
+<pre> Устарела. Следует использовать ОткрытьФормуЗагрузкиАдресногоКлассификатора.
+ Проверяет наличие обновлений адресного классификатора на сайте
+ для тех субъектов, которые ранее уже загружались.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура ОткрытьФормуПроверкиОбновления(ПараметрыВыполнения) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>     ПараметрыВыполнения - ПараметрыВыполненияКоманды, Структура - параметры открытия формы.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> АдресныйКлассификаторКлиент.ОткрытьФормуПроверкиОбновления(ПараметрыВыполнения)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Тонкий клиент, Толстый клиент</pre>
+	</body>
+</html>

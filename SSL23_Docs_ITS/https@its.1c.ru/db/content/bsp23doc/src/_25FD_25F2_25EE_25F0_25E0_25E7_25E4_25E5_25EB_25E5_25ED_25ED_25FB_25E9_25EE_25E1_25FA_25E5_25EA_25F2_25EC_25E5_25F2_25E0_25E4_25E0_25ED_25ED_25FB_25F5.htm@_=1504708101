@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1069;&#1090;&#1086;&#1056;&#1072;&#1079;&#1076;&#1077;&#1083;&#1077;&#1085;&#1085;&#1099;&#1081;&#1054;&#1073;&#1098;&#1077;&#1082;&#1090;&#1052;&#1077;&#1090;&#1072;&#1076;&#1072;&#1085;&#1085;&#1099;&#1093;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25FD_25F2_25EE_25F0_25E0_25E7_25E4_25E5_25EB_25E5_25ED_25ED_25FB_25E9_25EE_25E1_25FA_25E5_25EA_25F2_25EC_25E5_25F2_25E0_25E4_25E0_25ED_25ED_25FB_25F5.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_общегоназначенияэторазделенныйобъектметаданных"></a><h1>ЭтоРазделенныйОбъектМетаданных</h1>
+
+<p class="Paragraph0c"><span class="Bold">1. Для вызова с сервера</span></p>
+<pre> Возвращает признак того, что объект метаданных используется в общих реквизитах-разделителях.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция ЭтоРазделенныйОбъектМетаданных(Знач ОбъектМетаданных, Знач Разделитель) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  ОбъектМетаданных - Строка, ОбъектМетаданных - Если объект метаданных задан строкой, происходит обращение к модулю
+                     повторного использования.
+  Разделитель      - Строка - имя общего реквизита-разделителя, на разделение которыми проверяется объект метаданных.</pre>
+<p class="Paragraph0c"><span class="Bold">Возвращаемое значение</span></p>
+<pre>  Булево - Истина, если объект метаданных используется хотя бы в одном общем разделителе.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = ОбщегоНазначения.ЭтоРазделенныйОбъектМетаданных(ОбъектМетаданных, Разделитель)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre><pre>
+
+</pre>
+<p class="Paragraph0c"><span class="Bold">2. Для вызова с сервера</span></p>
+<pre> Возвращает признак того, что объект метаданных используется в общих реквизитах-разделителях.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция ЭтоРазделенныйОбъектМетаданных(Знач ИмяОбъектаМетаданных, Знач Разделитель) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre> ИмяОбъектаМетаданных - Строка.
+ Разделитель - имя общего реквизита-разделителя, на разделение которыми проверяется объект метаданных.</pre>
+<p class="Paragraph0c"><span class="Bold">Возвращаемое значение</span></p>
+<pre> Булево.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = ОбщегоНазначенияПовтИсп.ЭтоРазделенныйОбъектМетаданных(ИмяОбъектаМетаданных, Разделитель)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

@@ -1,0 +1,732 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>5.33 &#1055;&#1077;&#1095;&#1072;&#1090;&#1100;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="5.33 _25EF_25E5_25F7_25E0_25F2_25FC.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<h1>5.33 Печать</h1>
+
+<p class="Paragraph0c"><a name="_дополнительные_печатные_формы"></a><a name="_особенности_печати_в_веб-клиенте"></a><a name="_редактирование_макетов_печатных"></a><a name="_настройка_программы_17"></a><a name="_особенности_печати_в"></a><a name="_редактирование_макетов_печатных_1"></a>Многие
+документы, списки и другие объекты программы имеют свои печатные формы. Печатные
+формы могут формироваться в виде табличных документов или офисных документов в
+форматах <a name="ole_link2"></a><a name="ole_link1">Microsoft </a><span class="Interface">Word</span> и <span class="Interface">OpenOffice.org </span><span class="Interface">Writer</span>.
+Внешний вид и состав печатных форм можно настраивать, не внося изменений в
+программу (конфигурацию). У документа или списка могут быть также внешние
+печатные формы.</p>
+
+<p class="Paragraph0c">Печатные формы в виде табличного документа можно сохранить
+в папку на компьютере или отправить по почте как вложения в любом из популярных
+форматов, включая документы <span class="Interface">Microsoft </span><span class="Interface">Word</span>,
+<span class="Interface">OpenOffice.org </span><span class="Interface">Writer</span>, <span class="Interface">Adobe </span><span class="Interface">PDF</span>, <span class="Interface">HTML</span>,
+<span class="Interface">Microsoft </span><span class="Interface">Excel</span>, в формате табличного
+документа <span class="Interface">1С:Предприятие</span> (<span class="Interface">.</span><span class="Interface">mxl</span>).
+При этом не требуется, чтобы эти программы были установлены на компьютере. </p>
+
+<p class="Paragraph0c">В то же время, для формирования печатных форм, которые
+сразу выводятся в форматах <span class="Interface">Microsoft </span><span class="Interface">Word</span>
+и <span class="Interface">OpenOffice.org </span><span class="Interface">Writer</span>, необходимо,
+чтобы на компьютере были установлены соответствующие офисные программы. </p>
+
+<p class="Paragraph0c">Внешние пользователи (партнеры, респонденты и др.) могут
+воспользоваться как предусмотренными в программе печатными формами для
+документов, так и внешними печатными формами. </p>
+
+<a name="_настройка_программы_34"></a><a name="issogl1_настройка_программы"><h2>Настройка программы</h2></a>
+
+<p class="Paragraph0c">В разделе <span class="Note"><b>Администрирование</b></span><span class="Interface"> –
+Печатные формы, отчеты и обработки</span> с помощью команды <span class="Interface">Подменю «Печать»</span> можно настраивать состав всех печатных
+форм, располагающихся в подменю <span class="Interface">Печать</span> в
+документах и списках программы.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2572.png@_=1504708101" WIDTH="800" ALT HEIGHT="510"></p>
+
+<p class="Paragraph0c">Состав печатных форм
+документов и списков можно определить с помощью соответствующих флажков: можно
+включать или отключать отдельные команды или подменю <span class="Interface">Печать</span> для всего
+списка или документа. </p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2574.png@_=1504708101" WIDTH="800" ALT HEIGHT="858"></p>
+
+<a name="issogl1_формирование_печатных_форм"><h2>Формирование печатных форм</h2></a>
+
+<p class="Paragraph0c">Для формирования печатных форм не требуется наличия
+каких-либо специальных прав. Как правило, печать доступна, если есть права на
+просмотр документа. Рассмотрим возможности печати на примере печатных форм
+документов.</p>
+
+<p class="Paragraph0c">В документах с возможностью печати, как правило, в
+командной панели имеется подменю <span class="Interface">Печать</span>, с помощью
+которой выбираются конкретные печатные формы. Состав команд подменю <span class="Interface">Печать</span> зависит от соответствующих настроек. См. раздел <a href="#_настройка_программы_34">Настройка программы</a>. <span class="Note">Например, в документе <b>Демо:</b> <b>Счет
+на оплату покупателю</b> предусмотрено несколько печатных форм:</span></p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2576.png@_=1504708101" WIDTH="800" ALT HEIGHT="604"></p>
+
+<p class="Paragraph0c">Аналогичные команды предусмотрены в списке документов. В
+списке можно выделить сразу несколько документов и распечатать. При
+множественном выборе в форме списка или в журнале документов в составе подменю <span class="Interface">Печать</span> остаются доступными только те печатные формы,
+которые подходят сразу ко всем выбранным документам.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2578.png@_=1504708101" WIDTH="800" ALT HEIGHT="533"></p>
+
+<p class="Paragraph0c">Состав подменю <span class="Interface">Печать</span> в ряде
+документов, списков и журналов автоматически подстраивается под выбранный
+документ: показываются только те печатные формы, которые могут быть для него
+сформированы при текущих значениях реквизитов.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2580.png@_=1504708101" WIDTH="800" ALT HEIGHT="481"></p>
+
+<p class="Paragraph0c">Печатных форм у
+некоторых документов в списке может не быть. </p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2582.png@_=1504708101" WIDTH="800" ALT HEIGHT="464"></p>
+
+<p class="Paragraph0c">В программе предусмотрено несколько видов команд печати:</p>
+
+<p class="Bullet1">&#9632; 
+с предварительным просмотром в окне <span class="Interface">Печать документов</span><span class="Paragraph0c0"> (</span><span class="Note">например, команда <b>Печать – Счет на
+оплату</b></span><span class="Paragraph0c0">).
+</span>Для вывода сформированной печатной формы на принтер можно
+воспользоваться кнопкой<span class="Interface"> Печать</span>. Здесь же можно
+указать количество копий документа. Выбранное число копий запоминается. <span class="Note">Исключением является
+печать комплектов, где настройка числа копий отдельных печатных форм может не
+сохраняться (это зависит от прикладного решения);</span></p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2584.png@_=1504708101" WIDTH="800" ALT HEIGHT="604"></p>
+
+<p class="Bullet1">&#9632; 
+<span class="Paragraph0c0">без предварительного просмотра в окне </span><span class="Interface">Печать документов</span><span class="Paragraph0c0">. </span><span class="Note">Например, в документе <b>Демо: Счет на
+оплату покупателю</b> предусмотрена команда <b>Печать - Счет на оплату (на
+принтер)</b>. Аналогичная команда предусмотрена для комплектов документов:<b>
+Комплект документов (на принтер)</b></span><span class="Paragraph0c0">;</span></p>
+
+<p class="Bullet1">&#9632; 
+<span class="Paragraph0c0">печатные формы в виде документов </span><span class="Interface">Microsoft </span><span class="Interface">Word</span><span class="Paragraph0c0"> и </span><span class="Interface">OpenOffice.org.
+</span><span class="Interface">Writer</span>
+(<span class="Note">например, <b>Счет
+на оплату в OpenOffice.org </b></span><span class="Note"><b>Writer</b></span>).
+Подробнее см. раздел <a href="#_печатные_формы_в_виде документов mi">Печатные
+формы в виде документов Microsoft Word
+и OpenOffice.org Writer</a>;</p>
+
+<p class="Bullet1">&#9632; 
+<span class="Paragraph0c0">печать комплекта документов</span>. <span class="Note">Примером такой</span>
+<span class="Note">команды является <b>Печать
+– Комплект документов</b></span>. Позволяет распечатать комплект
+различных документов. <span class="Note">Например,
+из товарной накладной можно распечатать сразу товарную накладную, приходно&#8209;кассовый
+ордер и счет&#8209;фактуру. </span>В окне <span class="Interface">Печать комплекта</span>
+печатные формы комплекта выводятся на отдельных страницах, при этом можно
+просмотреть конкретную форму, выбирая из списка печатных форм слева нужную.
+Можно изменить количество копий комплекта;</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2586.png@_=1504708101" WIDTH="800" ALT HEIGHT="487"></p>
+
+<p class="Bullet1">&#9632; 
+выборочная печать комплекта документов (<span class="Note">примером такой команды
+на рисунке является <b>Настраиваемый комплект документов</b></span>).
+Для каждой печатной формы можно указать свое количество копий. Подробнее см.
+раздел <a href="#_настраиваемый_комплект_документов">Настраиваемый комплект
+документов;</a></p>
+
+<p class="Bullet1">&#9632; 
+печать в виде документа PDF. (<span class="Note">Например, <b>Счет на оплату в документ </b></span><span class="Note"><b>Adobe</b></span><span class="Note"><b> </b></span><span class="Note"><b>PDF</b></span>);</p>
+
+<p class="Bullet1">&#9632; 
+внешние печатные формы. В зависимости от
+настроек разработчика программы могут быть предусмотрены внешние печатные формы
+по соответствующим командам в подменю <span class="Interface">Печать</span>, которые
+добавляются в список в алфавитном порядке. <span class="Note">Например, в документе <b>Демо: Счет на
+оплату покупателю</b> предусмотрены внешние печатные формы <b>Гарантийное
+письмо</b>, <b>Комплект документов</b> и <b>Счет на оплату</b>.</span>
+Подробнее о внешних печатных формах см. раздел документации Дополнительные
+отчеты и обработки;</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2588.png@_=1504708101" WIDTH="380" ALT HEIGHT="484"></p>
+
+<p class="Bullet1">&#9632; 
+печатные формы из расширения. В зависимости от
+настроек разработчика программы в расширении могут быть предусмотрены печатные
+формы по соответствующим командам в подменю <span class="Interface">Печать</span>,
+которые добавляются в список в алфавитном порядке. <span class="Note">Например, в документе <b>Демо: Счет на
+оплату покупателю</b> предусмотрены печатные формы из расширения <b>Гарантийное
+письмо</b>, <b>Комплект документов</b> и <b>Счет на оплату</b>.</span>
+Подробнее о расширениях см. раздел документации Базовая функциональность;</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2590.png@_=1504708101" WIDTH="381" ALT HEIGHT="484"></p>
+
+<p class="Bullet1">&#9632; 
+<span class="Paragraph0c0">печатные формы с QR-кодом. </span><span class="Note">Например, в документе <b>Демо:</b> <b>Счет
+на оплату покупателю</b> имеется команда <b>Квитанция (с QR-кодом)</b></span><span class="Paragraph0c0">.</span>
+В программе предусмотрены возможности для вывода изображений QR-кодов в
+печатных формах по заданной текстовой строке.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2592.png@_=1504708101" WIDTH="800" ALT HEIGHT="754"></p>
+
+<p class="Paragraph0c">С помощью кнопки <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2594.png@_=1504708101" WIDTH="31" ALT HEIGHT="29"> можно включить или отключить режим
+редактирования этой печатной формы.</p>
+
+<p class="Paragraph0c">С помощью кнопки <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2596.png@_=1504708101" WIDTH="31" ALT HEIGHT="27"> можно просмотреть документ перед печатью. В
+окне <span class="Interface">Предварительный просмотр</span> с помощью
+соответствующих кнопок можно распечатать документ или перейти к настройке
+параметров страницы. Также эти команды можно найти в меню <span class="Interface">Еще</span>.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2598.png@_=1504708101" WIDTH="800" ALT HEIGHT="754"></p>
+
+<p class="Paragraph0c">С помощью кнопки <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2600.png@_=1504708101" WIDTH="31" ALT HEIGHT="29"> имеется возможность <span class="Interface">Сохранить</span>
+печатные формы в нужных форматах в папку на компьютере или присоединить к
+документу.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2602.png@_=1504708101" WIDTH="800" ALT HEIGHT="581"></p>
+
+<p class="Paragraph0c">Для того чтобы сохранить печатную форму, с помощью
+переключателя выберите С<span class="Interface">охранить в папку на компьютер</span>.
+Выберите путь к папке с помощью кнопки <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image1847.png@_=1504708101" WIDTH="25" ALT HEIGHT="28">.
+</p>
+
+<p class="Paragraph0c">Включите флажки для выбора одного или нескольких форматов,
+в которых нужно сохранить печатную форму. </p>
+
+<p class="Paragraph0c">Для уменьшения объема сохраненных файлов включите флажок <span class="Interface">Дополнительно упаковать в архив</span>. Нажмите кнопку <span class="Interface">Сохранить</span>. Настройки будут сохранены.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2604.png@_=1504708101" WIDTH="456" ALT HEIGHT="534"></p>
+
+<p class="Paragraph0c">С помощью
+переключателя имеется возможность печатную форму <span class="Interface">Присоединить
+к документу</span>.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2606.png@_=1504708101" WIDTH="456" ALT HEIGHT="534"></p>
+
+<p class="Paragraph0c">Для просмотра присоединенных файлов выполните команду <span class="Interface">Присоединенные файлы</span> на панели навигации документа.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2608.png@_=1504708101" WIDTH="800" ALT HEIGHT="659"></p>
+
+<p class="Paragraph0c"><a name="_настраиваемый_комплект_документов."></a>С
+помощью кнопки<span class="Interface"> </span><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2610.png@_=1504708101" WIDTH="29" ALT HEIGHT="29"> <span class="Interface">Отправить</span>
+сформированные печатные формы документа можно отправить в качестве вложений в
+электронном письме. </p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2612.png@_=1504708101" WIDTH="800" ALT HEIGHT="589"></p>
+
+<p class="Paragraph0c">Если включен флажок <span class="Interface">Почтовый клиент</span>
+(раздел <span class="Interface">Администрирование – Органайзер – Почта</span>,
+подробнее см. раздел документации Взаимодействия) и у контрагентов и партнеров
+имеются адреса электронной почты, то программа предлагает выбрать с помощью
+флажков адреса для отправки вложений.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2614.png@_=1504708101" WIDTH="800" ALT HEIGHT="580"></p>
+
+<p class="Paragraph0c">Для уменьшения размера вложений печатную форму перед
+отправкой рекомендуется упаковать в архив (формат <span class="Interface">.</span><span class="Interface">zip</span>).
+</p>
+
+<p class="Paragraph0c">В качестве ссылки указываются форматы вложений. Нажав на
+ссылку, можно поменять их.</p>
+
+<p class="Paragraph0c">Укажите, в каком формате (или нескольких форматах) нужно
+отправить документ: </p>
+
+<p class="Bullet1">&#9632; 
+Документ Adobe PDF (.pdf); </p>
+
+<p class="Bullet1">&#9632; 
+Лист Microsoft Excel 2007 (.xlsx);</p>
+
+<p class="Bullet1">&#9632; 
+Лист Microsoft Excel 97-2003 (.xls);</p>
+
+<p class="Bullet1">&#9632; 
+Электронная таблица OpenDocument (.ods);</p>
+
+<p class="Bullet1">&#9632; 
+Табличный документ (.mxl);</p>
+
+<p class="Bullet1">&#9632; 
+Документ Word 2007 (.docx);</p>
+
+<p class="Bullet1">&#9632; 
+Веб-страница (.html);</p>
+
+<p class="Bullet1">&#9632; 
+Текстовый документ UTF-8 (.txt);</p>
+
+<p class="Bullet1">&#9632; 
+Текстовый документ ANSI (.txt).</p>
+
+<p class="Paragraph0c">При необходимости включите флажок <span class="Interface">Дополнительно
+упаковать в архив</span>.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2616.png@_=1504708101" WIDTH="502" ALT HEIGHT="518"></p>
+
+<p class="Paragraph0c">Настройки
+запоминаются.</p>
+
+<p class="Paragraph0c">После указания
+необходимых данных для перехода к заполнению письма нажмите кнопку <span class="Interface">Подготовить</span>.</p>
+
+<p class="Paragraph0c">Поле<span class="Note">
+</span><span class="Interface">Кому</span> заполняется автоматически
+выбранными адресами электронной почты, но можно вручную добавить адреса (<span class="Note">Например, <b><a href="mailto:Sales@1c.ru" target="_blank">Sales@1c.ru</a></b></span>). </p>
+
+<p class="Paragraph0c">Заполните поле <span class="Interface">Тема</span>, напишите
+содержание письма. </p>
+
+<p class="Paragraph0c">По умолчанию программа заполняет поле <span class="Interface">Учетная запись</span> автоматически, подставляя системную
+учетную запись. Можно поменять учетную запись с помощью кнопки <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2618.png@_=1504708101" WIDTH="25" ALT HEIGHT="29">.
+Для этого выберите из списка учетных записей нужную. </p>
+
+<p class="Paragraph0c">Поле <span class="Interface">Адрес ответа</span> заполняется
+автоматически, но можно его вручную изменить. </p>
+
+<p class="Paragraph0c">Подробнее см. раздел документации Работа с почтовыми
+сообщениями. </p>
+
+<p class="Paragraph0c">Нажмите кнопку <span class="Interface">Отправить</span>.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2620.png@_=1504708101" WIDTH="800" ALT HEIGHT="622"></p>
+
+<p class="Paragraph0c">При отправке комплекта документов для каждой печатной
+формы будет сформировано отдельное вложение. Если печатается комплект печатных
+форм сразу для нескольких документов из списка, то рекомендуется разбивать
+документы по контрагентам. В этом случае удобно отправлять весь комплект одному
+контрагенту,<span class="Note">
+например, если в комплект входит две печатные формы, то в первом файле будут
+все счета, во втором все накладные.</span></p>
+
+<p class="Paragraph0c">Для быстрого перехода к нужной печатной форме достаточно
+выбрать ее в списке. </p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2622.png@_=1504708101" WIDTH="800" ALT HEIGHT="347"></p>
+
+<p class="Paragraph0c">Для удобства просмотра печатной формы комплекта можно
+отключить панель настройки количества копий с помощью кнопки <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2624.png@_=1504708101" WIDTH="19" ALT HEIGHT="19"> <span class="Interface">Показать / Скрыть
+настройку количества копий</span>. </p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2626.png@_=1504708101" WIDTH="800" ALT HEIGHT="428"></p>
+
+<p class="Paragraph0c">С помощью кнопки <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2628.png@_=1504708101" WIDTH="30" ALT HEIGHT="28"> можно
+подсчитать <span class="Interface">Показатели выделенных ячеек</span>: сумму, среднее, минимум и максимум.
+Указывается общее количество выделенных ячеек и количество числовых ячеек.
+Расчеты проводятся только для числовых ячеек. Подробнее см. в разделе
+документации Варианты отчетов.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2630.png@_=1504708101" WIDTH="800" ALT HEIGHT="602"></p>
+
+<p class="Paragraph0c">С помощью команды <span class="Interface">Еще – Изменить
+макет</span> можно перейти к редактированию макета печатной формы. Команда
+доступна, если установлена роль <span class="Interface">Изменение макетов
+печатных форм</span>. Печатная форма становится неактивной. Подробнее см.
+раздел <a href="#_редактирование_макетов_печатных_2">Редактирование макетов
+печатных форм</a>.</p>
+
+<p class="Paragraph0c">После завершения редактирования печатная форма изменится
+автоматически.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2632.png@_=1504708101" WIDTH="800" ALT HEIGHT="601"></p>
+
+<p class="Paragraph0c">По соответствующей
+команде меню <span class="Interface">Еще</span> можно <span class="Interface">Перейти к макетам печатных форм</span>. Подробнее о списке <span class="Interface">Макеты печатных форм</span> см. раздел <a href="#_редактирование_макетов_печатных_2">Редактирование
+макетов печатных форм</a>.</p>
+
+<a name="_настраиваемый_комплект_документов"></a><a name="issogl2_настраиваемый_комплект_документов"><h3>Настраиваемый комплект документов</h3></a>
+
+<p class="Paragraph0c">В программе предусмотрена возможность настройки печати
+комплекта документов по команде <span class="Interface">Печать – Настраиваемый
+комплект документов</span>. В окне <span class="Interface">Настраиваемый комплект</span>
+слева находится панель настройки количества копий. </p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2634.png@_=1504708101" WIDTH="800" ALT HEIGHT="468"></p>
+
+<p class="Paragraph0c">Для того чтобы настроить печать комплекта, воспользуйтесь
+контекстным меню по правой кнопке мыши. Эти команды можно найти также в меню <span class="Interface">Еще</span>.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2636.png@_=1504708101" WIDTH="800" ALT HEIGHT="469"></p>
+
+<p class="Paragraph0c">С помощью команд выпадающего меню или меню <span class="Interface">Еще </span>можно <span class="Interface">Установить</span> или <span class="Interface">Снять</span> все<span class="Interface"> флажки</span>, <span class="Interface">Сбросить настройки комплекта</span>. </p>
+
+<p class="Paragraph0c">Выберите нужную печатную форму из комплекта для просмотра.
+Включите флажок для печати этой печатной формы. Проставьте необходимое
+количество копий печатных форм. Настройки будут сохранены.</p>
+
+<a name="_особенности_печати_в_1"></a><a name="issogl1_особенности_печати_в_веб-клиенте"><h2>Особенности печати в веб-клиенте</h2></a>
+
+<a name="issogl2_печатные_формы_в_виде_табличных_документов"><h3>Печатные формы в виде табличных документов</h3></a>
+
+<p class="Paragraph0c">При работе в Интернете для формирования печатных форм в
+веб-клиенте необходимы дополнительные настройки браузера. Необходимо отменить
+блокирование всплывающих окон для веб-сайта программы, <span class="Note">например: <a href="../../../../../trade.demo.1c.ru/trade/ru_RU/default.htm" target="_blank">http://trade.demo.1c.ru/trade/ru_RU/</a></span>.</p>
+
+<p class="Paragraph0c">При работе в браузере Internet Explorer выберите
+команду <span class="Interface">Сервис – Блокирование всплывающих окон –
+Параметры блокирования всплывающих окон</span>. </p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2638.png@_=1504708101" WIDTH="800" ALT HEIGHT="529"></p>
+
+<p class="Paragraph0c">Введите адрес веб-сайта программы в поле <span class="Interface">Адрес веб-узла, получающего разрешение</span>, нажмите кнопку <span class="Interface">Добавить</span>, название сайта появится в поле <span class="Interface">Веб-узлы, имеющие разрешение</span>. Далее нажмите <span class="Interface">Закрыть</span>. Для получения более подробной информации см.
+документацию к веб-браузеру.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2640.png@_=1504708101" WIDTH="480" ALT HEIGHT="490"></p>
+
+<p class="Paragraph0c">При работе в <span class="Interface">Internet Explorer</span>, если включена
+фильтрация активного содержимого, то нужно нажать на значок <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2642.png@_=1504708101" WIDTH="16" ALT HEIGHT="17"> <span class="Interface">Состояние фильтрации
+активного содержимого </span>и отключить фильтрацию ActiveX только для этого сайта.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2644.png@_=1504708101" WIDTH="421" ALT HEIGHT="197"></p>
+
+<p class="Paragraph0c">При печати в
+веб-клиенте печатные формы выводятся в формате <span class="Interface">.pdf</span> (по умолчанию), который можно сразу отправить
+на принтер или сохранить в файл на компьютер. Поэтому необходимо, чтобы на
+компьютере была установлена программа просмотра документов PDF, например, <span class="Interface">Adobe Reader</span>. Если программа на компьютере не установлена,
+и нет возможности ее установить, или этот способ печати не устраивает по
+каким-либо причинам, можно выбрать способ печати HTML. Для этого нажмите кнопку <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2646.png@_=1504708101" WIDTH="24" ALT HEIGHT="25"> <span class="Interface">Главное меню</span>,
+выберите команду <span class="Interface">Сервис – Параметры</span>, включите <span class="Interface">Способ печати </span>в виде<span class="Interface"> </span><span class="Interface">HTML</span>,
+нажмите кнопку <span class="Interface">ОК</span>.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2648.png@_=1504708101" WIDTH="800" ALT HEIGHT="563"></p>
+
+<p class="Paragraph0c">После нажатия на кнопку <span class="Interface">Печать</span>
+необходимо уточнить настройки печати в программе Adobe Reader. Печатная форма
+выводится на предварительный просмотр.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2650.png@_=1504708101" WIDTH="800" ALT HEIGHT="419"></p>
+
+<p class="Paragraph0c">В противном случае,
+если не установлена программа просмотра документов PDF или не проведены настройки,
+указанные выше, при попытке печати в веб-клиенте в формате PDF будет выведено информационное сообщение: </p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2652.png@_=1504708101" WIDTH="796" ALT HEIGHT="703"></p>
+
+<p class="Paragraph0c">Если на компьютере
+имеется программа <span class="Interface">Adobe </span><span class="Interface">Reader</span>, но не выполнены настройки веб-браузера, в
+нижнем окне <span class="Interface">Открыть или сохранить</span> выберите <span class="Interface">Открыть</span>,
+затем нажмите кнопку <span class="Interface">Печать </span>или <span class="Interface">ОК</span>. После распечатки закройте окно печати, нажмите
+кнопку <span class="Interface">Закрыть </span>для возврата в<span class="Interface"> </span>программу.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2654.png@_=1504708101" WIDTH="790" ALT HEIGHT="170"></p>
+
+<p class="Paragraph0c">В случае если
+всплывающие окна заблокированы, выводится сообщение вида:</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2656.png@_=1504708101" WIDTH="514" ALT HEIGHT="81"></p>
+
+<p class="Paragraph0c">Нажмите кнопку <span class="Interface">Параметры для этого сайта</span>, чтобы перейти к настройке
+разрешения всплывающих окон.</p>
+
+<a name="_печатные_формы_в_виде документов mi"></a><a name="issogl2_печатные_формы_в_виде_документов_microsoft_word_и_openoffice.org_writer"><h3>Печатные формы в виде документов Microsoft Word и OpenOffice.org Writer</h3></a>
+
+<p class="Paragraph0c">В программе предусмотрены печатные формы, которые сразу
+выводятся в форматах <span class="Interface">Microsoft Word</span> и <span class="Interface">OpenOffice.org </span><span class="Interface">Writer</span>.
+Для этого необходимо, чтобы на компьютере были установлены офисные программы <span class="Interface">Microsoft Word</span>
+(версия не ниже 2003) и <span class="Interface">OpenOffice.org </span><span class="Interface">Writer </span>(версия не ниже 3.2). Кроме того, при работе через
+Интернет необходим веб-браузер <span class="Interface">Internet Explorer</span>
+версии 6.0 и выше, для которого следует предварительно выполнить дополнительную
+настройку.</p>
+
+<p class="Paragraph0c">Для настройки <span class="Interface">Internet Explorer</span>
+выберите команду <span class="Interface">Сервис – Свойства обозревателя</span>.
+На вкладке <span class="Interface">Безопасность</span> нажмите кнопку <span class="Interface">Другой</span> и настройте уровень безопасности для работы
+веб-клиента:</p>
+
+<p class="Bullet1">&#9632; 
+отключите блокирование всплывающих окон;</p>
+
+<p class="Bullet1">&#9632; 
+разрешите сценарии; </p>
+
+<p class="Bullet1">&#9632; 
+разрешите использовать элементы ActiveX.</p>
+
+<p class="Paragraph0c">На вкладке <span class="Interface">Конфиденциальность</span>
+выберите уровень безопасности не выше среднего.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2658.png@_=1504708101" WIDTH="427" ALT HEIGHT="485"></p>
+
+<p class="Paragraph0c">Подробнее о настройках браузера см. книги 1:Предприятие
+8.3. Руководство пользователя, глава 13 «Работа с веб-клиентом» и Руководство
+администратора, глава 8 «Настройка веб-браузеров для работы в веб-клиенте».</p>
+
+<p class="Paragraph0c">После проведения
+необходимых настроек печать в форматах <span class="Interface">Microsoft </span><span class="Interface">Word</span> и <span class="Interface">OpenOffice.org </span><span class="Interface">Writer</span> становится доступной из веб-клиента. <span class="Note">Например, в списке
+документов <b>Демо: Счет на оплату покупателю</b> выберите команду <b>Печать –
+Счет на оплату в </b></span><span class="Note"><b>Microsoft</b></span><span class="Note"><b> </b></span><span class="Note"><b>Word</b></span><span class="Note">.</span></p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2660.png@_=1504708101" WIDTH="800" ALT HEIGHT="490"></p>
+
+<p class="Paragraph0c">При первой попытке печати без установки расширения работы
+с файлами выводится предложение установить его. Нажмите кнопку <span class="Interface">Установить и продолжить</span> для начала установки.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2662.png@_=1504708101" WIDTH="800" ALT HEIGHT="209"></p>
+
+<p class="Paragraph0c">В зависимости от настроек системы безопасности компьютера
+может потребоваться подтвердить установку программы на компьютер. Проверьте
+издателя программы (<span class="Interface">1С</span>) и нажмите <span class="Interface">Установить</span> для подтверждения.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2664.png@_=1504708101" WIDTH="800" ALT HEIGHT="386"></p>
+
+<p class="Paragraph0c">После успешного окончания установки нажмите <span class="Interface">ОК</span>. В следующий раз это сообщение выводиться уже не
+будет.</p>
+
+<p class="Paragraph0c">Также для установки расширения работы с файлами и изменения рабочего каталога печати можно
+воспользоваться командой <span class="Note"><b>Демо:
+Мои настройки</b></span> в разделе <span class="Interface">Главное</span>.
+</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2666.png@_=1504708101" WIDTH="800" ALT HEIGHT="479"></p>
+
+<p class="Paragraph0c">Также можно найти команду <span class="Note"><b>Демо: Мои Настройки</b></span> в
+разделе <span class="Note"><b>Администрирование</b></span>.
+</p>
+
+<p class="Paragraph0c">На вкладке <span class="Interface">Главное</span>
+персональных настроек в разделе <span class="Interface">Работа в веб-клиенте</span>
+нажмите кнопку <span class="Interface">Установить сейчас</span>.
+</p>
+
+<p class="Paragraph0c">Можно отложить
+установку. Включите флажок, для того чтобы программа напоминала <span class="Interface">об установке расширения работы с файлами</span> (по умолчанию
+включен).</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2668.png@_=1504708101" WIDTH="713" ALT HEIGHT="680"></p>
+
+<p class="Paragraph0c">Если расширение для
+работы с файлами установлено, программа предлагает получить файл макета,
+необходимый для формирования печатной формы. Нажмите <span class="Interface">ОК </span>для продолжения.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2670.png@_=1504708101" WIDTH="800" ALT HEIGHT="675"></p>
+
+<p class="Paragraph0c">Через некоторое
+время сформированная печатная форма будет открыта в программе <span class="Interface">Microsoft </span><span class="Interface">Word</span>.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2672.png@_=1504708101" WIDTH="800" ALT HEIGHT="575"></p>
+
+<p class="Paragraph0c">Если какие-либо
+настройки были пропущены или сделаны неправильно, после выполнения команды <span class="Note"><b>Печать – Счет на
+оплату в </b></span><span class="Note"><b>Microsoft Word</b></span> выводится сообщение об ошибке:</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2674.png@_=1504708101" WIDTH="564" ALT HEIGHT="115"></p>
+
+<p class="Paragraph0c">В этом случае
+необходимо еще раз проверить настройки, которые приведены в начале этого
+раздела. </p>
+
+<a name="_редактирование_макетов_печатных_2"></a><a name="issogl1_редактирование_макетов_печатных_форм"><h2>Редактирование макетов печатных форм</h2></a>
+
+<p class="Paragraph0c">Печатные формы формируются на основе макетов, поставляемых
+в составе программы. Поставляемые макеты могут быть отредактированы, если
+включена роль <span class="Interface">Управление макетами печатных форм</span>.
+Редактирование макетов осуществляется в списке <span class="Interface">Макеты
+печатных форм</span>, к которому можно перейти с помощью соответствующей команды
+в разделе <span class="Note"><b>Администрирование – </b></span><span class="Interface">Печатные формы, отчеты и обработки</span>. </p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2676.png@_=1504708101" WIDTH="800" ALT HEIGHT="601"></p>
+
+<p class="Paragraph0c">В списке перечислены
+макеты всех печатных форм, имеющихся в программе. Объекты, к которым относятся макеты, указаны в колонке <span class="Interface">Владелец макета</span>.
+Рядом с наименованием макета отображается значок, показывающий формат макета.</p>
+
+<p class="Paragraph0c">Если макетов много,
+то можно воспользоваться предусмотренными в программе средствами для отбора
+нужных макетов. Макеты можно отобрать по определенному признаку с помощью поля <span class="Interface">Показывать</span>: </p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2678.png@_=1504708101" WIDTH="800" ALT HEIGHT="575"></p>
+
+<p class="Paragraph0c">Найти необходимый
+макет можно по наименованию или части наименования макета. <span class="Note">Например, отберем <b>все</b>
+макеты, в наименовании которых имеется слово <b>письмо</b>.</span></p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2680.png@_=1504708101" WIDTH="800" ALT HEIGHT="272"></p>
+
+<p class="Paragraph0c">Макет можно
+просмотреть с помощью кнопки <span class="Interface">Открыть</span>. При открытии макет в формате <span class="Interface">.</span><span class="Interface">mxl</span> блокируется от изменений. С помощью кнопки <span class="Interface">Редактирование</span>
+можно перейти в режим редактирования макета.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2682.png@_=1504708101" WIDTH="800" ALT HEIGHT="488"></p>
+
+<p class="Paragraph0c">Можно открыть макет
+двойным щелчком мыши и затем выбрать режим открытия макета – <span class="Interface">Только для просмотра</span> или <span class="Interface">Для просмотра и редактирования</span>: </p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2684.png@_=1504708101" WIDTH="312" ALT HEIGHT="224"></p>
+
+<p class="Paragraph0c">Для того чтобы больше не выводить это сообщение, включите флажок <span class="Interface">Больше
+не спрашивать</span>. Поменять эту настройку затем можно с помощью команды <span class="Interface">Еще – Задать действие при выборе макета печатной формы</span>
+или из персональных настроек программы <span class="Note"><b>Демо: Мои настройки</b></span> (команду можно найти в разделе <span class="Interface">Главное</span> или в
+разделе <span class="Note"><b>Администрирование</b></span>),
+вкладка <span class="Interface">Главное</span>,
+команда <span class="Interface">Задать действие при выборе макета печатной формы</span>.
+</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2686.png@_=1504708101" WIDTH="711" ALT HEIGHT="565"></p>
+
+<p class="Paragraph0c">Для редактирования
+макета в списке <span class="Interface">Макеты печатных форм</span> нажмите кнопку <span class="Interface">Изменить</span>.</p>
+
+<p class="Paragraph0c">К редактированию макета можно также перейти с помощью
+команды<span class="Interface"> Еще – Изменить макет</span> из окна <span class="Interface">Печать документа</span>. С помощью кнопки <span class="Interface">Редактирование</span> можно перейти в режим просмотра.</p>
+
+<p class="Paragraph0c">Макеты в виде
+табличного документа редактируются в самой программе, а для редактирования
+макетов в виде офисных документов в форматах <span class="Interface">Microsoft Word</span> и <span class="Interface">OpenOffice.org </span><span class="Interface">Writer</span> на компьютере должны быть
+установлены соответствующие офисные программы. </p>
+
+<p class="Paragraph0c">При нажатии кнопки <span class="Interface">Изменить </span>программа
+выводит напоминание об этом с гиперссылкой для перехода на страницу
+соответствующей программы для ее установки. Нажмите кнопку <span class="Interface">Продолжить</span>, если программа имеется на компьютере.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2688.png@_=1504708101" WIDTH="789" ALT HEIGHT="647"></p>
+
+<p class="Paragraph0c">Если соответствующая
+офисная программа имеется на компьютере, макет будет открыт для редактирования.
+После внесения изменений сохраните макет, закройте офисную программу.</p>
+
+<p class="Paragraph0c">Для окончания
+редактирования и сохранения макета в программе нажмите кнопку <span class="Interface">Завершить изменение</span>. См. раздел <a href="#_особенности_редактирования_печатных">Особенности
+просмотра и редактирования печатных
+форм в веб-клиенте</a><a name="_hlt410230920"></a>.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2690.png@_=1504708101" WIDTH="641" ALT HEIGHT="287"></p>
+
+<p class="Paragraph0c">В программе
+предусмотрены большие возможности по редактированию макетов печатных форм, в
+частности, можно:</p>
+
+<p class="Bullet1">&#9632; 
+изменить формат (тип, размер и цвет шрифта,
+заливку, центрирование, границы); </p>
+
+<p class="Bullet1">&#9632; 
+изменить расположение полей документа;</p>
+
+<p class="Bullet1">&#9632; 
+изменить текстовые поля и их расположение. </p>
+
+<p class="Paragraph0c">Наиболее часто используемые возможности выведены в виде
+кнопок, остальные команды редактирования макета можно найти в меню <span class="Interface">Еще</span>.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2692.png@_=1504708101" WIDTH="800" ALT HEIGHT="911"></p>
+
+<p class="Paragraph0c">В случае необходимости добавить новые поля документа,
+которые не предусмотрены в стандартном макете печатной формы, потребуется
+вносить изменения в программу (конфигурацию). </p>
+
+<p class="Paragraph0c">После того как
+закончено редактирование, нажмите кнопку<span class="Interface"> Записать
+и закрыть</span> для сохранения
+внесенных изменений.</p>
+
+<p class="Paragraph0c">После сохранения
+измененного макета в списке у такого макета устанавливается значок <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2694.png@_=1504708101" WIDTH="18" ALT HEIGHT="20">,
+т.е. отредактированный макет теперь будет
+использоваться при печати. </p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2696.png@_=1504708101" WIDTH="800" ALT HEIGHT="571"></p>
+
+<p class="Paragraph0c">Если у макета есть
+отредактированная версия, то с помощью кнопок <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2698.png@_=1504708101" WIDTH="32" ALT HEIGHT="30"> <span class="Interface">Использовать измененный
+макет</span> или <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2700.png@_=1504708101" WIDTH="31" ALT HEIGHT="30"> <span class="Interface">Использовать стандартный
+макет</span> можно выбрать, какой макет
+должен использоваться при печати. Стандартный макет обозначается значком <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2702.png@_=1504708101" WIDTH="17" ALT HEIGHT="21">.
+Для удаления измененного макета нажмите кнопку<span class="Interface"> </span><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2704.png@_=1504708101" WIDTH="29" ALT HEIGHT="29"> <span class="Interface">Удалить измененный макет</span>. После удаления пользовательского макета в
+программе будет использоваться стандартный макет.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2706.png@_=1504708101" WIDTH="770" ALT HEIGHT="317"></p>
+
+<a name="_особенности_редактирования_печатных"></a><a name="issogl2_особенности_просмотра_и_редактирования_печатных_форм_в_веб-клиенте"><h3>Особенности просмотра и редактирования печатных форм в веб-клиенте</h3></a>
+
+<p class="Paragraph0c">При работе с программой через Интернет с помощью
+веб-браузера <span class="Interface">Internet Explorer</span> необходимо
+выполнить ряд настроек, которые описаны в разделе <a href="#_особенности_печати_в_1">Особенности
+печати в веб-клиенте</a>. </p>
+
+<p class="Paragraph0c">Макеты в виде
+табличного документа в веб-клиенте можно редактировать в самой программе.</p>
+
+<p class="Paragraph0c">Для перехода к <span class="Interface">Редактированию во
+внешней программе</span> предусмотрена соответствующая команда меню <span class="Interface">Еще</span>.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2708.png@_=1504708101" WIDTH="800" ALT HEIGHT="501"></p>
+
+<p class="Paragraph0c">В этом случае предлагается установить дополнительную
+программу <span class="Interface">1С:Предприятие – Работа с файлами</span>. Ее
+можно скачать по гиперссылке <span class="Interface">Перейти на страницу
+программы «1С:Предприятие – Работа с файлами» для установки</span> или с сайта
+фирмы «1С»: <a href="../../../../../v8.1c.ru/metod/fileworkshopdownload.htm" target="_blank">http://v8.1c.ru/metod/fileworkshopdownload.htm</a>. </p>
+
+<p class="Paragraph0c">Для редактирования макета в программе <span class="Interface">1С:Предприятие – Работа с файлами</span> подтвердите загрузку
+файла на компьютер с помощью кнопки <span class="Interface">Продолжить</span>. </p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2708.png@_=1504708101" WIDTH="800" ALT HEIGHT="501"></p>
+
+<p class="Paragraph0c">При открытии макета печатной формы в виде табличного
+документа браузером выводится предложение
+открыть или сохранить файл макета на компьютер:</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2711.png@_=1504708101" WIDTH="800" ALT HEIGHT="489"></p>
+
+<p class="Paragraph0c">Файл можно сохранить
+на компьютер. Выберите папку для сохранения макета. Затем можно открыть
+программу <span class="Interface">1С:Предприятие – Работа с файлами</span> для изменения макета.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2713.png@_=1504708101" WIDTH="752" ALT HEIGHT="686"></p>
+
+<p class="Paragraph0c">Сохраните изменения,
+затем переключитесь обратно в программу и в списке макетов нажмите кнопку <span class="Interface">Завершить изменение</span>. Для помещения измененного макета в программу укажите путь к файлу макета
+с помощью кнопки <span class="Interface">Обзор</span>, нажмите <span class="Interface">ОК</span>.
+</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2715.png@_=1504708101" WIDTH="800" ALT HEIGHT="501"></p>
+
+<p class="Paragraph0c">Измененный макет программа обозначит значком <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2717.png@_=1504708101" WIDTH="19" ALT HEIGHT="19">.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2719.png@_=1504708101" WIDTH="800" ALT HEIGHT="511"></p>
+
+<p class="Paragraph0c">Редактирование макетов печатных форм в форматах <span class="Interface">Microsoft </span><span class="Interface">Word</span> и <span class="Interface">OpenOffice.org
+</span><span class="Interface">Writer</span>
+возможно только во внешней программе. Открытие макета во внешней программе и
+его сохранение проходит аналогично.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2721.png@_=1504708101" WIDTH="800" ALT HEIGHT="548"></p>
+
+<a name="issogl1_роли_для_работы_с_печатью"><h2>Роли для работы с печатью</h2></a>
+
+<p class="Paragraph0c">Для работы с печатью в программе предусмотрены следующие
+роли:</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Роль</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Краткое описание</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Изменение макетов печатных форм</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Дает право редактирования макетов печатных форм.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="Note">&lt;<b>Демо: Печать счета на оплату</b>
+  &gt;<b></b></p>
+  </td>
+  <td valign="top">
+  <p class="Note">Дает право на использование конкретной
+  печатной формы, если такие роли предусмотрены в программе. </p>
+  </td>
+ </tr>
+</table>
+	</body>
+</html>

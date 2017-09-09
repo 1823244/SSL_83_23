@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.7. &#1042;&#1072;&#1083;&#1102;&#1090;&#1099;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.7. _25E2_25E0_25EB_25FE_25F2_25FB.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_валюты"></a><h1>3.7. Валюты</h1>
+
+<p class="Paragraph0c">Подсистема «Валюты» предназначена для загрузки, хранения и
+предоставления другим подсистемам конфигурации списка валют и их курсов.
+Загрузка курсов валют может производиться как автоматически (при помощи
+регламентного задания), так и вручную (через пользовательский интерфейс
+справочника <span class="Interface">Валюты</span>). </p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Paragraph0c">Для использования подсистемы в конфигурации необходимо
+разместить в командном интерфейсе методиста-настройщика ссылку на справочник <span class="Interface">Валюты</span>.</p>
+
+<p class="Paragraph0c">Право редактирования всех объектов подсистемы
+рекомендуется предоставить тем ролям конфигурации, которые отвечают за
+заполнение справочников нормативно-справочной информации.</p>
+
+<p class="Paragraph0c">Для автоматической загрузки курсов валют с сайта 1С
+предназначено регламентное задание <span class="Interface">ЗагрузкаКурсовВалют</span>.</p>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Для настройки прав доступа пользователей к данным
+подсистемы «Валюты» следует использовать роли, приведенные ниже.</p>
+
+<p class="Objectname">Таблица 3.15.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="MsoListNumber">1.   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ЧтениеКурсовВалют</span></p>
+  <p class="TextinTable81">Чтение валют и
+  курсов</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="MsoListNumber">2.   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ДобавлениеИзменениеКурсовВалют</span></p>
+  <p class="TextinTable81">Добавление и
+  изменение валют и курсов. Загрузка курсов валют</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="MsoListNumber">3.   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПолныеПрава</span> (из подсистемы «Базовая функциональность»)</p>
+  <p class="TextinTable81">Удаление
+  помеченных на удаление объектов подсистемы</p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl2_использование_при_разработке_конфигурации"><h3>Использование при разработке конфигурации</h3></a>
+
+<p class="Paragraph0c">Список валют и их курсы хранятся в справочнике <span class="Interface">Валюты</span> и регистре сведений <span class="Interface">Курсы
+валют</span> соответственно.</p>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Все объекты метаданных подсистемы, содержащие данные,
+кроме константы <span class="Interface">ИспользоватьАльтернативныйСерверДляЗагрузкиКурсовВалют</span>,
+рекомендуется включить в планы обмена распределенной ИБ (РИБ).</p>
+	</body>
+</html>

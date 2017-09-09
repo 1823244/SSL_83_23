@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1047;&#1072;&#1087;&#1080;&#1089;&#1072;&#1090;&#1100;&#1048;&#1047;&#1072;&#1082;&#1088;&#1099;&#1090;&#1100;&#1042;&#1099;&#1087;&#1086;&#1083;&#1085;&#1080;&#1090;&#1100;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25E7_25E0_25EF_25E8_25F1_25E0_25F2_25FC_25E8_25E7_25E0_25EA_25F0_25FB_25F2_25FC_25E2_25FB_25EF_25EE_25EB_25ED_25E8_25F2_25FC.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_бизнеспроцессыизадачиклиентзаписатьизакрытьвыполнить"></a><h1>ЗаписатьИЗакрытьВыполнить</h1>
+
+<pre> Записать и закрыть форму выполнения задачи.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция ЗаписатьИЗакрытьВыполнить(Форма, ВыполнитьЗадачу = Ложь, ПараметрыОповещения = Неопределено) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  Форма  - УправляемаяФорма - форма выполнения задачи.
+  ВыполнитьЗадачу  - Булево - задача записывается в режиме выполнения.
+  ПараметрыОповещения - Структура - дополнительные параметры оповещения.</pre>
+<p class="Paragraph0c"><span class="Bold">Возвращаемое значение</span></p>
+<pre>   Булево   - Истина, если запись прошла успешно.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = БизнесПроцессыИЗадачиКлиент.ЗаписатьИЗакрытьВыполнить(Форма, ВыполнитьЗадачу, ПараметрыОповещения)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Тонкий клиент, Толстый клиент</pre>
+	</body>
+</html>

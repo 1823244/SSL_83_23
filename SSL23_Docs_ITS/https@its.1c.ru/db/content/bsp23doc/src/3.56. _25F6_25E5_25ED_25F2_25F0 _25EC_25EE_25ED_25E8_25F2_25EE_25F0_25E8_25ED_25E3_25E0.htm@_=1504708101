@@ -1,0 +1,284 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.56. &#1062;&#1077;&#1085;&#1090;&#1088; &#1084;&#1086;&#1085;&#1080;&#1090;&#1086;&#1088;&#1080;&#1085;&#1075;&#1072;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.56. _25F6_25E5_25ED_25F2_25F0 _25EC_25EE_25ED_25E8_25F2_25EE_25F0_25E8_25ED_25E3_25E0.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_электронная_подпись"></a><h1>3.56. Центр мониторинга</h1>
+
+<p class="Paragraph0c">Подсистема «Центр мониторинга» предназначена для сбора <span class="Interface">обезличенной статистики</span> использования конфигурации,
+настроек конфигурации. В базовом варианте подсистема обеспечивает сбор сведений
+о технологических дампах платформы, количестве записей во всех таблицах
+информационной базы, а также значениях функциональных опций. Однако список
+собираемых показателей может быть расширен при внедрении конфигурации.</p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Paragraph0c">В базовом виде центр мониторинга позволяет собирать
+следующую информацию:</p>
+
+<p class="MsoListBullet">&#9679; 
+информацию о системе;</p>
+
+<p class="MsoListBullet">&#9679; 
+статистику использования конфигурации;</p>
+
+<p class="MsoListBullet">&#9679; 
+при наличии подсистемы «Оценка
+производительности» – также агрегированную информацию по ключевым операциям.</p>
+
+<p class="Paragraph0c">Информация о системе:</p>
+
+<p class="Bullet0"><span class="Interface">ИмяКомпьютера</span>: &quot;F27001CA71718F89FC74E2AA42ABD5DF&quot;,</p>
+
+<p class="Bullet0"><span class="Interface">ВерсияОС</span>: &quot;version 6.1 Service Pack 1 (Build
+7601)&quot;,</p>
+
+<p class="Bullet0"><span class="Interface">ВерсияПриложения</span>: &quot;8.3.6.1848&quot;,</p>
+
+<p class="Bullet0"><span class="Interface">ИдентификаторКлиента</span>: &quot;1d77d7a0-3025-400f-9be0-3b5655bf2edf&quot;,</p>
+
+<p class="Bullet0"><span class="Interface">ОперативнаяПамять</span>: &quot;7 876&quot;,</p>
+
+<p class="Bullet0"><span class="Interface">Процессор</span>: &quot;GenuineIntel Intel64 Family 6
+Model 58 Stepping 9 3300 MHz&quot;,</p>
+
+<p class="Bullet0"><span class="Interface">ТипПлатформы</span>: &quot;Windows
+x86-64&quot;,</p>
+
+<p class="Bullet0"><span class="Interface">ТекущийЯзык</span>: &quot;Русский&quot;,</p>
+
+<p class="Bullet0"><span class="Interface">ТекущийКодЛокализации</span>: &quot;ru&quot;,</p>
+
+<p class="Bullet0"><span class="Interface">ТекущийЯзыкСистемы</span>: &quot;ru&quot;,</p>
+
+<p class="Bullet0"><span class="Interface">ТекущийРежимЗапуска</span>: &quot;Управляемое
+приложение&quot;,</p>
+
+<p class="Bullet0"><span class="Interface">ЧасовойПоясСеанса</span>: &quot;Europe/Moscow&quot;</p>
+
+<p class="Paragraph0c">Базовая статистика по использованию конфигурации содержит
+количество записей в таблицах объектов метаданных:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">План обмена</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Справочник</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Документ</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Журнал документов</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Перечисление</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">План видов характеристик</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">План счетов</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">План видов расчетов</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Регистр сведений</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+Регистр накопления,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Регистр бухгалтерии</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Регистр расчета</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Бизнес-процесс</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Задача</span>.</p>
+
+<p class="Paragraph0c">Базовая статистика по настройкам конфигурации содержит
+значение функциональных опций с хранением значения в константе с типом <span class="Interface">Булево</span>.</p>
+
+<p class="Paragraph0c">Если этой статистики недостаточно и необходимо, например,
+проанализировать заполнение данных по некоторому признаку, то надо сформировать
+свой текст запроса для сбора статистики в процедуре <span class="Interface">ПриСбореПоказателейСтатистикиКонфигурации</span>
+общего модуля <span class="Interface">ЦентрМониторингаПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Возьмем справочник <span class="Interface">Валюты</span>.</p>
+
+<p class="Picture"><IMG src="_img/bb4930f70ba50b6391a4d4b0238cf1d5/image052.png@_=1504708101" WIDTH="800" ALT HEIGHT="209"></p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> ПриСбореПоказателейСтатистикиКонфигурации<span class="operator">(</span><span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="comment">// Собрать статистику по способу установки курса справочника Валюты</span>
+    <span class="comment">// В регистр сведений &lt;СтатистикаКонфигураций&gt; будут внесена записи следующего вида</span>
+    <span class="comment">//</span>
+    <span class="comment">// Справочник.Валюты.СпособУстановкиКурса1        Количество1</span>
+    <span class="comment">// Справочник.Валюты.СпособУстановкиКурса2        Количество2</span>
+    <span class="comment">// ...</span>
+    <span class="comment">// Справочник.Валюты.СпособУстановкиКурсаN        КоличествоN</span>
+    СоответствиеИменМетаданных <span class="operator">=</span> <span class="keyword">Новый</span> Соответствие<span class="operator">;</span>
+    ТекстЗапроса <span class="operator">=</span> <span class="string">&quot;ВЫБРАТЬ</span>
+<span class="string">                            |        СпособУстановкиКурса КАК СпособУстановкиКурса,</span>
+<span class="string">                            |        КОЛИЧЕСТВО(*) КАК Количество</span>
+<span class="string">                            |ИЗ</span>
+<span class="string">                            |        Справочник.Валюты КАК Валюты</span>
+<span class="string">             |СГРУППИРОВАТЬ ПО</span>
+<span class="string">             |    СпособУстановкиКурса</span>
+<span class="string">                       |&quot;</span><span class="operator">;</span>
+    СоответствиеИменМетаданных<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;Справочник.Валюты&quot;</span><span class="operator">,</span> ТекстЗапроса<span class="operator">)</span><span class="operator">;</span>
+    ЦентрМониторинга<span class="operator">.</span>ЗаписатьСтатистикуКонфигурации<span class="operator">(</span>СоответствиеИменМетаданных<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Warningword">Важно!</p>
+
+<p class="Notes">В целях защиты конфиденциальной информации запрещено собирать и
+передавать любые данные из информационной базы и сведения о ней, за исключением
+следующих:</p>
+
+<p class="Notesbillet">&#9679; 
+Хеш имени компьютера,</p>
+
+<p class="Notesbillet">&#9679; 
+Версия операционной системы,</p>
+
+<p class="Notesbillet">&#9679; 
+Версия приложения,</p>
+
+<p class="Notesbillet">&#9679; 
+Идентификатор клиента,</p>
+
+<p class="Notesbillet">&#9679; 
+Объем оперативной памяти,</p>
+
+<p class="Notesbillet">&#9679; 
+Тип центрального процессора,</p>
+
+<p class="Notesbillet">&#9679; 
+Тип платформы,</p>
+
+<p class="Notesbillet">&#9679; 
+Языковые настройки,</p>
+
+<p class="Notesbillet">&#9679; 
+Текущий режим запуска,</p>
+
+<p class="Notesbillet">&#9679; 
+Часовой пояс,</p>
+
+<p class="Notesbillet">&#9679; 
+Количество записей в таблице информационной базы,</p>
+
+<p class="Notesbillet">&#9679; 
+Количество записей в таблице информационной базы
+с группировкой по аналитике (группировкой аналитики могут быть только признаки,
+содержащие значение <span class="Interface">Булево</span>, значение <span class="Interface">Перечисления</span>, значение предопределенных данных).</p>
+
+<p class="Paragraph0c">В случае необходимости анализировать статистику информационной
+базы с группировкой по аналитике, содержащей конфиденциальную информацию, в
+качестве признака разрешается использовать хеш представления аналитики.</p>
+
+<p class="Paragraph0c">Также <span class="Interface">Центр мониторинга</span> может
+собирать <span class="Interface">статистику </span>использования функционала
+конфигурации, так называемую <span class="Interface">бизнес-статитстику</span>.
+Например, необходимо анализировать информацию о том, какие отчеты и как часто
+используются с параметром <span class="Interface">ФормироватьСразуИзПользовательскихНастроек</span>.
+Для регистрации данной бизнес-статистики необходимо найти место в конфигурации на
+сервере, где выполняется данная проверка. Необходимое место вставки
+программного кода – процедура <span class="Interface">ПриСозданииНаСервере</span>
+общей формы <span class="Interface">ФормаОтчета</span>.</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Если</span> НастройкиОтчета<span class="operator">.</span>ПрочитатьФлажокФормироватьСразуИзПользовательскихНастроек <span class="keyword">Тогда</span>
+    ЦентрМониторинга<span class="operator">.</span>ЗаписатьОперациюБизнесСтатистики<span class="operator">(</span>НастройкиОтчета<span class="operator">.</span>ПолноеИмя <span class="operator">+</span> <span class="string">&quot;.ПрочитатьФлажокФормироватьСразуИзПользовательскихНастроек&quot;</span><span class="operator">,</span> <span class="number">1</span><span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецЕсли</span><span class="operator">;</span></pre>
+
+<p class="Paragraph0c">После агрегации бизнес-статистики мы получим следующий
+результат</p>
+
+<p class="Picture"><IMG src="_img/bb4930f70ba50b6391a4d4b0238cf1d5/image054.png@_=1504708101" WIDTH="800" ALT HEIGHT="231"></p>
+
+<p class="Paragraph0c">По полученным данным можно сделать следующий вывод:</p>
+
+<p class="Paragraph0c">За период с <span class="Interface">13:10:00 09.04.2015</span>
+по <span class="Interface">13:29:59 09.04.2015</span> отчет <span class="Interface">_ДемоОборотноСальдоваяВедомость</span> открывался с параметром
+Ф<span class="Interface">ормироватьСразуИзПользовательскихНастроек</span> четыре
+раза, а отчет <span class="Interface">_ДемоСтатусыЗаказовПокупателей</span>
+открывался с параметром <span class="Interface">ФормироватьСразуИзПользовательскихНастроек</span>
+пять раз.</p>
+
+<p class="Paragraph0c">Главное отличие регистрации бизнес-статистики от
+статистики использования конфигурации заключается в том, что бизнес-статистика
+агрегирует операции. Сбор статистики использования конфигурации выполняет срез
+информации, предыдущие данные удаляются.</p>
+
+<p class="Paragraph0c"><span class="Interface">Центр мониторинга</span> при наличии
+подсистемы <span class="Interface">Оценка производительности</span> может
+анализировать и передавать TOP N худших операций производительности, влияющих
+на общую производительность системы (по умолчанию 10). Но в данном случае
+необходимо быть внимательным. Замеры оценки производительности передаются в
+агрегированном виде за период сбора статистики, сами замеры – не передаются.
+Количеством худших операций производительности управляет сервис приема
+информации, при необходимости собираются все агрегированные замеры за период.</p>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Роли, используемые для работы с подсистемой:</p>
+
+<p class="Objectname">Таблица 3.115.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"> </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Администратор системы</span></p>
+  <p class="TextinTable81">Принятие решения по поводу согласия/несогласия на сбор
+  и отправку обезличенной статистики конфигурации. Настройка адреса сервиса
+  примема данных</p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<p class="Paragraph0c">Программный интерфейс подсистемы представлен экспортными
+процедурами и функциями общих модулей <span class="Interface">ЦентрМониторинга</span>
+и <span class="Interface">ЦентрМониторингаПереопределяемый</span> в стандартных
+областях <span class="Interface">ПрограммныйИнтерфейс</span>.</p>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Объекты метаданных подсистемы не следует включать в планы
+обмена распределенной ИБ (РИБ), а также в планы обмена по правилам конвертации,
+поскольку для различных узлов мониторинг системы может работать по своим
+правилам.</p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

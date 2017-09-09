@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1057;&#1086;&#1079;&#1076;&#1072;&#1090;&#1100;&#1047;&#1072;&#1076;&#1072;&#1085;&#1080;&#1077;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25F1_25EE_25E7_25E4_25E0_25F2_25FC_25E7_25E0_25E4_25E0_25ED_25E8_25E5.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_бизнеспроцессыизадачиклиентсоздатьзадание"></a><h1>СоздатьЗадание</h1>
+
+<pre> Открыть форму для ввода нового задания.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура СоздатьЗадание(Знач ФормаВладелец = Неопределено, Знач ПараметрыФормы = Неопределено) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  ФормаВладелец  - УправляемаяФорма - форма, которая должна быть владельцем для открываемой.
+  ПараметрыФормы - Структура - параметры открываемой формы.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> БизнесПроцессыИЗадачиКлиент.СоздатьЗадание(ФормаВладелец, ПараметрыФормы)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Тонкий клиент, Толстый клиент</pre>
+	</body>
+</html>

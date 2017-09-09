@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.46. &#1056;&#1077;&#1075;&#1083;&#1072;&#1084;&#1077;&#1085;&#1090;&#1085;&#1099;&#1077; &#1079;&#1072;&#1076;&#1072;&#1085;&#1080;&#1103;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.46. _25F0_25E5_25E3_25EB_25E0_25EC_25E5_25ED_25F2_25ED_25FB_25E5 _25E7_25E0_25E4_25E0_25ED_25E8_25FF.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<h1>3.46. Регламентные задания</h1>
+
+<p class="Paragraph0c">Подсистема «Регламентные задания» позволяет редактировать
+состав и расписание регламентных заданий, просматривать историю выполнения
+регламентных и фоновых заданий, а также анализировать ошибки при их выполнении.</p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Paragraph0c">Подсистема не требует специальной настройки.</p>
+
+<a name="issogl2_размещение_в_командном_интерфейсе"><h3>Размещение в командном интерфейсе</h3></a>
+
+<p class="Paragraph0c">Для использования подсистемы необходимо разместить
+командном интерфейсе администратора объект метаданных:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Обработка.РегламентныеИФоновыеЗадания</span>
+– для просмотра фоновых и регламентных заданий, интерактивного выполнения
+регламентных заданий (настройки обработки регламентных заданий в файловой ИБ).</p>
+
+<a name="issogl2_настройка_зависимостей_регламентных_заданий_от_функциональных_опций"><h3>Настройка зависимостей регламентных заданий от функциональных опций</h3></a>
+
+<p class="Paragraph0c">В тех случаях, когда выполнение предопределенного
+регламентного задания зависит от включенных одной или нескольких функциональных
+опций, необходимо программно управлять признаком <span class="Interface">Использование</span>
+в зависимости от установленных функциональных опций. Если этого не сделать,
+регламентное задание будет приводить к запуску сеанса, занимая вычислительные
+ресурсы сервера «1С:Предприятия». Для настройки зависимостей регламентного
+задания от функциональных опций необходимо:</p>
+
+<p class="Number81">1. 
+В состав определяемого типа <span class="Interface">МестоХраненияФункциональныхОпций</span> добавить константы,
+соответствующие функциональным опциям, используемым для управления
+регламентными заданиями.</p>
+
+<p class="Number81">2. 
+Добавить вставку в процедуре <span class="Interface">ПриОпределенииЗависимостейРегламентныхЗаданий</span> общего
+модуля <span class="Interface">РегламентныеЗаданияПереопределяемый</span>.
+Например:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">Зависимость <span class="operator">=</span> Зависимости<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+Зависимость<span class="operator">.</span>РегламентноеЗадание <span class="operator">=</span> Метаданные<span class="operator">.</span>РегламентныеЗадания<span class="operator">.</span>ОбновлениеСтатусовДоставкиSMS<span class="operator">;</span>
+Зависимость<span class="operator">.</span>ФункциональнаяОпция <span class="operator">=</span> Метаданные<span class="operator">.</span>ФункциональныеОпции<span class="operator">.</span>ИспользоватьПочтовыйКлиент<span class="operator">;</span></pre>
+
+<p class="Bullet0">Также можно настроить доступность регламентного задания в
+подчиненном узле РИБ, модели сервиса и необходимость отключения задания при
+перемещении информационной базы (подробнее см. комментарий к процедуре).</p>
+
+<p class="Number81">3. 
+Дополнительно следует обезопасить выполнение
+регламентного задания, включенного через консоль или другим способом, минуя
+включение функциональной опции, вставив в начало процедуры обработки регламентного
+задания следующий код: </p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">ОбщегоНазначения<span class="operator">.</span>ПриНачалеВыполненияРегламентногоЗадания<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span></pre>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Для настройки прав доступа пользователей к данным
+подсистемы «Регламентные задания» следует использовать роль, указанную ниже.</p>
+
+<p class="Objectname">Таблица 3.99.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПолныеПрава</span> (из
+  подсистемы «Базовая функциональность»)</p>
+  <p class="TextinTable81">Добавление и изменение регламентных заданий. Настройка
+  обработки регламентных заданий. Просмотр фоновых заданий</p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<p class="Paragraph0c">При разработке конфигурации никаких дополнительных
+действий не требуется.</p>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Подсистема не предоставляет собственных данных, кроме
+констант <span class="Interface">НастройкиВыполненияРегламентныхЗаданий</span> и <span class="Interface">ПараметрыБлокировкиРаботыСВнешнимиРесурсами</span>, которые следует
+исключить из всех планов обмена.</p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

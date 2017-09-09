@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.50. &#1057;&#1090;&#1088;&#1091;&#1082;&#1090;&#1091;&#1088;&#1072; &#1087;&#1086;&#1076;&#1095;&#1080;&#1085;&#1077;&#1085;&#1085;&#1086;&#1089;&#1090;&#1080;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.50. _25F1_25F2_25F0_25F3_25EA_25F2_25F3_25F0_25E0 _25EF_25EE_25E4_25F7_25E8_25ED_25E5_25ED_25ED_25EE_25F1_25F2_25E8.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<h1>3.50. Структура подчиненности</h1>
+
+<p class="Paragraph0c">Подсистема «Структура подчиненности» предоставляет
+возможность вывода из формы документа, справочника и ПВХ отчета о родительских
+и дочерних документах, справочниках и ПВХ текущего объекта, а также об их
+взаимосвязях. </p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Paragraph0c">Прежде всего необходимо принять решение по поводу списка
+документов, справочников и ПВХ для которых требуется выводить отчет <span class="Interface">Структура подчиненности</span>. Затем задать список типов выбранных
+объектов в типах параметра общей команды <span class="Interface">СтруктураПодчиненности</span>.
+</p>
+
+<p class="Paragraph0c">Для настройки связи между родительскими и дочерними
+документами, справочниками и ПВХ, выводимыми в отчет <span class="Interface">Структура
+подчиненности</span>, необходимо настроить критерий отбора <span class="Interface">СвязанныеДокументы</span>. В свойстве <span class="Interface">Тип</span>
+требуется указать возможные типы родительских объектов, а в свойстве <span class="Interface">Состав</span> – указать реквизиты подчиненных документов,
+справочников и ПВХ, в которых будет происходить поиск родительских объектов. </p>
+
+<a name="issogl2_настройка_переопределяемых_модулей"><h3>Настройка переопределяемых модулей</h3></a>
+
+<p class="Paragraph0c">При необходимости вписать реализацию в функции
+переопределяемого модуля подсистемы <span class="Interface">СтруктураПодчиненностиПереопределяемый</span>.</p>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Для настройки прав доступа пользователей к данным
+подсистемы «Структура подчиненности» следует использовать следующую роль:</p>
+
+<p class="Objectname">Таблица 3.108.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПросмотрСвязанныеДокументы</span></p>
+  <p class="TextinTable81">Дает пользователю право на команду и общую форму
+  «Структура подчиненности»</p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Для настройки обмена данными никаких действий не
+требуется, так как подсистема не предоставляет собственных данных.</p>
+	</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>2.4. &#1041;&#1099;&#1089;&#1090;&#1088;&#1086;&#1077; &#1085;&#1072;&#1095;&#1072;&#1083;&#1086; &#1088;&#1072;&#1079;&#1088;&#1072;&#1073;&#1086;&#1090;&#1082;&#1080; &#171;&#1089; &#1085;&#1091;&#1083;&#1103;&#187;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="2.4. _25E1_25FB_25F1_25F2_25F0_25EE_25E5 _25ED_25E0_25F7_25E0_25EB_25EE _25F0_25E0_25E7_25F0_25E0_25E1_25EE_25F2_25EA_25E8 __25F1 _25ED_25F3_25EB_25FF_.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_инструкция_по_быстрому"></a><a name="_быстрое_начало_разработки"></a><h1>2.4. Быстрое начало разработки «с нуля»</h1>
+
+<p class="Paragraph0c">Короткая инструкция для быстрого начала разработки
+собственной конфигурации на базе «Библиотеки стандартных подсистем» (БСП). В
+ней описаны только обязательные действия, которые необходимы для первого
+запуска разрабатываемого решения. Полный список действий см. в <A href="_25E3_25EB_25E0_25E2_25E0 2. _25E8_25ED_25F1_25F2_25F0_25F3_25EA_25F6_25E8_25FF _25EF_25EE _25E2_25E0DE439B118#_инструкция_по_внедрению">главе
+2</a>.</p>
+
+<a name="issogl1_подготовка"><h2>Подготовка</h2></a>
+
+<p class="Number81">1. 
+Определиться со списком внедряемых подсистем. В
+самом простом случае внедряются все подсистемы БСП. При частичном внедрении
+можно воспользоваться обработкой <span class="Interface">ПервоеВнедрениеБСП</span>
+из комплекта поставки, которая позволяет выбрать подсистемы для внедрения с
+учетом их зависимостей друг от друга.</p>
+
+<p class="Number81">2. 
+Создать новую пустую базу.</p>
+
+<a name="issogl1_сравнение_объединение"><h2>Сравнение, объединение</h2></a>
+
+<p class="Number81">1. 
+Вызвать меню <span class="Interface">Конфигурация</span>
+– <span class="Interface">Сравнить, объединить с конфигурацией из файла</span>.</p>
+
+<p class="Number81">2. 
+Выбрать файл <span class="Interface">1Cv8.cf</span>
+из поставки БСП.</p>
+
+<p class="Number81">3. 
+На предложение выполнить полную загрузку
+конфигурации ответить <span class="Interface">Нет</span>.</p>
+
+<p class="Number81">4. 
+На предложение постановки на поддержку ответить <span class="Interface">Да</span>.</p>
+
+<p class="Number81">5. 
+Снять все флажки (снять флажок с корневого
+элемента).</p>
+
+<p class="Number81">6. 
+Выполнить <span class="Interface">Действия</span>
+– <span class="Interface">Отметить по подсистемам файла</span>.</p>
+
+<p class="Number81">7. 
+Отметить подсистемы, выбранные на шаге 1 раздела
+<span class="Interface">Подготовка</span> и нажать <span class="Interface">Установить</span>.
+</p>
+
+<p class="Number81">8. 
+Отметить к объединению свойства корневого
+элемента: <span class="Interface">Основные роли</span>, <span class="Interface">Модуль
+управляемого приложения</span>, <span class="Interface">Модуль сеанса</span>, <span class="Interface">Модуль внешнего соединения</span>, <span class="Interface">Модуль
+обычного приложения</span>, <span class="Interface">Режим использования
+модальности</span>, <span class="Interface">Режим использования синхронных
+вызовов расширений платформы и внешних компонент</span>, <span class="Interface">Режим
+совместимости интерфейса</span>, <span class="Interface">Режим совместимости</span>.
+Нажать <span class="Interface">Выполнить</span>.</p>
+
+<p class="Number81">9. 
+В окне <span class="Interface">Настройка правил
+поддержки</span> нажать <span class="Interface">Ок</span>.</p>
+
+<a name="issogl1_действия_после_сравнения_объединения"><h2>Действия после сравнения, объединения</h2></a>
+
+<p class="Number81">1. 
+Установить в свойствах конфигурации имя
+конфигурации, например, «МояКонфигурация».</p>
+
+<p class="Number81">2. 
+Установить в свойствах конфигурации номер версии
+разрабатываемой конфигурации. Например, при начале разработки конфигурации
+можно установить номер 1.0.0.1.</p>
+
+<p class="Number81">3. 
+Скопировать общий модуль
+ОбновлениеИнформационнойБазы.</p>
+
+<p class="Number81">4. 
+Заменить в названии скопированного модуля на имя
+или сокращение имени конфигурации (например, <span class="Interface">ОбновлениеИнформационнойБазыМК</span>).</p>
+
+<p class="Number81">5. 
+Заменить текст модуля на:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> ПриДобавленииПодсистемы<span class="operator">(</span>Описание<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    Описание<span class="operator">.</span>Имя <span class="operator">=</span> <span class="string">&quot;МояКонфигурация&quot;</span><span class="operator">;</span>
+    Описание<span class="operator">.</span>Версия <span class="operator">=</span> <span class="string">&quot;1.0.0.1&quot;</span><span class="operator">;</span>
+    <span class="comment">// Требуется библиотека стандартных подсистем.</span>
+    Описание<span class="operator">.</span>ТребуемыеПодсистемы<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;СтандартныеПодсистемы&quot;</span><span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="keyword">Процедура</span> ПриДобавленииОбработчиковОбновления<span class="operator">(</span>Обработчики<span class="operator">)</span> <span class="keyword">Экспорт</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="keyword">Процедура</span> ПередОбновлениемИнформационнойБазы<span class="operator">(</span><span class="operator">)</span> <span class="keyword">Экспорт</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="keyword">Процедура</span> ПослеОбновленияИнформационнойБазы<span class="operator">(</span><span class="keyword">Знач</span> ПредыдущаяВерсия<span class="operator">,</span> <span class="keyword">Знач</span> ТекущаяВерсия<span class="operator">,</span>
+        <span class="keyword">Знач</span> ВыполненныеОбработчики<span class="operator">,</span> ВыводитьОписаниеОбновлений<span class="operator">,</span> МонопольныйРежим<span class="operator">)</span> <span class="keyword">Экспорт</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="keyword">Процедура</span> ПриПодготовкеМакетаОписанияОбновлений<span class="operator">(</span><span class="keyword">Знач</span> Макет<span class="operator">)</span> <span class="keyword">Экспорт</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="keyword">Процедура</span> ПриДобавленииОбработчиковПереходаСДругойПрограммы<span class="operator">(</span>Обработчики<span class="operator">)</span> <span class="keyword">Экспорт</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="keyword">Процедура</span> ПриОпределенииРежимаОбновленияДанных<span class="operator">(</span>РежимОбновленияДанных<span class="operator">,</span> СтандартнаяОбработка<span class="operator">)</span> <span class="keyword">Экспорт</span>
+<span class="keyword">КонецПроцедуры</span> 
+<span class="keyword">Процедура</span> ПриЗавершенииПереходаСДругойПрограммы<span class="operator">(</span><span class="keyword">Знач</span> ПредыдущееИмяКонфигурации<span class="operator">,</span> <span class="keyword">Знач</span> ПредыдущаяВерсияКонфигурации<span class="operator">,</span> Параметры<span class="operator">)</span> <span class="keyword">Экспорт</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Bullet0">заменив в процедуре <span class="Interface">ПриДобавленииПодсистемы</span>
+имя конфигурации и номер версии на установленные на шагах 1 и 2 соответственно.</p>
+
+<p class="Number81">6. 
+Включить возможность внесения изменений в модуль
+<span class="Interface">ПодсистемыКонфигурацииПереопределяемый</span>. Добавить в
+него в процедуру <span class="Interface">ПриДобавленииПодсистем</span> строчку <span class="Interface">МодулиПодсистем.Добавить(&quot;ОбновлениеИнформационнойБазыМК&quot;)</span>;
+заменив имя модуля на имя модуля, созданного на шаге 4.</p>
+
+<p class="Number81">7. 
+Выполнить первый запуск. Убедиться в отсутствии
+ошибок при начальном заполнении.</p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

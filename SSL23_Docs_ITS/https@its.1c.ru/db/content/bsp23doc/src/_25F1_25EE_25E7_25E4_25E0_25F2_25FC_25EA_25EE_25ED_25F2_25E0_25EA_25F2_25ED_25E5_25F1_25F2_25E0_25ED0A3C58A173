@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1057;&#1086;&#1079;&#1076;&#1072;&#1090;&#1100;&#1050;&#1086;&#1085;&#1090;&#1072;&#1082;&#1090;&#1053;&#1077;&#1089;&#1090;&#1072;&#1085;&#1076;&#1072;&#1088;&#1090;&#1085;&#1072;&#1103;&#1060;&#1086;&#1088;&#1084;&#1072;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25F1_25EE_25E7_25E4_25E0_25F2_25FC_25EA_25EE_25ED_25F2_25E0_25EA_25F2_25ED_25E5_25F1_25F2_25E0_25ED_25E4_25E0_25F0_25F2_25ED_25E0_25FF_25F4_25EE_25F0_25EC_25E0.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_взаимодействияклиентпереопределяемыйсоздатьконтактнестандартнаяформа"></a><h1>СоздатьКонтактНестандартнаяФорма</h1>
+
+<pre> Вызывается при создании нового контакта.
+ Используется, если для одного или нескольких видов контактов требуется, 
+ чтобы вместо основной формы при их создании открывалась другая форма.
+ Например, это может быть форма помощника создания нового элемента справочника.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция СоздатьКонтактНестандартнаяФорма(ТипКонтакта, ПараметрФормы)  Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  ТипКонтакта   - Строка    - Имя справочника контакта.
+  ПараметрФормы - Структура - Параметр, который передается при открытии.</pre>
+<p class="Paragraph0c"><span class="Bold">Возвращаемое значение</span></p>
+<pre>  Булево - Ложь, если открытие нестандартной формы не выполнено, Истина в обратном случае.
+ Пример реализации:
+ Если ТипКонтакта = "Партнеры" Тогда
+  ОткрытьФорму("Справочник.Партнеры.Форма.ПомощникНового", ПараметрФормы);
+  Возврат Истина;
+ КонецЕсли;
+ Возврат Ложь;</pre>
+<p class="Paragraph0c"><span class="Bold">Расположение</span></p>
+<pre> Общий модуль ВзаимодействияКлиентПереопределяемый</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Тонкий клиент, Толстый клиент</pre>
+	</body>
+</html>

@@ -1,0 +1,538 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.13. &#1044;&#1072;&#1090;&#1099; &#1079;&#1072;&#1087;&#1088;&#1077;&#1090;&#1072; &#1080;&#1079;&#1084;&#1077;&#1085;&#1077;&#1085;&#1080;&#1103;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.13. _25E4_25E0_25F2_25FB _25E7_25E0_25EF_25F0_25E5_25F2_25E0 _25E8_25E7_25EC_25E5_25ED_25E5_25ED_25E8_25FF.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_даты_запрета_изменения"></a><h1>3.13. Даты запрета изменения</h1>
+
+<p class="Paragraph0c">Подсистема «Даты запрета изменения» позволяет
+заблокировать изменения любых данных информационной базы (документов, записей
+регистров, элементов справочников и др.) ранее определенной даты. Администратор
+системы может настроить как одну общую дату для всей информационной базы в
+целом, так и несколько дат по разделам и/или отдельным объектам разделов учета.</p>
+
+<p class="Paragraph0c">Подсистема всегда предоставляет возможность настройки дат
+запрета как для всех пользователей, так и для конкретных пользователей, групп
+пользователей (опционально – для внешних пользователей, групп внешних
+пользователей).</p>
+
+<p class="Paragraph0c">Интерфейс настройки разработан от минимальных возможностей
+«нет запрета» до максимальных возможностей, определенных при внедрении, но не
+более чем <span class="Interface">По разделам и объектам</span> в сочетании с
+настройкой <span class="Interface">По пользователям</span> (и группам
+пользователей).</p>
+
+<p class="Paragraph0c">Подсистема позволяет устанавливать как произвольные даты
+запрета, так и относительные даты запрета (конец прошлого месяца, конец
+прошлого квартала и другие).</p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Number81">1. 
+<a href="#_определить_состав_типов,">Определить состав типов, для которых будет
+выполняться запрет изменения данных</a>.</p>
+
+<p class="Number81">2. 
+<a href="#_определить_состав_типов,_1">Определить состав типов, для которых будут
+настраиваться запреты загрузки данных</a>.</p>
+
+<p class="Number81">3. 
+<a href="#_определить_максимальные_возможности">Определить максимальные возможности
+настройки дат запрета (общая дата, по разделам, по объектам, по разделам и
+объектам)</a>.</p>
+
+<p class="Number81">4. 
+<a href="#_определить_поля_объектов">Определить поля объектов метаданных, которые
+будут использованы для получения проверяемых данных (даты, раздела, объекта)</a>.</p>
+
+<p class="Number81">5. 
+<a href="#_определить_случаи_условного">Определить случаи условного отказа от
+проверки запрета изменения и определить случаи проверки запрета загрузки</a>.</p>
+
+<p class="Number81">6. 
+<a href="#_определить_возможность_настройки">Определить возможность настройки дат запрета
+для внешних пользователей и групп внешних пользователей</a>.</p>
+
+<a name="_определить_состав_типов,"></a><a name="issogl2_определить_состав_типов_для_которых_будет_выполняться_запрет_изменения_данных"><h3>Определить состав типов, для которых будет выполняться запрет изменения данных</h3></a>
+
+<p class="Paragraph0c">Определить состав типов справочников, документов,
+регистров, для которых будет выполняться запрет изменения данных.</p>
+
+<p class="Paragraph0c">Создать подписки на события и указать в них выбранные типы
+согласно таблице, приведенной ниже.</p>
+
+<p class="Paragraph0c">Подписки на событие <span class="Interface">ПередЗаписью</span>
+для проверки запрета изменения данных:</p>
+
+<p class="Objectname">Таблица 3.23.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Имя</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Источник</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Обработчик</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПроверитьДатуЗапретаИзмененияПередЗаписьюДокумента</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Элементы типа: <span class="Interface">ДокументОбъект</span></p>
+  </td>
+  <td valign="top">
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">ДатыЗапретаИзменения.ПроверитьДатуЗапретаИзмененияПередЗаписьюДокумента</pre>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПроверитьДатуЗапретаИзмененияПередЗаписью</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Элементы типов: <span class="Interface">СправочникОбъект</span>,
+  <span class="Interface">ПланВидовХарактеристикОбъект</span>, <span class="Interface">ПланСчетовОбъект</span>, <span class="Interface">ПланВидовРасчетаОбъект</span>,
+  <span class="Interface">БизнесПроцессОбъект</span>, <span class="Interface">ЗадачаОбъект</span>,
+  <span class="Interface">ПланОбменаОбъект</span></p>
+  </td>
+  <td valign="top">
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">ДатыЗапретаИзменения. ПроверитьДатуЗапретаИзмененияПередЗаписью</pre>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПроверитьДатуЗапретаИзмененияПередЗаписьюНабораЗаписей</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Элементы типов: <span class="Interface">РегистрСведенийНаборЗаписей</span>, <span class="Interface">РегистрНакопленияНаборЗаписей</span></p>
+  </td>
+  <td valign="top">
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">ДатыЗапретаИзменения. ПроверитьДатуЗапретаИзмененияПередЗаписьюНабораЗаписей</pre>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПроверитьДатуЗапретаИзмененияПередЗаписьюНабораЗаписейРегистраБухгалтерии</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Элементы типа: <span class="Interface">РегистрБухгалтерииНаборЗаписей</span></p>
+  </td>
+  <td valign="top">
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">ДатыЗапретаИзменения. ПроверитьДатуЗапретаИзмененияПередЗаписьюНабораЗаписейРегистраБухгалтерии</pre>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПроверитьДатуЗапретаИзмененияПередЗаписьюНабораЗаписейРегистраРасчета</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Элементы типа: <span class="Interface">РегистрРасчетаНаборЗаписей</span></p>
+  </td>
+  <td valign="top">
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">ДатыЗапретаИзменения. ПроверитьДатуЗапретаИзмененияПередЗаписьюНабораЗаписейРегистраРасчета</pre>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Подписки на событие <span class="Interface">ПередУдалением</span>
+для проверки запрета изменения данных:</p>
+
+<p class="Objectname">Таблица 3.24.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Имя</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Источник</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Обработчик</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПроверитьДатуЗапретаИзмененияПередУдалением</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Элементы типа: <span class="Interface">СправочникОбъект</span>,
+  <span class="Interface">ДокументОбъект</span>, <span class="Interface">ПланВидовХарактеристикОбъект</span>,
+  <span class="Interface">ПланСчетовОбъект</span>, <span class="Interface">ПланВидовРасчетаОбъект</span>,
+  <span class="Interface">БизнесПроцессОбъект</span>, <span class="Interface">ЗадачаОбъект</span>,
+  <span class="Interface">ПланОбменаОбъект</span></p>
+  </td>
+  <td valign="top">
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">ДатыЗапретаИзменения. ПроверитьДатуЗапретаИзмененияПередУдалением</pre>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Для выбранных объектов метаданных необходимо вставить в
+модуль формы объекта в процедуру обработчика события <span class="Interface">ПриЧтенииНаСервере</span>
+вызов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">ДатыЗапретаИзменения<span class="operator">.</span>ОбъектПриЧтенииНаСервере<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> ТекущийОбъект<span class="operator">)</span><span class="operator">.</span></pre>
+
+<p class="Paragraph0c">При выполнении вызова будет выполнена проверка запрета
+изменения, и при наличии запрета свойство формы <span class="Interface">ТолькоПросмотр</span>
+будет установлено <span class="Interface">Истина</span>. </p>
+
+<a name="_определить_состав_типов,_1"></a><a name="issogl2_определить_состав_типов_для_которых_будут_настраиваться_запреты_загрузки_данных"><h3>Определить состав типов, для которых будут настраиваться запреты загрузки данных</h3></a>
+
+<p class="Paragraph0c">Для запрета загрузки данных по узлам планов обмена
+необходимо в определяемый тип <span class="Interface">АдресатЗапретаИзменения</span>
+добавить типы требуемых планов обмена. Если хотя бы один тип плана обмена
+добавлен в состав определяемого типа <span class="Interface">АдресатЗапретаИзменения</span>,
+то по команде <span class="Interface">Даты запрета загрузки</span> данных будет
+открыта форма <span class="Interface">Даты запрета изменения данных</span> в режиме
+редактирования дат запрета загрузки.</p>
+
+<a name="_определить_максимальные_возможности"></a><a name="issogl2_определить_максимальные_возможности_настройки_дат_запрета_общая_дата_по_разделам_по_объектам_по_разделам_и_объектам"><h3>Определить максимальные возможности настройки дат запрета (общая дата, по разделам, по объектам, по разделам и объектам)</h3></a>
+
+<p class="Paragraph0c">Для различных прикладных решений требования к настройке
+даты запрета сильно отличаются. Для простой однопользовательской конфигурации
+достаточно одной общей даты, а для корпоративного решения требуется множество
+разрезов дат запрета к различным областям планирования и учета. Для этих целей
+предусмотрены разделы – это разрезы областей планирования и учета для установки
+дат запрета. Например, <span class="Interface">Складской учет</span>, <span class="Interface">Бухгалтерская отчетность</span>, <span class="Interface">Планирование</span>.
+В подсистеме разделы – это предопределенные элементы объекта метаданных <span class="Interface">ПланВидовХарактеристик.РазделыДатЗапретаИзменения</span>,
+которые редактируются в конфигураторе, а в режиме <span class="Interface">1С:Предприятие</span>
+не редактируются.</p>
+
+<p class="Paragraph0c">При необходимости разделы могут быть уточнены объектом – например,
+раздел <span class="Interface">Складской учет</span> можно уточнить складом. Для
+этого разделу нужно установить тип, например <span class="Interface">СправочникСсылка.Склады</span>.
+Если раздел не предполагается уточнять объектом, тогда нужно установить тип <span class="Interface">ПланВидовХарактеристикСсылка.РазделыДатЗапретаИзменения</span>.</p>
+
+<p class="Paragraph0c">Возможны четыре варианта внедрения:</p>
+
+<p class="Number81">1. 
+<span class="Interface">Общая дата</span>. В этом
+варианте список разделов пуст, у пользователя будет возможность задавать общую
+дату на всю конфигурацию (для всех пользователей или по пользователям).</p>
+
+<p class="Number81">2. 
+<span class="Interface">По разделам</span>. В этом
+варианте список разделов состоит из двух и более разделов, типы разделов не
+определены (<span class="Interface">ПланВидовХарактеристикСсылка.РазделыДатЗапретаИзменения</span>).
+В интерфейсе объекты не отображаются, их нельзя добавить. Например, разделы <span class="Interface">Учет</span> и <span class="Interface">Планирование</span>. При
+этом можно задать общую дату или две даты отдельно по каждому разделу.</p>
+
+<p class="Number81">3. 
+<span class="Interface">По объектам</span>. В этом
+варианте список разделов состоит из одного раздела. Этот раздел не отображается
+в интерфейсе, но используется при получении данных для проверки. У раздела
+задан непустой тип. Например, раздел <span class="Interface">Бухгалтерский учет</span>
+с типом <span class="Interface">СправочникСсылка.Организации</span>. При этом
+можно задать общую дату или даты по отдельным организациям.</p>
+
+<p class="Number81">4. 
+<span class="Interface">По разделам и объектам</span>.
+В этом самом общем варианте список разделов состоит из двух и более разделов,
+причем хотя бы один раздел должен иметь определенный тип. Например, <span class="Interface">Учет по организациям</span> и <span class="Interface">Планирование</span>.</p>
+
+<a name="_определить_поля_объектов"></a><a name="issogl2_определить_поля_объектов_метаданных_которые_будут_использованы_для_получения_проверяемых_данных_даты_раздела_объекта"><h3>Определить поля объектов метаданных, которые будут использованы для получения проверяемых данных (даты, раздела, объекта)</h3></a>
+
+<p class="Paragraph0c">Для подготовки данных к проверке на запрет изменения
+требуется для каждого из выбранных объектов метаданных определить поля – источники
+значений. Для этих целей используется процедура <span class="Interface">ЗаполнитьИсточникиДанныхДляПроверкиЗапретаИзменения</span>
+переопределяемого модуля.</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Содержит описание таблиц и полей объектов для проверки запретов изменения данных.</span>
+<span class="comment">//   Вызывается из процедуры ИзменениеЗапрещено общего модуля ДатыЗапретаИзменения,</span>
+<span class="comment">//   используемой в подписке на событие ПередЗаписью объекта для проверки наличия</span>
+<span class="comment">//   запретов и отказа от изменений запрещенного объекта.</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//  ИсточникиДанных - ТаблицаЗначений - с колонками:</span>
+<span class="comment">//   * Таблица     - Строка - полное имя объекта метаданных,</span>
+<span class="comment">//                   например Метаданные.Документы.ПриходнаяНакладная.ПолноеИмя().</span>
+<span class="comment">//   * ПолеДаты    - Строка - имя реквизита объекта или табличной части,</span>
+<span class="comment">//                   например, &quot;Дата&quot;, &quot;Товары.ДатаОтгрузки&quot;.</span>
+<span class="comment">//   * Раздел      - Строка - имя предопределенного элемента</span>
+<span class="comment">//                   &quot;ПланВидовХарактеристикСсылка.РазделыДатЗапрета&quot;.</span>
+<span class="comment">//   * ПолеОбъекта - Строка - имя реквизита объекта или реквизита табличной части,</span>
+<span class="comment">//                   например, &quot;Организация&quot;, &quot;Товары.Склад&quot;.</span>
+<span class="comment">//</span>
+<span class="comment">//  Для добавления строки имеется процедура ДобавитьСтроку в общем модуле ДатыЗапретаИзменения.</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> ЗаполнитьИсточникиДанныхДляПроверкиЗапретаИзменения<span class="operator">(</span>ИсточникиДанных<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    ДатыЗапретаИзменения<span class="operator">.</span>ДобавитьСтроку<span class="operator">(</span>ИсточникиДанных<span class="operator">,</span>
+        Метаданные<span class="operator">.</span>Документы<span class="operator">.</span>_ДемоОприходованиеТоваров<span class="operator">.</span>ПолноеИмя<span class="operator">(</span><span class="operator">)</span><span class="operator">,</span>
+        <span class="string">&quot;Дата&quot;</span><span class="operator">,</span> <span class="string">&quot;_ДемоСкладскойУчет&quot;</span><span class="operator">,</span> <span class="string">&quot;МестоХранения&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    ДатыЗапретаИзменения<span class="operator">.</span>ДобавитьСтроку<span class="operator">(</span>ИсточникиДанных<span class="operator">,</span>
+        Метаданные<span class="operator">.</span>Документы<span class="operator">.</span>_ДемоСписаниеТоваров<span class="operator">.</span>ПолноеИмя<span class="operator">(</span><span class="operator">)</span><span class="operator">,</span>
+        <span class="string">&quot;Дата&quot;</span><span class="operator">,</span> <span class="string">&quot;_ДемоСкладскойУчет&quot;</span><span class="operator">,</span> <span class="string">&quot;МестоХранения&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    ДатыЗапретаИзменения<span class="operator">.</span>ДобавитьСтроку<span class="operator">(</span>ИсточникиДанных<span class="operator">,</span>
+        Метаданные<span class="operator">.</span>Документы<span class="operator">.</span>_ДемоСписаниеБезналичныхДенежныхСредств<span class="operator">.</span>ПолноеИмя<span class="operator">(</span><span class="operator">)</span><span class="operator">,</span>
+        <span class="string">&quot;ДатаПроведенияБанком&quot;</span><span class="operator">,</span> <span class="string">&quot;_ДемоБанк&quot;</span><span class="operator">,</span> <span class="string">&quot;БанковскийСчет&quot;</span><span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Поле может быть задано «через точку», например, если в
+документе указана ссылка на документ-основание, содержащий объект. Тогда
+реквизит будет задан так: <span class="Interface">ДокументОснование.Склад</span>,
+где <span class="Interface">ДокументОснование</span> – реквизит документа,
+проверяемого на запрет изменения. Можно указать поле «через несколько точек».</p>
+
+<p class="Paragraph0c">В качестве поля можно указать поле табличной части, в этом
+случае используется тот же метод «через точку», например <span class="Interface">Товары.Склад</span>.
+Указывать поле табличной части можно только в проверяемом документе, а не в
+документе-основании (такое описание не поддерживается).</p>
+
+<p class="Paragraph0c">Следует иметь в виду, что использование метода «через
+точку» потребует дополнительного обращения к базе данных для получения
+значения, а использование поля табличной части увеличит количество проверяемых
+данных.</p>
+
+<p class="Paragraph0c">Для объекта данных может потребоваться несколько проверок (например,
+для документа <span class="Interface">ПеремещениеТоваров</span> требуется
+проверить запрет изменения по двум складам). В этом случае используются несколько
+строк для описания проверок по одному объекту метаданных (см. пример выше).</p>
+
+<a name="_определить_случаи_условного"></a><a name="issogl2_определить_случаи_условного_отказа_от_проверки_запрета_изменения_и_определить_случаи_проверки_запрета_загрузки"><h3>Определить случаи условного отказа от проверки запрета изменения и определить случаи проверки запрета загрузки</h3></a>
+
+<p class="Paragraph0c">Кроме стандартного случая отказа от проверки запрета
+изменения и запрета загрузки данных при обновлении информационной базы,
+прикладной разработчик может пропустить проверку запретов по прикладным причинам.</p>
+
+<p class="Paragraph0c">Если в прикладной конфигурации потребовалось пропустить
+проверку запрета изменения данных, например, если заказ не закрыт (или при
+особых случаях обмена данными пропустить проверку запрета загрузки данных) следует
+воспользоваться переопределяемой процедурой <span class="Interface">ПередПроверкойЗапретаИзменения</span>.</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Позволяет переопределить выполнение проверок запретов по произвольному условию.</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//  Объект       - СправочникОбъект,</span>
+<span class="comment">//                 ДокументОбъект,</span>
+<span class="comment">//                 ПланВидовХарактеристикОбъект,</span>
+<span class="comment">//                 ПланСчетовОбъект,</span>
+<span class="comment">//                 ПланВидовРасчетаОбъект,</span>
+<span class="comment">//                 БизнесПроцессОбъект,</span>
+<span class="comment">//                 ЗадачаОбъект,</span>
+<span class="comment">//                 ПланОбменаОбъект - объект данных (ПередЗаписью или ПриЧтенииНаСервере).</span>
+<span class="comment">//               - РегистрСведенийНаборЗаписей,</span>
+<span class="comment">//                 РегистрНакопленияНаборЗаписей,</span>
+<span class="comment">//                 РегистрБухгалтерииНаборЗаписей,</span>
+<span class="comment">//                 РегистрРасчетаНаборЗаписей - набор записей (ПередЗаписью или ПриЧтенииНаСервере).</span>
+<span class="comment">//  </span>
+<span class="comment">//  ПроверкаЗапретаИзменения    - Булево - когда Истина, тогда проверка изменения выполняется.</span>
+<span class="comment">//                                Если установить Ложь, тогда проверка запрета изменения будет пропущена.</span>
+<span class="comment">//</span>
+<span class="comment">//  УзелПроверкиЗапретаЗагрузки - Неопределено - проверка запрета загрузки не выполняется.</span>
+<span class="comment">//                              - ПланыОбменаСсылка - проверка запрета загрузки выполняется. Если</span>
+<span class="comment">//                                установить Неопределено, проверка запрета загрузки будет пропущена.</span>
+<span class="comment">//</span>
+<span class="comment">//  ВерсияОбъекта               - Строка - начальное значение &quot;&quot;. Проверяются обе версии объекта.</span>
+<span class="comment">//                                Если установить &quot;СтараяВерсия&quot; или &quot;НоваяВерсия&quot;, тогда будет</span>
+<span class="comment">//                                выполнена проверка только старой или только новой версии объекта.</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> ПередПроверкойЗапретаИзменения<span class="operator">(</span>Объект<span class="operator">,</span>
+                                         ПроверкаЗапретаИзменения<span class="operator">,</span>
+                                         УзелПроверкиЗапретаЗагрузки<span class="operator">,</span>
+                                         ВерсияОбъекта<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="keyword">Если</span> ТипЗнч<span class="operator">(</span>Объект<span class="operator">)</span> <span class="operator">=</span> Тип<span class="operator">(</span><span class="string">&quot;ДокументОбъект._ДемоЗаказПокупателя&quot;</span><span class="operator">)</span> <span class="keyword">Тогда</span>
+        СтатусЗаказа <span class="operator">=</span> ОбщегоНазначения<span class="operator">.</span>ЗначениеРеквизитаОбъекта<span class="operator">(</span>Объект<span class="operator">.</span>Ссылка<span class="operator">,</span> <span class="string">&quot;СтатусЗаказа&quot;</span><span class="operator">)</span><span class="operator">;</span>
+        ЗаказЗакрытСтараяВерсия <span class="operator">=</span> <span class="operator">(</span>СтатусЗаказа        <span class="operator">=</span> Перечисления<span class="operator">.</span>_ДемоСтатусыЗаказовПокупателей<span class="operator">.</span>Закрыт<span class="operator">)</span><span class="operator">;</span>
+        ЗаказЗакрытНоваяВерсия  <span class="operator">=</span> <span class="operator">(</span>Объект<span class="operator">.</span>СтатусЗаказа <span class="operator">=</span> Перечисления<span class="operator">.</span>_ДемоСтатусыЗаказовПокупателей<span class="operator">.</span>Закрыт<span class="operator">)</span><span class="operator">;</span>
+        <span class="keyword">Если</span> <span class="keyword">Не</span> ЗаказЗакрытСтараяВерсия <span class="keyword">И</span> <span class="keyword">Не</span> ЗаказЗакрытНоваяВерсия <span class="keyword">Тогда</span>
+            ПроверкаЗапретаИзменения <span class="operator">=</span> <span class="keyword">Ложь</span><span class="operator">;</span>
+            УзелПроверкиЗапретаЗагрузки <span class="operator">=</span> <span class="keyword">Неопределено</span><span class="operator">;</span>
+        <span class="keyword">ИначеЕсли</span> <span class="keyword">Не</span> ЗаказЗакрытНоваяВерсия <span class="keyword">Тогда</span>
+            ВерсияОбъекта <span class="operator">=</span> <span class="string">&quot;СтараяВерсия&quot;</span><span class="operator">;</span> <span class="comment">// Проверить только старую версию объекта.</span>
+        <span class="keyword">ИначеЕсли</span> <span class="keyword">Не</span> ЗаказЗакрытСтараяВерсия <span class="keyword">Тогда</span>
+            ВерсияОбъекта <span class="operator">=</span> <span class="string">&quot;НоваяВерсия&quot;</span><span class="operator">;</span> <span class="comment">// Проверить только новую версию объекта.</span>
+        <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+    <span class="keyword">ИначеЕсли</span> ТипЗнч<span class="operator">(</span>Объект<span class="operator">)</span> <span class="operator">=</span> Тип<span class="operator">(</span><span class="string">&quot;ДокументОбъект._ДемоСписаниеБезналичныхДенежныхСредств&quot;</span><span class="operator">)</span> <span class="keyword">Тогда</span>
+        <span class="comment">// Отказ от проверки с учетом того, что ДатаПроведенияБанком, используемая в проверке не указывается,</span>
+        <span class="comment">// если документ не проведен банком, а указывается позже после проведения документа банком.</span>
+        ПроведеноБанкомНоваяВерсия  <span class="operator">=</span> Объект<span class="operator">.</span>ПроведеноБанком<span class="operator">;</span>
+        ПроведеноБанкомСтараяВерсия <span class="operator">=</span> ОбщегоНазначения<span class="operator">.</span>ЗначениеРеквизитаОбъекта<span class="operator">(</span>
+            Объект<span class="operator">.</span>Ссылка<span class="operator">,</span> <span class="string">&quot;ПроведеноБанком&quot;</span><span class="operator">)</span> <span class="operator">=</span> <span class="keyword">Истина</span><span class="operator">;</span>
+        <span class="keyword">Если</span> <span class="keyword">Не</span> ПроведеноБанкомНоваяВерсия <span class="keyword">И</span> <span class="keyword">Не</span> ПроведеноБанкомСтараяВерсия <span class="keyword">Тогда</span>
+            ПроверкаЗапретаИзменения <span class="operator">=</span> <span class="keyword">Ложь</span><span class="operator">;</span>
+            УзелПроверкиЗапретаЗагрузки <span class="operator">=</span> <span class="keyword">Неопределено</span><span class="operator">;</span>
+        <span class="keyword">ИначеЕсли</span> <span class="keyword">Не</span> ПроведеноБанкомНоваяВерсия <span class="keyword">Тогда</span>
+            ВерсияОбъекта <span class="operator">=</span> <span class="string">&quot;СтараяВерсия&quot;</span><span class="operator">;</span> <span class="comment">// Проверить только старую версию объекта.</span>
+        <span class="keyword">ИначеЕсли</span> <span class="keyword">Не</span> ПроведеноБанкомСтараяВерсия <span class="keyword">Тогда</span>
+            ВерсияОбъекта <span class="operator">=</span> <span class="string">&quot;НоваяВерсия&quot;</span><span class="operator">;</span> <span class="comment">// Проверить только новую версию объекта.</span>
+        <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<a name="_определить_возможность_настройки"></a><a name="issogl2_определить_возможность_настройки_дат_запрета_для_внешних_пользователей_и_групп_внешних_пользователей"><h3>Определить возможность настройки дат запрета для внешних пользователей и групп внешних пользователей</h3></a>
+
+<p class="Paragraph0c">Если в прикладном решении требуется делать настройку по
+внешним пользователям и группам внешних пользователей, то нужно вписать код в
+процедуру <span class="Interface">НастройкаИнтерфейса</span> переопределяемого
+модуля:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> НастройкаИнтерфейса<span class="operator">(</span><span class="keyword">Знач</span> НастройкиРаботыИнтерфейса<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    НастройкиРаботыИнтерфейса<span class="operator">.</span>ИспользоватьВнешнихПользователей <span class="operator">=</span> <span class="keyword">Истина</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<a name="issogl2_размещение_в_командном_интерфейсе"><h3>Размещение в командном интерфейсе</h3></a>
+
+<p class="Paragraph0c">Для использования подсистемы необходимо разместить в
+командном интерфейсе ответственного за даты запрета объекты метаданных: </p>
+
+<p class="MsoListBullet">&#9679; 
+команду <span class="Interface">ДатыЗапретаИзмененияДанных</span>
+– для просмотра и редактирования дат запрета изменения;</p>
+
+<p class="MsoListBullet">&#9679; 
+команду <span class="Interface">ДатыЗапретаЗагрузкиДанных</span>
+– для просмотра и редактирования дат запрета загрузки (если запреты загрузки не
+используются, команду размещать не требуется).</p>
+
+<p class="Paragraph0c">Для размещения команд требуется включить регистр сведений <span class="Interface">ДатыЗапретаИзменения</span> в подсистему интерфейса (у регистра
+отключено использование стандартных команд).</p>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Для настройки прав доступа пользователей к данным
+подсистемы «Даты запрета изменения» следует использовать роли:</p>
+
+<p class="Objectname">Таблица 3.25.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1.</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПолныеПрава</span> (из подсистемы «Базовая
+  функциональность»)</p>
+  <p class="TextinTable81">Просмотр и
+  редактирование дат запрета изменения и дат запрета загрузки (доступ к форме <span class="Interface">Даты запрета изменения данных</span> с отчетами)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">2.</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Добавление изменение дат запрета
+  изменения</span></p>
+  <p class="TextinTable81">Просмотр и редактирование дат запрета изменения
+  (доступ к форме <span class="Interface">Даты запрета изменения данных</span> и
+  отчету <span class="Interface">Даты запрета изменения данных</span>)</p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<p class="Paragraph0c">При создании новых прикладных объектов метаданных нужно
+повторно выполнять соответствующую часть процедуры настройки, описанной выше.</p>
+
+<p class="Paragraph0c">Для дополнительной проверки запрета изменения (вне
+подписок на события) используется функция <span class="Interface">ИзменениеЗапрещено</span>
+модуля <span class="Interface">ДатыЗапретаИзменения</span>.</p>
+
+<p class="Paragraph0c">Также может потребоваться выполнить программную проверку
+запрета изменения нестандартного вида. Для этого предусмотрена функция <span class="Interface">НайденЗапретИзмененияДанных</span> модуля <span class="Interface">ДатыЗапретаИзменения</span>, которая выполнит проверку и вернет
+ее результат, а также отправит стандартное сообщение пользователю об ошибке.</p>
+
+<p class="Paragraph0c">Для работы функции нужно подготовить данные, шаблон
+которых легко получить (см. комментарий функции). Эта функция используется в
+подписке на событие перед записью. Данные, полученные из объекта данных,
+передаются в функцию дважды – для старого и нового экземпляров объекта.</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Выполняет поиск дат запрета по проверяемым данным</span>
+<span class="comment">// для авторизованного пользователя или узла плана обмена.</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//  ДанныеДляПроверки - ТаблицаЗначений - возвращается функцией ШаблонДанныхДляПроверки</span>
+<span class="comment">//                      общего модуля ДатыЗапретаИзменения.</span>
+<span class="comment">//</span>
+<span class="comment">//  ОписаниеДанных    - Неопределено - текст сообщения о запрете не формируется.</span>
+<span class="comment">//                    - Структура - со свойствами:</span>
+<span class="comment">//                      * НоваяВерсия - Булево - если Истина, то сообщение о запрете</span>
+<span class="comment">//                                   формировать для новой версии, иначе для старой версии.</span>
+<span class="comment">//                      * Данные - Ссылка,Объект - ссылка или объект данных для получения</span>
+<span class="comment">//                                   представления, которое будет использовано в сообщении о запрете.</span>
+<span class="comment">//                               - НаборЗаписей - набор записей регистра для получения</span>
+<span class="comment">//                                   представления, которое будет использовано в сообщении о запрете.</span>
+<span class="comment">//                               - Структура - со свойствами для сообщения о запрете:</span>
+<span class="comment">//                                   * Регистр - Строка - полное имя регистра;</span>
+<span class="comment">//                                   * Отбор   - Отбор - отбор набора записей.</span>
+<span class="comment">//                               - Строка - подготовленное представление данных,</span>
+<span class="comment">//                                 которое будет использовано в сообщении о запрете.</span>
+<span class="comment">//</span>
+<span class="comment">//  ОписаниеОшибки    - Строка - (возвращаемое значение) описание запрета изменения или загрузки.</span>
+<span class="comment">//                      Не заполняется, если параметр ОписаниеДанных не указан.</span>
+<span class="comment">//                    - Null - в этом случае текст сообщения об ошибке не будет подготовлен,</span>
+<span class="comment">//                      что ускоряет выполнение проверки, когда запрет найден.</span>
+<span class="comment">//</span>
+<span class="comment">//  УзелПроверкиЗапретаЗагрузки - Неопределено - выполнить проверку изменения данных.</span>
+<span class="comment">//                              - ПланыОбменаСсылка.&lt;Имя плана обмена&gt; - выполнить проверку</span>
+<span class="comment">//                                загрузки данных для указанного узла.</span>
+<span class="comment">//</span>
+<span class="comment">// Возвращаемое значение:</span>
+<span class="comment">//  Булево - если Истина, значит найден хотя бы один запрет изменения.</span>
+<span class="comment">//</span>
+<span class="keyword">Функция</span> НайденЗапретИзмененияДанных<span class="operator">(</span><span class="keyword">Знач</span> ДанныеДляПроверки<span class="operator">,</span>
+                                    ОписаниеДанных <span class="operator">=</span> <span class="keyword">Неопределено</span><span class="operator">,</span>
+                                    ОписаниеОшибки <span class="operator">=</span> <span class="keyword">Null</span><span class="operator">,</span>
+                                    УзелПроверкиЗапретаЗагрузки <span class="operator">=</span> <span class="keyword">Неопределено</span><span class="operator">)</span> <span class="keyword">Экспорт</span> </pre>
+
+<a name="issogl2_взаимодействие_при_обмене_данными"><h3>Взаимодействие при обмене данными</h3></a>
+
+<p class="Paragraph0c">Для проверки запрета загрузки следует использовать функцию
+<span class="Interface">ЗагрузкаЗапрещена</span> модуля <span class="Interface">ДатыЗапретаИзменения</span>.</p>
+
+<p class="Paragraph0c">Если при обмене данными требуется выполнить запись, когда
+признак <span class="Interface">ОбменДанными.Загрузка</span> не установлен, но
+без проверки запрета изменения, то в свойства объекта <span class="Interface">ДополнительныеСвойства</span>
+нужно вставить свойство <span class="Interface">ПропуститьПроверкуЗапретаИзменения</span>.</p>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Для настройки обмена данными следует руководствоваться
+общими правилами.</p>
+
+<p class="Paragraph0c">В планы обмена распределенной информационной базы (РИБ)
+рекомендуется включать все объекты метаданных подсистемы, кроме константы <span class="Interface">ВерсияДатЗапретаИзменения</span>.</p>
+
+<p class="Paragraph0c">Из остальных планов обмена (не РИБ) рекомендуется
+исключать все объекты метаданных подсистемы.</p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

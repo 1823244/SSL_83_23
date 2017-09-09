@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1054;&#1087;&#1080;&#1089;&#1072;&#1085;&#1080;&#1077;&#1050;&#1086;&#1083;&#1086;&#1085;&#1082;&#1080;&#1052;&#1072;&#1082;&#1077;&#1090;&#1072;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25EE_25EF_25E8_25F1_25E0_25ED_25E8_25E5_25EA_25EE_25EB_25EE_25ED_25EA_25E8_25EC_25E0_25EA_25E5_25F2_25E0.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_загрузкаданныхизфайлаклиентсерверописаниеколонкимакета"></a><h1>ОписаниеКолонкиМакета</h1>
+
+<pre> Создает структуру описания колонок для макета загрузки данных из файла.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция ОписаниеКолонкиМакета(Имя, Тип, Заголовок = Неопределено, Ширина = 0, Подсказка = "") Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Возвращаемое значение</span></p>
+<pre>  Структура - Структура с описание колонки.
+    * Имя - Строка - Имя колонки.
+    * Тип - ОписаниеТипов - Тип колонки.
+    * Заголовок - Строка - Заголовок колонки выводимый в бланке для загрузки.
+    * Ширина - Число - Ширина колонки.
+    * Подсказка - Строка - Подсказка выводимая в заголовке колонки. 
+    * ОбязательнаяДляЗаполнения - Булево - Истина, если колонка обязательно должна содержать значения.
+    * Группа - Строка - Имя группы колонок.
+    * Родитель - Строка - Используется для связи динамической колонки с реквизитом табличной части объекта.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = ЗагрузкаДанныхИзФайлаКлиентСервер.ОписаниеКолонкиМакета(Имя, Тип, Заголовок, Ширина, Подсказка)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Тонкий клиент, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

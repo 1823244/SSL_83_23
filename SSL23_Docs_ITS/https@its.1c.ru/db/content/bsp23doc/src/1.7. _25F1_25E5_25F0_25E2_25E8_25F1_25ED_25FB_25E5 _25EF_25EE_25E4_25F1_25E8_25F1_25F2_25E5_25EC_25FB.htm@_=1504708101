@@ -1,0 +1,439 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>1.7. &#1057;&#1077;&#1088;&#1074;&#1080;&#1089;&#1085;&#1099;&#1077; &#1087;&#1086;&#1076;&#1089;&#1080;&#1089;&#1090;&#1077;&#1084;&#1099;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="1.7. _25F1_25E5_25F0_25E2_25E8_25F1_25ED_25FB_25E5 _25EF_25EE_25E4_25F1_25E8_25F1_25F2_25E5_25EC_25FB.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<h1>1.7. Сервисные подсистемы</h1>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Подсистема</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Ключевые функции</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="a1">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Версионирование объектов</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Хранение и просмотр истории изменений
+  справочников и документов (пользователь, внесший изменения, время изменения и
+  характер изменения с точностью до реквизитов объекта и реквизитов его
+  табличных частей).</p>
+  <p class="BulletTab">&#9679; 
+  Сравнение произвольных версий объектов.</p>
+  <p class="BulletTab">&#9679; 
+  Просмотр и откат к ранее сохраненной версии
+  объекта.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Внешние пользователи: <span class="Interface">Нет</span>.</p>
+  <p class="TextinTable81">Тесная интеграция: <span class="Interface">Да</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Групповое изменение объектов</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Групповое изменение произвольных реквизитов и
+  табличных частей объектов программы (справочников, документов и пр.).</p>
+  <p class="BulletTab">&#9679; 
+  Возможность изменения значений дополнительных
+  реквизитов и сведений.</p>
+  <p class="BulletTab">&#9679; 
+  С учетом предустановленных в программе правил
+  запрета редактирования реквизитов объектов.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Внешние пользователи: <span class="Interface">Нет</span>.</p>
+  <p class="TextinTable81">Тесная интеграция: <span class="Interface">Да</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">3. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Даты запрета изменения</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Блокировка изменений любых данных (документов,
+  записей регистров, элементов справочников и др.), введенных ранее определенной
+  даты.</p>
+  <p class="BulletTab">&#9679; 
+  Гибкая настройка одной общей даты запрета
+  изменения для всех объектов программы в целом либо нескольких дат по разделам
+  и/или отдельным объектам разделов учета.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Внешние пользователи: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Тесная интеграция: <span class="Interface">Да</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">4. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Заметки пользователя</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Электронная замена стикеров по краям монитора,
+  которой можно воспользоваться, не покидая окна своей программы.</p>
+  <p class="BulletTab">&#9679; 
+  Быстрый список заметок на рабочем столе,
+  список заметок по предмету, общий список.</p>
+  <p class="BulletTab">&#9679; 
+  Различные цвета и оформление текста заметок,
+  вставка картинок в заметки.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Внешние пользователи: <span class="Interface">Нет</span>.</p>
+  <p class="TextinTable81">Тесная интеграция: <span class="Interface">Нет</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">5. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Защита персональных данных</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Поддержка требований 152-ФЗ («О персональных
+  данных»).</p>
+  <p class="BulletTab">&#9679; 
+  Управление событиями доступа к персональным
+  данным (установка использования события, получение актуального состояния
+  использования событий, подготовка формы настройки системы).</p>
+  <p class="BulletTab">&#9679; 
+  Классификация персональных данных по областям.</p>
+  <p class="BulletTab">&#9679; 
+  Учет согласий на обработку персональных
+  данных.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Внешние пользователи: <span class="Interface">Нет</span>.</p>
+  <p class="TextinTable81">Тесная интеграция: <span class="Interface">Нет</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">6. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Информация при запуске</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Отображение различной информации (например,
+  рекламы) при запуске программы.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Внешние пользователи: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Тесная интеграция: <span class="Interface">Нет</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">7. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Контактная информация</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Добавление к произвольным справочникам и
+  документам реквизитов для ввода контактной информации: почтовых адресов,
+  адресов электронной почты, телефонов и т. д.</p>
+  <p class="BulletTab">&#9679; 
+  Автоматическая или ручная проверка
+  корректности адресов (при совместном использовании с подсистемой «Адресный
+  классификатор»).</p>
+  <p class="BulletTab">&#9679; 
+  Предоставление классификатора стран мира
+  (ОКСМ).</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Внешние пользователи: <span class="Interface">Нет</span>.</p>
+  <p class="TextinTable81">Тесная интеграция: <span class="Interface">Да</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">8. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Напоминания пользователя</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Ввод персональных напоминаний в программе на
+  нужное время.</p>
+  <p class="BulletTab">&#9679; 
+  Привязка напоминаний к произвольным объектам
+  программы.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Внешние пользователи: <span class="Interface">Нет</span>.</p>
+  <p class="TextinTable81">Тесная интеграция: <span class="Interface">Нет</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">9. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Настройка порядка элементов</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Настройка порядка элементов произвольных
+  списков с помощью кнопок <span class="Interface">Вверх</span> и <span class="Interface">Вниз</span>.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Внешние пользователи: <span class="Interface">Нет</span>.</p>
+  <p class="TextinTable81">Тесная интеграция: <span class="Interface">Да</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">10. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Печать</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Программный интерфейс и готовое рабочее место
+  для формирования печатных форм произвольных объектов программы.</p>
+  <p class="BulletTab">&#9679; 
+  Вывод печатных форм в виде табличных
+  документов и офисных документов в форматах Microsoft Word и OpenOffice.org
+  Writer.</p>
+  <p class="BulletTab">&#9679; 
+  Отправка печатных форм по электронной почте,
+  сохранение на компьютер или в присоединенных файлах (при совместном
+  использовании с подсистемой «Присоединенные файлы»).</p>
+  <p class="BulletTab">&#9679; 
+  Подключение внешних печатных форм, а также
+  печать внешних печатных форм в комплекте с основными печатными формами (при
+  совместном использовании с подсистемой «Дополнительные отчеты и обработки»).</p>
+  <p class="BulletTab">&#9679; 
+  Вывод в печатную форму изображения QR-кода по
+  заданной текстовой строке.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Внешние пользователи: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Тесная интеграция: <span class="Interface">Да</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">11. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Полнотекстовый поиск</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Настройка и выполнение полнотекстового поиска по
+  всем данным в программе.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Внешние пользователи: <span class="Interface">Нет</span>.</p>
+  <p class="TextinTable81">Тесная интеграция: <span class="Interface">Нет</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">12. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Присоединенные файлы</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Программный и пользовательский интерфейсы для
+  присоединения файлов (вложений) к произвольным объектам программы.</p>
+  <p class="BulletTab">&#9679; 
+  Поддержка произвольного количества разных
+  типов владельцев файлов без потери в скорости работы в условиях ограничения
+  доступа пользователей на уровне записей (RLS).</p>
+  <p class="BulletTab">&#9679; 
+  Коллективное редактирование файлов, сканирование,
+  электронная подпись и шифрование.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Внешние пользователи: <span class="Interface">Нет</span>.</p>
+  <p class="TextinTable81">Тесная интеграция: <span class="Interface">Да</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">13. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Проверка легальности получения обновлений</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Программный и пользовательский интерфейсы для
+  подтверждения легальности получения обновления конфигурации.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Нет</span>.</p>
+  <p class="TextinTable81">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Внешние пользователи: <span class="Interface">Нет</span>.</p>
+  <p class="TextinTable81">Тесная интеграция: <span class="Interface">Нет</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">14. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Свойства</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Добавление дополнительных свойств к
+  произвольным документам и справочникам.</p>
+  <p class="BulletTab">&#9679; 
+  Вывод значений свойств в любых отчетах и
+  динамических списках.</p>
+  <p class="BulletTab">&#9679; 
+  Раздельное хранение свойств как в самом
+  объекте (дополнительные реквизиты), так и вне объекта-владельца в отдельном
+  регистре сведений (дополнительные сведения).</p>
+  <p class="BulletTab">&#9679; 
+  Возможность задавать одинаковые свойства для
+  различных объектов, свойства, обязательные к заполнению, и другие сервисные
+  возможности.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Внешние пользователи: <span class="Interface">Нет</span>.</p>
+  <p class="TextinTable81">Тесная интеграция: <span class="Interface">Да/Нет</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">15. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Склонение представлений объектов</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Автоматическое склонение представлений
+  объектов с возможностью ручной корректировки пользователем.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Внешние пользователи: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Тесная интеграция: <span class="Interface">Да</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">16. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Структура подчиненности</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Отображение информации о родительских и дочерних
+  документах, справочниках и ПВХ для выбранного объекта, а также всей структуры
+  их взаимосвязей.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Внешние пользователи: <span class="Interface">Нет</span>.</p>
+  <p class="TextinTable81">Тесная интеграция: <span class="Interface">Нет</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">17. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Электронная подпись</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Программный и пользовательский интерфейс для
+  работы со средствами криптографии (электронная подпись и проверка подписи).</p>
+  <p class="BulletTab">&#9679; 
+  Отправка заявлений на выпуск сертификата КЭП в
+  УЦ «1С» и установка их на компьютере.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Внешние пользователи: <span class="Interface">Нет</span>.</p>
+  <p class="TextinTable81">Тесная интеграция: <span class="Interface">Да</span></p>
+  </td>
+ </tr>
+</table>
+	</body>
+</html>

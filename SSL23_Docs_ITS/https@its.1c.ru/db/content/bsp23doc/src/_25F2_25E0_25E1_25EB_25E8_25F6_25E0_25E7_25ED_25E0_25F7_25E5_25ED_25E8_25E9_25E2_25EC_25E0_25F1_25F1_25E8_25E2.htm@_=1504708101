@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1058;&#1072;&#1073;&#1083;&#1080;&#1094;&#1072;&#1047;&#1085;&#1072;&#1095;&#1077;&#1085;&#1080;&#1081;&#1042;&#1052;&#1072;&#1089;&#1089;&#1080;&#1074;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25F2_25E0_25E1_25EB_25E8_25F6_25E0_25E7_25ED_25E0_25F7_25E5_25ED_25E8_25E9_25E2_25EC_25E0_25F1_25F1_25E8_25E2.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_общегоназначениятаблицазначенийвмассив"></a><h1>ТаблицаЗначенийВМассив</h1>
+
+<pre> Преобразует таблицу значений в массив.
+ Может использоваться для передачи на клиента данных, полученных
+ на сервере в виде таблицы значений в том случае, если таблица
+ значений содержит только такие значения, которые могут
+  быть переданы на клиента.
+ Полученный массив содержит структуры, каждая из которых повторяет
+ структуру колонок таблицы значений.
+ Не рекомендуется использовать для преобразования таблиц значений
+ с большим количеством строк.
+ Параметры: 
+    ТаблицаЗначений - ТаблицаЗначений.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция ТаблицаЗначенийВМассив(ТаблицаЗначений) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Возвращаемое значение</span></p>
+<pre>    Массив</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = ОбщегоНазначения.ТаблицаЗначенийВМассив(ТаблицаЗначений)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

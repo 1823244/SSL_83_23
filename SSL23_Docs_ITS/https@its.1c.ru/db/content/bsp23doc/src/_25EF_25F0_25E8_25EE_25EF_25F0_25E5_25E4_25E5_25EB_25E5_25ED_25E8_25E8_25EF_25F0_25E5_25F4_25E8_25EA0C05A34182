@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1055;&#1088;&#1080;&#1054;&#1087;&#1088;&#1077;&#1076;&#1077;&#1083;&#1077;&#1085;&#1080;&#1080;&#1055;&#1088;&#1077;&#1092;&#1080;&#1082;&#1089;&#1072;&#1054;&#1088;&#1075;&#1072;&#1085;&#1080;&#1079;&#1072;&#1094;&#1080;&#1080;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25EF_25F0_25E8_25EE_25EF_25F0_25E5_25E4_25E5_25EB_25E5_25ED_25E8_25E8_25EF_25F0_25E5_25F4_25E8_25EA_25F1_25E0_25EE_25F0_25E3_25E0_25ED_25E8_25E7_25E0_25F6_25E8_25E8.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_префиксацияобъектовсобытияприопределениипрефиксаорганизации"></a><h1>ПриОпределенииПрефиксаОрганизации</h1>
+
+<pre> Возвращает префикс организации.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура ПриОпределенииПрефиксаОрганизации(Знач Организация, ПрефиксОрганизации) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  Организация - СправочникСсылка.Организации - организация для которой надо получить префикс.
+  ПрефиксОрганизации - Строка - префикс организации.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> ПрефиксацияОбъектовСобытия.ПриОпределенииПрефиксаОрганизации(Организация, ПрефиксОрганизации)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

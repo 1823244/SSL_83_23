@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.1. &#1040;&#1076;&#1088;&#1077;&#1089;&#1085;&#1099;&#1081; &#1082;&#1083;&#1072;&#1089;&#1089;&#1080;&#1092;&#1080;&#1082;&#1072;&#1090;&#1086;&#1088;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.1. _25E0_25E4_25F0_25E5_25F1_25ED_25FB_25E9 _25EA_25EB_25E0_25F1_25F1_25E8_25F4_25E8_25EA_25E0_25F2_25EE_25F0.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<h1>3.1. Адресный классификатор</h1>
+
+<p class="Paragraph0c">Подсистема «Адресный классификатор» предназначена для
+загрузки, хранения и предоставления другим подсистемам конфигурации адресных
+сведений Федеральной информационной адресной системы (ФИАС). Подсистема
+позволяет работать в одном из двух вариантов:</p>
+
+<p class="Number81">1. 
+При наличии постоянного подключения к Интернету
+адресные сведения не загружаются в программу, а запрашиваются онлайн с помощью
+веб-сервиса фирмы «1С». </p>
+
+<p class="Number81">2. 
+Для автономной работы без (постоянного)
+подключения к Интернету адресные сведения могут быть загружены в программу с сайта
+фирмы «1С» или из указанной папки на диске. </p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Paragraph0c">Если в конфигурации не используется подсистема «Настройки
+программы», то в командном интерфейсе ответственного за ведение
+нормативно-справочной информации необходимо разместить: </p>
+
+<p class="MsoListBullet">&#9679; 
+константу <span class="Interface">ИсточникДанныхАдресногоКлассификатора</span>.
+См. пример в форме <span class="Interface">ПоддержкаИОбслуживание обработки ПанельАдминистрированияБСП</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+команды <span class="Interface">ЗагрузитьАдресныйКлассификатор</span>,
+<span class="Interface">ОчиститьАдресныйКлассификатор</span>, <span class="Interface">ПроверитьОбновлениеАдресногоКлассификатора</span> регистра
+сведений <span class="Interface">АдресныеОбъекты</span> для работы в варианте с
+загрузкой данных в программу по требованию. </p>
+
+<a name="issogl1_настройка_прав_доступа_пользователей"><h2>Настройка прав доступа пользователей</h2></a>
+
+<p class="Paragraph0c">Для настройки прав доступа пользователей к данным
+подсистемы «Адресный классификатор» следует использовать роли, приведенные
+ниже.</p>
+
+<p class="Objectname">Таблица 3.1.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="a1">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">БазовыеПрава</span> (из
+  подсистемы «Базовая функциональность»)</p>
+  <p class="TextinTable81">Просмотр и использование адресных сведений</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ДобавлениеИзменениеАдресныхСведений</span></p>
+  <p class="TextinTable81">Добавление и изменение адресных сведений</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">3. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">АдминистраторСистемы</span> (из
+  подсистемы «Базовая функциональность»)</p>
+  <p class="TextinTable81">Удаление помеченных на удаление объектов подсистемы</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Пример настройки прав доступа пользователей приведен ниже.</p>
+
+<p class="Objectname">Таблица 3.2.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">№</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Группа пользователей и ее функции</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Состав ролей</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Администратор</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">АдминистраторСистемы</span> (из
+  подсистемы «Базовая функциональность»)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Ответственный за нормативно-справочную информацию</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">БазовыеПрава</span> (из
+  подсистемы «Базовая функциональность»)</p>
+  <p class="TextinTable81"><span class="Interface">ЗапускТонкогоКлиента</span> (из
+  подсистемы «Базовая функциональность»)</p>
+  <p class="TextinTable81"><span class="Interface">ДобавлениеИзменениеАдресныхСведений</span></p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<p class="Paragraph0c">Программный интерфейс подсистемы представлен общим модулем
+<span class="Interface">АдресныйКлассификатор</span>. Доступ к данным адресного
+классификатора рекомендуется производить только через его программный
+интерфейс.</p>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Все объекты метаданных подсистемы не должны участвовать в
+обмене. Данные адресного классификатора должны заполняться и поддерживаться в
+актуальном состоянии отдельно в каждой информационной базе, между которыми
+настроена синхронизация данных. </p>
+	</body>
+</html>

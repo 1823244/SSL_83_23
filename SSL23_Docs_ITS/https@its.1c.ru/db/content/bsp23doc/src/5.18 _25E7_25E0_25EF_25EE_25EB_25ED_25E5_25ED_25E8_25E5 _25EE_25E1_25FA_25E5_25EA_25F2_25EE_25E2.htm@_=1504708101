@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>5.18 &#1047;&#1072;&#1087;&#1086;&#1083;&#1085;&#1077;&#1085;&#1080;&#1077; &#1086;&#1073;&#1098;&#1077;&#1082;&#1090;&#1086;&#1074;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="5.18 _25E7_25E0_25EF_25EE_25EB_25ED_25E5_25ED_25E8_25E5 _25EE_25E1_25FA_25E5_25EA_25F2_25EE_25E2.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<h1>5.18 Заполнение объектов</h1>
+
+<p class="Paragraph0c">Программа позволяет размещать в документах и списках
+подменю <span class="Interface">Заполнить</span> для заполнения или очистки
+реквизитов и табличных частей одного или нескольких элементов списка. Например,
+такие команды можно разместить как в карточках элементов, так и в списках,
+например, <span class="Note"><b>Демо:
+Контрагенты</b></span>.</p>
+
+<p class="Paragraph0c">Такие команды могут быть востребованы для заполнения
+больших объемов данных однотипной информацией или для очистки указанных полей в
+большом количестве элементов списка.</p>
+
+<p class="Paragraph0c">Настройка подменю <span class="Interface">Заполнить</span>
+производится разработчиком.</p>
+
+<p class="Paragraph0c">С помощью кнопки <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image1592.png@_=1504708101" WIDTH="56" ALT HEIGHT="35"> <span class="Interface">Заполнить</span>
+открывается список команд по заполнению реквизитов и табличных частей объекта.
+Выберите команду из списка. </p>
+
+<p class="Paragraph0c">В списке могут быть различные команды, например:</p>
+
+<p class="Bullet1">&#9632; 
+<span class="Interface">Заполнить наименование</span>
+(из конфигурации) – заполняется поле <span class="Interface">Наименование</span>;</p>
+
+<p class="Bullet1">&#9632; 
+<span class="Interface">Заполнить полное
+наименование</span> (из расширения, на клиенте без записи объекта) –
+заполняется поле <span class="Interface">Полное наименование</span>;</p>
+
+<p class="Bullet1">&#9632; 
+<span class="Interface">Заполнить ИНН </span>–
+заполняется поле <span class="Interface">ИНН</span>; </p>
+
+<p class="Bullet1">&#9632; 
+<span class="Interface">Добавить префикс к
+Наименованию (открытие формы)</span><span class="Paragraph0c0"> –</span><span class="Interface"> </span>к
+полю <span class="Interface">Наименование</span> добавляется префикс; </p>
+
+<p class="Bullet1">&#9632; 
+<span class="Interface">Комплексная очистка</span>
+– очищает поля <span class="Interface">ИНН</span> и <span class="Interface">Полное
+наименование</span>;</p>
+
+<p class="Bullet1">&#9632; 
+<span class="Interface">Комплексное заполнение</span>
+– добавление префикса к полю <span class="Interface">Наименование</span>,
+заполнение поля <span class="Interface">Полное Наименование</span>.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image1594.png@_=1504708101" WIDTH="800" ALT HEIGHT="443"></p>
+
+<p class="Paragraph0c">Команды могут
+использоваться из различных источников, это указывается в подменю:</p>
+
+<p class="Bullet1">&#9632; 
+Из программы;</p>
+
+<p class="Bullet1">&#9632; 
+Из расширения – подробнее см. раздел
+документации Базовая функциональность;</p>
+
+<p class="Bullet1">&#9632; 
+Из внешней обработки – подробнее см. раздел
+документации Дополнительные отчеты и обработки.</p>
+
+<p class="Paragraph0c">После выполнения команды в карточке объекта виден
+результат заполнения.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image1596.png@_=1504708101" WIDTH="800" ALT HEIGHT="491"></p>
+
+<p class="Paragraph0c">Состав подменю <span class="Interface">Заполнить</span>
+автоматически подстраивается под выбранный элемент или документ: показываются
+только те команды заполнения, которые могут быть для него вызваны. А при выборе
+нескольких элементов в подменю <span class="Interface">Заполнить</span> остаются
+только те команды, которые подходят сразу ко всем выбранным элементам.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image1598.png@_=1504708101" WIDTH="800" ALT HEIGHT="295"></p>
+
+<p class="Paragraph0c">Если команда выполнялась в списке, программа выводит
+сообщение о ее выполнении.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image1600.png@_=1504708101" WIDTH="314" ALT HEIGHT="105"></p>
+
+<p class="Paragraph0c">Некоторые
+команды (типа <span class="Interface">Открытие формы</span>) требуют для своего
+выполнения дополнительных действий. Например, необходимо подтвердить
+выполнение, выбрав нужные элементы списка.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image1602.png@_=1504708101" WIDTH="686" ALT HEIGHT="384"></p>
+
+<p class="Paragraph0c">Для использования подменю <span class="Interface">Заполнить</span>
+не нужно особых прав, достаточно прав на работу с соответствующими объектами
+программы. </p>
+	</body>
+</html>

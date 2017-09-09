@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1044;&#1086;&#1073;&#1072;&#1074;&#1080;&#1090;&#1100;&#1057;&#1090;&#1088;&#1086;&#1082;&#1091;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25E4_25EE_25E1_25E0_25E2_25E8_25F2_25FC_25F1_25F2_25F0_25EE_25EA_25F3.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_датызапретаизменениядобавитьстроку"></a><h1>ДобавитьСтроку</h1>
+
+<pre> Добавляет строку описания источника данных для проверки запрета изменения.
+ Используется в процедуре ЗаполнитьИсточникиДанныхДляПроверкиЗапретаИзменения
+ общего модуля ДатыЗапретаИзмененияПереопределяемый.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура ДобавитьСтроку(Данные, Таблица, ПолеДаты, Раздел = "", ПолеОбъекта = "") Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  Данные      - ТаблицаЗначений - передается в процедуру ЗаполнитьИсточникиДанныхДляПроверкиЗапретаИзменения.
+  Таблица     - Строка - полное имя объекта метаданных, например, "Документ.ПриходнаяНакладная".
+  ПолеДаты    - Строка - имя реквизита объекта или табличной части, например "Дата", "Товары.ДатаОтгрузки".
+  Раздел      - Строка - имя предопределенного элемента "ПланВидовХарактеристикСсылка.РазделыДатЗапрета".
+  ПолеОбъекта - Строка - имя реквизита объекта или реквизита табличной части, например "Организация", "Товары.Склад".</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> ДатыЗапретаИзменения.ДобавитьСтроку(Данные, Таблица, ПолеДаты, Раздел, ПолеОбъекта)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

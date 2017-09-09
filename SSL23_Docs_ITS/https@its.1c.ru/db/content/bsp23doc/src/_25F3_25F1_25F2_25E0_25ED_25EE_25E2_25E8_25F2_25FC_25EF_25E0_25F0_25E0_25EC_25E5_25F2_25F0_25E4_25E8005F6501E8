@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1080;&#1090;&#1100;&#1055;&#1072;&#1088;&#1072;&#1084;&#1077;&#1090;&#1088;&#1044;&#1080;&#1085;&#1072;&#1084;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1075;&#1086;&#1057;&#1087;&#1080;&#1089;&#1082;&#1072;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25F3_25F1_25F2_25E0_25ED_25EE_25E2_25E8_25F2_25FC_25EF_25E0_25F0_25E0_25EC_25E5_25F2_25F0_25E4_25E8013CC98D11" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_общегоназначенияклиентсерверустановитьпараметрдинамическогосписка"></a><h1>УстановитьПараметрДинамическогоСписка</h1>
+
+<pre> Установить или обновить значение параметра ИмяПараметра динамического списка Список.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура УстановитьПараметрДинамическогоСписка(Список, ИмяПараметра, Значение, Использование = Истина) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  Список          - ДинамическийСписок - реквизит формы, для которого требуется установить параметр.
+  ИмяПараметра    - Строка             - имя параметра динамического списка.
+  Значение        - Произвольный        - новое значение параметра.
+  Использование   - Булево             - признак использования параметра.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> ОбщегоНазначенияКлиентСервер.УстановитьПараметрДинамическогоСписка(Список, ИмяПараметра, Значение, Использование)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Тонкий клиент, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

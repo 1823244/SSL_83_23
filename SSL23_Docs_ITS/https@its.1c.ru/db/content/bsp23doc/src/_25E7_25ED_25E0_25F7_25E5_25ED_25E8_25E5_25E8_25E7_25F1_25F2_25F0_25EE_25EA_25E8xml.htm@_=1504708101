@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1047;&#1085;&#1072;&#1095;&#1077;&#1085;&#1080;&#1077;&#1048;&#1079;&#1057;&#1090;&#1088;&#1086;&#1082;&#1080;XML</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25E7_25ED_25E0_25F7_25E5_25ED_25E8_25E5_25E8_25E7_25F1_25F2_25F0_25EE_25EA_25E8xml.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_общегоназначениязначениеизстрокиxml"></a><h1>ЗначениеИзСтрокиXML</h1>
+
+<pre> Возвращает значение, полученное из XML-строки. 
+ Получены из XML-строки могут быть только те объекты, 
+ для которых в описании указано, что они сериализуются.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция ЗначениеИзСтрокиXML(СтрокаXML) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre> СтрокаXML - строка представления значения в сериализованном виде.</pre>
+<p class="Paragraph0c"><span class="Bold">Возвращаемое значение</span></p>
+<pre> Значение, полученное из переданной XML-строки.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = ОбщегоНазначения.ЗначениеИзСтрокиXML(СтрокаXML)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

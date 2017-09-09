@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1055;&#1088;&#1080;&#1047;&#1072;&#1087;&#1086;&#1083;&#1085;&#1077;&#1085;&#1080;&#1080;&#1042;&#1086;&#1079;&#1084;&#1086;&#1078;&#1085;&#1099;&#1093;&#1055;&#1088;&#1072;&#1074;&#1044;&#1083;&#1103;&#1053;&#1072;&#1089;&#1090;&#1088;&#1086;&#1081;&#1082;&#1080;&#1055;&#1088;&#1072;&#1074;&#1054;&#1073;&#1098;&#1077;&#1082;&#1090;&#1086;&#1074;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25EF_25F0_25E8_25E7_25E0_25EF_25EE_25EB_25ED_25E5_25ED_25E8_25E8_25E2_25EE_25E7_25EC_25EE_25E6_25ED01B3C1DDC2" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_управлениедоступомпереопределяемыйпризаполнениивозможныхправдлянастройкиправобъектов"></a><h1>ПриЗаполненииВозможныхПравДляНастройкиПравОбъектов</h1>
+
+<pre> Заполняет описания возможных прав, назначаемых для объектов, указанных типов.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура ПриЗаполненииВозможныхПравДляНастройкиПравОбъектов(ВозможныеПрава) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  ВозможныеПрава - ТаблицаЗначений - с колонками, описание которых см. в комментарии
+                   к функции РегистрыСведений.НастройкиПравОбъектов.ВозможныеПрава().</pre>
+<p class="Paragraph0c"><span class="Bold">Расположение</span></p>
+<pre> Общий модуль УправлениеДоступомПереопределяемый</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

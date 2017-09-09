@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1056;&#1072;&#1089;&#1087;&#1080;&#1089;&#1072;&#1085;&#1080;&#1103;&#1056;&#1072;&#1073;&#1086;&#1090;&#1099;&#1053;&#1072;&#1055;&#1077;&#1088;&#1080;&#1086;&#1076;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25F0_25E0_25F1_25EF_25E8_25F1_25E0_25ED_25E8_25FF_25F0_25E0_25E1_25EE_25F2_25FB_25ED_25E0_25EF_25E5_25F0_25E8_25EE_25E4.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_графикиработырасписанияработынапериод"></a><h1>РасписанияРаботыНаПериод</h1>
+
+<pre> Составляет расписания работы для дат, включенных в указанные графики на указанный период.
+ Если расписание на предпраздничный день не задано, то оно определяется так, как если бы этот день был бы рабочим.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция РасписанияРаботыНаПериод(Графики, ДатаНачала, ДатаОкончания) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre> Графики - массив элементов типа СправочникСсылка.Календари.
+ ДатаНачала - дата начала периода, за который нужно составить расписания.
+ ДатаОкончания - дата окончания периода.
+ Возвращаемое значение - таблица значений с колонками.
+ ГрафикРаботы
+ ДатаГрафика
+ ВремяНачала
+ ВремяОкончания</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = ГрафикиРаботы.РасписанияРаботыНаПериод(Графики, ДатаНачала, ДатаОкончания)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

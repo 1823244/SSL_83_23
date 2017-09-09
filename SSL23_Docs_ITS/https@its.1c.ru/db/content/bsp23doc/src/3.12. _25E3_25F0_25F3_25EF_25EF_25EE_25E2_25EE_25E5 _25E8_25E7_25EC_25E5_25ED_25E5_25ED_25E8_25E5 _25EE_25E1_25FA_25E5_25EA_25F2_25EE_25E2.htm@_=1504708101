@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.12. &#1043;&#1088;&#1091;&#1087;&#1087;&#1086;&#1074;&#1086;&#1077; &#1080;&#1079;&#1084;&#1077;&#1085;&#1077;&#1085;&#1080;&#1077; &#1086;&#1073;&#1098;&#1077;&#1082;&#1090;&#1086;&#1074;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.12. _25E3_25F0_25F3_25EF_25EF_25EE_25E2_25EE_25E5 _25E8_25E7_25EC_25E5_25ED_25E5_25ED_25E8_25E5 _25EE_25E1_25FA_25E5_25EA_25F2_25EE_25E2.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<h1>3.12. Групповое изменение объектов</h1>
+
+<p class="Paragraph0c">Подсистема «Групповое изменение объектов» предоставляет
+пользовательский интерфейс для множественного изменения объектов одного типа.
+Помимо изменения реквизитов имеется возможность изменения дополнительных
+реквизитов и сведений (подсистема «Свойства»), если они есть у объектов. </p>
+
+<p class="Paragraph0c">Также подсистема учитывает наличие у объектов реквизитов,
+запрещенных для редактирования (подсистема «Запрет редактирования реквизитов
+объектов»).</p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<a name="issogl2_размещение_команды_изменения_объектов_в_списках"><h3>Размещение команды изменения объектов в списках</h3></a>
+
+<p class="Paragraph0c">Сначала нужно принять решение по поводу состава объектов
+конфигурации, для которых должна быть добавлена команда по групповому
+изменению. Как правило, к таким объектам относятся большинство объектов
+конфигурации ссылочного типа.</p>
+
+<p class="Paragraph0c">Затем надо поместить команду для группового изменения
+объектов на командной панели и в контекстном меню формы списка. Рекомендуемые
+значения свойств команды:</p>
+
+<p class="Objectname">Таблица 3.21.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Свойство</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Значение</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Имя</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ИзменитьВыделенные</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Действие</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ИзменитьВыделенные</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Подсказка</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Изменить выделенные объекты</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Изменяет сохраняемые данные</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Нет</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Также рекомендуется управлять видимостью команды в форме в
+зависимости от текущих прав пользователя. Например:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Процедура</span> ПриСозданииНаСервере<span class="operator">(</span>Отказ<span class="operator">,</span> СтандартнаяОбработка<span class="operator">)</span>
+    МожноРедактировать <span class="operator">=</span> ПравоДоступа<span class="operator">(</span><span class="string">&quot;Редактирование&quot;</span><span class="operator">,</span> Метаданные<span class="operator">.</span>Справочники<span class="operator">.</span>_ДемоНоменклатура<span class="operator">)</span><span class="operator">;</span>
+    Элементы<span class="operator">.</span>ФормаИзменитьВыделенные<span class="operator">.</span>Видимость <span class="operator">=</span> МожноРедактировать<span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Установить у поля <span class="Interface">Ссылка</span>
+основного реквизита формы признак <span class="Interface">Использовать всегда</span>.</p>
+
+<p class="Paragraph0c">Добавить в модуль формы обработчик:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ИзменитьВыделенные<span class="operator">(</span>Команда<span class="operator">)</span>
+    ГрупповоеИзменениеОбъектовКлиент<span class="operator">.</span>ИзменитьВыделенные<span class="operator">(</span>Элементы<span class="operator">.</span>Список<span class="operator">,</span> Список<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<a name="issogl2_ограничение_редактируемых_реквизитов_объектов"><h3>Ограничение редактируемых реквизитов объектов</h3></a>
+
+<p class="Paragraph0c">Изменение некоторых реквизитов с помощью групповой
+обработки может быть нежелательным либо нарушать логику работы конфигурации.
+Такие реквизиты необходимо скрывать от пользователя.</p>
+
+<p class="Paragraph0c">Обработка группового изменения может быть вызвана как из
+формы списка для выбранных объектов, так и самостоятельно с последующим выбором
+изменяемых объектов в самой обработке, поэтому необходимо для всех объектов
+конфигурации рассмотреть необходимость ограничения доступности реквизитов для
+группового изменения.</p>
+
+<p class="Paragraph0c">Если для объекта метаданных определены реквизиты, которые
+можно изменять с помощью обработки группового изменения, следует объявить
+экспортную функцию <span class="Interface">РеквизитыРедактируемыеВГрупповойОбработке</span>
+в модуле менеджера объекта, которая возвращает массив – имена реквизитов. При
+этом оставшиеся реквизиты скрываются в обработке группового изменения. В общем
+виде разрешенные для редактирования реквизиты объекта описываются следующим
+образом (пример см. в справочнике <span class="Interface">_ДемоКонтрагенты</span>
+демонстрационной конфигурации):</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Возвращает реквизиты объекта, которые разрешается редактировать</span>
+<span class="comment">// с помощью обработки группового изменения реквизитов.</span>
+<span class="comment">//</span>
+<span class="comment">// Возвращаемое значение:</span>
+<span class="comment">//  Массив - список имен реквизитов объекта.</span>
+<span class="keyword">Функция</span> РеквизитыРедактируемыеВГрупповойОбработке<span class="operator">(</span><span class="operator">)</span> <span class="keyword">Экспорт</span>
+    РедактируемыеРеквизиты <span class="operator">=</span> <span class="keyword">Новый</span> Массив<span class="operator">;</span>
+    РедактируемыеРеквизиты<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;ИмяРеквизита&quot;</span><span class="operator">)</span><span class="operator">;</span> <span class="comment">// реквизит объекта</span>
+    РедактируемыеРеквизиты<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;ИмяТабличнойЧасти.ИмяРеквизита&quot;</span><span class="operator">)</span><span class="operator">;</span> <span class="comment">// реквизит табличной части объекта</span>
+    РедактируемыеРеквизиты<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;ИмяТабличнойЧасти.*&quot;</span><span class="operator">)</span><span class="operator">;</span> <span class="comment">// все реквизиты табличной части объекта</span>
+    РедактируемыеРеквизиты<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;*&quot;</span><span class="operator">)</span><span class="operator">;</span> <span class="comment">// все реквизиты и табличные части объекта</span>
+    <span class="keyword">Возврат</span> РедактируемыеРеквизиты<span class="operator">;</span>
+<span class="keyword">КонецФункции</span></pre>
+
+<p class="Paragraph0c">Если стоит обратная задача: известны имена реквизитов,
+которые не должны редактироваться в обработке группового изменения, – следует
+объявить в модуле менеджера объекта функцию <span class="Interface">РеквизитыНеРедактируемыеВГрупповойОбработке</span>,
+которая возвращает массив – имена реквизитов (аналогично функции <span class="Interface">РеквизитыРедактируемыеВГрупповойОбработке</span>). Пример см. в
+справочнике <span class="Interface">_ДемоНоменклатура</span> демонстрационной
+конфигурации.</p>
+
+<p class="Paragraph0c">Если объект не предназначен для использования в групповом
+изменении, то необходимо скрывать все его реквизиты.</p>
+
+<p class="Warningword">Важно!</p>
+
+<p class="Notes">Служебные реквизиты объектов, такие как <span class="Interface">Ссылка</span>,
+<span class="Interface">Наименование</span>, <span class="Interface">ПометкаУдаления</span>
+и т. д., а также некоторые табличные части не требуют дополнительных действий
+для скрытия в обработке группового изменения, так как они скрыты по умолчанию.
+Подробнее со списком таких реквизитов и табличных частей можно ознакомиться в
+макете <span class="Interface">ФильтрРеквизитов</span> обработки <span class="Interface">ГрупповоеИзменениеОбъектов</span>.</p>
+
+<p class="Paragraph0c">При необходимости также следует перенести логику проверки
+заполнения объектов и логику «при записи» из модулей форм в модули объектов.</p>
+
+<p class="Paragraph0c">Все объекты метаданных, в которых определены функции <span class="Interface">РеквизитыРедактируемыеВГрупповойОбработке</span> и <span class="Interface">РеквизитыНеРедактируемыеВГрупповойОбработке</span>, следует
+перечислить в процедуре <span class="Interface">ПриОпределенииОбъектовСРедактируемымиРеквизитами</span>
+общего модуля <span class="Interface">ГрупповоеИзменениеОбъектовПереопределяемый</span>.</p>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Objectname">Таблица 3.22.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПолныеПрава</span></p>
+  <p class="TextinTable81">Редактирование любых объектов конфигурации (при
+  открытии формы группового изменения реквизитов из раздела командного интерфейса
+  «Администрирование»)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">2. </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Другие роли</span></p>
+  <p class="TextinTable81">Для группового изменения реквизитов в списках объектов
+  не требуются какие-либо дополнительные роли. Эта возможность будет доступна,
+  если у пользователя есть права на редактирование самих объектов</p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Для настройки обмена данными никаких действий не
+требуется, так как подсистема не предоставляет собственных данных.</p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

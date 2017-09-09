@@ -1,0 +1,388 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.39. &#1055;&#1088;&#1080;&#1089;&#1086;&#1077;&#1076;&#1080;&#1085;&#1077;&#1085;&#1085;&#1099;&#1077; &#1092;&#1072;&#1081;&#1083;&#1099;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.39. _25EF_25F0_25E8_25F1_25EE_25E5_25E4_25E8_25ED_25E5_25ED_25ED_25FB_25E5 _25F4_25E0_25E9_25EB_25FB.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_присоединенные_файлы"></a><h1>3.39. Присоединенные файлы</h1>
+
+<p class="Paragraph0c">Подсистема «Присоединенные файлы» предоставляет средства
+работы с файлами-вложениями, присоединенными к произвольным объектам информационной
+базы ссылочного типа. Хранение файлов может быть организовано как в
+информационной базе, так и внешним образом – в томах (сетевых ресурсах).</p>
+
+<p class="Paragraph0c">Поддерживаются такие возможности работы с файлами, как
+добавление файлов в базу с диска или сканера, электронная подпись и шифрование,
+поддержка группового изменения и полнотекстового поиска по присоединенным
+файлам.</p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Paragraph0c">Принять решение по поводу состава объектов конфигурации,
+которые должны содержать присоединенные файлы («объекты с файлами»). Такими объектами,
+как правило, являются справочники или документы, при которых могут содержаться
+файлы-вложения. Примеры: справочник <span class="Interface">Товары</span> с
+присоединенными к нему файлами-спецификациями, сертификатами и т. п.;
+справочник <span class="Interface">Должности</span> с приложенными к нему
+текстами должностных обязанностей, требованиями к соискателю и т. п. </p>
+
+<p class="Paragraph0c">Выполнить общую настройку:</p>
+
+<p class="Number81">1. 
+Выполнить настройку общей файловой
+функциональности – см. раздел «<A href="3.55. _25F4_25E0_25E9_25EB_25EE_25E2_25FB_25E5 _25F4_25F3_25ED_25EA_25F6_25E8_25E8.htm@_=1504708101#_файловые_функции">Файловые функции</a>».</p>
+
+<p class="Number81">2. 
+Создать подписки:</p>
+
+<p class="Objectname">Таблица 3.84.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td colspan="2" valign="top">
+  <p class="TextinTable81"><span class="Interface">ПереопределитьПолучаемуюФормуПрисоединенногоФайла</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Событие</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ОбработкаПолученияФормы</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Обработчик</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПрисоединенныеФайлыКлиентСервер.</span></p>
+  <p class="TextinTable81"><span class="Interface">ПереопределитьПолучаемуюФормуПрисоединенногоФайла</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="2" valign="top">
+  <p class="TextinTable81"><span class="Interface">УстановитьПометкуУдаленияПрисоединенныхФайловДокументов</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Событие</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПередЗаписью</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Обработчик</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПрисоединенныеФайлы.</span></p>
+  <p class="TextinTable81"><span class="Interface">УстановитьПометкуУдаленияПрисоединенныхФайловДокументов</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Для каждого «объекта с файлами» выполнить настройку:</p>
+
+<p class="Number81">1. 
+Создать справочник для хранения присоединенных
+файлов. Для этого в качестве заготовки скопировать в конфигурацию справочник <span class="Interface">_ДемоПроектыПрисоединенныеФайлы</span> из демонстрационной
+конфигурации и задать ему имя по шаблону:</p>
+
+<p class="Bullet0"><span class="Interface">&lt;Префикс&gt;ПрисоединенныеФайлы</span>,</p>
+
+<p class="Bullet0">где <span class="Interface">&lt;Префикс&gt;</span> – имя объекта
+метаданных, для которого настраиваются присоединенные файлы. Например, для
+справочника <span class="Interface">Номенклатура</span> справочник с файлами
+должен называться <span class="Interface">НоменклатураПрисоединенныеФайлы</span>.
+Задать синоним, например: <span class="Interface">Присоединенные файлы</span> (<span class="Interface">Номенклатура</span>).</p>
+
+<p class="Number81">2. 
+У реквизита <span class="Interface">ВладелецФайла</span>
+установить тип – «объект с файлами». Например, <span class="Interface">СправочникСсылка.Номенклатура</span>.</p>
+
+<p class="Number81">3. 
+Включить в состав определяемых типов <span class="Interface">ПрисоединенныйФайл</span> (ссылки) и <span class="Interface">ПрисоединенныйФайлОбъект
+</span>(объекты) справочник, созданный на шаге 1. Например, <span class="Interface">СправочникСсылка.НоменклатураПрисоединенныеФайлы</span>.</p>
+
+<p class="Number81">4. 
+Расширить состав определяемых типов <span class="Interface">ВладелецПрисоединенныхФайлов</span> (ссылки) и <span class="Interface">ВладелецПрисоединенныхФайловОбъект</span> (объекты, кроме
+документов), добавив в него тип «объект с файлами». Например <span class="Interface">СправочникСсылка.Номенклатура</span>.</p>
+
+<p class="Number81">5. 
+Расширить состав типов свойства <span class="Interface">Источник</span> у подписки <span class="Interface">ПереопределитьПолучаемуюФормуПрисоединенногоФайла</span>,
+включив в него тип – справочник с файлами, созданный на шаге 1. Например, <span class="Interface">СправочникМенеджер.НоменклатураПрисоединенныеФайлы</span>.</p>
+
+<p class="Number81">6. 
+Расширить состав типов свойства <span class="Interface">Источник</span> подписки <span class="Interface">УстановитьПометкуУдаленияПрисоединенныхФайловДокументов,</span>
+включив в него тип – «объект с файлами» (только документы). Например, <span class="Interface">ДокументОбъект.СчетНаОплатуПокупателю.</span></p>
+
+<p class="Number81">7. 
+Если при интерактивном копировании объекта,
+содержащего присоединенные файлы, требуется их автоматическое копирование в
+новый объект, то в форме объекта необходимо:</p>
+
+<p class="MsoListBullet2">&#9679;  в
+параметры формы добавить ключевой параметр <span class="Interface">ЗначениеКопирования</span>
+такого же типа, как и сам объект;</p>
+
+<p class="MsoListBullet2">&#9679;  в
+модуле формы в процедуру <span class="Interface">ПриЗаписиНаСервере</span>
+вставить следующий код:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">ПрисоединенныеФайлы<span class="operator">.</span>ПриЗаписиНаСервере<span class="operator">(</span>Отказ<span class="operator">,</span> ТекущийОбъект<span class="operator">,</span> ПараметрыЗаписи<span class="operator">,</span> Параметры<span class="operator">)</span><span class="operator">;</span></pre>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Использование присоединенных файлов в общем случае
+предполагает наличие двух ролей: для просмотра (открытия) и редактирования
+файлов. Предполагается, что роли настраиваются по владельцу файлов. Ограничения
+доступа на уровне записей к присоединенным файлам устанавливаются по владельцу.</p>
+
+<p class="Objectname">Таблица 3.85.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПолныеПрава</span> (из
+  подсистемы «Базовая функциональность»)</p>
+  <p class="TextinTable81">Удаление помеченных на удаление присоединенных файлов</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Дополнительно следует создать вспомогательные роли или
+использовать подходящие роли, существующие в конфигурации, для
+добавления/изменения и чтения «объектов с файлами». В этом случае настройка
+доступа к справочнику присоединенных файлов устанавливается аналогично «объекту
+с файлами». </p>
+
+<p class="Objectname">Таблица 3.86.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Вспомогательные роли и их
+   назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">&lt;ДобавлениеИзменениеНоменклатуры&gt;</span></p>
+  <p class="TextinTable81">Добавление/изменение «объектов с файлами». Добавление/изменение
+  присоединенных файлов, редактирование, подписание, шифрование</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">&lt;ЧтениеНоменклатуры&gt;</span></p>
+  <p class="TextinTable81">Чтение «объектов с файлами». Чтение присоединенных
+  файлов, открытие карточки присоединенного файла, открытие файла во внешней
+  программе</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Пример настройки прав доступа пользователей приведен ниже.</p>
+
+<p class="Objectname">Таблица 3.87.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Группа пользователей и ее функции</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Состав ролей</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Администратор</p>
+  <p class="TextinTable81">Общее администрирование системы</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ПолныеПрава</span> (из
+  подсистемы «Базовая функциональность»)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Менеджер</p>
+  <p class="TextinTable81">Добавление, изменение «объектов с файлами» и их
+  файлов. Редактирование файлов, подписание файлов, шифрование, обновление данных
+  файла из другого файла</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">БазовыеПрава</span> (из
+  подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЗапускТонкогоКлиента</span>
+  (из подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">&lt;ДобавлениеИзменениеНоменклатуры&gt;</span>
+  (из прикладной конфигурации)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">3. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Пользователь</p>
+  <p class="TextinTable81">Просмотр списка файлов, открытие карточки файла,
+  открытие файла для просмотра</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">БазовыеПрава</span> (из
+  подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЗапускТонкогоКлиента</span>
+  (из подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">&lt;ЧтениеНоменклатуры&gt;</span>
+  (из прикладной конфигурации)</p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl2_особые_случаи_внедрения_подсистемы"><h3>Особые случаи внедрения подсистемы</h3></a>
+
+<p class="MsoListBullet">&#9679; 
+<A href="3.59. _25EE_25F1_25EE_25E1_25FB_25E5 _25F1_25EB_25F3_25F7_25E0_25E8 _25E2_25ED_25E5_25E4_25F0_25E5_20EA087B14A#_внедрение_подсистемы_«работа">Внедрение подсистемы «Работа с файлами»
+вместе с подсистемой «Присоединенные файлы»</a>.</p>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<p class="Paragraph0c">При создании новых прикладных объектов метаданных нужно
+повторно выполнять соответствующую часть процедуры настройки, описанной выше.</p>
+
+<p class="Paragraph0c">В случае если на форме того или иного объекта требуется
+разместить поле для выбора присоединяемого файла, необходимо переопределить
+стандартное поведение кнопок открытия и выбора объекта (файла). </p>
+
+<p class="Paragraph0c">Для открытия формы присоединенного файла необходимо
+использовать процедуру <span class="Interface">ПрисоединенныеФайлыКлиент.ОткрытьФормуПрисоединенногоФайла()</span>.</p>
+
+<p class="Paragraph0c">Пример обработчика события <span class="Interface">Открытие</span>
+элемента формы из демонстрационной конфигурации:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> РегламентПроектаОткрытие<span class="operator">(</span>Элемент<span class="operator">,</span> СтандартнаяОбработка<span class="operator">)</span>
+    ПрисоединенныеФайлыКлиент<span class="operator">.</span>ОткрытьФормуПрисоединенногоФайла<span class="operator">(</span>Объект<span class="operator">.</span>РегламентПроекта<span class="operator">,</span> СтандартнаяОбработка<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Для открытия формы выбора файлов по владельцу необходимо
+использовать процедуру <span class="Interface">ПрисоединенныеФайлыКлиент.ОткрытьФормуВыбораФайлов</span>.</p>
+
+<p class="Paragraph0c">Пример обработчика события <span class="Interface">Начало
+выбора</span> элемента формы из демонстрационной конфигурации:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> РегламентПроектаНачалоВыбора<span class="operator">(</span>Элемент<span class="operator">,</span> ДанныеВыбора<span class="operator">,</span> СтандартнаяОбработка<span class="operator">)</span>
+ПрисоединенныеФайлыКлиент<span class="operator">.</span>ОткрытьФормуВыбораФайлов<span class="operator">(</span>Объект<span class="operator">.</span>Ссылка<span class="operator">,</span> Элемент<span class="operator">,</span> СтандартнаяОбработка<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Если в списке «объектов с файлами» требуется вывести
+признак наличия присоединенных к объекту файлов, то необходимо в запросе
+динамического списка сделать левое соединение с регистром сведений <span class="Interface">НаличиеПрисоединенныхФайлов</span> (по измерению <span class="Interface">ОбъектСФайлами</span>).</p>
+
+<p class="Paragraph0c">Пример запроса из демонстрационной конфигурации (форма
+списка справочника <span class="Interface">_ДемоПроекты</span>):</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">ВЫБРАТЬ</span>
+    Справочник_ДемоПроекты<span class="operator">.</span>Ссылка<span class="operator">,</span>
+    Справочник_ДемоПроекты<span class="operator">.</span>ПометкаУдаления<span class="operator">,</span>
+    Справочник_ДемоПроекты<span class="operator">.</span>Предопределенный<span class="operator">,</span>
+    Справочник_ДемоПроекты<span class="operator">.</span>Код<span class="operator">,</span>
+    Справочник_ДемоПроекты<span class="operator">.</span>Наименование<span class="operator">,</span>
+    Справочник_ДемоПроекты<span class="operator">.</span>РеквизитДопУпорядочивания<span class="operator">,</span>
+    <span class="keyword">ВЫБОР</span>
+        <span class="keyword">КОГДА</span> НаличиеПрисоединенныхФайлов<span class="operator">.</span>ЕстьФайлы ЕСТЬ <span class="keyword">NULL</span> <span class="keyword">ТОГДА</span>
+            <span class="number">0</span>
+        <span class="keyword">КОГДА</span> НаличиеПрисоединенныхФайлов<span class="operator">.</span>ЕстьФайлы <span class="keyword">ТОГДА</span>
+            <span class="number">1</span>
+        <span class="keyword">ИНАЧЕ</span>
+            <span class="number">0</span>
+    <span class="keyword">КОНЕЦ</span> <span class="keyword">КАК</span> ЕстьФайлы
+<span class="keyword">ИЗ</span>
+    Справочник<span class="operator">.</span>_ДемоПроекты <span class="keyword">КАК</span> Справочник_ДемоПроекты
+        ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений<span class="operator">.</span>НаличиеПрисоединенныхФайлов <span class="keyword">КАК</span> НаличиеПрисоединенныхФайлов
+        <span class="keyword">ПО</span> Справочник_ДемоПроекты<span class="operator">.</span>Ссылка <span class="operator">=</span> НаличиеПрисоединенныхФайлов<span class="operator">.</span>ОбъектСФайлами</pre>
+
+<p class="Paragraph0c">Пример списка «со скрепкой»:</p>
+
+<p class="Picture"><IMG src="_img/bb4930f70ba50b6391a4d4b0238cf1d5/image026.png@_=1504708101" WIDTH="706" ALT HEIGHT="295"></p>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Для настройки обмена данными следует руководствоваться
+общими правилами. В план обмена необходимо включить все объекты метаданных,
+содержащие данные.</p>
+
+<p class="Paragraph0c">Регистр сведений <span class="Interface">ПрисоединенныеФайлы</span>
+нужно использовать только на момент создания начального образа подчиненного
+узла в распределенной ИБ (см. раздел <A href="3.28. _25EE_25E1_25EC_25E5_25ED _25E4_25E0_25ED_25ED_25FB_25EC_25E8.htm@_=1504708101#_особенности_создания_начального">«Особенности создания начального образа
+подчиненного узла распределенной ИБ»</a>).</p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

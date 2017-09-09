@@ -1,0 +1,1656 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.53. &#1059;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1077; &#1076;&#1086;&#1089;&#1090;&#1091;&#1087;&#1086;&#1084;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.53. _25F3_25EF_25F0_25E0_25E2_25EB_25E5_25ED_25E8_25E5 _25E4_25EE_25F1_25F2_25F3_25EF_25EE_25EC.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_управление_доступом"></a><h1>3.53. Управление доступом</h1>
+
+<p class="Paragraph0c">Подсистема «Управление доступом» позволяет настраивать
+права пользователей для произвольных элементов данных информационной базы
+(элементов справочников, документов, записей регистров, бизнес-процессов, задач
+и т. д.). Возможно ограничение прав как для отдельных типов объектов
+метаданных, так и на уровне записей одного типа объекта. Кроме того, для
+отдельных объектов информационной базы возможна индивидуальная настройка прав
+доступа подобно папкам файлов операционной системы. </p>
+
+<p class="Paragraph0c">Для своей работы подсистема использует возможности
+подсистемы «Пользователи».</p>
+
+<a name="issogl1_группы_доступа_и_их_профили"><h2>Группы доступа и их профили</h2></a>
+
+<p class="Paragraph0c">Для настройки прав и ограничений прав пользователей и
+групп пользователей предназначен справочник <span class="Interface">Группы
+доступа</span>. Если для некоторых объектов информационной базы разрешен доступ
+с помощью внешних пользователей, то в группы доступа можно также помещать
+внешних пользователей и группы внешних пользователей.</p>
+
+<p class="Picture"><IMG src="_img/bb4930f70ba50b6391a4d4b0238cf1d5/image036.png@_=1504708101" WIDTH="800" ALT HEIGHT="530"></p>
+
+<p class="Picture"><IMG src="_img/bb4930f70ba50b6391a4d4b0238cf1d5/image038.png@_=1504708101" WIDTH="800" ALT HEIGHT="363"></p>
+
+<p class="Paragraph0c">Состав и логика ограничения прав доступа определяются
+профилем, заданным в группе доступа.</p>
+
+<p class="Picture"><IMG src="_img/bb4930f70ba50b6391a4d4b0238cf1d5/image040.png@_=1504708101" WIDTH="632" ALT HEIGHT="1000"></p>
+
+<p class="Paragraph0c"><span class="Interface">Профиль групп доступа</span>
+представляет собой совокупность ролей (разрешенных действий) и видов доступа (в
+разрезе которых ограничивается доступ к данным информационной базы).</p>
+
+<p class="Paragraph0c"><span class="Interface">Вид доступа</span> – это тип (или
+несколько типов) объектов информационной базы, в разрезе которых ограничиваются
+права доступа к данным информационной базы. Например, право чтения документов
+информационной базы может быть ограничено в разрезе определенных организаций,
+разрешенных для пользователя. В простейшем случае, если право чтения ограничено
+по виду доступа <span class="Interface">Организации</span>, то будут прочитаны
+только те элементы данных (документы), у которых в поле <span class="Interface">Организация</span>
+указана организация из списка разрешенных (или незапрещенных) организаций. Если
+же в группе доступа ограничение по виду доступа <span class="Interface">Организации</span>
+не задано, то могут быть прочитаны все документы (как будто задан пустой список
+запрещенных организаций).</p>
+
+<p class="Paragraph0c">В самой группе доступа настраиваются списки разрешенных
+или запрещенных значений по видам доступа, например: списки организаций, групп
+партнеров, складов, групп номенклатуры и т. д., которые используются в логике
+ограничения прав для объектов информационной базы.</p>
+
+<p class="Paragraph0c">Таким образом, можно сказать, что у отдельного
+пользователя есть право доступа к объекту информационной базы, если
+пользователю разрешены связанные с этим объектом значения видов доступа.</p>
+
+<p class="Paragraph0c">См. также раздел «<a href="#_разработка_ролей_и">Разработка ролей и профилей групп доступа</a>».</p>
+
+<p class="Picture"><IMG src="_img/bb4930f70ba50b6391a4d4b0238cf1d5/image042.png@_=1504708101" WIDTH="800" ALT HEIGHT="302"></p>
+
+<a name="issogl2_упрощенный_интерфейс_настройки_прав_доступа"><h3>Упрощенный интерфейс настройки прав доступа</h3></a>
+
+<p class="Paragraph0c">Для простых конфигураций предусмотрен режим упрощенного
+интерфейса (включается в переопределяемом модуле).</p>
+
+<p class="Paragraph0c">В этом режиме пользователю ставится в соответствие один
+или несколько профилей, по каждому из которых можно настроить предусмотренные
+ограничения прав доступа.</p>
+
+<p class="Picture"><IMG src="_img/bb4930f70ba50b6391a4d4b0238cf1d5/image044.png@_=1504708101" WIDTH="800" ALT HEIGHT="503"></p>
+
+<a name="issogl2_настройка_прав_доступа_к_отдельным_объектам_информационной_базы"><h3>Настройка прав доступа к отдельным объектам информационной базы</h3></a>
+
+<p class="Paragraph0c">Для отдельных объектов информационной базы возможна
+индивидуальная настройка прав доступа подобно папкам файлов операционной
+системы. </p>
+
+<p class="Paragraph0c">Например, для объектов справочника <span class="Interface">Папки
+файлов</span> можно настроить доступ пользователей к отдельным папкам, а также содержащимся
+в них дочерним папкам и элементам справочника <span class="Interface">Файлы</span>.
+При этом индивидуальная настройка прав доступа к папкам возможна только для тех
+пользователей, которые входят в группу доступа пользователей со специальной
+ролью <span class="Interface">Работа с папками файлов</span>. </p>
+
+<p class="Picture"><IMG src="_img/bb4930f70ba50b6391a4d4b0238cf1d5/image046.png@_=1504708101" WIDTH="800" ALT HEIGHT="380"></p>
+
+<p class="Paragraph0c">Пример настройки групп доступа пользователей:</p>
+
+<p class="Number81">1. 
+Профиль <span class="Interface">Работа с папками
+файлов (дополнительно)</span> содержит роль <span class="Interface">Работа с
+папками файлов</span>, которая предоставляет доступ к справочникам <span class="Interface">Папки файлов</span> и <span class="Interface">Файлы</span>.</p>
+
+<p class="Number81">2. 
+Группа доступа <span class="Interface">Работа с
+папками файлов (дополнительно)</span> содержит профиль <span class="Interface">Работа
+с папками файлов (дополнительно)</span>.</p>
+
+<p class="Paragraph0c">Рекомендуется использовать одну группу доступа для всех
+пользователей. Тогда сочетание с другими группами доступа будет просто
+представить, т. к. в группе будут все права на папки, файлы и другие списки,
+доступ к которым зависит от настроек прав на папки файлов.</p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Paragraph0c">Включает в себя последовательность действий:</p>
+
+<p class="Number81">1. 
+<a href="#_выбор_режима_обычного">Выбор режима обычного или упрощенного
+интерфейса</a>.</p>
+
+<p class="Number81">2. 
+<a href="#_определить_состав_ролей">Определить состав ролей и профилей групп
+доступа в конфигурации</a>.</p>
+
+<p class="Number81">3. 
+<a href="#_описать_логику_ограничений">Описать логику ограничений прав и составить
+список требуемых видов доступа</a>.</p>
+
+<p class="Number81">4. 
+<a href="#_разработка_видов_доступа.">Разработка видов доступа. Добавление
+дополнительных метаданных и размещение некоторых из них на формах интерфейса
+пользователя</a>. </p>
+
+<p class="Number81">5. 
+<a href="#_разработка_прав_для_1">Разработка прав для настройки прав отдельных
+объектов</a>. </p>
+
+<p class="Number81">6. 
+<a href="#_настройка_вычисления_использования">Настройка вычисления использования видов
+доступа в зависимости от настроек программы</a>. </p>
+
+<p class="Number81">7. 
+<a href="#_разработка_ролей_и">Разработка ролей профилей групп доступа</a>.</p>
+
+<p class="Number81">8. 
+<a href="#_разработка_ограничений_прав">Разработка ограничений прав доступа</a>.</p>
+
+<p class="Number81">9. 
+<a href="#_разработка_процедур_«заполнить">Разработка процедур «Заполнить наборы
+значений доступа»</a>.</p>
+
+<p class="Number81">10. 
+<a href="#_настройка_свойств_объектов">Настройка свойств объектов метаданных</a>.</p>
+
+<p class="Number81">11. 
+<a href="#_описание_видов_доступа,">Описание видов доступа, используемых в
+ограничениях объектов для отчета «Права доступа»</a>.</p>
+
+<p class="Number81">12. 
+<a href="#_создание_описаний_поставляемых">Создание описаний поставляемых профилей
+групп доступа для начального заполнения и обновления информационной базы</a>.</p>
+
+<p class="Number81">13. 
+<a href="#_размещение_в_командном">Размещение в командном интерфейсе</a>.</p>
+
+<p class="Number81">14. 
+<a href="#_настройка_прав_доступа">Настройка прав доступа
+пользователей</a>.</p>
+
+<a name="_выбор_режима_обычного"></a><a name="issogl2_выбор_режима_обычного_или_упрощенного_интерфейса"><h3>Выбор режима обычного или упрощенного интерфейса</h3></a>
+
+<p class="Paragraph0c">Для простых конфигураций с небольшим числом пользователей
+рекомендуется использовать упрощенный интерфейс. В режиме упрощенного
+интерфейса блокируется изменение поставляемых профилей (создавать новые
+допустимо).</p>
+
+<p class="Paragraph0c">Для включения упрощенного интерфейса следует, во-первых,
+изменить возвращаемое значение в переопределяемом модуле.</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> ПриОпределенииИнтерфейсаНастройкиДоступа<span class="operator">(</span>УпрощенныйИнтерфейс<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    УпрощенныйИнтерфейс <span class="operator">=</span> <span class="keyword">Истина</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Во-вторых, следует изменить в общей команде <span class="Interface">ПраваДоступа</span> свойство <span class="Interface">Группа</span>
+с <span class="Interface">Панель навигации формы.Перейти</span> на <span class="Interface">Командная панель формы.Важное</span>.</p>
+
+<p class="Paragraph0c">Не следует размещать списки профилей и групп доступа в
+интерфейс администратора (доступ к этим спискам только для нестандартных
+случаев через «Все функции»).</p>
+
+<a name="_определить_состав_ролей"></a><a name="issogl2_определить_состав_ролей_и_профилей_групп_доступа_в_конфигурации"><h3>Определить состав ролей и профилей групп доступа в конфигурации</h3></a>
+
+<p class="Paragraph0c">Методические рекомендации по проектированию состава ролей
+конфигурации изложены в разделе «<A href="3.4. _25E1_25E0_25E7_25EE_25E2_25E0_25FF _25F4_25F3_25ED_25EA_25F6_25E8_25EE_25ED_25E0_25EB_25FC_25ED_25EE_25F1_25F2_25FC.htm@_=1504708101#_базовая_функциональность">Базовая функциональность</a>».</p>
+
+<p class="Paragraph0c">Состав профилей может быть определен, например, исходя из
+должностных обязанностей сотрудников, работающих в системе. </p>
+
+<a name="_описать_логику_ограничений"></a><a name="issogl2_описать_логику_ограничений_прав_и_составить_список_требуемых_видов_доступа"><h3>Описать логику ограничений прав и составить список требуемых видов доступа</h3></a>
+
+<p class="Paragraph0c">При проектировании логики ограничений доступа
+рекомендуется придерживаться следующего подхода. </p>
+
+<p class="Paragraph0c">Для каждого объекта метаданных предлагается сформулировать
+правила ограничения доступа. </p>
+
+<p class="MsoListBullet">&#9679; 
+описать правила ограничения чтения;</p>
+
+<p class="MsoListBullet">&#9679; 
+описать правила ограничения добавления и
+изменения.</p>
+
+<p class="Paragraph0c">При описании правил следует использовать определенные
+реквизиты объекта, содержащие ссылки на объекты (организации, контрагенты: далее
+– значения доступа), которые будут использоваться для отбора разрешенных
+объектов (например, документов). Следует уточнять, как именно должны работать
+отборы (далее – логика ограничения): требуется ли проверять, что, например,
+организация и контрагент разрешены для пользователя одновременно, или же
+достаточно, что пользователю разрешена либо организация, либо контрагент.</p>
+
+<p class="Paragraph0c">Например, опишем логику ограничения доступа к документу <span class="Interface">Перемещение товаров</span>, ответив на вопрос «Как нужно ограничить
+доступ к документу?»:</p>
+
+<p class="Number81">1. 
+Разрешить чтение документа пользователю, если
+ему разрешены указанная в документе организация и склад-отправитель или
+склад-получатель.</p>
+
+<p class="Number81">2. 
+Разрешить добавление и изменение документа
+пользователю, если ему разрешены организация и склад-отправитель и
+склад-получатель.</p>
+
+<p class="Number81">3. 
+Удаление всегда запрещено, кроме пользователя с
+ролью <span class="Interface">ПолныеПрава</span>.</p>
+
+<p class="Paragraph0c">Отсюда следует, что доступ к документу должен
+ограничиваться в разрезе элементов справочников <span class="Interface">Организации</span>
+и <span class="Interface">Склады</span>. И, следовательно, в список видов доступа
+надо включить виды доступа <span class="Interface">Организации</span> и <span class="Interface">Склады</span>.</p>
+
+<p class="Paragraph0c">В результате мы составим полный список видов доступа для
+всех объектов метаданных конфигурации.</p>
+
+<p class="Paragraph0c">В то же время по сформулированным выше правилам в
+дальнейшем будут разработаны тексты ограничения доступа для ролей конфигурации.
+</p>
+
+<p class="Paragraph0c">При этом следует иметь в виду, что логика ограничения
+доступа к объектам метаданных всегда описывается независимо от состава ролей
+конфигурации, которые предоставляют доступ к объектам метаданных. Это
+требование продиктовано соображением производительности работы системы: при
+попытке доступа к объекту от лица пользователя, которому назначено несколько
+таких ролей, платформа <span class="Interface">1С:Предприятие </span>проверяет
+совпадение текстов ограничений у прав доступа в этих ролях и, если совпадения
+нет, выполняет отдельно 2 запроса, каждый со своим текстом ограничения, а
+результаты запросов объединяет, что сильно снижает производительность системы.
+Для того чтобы исключить снижение производительности, при наличии в
+конфигурации нескольких ролей, предоставляющих доступ к одному объекту
+метаданных, следует указывать в таких ролях одинаковые тексты ограничений у
+соответствующих прав доступа.</p>
+
+<a name="_разработка_видов_доступа."></a><a name="issogl2_разработка_видов_доступа_добавление_дополнительных_метаданных_и_размещение_некоторых_из_них_на_формах_интерфейса_пользователя"><h3>Разработка видов доступа. Добавление дополнительных метаданных и размещение некоторых из них на формах интерфейса пользователя</h3></a>
+
+<p class="Paragraph0c">Для добавления в конфигурацию нового вида доступа
+необходимо в модуле <span class="Interface">УправлениеДоступомПереопределяемый</span>
+в процедуру <span class="Interface">ПриЗаполненииВидовДоступа</span> добавить
+описания видов доступа, а также расширить состав определяемых типов.</p>
+
+<p class="Paragraph0c">Например, для вида доступа <span class="Interface">МестаХранения</span>
+указать тип справочник <span class="Interface">МестаХранения</span>. Если доступ
+планируется ограничивать не по отдельным значениям вида доступа, а по их
+группам, то дополнительно следует включить типы объектов-групп. Например, для
+вида доступа <span class="Interface">ГруппыНоменклатуры</span> указать тип
+значений справочник <span class="Interface">Номенклатура</span> и тип групп
+значений справочник <span class="Interface">ГруппаДоступаНоменклатуры</span>.</p>
+
+<p class="Paragraph0c">В некоторых случаях у вида доступа может быть несколько
+типов значений, тогда для их добавления следует использовать процедуру <span class="Interface">ДобавитьДополнительныеТипыВидаДоступа</span> модуля <span class="Interface">УправлениеДоступом</span>.</p>
+
+<p class="Paragraph0c">Может понадобиться для одного значения (например,
+номенклатуры) указывать не одну группу значений (группу доступа номенклатуры),
+а несколько. В этом случае следует установить свойство вида доступа <span class="Interface">НесколькоГруппЗначений</span> в <span class="Interface">Истина</span>.</p>
+
+<p class="Paragraph0c">Например, код процедуры может выглядеть следующим образом:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Заполняет виды доступа, используемые в ограничениях прав доступа.</span>
+<span class="comment">// Виды доступа Пользователи и ВнешниеПользователи уже заполнены.</span>
+<span class="comment">// Их можно удалить, если они не требуются для ограничения прав доступа.</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//  ВидыДоступа - ТаблицаЗначений - с колонками:</span>
+<span class="comment">//   * Имя                    - Строка – имя, используемое в описании поставляемых</span>
+<span class="comment">//                                       профилей групп доступа и текстах ОДД.</span>
+<span class="comment">//   * Представление          - Строка - представляет вид доступа в профилях и группах доступа.</span>
+<span class="comment">//   * ТипЗначений            - Тип    - тип ссылки значений доступа.       Например,</span>
+<span class="comment">//                                       Тип(&quot;СправочникСсылка.Номенклатура&quot;).</span>
+<span class="comment">//   * ТипГруппЗначений       - Тип    - тип ссылки групп значений доступа. Например,</span>
+<span class="comment">//                                       Тип(&quot;СправочникСсылка.ГруппыДоступаНоменклатуры&quot;).</span>
+<span class="comment">//   * НесколькоГруппЗначений - Булево - Истина указывает, что для значения доступа (Номенклатуры) можно</span>
+<span class="comment">//                                       выбрать несколько групп значений (Групп доступа номенклатуры).</span>
+<span class="comment">// </span>
+<span class="keyword">Процедура</span> ПриЗаполненииВидовДоступа<span class="operator">(</span>ВидыДоступа<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    ВидДоступа <span class="operator">=</span> ВидыДоступа<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    ВидДоступа<span class="operator">.</span>Имя <span class="operator">=</span> <span class="string">&quot;МестаХранения&quot;</span><span class="operator">;</span>
+    ВидДоступа<span class="operator">.</span>Представление <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Места хранения'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    ВидДоступа<span class="operator">.</span>ТипЗначений   <span class="operator">=</span> Тип<span class="operator">(</span><span class="string">&quot;СправочникСсылка._ДемоМестаХранения&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    ВидДоступа <span class="operator">=</span> ВидыДоступа<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    ВидДоступа<span class="operator">.</span>Имя <span class="operator">=</span> <span class="string">&quot;ГруппыНоменклатуры&quot;</span><span class="operator">;</span>
+    ВидДоступа<span class="operator">.</span>Представление    <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Группы номенклатуры'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    ВидДоступа<span class="operator">.</span>ТипЗначений      <span class="operator">=</span> Тип<span class="operator">(</span><span class="string">&quot;СправочникСсылка._ДемоНоменклатура&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    ВидДоступа<span class="operator">.</span>ТипГруппЗначений <span class="operator">=</span> Тип<span class="operator">(</span><span class="string">&quot;СправочникСсылка._ДемоГруппыДоступаНоменклатуры&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    УправлениеДоступом<span class="operator">.</span>ДобавитьДополнительныеТипыВидаДоступа<span class="operator">(</span>ВидДоступа<span class="operator">,</span>
+        Тип<span class="operator">(</span><span class="string">&quot;СправочникСсылка._ДемоВидыНоменклатуры&quot;</span><span class="operator">)</span><span class="operator">,</span>
+        Тип<span class="operator">(</span><span class="string">&quot;СправочникСсылка._ДемоГруппыДоступаНоменклатуры&quot;</span><span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+    …
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Если для вида доступа требуется указать тип групп
+значений, то нужно создать дополнительный справочник (например, <span class="Interface">ГруппыДоступаНоменклатура</span>). При этом у значения доступа
+(номенклатуры) нужно создать дополнительный реквизит <span class="Interface">ГруппаДоступа</span>
+с типом групп значений (например, <span class="Interface">ГруппыДоступаНоменклатуры</span>).
+Если вдобавок свойство <span class="Interface">НесколькоГруппЗначений</span>
+установлено <span class="Interface">Истина</span>, тогда вместо реквизита <span class="Interface">ГруппаДоступа</span> нужно создать табличную часть <span class="Interface">ГруппыДоступа</span> с реквизитом <span class="Interface">ГруппаДоступа</span>
+того же типа.</p>
+
+<p class="Paragraph0c">Добавленные реквизит <span class="Interface">ГруппаДоступа</span>
+или табличную часть <span class="Interface">ГруппыДоступа</span> с реквизитом <span class="Interface">ГруппаДоступа</span> нужно разместить в форме элемента значения
+доступа (например, справочника <span class="Interface">Номенклатура</span>).</p>
+
+<p class="Paragraph0c">В определяемый тип <span class="Interface">ЗначениеДоступа</span>
+нужно добавить типы значений доступа и типы групп значений доступа. В
+определяемый тип <span class="Interface">ЗначениеДоступаСГруппамиЗначенийДоступаОбъект</span>
+нужно добавить типы значений доступа, для которых предусмотрены типы групп
+значений доступа. </p>
+
+<p class="Paragraph0c">Чтобы изменения вступили в силу, требуется обновить
+вспомогательные данные. См. раздел «<A href="3.4. _25E1_25E0_25E7_25EE_25E2_25E0_25FF _25F4_25F3_25ED_25EA_25F6_25E8_25EE_25ED_25E0_25EB_25FC_25ED_25EE_25F1_25F2_25FC.htm@_=1504708101#_обновление_вспомогательных_данных">Обновление
+вспомогательных данных во время разработки</a>».</p>
+
+<a name="_разработка_прав_для"></a><a name="issogl3_обязательные_виды_доступа"><h4>Обязательные виды доступа</h4></a>
+
+<p class="Paragraph0c">К обязательным видам доступа, которые входят в состав
+подсистемы, относятся: <span class="Interface">Пользователи</span>, <span class="Interface">ВнешниеПользователи</span>. </p>
+
+<p class="Paragraph0c">В состав разрешенных пользователей вида доступа <span class="Interface">Пользователи</span> автоматически включается текущий
+пользователь: аналогично в состав разрешенных внешних пользователей вида
+доступа <span class="Interface">ВнешниеПользователи</span> автоматически
+включается текущий внешний пользователь.</p>
+
+<a name="issogl3_настройка_функциональной_опции_ограничиватьдоступнауровнезаписей_имяприкладногорешения"><h4>Настройка функциональной опции «ОграничиватьДоступНаУровнеЗаписей&lt;ИмяПрикладногоРешения&gt;»</h4></a>
+
+<p class="Paragraph0c">Для реквизитов, созданных выше, необходимо добавить
+функциональную опцию <span class="Interface">ОграничиватьДоступНаУровнеЗаписей&lt;ИмяПрикладногоРешения&gt;</span>,
+например <span class="Interface">ОграничиватьДоступНаУровнеЗаписейУправлениеТоровлей</span>.
+В свойство <span class="Interface">Хранение</span> задать константу <span class="Interface">ОграничиватьДоступНаУровнеЗаписей</span>.</p>
+
+<a name="_разработка_прав_для_1"></a><a name="issogl2_разработка_прав_для_настройки_прав_отдельных_объектов"><h3>Разработка прав для настройки прав отдельных объектов</h3></a>
+
+<p class="Paragraph0c">В случае необходимости настройки прав для отдельных
+объектов информационной базы, следует определить список типов этих объектов и в
+модуле <span class="Interface">УправлениеДоступомПереопределяемый</span> и для
+каждого типа вписать права в процедуру <span class="Interface">ПриЗаполненииВозможныхПравДляНастройкиПравОбъектов</span>,
+которые используются для автоматического создания формы настройки этих прав.</p>
+
+<p class="Picture"><IMG src="_img/bb4930f70ba50b6391a4d4b0238cf1d5/image048.png@_=1504708101" WIDTH="800" ALT HEIGHT="261"></p>
+
+<p class="Paragraph0c">Например, для получения состава прав (колонок), как на
+рисунке, требуется следующий код:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> ПриЗаполненииВозможныхПравДляНастройкиПравОбъектов<span class="operator">(</span>ВозможныеПрава<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="comment">////////////////////////////////////////////////////////////</span>
+    <span class="comment">// Справочник.ПапкиФайлов</span>
+    <span class="comment">// Право &quot;Чтение папок и файлов&quot;.</span>
+    Право <span class="operator">=</span> ВозможныеПрава<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Право<span class="operator">.</span>ВладелецПрав  <span class="operator">=</span> Метаданные<span class="operator">.</span>Справочники<span class="operator">.</span>ПапкиФайлов<span class="operator">.</span>ПолноеИмя<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Право<span class="operator">.</span>Имя           <span class="operator">=</span> <span class="string">&quot;Чтение&quot;</span><span class="operator">;</span>
+    Право<span class="operator">.</span>Заголовок     <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Чтение'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    Право<span class="operator">.</span>Подсказка     <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Чтение папок и файлов'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    Право<span class="operator">.</span>НачальноеЗначение <span class="operator">=</span> <span class="keyword">Истина</span><span class="operator">;</span>
+    <span class="comment">// Права для стандартных шаблонов ограничений доступа.</span>
+    Право<span class="operator">.</span>ЧтениеВТаблицах<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;*&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Право &quot;Изменение папок&quot;</span>
+    Право <span class="operator">=</span> ВозможныеПрава<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Право<span class="operator">.</span>ВладелецПрав  <span class="operator">=</span> Метаданные<span class="operator">.</span>Справочники<span class="operator">.</span>ПапкиФайлов<span class="operator">.</span>ПолноеИмя<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Право<span class="operator">.</span>Имя           <span class="operator">=</span> <span class="string">&quot;ИзменениеПапок&quot;</span><span class="operator">;</span>
+    Право<span class="operator">.</span>Заголовок     <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Изменение</span>
+<span class="string">                                     |папок'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    Право<span class="operator">.</span>Подсказка     <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Добавление, изменение и</span>
+<span class="string">                                     |пометка удаления папок файлов'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Права, требуемые для этого права.</span>
+    Право<span class="operator">.</span>ТребуемыеПрава<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;Чтение&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Права для стандартных шаблонов ограничений доступа.</span>
+    Право<span class="operator">.</span>ИзменениеВТаблицах<span class="operator">.</span>Добавить<span class="operator">(</span>Метаданные<span class="operator">.</span>Справочники<span class="operator">.</span>ПапкиФайлов<span class="operator">.</span>ПолноеИмя<span class="operator">(</span><span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Право &quot;Изменение файлов&quot;</span>
+    Право <span class="operator">=</span> ВозможныеПрава<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Право<span class="operator">.</span>ВладелецПрав  <span class="operator">=</span> Метаданные<span class="operator">.</span>Справочники<span class="operator">.</span>ПапкиФайлов<span class="operator">.</span>ПолноеИмя<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Право<span class="operator">.</span>Имя           <span class="operator">=</span> <span class="string">&quot;ИзменениеФайлов&quot;</span><span class="operator">;</span>
+    Право<span class="operator">.</span>Заголовок     <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Изменение</span>
+<span class="string">                                     |файлов'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    Право<span class="operator">.</span>Подсказка     <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Изменение файлов в папке'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Права, требуемые для этого права.</span>
+    Право<span class="operator">.</span>ТребуемыеПрава<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;Чтение&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Права для стандартных шаблонов ограничений доступа.</span>
+    Право<span class="operator">.</span>ИзменениеВТаблицах<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;*&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Право &quot;Добавление файлов&quot;</span>
+    Право <span class="operator">=</span> ВозможныеПрава<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Право<span class="operator">.</span>ВладелецПрав  <span class="operator">=</span> Метаданные<span class="operator">.</span>Справочники<span class="operator">.</span>ПапкиФайлов<span class="operator">.</span>ПолноеИмя<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Право<span class="operator">.</span>Имя           <span class="operator">=</span> <span class="string">&quot;ДобавлениеФайлов&quot;</span><span class="operator">;</span>
+    Право<span class="operator">.</span>Заголовок     <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Добавление</span>
+<span class="string">                                     |файлов'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    Право<span class="operator">.</span>Подсказка     <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Добавление файлов в папку'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Права, требуемые для этого права.</span>
+    Право<span class="operator">.</span>ТребуемыеПрава<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;ИзменениеФайлов&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Право &quot;Пометка удаления файлов&quot;.</span>
+    Право <span class="operator">=</span> ВозможныеПрава<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Право<span class="operator">.</span>ВладелецПрав  <span class="operator">=</span> Метаданные<span class="operator">.</span>Справочники<span class="operator">.</span>ПапкиФайлов<span class="operator">.</span>ПолноеИмя<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Право<span class="operator">.</span>Имя           <span class="operator">=</span> <span class="string">&quot;ПометкаУдаленияФайлов&quot;</span><span class="operator">;</span>
+    Право<span class="operator">.</span>Заголовок     <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Пометка</span>
+<span class="string">                                     |удаления'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    Право<span class="operator">.</span>Подсказка     <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Пометка удаления файлов в папке'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Права, требуемые для этого права.</span>
+    Право<span class="operator">.</span>ТребуемыеПрава<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;ИзменениеФайлов&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    Право <span class="operator">=</span> ВозможныеПрава<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Право<span class="operator">.</span>ВладелецПрав  <span class="operator">=</span> Метаданные<span class="operator">.</span>Справочники<span class="operator">.</span>ПапкиФайлов<span class="operator">.</span>ПолноеИмя<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Право<span class="operator">.</span>Имя           <span class="operator">=</span> <span class="string">&quot;УправлениеПравами&quot;</span><span class="operator">;</span>
+    Право<span class="operator">.</span>Заголовок     <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Управление</span>
+<span class="string">                                     |правами'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    Право<span class="operator">.</span>Подсказка     <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Управление правами папки'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Права, требуемые для этого права.</span>
+    Право<span class="operator">.</span>ТребуемыеПрава<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;Чтение&quot;</span><span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="MsoListBullet">&#9679; 
+Указать состав типов как состав владельцев прав
+в процедуре <span class="Interface">ПриЗаполненииВозможныхПравДляНастройкиПравОбъектов</span>:</p>
+
+<p class="MsoListBullet2">&#9679;  в
+определяемом типе <span class="Interface">ВладелецНастроекПрав</span>,</p>
+
+<p class="MsoListBullet2">&#9679;  в
+определяемом типе <span class="Interface">ВладелецНастроекПравОбъект</span>,</p>
+
+<p class="MsoListBullet2">&#9679;  в
+общей команде <span class="Interface">НастроитьПрава</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+Использовать в модуле <span class="Interface">УправлениеДоступом</span>
+функцию <span class="Interface">ЕстьПраво</span> для получения пользователем
+разрешения на права.</p>
+
+<p class="MsoListBullet">&#9679; 
+В ограничениях доступа к данным, которые реализуются
+с использованием стандартных шаблонов ОДД (см. ниже), следует использовать
+специальный вид доступа <span class="Interface">НастройкиПрав</span>.</p>
+
+<p class="Paragraph0c">Чтобы изменения вступили в силу, требуется обновить
+вспомогательные данные. См. раздел «<A href="3.4. _25E1_25E0_25E7_25EE_25E2_25E0_25FF _25F4_25F3_25ED_25EA_25F6_25E8_25EE_25ED_25E0_25EB_25FC_25ED_25EE_25F1_25F2_25FC.htm@_=1504708101#_обновление_вспомогательных_данных">Обновление
+вспомогательных данных во время разработки</a>».</p>
+
+<a name="_настройка_вычисления_использования"></a><a name="issogl2_настройка_вычисления_использования_видов_доступа_в_зависимости_от_настроек_программы"><h3>Настройка вычисления использования видов доступа в зависимости от настроек программы</h3></a>
+
+<p class="Paragraph0c">В процедуре <span class="Interface">ПриЗаполненииИспользованияВидаДоступа</span>
+общего модуля <span class="Interface">УправлениеДоступомПереопределяемый</span>
+можно установить код вычисления использования видов доступа. Например, код
+процедуры может выглядеть следующим образом:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Заполняет использование видов доступа в зависимости от функциональных опций конфигурации,</span>
+<span class="comment">// например &quot;ИспользоватьГруппыДоступаНоменклатуры&quot;.</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//  ВидДоступа    - Строка - имя вида доступа заданное в процедуре ПриЗаполненииВидовДоступа.</span>
+<span class="comment">//  Использование - Булево - начальное значение Истина.</span>
+<span class="comment">// </span>
+<span class="keyword">Процедура</span> ПриЗаполненииИспользованияВидаДоступа<span class="operator">(</span>ИмяВидаДоступа<span class="operator">,</span> Использование<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="keyword">Если</span> ИмяВидаДоступа <span class="operator">=</span> <span class="string">&quot;_ДемоГруппыНоменклатуры&quot;</span> <span class="keyword">Тогда</span>
+        Использование <span class="operator">=</span> Константы<span class="operator">.</span>_ДемоОграничиватьДоступПоНоменклатуре<span class="operator">.</span>Получить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">ИначеЕсли</span> ИмяВидаДоступа <span class="operator">=</span> <span class="string">&quot;_ДемоГруппыПартнеров&quot;</span> <span class="keyword">Тогда</span>
+        Использование <span class="operator">=</span> Константы<span class="operator">.</span>_ДемоОграничиватьДоступПоПартнерам<span class="operator">.</span>Получить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">ИначеЕсли</span> ИмяВидаДоступа <span class="operator">=</span> <span class="string">&quot;_ДемоФизическиеЛица&quot;</span> <span class="keyword">Тогда</span>
+        Использование <span class="operator">=</span> Константы<span class="operator">.</span>_ДемоОграничиватьДоступПоФизическимЛицам<span class="operator">.</span>Получить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">При изменении использования вида доступа требуется вызвать
+обновление разрешенных значений – например, из модуля менеджера значения
+константы:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> ПриЗаписи<span class="operator">(</span>Отказ<span class="operator">)</span>
+    <span class="keyword">Если</span> ОбменДанными<span class="operator">.</span>Загрузка <span class="keyword">Тогда</span>
+        <span class="keyword">Возврат</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+    УправлениеДоступом<span class="operator">.</span>ОбновитьРазрешенныеЗначенияПриИзмененииИспользованияВидовДоступа<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Для изменения действующего значения в ограничениях доступа
+к объектам требуется перезапуск сеанса.</p>
+
+<a name="_разработка_ролей_и"></a><a name="issogl2_разработка_ролей_и_профилей_групп_доступа"><h3>Разработка ролей и профилей групп доступа</h3></a>
+
+<p class="Paragraph0c">Для каждой спроектированной роли:</p>
+
+<p class="MsoListBullet">&#9679; 
+добавить в конфигурацию объект метаданных
+«роль», установить имя и синоним; снять флажок <span class="Interface">Устанавливать
+права для новых объектов</span>; снять флажок <span class="Interface">Независимые
+права подчиненных объектов</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+установить флажки напротив требуемых прав по
+каждому объекту метаданных конфигурации;</p>
+
+<p class="MsoListBullet">&#9679; 
+у объектов метаданных, на которые установлены
+права, снять лишние флажки напротив требуемых прав по полям (реквизитам, табличным
+частям, измерениям, ресурсам м т. д.);</p>
+
+<p class="MsoListBullet">&#9679; 
+для каждого права каждого объекта метаданных
+задать тексты ограничений доступа с использованием стандартных шаблонов.
+Применяемые в роли стандартные шаблоны следует предварительно скопировать из поставляемой
+роли <span class="Interface">ИзменениеУчастниковГруппДоступа</span>.</p>
+
+<p class="Paragraph0c">При необходимости переименовать роль следует учитывать
+методику раздела «<A href="3.4. _25E1_25E0_25E7_25EE_25E2_25E0_25FF _25F4_25F3_25ED_25EA_25F6_25E8_25EE_25ED_25E0_25EB_25FC_25ED_25EE_25F1_25F2_25FC.htm@_=1504708101#_использование_идентификаторов_объек">Использование идентификаторов объектов
+метаданных</a>».</p>
+
+<p class="Paragraph0c">Затем в режиме <span class="Interface">1С:Предприятие</span>
+необходимо создать требуемое количество профилей групп доступа пользователей,
+заполнив их ролями и видами доступа, созданными на предыдущем шаге.</p>
+
+<p class="Warningword">Важно!</p>
+
+<p class="Notes">В профиль следует включать только те виды доступа, которые
+задействованы в ограничениях прав на списки, настроенные в ролях, выбранных для
+профиля. Настройка видов доступа в профиле и группе доступа не влияет на
+ограничение прав на те списки, в ограничении которых виды доступа не
+задействованы.</p>
+
+<p class="Paragraph0c">В профиле возможно использовать предустановленные виды
+доступа. Вариант «предустановленный» обозначает, что вид доступа не
+настраивается в группе доступа, а настраивается только в профиле для всех групп
+доступа. Среди видов доступа могут быть те, которые имеют смысл больше как
+предустановленные, нежели настраиваемые в группе доступа. Предустанавливать в
+профиле можно любой вид доступа, если это удобно (или требуется) с точки зрения
+администрирования групп доступа этого профиля. Так, виды доступа, которые
+предназначены, например, для «разрезания» одной таблицы по признаку <span class="Interface">ХозяйственнаяОперация</span>, логично использовать
+предустановленными. Для кассира – свой список хозопераций, для подотчетного
+лица – свой, а для бухгалтера – всех хозопераций по отношению, например, к
+документам <span class="Interface">Расходный кассовый ордер</span>.</p>
+
+<p class="Paragraph0c">Затем надо вписать в процедуру <span class="Interface">ПриЗаполненииПоставляемыхПрофилейГруппДоступа</span>
+общего модуля <span class="Interface">УправлениеДоступомПереопределяемый</span>
+код по созданию и обновлению поставляемых профилей групп доступа при начальном
+заполнении и обновлении информационной базы. Для автоматического формирования
+текста этой процедуры следует применять обработку <span class="Interface">ИнструментыРазработчикаУправлениеДоступом.epf</span>
+из демонстрационной конфигурации, которая формирует код на основании профилей
+групп доступа, существующих в информационной базе.</p>
+
+<a name="_разработка_ограничений_прав"></a><a name="issogl2_разработка_ограничений_прав_доступа"><h3>Разработка ограничений прав доступа</h3></a>
+
+<p class="Paragraph0c">Для установки текстов ограничений прав доступа
+используется один из четырех стандартных шаблонов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">    #ПоЗначениям(…)</span>
+<span class="preprocessor">    #ПоНаборамЗначений(…)</span>
+<span class="preprocessor">    #ПоЗначениямРасширенный(…)</span>
+<span class="preprocessor">    #ПоЗначениямИНаборамРасширенный(…)</span></pre>
+
+<p class="Warningword">Примечание</p>
+
+<p class="Notes">Подробное описание назначения и параметров шаблонов приведено в
+комментариях в начале текстов самих шаблонов. Рекомендуется изучить это
+описание перед прочтением дальнейшего материала. Стандартные шаблоны
+поставляются в роли <span class="Interface">ИзменениеУчастниковГруппДоступа</span>.</p>
+
+<p class="Paragraph0c">Наличие сразу нескольких шаблонов объясняется
+необходимостью решать различные задачи. Так, шаблоны <span class="Interface">#ПоЗначениям</span>
+и <span class="Interface">#ПоНаборамЗначений</span> позволяют решить большую
+часть простых задач. </p>
+
+<p class="Paragraph0c">Для шаблонов <span class="Interface">#ПоЗначениямИНаборамРасширенный</span>
+(только для вида доступа <span class="Interface">Объект</span>) и <span class="Interface">#ПоНаборамЗначений</span> можно использовать модификатор <span class="Interface">РасширенноеИЛИ</span>, который меняет расчет ограничений с
+несколькими проверками, результаты которых объединяются по <span class="Interface">ИЛИ</span>. Например, электронное письмо доступно, если
+разрешена <span class="Interface">Учетная запись</span> или <span class="Interface">Организация</span>. Без модификатора, если ограничение по
+учетным записям или организациям не используется, все письма будут разрешены.
+Случаи неиспользования: выключена константа использования вида доступа, нет
+вида доступа в профиле.</p>
+
+<p class="Paragraph0c">Шаблоны с модификатором <span class="Interface">РасширенноеИЛИ</span>
+работают медленнее, поэтому не следует использовать модификатор там, где нет
+логики ограничения по <span class="Interface">ИЛИ</span>. Если в ограничении
+используется вид доступа <span class="Interface">Объект</span>, а типы объектов и
+их логика ограничения заранее неизвестны, модификатор нужно указать, когда
+требуется расширенный расчет <span class="Interface">ИЛИ</span>.</p>
+
+<a name="issogl3_шаблон_позначениям"><h4>Шаблон «#ПоЗначениям»</h4></a>
+
+<p class="Paragraph0c">Шаблон <span class="Interface">#ПоЗначениям</span> позволяет
+реализовать проверку разрешения значений доступа в полях таблицы (указывать
+виды доступа нужно, чтобы текст ограничения автоматически оптимизировался,
+когда вид доступа не используется). Например, текст ограничения доступа вида:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">#ПоЗначениям(&quot;Документ.ОприходованиеТоваров&quot;, &quot;&quot;, &quot;&quot;,</span>
+<span class="string">&quot;Организации&quot;</span><span class="operator">,</span> <span class="string">&quot;Организация&quot;</span><span class="operator">,</span>
+<span class="string">&quot;Склады&quot;</span><span class="operator">,</span> <span class="string">&quot;Склад&quot;</span><span class="operator">,</span> …<span class="operator">)</span><span class="operator">.</span></pre>
+
+<p class="Paragraph0c">ограничивает чтение таким образом, что пользователь увидит
+в списке документов <span class="Interface">Оприходование товаров</span> только
+те документы, у которых в реквизите <span class="Interface">Организация</span>
+есть значение, разрешенное пользователю по виду доступа <span class="Interface">Организации</span>,
+и в реквизите <span class="Interface">Склад</span> есть значение, разрешенное по
+виду доступа <span class="Interface">Склады</span>. Причем значения должны быть
+разрешены в группе доступа пользователей одновременно, а профиль групп доступа
+пользователей должен включать роль с правом чтения документов <span class="Interface">Оприходование товаров</span>.</p>
+
+<p class="Paragraph0c">В шаблоне можно выполнить максимум 16 проверок.</p>
+
+<p class="Paragraph0c">Этот и другие шаблоны поддерживают передачу условия на
+языке запросов. Для этого вместо имени вида доступа нужно указать имя <span class="Interface">Условие</span>, а вместо имени поля – текст на языке запросов.
+Например:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">#ПоЗначениям(&quot;Документ.ОприходованиеТоваров&quot;, &quot;&quot;, &quot;&quot;,</span>
+<span class="string">&quot;Организации&quot;</span><span class="operator">,</span> <span class="string">&quot;Организация&quot;</span><span class="operator">,</span>
+<span class="string">&quot;Склады&quot;</span><span class="operator">,</span> <span class="string">&quot;Склад&quot;</span><span class="operator">,</span>
+<span class="string">&quot;Условие&quot;</span><span class="operator">,</span> <span class="string">&quot;Т.ХозяйственнаяОперация = Значение(Перечисление.ХозяйвственныеОперации.Инветаризация) &quot;</span><span class="operator">,</span> …<span class="operator">)</span><span class="operator">,</span></pre>
+
+<p class="Paragraph0c">В этом примере добавляется условие: документ доступен
+только при хозяйственной операции <span class="Interface">Инвентаризация</span>.
+Из этого следует, что при другой хозяйственной операции, например <span class="Interface">Прочее</span>, документ не будет доступен ни одному
+пользователю, кроме пользователей с ролью <span class="Interface">Полные права</span>.</p>
+
+<a name="issogl3_шаблон_понаборамзначений"><h4>Шаблон «#ПоНаборамЗначений»</h4></a>
+
+<p class="Paragraph0c">В первую очередь шаблон <span class="Interface">#ПоНаборамЗначений</span>
+предназначен для ограничения чтения журналов документов, у которых документы имеют
+различные ограничения чтения, например по составу реквизитов. Обычно для
+журнала приходится делать анализ типа документа, а затем применять те же
+проверки, что и для документа соответствующего типа, т. е. повторять логику
+ограничений всех документов в каждом журнале, в который входят документы. Как
+правило, этот способ очень «дорогой» в плане производительности и трудоемок с
+точки зрения разработки и сопровождения. Поэтому целесообразно предварительно
+записывать значения доступа объектных элементов данных, необходимые для работы
+логики ограничения доступа, в специальный регистр – <span class="Interface">НаборыЗначенийДоступа</span>.
+Такие данные называются наборами значений доступа.</p>
+
+<p class="Paragraph0c">Например, если для документа <span class="Interface">Оприходование
+товаров</span> в регистре <span class="Interface">НаборыЗначенийДоступа</span>
+имеются записи:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>Документ1<span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">,</span> <span class="string">&quot;Организации&quot;</span><span class="operator">,</span> <span class="string">&quot;Организация1&quot;</span>
+<span class="operator">&lt;</span>Документ1<span class="operator">&gt;</span><span class="operator">,</span> <span class="operator">,</span> <span class="string">&quot;Склады&quot;</span><span class="operator">,</span> <span class="string">&quot;Склад1&quot;</span><span class="operator">;</span></pre>
+
+<p class="Paragraph0c">то для их использования текст ограничения права чтения
+журнала, содержащего этот документ, должен быть таким: </p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">#ПоНаборамЗначений(&quot;ЖурналДокументов.СкладскиеДокументы&quot;, &quot;&quot;, &quot;&quot;, &quot;Ссылка&quot;),</span></pre>
+
+<p class="Paragraph0c">где <span class="Interface">Ссылка</span> – имя стандартного
+реквизита журнала. </p>
+
+<p class="Paragraph0c">В этом случае логика работы шаблона <span class="Interface">#ПоНаборамЗначений</span>
+такова: по переданному значению стандартного реквизита <span class="Interface">Ссылка</span>
+строки журнала в регистре <span class="Interface">Наборы значений доступа</span>
+будут найдены все строки, содержащие <span class="Interface">Значение доступа</span>,
+и выполнена проверка, что все значения доступа одновременно разрешены
+пользователю в одной из его групп доступа.</p>
+
+<p class="Paragraph0c">Помимо журналов документов шаблон <span class="Interface">#ПоНаборамЗначений</span>
+может применяться для реализации логики ограничения доступа и к другим объектам
+метаданных. При этом использование заранее подготовленных наборов значений
+позволяет избежать тех ограничений, которые накладываются языком запросом.
+Применение шаблона <span class="Interface">#ПоНаборамЗначений</span> требует
+дополнительной настройки объекта метаданных. К объекту метаданных необходимо
+добавить табличную часть <span class="Interface">Наборы значений доступа</span> с
+реквизитами, совпадающими с измерениями и ресурсами регистра сведений <span class="Interface">Наборы значений доступа</span>. В тексте ограничения доступа в
+качестве четвертого параметра шаблона <span class="Interface">#ПоНаборамЗначений</span>
+указывается пустая строка. Также требуется указать типы этих объектов в подписке
+на событие <span class="Interface">ЗаполнитьНаборыЗначенийДоступаТабличныхЧастей</span>
+(для справочников) через определяемый тип <span class="Interface">ВладелецСОграничениемПоНаборамЗначенийДоступаОбъект
+</span>или в дополнительно созданной подписке на события, имя которой
+начинается, как имя поставляемой подписки, а обработчик совпадает (только для
+документов).</p>
+
+<a name="issogl3_шаблон_позначениямрасширенный"><h4>Шаблон «#ПоЗначениямРасширенный»</h4></a>
+
+<p class="Paragraph0c">В некоторых случаях возможностей шаблонов <span class="Interface">#ПоЗначеним</span> и <span class="Interface">#ПоНаборамЗначений</span>
+бывает недостаточно. Например, требуется ограничить документ <span class="Interface">Перемещение товаров</span> так, чтобы чтение документа было
+доступно пользователю исходя из разрешенности <span class="Interface">Организации</span>
+и <span class="Interface">СкладаПолучателя</span> или <span class="Interface">СкладаОтправителя</span>,
+а запись документа была доступна только при разрешенности всех трех: <span class="Interface">Организации</span>, <span class="Interface">СкладаПолучателя</span>
+и <span class="Interface">СкладаОтправителя</span>. В этом случае право <span class="Interface">Запись</span> можно ограничить, применив шаблон <span class="Interface">#ПоЗначениям</span>, а право <span class="Interface">Чтение</span>
+– нет.</p>
+
+<p class="Paragraph0c">Для ограничений, предполагающих логику с <span class="Interface">ИЛИ</span>, предусмотрены расширенные шаблоны, в частности <span class="Interface">#ПоЗначениямРасширенный</span>. Например, ограничение для права
+<span class="Interface">Чтение</span> выглядит следующим образом:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">#ПоЗначениямРасширенный(&quot;Документ.ПеремещениеТоваров&quot;, &quot;&quot;, &quot;&quot;,</span>
+<span class="string">&quot;&quot;</span><span class="operator">,</span>
+<span class="string">&quot;&quot;</span><span class="operator">,</span>
+<span class="string">&quot;Организации&quot;</span><span class="operator">,</span> <span class="string">&quot;Т.Организация&quot;</span><span class="operator">,</span> <span class="string">&quot;И(&quot;</span><span class="operator">,</span>
+<span class="string">&quot;Склады&quot;</span><span class="operator">,</span> <span class="string">&quot;Т.СкладОтправитель&quot;</span><span class="operator">,</span> <span class="string">&quot;ИЛИ&quot;</span><span class="operator">,</span>
+<span class="string">&quot;Склады&quot;</span><span class="operator">,</span> <span class="string">&quot;Т.СкладПолучатель&quot;</span><span class="operator">,</span> <span class="string">&quot;)&quot;</span><span class="operator">,</span> …<span class="operator">)</span></pre>
+
+<p class="Paragraph0c">Требуется явно указывать псевдоним текущей таблицы «Т.»
+перед полем.</p>
+
+<p class="Paragraph0c">Кроме реализации логики <span class="Interface">ИЛИ</span>
+расширенные шаблоны могут использоваться для проверки реквизитов табличных
+частей – через присоединяемые таблицы. Для того чтобы к основной таблице
+присоединить табличную часть, в четвертый параметр шаблона нужно передать текст
+на языке запросов, например:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="string">&quot;Внутреннее Соединение Документ.ПеремещениеТоваров.Номенклатура </span>
+<span class="string">КАК Т2 по Т.Ссылка = Т2.Ссылка&quot;</span><span class="operator">,</span></pre>
+
+<p class="Paragraph0c">Для шаблона основная таблица расширяется полями табличной
+части, а за счет явного применения псевдонимов их можно указывать, подобно
+полям основной таблицы. Т. е. в шаблон можно добавить проверку реквизита
+табличной части, например:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="string">&quot;ГруппыНоменклатуры&quot;</span><span class="operator">,</span> <span class="string">&quot;Т2.Номенклатура&quot;</span><span class="operator">,</span> <span class="string">&quot;&quot;</span></pre>
+
+<p class="Paragraph0c">В результате получится такое ограничение:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">#ПоЗначениямРасширенный(&quot;Документ.ПеремещениеТоваров&quot;, &quot;&quot;, &quot;&quot;,</span>
+<span class="string">&quot;Внутреннее Соединение Документ.ПеремещениеТоваров.Номенклатура КАК Т2 по Т.Ссылка = Т2.Ссылка&quot;</span><span class="operator">,</span> 
+<span class="string">&quot;&quot;</span><span class="operator">,</span>
+<span class="string">&quot;Организации&quot;</span><span class="operator">,</span> <span class="string">&quot;Т.Организация&quot;</span><span class="operator">,</span> <span class="string">&quot;И(&quot;</span><span class="operator">,</span>
+<span class="string">&quot;Склады&quot;</span><span class="operator">,</span> <span class="string">&quot;Т.СкладОтправитель&quot;</span><span class="operator">,</span> <span class="string">&quot;ИЛИ&quot;</span><span class="operator">,</span>
+<span class="string">&quot;Склады&quot;</span><span class="operator">,</span> <span class="string">&quot;Т.СкладПолучатель&quot;</span><span class="operator">,</span> <span class="string">&quot;)И&quot;</span><span class="operator">,</span>
+<span class="string">&quot;ГруппыНоменклатуры&quot;</span><span class="operator">,</span> <span class="string">&quot;Т2.Номенклатура&quot;</span><span class="operator">,</span> <span class="string">&quot;&quot;</span><span class="operator">,</span> …<span class="operator">)</span></pre>
+
+<p class="Paragraph0c">Когда основная таблица расширяется полями присоединенной
+таблицы, происходит умножение строк. Например, табличная часть содержит 2
+строки c разной номенклатурой. В этом случае документ будет доступен, если выполнились
+условия проверки основной таблицы («шапки» документа) и доступна хотя бы одна из
+двух номенклатур табличной части.</p>
+
+<a name="issogl3_шаблон_позначенияминаборамрасширенный"><h4>Шаблон «#ПоЗначениямИНаборамРасширенный»</h4></a>
+
+<p class="Paragraph0c">Для решения задачи ограничения доступа к объектам
+метаданных в зависимости от ограничений к другим объекта может использоваться
+шаблон <span class="Interface">#ПоЗначениямИНаборамРасширенный</span>.</p>
+
+<p class="Paragraph0c">Например, файл (элемент справочника <span class="Interface">Файлы</span>),
+прикрепленный к документу <span class="Interface">Поступление товаров и услуг</span>,
+должен быть доступен пользователю при тех же условиях, что и сам документ. </p>
+
+<p class="Paragraph0c">Такая задача могла бы быть решена «повтором» логики
+ограничения документа <span class="Interface">Поступление товаров и услуг</span>
+в ограничении справочника <span class="Interface">Файлы</span>. Однако на
+практике это привело бы к необходимости синхронно изменять логику ограничения
+документов и файлов. Кроме того, поскольку элементы справочника <span class="Interface">Файлы</span> могут «прикрепляться» к произвольному числу
+объектов метаданных (например, к папкам файлов, документам <span class="Interface">Заказ</span>, <span class="Interface">Расходная накладная</span>
+и т. п.), то задача реализации логики ограничения доступа к файлам сравнима по
+сложности с ограничением доступа к журналу документов, который содержит все
+виды документов конфигурации.</p>
+
+<p class="Paragraph0c">Поэтому для решения такой задачи подсистема «Управление
+доступом» предоставляет специальный вид доступа <span class="Interface">по объекту
+доступа</span>. При использовании этого вида доступа в шаблоне следует
+указывать в качестве имени вида доступа <span class="Interface">Объект</span>.
+Вид доступа <span class="Interface">Объект</span> предполагает, что в поле
+находится значение, которое является ссылкой на объект данных (например,
+документ). А в регистре <span class="Interface">Наборы значений доступа</span>,
+как и для шаблона <span class="Interface">#ПоНаборамЗначений</span>, записаны
+наборы значений для этого объекта, которые следует проверить. Исключение
+составляют владельцы настроек прав – для них наборы значений доступа записывать
+не требуется, но процедура заполнения может понадобиться, если они используются
+для заполнения наборов значений доступа зависимых объектов.</p>
+
+<p class="Paragraph0c">Так, используя шаблон <span class="Interface">#ПоЗначениямИНаборамРасширенный</span>,
+можно проверить не одно значение доступа, а набор значений, подготовленный при
+записи документа, ссылка на который находится в реквизите, например, <span class="Interface">Владелец</span> элемента справочника <span class="Interface">Файлы</span>.</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">#ПоЗначениямИНаборамРасширенный(&quot;Справочник.Файлы&quot;, &quot;&quot;, &quot;&quot;,</span>
+<span class="string">&quot;&quot;</span><span class="operator">,</span>
+<span class="string">&quot;&quot;</span><span class="operator">,</span>
+<span class="string">&quot;Объект&quot;</span><span class="operator">,</span> <span class="string">&quot;Т.Владелец&quot;</span> <span class="operator">,</span> <span class="string">&quot;&quot;</span><span class="operator">,</span> …<span class="operator">)</span></pre>
+
+<p class="Paragraph0c">Наборы значений элементов справочника <span class="Interface">Файлы</span> требуют связанного обновления при изменении,
+например, наборов значений доступа документа – владельца файлов <span class="Interface">Поступление товаров и услуг</span>.</p>
+
+<p class="Paragraph0c">При использовании вида доступа <span class="Interface">Объект</span>
+кроме проверки наборов выполняется еще проверка прав на объект. В ограничении
+права чтения таблицы выполняется проверка права чтения объекта и наборов
+ограничения чтения объекта, а в ограничении прав добавления, изменения,
+удаления таблицы выполняется проверка права изменения объекта и наборов
+ограничения изменения объекта.</p>
+
+<p class="Paragraph0c">Права объекта, которые проверяются в ограничении по виду
+доступа <span class="Interface">Объект</span>, можно переопределить в процедуре <span class="Interface">ПриЗаполненииЗависимостейПравДоступа</span> модуля <span class="Interface">УправлениеДоступомПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Структура регистра <span class="Interface">Наборы значений
+доступа</span> поддерживает логику <span class="Interface">ИЛИ</span> для
+значений доступа и различные наборы по правам доступа. Для реализации логики <span class="Interface">ИЛИ</span> добавлено измерение <span class="Interface">Номер
+набора</span> типа <span class="Interface">Число</span>, а для наборов по правам
+добавлены два ресурса: <span class="Interface">Чтение</span>, <span class="Interface">Изменение</span> – типа <span class="Interface">Булево</span>.</p>
+
+<p class="Paragraph0c">Сложную логику <span class="Interface">ИЛИ</span> записать в
+регистр «напрямую» не получится. Номер набора позволяет сделать для одного
+ссылочного элемента данных (например, документа) несколько наборов значений, по
+которым проверяется доступность документа. Причем достаточно, чтобы значения
+хотя бы одного набора значений были доступны одновременно. Точнее, результаты
+проверки значений доступа по видам доступа в пределах набора с одним номером
+объединяются по <span class="Interface">И</span>, а результаты проверки целых
+наборов объединяются по <span class="Interface">ИЛИ</span>. Например, для
+документа <span class="Interface">Перемещение товаров</span> регистр <span class="Interface">Наборы значений доступа</span> будет содержать записи для
+логики права <span class="Interface">Чтение</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>Документ2<span class="operator">&gt;</span><span class="operator">,</span> <span class="number">0</span><span class="operator">,</span> <span class="string">&quot;Организации&quot;</span><span class="operator">,</span> <span class="string">&quot;Организация1&quot;</span>
+<span class="operator">&lt;</span>Документ2<span class="operator">&gt;</span><span class="operator">,</span> <span class="number">0</span><span class="operator">,</span> <span class="string">&quot;Склады&quot;</span><span class="operator">,</span> <span class="string">&quot;Склад1&quot;</span><span class="operator">;</span>
+<span class="operator">&lt;</span>Документ2<span class="operator">&gt;</span><span class="operator">,</span> <span class="number">1</span><span class="operator">,</span> <span class="string">&quot;Организации&quot;</span><span class="operator">,</span> <span class="string">&quot;Организация1&quot;</span>
+<span class="operator">&lt;</span>Документ2<span class="operator">&gt;</span><span class="operator">,</span> <span class="number">1</span><span class="operator">,</span> <span class="string">&quot;Склады&quot;</span><span class="operator">,</span> <span class="string">&quot;Склад2&quot;</span><span class="operator">;</span></pre>
+
+<p class="Paragraph0c">Видно, что, хотя значений доступа три: <span class="Interface">Организация1</span>, <span class="Interface">Склад1</span>, <span class="Interface">Склад2</span>, – записей в регистре четыре. Это связано с
+раскрытием скобок в логическом выражении <span class="Interface">О1</span> и (<span class="Interface">С1</span> или <span class="Interface">С2</span>), что приводит к
+логическому выражению суммы произведений <span class="Interface">О1</span> и <span class="Interface">С1</span> или <span class="Interface">О1</span> и <span class="Interface">С2</span>.</p>
+
+<p class="Paragraph0c">Действие раскрытия скобок первичного логического
+выражения, объединяющего результаты проверки значений доступа, необходимо для
+заполнения наборов записей регистра сведений <span class="Interface">Наборы
+значений доступа</span>.</p>
+
+<p class="Paragraph0c">Записи для логики права <span class="Interface">Изменение</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>Документ2<span class="operator">&gt;</span><span class="operator">,</span> <span class="number">0</span><span class="operator">,</span> <span class="string">&quot;Организации&quot;</span><span class="operator">,</span> <span class="string">&quot;Организация1&quot;</span>
+<span class="operator">&lt;</span>Документ2<span class="operator">&gt;</span><span class="operator">,</span> <span class="number">0</span><span class="operator">,</span> <span class="string">&quot;Склады&quot;</span><span class="operator">,</span> <span class="string">&quot;Склад1&quot;</span><span class="operator">;</span>
+<span class="operator">&lt;</span>Документ2<span class="operator">&gt;</span><span class="operator">,</span> <span class="number">0</span><span class="operator">,</span> <span class="string">&quot;Склады&quot;</span><span class="operator">,</span> <span class="string">&quot;Склад2&quot;</span><span class="operator">;</span></pre>
+
+<p class="Paragraph0c">Пример процедуры заполнения приведен ниже.</p>
+
+<p class="Paragraph0c">Шаблон <span class="Interface">#ПоЗначениямИНаборамРасширенный</span>
+отличается от шаблона <span class="Interface">#ПоЗначениямРасширенный</span>
+только поддержкой специального вида доступа <span class="Interface">Объект</span>.</p>
+
+<p class="Paragraph0c">Для быстрого выбора шаблона можно использовать схему-алгоритм.</p>
+
+<p class="Picture"><IMG src="_img/bb4930f70ba50b6391a4d4b0238cf1d5/image050.png@_=1504708101" WIDTH="532" ALT HEIGHT="492"></p>
+
+<a name="_разработка_процедур_«заполнить"></a><a name="issogl2_разработка_процедур_заполнить_наборы_значений_доступа"><h3>Разработка процедур «Заполнить наборы значений доступа»</h3></a>
+
+<p class="Paragraph0c">При использовании стандартных шаблонов <span class="Interface">#ПоНаборамЗначений</span> или <span class="Interface">#ПоЗначениямИНаборамЗначений</span>
+с видом доступа <span class="Interface">Объект</span> потребуется записать в
+регистр <span class="Interface">Наборы значений доступа</span> сведения,
+требуемые для их работы.</p>
+
+<p class="Paragraph0c">Запись наборов значений доступа выполняется при записи
+объектов – например, документов. Перед записью вызывается пользовательская
+процедура заполнения наборов значений доступа.</p>
+
+<p class="Paragraph0c">Процедура заполнения помещается в модуль объекта, и его
+тип включается в подписку на события <span class="Interface">Записать наборы
+значений доступа</span> и в состав типов измерения <span class="Interface">Объект</span>
+регистра сведений <span class="Interface">Наборы значений доступа</span>.</p>
+
+<p class="Paragraph0c">При заполнении можно использовать только следующие
+свойства таблицы:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Номер набора</span> (если
+набор один, то заполнять не нужно);</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Вид доступа</span> (только
+для специальных видов доступа <span class="Interface">ПравоЧтения</span>, <span class="Interface">ПравоИзменения</span>);</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Значение доступа</span>
+(назначить явно);</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Чтение</span>, <span class="Interface">Изменение</span> (если набор для всех прав, то заполнять не
+нужно).</p>
+
+<p class="Paragraph0c">Количество заполненных записей должно быть больше нуля,
+иначе будет вызвано исключение. Это важно, т. к. процедура заполнения наборов
+значений доступа после включения режима <span class="Interface">Ограничивать
+доступ на уровне записей</span> вызывается из регламентного задания <span class="Interface">Заполнение данных для ограничения доступа</span> для тех
+объектов, которые имеют пустой набор записей в регистре <span class="Interface">Наборы
+значений доступа</span>. При выключении режима <span class="Interface">Ограничивать
+доступ на уровне записей</span> производится запись пустого набора.
+Следовательно, при включении режима выполнится заполнение очищенных наборов
+(или полное заполнение). Регламентное задание вызывается многократно и
+отрабатывает порцию заполнения. Очищение наборов происходит «по ходу»
+перезаписи объектов.</p>
+
+<p class="Paragraph0c">Технология порционного заполнения/очистки использует
+пустой набор записей как флажок состояния. Когда нужно записать заведомо
+«запрещенный набор», записывается не пустой набор, а следующий:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">Строка <span class="operator">=</span>    Таблица<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+Строка<span class="operator">.</span>ЗначениеДоступа <span class="operator">=</span> Перечисления<span class="operator">.</span>ДополнительныеЗначенияДоступа<span class="operator">.</span>ДоступЗапрещен<span class="operator">;</span></pre>
+
+<p class="Paragraph0c">Когда нужно записать заведомо «разрешенный набор»,
+записывается не пустой набор, а следующий:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">Строка <span class="operator">=</span>    Таблица<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+Строка<span class="operator">.</span>ЗначениеДоступа <span class="operator">=</span> Перечисления<span class="operator">.</span>ДополнительныеЗначенияДоступа<span class="operator">.</span>ДоступРазрешен<span class="operator">;</span></pre>
+
+<p class="Paragraph0c">Пример процедуры:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ЗаполнитьНаборыЗначенийДоступа</span>
+в модуле объекта (тип объекта включается в подписку на событие <span class="Interface">ЗаписатьНаборыЗначенийДоступа</span> (через определяемый тип <span class="Interface">ВладелецНаборовЗначенийДоступаОбъект</span>) или в дополнительно
+созданную подписку на события, имя которой начинается, как имя поставляемой
+подписки, а обработчик совпадает).</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> ЗаполнитьНаборыЗначенийДоступа<span class="operator">(</span>Таблица<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    Строка <span class="operator">=</span> Таблица<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Строка<span class="operator">.</span>Изменение       <span class="operator">=</span> <span class="keyword">Истина</span><span class="operator">;</span>
+    Строка<span class="operator">.</span>ЗначениеДоступа <span class="operator">=</span> Организация1<span class="operator">;</span>
+    Строка <span class="operator">=</span> Таблица<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Строка<span class="operator">.</span>ЗначениеДоступа <span class="operator">=</span> Склад1<span class="operator">;</span>
+    Строка <span class="operator">=</span> Таблица<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Строка<span class="operator">.</span>ЗначениеДоступа <span class="operator">=</span> Склад2<span class="operator">;</span>
+    Строка <span class="operator">=</span> Таблица<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Строка<span class="operator">.</span>НомерНабора     <span class="operator">=</span> <span class="number">1</span><span class="operator">;</span>
+    Строка<span class="operator">.</span>Чтение          <span class="operator">=</span> <span class="keyword">Истина</span><span class="operator">;</span>
+    Строка<span class="operator">.</span>ЗначениеДоступа <span class="operator">=</span> Организация1<span class="operator">;</span>
+    Строка <span class="operator">=</span> Таблица<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Строка<span class="operator">.</span>НомерНабора     <span class="operator">=</span> <span class="number">1</span><span class="operator">;</span>
+    Строка<span class="operator">.</span>ЗначениеДоступа <span class="operator">=</span> Склад1<span class="operator">;</span>
+    Строка <span class="operator">=</span> Таблица<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Строка<span class="operator">.</span>НомерНабора     <span class="operator">=</span> <span class="number">2</span><span class="operator">;</span>
+    Строка<span class="operator">.</span>Чтение          <span class="operator">=</span> <span class="keyword">Истина</span><span class="operator">;</span>
+    Строка<span class="operator">.</span>ЗначениеДоступа <span class="operator">=</span> Организация1<span class="operator">;</span>
+    Строка <span class="operator">=</span> Таблица<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Строка<span class="operator">.</span>НомерНабора     <span class="operator">=</span> <span class="number">2</span><span class="operator">;</span>
+    Строка<span class="operator">.</span>ЗначениеДоступа <span class="operator">=</span> Склад2<span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Bullet0">Если в процедуре заполнения не задан номер набора, то
+считается, что добавлен один набор с номером 1. Если в пределах набора с одним
+номером не указано ни одно из прав <span class="Interface">Чтение</span> или <span class="Interface">Изменение</span>, то считается, что набор относится ко всем
+правам.</p>
+
+<p class="Bullet0">В наборе допускается только одна запись одним и тем же
+значением доступа, дубли строк и наборов удаляются автоматически в процедуре <span class="Interface">ДобавитьНаборыЗначенийДоступа</span>, которая вызывается для
+этих целей перед записью наборов значений доступа в регистр сведений <span class="Interface">НаборыЗначенийДоступа</span> со сжатием наборов (лишние наборы
+удаляются по правилам упрощения логических функций).</p>
+
+<p class="Paragraph0c"><a name="_зависимые_наборы_значений"></a>Чтобы изменения
+вступили в силу, требуется обновить вспомогательные данные. См. раздел «<A href="3.4. _25E1_25E0_25E7_25EE_25E2_25E0_25FF _25F4_25F3_25ED_25EA_25F6_25E8_25EE_25ED_25E0_25EB_25FC_25ED_25EE_25F1_25F2_25FC.htm@_=1504708101#_обновление_вспомогательных_данных">Обновление
+вспомогательных данных во время разработки</a>».</p>
+
+<a name="issogl3_зависимые_наборы_значений_доступа"><h4>Зависимые наборы значений доступа</h4></a>
+
+<p class="Paragraph0c">В случае, когда наборы значений доступа нужно сформировать
+с учетом доступа к другому объекту (к примеру, доступ к бизнес-процессу <span class="Interface">_ДемоЗаданиеСРолевойАдресацией</span> определяется по доступу к
+его объекту-основанию, например по элементу справочника <span class="Interface">Файлы</span>),
+появляется необходимость включать в состав одних наборов другие наборы.</p>
+
+<p class="Paragraph0c">Для реализации включения одних наборов в другие
+разработана процедура <span class="Interface">ДобавитьНаборыЗначенийДоступа</span>
+общего модуля <span class="Interface">УправлениеДоступом</span>, которая
+добавляет в таблицу-приемник <span class="Interface">Приемник</span> наборы из
+таблицы-источника <span class="Interface">Источник</span> либо логическим
+сложением, либо логическим умножением. Например, наборы задачи:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> ЗаполнитьНаборыЗначенийДоступа<span class="operator">(</span>Таблица<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    Строка <span class="operator">=</span> Таблица<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Строка<span class="operator">.</span>ЗначениеДоступа <span class="operator">=</span> Исполнитель<span class="operator">;</span>
+    <span class="comment">// Создание пустой таблицы.</span>
+    ТаблицаБизнесПроцесса <span class="operator">=</span> УправлениеДоступом<span class="operator">.</span>ТаблицаНаборыЗначенийДоступа<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Заполнение наборов бизнес-процесса.</span>
+    УправлениеДоступом<span class="operator">.</span>ЗаполнитьНаборыЗначенийДоступа<span class="operator">(</span>БизнесПроцесс<span class="operator">,</span> ТаблицаБизнесПроцесса<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Логическое сложение наборов в таблицах (по «ИЛИ»).</span>
+    УправлениеДоступом<span class="operator">.</span>ДобавитьНаборыЗначенийДоступа<span class="operator">(</span>Таблица<span class="operator">,</span> ТаблицаБизнесПроцесса<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Следует разработать процедуры <span class="Interface">ЗаполнитьНаборыЗначенийДоступа</span>
+для всех объектов, которые могут быть объектом-основанием или задействованы при
+формировании наборов значений доступа.</p>
+
+<p class="Paragraph0c">Могут быть объекты, у которых наборы значений доступа не
+записываются в регистр сведений <span class="Interface">НаборыЗначенийДоступа</span>,
+а используются только при формировании других записываемых наборов значений
+доступа. Типы таких объектов нужно включить в подписку на события <span class="Interface">ЗаписатьЗависимыеНаборыЗначенийДоступа</span> (через
+определяемый тип <span class="Interface">ВладелецВнешнихЗначенийВНаборахЗначенийДоступаОбъект</span>)
+или в дополнительно созданную подписку на события, имя которой начинается, как
+имя поставляемой подписки, а обработчик совпадает.</p>
+
+<p class="Paragraph0c">Для реализации зависимостей необходимо разработать логику
+вызова перезаписи наборов значений доступа зависимых объектов в обработчике <span class="Interface">ПриИзмененииНаборовЗначенийДоступа</span> общего модуля <span class="Interface">УправлениеДоступомПереопределяемый</span>, например:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> ПриИзмененииНаборовЗначенийДоступа<span class="operator">(</span><span class="keyword">Знач</span> Ссылка<span class="operator">,</span> СсылкиНаЗависимыеОбъекты<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    ПолноеИмя <span class="operator">=</span> Ссылка<span class="operator">.</span>Метаданные<span class="operator">(</span><span class="operator">)</span><span class="operator">.</span>ПолноеИмя<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">Если</span> ПолноеИмя <span class="operator">=</span> <span class="string">&quot;Задача.ЗадачаИсполнителя&quot;</span> <span class="keyword">Тогда</span>
+        <span class="comment">// Зависимые типы объектов:</span>
+        <span class="comment">//  БизнесПроцесс.Задание</span>
+        Запрос <span class="operator">=</span> <span class="keyword">Новый</span> Запрос<span class="operator">(</span>
+        <span class="string">&quot;ВЫБРАТЬ</span>
+<span class="string">        |    Задание.Ссылка</span>
+<span class="string">        |ИЗ</span>
+<span class="string">        |    БизнесПроцесс.Задание КАК Задание</span>
+<span class="string">        |ГДЕ</span>
+<span class="string">        |    Задание.Предмет = &amp;Предмет&quot;</span><span class="operator">)</span><span class="operator">;</span>
+        Запрос<span class="operator">.</span>УстановитьПараметр<span class="operator">(</span><span class="string">&quot;Предмет&quot;</span><span class="operator">,</span> Ссылка<span class="operator">)</span><span class="operator">;</span>
+        СсылкиНаЗависимыеОбъекты <span class="operator">=</span> Запрос<span class="operator">.</span><span class="keyword">Выполнить</span><span class="operator">(</span><span class="operator">)</span><span class="operator">.</span>Выгрузить<span class="operator">(</span><span class="operator">)</span><span class="operator">.</span>ВыгрузитьКолонку<span class="operator">(</span><span class="string">&quot;Ссылка&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">ИначеЕсли</span> ПолноеИмя <span class="operator">=</span> <span class="string">&quot;БизнесПроцесс.Задание&quot;</span> <span class="keyword">Тогда</span>
+        <span class="comment">// Зависимые типы объектов:</span>
+        <span class="comment">//  БизнесПроцесс.Задание</span>
+        <span class="comment">// через Задача.ЗадачаИсполнителя в основании.</span>
+        Запрос <span class="operator">=</span> <span class="keyword">Новый</span> Запрос<span class="operator">(</span>
+        <span class="string">&quot;ВЫБРАТЬ РАЗЛИЧНЫЕ</span>
+<span class="string">        |    Задание.Ссылка</span>
+<span class="string">        |ИЗ</span>
+<span class="string">        |    БизнесПроцесс.Задание КАК Задание</span>
+<span class="string">        |        ВНУТРЕННЕЕ СОЕДИНЕНИЕ Задача.ЗадачаИсполнителя КАК ЗадачаИсполнителя</span>
+<span class="string">        |        ПО Задание.Предмет = ЗадачаИсполнителя.Ссылка</span>
+<span class="string">        |            И (ЗадачаИсполнителя.БизнесПроцесс = &amp;БизнесПроцесс)&quot;</span><span class="operator">)</span><span class="operator">;</span>
+        Запрос<span class="operator">.</span>УстановитьПараметр<span class="operator">(</span><span class="string">&quot;БизнесПроцесс&quot;</span><span class="operator">,</span> Ссылка<span class="operator">)</span><span class="operator">;</span>
+        СсылкиНаЗависимыеОбъекты <span class="operator">=</span> Запрос<span class="operator">.</span><span class="keyword">Выполнить</span><span class="operator">(</span><span class="operator">)</span><span class="operator">.</span>Выгрузить<span class="operator">(</span><span class="operator">)</span><span class="operator">.</span>ВыгрузитьКолонку<span class="operator">(</span><span class="string">&quot;Ссылка&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Специальные имена видов доступа <span class="Interface">ПравоЧтения</span>,
+<span class="Interface">ПравоИзменения</span> требуются, когда нужно разработать
+ограничение с зависимостью по правам «подчиненного» объекта от «ведущего»
+объекта. В шаблонах ОДД в проверку по виду доступа <span class="Interface">Объект</span>
+встроена логика проверки зависимых прав, как и в этих видах доступа. В связи с
+этим сочетать данные виды доступа с видом доступа <span class="Interface">Объект</span>
+не требуется. Также не требуется использовать эти виды доступа при заполнении
+зависимых наборов значений доступа. Для этих целей предусмотрен третий параметр
+в процедуре <span class="Interface">ЗаполнитьНаборыЗначенийДоступа</span>, при
+указании которого соответствующие проверки добавляются автоматически.</p>
+
+<p class="Paragraph0c">Чтобы изменения вступили в силу, требуется обновить
+вспомогательные данные. См. раздел «<A href="3.4. _25E1_25E0_25E7_25EE_25E2_25E0_25FF _25F4_25F3_25ED_25EA_25F6_25E8_25EE_25ED_25E0_25EB_25FC_25ED_25EE_25F1_25F2_25FC.htm@_=1504708101#_обновление_вспомогательных_данных">Обновление
+вспомогательных данных во время разработки</a>».</p>
+
+<a name="_настройка_свойств_объектов"></a><a name="issogl2_настройка_свойств_объектов_метаданных"><h3>Настройка свойств объектов метаданных</h3></a>
+
+<p class="Objectname">Таблица 3.111.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Свойство объекта метаданных</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Настройка</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ОпределяемыйТип.ЗначениеДоступа</span></p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Обязательные типы:</p>
+  <p class="BulltTab2">&#9679; 
+  <span class="Interface">СправочникСсылка.Пользователи</span>,</p>
+  <p class="BulltTab2">&#9679; 
+  <span class="Interface">СправочникСсылка.ГруппыПользователей</span>,</p>
+  <p class="BulltTab2">&#9679; 
+  <span class="Interface">СправочникСсылка.ВнешниеПользователи</span>,</p>
+  <p class="BulltTab2">&#9679; 
+  <span class="Interface">СправочникСсылка.ГруппыВнешнихПользователей</span>.</p>
+  <p class="BulletTab">&#9679; 
+  Типы значений доступа, например <span class="Interface">СправочникСсылка.Организации</span>.</p>
+  <p class="BulletTab">&#9679; 
+  Типы групп значений доступа, например <span class="Interface">СправочникСсылка._ДемоГруппыДоступаКонтрагентов</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ОпределяемыйТип.ВладелецНастроекПрав</span></p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Типы владельцев настроек прав, например <span class="Interface">СправочникСсылка.ПапкиФайлов</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ОпределяемыйТип.ВладелецНастроекПравОбъект</span></p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Типы владельцев настроек прав, например <span class="Interface">СправочникОбъект.ПапкиФайлов</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ОпределяемыйТип.ЗначениеДоступаСГруппамиЗначенийДоступаОбъект</span></p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Типы значений доступа, для которых указан тип
+  групп значений (например, группы доступа контрагентов <span class="Interface">СправочникОбъект._ДемоКонтрагенты</span>)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ОпределяемыйТип.ВладелецНаборовЗначенийДоступаОбъект
+  </span>(совместно с типами, указанными в создаваемых подписках на события <span class="Interface">ЗаписатьНаборыЗначенийДоступа&lt;Окончание&gt;</span>)</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Типы объектов, для которых записываются наборы
+  значений доступа используемые, как значения в проверках по виду <span class="Interface">Объект</span> через шаблон <span class="Interface">#ПоЗначениямИНаборамРасширенный</span>.</p>
+  <p class="BulletTab">&#9679; 
+  Типы объектов с ограничением, настроенным с
+  помощью шаблона <span class="Interface">#ПоНаборамЗначений</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ОпределяемыйТип.ВладелецВнешнихЗначенийВНаборахЗначенийДоступаОбъект
+  </span>(совместно с типами, указанными в создаваемых подписках на события <span class="Interface">ЗаписатьЗависимыеНаборыЗначенийДоступа&lt;Окончание&gt;</span>)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Типы объектов, которые используются в процедурах <span class="Interface">ЗаполнитьНаборыЗначенийДоступа</span> для формирования наборов,
+  но не входят в состав типов владельцев наборов значений доступа, т. е.
+  отсутствуют в типе <span class="Interface">ОпределяемыйТип.ВладелецНаборовЗначенийДоступаОбъект
+  </span>(а также среди типов, указанных в соответствующих создаваемых подписках
+  на события). Например, <span class="Interface">СправочникОбъект.Файлы</span>,
+  используемый для формирования наборов <span class="Interface">БизнесПроцессОбъект._ДемоЗаданиеСРолевойАдресацией</span>
+  (см. также обработчик <span class="Interface">УправлениеДоступомПереопределяемый.ПриИзмененииНаборовЗначенийДоступа(…)</span>)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ОпределяемыйТип.ВладелецСОграничениемПоНаборамЗначенийДоступаОбъект
+  </span>(совместно с типами, указанными в создаваемых подписках на события <span class="Interface">ЗаполнитьНаборыЗначенийДоступаТабличныхЧастей&lt;Окончание&gt;</span>)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Используется для тех объектов (кроме документов),
+  которые используют наборы значений доступа в шаблоне <span class="Interface">#ПоНаборамЗначений</span>
+  для ограничения объекта. Для документов необходимо создавать отдельную
+  подписку</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ТабличнаяЧасть.НаборыЗначенийДоступа.(НомерНабора,
+  ЗначениеДоступа, Уточнение, Чтение, Изменение)</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Табличная часть создается в объектах метаданных
+  прикладной конфигурации, которые используют наборы значений доступа в шаблоне
+  <span class="Interface">#ПоНаборамЗначений</span> для ограничения доступа к
+  ним.</p>
+  <p class="TextinTable81">Состав полей табличной части одинаков для всех таких
+  объектов. Состав типов, как у тех же полей в регистре сведений <span class="Interface">НаборыЗначенийДоступа</span></p>
+  </td>
+ </tr>
+</table>
+
+<a name="_описание_видов_доступа,"></a><a name="issogl2_описание_видов_доступа_используемых_в_ограничениях_объектов_для_отчета_права_доступа"><h3>Описание видов доступа, используемых в ограничениях объектов для отчета «Права доступа»</h3></a>
+
+<p class="Paragraph0c">Для использования отчета <span class="Interface">Права
+доступа</span> требуется задать список видов доступа, используемых в ограничении
+прав объектов метаданных. Список задается в переопределяемом модуле в виде
+многострочной строки формата <span class="Interface">&lt;Полное имя
+таблиц&gt;.&lt;Право&gt;.&lt;Вид доступа&gt;</span>. Для автоматического
+формирования кода процедуры следует применить инструменты разработчика. Пример
+заполнения процедуры:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> ПриЗаполненииВидовОграниченийПравОбъектовМетаданных<span class="operator">(</span>Описание<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    Описание <span class="operator">=</span>
+    <span class="string">&quot;</span>
+<span class="string">    |БизнесПроцесс.Задание.Добавление.Пользователи</span>
+<span class="string">    |БизнесПроцесс.Задание.Изменение.Пользователи</span>
+<span class="string">    |БизнесПроцесс.Задание.Чтение.Пользователи</span>
+<span class="string">    |…</span>
+<span class="string">    |…</span>
+<span class="string">    |…</span>
+<span class="string">    |Справочник.ПапкиФайлов.Изменение._ДемоПапкиФайлов</span>
+<span class="string">    |Справочник.ПапкиФайлов.Чтение._ДемоПапкиФайлов</span>
+<span class="string">    |Справочник.УчетныеЗаписиЭлектроннойПочты.Чтение.УчетныеЗаписиЭлектроннойПочты</span>
+<span class="string">    |&quot;</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<a name="_создание_описаний_поставляемых"></a><a name="issogl2_создание_описаний_поставляемых_профилей_групп_доступа_для_начального_заполнения_и_обновления_информационной_базы"><h3>Создание описаний поставляемых профилей групп доступа для начального заполнения и обновления информационной базы</h3></a>
+
+<p class="Paragraph0c">Для создания описаний профилей групп доступа, поставляемых
+в конфигурации, используемых при начальном заполнении и обновлении
+информационной базы, а также при интерактивном восстановлении поставляемых
+профилей, измененных администратором системы, используется процедура <span class="Interface">ЗаполнитьПоставляемыеПрофилиГруппДоступа</span> общего модуля <span class="Interface">УправлениеДоступомПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Для создания кода описания на встроенном языке
+рекомендуется применять обработку в демонстрационной конфигурации <span class="Interface">ИнструментыРазработчикаУправлениеДоступом</span>.</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> ЗаполнитьПоставляемыеПрофилиГруппДоступа<span class="operator">(</span>ОписанияПрофилей<span class="operator">,</span> ПараметрыОбновления<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="comment">// Профиль &quot;Пользователь&quot;.</span>
+    ЗаполнитьПрофильПользователь<span class="operator">(</span>ОписанияПрофилей<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Профиль &quot;Бухгалтер&quot;.</span>
+    ЗаполнитьПрофильБухгалтер<span class="operator">(</span>ОписанияПрофилей<span class="operator">)</span><span class="operator">;</span>
+    ...
+    <span class="comment">// Дополнительные профили, которые не используются самостоятельно при настройке</span>
+    <span class="comment">// прав пользователя, а дополняют основные профили, перечисленные выше.</span>
+    <span class="comment">// Профиль &quot;Ответственный за составы участников групп доступа (дополнительно)&quot;.</span>
+    ЗаполнитьПрофильОтветственныйЗаСоставыУчастниковГруппДоступа<span class="operator">(</span>ОписанияПрофилей<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Профиль &quot;Ответственный за ведение номенклатуры (дополнительно)&quot;.</span>
+    ЗаполнитьПрофильОтветственныйЗаВедениеНоменклатуры<span class="operator">(</span>ОписанияПрофилей<span class="operator">)</span><span class="operator">;</span>
+    ...
+<span class="keyword">КонецПроцедуры</span>
+<span class="keyword">Процедура</span> ЗаполнитьПрофильПользователь<span class="operator">(</span><span class="keyword">Знач</span> ОписанияПрофилей<span class="operator">)</span>
+    ОписаниеПрофиля <span class="operator">=</span> УправлениеДоступом<span class="operator">.</span>НовоеОписаниеПрофиляГруппДоступа<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    ОписаниеПрофиля<span class="operator">.</span>Имя           <span class="operator">=</span> <span class="string">&quot;_ДемоПользователь&quot;</span><span class="operator">;</span>
+    ОписаниеПрофиля<span class="operator">.</span>Идентификатор <span class="operator">=</span> <span class="string">&quot;09e56dbf-90a0-11de-862c-001d600d9ad2&quot;</span><span class="operator">;</span>
+    ОписаниеПрофиля<span class="operator">.</span>Наименование  <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Пользователь'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    ОписаниеПрофиля<span class="operator">.</span>Описание <span class="operator">=</span>
+    НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Общие разрешенные действия для большинства пользователей.</span>
+<span class="string">    |Как правило, это права на просмотр данных информационной системы.'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Использование 1С:Предприятия.</span>
+    ОписаниеПрофиля<span class="operator">.</span>Роли<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;ЗапускВебКлиента&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    ОписаниеПрофиля<span class="operator">.</span>Роли<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;ЗапускТолстогоКлиента&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    ОписаниеПрофиля<span class="operator">.</span>Роли<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;ЗапускТонкогоКлиента&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    ОписаниеПрофиля<span class="operator">.</span>Роли<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;ВыводНаПринтерФайлБуферОбмена&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    ОписаниеПрофиля<span class="operator">.</span>Роли<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;СохранениеДанныхПользователя&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Использование программы.</span>
+    ОписаниеПрофиля<span class="operator">.</span>Роли<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;БазовыеПрава&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    ОписаниеПрофиля<span class="operator">.</span>Роли<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;ПросмотрОписанияИзмененийПрограммы&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    ...
+     ОписанияПрофилей<span class="operator">.</span>Добавить<span class="operator">(</span>ОписаниеПрофиля<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+...</pre>
+
+<p class="Paragraph0c">Для того чтобы изменения вступили в силу, требуется
+обновить вспомогательные данные. См. раздел «<A href="3.4. _25E1_25E0_25E7_25EE_25E2_25E0_25FF _25F4_25F3_25ED_25EA_25F6_25E8_25EE_25ED_25E0_25EB_25FC_25ED_25EE_25F1_25F2_25FC.htm@_=1504708101#_обновление_вспомогательных_данных">Обновление
+вспомогательных данных во время разработки</a>».</p>
+
+<a name="_создание_профильных_ролей"></a><a name="_размещение_в_командном"></a><a name="issogl2_размещение_в_командном_интерфейсе"><h3>Размещение в командном интерфейсе</h3></a>
+
+<p class="Paragraph0c">Для использования подсистемы (кроме случая упрощенного
+интерфейса) необходимо в командном интерфейсе разместить объекты метаданных:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Справочник.ГруппыДоступа</span>:</p>
+
+<p class="MsoListBullet2">&#9679;  для
+частой работы администратора по просмотру и редактированию групп доступа
+(например, в подразделе <span class="Interface">Важное</span> рядом со
+справочниками <span class="Interface">Пользователи</span> и <span class="Interface">ВнешниеПользователи</span>);</p>
+
+<p class="MsoListBullet2">&#9679;  для
+частой работы администратора группы доступа по просмотру и редактированию
+участников групп доступа (например, в подразделе <span class="Interface">Важное</span>
+рядом со справочником <span class="Interface">Пользователи</span>).</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Справочник.ПрофилиГруппДоступа</span>
+– для редкой работы администратора по просмотру списка и содержания профилей
+групп доступа (например, в подразделе <span class="Interface">См. также</span>).</p>
+
+<p class="Paragraph0c">В случае если в конфигурации не используется подсистема
+«Настройки программы», в рабочем месте администратора программы необходимо
+разместить константы:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ОграничиватьДоступНаУровнеЗаписей</span>
+– для включения/выключения ограничения доступа на уровне записей (если в ограничениях
+прав используются наборы значений доступа, то при включении константы необходимо
+выдавать предупреждение о необходимости заполнения данных для ограничения
+доступа).</p>
+
+<p class="Paragraph0c">См. пример в форме <span class="Interface">НастройкиПользователейИПрав</span>
+обработки <span class="Interface">ПанельАдминистрированияБСП</span>.</p>
+
+<a name="_настройка_прав_доступа"></a><a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Для настройки прав доступа пользователей к данным
+подсистемы «Управление доступом» следует использовать следующие роли:</p>
+
+<p class="Objectname">Таблица 3.112.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">БазовыеПрава</span> (из
+  подсистемы «Базовая функциональность»)</p>
+  <p class="TextinTable81">Просмотр списка пользователей.</p>
+  <p class="TextinTable81">Просмотр списка своих групп доступа в форме <span class="Interface">Права доступа</span>.</p>
+  <p class="TextinTable81">Формирование и просмотр отчета о своих правах доступа</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ИзменениеУчастниковГруппДоступа</span></p>
+  <p class="TextinTable81">Изменение состава участников и просмотр тех групп
+  доступа, у которых пользователь установлен как администратор группы доступа</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">3. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПолныеПрава</span> (из
+  подсистемы «Базовая функциональность»)</p>
+  <p class="TextinTable81">Просмотр и редактирование групп доступа (в том числе
+  назначение администраторов групп доступа).</p>
+  <p class="TextinTable81">Удаление объектов подсистемы, помеченных на удаление.</p>
+  <p class="TextinTable81">Ручной запуск регламентного задания <span class="Interface">Заполнение данных для ограничения доступа</span>.</p>
+  <p class="TextinTable81">Включение и отключение ограничений прав доступа на
+  уровне записей.</p>
+  <p class="TextinTable81">Разработка профилей групп доступа</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Пример настройки прав доступа пользователей:</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Группа пользователей и ее
+   функции</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Состав ролей</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Ответственный за составы участников групп доступа (дополнительно):</p>
+  <p class="BulletTab">&#9679; 
+  Нужен для работы пользователя, которого
+  назначили ответственным за состав участников в группе доступа (например
+  начальник подразделения, руководитель проектной группы и др.)</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ИзменениеУчастниковГруппДоступа</span></p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl2_особые_случаи_внедрения_подсистемы"><h3>Особые случаи внедрения подсистемы</h3></a>
+
+<p class="MsoListBullet">&#9679; 
+<A href="3.59. _25EE_25F1_25EE_25E1_25FB_25E5 _25F1_25EB_25F3_25F7_25E0_25E8 _25E2_25ED_25E5_25E4_25F0_25E5_20EA087B14A#_внедрение_подсистем_«бизнес-процесс">Внедрение подсистем «Бизнес-процессы и
+задачи» и «Управление доступом»</a>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<A href="3.59. _25EE_25F1_25EE_25E1_25FB_25E5 _25F1_25EB_25F3_25F7_25E0_25E8 _25E2_25ED_25E5_25E4_25F0_25E5_20EA087B14A#_внедрение_подсистем_«взаимодействия">Внедрение подсистем «Взаимодействия» и
+«Управление доступом»</a>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<A href="3.59. _25EE_25F1_25EE_25E1_25FB_25E5 _25F1_25EB_25F3_25F7_25E0_25E8 _25E2_25ED_25E5_25E4_25F0_25E5_20EA087B14A#_внедрение_подсистем_«работа">Внедрение подсистем «Работа с почтовыми
+сообщениями» и «Управление доступом»</a>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<A href="3.59. _25EE_25F1_25EE_25E1_25FB_25E5 _25F1_25EB_25F3_25F7_25E0_25E8 _25E2_25ED_25E5_25E4_25F0_25E5_20EA087B14A#_внедрение_подсистем_«работа_1">Внедрение подсистем «Работа с файлами» и
+«Управление доступом»</a>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<A href="3.59. _25EE_25F1_25EE_25E1_25FB_25E5 _25F1_25EB_25F3_25F7_25E0_25E8 _25E2_25ED_25E5_25E4_25F0_25E5_20EA087B14A#_внедрение_подсистем_«свойства»_1">Внедрение подсистем «Свойства» и «Управление
+доступом»</a>.</p>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<p class="Paragraph0c">При создании новых прикладных объектов метаданных нужно повторно
+выполнять соответствующую часть процедуры настройки, описанной выше.</p>
+
+<p class="Paragraph0c">Программный интерфейс подсистемы доступен через экспортные
+функции общего модуля <span class="Interface">УправлениеДоступом</span>.</p>
+
+<a name="issogl2_проверка_работы_логики_ограничений_прав"><h3>Проверка работы логики ограничений прав</h3></a>
+
+<p class="Paragraph0c">Ошибка доступа к данным связана либо с недостаточным, либо
+избыточным доступом к данным информационной базы. В общем виде подобные
+нештатные ситуации могут возникать по причинам, перечисленным ниже.</p>
+
+<p class="MsoListBullet">&#9679; 
+Возможная ошибка при настройке прав доступа:</p>
+
+<p class="MsoListBullet2">&#9679;  некорректная
+настройка состава пользователей или групп пользователей группы доступа – необходимо
+включить пользователя или группу пользователей в группы доступа или исключить
+его из них;</p>
+
+<p class="MsoListBullet2">&#9679;  некорректный
+профиль группы доступа – выбрать другой профиль групп доступа, создать
+дополнительный профиль или скорректировать имеющийся профиль;</p>
+
+<p class="MsoListBullet2">&#9679;  некорректная
+настройка ограничений доступа в группе доступа (списков разрешенных значений,
+например: организаций, групп партнеров, складов) – необходимо добавить или
+исключить значений доступа из группы доступа.</p>
+
+<p class="MsoListBullet">&#9679; 
+Возможная ошибка при разработке или доработке
+конфигурации на внедрении (в компетенции разработчика конфигурации):</p>
+
+<p class="MsoListBullet2">&#9679;  некорректная
+настройка состава ролей в профиле;</p>
+
+<p class="MsoListBullet2">&#9679;  некорректная
+настройка состава видов доступа в профиле.</p>
+
+<p class="MsoListBullet">&#9679; 
+Ошибки разработчика конфигурации:</p>
+
+<p class="MsoListBullet2">&#9679;  ошибка
+в параметрах стандартного шаблона;</p>
+
+<p class="MsoListBullet2">&#9679;  ошибка
+в составе типов подписок на события;</p>
+
+<p class="MsoListBullet2">&#9679;  ошибка
+в процедуре заполнения наборов значений доступа;</p>
+
+<p class="MsoListBullet2">&#9679;  ошибка
+в описании видов доступа.</p>
+
+<p class="MsoListBullet">&#9679; 
+Ошибки разработчика этой подсистемы:</p>
+
+<p class="MsoListBullet2">&#9679;  ошибка
+в стандартном шаблоне;</p>
+
+<p class="MsoListBullet2">&#9679;  ошибка
+особенностей работы СУБД;</p>
+
+<p class="MsoListBullet2">&#9679;  ошибка
+в общих модулях подсистемы.</p>
+
+<p class="Paragraph0c">Для диагностики ошибок доступа к данным можно
+воспользоваться следующими средствами:</p>
+
+<p class="MsoListBullet">&#9679; 
+Убедиться, что содержимое регистра сведений <span class="Interface">Наборы значений доступа</span> содержит наборы значений
+доступа, которые записаны таким образом, что наборы с одинаковыми номерами для
+одного объекта соответствуют логике ограничения доступа по условию <span class="Interface">И</span>, а затем наборы с разными номерами «складываются» по
+условию <span class="Interface">ИЛИ</span>:</p>
+
+<p class="MsoListBullet2">&#9679;  если
+по интересующему нас объекту в регистре сведений нет записей, то объект не
+будет доступен для всех пользователей;</p>
+
+<p class="MsoListBullet2">&#9679;  если
+по интересующему нас объекту нет ни одного набора, относящегося к конкретному
+праву доступа, значит, для всех пользователей нет этого права на объект.</p>
+
+<p class="MsoListBullet">&#9679; 
+Нужно иметь в виду, что если в профиль не
+добавлена роль для чтения каких-либо данных, но предусмотрены роли для работы с
+другими связанными объектами, то возможна ситуация, когда в полях этих объектов
+будут отображаться значения вида <span class="Interface">Ссылка не найдена (… :
+…)</span> вместо самих данных.</p>
+
+<a name="issogl2_разработка_обработчиков_обновления_иб"><h3>Разработка обработчиков обновления ИБ</h3></a>
+
+<p class="Paragraph0c">В процессе разработки конфигурации в нее могут быть
+внесены изменения, которые потребуют обновления данных для ограничения доступа.
+Ниже перечислены типовые ситуации, когда обновление необходимо.</p>
+
+<p class="Number81">1. 
+При каждом обновлении информационной базы
+выполняются обработчики обновления в модуле <span class="Interface">УправлениеДоступомСлужебный</span>:</p>
+
+<p class="MsoListBullet2">&#9679; 
+Для обновления неразделенных вспомогательных
+данных (кэшей свойств встраивания), которые сохраняются в константе <span class="Interface">ПараметрыОграниченияДоступа</span> вызывается процедура <span class="Interface">ОбновитьПараметрыОграниченияДоступа</span>. Процедура обновляет
+общие параметры, права ролей, зависимости прав доступа, описания поставляемых
+профилей, состав предопределенных профилей, описание возможных прав для
+настройки прав объектов, например:</p>
+
+<p class="MsoListBullet3">&#9679; 
+при добавлении объектов метаданных (доступ к
+которым может ограничиваться) и добавлении/изменении ролей обновляется регистр сведений
+<span class="Interface">ПраваРолей</span> и регистрируется состав объектов
+метаданных, для которых внесены изменения;</p>
+
+<p class="MsoListBullet3">&#9679; 
+при изменении описаний поставляемых профилей
+групп доступа регистрируются их изменения;</p>
+
+<p class="MsoListBullet3">&#9679; 
+при изменении зависимостей прав доступа между
+объектами метаданных регистрируются их изменения.</p>
+
+<p class="MsoListBullet2">&#9679; 
+Для обновления разделенных вспомогательных
+данных (разных для каждой области данных) вызывается процедура <span class="Interface">ОбновитьВспомогательныеДанныеПоИзменениямКонфигурации</span>.</p>
+
+<p class="Bullet0">Соответственно, в процессе разработки необходимо учитывать,
+что для «вступления в силу» перечисленных изменений необходим запуск
+обработчиков (перед проверкой текущей разработки).</p>
+
+<p class="Bullet0">Обычно для этого требуется изменить версию конфигурации на
+следующую. Для повторных запусков обработчиков следует изменять версию в
+регистре сведений <span class="Interface">ВерсииПодсистем</span> на предыдущую. </p>
+
+<p class="Bullet0">Для разработки рекомендуется использовать обработку <span class="Interface">ИнструментыРазработчикаОбновлениеВспомогательныхДанных.epf</span>,
+которая входит в состав дистрибутива и в демонстрационную конфигурацию.</p>
+
+<p class="Bullet0">При закладке в хранилище результатов разработки, требующих
+обновления вспомогательных данных, рекомендуется поместить в хранилище новую
+версию конфигурации, чтобы обновление информационной базы выполнилось у всех
+участков разработки.</p>
+
+<p class="Number81">2. 
+<span class="Interface">Обновление поставляемых
+профилей групп доступа</span>. Если в конфигурации было изменено описание поставляемых
+профилей групп доступа в процедуре <span class="Interface">ПриЗаполненииПоставляемыхПрофилейГруппДоступа</span>
+общего модуля <span class="Interface">УправлениеДоступомПереопределяемый</span>,
+то никаких действий не требуется. При обновлении информационной базы обновление
+поставляемых профилей будет выполнено автоматически. Для управления обновлением
+предусмотрены свойства в параметре процедуры <span class="Interface">ПараметрыОбновления</span>.
+Их значения можно переопределить (подробнее см. комментарий к процедуре).</p>
+
+<p class="Number81">3. 
+<span class="Interface">Начальное заполнение
+наборов значений доступа</span> необходимо выполнить при включении ограничений
+на уровне записей, если в ролях конфигурации имеются ограничения прав, которые
+используют наборы значений доступа. </p>
+
+<p class="Bullet0">При этом, если среди видов доступа применяются группы значений
+доступа, также требуется выполнить заполнение групп значений доступа.</p>
+
+<p class="Bullet0">Для выполнения начального заполнения следует воспользоваться
+одним из двух способов:</p>
+
+<p class="MsoListBullet2">&#9679;  Разрешить
+выполнение регламентного задания <span class="Interface">ЗаполнениеДанныхДляОграниченияДоступа</span>;
+этот способ позволяет выполнить начальное заполнение наборов значений доступа
+порциями в фоне, не мешая работе администратора. Однако для того, чтобы
+изменения вступили в силу и с базой смогли начать работу другие пользователи, необходимо
+дождаться завершения отработки регламентным заданием всех порций.</p>
+
+<p class="MsoListBullet2">&#9679;  Вызвать
+процедуру <span class="Interface">ЗаполнениеДанныхДляОграниченияДоступа</span>
+общего модуля <span class="Interface">УправлениеДоступом</span> с параметром <span class="Interface">КоличествоДанных</span> = 0*.</p>
+
+<p class="Number81">4. 
+<span class="Interface">Обновление наборов
+значений доступа</span> необходимо выполнять в случаях:</p>
+
+<p class="MsoListBullet2">&#9679;  Если
+в конфигурации были добавлены виды доступа, использующие группы значений
+доступа, или изменены существующие виды доступа так, что они стали использовать
+группы значений доступа, то необходимо выполнить обновление наборов значений
+доступа. Для этого следует воспользоваться методикой, описанной в пункте 3.</p>
+
+<p class="MsoListBullet2">&#9679;  Если
+в конфигурации у определенных объектов метаданных был изменен алгоритм
+формирования наборов значений доступа или были изменены зависимости по правам.
+Для решения этой задачи следует выбрать один из двух вариантов:</p>
+
+<p class="MsoListBullet3">&#9679; 
+перезаписать наборы значений доступа с помощью
+процедуры <span class="Interface">ОбновитьНаборыЗначенийДоступа</span> общего
+модуля <span class="Interface">УправлениеДоступом</span>;</p>
+
+<p class="MsoListBullet3">&#9679; 
+очистить наборы значений доступа для
+соответствующих объектов и заполнить их способом, который описан в пункте 3.</p>
+
+<p class="Notes">* Операция обновления наборов значений доступа соизмерима с
+перезаписью всех документов, доступ к которым ограничивается на уровне записей,
+поэтому процесс обновления на большой базе может занять достаточно много
+времени. Поэтому лучше использовать предусмотренное регламентное задание. Для
+этого достаточно включить его использование (отключение произойдет
+автоматически).</p>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Для настройки обмена данными следует руководствоваться
+общими правилами.</p>
+
+<p class="Paragraph0c">В планы обмена распределенной информационной базы (РИБ)
+рекомендуется включать все объекты метаданных подсистемы.</p>
+
+<p class="Paragraph0c">В планах обмена распределенной информационной базы (РИБ)
+рекомендуется отключать регистрацию изменений для следующих объектов метаданных
+подсистемы (см. также раздел «<A href="3.28. _25EE_25E1_25EC_25E5_25ED _25E4_25E0_25ED_25ED_25FB_25EC_25E8.htm@_=1504708101#_особенности_создания_начального">Особенности создания начального образа
+подчиненного узла распределенной ИБ</a>»):</p>
+
+<p class="MsoListBullet">&#9679; 
+константа <span class="Interface">ПараметрыОграниченияДоступа</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+регистр сведений <span class="Interface">ПраваРолей</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+регистр сведений <span class="Interface">ЗависимостиПравДоступа</span>.</p>
+
+<p class="Paragraph0c">Из остальных планов обмена (не РИБ) рекомендуется
+исключать следующие объекты метаданных:</p>
+
+<p class="MsoListBullet">&#9679; 
+константа <span class="Interface">ПараметрыОграниченияДоступа</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+регистр сведений <span class="Interface">ПраваРолей</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+регистр сведений <span class="Interface">ЗависимостиПравДоступа</span>.</p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1055;&#1086;&#1083;&#1091;&#1095;&#1080;&#1090;&#1100;&#1048;&#1084;&#1103;&#1060;&#1086;&#1088;&#1084;&#1099;&#1054;&#1073;&#1098;&#1077;&#1082;&#1090;&#1072;&#1055;&#1088;&#1080;&#1089;&#1086;&#1077;&#1076;&#1080;&#1085;&#1077;&#1085;&#1085;&#1099;&#1093;&#1060;&#1072;&#1081;&#1083;&#1086;&#1074;&#1055;&#1086;&#1042;&#1083;&#1072;&#1076;&#1077;&#1083;&#1100;&#1094;&#1091;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25EF_25EE_25EB_25F3_25F7_25E8_25F2_25FC_25E8_25EC_25FF_25F4_25EE_25F0_25EC_25FB_25EE_25E1_25FA_25E5024AE70DB2" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_присоединенныефайлыполучитьимяформыобъектаприсоединенныхфайловповладельцу"></a><h1>ПолучитьИмяФормыОбъектаПрисоединенныхФайловПоВладельцу</h1>
+
+<pre> Возвращает имя формы объекта присоединенных файлов по владельцу.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция ПолучитьИмяФормыОбъектаПрисоединенныхФайловПоВладельцу(Знач ВладелецФайлов) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  ВладелецФайлов - Ссылка - ссылка на объект, по которому определяется имя формы.</pre>
+<p class="Paragraph0c"><span class="Bold">Возвращаемое значение</span></p>
+<pre>  Строка - имя формы объекта присоединенных файлов по владельцу.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = ПрисоединенныеФайлы.ПолучитьИмяФормыОбъектаПрисоединенныхФайловПоВладельцу(ВладелецФайлов)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

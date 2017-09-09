@@ -1,0 +1,459 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.44. &#1056;&#1072;&#1073;&#1086;&#1090;&#1072; &#1089; &#1092;&#1072;&#1081;&#1083;&#1072;&#1084;&#1080;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.44. _25F0_25E0_25E1_25EE_25F2_25E0 _25F1 _25F4_25E0_25E9_25EB_25E0_25EC_25E8.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_работа_с_файлами"></a><h1>3.44. Работа с файлами</h1>
+
+<p class="Paragraph0c">Подсистема «Работа с файлами» предназначена для
+коллективного редактирования файлов произвольного формата в иерархической
+структуре папок. Хранение файлов может быть организовано как непосредственно в
+информационной базе, так и внешним образом – в томах (сетевых ресурсах). Вместе
+с файлом может быть сохранена и история его изменений (версии файла). </p>
+
+<p class="Paragraph0c">Поддерживаются такие возможности работы с файлами, как
+добавление файлов в базу из файловой системы, создание файлов по шаблону, электронная
+подпись и шифрование, поддержка группового изменения и полнотекстового поиска
+по файлам.</p>
+
+<p class="Paragraph0c">Кроме того, имеется возможность присоединять файлы к
+произвольным объектам конфигурации ссылочного типа.</p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Paragraph0c">Выполнить настройку общей файловой функциональности – см. раздел
+«<A href="3.55. _25F4_25E0_25E9_25EB_25EE_25E2_25FB_25E5 _25F4_25F3_25ED_25EA_25F6_25E8_25E8.htm@_=1504708101#_файловые_функции">Файловые
+функции</a>».</p>
+
+<a name="issogl2_настройка_присоединения_файлов_к_объектам"><h3>Настройка присоединения файлов к объектам</h3></a>
+
+<p class="Paragraph0c">Необходимо принять решение по поводу состава объектов
+конфигурации («объекты с файлами»), к которым необходимо присоединять файлы
+(вложения). Такими объектами, как правило, являются справочники, при которых
+могут содержаться файлы-вложения. Примеры: </p>
+
+<p class="MsoListBullet">&#9679; 
+справочник <span class="Interface">Товары</span> с
+присоединенными к нему файлами: спецификациями, сертификатами и т. п.;</p>
+
+<p class="MsoListBullet">&#9679; 
+справочник <span class="Interface">Должности</span>
+с приложенными к нему текстами должностных обязанностей, требованиями к соискателю
+и т. п.</p>
+
+<p class="Warningword">Важно!</p>
+
+<p class="Notes">Состав «объектов с файлами» следует определять сдержанно, так
+как использование этой функциональности приводит к дополнительным затратам на
+запись и чтение файлов и самих объектов с файлами в случае использования
+ограничений доступа (см. раздел «<A href="3.53. _25F3_25EF_25F0_25E0_25E2_25EB_25E5_25ED_25E8_25E5 _25E4_25EE_25F1_25F2_25F3_25EF_25EE_25EC.htm@_=1504708101#_управление_доступом">Управление доступом</a>»).</p>
+
+<p class="Paragraph0c">Выполнить настройку таких «объектов с файлами»:</p>
+
+<p class="Number81">1. 
+Задать тип определяемых типов <span class="Interface">ВладелецФайлов</span> (ссылки) и <span class="Interface">ВладелецФайловОбъект</span>
+(объекты, кроме документов), поместив туда ссылки на объекты с файлами.</p>
+
+<p class="Number81">2. 
+Обеспечить удаление присоединенных файлов документов
+с помощью подписки на событие <span class="Interface">ПередЗаписью</span> (например,
+см. подписку на событие <span class="Interface">_</span> и <span class="Interface">_ДемоУстановитьПометкуУдаленияФайловДокументов</span>).
+</p>
+
+<p class="Paragraph0c">Если перед закрытием формы объекта-владельца требуется
+проверить наличие занятых текущим пользователем файлов, то необходимо:</p>
+
+<p class="MsoListBullet">&#9679; 
+Добавить реквизит формы <span class="Interface">МожноЗакрытьФормуСФайлами</span>
+типа <span class="Interface">Булево</span>. </p>
+
+<p class="MsoListBullet">&#9679; 
+В обработчике формы <span class="Interface">ПередЗакрытием</span>
+вставить вызов процедуры <span class="Interface">ПоказатьПодтверждениеЗакрытияФормыСФайлами</span>
+общего модуля <span class="Interface">РаботаСФайламиКлиент</span> по шаблону:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ПередЗакрытием<span class="operator">(</span>Отказ<span class="operator">,</span> СтандартнаяОбработка<span class="operator">)</span>
+    РаботаСФайламиКлиент<span class="operator">.</span>ПоказатьПодтверждениеЗакрытияФормыСФайлами<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> Отказ<span class="operator">,</span> Объект<span class="operator">.</span>Ссылка<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="MsoListBullet">&#9679; 
+Другой код, который необходимо выполнять в
+обработчике <span class="Interface">ПередЗакрытием</span>, следует размещать
+после вызова процедуры и проверки параметра <span class="Interface">Отказ</span>.
+Например:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ПередЗакрытием<span class="operator">(</span>Отказ<span class="operator">,</span> СтандартнаяОбработка<span class="operator">)</span>
+    РаботаСФайламиКлиент<span class="operator">.</span>ПоказатьПодтверждениеЗакрытияФормыСФайлами<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> Отказ<span class="operator">,</span> Объект<span class="operator">.</span>Ссылка<span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">Если</span> Отказ <span class="keyword">Тогда</span>
+        <span class="keyword">Возврат</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+    <span class="operator">&lt;</span>другой код<span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">&gt;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<a name="issogl2_размещение_в_командном_интерфейсе"><h3>Размещение в командном интерфейсе</h3></a>
+
+<p class="Paragraph0c">Для использования подсистемы необходимо разместить в командном
+интерфейсе администратора команды справочника <span class="Interface">Файлы</span>:</p>
+
+<p class="MsoListBullet">&#9679; 
+Команда <span class="Interface">Файлы</span> (имя <span class="Interface">ПапкиФайлов</span>) – открывает форму дерева папок с отображением
+файлов в выбранной папке.</p>
+
+<p class="MsoListBullet">&#9679; 
+Команда <span class="Interface">Все файлы </span>–
+отображает все файлы, которые содержатся в справочнике.</p>
+
+<p class="MsoListBullet">&#9679; 
+Команда <span class="Interface">Редактируемые
+файлы</span> (имя <span class="Interface">ЗанятыеФайлы</span>) – отображает все
+редактируемые файлы, которые содержатся в справочнике.</p>
+
+<p class="Paragraph0c">См. пример в демонстрационной конфигурации в подразделе «Работа
+с файлами» раздела «Органайзер» (подсистема <span class="Interface">_ДемоРаботаСФайлами</span>
+подсистемы <span class="Interface">_ДемоОрганайзер</span>).</p>
+
+<p class="Paragraph0c">Для редактирования персональных настроек работы с файлами
+следует предусмотреть в конфигурации форму настройки и разместить на ней
+следующие элементы:</p>
+
+<p class="MsoListBullet">&#9679; 
+Действие при выборе файла.</p>
+
+<p class="MsoListBullet">&#9679; 
+Выбор режима открытия при выборе файла.</p>
+
+<p class="MsoListBullet">&#9679; 
+Показывать подсказки при редактировании файлов
+(только веб-клиент).</p>
+
+<p class="MsoListBullet">&#9679; 
+Показывать занятые файлы при завершении работы.</p>
+
+<p class="MsoListBullet">&#9679; 
+Показывать колонку <span class="Interface">Размер</span>
+в списках файлов.</p>
+
+<p class="MsoListBullet">&#9679; 
+Сравнивать версии при помощи.</p>
+
+<p class="MsoListBullet">&#9679; 
+Настройка основного рабочего каталога.</p>
+
+<p class="MsoListBullet">&#9679; 
+Настройка сканирования.</p>
+
+<p class="MsoListBullet">&#9679; 
+Установить расширение работы с криптографией.</p>
+
+<p class="Paragraph0c">Пример реализации персональных настроек работы с файлами
+можно найти на закладке <span class="Interface">Работа с файлами</span> общей
+формы <span class="Interface">_ДемоМоиНастройки</span>.</p>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Для настройки прав доступа пользователей к данным
+подсистемы «Работа с файлами» следует использовать роли, приведенные ниже.</p>
+
+<p class="Objectname">Таблица 3.96.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПолныеПрава</span> (из
+  подсистемы «Базовая функциональность»)</p>
+  <p class="TextinTable81">Включение и отключение использования подсистемы
+  «Работа с файлами». Удаление помеченных на удаление объектов подсистемы.</p>
+  <p class="TextinTable81">Полный доступ к файлам без каких-либо ограничений
+  доступа к данным</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">РаботаСПапкамиФайлов</span> (из
+  подсистемы «Работа с файлами»</p>
+  <p class="TextinTable81">Просмотр, добавление, редактирование файлов в папках.
+  Права на каждую папку файлов настраиваются отдельно в режиме <span class="Interface">1С:Предприятие</span></p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl2_особые_случаи_внедрения_подсистемы"><h3>Особые случаи внедрения подсистемы</h3></a>
+
+<p class="MsoListBullet">&#9679; 
+<A href="3.59. _25EE_25F1_25EE_25E1_25FB_25E5 _25F1_25EB_25F3_25F7_25E0_25E8 _25E2_25ED_25E5_25E4_25F0_25E5_20EA087B14A#_внедрение_подсистемы_«работа">Внедрение подсистемы «Работа с файлами»
+вместе с подсистемой «Присоединенные файлы</a>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<A href="3.59. _25EE_25F1_25EE_25E1_25FB_25E5 _25F1_25EB_25F3_25F7_25E0_25E8 _25E2_25ED_25E5_25E4_25F0_25E5_20EA087B14A#_внедрение_подсистем_«работа_1">Внедрение подсистем «Работа с файлами» и
+«Управление доступом»</a>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<A href="3.59. _25EE_25F1_25EE_25E1_25FB_25E5 _25F1_25EB_25F3_25F7_25E0_25E8 _25E2_25ED_25E5_25E4_25F0_25E5_20EA087B14A#_внедрение_подсистемы_«работа_1">Внедрение подсистемы «Работа с файлами» без
+подсистемы «Электронная подпись»</a>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="MsoHyperlink"><A href="3.59. _25EE_25F1_25EE_25E1_25FB_25E5 _25F1_25EB_25F3_25F7_25E0_25E8 _25E2_25ED_25E5_25E4_25F0_25E5_20EA087B14A#_внедрение_подсистем_«свойства»">Внедрение подсистемы «Работа с файлами»
+без подсистемы «Свойства»</a></span>.</p>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<p class="Paragraph0c">Кроме возможности прикрепления файлов к тем или иным
+объектам ссылочного типа подсистема предоставляет следующие дополнительные
+возможности.</p>
+
+<a name="issogl2_работа_с_одним_присоединенным_файлом"><h3>Работа с одним присоединенным файлом</h3></a>
+
+<p class="Paragraph0c">При необходимости можно добавить к произвольному объекту
+ссылочного типа реквизит типа <span class="Interface">СправочникСсылка.Файлы</span>.
+Например, реквизит <span class="Interface">ПрисоединенныйФайл</span> или <span class="Interface">Фотография</span> в справочнике физических лиц. Использование
+этого реквизита в пользовательском интерфейсе определяется по месту и может
+быть, например, таким:</p>
+
+<p class="MsoListBullet">&#9679; 
+Поле ввода и кнопки рядом с ним (<span class="Interface">Открыть</span>, <span class="Interface">Занять</span> и пр.).</p>
+
+<p class="MsoListBullet">&#9679; 
+Поле картинки в режиме гиперссылки, при нажатии
+на которую открывается карточка файла.</p>
+
+<p class="MsoListBullet">&#9679; 
+Гиперссылка в форме объекта, при нажатии на
+которую открывается карточка файла или сам файл.</p>
+
+<p class="Paragraph0c">После добавления реквизита типа <span class="Interface">СправочникСсылка.Файлы</span>
+к объекту метаданных (объекту с файлом) необходимо также:</p>
+
+<p class="MsoListBullet">&#9679; 
+Добавить ссылку на объект с файлом к составному
+типу реквизита <span class="Interface">ВладелецФайла</span> справочника <span class="Interface">Файлы</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+Добавить ссылку на объект с файлом к составному
+типу параметра <span class="Interface">ВладелецФайла</span> формы элемента справочника
+<span class="Interface">Файлы</span>.</p>
+
+<a name="issogl2_интерфейс_работы_с_компонентом_сканирования_twain"><h3>Интерфейс работы с компонентом сканирования (TWAIN)</h3></a>
+
+<p class="Paragraph0c">Методы:</p>
+
+<p class="Number81">1. 
+<span class="Interface">Версия()</span> – вернет
+строку с описанием версии.</p>
+
+<p class="Number81">2. 
+<span class="Interface">ВыбратьУстройство()</span>
+– откроет диалог (средствами драйвера TWAIN) и вернет строку с идентификатором
+сканера или другого устройства. </p>
+
+<p class="Number81">3. 
+<span class="Interface">НачатьСканирование</span>(<span class="Interface">ОткрыватьДиалог</span>, <span class="Interface">ИмяУстройства</span>(<span class="Interface">Строка</span>), <span class="Interface">ФорматКартинки</span>(<span class="Interface">Строка</span>), <span class="Interface">Разрешение</span>, <span class="Interface">Цветность</span>, <span class="Interface">Поворот</span>, <span class="Interface">РазмерБумаги</span>, <span class="Interface">Сжатие</span>) –
+выполнит сканирование и сохранит файл на диск во временный каталог Windows,
+вернет <span class="Interface">Истина</span>, если не было ошибок. Если <span class="Interface">ОткрыватьДиалог = Истина</span> то откроет диалог сканирования
+(поставляемый драйвером сканера) с возможностью настроек разрешения и пр.:</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ОткрыватьДиалог </span>(<span class="Interface">Булево</span>);</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ИмяУстройства </span>(<span class="Interface">Строка</span>);</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ФорматКартинки </span>(<span class="Interface">Строка</span>) –
+формат сохранения картинки. По умолчанию PNG;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">Разрешение </span>(<span class="Interface">Число</span>) – разрешение
+DPI, например 200;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">Цветность</span> (<span class="Interface">Число</span>) –
+принимает значения 0 (черно-белое), 1 (оттенки серого), 2 (цветное);</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">Поворот</span> (<span class="Interface">Число</span>) – угол поворота
+в градусах, допустимы значения 0, 90, 180, 270. Не все сканеры поддерживают эту
+настройку;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">РазмерБумаги</span> (<span class="Interface">Число</span>). Не
+все сканеры поддерживают эту настройку. Принимает значения:</p>
+
+<p class="MsoListBullet3">&#9679; 
+0 (не задано),</p>
+
+<p class="MsoListBullet3">&#9679; 
+11 (А3),</p>
+
+<p class="MsoListBullet3">&#9679; 
+1 (А4),</p>
+
+<p class="MsoListBullet3">&#9679; 
+5 (А5),</p>
+
+<p class="MsoListBullet3">&#9679; 
+6 (B4),</p>
+
+<p class="MsoListBullet3">&#9679; 
+2 (B5),</p>
+
+<p class="MsoListBullet3">&#9679; 
+7 (B6),</p>
+
+<p class="MsoListBullet3">&#9679; 
+14 (C4),</p>
+
+<p class="MsoListBullet3">&#9679; 
+15 (C5),</p>
+
+<p class="MsoListBullet3">&#9679; 
+16 (C6),</p>
+
+<p class="MsoListBullet3">&#9679; 
+3 (USLetter),</p>
+
+<p class="MsoListBullet3">&#9679; 
+4 (USLegal),</p>
+
+<p class="MsoListBullet3">&#9679; 
+10 (USExecutive.</p>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">Сжатие</span> (<span class="Interface">Число</span>) – для формата JPG сюда передается качество (от 1
+до 100, 100 – максимальное качество и максимальный размер), для формата TIF –
+сжатие. Значения:</p>
+
+<p class="MsoListBullet3">&#9679; 
+2
+– LZW,</p>
+
+<p class="MsoListBullet3">&#9679; 
+3 – CCITT3,</p>
+
+<p class="MsoListBullet3">&#9679; 
+4 – CCITT4,</p>
+
+<p class="MsoListBullet3">&#9679; 
+5 – RLE,</p>
+
+<p class="MsoListBullet3">&#9679; 
+6 – без сжатия.</p>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">ДвустороннееСканирование</span>
+(<span class="Interface">Булево</span>).</p>
+
+<p class="Number81">4. 
+<span class="Interface">ЕстьУстройства</span> –
+вернет <span class="Interface">Истина</span>, если есть хоть одно TWAIN-устройство.</p>
+
+<p class="Number81">5. 
+<span class="Interface">ПолучитьУстройства</span>
+– вернет список доступных устройств в виде текстовых строк, разделенных
+разделителем (переводом строк).</p>
+
+<p class="Number81">6. 
+<span class="Interface">Тест</span> – то же, что <span class="Interface">НачатьСканирование,</span> но не обращается к TWAIN-драйверу, а
+сразу генерирует событие. Используется для тестирования.</p>
+
+<p class="Number81">7. 
+<span class="Interface">ПолучитьНастройку </span>(<span class="Interface">ИмяУстройства</span>, <span class="Interface">ИмяНастройки</span>)
+– возвращает значение указанной настройки (<span class="Interface">Число</span>).
+Возможные имена настроек:</p>
+
+<p class="MsoListBullet2">&#9679;  XRESOLUTION
+(разрешение – DPI);</p>
+
+<p class="MsoListBullet2">&#9679;  PIXELTYPE
+(цветность);</p>
+
+<p class="MsoListBullet2">&#9679;  ROTATION
+(поворот);</p>
+
+<p class="MsoListBullet2">&#9679;  SUPPORTEDSIZES
+(размер бумаги);</p>
+
+<p class="MsoListBullet2">&#9679;  DUPLEX
+(двусторонне сканирование).</p>
+
+<p class="Number81">8. 
+<span class="Interface">ОбъединитьВМногостраничныйФайл</span>
+(<span class="Interface">СтрокаВсехПутей</span>, <span class="Interface">ФайлРезультата</span>,
+<span class="Interface">ПутьКПрограммеКонвертации</span>) – объединяет несколько
+изображений в один многостраничный файл (TIF или PDF). Для объединения в PDF
+требуется установка программы ImageMagick и Ghostscript:</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">СтрокаВсехПутей</span> – пути ко все файлам изображений, разделенные
+символом «<span class="Interface">*</span>»;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ФайлРезультата</span> – путь к результирующему файлу – TIF или
+PDF;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ПутьКПрограммеКонвертации</span> – путь к программе конвертации
+(ImageMagick). Нужен, только если <span class="Interface">ФайлРезультата</span>
+имеет расширение PDF.</p>
+
+<p class="Paragraph0c">События:</p>
+
+<p class="Number81">1. 
+Внешнее событие. <span class="Interface">Источник
+= TWAIN</span> <span class="Interface">Событие = ImageAcquired</span>, в
+параметре <span class="Interface">Данные</span> передается полный путь к файлу
+картинки.</p>
+
+<p class="Number81">2. 
+Внешнее событие. <span class="Interface">Источник
+= TWAIN</span> <span class="Interface">Событие = EndBatch</span> – приходит при
+окончании сканирования пачки изображений (например, с потокового сканера).</p>
+
+<p class="Number81">3. 
+Внешнее событие. <span class="Interface">Источник
+= TWAIN</span> <span class="Interface">Событие = UserPressedCancel</span> –
+приходит, когда пользователь нажал <span class="Interface">Отмена</span> в стандартном
+диалоге сканирования (поставляемом производителем сканера).</p>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Для настройки обмена данными следует руководствоваться
+общими правилами.</p>
+
+<p class="Paragraph0c">Регистр сведений <span class="Interface">ХранимыеФайлыВерсий</span>
+надо использовать только на момент создания начального образа подчиненного узла
+в распределенной ИБ. (см. раздел «<A href="3.28. _25EE_25E1_25EC_25E5_25ED _25E4_25E0_25ED_25ED_25FB_25EC_25E8.htm@_=1504708101#_особенности_создания_начального">Особенности создания начального образа
+подчиненного узла распределенной ИБ</a>»).</p>
+
+<p class="Paragraph0c">В планы обмена рекомендуется включать все объекты
+метаданных подсистемы, кроме:</p>
+
+<p class="MsoListBullet">&#9679; 
+регистра сведений <span class="Interface">РабочиеКаталогиФайлов</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+регистра сведений <span class="Interface">ФайлыВРабочемКаталоге</span>.</p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

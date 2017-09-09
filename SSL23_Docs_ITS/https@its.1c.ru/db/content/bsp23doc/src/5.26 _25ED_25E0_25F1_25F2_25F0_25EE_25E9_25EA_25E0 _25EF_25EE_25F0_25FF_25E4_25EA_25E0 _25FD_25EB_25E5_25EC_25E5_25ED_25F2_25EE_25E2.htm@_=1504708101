@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>5.26 &#1053;&#1072;&#1089;&#1090;&#1088;&#1086;&#1081;&#1082;&#1072; &#1087;&#1086;&#1088;&#1103;&#1076;&#1082;&#1072; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="5.26 _25ED_25E0_25F1_25F2_25F0_25EE_25E9_25EA_25E0 _25EF_25EE_25F0_25FF_25E4_25EA_25E0 _25FD_25EB_25E5_25EC_25E5_25ED_25F2_25EE_25E2.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<h1>5.26 Настройка порядка элементов</h1>
+
+<p class="Paragraph0c">В некоторых списках программы для расстановки элементов
+могут использоваться кнопки <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image1935.png@_=1504708101" WIDTH="29" ALT HEIGHT="28"> <span class="Interface">Вверх</span> и <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image1937.png@_=1504708101" WIDTH="30" ALT HEIGHT="28"> <span class="Interface">Вниз</span>. Для
+расстановки элементов в таких списках используется реквизит <span class="Interface">Порядок</span>, который может быть не виден по умолчанию. Для
+иерархических и подчиненных списков элементы перемещаются в пределах своей
+группы. Для использования кнопок не требуется установки особых прав.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image1939.png@_=1504708101" WIDTH="631" ALT HEIGHT="654"></p>
+
+<p class="Paragraph0c">В ряде случаев кнопки <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image1935.png@_=1504708101" WIDTH="29" ALT HEIGHT="28"> <span class="Interface">Вверх</span> и <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image1937.png@_=1504708101" WIDTH="30" ALT HEIGHT="28"> <span class="Interface">Вниз</span> недоступны:</p>
+
+<p class="Bullet1">&#9632; 
+если список упорядочен не по возрастанию
+реквизита <span class="Interface">Порядок</span>, а иначе – например, по убыванию
+реквизита <span class="Interface">Порядок</span>, по наименованию или коду
+элементов списка;</p>
+
+<p class="Bullet1">&#9632; 
+если имеется группировка.</p>
+
+<p class="Paragraph0c">В таких случаях при нажатии кнопок <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image1935.png@_=1504708101" WIDTH="29" ALT HEIGHT="28"> <span class="Interface">Вверх</span> и <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image1937.png@_=1504708101" WIDTH="30" ALT HEIGHT="28"> <span class="Interface">Вниз</span> выдается
+предупреждение.</p>
+
+<p class="Paragraph0c">Так выглядит предупреждение о необходимости изменения настройки сортировки списка. Для изменения
+сортировки списка нажмите кнопку <span class="Interface">Настроить</span>. В этом случае программа автоматически меняет
+порядок сортировки списка.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image1941.png@_=1504708101" WIDTH="631" ALT HEIGHT="630"></p>
+
+<p class="Paragraph0c">Так выглядит
+предупреждение о необходимости отключить все группировки.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image1943.png@_=1504708101" WIDTH="631" ALT HEIGHT="617"></p>
+
+<p class="Paragraph0c">Для того чтобы вернуть возможность настраивать порядок
+элементов, необходимо в окне <span class="Interface">Настройка списка</span>
+(открывается командой <span class="Interface">Еще – Настроить список</span>), выполнить
+следующие действия:</p>
+
+<p class="Bullet1">&#9632; 
+на вкладке <span class="Interface">Группировка</span>
+нужно отключить группировку по всем полям. Выделите группировку, затем для
+отключения группировки нажмите кнопку <span class="Interface">Удалить</span><span class="Paragraph0c0">.</span></p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image1945.png@_=1504708101" WIDTH="800" ALT HEIGHT="518"></p>
+
+<p class="Bullet1">&#9632; 
+На вкладке <span class="Interface">Сортировка</span>
+нужно включить сортировку по полю <span class="Interface">Реквизит доп.
+упорядочивания</span> по возрастанию. Для этого можно в ответ на сообщение
+программы нажать кнопку <span class="Interface">Настроить</span> (в этом случае
+все сортировки будут отменены и настроена сортировка по полю <span class="Interface">Реквизит доп. упорядочивания</span> по возрастанию) или
+самостоятельно изменить порядок сортировки списка с помощью кнопки <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image620.png@_=1504708101" WIDTH="26" ALT HEIGHT="28"> <span class="Interface">Выбрать</span>,<span class="Paragraph0c0"> Сортировка по
+возрастанию поля</span> <span class="Interface">Реквизит доп.
+упорядочивания</span><span class="Paragraph0c0">
+должна быть на первом месте в списке, затем можно добавить свои сортировки, в
+любом порядке.</span></p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image1947.png@_=1504708101" WIDTH="800" ALT HEIGHT="518"></p>
+	</body>
+</html>

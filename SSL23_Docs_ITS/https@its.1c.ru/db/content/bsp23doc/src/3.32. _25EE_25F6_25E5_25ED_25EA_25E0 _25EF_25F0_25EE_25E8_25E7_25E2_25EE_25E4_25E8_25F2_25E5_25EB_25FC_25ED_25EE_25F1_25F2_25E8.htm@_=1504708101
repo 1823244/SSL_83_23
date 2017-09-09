@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.32. &#1054;&#1094;&#1077;&#1085;&#1082;&#1072; &#1087;&#1088;&#1086;&#1080;&#1079;&#1074;&#1086;&#1076;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1089;&#1090;&#1080;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.32. _25EE_25F6_25E5_25ED_25EA_25E0 _25EF_25F0_25EE_25E8_25E7_25E2_25EE_25E4_25E8_25F2_25E5_25EB_25FC_25ED_25EE_25F1_25F2_25E8.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_оценка_производительности"></a><h1>3.32. Оценка производительности</h1>
+
+<p class="Paragraph0c">Подсистема «Оценка производительности» предназначена для
+оценки интегральной производительности системы по методике APDEX. </p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Paragraph0c">Для настройки подсистемы «Оценка производительности» на
+сбор данных замеров производительности необходимо принять решение по поводу состава
+ключевых операций, время выполнения которых требуется замерять и отслеживать. </p>
+
+<p class="Paragraph0c">Ключевые операции – это такие операции, в процессе
+выполнения которых пользователь непрерывно ожидает отклика от информационной
+системы. Например: проведение некоторого документа, запись некоторого
+справочника, загрузка данных и т. п. Ключевые операции не могут включать в себя
+интерактивные действия пользователя.</p>
+
+<p class="Paragraph0c">Ключевые операции задаются по названию. Настройку
+приоритета и целевого времени ключевых операций должен будет выполнить
+администратор информационной базы, после того как в ИБ будут собраны замеры.
+Настройку приоритета и целевого времени ключевых операций выполнять не
+обязательно. Данная настройка необходима для последующего анализа замеров.</p>
+
+<p class="Paragraph0c">В коде конфигурации, в местах выполнения ключевых
+операций, надо вставить вызовы подсистемы «Оценка производительности» для
+замера времени их выполнения. При этом имя ключевой операции указывается в
+качестве параметра процедур начала и/или окончания замера времени. </p>
+
+<p class="Paragraph0c">Подсистема «Оценка производительности» поддерживает три
+сценария работы с замерами времени:</p>
+
+<p class="Number81">1. 
+Начать замер на клиенте и автоматически
+завершить замер на клиенте. Кроме того, до момента завершения замера можно программно
+доопределить имя ключевой операции и комментарий замера времени (если они еще
+не были известны на момент начала замера).</p>
+
+<p class="Number81">2. 
+Начать замер на сервере и явно завершить его на
+сервере (по усмотрению разработчика).</p>
+
+<p class="Number81">3. 
+Начать замер на клиенте и явно завершить его на
+клиенте (по усмотрению разработчика). Кроме того, до момента завершения замера можно
+программно доопределить имя ключевой операции и комментарий замера времени
+(если они еще не были известны на момент начала замера).</p>
+
+<p class="Paragraph0c">Для выполнения замеров ключевой операции по сценариям № 1
+и № 3 необходимо вызвать функцию <span class="Interface">НачатьЗамерВремени(Истина,
+Неопределено)</span> общего модуля <span class="Interface">ОценкаПроизводительностиКлиент</span>,
+которая вернет уникальный идентификатор замера. Если параметр функции <span class="Interface">АвтоЗавершение = Истина</span>, то замер времени завершится
+автоматически. Если же параметр функции <span class="Interface">АвтоЗавершение =
+Ложь</span>, то для завершения замера времени необходимо вызвать процедуру <span class="Interface">ЗавершитьЗамерВремени(УИДЗамера)</span> общего модуля <span class="Interface">ОценкаПроизводительностиКлиент</span>, где <span class="Interface">УИДЗамера</span> – уникальный идентификатор, который вернула
+функция <span class="Interface">НачатьЗамерВремени</span>. В случае если <span class="Interface">КлючеваяОперация = Неопределено</span>, необходимо до
+автозавершения замера установить имя ключевой операции вызовом процедуры <span class="Interface">УстановитьКлючевуюОперациюЗамера(УИДЗамера, КлючеваяОперация)</span>
+общего модуля <span class="Interface">ОценкаПроизводительностиКлиент</span>. В
+случае если до завершения автозамера разработчик не установил имя ключевой
+операции, то данный замер при автозавершении будет удален из клиентского буфера
+и не будет записан в регистр сведений.</p>
+
+<p class="Paragraph0c">Для выполнения замеров ключевой операции по сценарию № 2
+необходимо вызвать функцию <span class="Interface">НачатьЗамерВремени</span> общего
+модуля <span class="Interface">ОценкаПроизводительности</span>. Затем для
+завершения замера времени вызывать функцию <span class="Interface">ЗакончитьЗамерВремени</span>
+общего модуля <span class="Interface">ОценкаПроизводительности</span>. </p>
+
+<p class="Paragraph0c">Пример замера времени проведения документа на клиенте с
+разделением на замеры корректного проведения и возникновением исключения при
+проведении (сценарий № 1):</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Модуль формы документа _ДемоЗаказПокупателя</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Перем</span> ИдентификаторЗамераПроведение<span class="operator">,</span> ИдентификаторЗамераПроведениеНеНужнаРегистрацияОшибки<span class="operator">;</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ПередЗаписью<span class="operator">(</span>Отказ<span class="operator">,</span> ПараметрыЗаписи<span class="operator">)</span>
+    <span class="keyword">Если</span> ПараметрыЗаписи<span class="operator">.</span>РежимЗаписи <span class="operator">=</span> РежимЗаписиДокумента<span class="operator">.</span>Проведение <span class="keyword">Тогда</span>
+        ИдентификаторЗамераПроведение <span class="operator">=</span> ОценкаПроизводительностиКлиент<span class="operator">.</span>НачатьЗамерВремени<span class="operator">(</span><span class="keyword">Истина</span><span class="operator">,</span> <span class="string">&quot;_ДемоПроведениеДокументаОшибка&quot;</span><span class="operator">)</span><span class="operator">;</span>
+        ОценкаПроизводительностиКлиент<span class="operator">.</span>УстановитьПризнакОшибкиЗамера<span class="operator">(</span>ИдентификаторЗамераПроведение<span class="operator">,</span> <span class="keyword">Истина</span><span class="operator">)</span><span class="operator">;</span>
+        ИдентификаторЗамераПроведениеНеНужнаРегистрацияОшибки <span class="operator">=</span> ОценкаПроизводительностиКлиент<span class="operator">.</span>НачатьЗамерВремени<span class="operator">(</span><span class="keyword">Истина</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+    <span class="comment">// Далее следует текст обработчика формы --&gt;&gt;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ПослеЗаписи<span class="operator">(</span>ПараметрыЗаписи<span class="operator">)</span>
+    ОценкаПроизводительностиКлиент<span class="operator">.</span>УстановитьКлючевуюОперациюЗамера<span class="operator">(</span>ИдентификаторЗамераПроведение<span class="operator">,</span> <span class="string">&quot;_ДемоПроведениеДокумента&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    ОценкаПроизводительностиКлиент<span class="operator">.</span>УстановитьПризнакОшибкиЗамера<span class="operator">(</span>ИдентификаторЗамераПроведение<span class="operator">,</span> <span class="keyword">Ложь</span><span class="operator">)</span><span class="operator">;</span>
+    ОценкаПроизводительностиКлиент<span class="operator">.</span>УстановитьКлючевуюОперациюЗамера<span class="operator">(</span>ИдентификаторЗамераПроведениеНеНужнаРегистрацияОшибки<span class="operator">,</span> <span class="string">&quot;_ДемоПроведениеДокументаНеНужнаРегистрацияОшибки&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Далее следует текст обработчика формы --&gt;&gt;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Пример замера времени выполнения регламентного задания
+(сценарий № 2):</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Процедура обработки регламентного задания по выгрузке данных</span>
+<span class="keyword">Процедура</span> ЭкспортОценкиПроизводительности<span class="operator">(</span>КаталогиЭкспорта<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    ДатаНачала <span class="operator">=</span> ОценкаПроизводительности<span class="operator">.</span>НачатьЗамерВремени<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Далее следует текст выполнения регламентного задания --&gt;&gt;</span>
+    ОценкаПроизводительности<span class="operator">.</span>ЗакончитьЗамерВремени<span class="operator">(</span><span class="string">&quot;ЭкспортОценкиПроизводительности&quot;</span><span class="operator">,</span> ДатаНачала<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Пример замера времени длительной операции на клиенте – формирование
+отчета в фоновом задании (сценарий № 3):</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Перем</span> УникальныйИдентификаторЗамера<span class="operator">,</span> УникальныйИдентификаторФоновогоЗадания<span class="operator">;</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> СформироватьОтчет<span class="operator">(</span><span class="operator">)</span>
+    УникальныйИдентификаторЗамера <span class="operator">=</span> 
+        ОценкаПроизводительностиКлиент<span class="operator">.</span>НачатьЗамерВремени<span class="operator">(</span><span class="keyword">Ложь</span><span class="operator">,</span> <span class="string">&quot;ОтчетПоПродажам&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Далее следует текст запуска формирования отчета на сервере в фоновом задании --&gt;&gt;</span>
+    ПодключитьОбработчикОжидания<span class="operator">(</span><span class="string">&quot;ПроверкаФормированияОтчета&quot;</span><span class="operator">,</span> <span class="number">1</span><span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ПроверкаФормированияОтчета<span class="operator">(</span><span class="operator">)</span>
+    РезультатПроверки <span class="operator">=</span> ПроверкаВыполненияФоновогоЗаданияНаСервере<span class="operator">(</span>УникальныйИдентификаторФоновогоЗадания<span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">Если</span> РезультатПроверки<span class="operator">.</span>Состояние <span class="operator">&lt;</span><span class="operator">&gt;</span> <span class="string">&quot;Активно&quot;</span> <span class="keyword">Тогда</span>
+        ОтключитьОбработчикОжидания<span class="operator">(</span><span class="string">&quot;ПроверкаФормированияОтчета&quot;</span><span class="operator">)</span><span class="operator">;</span>
+        <span class="keyword">Если</span> РезультатПроверки<span class="operator">.</span>Состояние <span class="operator">=</span> <span class="string">&quot;Завершено&quot;</span> <span class="keyword">Тогда</span>
+            <span class="comment">// Далее следует текст вывода отчета на сервере в фоновом задании --&gt;&gt;</span>
+            ОценкаПроизводительностиКлиент<span class="operator">.</span>ЗавершитьЗамерВремени<span class="operator">(</span>УникальныйИдентификаторЗамера<span class="operator">)</span><span class="operator">;</span>
+        <span class="keyword">Иначе</span>
+            <span class="keyword">ВызватьИсключение</span><span class="operator">(</span>ПодробноеПредставлениеОшибки<span class="operator">(</span>ИнформацияОбОшибке<span class="operator">(</span><span class="operator">)</span><span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+        <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>    
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Пример реализации ключевых операций см. в демонстрационной
+конфигурации.</p>
+
+<p class="Paragraph0c">Необходимо разместить в командном интерфейсе
+ответственного за оценку производительности константу <span class="Interface">ВыполнятьЗамерыПроизводительности</span>
+и обработку <span class="Interface">ОценкаПроизводительности</span>. См. пример
+размещения в демонстрационной конфигурации в группе <span class="Interface">Оценка
+производительности</span> формы <span class="Interface">ПоддержкаИОбслуживание</span>
+обработки <span class="Interface">ПанельАдминистрированияБСП</span>.</p>
+
+<p class="Paragraph0c">Для того чтобы система автоматически начала собирать
+замеры производительности, необходимо константе <span class="Interface">ВыполнятьЗамерыПроизводительности</span>
+установить значение <span class="Interface">Истина</span> в процедуре – обработчике
+обновления и первоначального заполнения ИБ.</p>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Роли, используемые для работы с подсистемой:</p>
+
+<p class="Objectname">Таблица 3.66.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"> </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">НастройкаИОценкаПроизводительности</span></p>
+  <p class="TextinTable81">Анализ результатов замера производительности ключевых
+  операций с помощью обработки <span class="Interface">ОценкаПроизводительности</span></p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Все объекты подсистемы не должны включаться в планы обмена
+распределенной ИБ (РИБ), т. к. требования и условия работы в каждой базе могут
+быть свои. Однако в некоторых задачах, в которых распределенная ИБ (РИБ)
+рассматривается как единая и однородная система в плане производительности,
+имеет смысл в планы обмена включить все объекты подсистемы, содержащие данные.</p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

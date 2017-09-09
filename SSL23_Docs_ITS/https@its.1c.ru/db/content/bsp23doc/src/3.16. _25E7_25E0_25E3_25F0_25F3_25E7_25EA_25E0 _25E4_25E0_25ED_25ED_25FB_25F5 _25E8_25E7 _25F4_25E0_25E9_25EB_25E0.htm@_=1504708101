@@ -1,0 +1,486 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.16. &#1047;&#1072;&#1075;&#1088;&#1091;&#1079;&#1082;&#1072; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1080;&#1079; &#1092;&#1072;&#1081;&#1083;&#1072;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.16. _25E7_25E0_25E3_25F0_25F3_25E7_25EA_25E0 _25E4_25E0_25ED_25ED_25FB_25F5 _25E8_25E7 _25F4_25E0_25E9_25EB_25E0.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<h1>3.16. Загрузка данных из файла</h1>
+
+<p class="Paragraph0c">Подсистема «Загрузка данных из файла» предоставляет
+пользовательский и программный интерфейс для загрузки табличных данных из
+файлов в произвольные справочники и табличные части документов. Например, с ее
+помощью можно предусмотреть перенос нормативно-справочной информации при
+переходе с других программ, а также быстрое заполнение табличных частей при
+вводе документов. </p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<a name="issogl2_загрузка_данных_в_справочники"><h3>Загрузка данных в справочники</h3></a>
+
+<p class="Paragraph0c">Если в конфигурации используется подсистема «Настройки
+программы», рекомендуется разместить обработку <span class="Interface">ЗагрузкаДанныхИзФайла</span>
+на панели администрирования <span class="Interface">Перенос данных</span> в
+группе <span class="Interface">Загрузка данных</span>. См. пример размещения в
+демонстрационной конфигурации в форме <span class="Interface">ПереносДанных</span>
+обработки <span class="Interface">_ДемоПанельАдминистрирования</span>.</p>
+
+<p class="Paragraph0c">В противном случае необходимо разместить обработку <span class="Interface">ЗагрузкаДанныхИзФайла</span> в рабочем месте администратора
+программы.</p>
+
+<p class="Paragraph0c">По умолчанию загрузка данных становится доступной для
+большинства справочников конфигурации. Однако это не всегда целесообразно.
+Рекомендуется запрещать загрузку данных в справочники: </p>
+
+<p class="MsoListBullet">&#9679; 
+содержащие служебную, технологическую или другую
+информацию, изменение которой может привести к некорректной работе программы;</p>
+
+<p class="MsoListBullet">&#9679; 
+которые имеют собственные механизмы
+автоматического обновления или заполнения. Например, классификаторы <span class="Interface">КлассификаторБанковРФ</span>, <span class="Interface">СтраныМира</span>
+и пр.;</p>
+
+<p class="MsoListBullet">&#9679; 
+пакетная загрузка в которые небезопасна
+(например, <span class="Interface">ВнешниеПользователи</span>, <span class="Interface">Пользователи</span>, <span class="Interface">ТомаХраненияФайлов</span>);</p>
+
+<p class="MsoListBullet">&#9679; 
+«технологические» справочники, которые не
+редактируют пользователи (например, <span class="Interface">ГруппыИсполнителейЗадач</span>,
+<span class="Interface">ИдентификаторыОбъектовМетаданных</span>, <span class="Interface">ОчередьЗаданий</span> и т. д.).</p>
+
+<p class="Paragraph0c">В таких случаях в модуле <span class="Interface">ЗагрузкаДанныхИзФайлаПереопределяемый</span>
+в методе <span class="Interface">ПриОпределенииСправочниковДляЗагрузкиДанных</span>
+следует исключать такие справочники:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> ПриОпределенииСправочниковДляЗагрузкиДанных<span class="operator">(</span>ЗагружаемыеСправочники<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="comment">// Загрузка в классификатор валюты запрещена</span>
+    СтрокаТаблицы <span class="operator">=</span> ЗагружаемыеСправочники<span class="operator">.</span>Найти<span class="operator">(</span>Метаданные<span class="operator">.</span>Справочники<span class="operator">.</span>Валюты<span class="operator">.</span>ПолноеИмя<span class="operator">(</span><span class="operator">)</span><span class="operator">,</span> <span class="string">&quot;ПолноеИмя&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">Если</span> СтрокаТаблицы <span class="operator">&lt;</span><span class="operator">&gt;</span> <span class="keyword">Неопределено</span> <span class="keyword">Тогда</span> 
+        ЗагружаемыеСправочники<span class="operator">.</span>Удалить<span class="operator">(</span>СтрокаТаблицы<span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Кроме того, по умолчанию загрузка данных запрещена для
+справочников:</p>
+
+<p class="MsoListBullet">&#9679; 
+с одной или несколькими табличными частями
+(кроме табличных частей с именами <span class="Interface">КонтактнаяИнформация</span>,
+<span class="Interface">ДополнительныеРеквизиты</span>, <span class="Interface">СертификатыШифрования</span>);</p>
+
+<p class="MsoListBullet">&#9679; 
+с реквизитами типа <span class="Interface">ХранилищеЗначений</span>
+(например, все справочники с присоединенными файлами или с форматированными документами).</p>
+
+<p class="Paragraph0c">Это ограничение обусловлено тем, что стандартный механизм
+загрузки не позволяет загружать данные в элементы таких справочников, а
+загрузка только оставшейся части реквизитов может привести к некорректным
+результатам. </p>
+
+<p class="Paragraph0c">Однако если известно, что загрузка в такой справочник без
+заполнения этих элементов не вызовет проблем в работе программы, то можно
+разрешить загрузку данных, разместив в модуле менеджера справочника экспортную
+функцию <span class="Interface">ИспользоватьЗагрузкуДанныхИзФайла</span>, которая
+должна возвращать значение <span class="Interface">Истина</span>.</p>
+
+<p class="Paragraph0c">Также имеется возможность переопределить стандартный
+механизм загрузки данных в справочники. Подробнее см. в разделе «<a href="#_особые_случаи_внедрения_1">Особые
+случаи внедрения подсистемы</a>».</p>
+
+<a name="issogl2_загрузка_данных_в_табличную_часть_документа_или_справочника"><h3>Загрузка данных в табличную часть документа или справочника</h3></a>
+
+<p class="Paragraph0c">Нужно принять решение по поводу табличных частей объектов
+(документов и справочников), в которых востребована пакетная загрузка данных.
+Например, это могут быть табличные части <span class="Interface">Товары</span>
+документов поступления и реализации товаров и услуг, строки которых часто
+заполняются на основании первичных документов: из таблиц Microsoft Excel или
+файлов другого формата. </p>
+
+<p class="Paragraph0c">Для объектов, в которые требуется добавить возможность
+загрузки данных из файла в табличную часть, необходимо произвести следующие
+действия.</p>
+
+<a name="issogl3_команда_загрузки_данных"><h4>Команда загрузки данных</h4></a>
+
+<p class="Paragraph0c">В форме объекта создать команду и разместить ее на
+командной панели табличной части. Например, для табличной части <span class="Interface">Товары</span> – команду <span class="Interface">ЗагрузитьТоварыИзФайла</span>
+с синонимом <span class="Interface">Загрузить из файла…</span> Установить
+свойство <span class="Interface">Изменяет сохраняемые данные</span> в <span class="Interface">Истина</span>. Если в объекте требуется предусмотреть загрузку
+в несколько табличных частей, то для каждой табличной части создается отдельная
+команда. </p>
+
+<p class="Paragraph0c">Далее в форме объекта реализовать обработку команды и
+процедуру добавления данных в табличную часть. Пример реализации для табличной
+части <span class="Interface">Товары</span> документа <span class="Interface">_ДемоСчетНаОплатуПокупателю</span>:
+</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ЗагрузитьТоварыИзФайла<span class="operator">(</span>Команда<span class="operator">)</span>
+    ПараметрыЗагрузки <span class="operator">=</span> ЗагрузкаДанныхИзФайлаКлиент<span class="operator">.</span>ПараметрыЗагрузкиДанных<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    ПараметрыЗагрузки<span class="operator">.</span>ПолноеИмяТабличнойЧасти <span class="operator">=</span> <span class="string">&quot;_ДемоПоступлениеТоваров.Товары&quot;</span><span class="operator">;</span>
+    ПараметрыЗагрузки<span class="operator">.</span>Заголовок <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Загрузка списка товаров из файла'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    ДополнительныеПараметры <span class="operator">=</span> <span class="keyword">Новый</span> Структура<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    ДополнительныеПараметры<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;Контрагент&quot;</span><span class="operator">,</span> Объект<span class="operator">.</span>Контрагент<span class="operator">)</span><span class="operator">;</span>
+    ДополнительныеПараметры<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;Организация&quot;</span><span class="operator">,</span> Объект<span class="operator">.</span>Организация<span class="operator">)</span><span class="operator">;</span>
+    ПараметрыЗагрузки<span class="operator">.</span>ДополнительныеПараметры <span class="operator">=</span> ДополнительныеПараметры<span class="operator">;</span>
+    Оповещение <span class="operator">=</span> <span class="keyword">Новый</span> ОписаниеОповещения<span class="operator">(</span><span class="string">&quot;ЗагрузитьТоварыИзФайлаЗавершение&quot;</span><span class="operator">,</span> ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+    ЗагрузкаДанныхИзФайлаКлиент<span class="operator">.</span>ПоказатьФормуЗагрузки<span class="operator">(</span>ПараметрыЗагрузки<span class="operator">,</span> Оповещение<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ЗагрузитьТоварыИзФайлаЗавершение<span class="operator">(</span>АдресЗагруженныхДанных<span class="operator">,</span> ДополнительныеПараметры<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="keyword">Если</span> АдресЗагруженныхДанных <span class="operator">=</span> <span class="keyword">Неопределено</span> <span class="keyword">Тогда</span> 
+        <span class="keyword">Возврат</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+    ЗагрузитьТоварыИзФайлаНаСервере<span class="operator">(</span>АдресЗагруженныхДанных<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Процедура</span> ЗагрузитьТоварыИзФайлаНаСервере<span class="operator">(</span>АдресЗагруженныхДанных<span class="operator">)</span>
+    ЗагруженныеДанные <span class="operator">=</span> ПолучитьИзВременногоХранилища<span class="operator">(</span>АдресЗагруженныхДанных<span class="operator">)</span><span class="operator">;</span>
+    ТоварыДобавлены <span class="operator">=</span> <span class="keyword">Ложь</span><span class="operator">;</span>
+    <span class="keyword">Для</span> <span class="keyword">каждого</span> СтрокаТаблицы <span class="keyword">Из</span> ЗагруженныеДанные <span class="keyword">Цикл</span> 
+        <span class="keyword">Если</span> <span class="keyword">Не</span> ЗначениеЗаполнено<span class="operator">(</span>СтрокаТаблицы<span class="operator">.</span>Номенклатура<span class="operator">)</span> <span class="keyword">Тогда</span> 
+            <span class="keyword">Продолжить</span><span class="operator">;</span>
+        <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+        НоваяСтрокаТовары <span class="operator">=</span> Объект<span class="operator">.</span>Товары<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+        НоваяСтрокаТовары<span class="operator">.</span>Номенклатура <span class="operator">=</span> СтрокаТаблицы<span class="operator">.</span>Номенклатура<span class="operator">;</span>
+        НоваяСтрокаТовары<span class="operator">.</span>Цена <span class="operator">=</span> СтрокаТаблицы<span class="operator">.</span>Цена<span class="operator">;</span>
+        НоваяСтрокаТовары<span class="operator">.</span>Количество <span class="operator">=</span> СтрокаТаблицы<span class="operator">.</span>Количество<span class="operator">;</span>
+        НоваяСтрокаТовары<span class="operator">.</span>ЕдиницаИзмерения <span class="operator">=</span> СтрокаТаблицы<span class="operator">.</span>ЕдиницаИзмерения<span class="operator">;</span>
+        ТоварыДобавлены <span class="operator">=</span> <span class="keyword">Истина</span><span class="operator">;</span>
+    <span class="keyword">КонецЦикла</span><span class="operator">;</span>
+    <span class="keyword">Если</span> ТоварыДобавлены <span class="keyword">Тогда</span>
+        Модифицированность <span class="operator">=</span> <span class="keyword">Истина</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<a name="issogl3_табличный_макет_для_загрузки_данных"><h4>Табличный макет для загрузки данных</h4></a>
+
+<p class="Paragraph0c">Далее при объекте необходимо создать табличный макет с
+именем <span class="Interface">ЗагрузкаИзФайла</span>. Если в объекте
+предусмотрена загрузка в несколько табличных частей, то к макету добавляется
+имя табличной части: <span class="Interface">ЗагрузкаИзФайла&lt;ИмяТабличнойЧасти&gt;</span>.
+</p>
+
+<p class="Paragraph0c">В колонках первой строки макета перечисляются
+представления имен колонок загружаемых данных, а в свойствах ячейки <span class="Interface">Имя</span> следует указать имя колонки таблицы значений с
+загружаемыми данными. </p>
+
+<p class="Paragraph0c">Возможны случаи, когда один реквизит табличной части может
+соответствовать сразу нескольким колонкам загружаемых данных. Например,
+значение реквизита <span class="Interface">Номенклатура</span> табличной части
+может быть заполнено по одной из колонок: <span class="Interface">Штрихкод</span>,
+<span class="Interface">Артикул</span> или <span class="Interface">Наименование</span>.
+В таких случаях в свойствах ячейки макета <span class="Interface">ПараметрРасшифровки</span>
+требуется указать имя реквизита табличной части, с которым связана эта колонка.
+Таким образом, для колонок <span class="Interface">Штрихкод</span>, <span class="Interface">Артикул</span> и <span class="Interface">Наименование</span> в
+свойстве ячейки <span class="Interface">ПараметрРасшифровки</span> указывается <span class="Interface">Номенклатура</span>. </p>
+
+<p class="Paragraph0c">В свойстве <span class="Interface">Примечание</span> каждой
+колонки первой строки макета рекомендуется написать подсказку о назначении и
+типе этой колонки. Например, в колонке <span class="Interface">Артикул</span>
+может быть указано примечание: «Артикул товара (не более 20 символов)».</p>
+
+<p class="Paragraph0c">См. пример макета для загрузки данных в документе <span class="Interface">_ДемоСчетНаОплатуПокупателю</span>.</p>
+
+<p class="Paragraph0c">Также имеется возможность динамически создавать шаблон с
+нужным набором колонок для загрузки данных в табличные части объектов.
+Подробнее см. в разделе «<a href="#_особые_случаи_внедрения_1">Особые случаи внедрения подсистемы</a>».</p>
+
+<a name="issogl3_процедуры_в_модуле_менеджера_документа"><h4>Процедуры в модуле менеджера документа</h4></a>
+
+<p class="Paragraph0c">В модуле менеджера документа добавить экспортную процедуру
+<span class="Interface">СопоставитьЗагружаемыеДанныеИзФайла</span>, в которой
+реализовать логику сопоставления загружаемых данных с данными в информационной
+базе:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Производит сопоставление данных, загружаемых в табличную часть ПолноеИмяТабличнойЧасти,</span>
+<span class="comment">// с данными в ИБ, и заполняет параметры АдресТаблицыСопоставления и СписокНеоднозначностей.</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//   ПолноеИмяТабличнойЧасти   – Строка – полное имя табличной части, в которую загружаются данные.</span>
+<span class="comment">//   АдресЗагружаемыхДанных    – Строка – адрес временного хранилища с таблицей значений, в которой</span>
+<span class="comment">//                                          находятся загруженные данные из файла. Состав колонок:</span>
+<span class="comment">//     * Идентификатор – Число – порядковый номер строки;</span>
+<span class="comment">//     * остальные колонки соответствуют колонкам макета ЗагрузкаИзФайла.</span>
+<span class="comment">//   АдресТаблицыСопоставления – Строка – адрес временного хранилища с пустой таблицей значений,</span>
+<span class="comment">//                                                являющейся копией табличной части документа, </span>
+<span class="comment">//                                        которую необходимо заполнить из таблицы АдресЗагружаемыхДанных.</span>
+<span class="comment">//   СписокНеоднозначностей – ТаблицаЗначений – список неоднозначных значений, для которых в ИБ имеется несколько подходящих вариантов.</span>
+<span class="comment">//       * Колонка       – Строка – имя колонки, в которой была обнаружена неоднозначность;</span>
+<span class="comment">//       * Идентификатор – Число  – идентификатор строки, в которой была обнаружена неоднозначность.</span>
+<span class="comment">//   ДополнительныеПараметры   – ЛюбойТип – Любые дополнительные сведения.</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> СопоставитьЗагружаемыеДанные<span class="operator">(</span>ПолноеИмяТабличнойЧасти<span class="operator">,</span> АдресЗагружаемыхДанных<span class="operator">,</span> АдресТаблицыСопоставления<span class="operator">,</span> СписокНеоднозначностей<span class="operator">,</span> ДополнительныеПараметры<span class="operator">)</span> <span class="keyword">Экспорт</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">При сопоставлении данных возможны неоднозначные ситуации,
+когда по значениям колонок исходных (загружаемых) данных находятся сразу
+несколько подходящих объектов информационной базы и поэтому невозможно
+однозначно определить, какой именно объект информационной базы должен быть
+присвоен реквизиту текущей строки табличной части. Для разрешения
+неоднозначностей требуется реализовать экспортную процедуру <span class="Interface">ЗаполнитьСписокНеоднозначностей</span>: </p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Возвращает список подходящих объектов ИБ для неоднозначного значения ячейки.</span>
+<span class="comment">// </span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//   ПолноеИмяТабличнойЧасти  – Строка – Полное имя табличной части, в которую загружаются данные.</span>
+<span class="comment">// ИмяКолонки               – Строка – Имя колонки, в который возникла неоднозначность. </span>
+<span class="comment">//  СписокНеоднозначностей    – Массив  – Массив для заполнения с неоднозначными данными.</span>
+<span class="comment">//  ЗагружаемыеЗначенияСтрока – Строка  – Загружаемые данные, на основании которых возникла неоднозначность.</span>
+<span class="comment">//  ДополнительныеПараметры   – ЛюбойТип – Любые дополнительные сведения</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> ЗаполнитьСписокНеоднозначностей<span class="operator">(</span>ПолноеИмяТабличнойЧасти<span class="operator">,</span> СписокНеоднозначностей<span class="operator">,</span> ИмяКолонки<span class="operator">,</span> ЗагружаемыеЗначенияСтрока<span class="operator">,</span> ДополнительныеПараметры<span class="operator">)</span> <span class="keyword">Экспорт</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">См. пример реализации в документе <span class="Interface">_ДемоСчетНаОплатуПокупателю</span>.</p>
+
+<a name="_особые_случаи_внедрения_1"></a><a name="issogl2_особые_случаи_внедрения_подсистемы"><h3>Особые случаи внедрения подсистемы</h3></a>
+
+<a name="issogl3_собственный_алгоритм_загрузки_данных"><h4>Собственный алгоритм загрузки данных</h4></a>
+
+<p class="Paragraph0c">Если для загрузки элементов справочника недостаточно
+стандартных средств, можно предусмотреть собственный алгоритм загрузки. Для
+этого требуется: </p>
+
+<p class="Number81">1. 
+В справочнике создать табличный макет с именем <span class="Interface">ЗагрузкаИзФайла</span>, в котором определить состав колонок.
+Для быстрого создания макета рекомендуется запустить конфигурацию и в режиме <span class="Interface">1С:Предприятие</span> выполнить команду по загрузке данных в
+этот справочник. Затем на шаге ввода данных в таблицу сохранить бланк для
+заполнения в MXL-файл и использовать в качестве заготовки для макета. Для
+загрузки контактной информации и дополнительных сведений в справочник в макете
+следует определить специальные колонки <span class="Interface">&lt;Контактная
+информация&gt;</span> и <span class="Interface">&lt;Дополнительные сведения&gt;</span>
+обозначающие место, где будут автоматически добавлены колонки с видами
+контактной информации объекта и его дополнительными реквизитами и свойствами.</p>
+
+<p class="Number81">2. 
+В модуль менеджера справочника реализовать три
+экспортные процедуры: <span class="Interface">ОпределитьПараметрыЗагрузкиДанныхИзФайла</span>,
+<span class="Interface">СопоставитьЗагружаемыеДанныеИзФайла</span> и <span class="Interface">ЗагрузитьИзФайла</span>. В них реализовать логику сопоставления
+и загрузки данных в реквизиты справочника.</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Устанавливает параметры загрузки данных из файла</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//     Параметры – Структура – Список параметров. Поля: </span>
+<span class="comment">//         * Заголовок – Строка – Заголовок окна </span>
+<span class="comment">//         * ОбязательныеКолонки -  Массив – Список имен колонок, обязательных для заполнения</span>
+<span class="comment">//         * ТипДанныхКолонки – Соответствие, Ключ – Имя колонки, Значение – Описание типа данных </span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> ОпределитьПараметрыЗагрузкиДанныхИзФайла<span class="operator">(</span>Параметры<span class="operator">)</span> <span class="keyword">Экспорт</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="comment">// Производит сопоставление загружаемых данных с данными в ИБ.</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//   ЗагружаемыеДанные – ТаблицаЗначений – таблица значений с загружаемыми данными:</span>
+<span class="comment">//     * СопоставленныйОбъект – СправочникСсылка – Ссылка на сопоставленный объект. Заполняется внутри процедуры</span>
+<span class="comment">//     * &lt;другие колонки&gt;     – Произвольный – Состав колонок соответствует макету &quot;ЗагрузкаИзФайла&quot;</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> СопоставитьЗагружаемыеДанныеИзФайла<span class="operator">(</span>ЗагружаемыеДанные<span class="operator">)</span> <span class="keyword">Экспорт</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="comment">// Загрузка данных из файла</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//   ЗагружаемыеДанные – ТаблицаЗначений с колонками:</span>
+<span class="comment">//     * СопоставленныйОбъект         – СправочникСсылка – Ссылка на сопоставленный объект</span>
+<span class="comment">//     * РезультатСопоставленияСтроки – Строка       – Cтатусом загрузки, возможны варианты: Создан, Обновлен, Пропущен   </span>
+<span class="comment">//     * ОписаниеОшибки               – Строка       – расшифровка ошибки загрузки данных</span>
+<span class="comment">//     * Идентификатор                – Число        – Уникальный номер строки </span>
+<span class="comment">//     * &lt;другие колонки&gt;             – Произвольный – Строки загружаемого файла в соответствии с макетом</span>
+<span class="comment">// ПараметрыЗагрузки                  – Структура    – Параметры загрузки</span>
+<span class="comment">//     * СоздаватьНовые               – Булево       – Требуется ли создавать новые элементы справочника</span>
+<span class="comment">//     * ОбновлятьСуществующие        – Булево       – Требуется ли обновлять элементы справочника</span>
+<span class="comment">// Отказ                              – Булево       – Отмена загрузки</span>
+<span class="keyword">Процедура</span> ЗагрузитьИзФайла<span class="operator">(</span>ЗагружаемыеДанные<span class="operator">,</span> ПараметрыЗагрузки<span class="operator">,</span> Отказ<span class="operator">)</span> <span class="keyword">Экспорт</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">См. пример реализации в справочнике <span class="Interface">_ДемоНоменклатура</span>
+в демонстрационной конфигурации.</p>
+
+<a name="issogl3_программное_создание_табличного_макета_для_загрузки_данных_в_табличную_часть"><h4>Программное создание табличного макета для загрузки данных в табличную часть</h4></a>
+
+<p class="Paragraph0c">В случаях, когда набор колонок в шаблоне не статичен, а определяется
+динамически (например, зависит от текущих значений реквизитов объекта, статуса
+документа, значений функциональных опций и т.п.), есть возможность программно
+определить состав колонок табличного макета. </p>
+
+<p class="Paragraph0c">Для этого можно воспользоваться следующими функциями
+программного интерфейса:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">СформироватьОписаниеКолонок</span>
+общего модуля <span class="Interface">ЗагрузкаДанныхИзФайла</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ОписаниеКолонкиМакета</span>
+и <span class="Interface">КолонкаМакета</span> общего модуля <span class="Interface">ЗагрузкаДанныхИзФайлаКлиентСервер</span>.</p>
+
+<p class="Paragraph0c">Пример реализации для табличной части <span class="Interface">Аналоги</span> документа <span class="Interface">_ДемоНоменклатура</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ЗагрузитьТоварыИзФайла<span class="operator">(</span>Команда<span class="operator">)</span>
+    ПараметрыЗагрузки <span class="operator">=</span> ЗагрузкаДанныхИзФайлаКлиент<span class="operator">.</span>ПараметрыЗагрузкиДанных<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    ПараметрыЗагрузки<span class="operator">.</span>ПолноеИмяТабличнойЧасти <span class="operator">=</span> <span class="string">&quot;_ДемоНоменклатура.Аналоги&quot;</span><span class="operator">;</span>
+    ПараметрыЗагрузки<span class="operator">.</span>Заголовок <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Загрузка списка аналогов из файла'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Описание колонок для макета загрузки комплектации</span>
+    ПараметрыЗагрузки<span class="operator">.</span>КолонкиМакета <span class="operator">=</span> ОписаниеКолонокМакетаДляЗагрузкиАналогов<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Оповещение <span class="operator">=</span> <span class="keyword">Новый</span> ОписаниеОповещения<span class="operator">(</span><span class="string">&quot;ЗагрузитьАналогиИзФайлаЗавершение&quot;</span><span class="operator">,</span> ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+    ЗагрузкаДанныхИзФайлаКлиент<span class="operator">.</span>ПоказатьФормуЗагрузки<span class="operator">(</span>ПараметрыЗагрузки<span class="operator">,</span> Оповещение<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Функция</span> ОписаниеКолонокМакетаДляЗагрузкиАналогов<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    КолонкиМакета <span class="operator">=</span> ЗагрузкаДанныхИзФайла<span class="operator">.</span>СформироватьОписаниеКолонок<span class="operator">(</span>Объект<span class="operator">.</span>Аналоги<span class="operator">)</span><span class="operator">;</span>
+    ЗагрузкаДанныхИзФайлаКлиентСервер<span class="operator">.</span>УдалитьКолонкуМакета<span class="operator">(</span><span class="string">&quot;Аналог&quot;</span><span class="operator">,</span> КолонкиМакета<span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">Если</span> Объект<span class="operator">.</span>ВидНоменклатуры<span class="operator">.</span>Наименование <span class="operator">=</span> <span class="string">&quot;Услуга&quot;</span> <span class="keyword">Тогда</span>
+        <span class="comment">// У услуг нет штрихкода</span>
+        Колонка <span class="operator">=</span> ЗагрузкаДанныхИзФайлаКлиентСервер<span class="operator">.</span>ОписаниеКолонкиМакета<span class="operator">(</span><span class="string">&quot;ШтрихкодАртикул&quot;</span><span class="operator">,</span> ОбщегоНазначения<span class="operator">.</span>ОписаниеТипаСтрока<span class="operator">(</span><span class="number">20</span><span class="operator">)</span><span class="operator">,</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Артикул'&quot;</span><span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">Иначе</span>
+        Колонка <span class="operator">=</span> ЗагрузкаДанныхИзФайлаКлиентСервер<span class="operator">.</span>ОписаниеКолонкиМакета<span class="operator">(</span><span class="string">&quot;ШтрихкодАртикул&quot;</span><span class="operator">,</span> ОбщегоНазначения<span class="operator">.</span>ОписаниеТипаСтрока<span class="operator">(</span><span class="number">20</span><span class="operator">)</span><span class="operator">,</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Штрихкод и Артикул'&quot;</span><span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+    Колонка<span class="operator">.</span>ОбязательнаДляЗаполнения <span class="operator">=</span> <span class="keyword">Истина</span><span class="operator">;</span>
+    Колонка<span class="operator">.</span>Позиция <span class="operator">=</span> <span class="number">1</span><span class="operator">;</span>
+    Колонка<span class="operator">.</span>Группа <span class="operator">=</span> <span class="string">&quot;Номенклатура&quot;</span><span class="operator">;</span>
+    Колонка<span class="operator">.</span>Родитель <span class="operator">=</span> <span class="string">&quot;Аналог&quot;</span><span class="operator">;</span>
+    КолонкиМакета<span class="operator">.</span>Добавить<span class="operator">(</span>Колонка<span class="operator">)</span><span class="operator">;</span>
+    Колонка <span class="operator">=</span> ЗагрузкаДанныхИзФайлаКлиентСервер<span class="operator">.</span>ОписаниеКолонкиМакета<span class="operator">(</span><span class="string">&quot;Наименование&quot;</span><span class="operator">,</span> ОбщегоНазначения<span class="operator">.</span>ОписаниеТипаСтрока<span class="operator">(</span><span class="number">100</span><span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+    Колонка<span class="operator">.</span>Группа <span class="operator">=</span> <span class="string">&quot;Номенклатура&quot;</span><span class="operator">;</span>
+    Колонка<span class="operator">.</span>Родитель <span class="operator">=</span> <span class="string">&quot;Аналог&quot;</span><span class="operator">;</span>
+    Колонка<span class="operator">.</span>Позиция <span class="operator">=</span> <span class="number">2</span><span class="operator">;</span>
+    КолонкиМакета<span class="operator">.</span>Добавить<span class="operator">(</span>Колонка<span class="operator">)</span><span class="operator">;</span>
+    Колонка <span class="operator">=</span> ЗагрузкаДанныхИзФайлаКлиентСервер<span class="operator">.</span>КолонкаМакета<span class="operator">(</span><span class="string">&quot;Совместимость&quot;</span><span class="operator">,</span> КолонкиМакета<span class="operator">)</span><span class="operator">;</span>
+    Колонка<span class="operator">.</span>Позиция <span class="operator">=</span> <span class="number">3</span><span class="operator">;</span>
+    <span class="keyword">Возврат</span> КолонкиМакета<span class="operator">;</span>
+<span class="keyword">КонецФункции</span>    </pre>
+
+<p class="Paragraph0c">См. полностью пример реализации в справочнике <span class="Interface">_ДемоНоменклатура</span> в демонстрационной конфигурации.</p>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Objectname">Таблица 3.31.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="MsoListNumber">1.   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПолныеПрава </span>(из
+  подсистемы «Базовая функциональность»)</p>
+  <p class="TextinTable81">Загрузка данных из файлов в справочники</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Для загрузки данных в табличные части документов не
+требуются какие-либо дополнительные роли. Команды загрузки доступны тем
+пользователям, у которых есть права на редактирование самого документа.</p>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<a name="issogl2_разработка_дополнительных_обработок_для_загрузки_данных"><h3>Разработка дополнительных обработок для загрузки данных</h3></a>
+
+<p class="Paragraph0c">Для расширения возможностей загрузки данных из файла в
+справочники можно также использовать средства подсистемы «Дополнительные отчеты
+и обработки». </p>
+
+<p class="Paragraph0c">Надо создать внешнюю обработку согласно требованиям
+раздела «<A href="3.14. _25E4_25EE_25EF_25EE_25EB_25ED_25E8_25F2_25E5_25EB_25FC_25ED_25FB_25E5 _25EE_25F2_25F7_25E5_25_03D6BEB1F3#_дополнительные_отчеты_и">Дополнительные
+отчеты и обработки</a>». Затем в функции <span class="Interface">СведенияОВнешнейОбработке</span>
+модуля объекта обработки описать параметры команды. Например, для добавления
+варианта загрузки <span class="Interface">Демо: Контрагенты (Юридические лица с
+контактной информацией)</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Возвращает сведения о внешней обработке.</span>
+<span class="keyword">Функция</span> СведенияОВнешнейОбработке<span class="operator">(</span><span class="operator">)</span> <span class="keyword">Экспорт</span>
+    ПараметрыРегистрации <span class="operator">=</span> ДополнительныеОтчетыИОбработки<span class="operator">.</span>СведенияОВнешнейОбработке<span class="operator">(</span><span class="string">&quot;2.2.3.1&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    ПараметрыРегистрации<span class="operator">.</span>Вид <span class="operator">=</span> ДополнительныеОтчетыИОбработкиКлиентСервер<span class="operator">.</span>ВидОбработкиДополнительнаяОбработка<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    ПараметрыРегистрации<span class="operator">.</span>Версия <span class="operator">=</span> <span class="string">&quot;1.0&quot;</span><span class="operator">;</span>
+    НоваяКоманда <span class="operator">=</span> ПараметрыРегистрации<span class="operator">.</span>Команды<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Представление <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Демо: Контрагенты (Юридические лица с контактной информацией)'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Использование <span class="operator">=</span> ДополнительныеОтчетыИОбработкиКлиентСервер<span class="operator">.</span>ТипКомандыЗагрузкаДанныхИзФайла<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Модификатор   <span class="operator">=</span> Метаданные<span class="operator">.</span>Справочники<span class="operator">.</span>_ДемоКонтрагенты<span class="operator">.</span>ПолноеИмя<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Идентификатор <span class="operator">=</span> <span class="string">&quot;ЮрЛицаКонтрагентов&quot;</span><span class="operator">;</span>
+    <span class="keyword">Возврат</span> ПараметрыРегистрации<span class="operator">;</span>
+<span class="keyword">КонецФункции</span></pre>
+
+<p class="Paragraph0c">В модуль объекта обработки разместить экспортные процедуры
+<span class="Interface">ОпределитьПараметрыЗагрузкиДанныхИзФайла</span>,<span class="Interface"> </span>где переопределяются настройки загрузки по умолчанию, и<span class="Interface"> СопоставитьЗагружаемыеДанныеИзФайла</span> и <span class="Interface">ЗагрузитьИзФайла</span>, в которых реализовать логику
+сопоставления и загрузки данных в реквизиты справочника:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Определяет параметры загрузки данных из файла.</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//   ИдентификаторКоманды – Строка – Имя команды, определенное в функции СведенияОВнешнейОбработке().</span>
+<span class="comment">//   ПараметрыЗагрузки – Структура – Настройки загрузки данных:</span>
+<span class="comment">//       * ИмяМакетаСШаблоном – Строка – Имя макета с шаблоном загружаемых данных.</span>
+<span class="comment">//           По умолчанию используется макет &quot;ЗагрузкаИзФайла&quot;.</span>
+<span class="comment">//       * ОбязательныеКолонкиМакета - Массив - Список имен колонок обязательных для заполнения.</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> ОпределитьПараметрыЗагрузкиДанныхИзФайла<span class="operator">(</span>ИдентификаторКоманды<span class="operator">,</span> ПараметрыЗагрузки<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="keyword">Если</span> ИдентификаторКоманды <span class="operator">=</span> <span class="string">&quot;ЮрЛицаКонтрагентов&quot;</span> <span class="keyword">Тогда</span>
+        ПараметрыЗагрузки<span class="operator">.</span>ИмяМакетаСШаблоном <span class="operator">=</span> <span class="string">&quot;ЗагрузкаИзФайлКонтрагенты&quot;</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="comment">// Производит сопоставление данных, загружаемых из файла, с данными в информационной базе</span>
+<span class="comment">//</span>
+<span class="comment">//   ИдентификаторКоманды – Строка – Идентификатор команды </span>
+<span class="comment">//   ЗагружаемыеДанные – ТаблицаЗначений – таблица значений с загружаемыми данными:</span>
+<span class="comment">//     * СопоставленныйОбъект – СправочникСсылка.Ссылка – Ссылка на сопоставленный объект. Заполняется внутри процедуры</span>
+<span class="comment">//     * &lt;другие колонки&gt;    – Строка – Состав колонок соответствует макету &quot;ЗагрузкаИзФайла&quot;</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> СопоставитьЗагружаемыеДанныеИзФайла<span class="operator">(</span>ИдентификаторКоманды<span class="operator">,</span> ЗагружаемыеДанные<span class="operator">)</span> <span class="keyword">Экспорт</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="comment">// Производит загрузку строки сопоставленных данных в элемент справочника.</span>
+<span class="comment">//</span>
+<span class="comment">//   ИдентификаторКоманды – Строка – Идентификатор команды </span>
+<span class="comment">//   ЗагружаемыеДанные – Структура – Ключ – название колонки, Значение – Данные ячейки</span>
+<span class="comment">//     * СопоставленныйОбъект – СправочникСсылка.Ссылка – Ссылка на сопоставленный объект</span>
+<span class="comment">//     * &lt;другие колонки&gt;    – Строка – Строки загружаемого файла </span>
+<span class="comment">//   ПараметрыЗагрузки – Структура – Параметры с пользовательскими установками загрузки данных</span>
+<span class="comment">//        * Обновлять – Булево – Требуется ли создавать новые объекты </span>
+<span class="comment">//        * Создавать – Булево – Требуется ли обновлять новые объекты </span>
+<span class="comment">// Отказ                      – Булево       – Отмена загрузки</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> ЗагрузитьИзФайла<span class="operator">(</span>ИдентификаторКоманды<span class="operator">,</span> ЗагружаемыеДанные<span class="operator">,</span> ПараметрыЗагрузки<span class="operator">,</span> Отказ<span class="operator">)</span> <span class="keyword">Экспорт</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">См. пример обработки загрузки данных в демонстрационной
+конфигурации: раздел <span class="Interface">Администрирование – Печатные формы,
+отчеты и обработки – Дополнительные отчеты и обработки – Загрузка юридических
+лиц (с контактной информацией)</span>.</p>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Для настройки обмена данными никаких действий не
+требуется, так как подсистема не предоставляет собственных данных.</p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

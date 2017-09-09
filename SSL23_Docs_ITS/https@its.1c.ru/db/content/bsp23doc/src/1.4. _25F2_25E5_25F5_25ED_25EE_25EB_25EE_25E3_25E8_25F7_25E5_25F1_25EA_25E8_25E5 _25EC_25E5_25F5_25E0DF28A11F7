@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>1.4. &#1058;&#1077;&#1093;&#1085;&#1086;&#1083;&#1086;&#1075;&#1080;&#1095;&#1077;&#1089;&#1082;&#1080;&#1077; &#1084;&#1077;&#1093;&#1072;&#1085;&#1080;&#1079;&#1084;&#1099; &#1080; &#1087;&#1088;&#1086;&#1075;&#1088;&#1072;&#1084;&#1084;&#1085;&#1099;&#1077; &#1080;&#1085;&#1090;&#1077;&#1088;&#1092;&#1077;&#1081;&#1089;&#1099;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="1.4. _25F2_25E5_25F5_25ED_25EE_25EB_25EE_25E3_25E8_25F7_25E5_25F1_25EA_25E8_25E5 _25EC_25E5_25F5_25E00C6175D20" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<h1>1.4. Технологические механизмы и программные интерфейсы</h1>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Подсистема</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Ключевые функции</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="a1">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Базовая функциональность</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Процедуры и функции общего назначения, по
+  работе со строками, с другими типами данных, с журналом регистрации и т. п.</p>
+  <p class="BulletTab">&#9679; 
+  Стандартные роли (<span class="Interface">Администрирование</span>,
+  <span class="Interface">ПолныеПрава</span>, <span class="Interface">ЗапускТонкогоКлиента</span>
+  и др.).</p>
+  <p class="BulletTab">&#9679; 
+  Автоматическое отслеживание переименований
+  объектов метаданных.</p>
+  <p class="BulletTab">&#9679; 
+  Базовые сервисные возможности администратора
+  программы (журнал регистрации, настройка заголовка окна программы и другое).</p>
+  <p class="BulletTab">&#9679; 
+  Программный интерфейс для вывода динамически
+  подключаемых команд и интеграции с расширениями.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Внешние пользователи: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Тесная интеграция: <span class="Interface">Нет</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Заполнение объектов</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Вывод команд заполнения в подменю <span class="Interface">Заполнить</span> в произвольных формах, списках и журналах
+  объектов программы.</p>
+  <p class="BulletTab">&#9679; 
+  Автоматический вывод внешних команд заполнения
+  из подключенных расширений конфигурации.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Внешние пользователи: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Тесная интеграция: <span class="Interface">Да</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">3. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Запрет редактирования реквизитов объектов</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Программный интерфейс для проверки
+  обязательного заполнения некоторых реквизитов объектов, которые определяют
+  характер данного объекта (условно называются «ключевыми» реквизитами).</p>
+  <p class="BulletTab">&#9679; 
+  Запрет редактирования «ключевых» реквизитов
+  записанных объектов.</p>
+  <p class="BulletTab">&#9679; 
+  Проверка возможности изменения «ключевых»
+  реквизитов пользователем, имеющим на это права.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="BulletTab">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="BulletTab">Внешние пользователи: <span class="Interface">Нет</span>.</p>
+  <p class="BulletTab">Тесная интеграция: <span class="Interface">Да</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">4. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Обновление версии ИБ</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Выполнение первоначального заполнения и
+  обновления данных информационной базы при изменении версии конфигурации.</p>
+  <p class="BulletTab">&#9679; 
+  Отображение информации об изменениях в новой
+  версии конфигурации.</p>
+  <p class="BulletTab">&#9679; 
+  Программный интерфейс для выполнения
+  монопольных, оперативных и отложенных обработчиков обновления.</p>
+  <p class="TextinTable81"> </p>
+  <p class="BulletTab">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="BulletTab">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="BulletTab">Внешние пользователи: <span class="Interface">Нет</span>.</p>
+  <p class="BulletTab">Тесная интеграция: <span class="Interface">Нет</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">5. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Префиксация объектов</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Автоматическое назначение префиксов объектам с
+  учетом настроек программы.</p>
+  <p class="BulletTab">&#9679; 
+  Префиксация объектов в разрезах информационных
+  баз и элементов справочника <span class="Interface">Организации</span>.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="BulletTab">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="BulletTab">Внешние пользователи: <span class="Interface">Нет</span>.</p>
+  <p class="BulletTab">Тесная интеграция: <span class="Interface">Да</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">6. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Работа в модели сервиса</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Включает в себя ряд подсистем, необходимых для работы
+  конфигурации в модели сервиса:</p>
+  <p class="BulletTab">&#9679; 
+  Поддержка разделения данных (выделение общих
+  классификаторов и настроек программы, которые используются в целом для всей
+  информационной базы).</p>
+  <p class="BulletTab">&#9679; 
+  Последовательное выполнение заданий в разных
+  областях данных для снижения нагрузки на сервер «1С:Предприятия».</p>
+  <p class="BulletTab">&#9679; 
+  Автоматическое создание резервных копий
+  областей данных по расписанию.</p>
+  <p class="BulletTab">&#9679; 
+  Интеграция конфигурации с другими компонентами
+  сервиса – менеджером сервиса и сервисом поставляемых данных:</p>
+  <p class="BulltTab2">&#9679; 
+  механизм обмена сообщениями для
+  гарантированной доставки сообщений между различными информационными системами;</p>
+  <p class="BulltTab2">&#9679; 
+  синхронизация списков и прав пользователей в
+  менеджере сервиса и в приложении;</p>
+  <p class="BulltTab2">&#9679; 
+  управление областями данных из менеджера
+  сервиса.</p>
+  <p class="TextinTable81">Также включает в себя ряд подсистем, не
+  предназначенных для самостоятельного использования. Их необходимо включать в
+  конфигурацию только совместно с соответствующей основной подсистемой. Например,
+  если к внедрению отмечена подсистема «Валюты», следует также отметить и подсистему
+  «Валюты в модели сервиса».</p>
+  <p class="TextinTable81"> </p>
+  <p class="BulletTab">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="BulletTab">Работа в локальном режиме: <span class="Interface">Нет</span>.</p>
+  <p class="BulletTab">Внешние пользователи: <span class="Interface">Нет</span>.</p>
+  <p class="BulletTab">Тесная интеграция: <span class="Interface">Да</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">7. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Файловые функции</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Технологическая подсистема, не предназначенная
+  для самостоятельного использования, – только совместно с подсистемами «Работа
+  с файлами» и/или «Присоединенные файлы».</p>
+  <p class="BulletTab">&#9679; 
+  Общие функции и базовые пользовательские
+  интерфейсы по работе с файлами, хранение файлов в томах на диске, функции для
+  поддержки РИБ и создания первоначального образа информационной базы.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="BulletTab">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="BulletTab">Внешние пользователи: <span class="Interface">Нет</span>.</p>
+  <p class="BulletTab">Тесная интеграция: <span class="Interface">Нет</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">8. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Центр мониторинга</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Собирает обезличенную статистику по
+  использованию конфигурации.</p>
+  <p class="BulletTab">&#9679; 
+  Передает обезличенную статистику в единый
+  центр контроля качества.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">Работа в модели сервиса: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Работа в локальном режиме: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Работа в РИБ: <span class="Interface">Нет</span>.</p>
+  <p class="TextinTable81">Внешние пользователи: <span class="Interface">Да</span>.</p>
+  <p class="TextinTable81">Тесная интеграция: <span class="Interface">Нет</span></p>
+  </td>
+ </tr>
+</table>
+	</body>
+</html>

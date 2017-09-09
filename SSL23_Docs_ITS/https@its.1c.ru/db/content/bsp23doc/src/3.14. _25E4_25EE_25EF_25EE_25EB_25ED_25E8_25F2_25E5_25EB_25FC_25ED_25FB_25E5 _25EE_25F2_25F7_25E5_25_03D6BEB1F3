@@ -1,0 +1,1385 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.14. &#1044;&#1086;&#1087;&#1086;&#1083;&#1085;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1099;&#1077; &#1086;&#1090;&#1095;&#1077;&#1090;&#1099; &#1080; &#1086;&#1073;&#1088;&#1072;&#1073;&#1086;&#1090;&#1082;&#1080;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.14. _25E4_25EE_25EF_25EE_25EB_25ED_25E8_25F2_25E5_25EB_25FC_25ED_25FB_25E5 _25EE_25F2_25F7_25E5_25F2_25FB _25E8 _25EE_25E1_25F0_25E0_25E1_25EE_25F2_25EA_25E8.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_дополнительные_отчеты_и"></a><h1>3.14. Дополнительные отчеты и обработки</h1>
+
+<p class="Paragraph0c">Подсистема «Дополнительные отчеты и обработки»
+предназначена для подключения и использования дополнительных (внешних) отчетов
+и обработок к информационной базе в режиме <span class="Interface">1С:Предприятие</span>.
+</p>
+
+<p class="Paragraph0c">В зависимости от назначения дополнительные отчеты и
+обработки бывают глобальными, если используются в целом для конфигурации, либо
+назначаемыми, если используются с конкретными типами объектов информационной
+базы. Назначаемые обработки делятся по своей функциональности на четыре типа:
+для заполнения объекта, печатные формы, для создания на основании и отчеты. </p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Paragraph0c">Для использования подсистемы в конфигурации необходимо
+поместить справочник <span class="Interface">ДополнительныеОтчетыИОбработки</span>
+в командный интерфейс администратора. Затем выполнить шаги, описанные ниже.</p>
+
+<a name="issogl2_настройка_назначаемых_дополнительных_отчетов_и_обработок"><h3>Настройка назначаемых дополнительных отчетов и обработок</h3></a>
+
+<p class="Paragraph0c">Состав объектов метаданных, к которым можно подключать
+дополнительные печатные формы, определяется при внедрении подсистемы «<span class="MsoHyperlink"><A href="3.33. _25EF_25E5_25F7_25E0_25F2_25FC.htm@_=1504708101#_подготовительные_действия">Печать</a>»</span>.
+Для остальных типов назначаемых дополнительных отчетов и обработок (<span class="Interface">Заполнение</span>, <span class="Interface">Ввод на основании</span>
+и <span class="Interface">Отчет</span>) необходимо принять решение по поводу
+состава объектов метаданных, к которым они должны подключаться. Например, это
+могут быть все справочники и документы конфигурации. Эти объекты метаданных необходимо
+указать в свойстве <span class="Interface">Тип </span>определяемого типа <span class="Interface">ОбъектСДополнительнымиКомандами</span>. </p>
+
+<p class="Paragraph0c">Для каждого определенного выше объекта метаданных
+необходимо внести изменения во все его формы объекта и списка. В обработчик <span class="Interface">ПриСозданииНаСервере</span> формы добавить фрагмент кода:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.ДополнительныеОтчетыИОбработки</span>
+ДополнительныеОтчетыИОбработки<span class="operator">.</span>ПриСозданииНаСервере<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="comment">// Конец СтандартныеПодсистемы.ДополнительныеОтчетыИОбработки</span></pre>
+
+<p class="Paragraph0c">В модулях форм объектов, включенных в состав определяемого
+типа <span class="Interface">ОбъектСДополнительнымиКомандами</span>, дополнительно
+добавить код подсистемы:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">#Область ОбработчикиКомандФормы</span>
+<span class="comment">// СтандартныеПодсистемы.ДополнительныеОтчетыИОбработки</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> Подключаемый_ВыполнитьНазначаемуюКоманду<span class="operator">(</span>Команда<span class="operator">)</span>
+    <span class="keyword">Если</span> <span class="keyword">Не</span> ДополнительныеОтчетыИОбработкиКлиент<span class="operator">.</span>ВыполнитьНазначаемуюКомандуНаКлиенте<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> Команда<span class="operator">.</span>Имя<span class="operator">)</span> <span class="keyword">Тогда</span>
+        ДополнительныеОтчетыИОбработкиВыполнитьНазначаемуюКомандуНаСервере<span class="operator">(</span>Команда<span class="operator">.</span>Имя<span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="comment">// Конец СтандартныеПодсистемы.ДополнительныеОтчетыИОбработки</span>
+<span class="preprocessor">#КонецОбласти</span>
+<span class="preprocessor">#Область СлужебныеПроцедурыИФункции</span>
+<span class="comment">// СтандартныеПодсистемы.ДополнительныеОтчетыИОбработки</span>
+<span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Процедура</span> ДополнительныеОтчетыИОбработкиВыполнитьНазначаемуюКомандуНаСервере<span class="operator">(</span>ИмяЭлемента<span class="operator">)</span>
+    ДополнительныеОтчетыИОбработки<span class="operator">.</span>ВыполнитьНазначаемуюКомандуНаСервере<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> ИмяЭлемента<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="comment">// Конец СтандартныеПодсистемы.ДополнительныеОтчетыИОбработки</span>
+<span class="preprocessor">#КонецОбласти</span></pre>
+
+<p class="Paragraph0c">При необходимости можно переопределить расположение
+подменю команд типа <span class="Interface">ЗаполнениеОбъекта</span>. Для этого
+на командную панель формы объекта следует добавить подменю с именем <span class="Interface">ПодменюДополнительныхОбработокЗаполнения</span> и расположить
+его там, где требуется выводить команды заполнения.</p>
+
+<a name="issogl2_настройка_глобальных_дополнительных_отчетов_и_обработок"><h3>Настройка глобальных дополнительных отчетов и обработок</h3></a>
+
+<p class="Number81">1. 
+Необходимо принять решение по поводу места
+размещения в командном интерфейсе конфигурации команд для вызова глобальных
+отчетов и обработок. Рекомендуется размещать такие команды в подсистемах
+верхнего уровня, участвующих в формировании командного интерфейса (разделы
+глобального командного интерфейса).</p>
+
+<p class="Number81">2. 
+Затем для каждого места размещения глобальных дополнительных
+обработок создать общую команду вида <span class="Interface">ДополнительныеОбработки&lt;место_размещения&gt;</span>,
+включить ее в состав функциональной опции <span class="Interface">ИспользоватьДополнительныеОтчетыИОбработки</span>
+и добавить в нее код по шаблону:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ОбработкаКоманды<span class="operator">(</span>ПараметрКоманды<span class="operator">,</span> ПараметрыВыполненияКоманды<span class="operator">)</span>
+    ДополнительныеОтчетыИОбработкиКлиент<span class="operator">.</span>ОткрытьФормуКомандДополнительныхОтчетовИОбработок<span class="operator">(</span>
+        ПараметрКоманды<span class="operator">,</span>
+        ПараметрыВыполненияКоманды<span class="operator">,</span>
+        ДополнительныеОтчетыИОбработкиКлиентСервер<span class="operator">.</span>ВидОбработкиДополнительнаяОбработка<span class="operator">(</span><span class="operator">)</span><span class="operator">,</span>
+        <span class="string">&quot;&lt;Имя раздела&gt;&quot;</span><span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Bullet0">где <span class="Interface">&lt;имя раздела&gt; </span>– имя
+раздела командного интерфейса, в котором размещена команда. Для получения имени
+рабочего стола следует использовать функцию <span class="Interface">ИдентификаторРабочегоСтола</span>
+общего модуля <span class="Interface">ДополнительныеОтчетыИОбработкиКлиентСервер</span>.</p>
+
+<p class="Bullet0">В качестве примера такой команды см. общую команду <span class="Interface">ДополнительныеОбработкиАдминистрирование</span> в
+демонстрационной конфигурации.</p>
+
+<p class="Number81">3. 
+Аналогичным образом для каждого места размещения
+глобальных дополнительных отчетов надо создать общую команду вида <span class="Interface">ДополнительныеОтчеты&lt;место_размещения&gt;</span>, включить
+ее в состав функциональной опции <span class="Interface">ИспользоватьДополнительныеОтчетыИОбработки</span>
+и вставить в нее следующий код:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ОбработкаКоманды<span class="operator">(</span>ПараметрКоманды<span class="operator">,</span> ПараметрыВыполненияКоманды<span class="operator">)</span>
+    ДополнительныеОтчетыИОбработкиКлиент<span class="operator">.</span>ОткрытьФормуКомандДополнительныхОтчетовИОбработок<span class="operator">(</span>
+            ПараметрКоманды<span class="operator">,</span>
+            ПараметрыВыполненияКоманды<span class="operator">,</span>
+            ДополнительныеОтчетыИОбработкиКлиентСервер<span class="operator">.</span>ВидОбработкиДополнительныйОтчет<span class="operator">(</span><span class="operator">)</span><span class="operator">,</span>
+            <span class="string">&quot;&lt;Имя раздела&gt;&quot;</span><span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Bullet0">где <span class="Interface">&lt;имя раздела&gt;</span> – имя
+раздела командного интерфейса, в котором размещена команда. Для получения имени
+рабочего стола следует использовать функцию <span class="Interface">ИдентификаторРабочегоСтола</span>
+общего модуля <span class="Interface">ДополнительныеОтчетыИОбработкиКлиентСервер</span>.</p>
+
+<p class="Bullet0">В качестве примера такой команды см. общую команду <span class="Interface">ДополнительныеОтчетыАдминистрирование</span> в демонстрационной
+конфигурации.</p>
+
+<p class="Number81">4. 
+В переопределяемом модуле <span class="Interface">ДополнительныеОтчетыИОбработкиПереопределяемый</span>
+в процедурах <span class="Interface">ОпределитьРазделыСДополнительнымиОбработками</span>
+и <span class="Interface">ОпределитьРазделыСДополнительнымиОтчетами</span>
+перечислить в виде объектов метаданных разделы, в которых были размещены общие
+команды, созданные на предыдущих шагах. См. пример кода в демонстрационной
+конфигурации.</p>
+
+<a name="issogl2_настройка_необходимости_проведения_документов_перед_формированием_внешних_печатных_форм"><h3>Настройка необходимости проведения документов перед формированием внешних печатных форм</h3></a>
+
+<p class="Paragraph0c">По умолчанию перед формированием любой внешней печатной
+формы проверяется проведенность печатаемых объектов-документов, и если найдется
+хотя бы один непроведенный документ, то пользователю будет выдано соответствующее
+предложение его провести. Если пользователь отказывается это делать, печать не
+выполняется. </p>
+
+<p class="Paragraph0c">Такую проверку можно отключить при внедрении подсистемы.
+Для этого необходимо в общем модуле <span class="Interface">ДополнительныеОтчетыИОбработкиКлиентПереопределяемый</span>
+в процедуре <span class="Interface">ПередВыполнениемКомандыПечатиВнешнейПечатнойФормы</span>
+установить параметру <span class="Interface">СтандартнаяОбработка</span> значение
+<span class="Interface">Ложь</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> ПередВыполнениемКомандыПечатиВнешнейПечатнойФормы<span class="operator">(</span>ПечатаемыеОбъекты<span class="operator">,</span> СтандартнаяОбработка<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    СтандартнаяОбработка <span class="operator">=</span> <span class="keyword">Ложь</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<a name="issogl2_размещение_в_командном_интерфейсе"><h3>Размещение в командном интерфейсе</h3></a>
+
+<p class="Paragraph0c">Если в конфигурации не используется подсистема «Настройки
+программы», то в рабочем месте администратора программы необходимо разместить:</p>
+
+<p class="MsoListBullet">&#9679; 
+константу <span class="Interface">ИспользоватьДополнительныеОтчетыИОбработки</span>.
+При переключении значения константы регулируется возможность использования в
+информационной базе механизмов подсистемы. Если конфигурация адаптируется для
+использования в модели сервиса, отображать команду в форме настроек команды
+нужно только в локальном режиме работы – в модели сервиса управление значением
+константы выполняется централизованно из менеджера сервиса;</p>
+
+<p class="MsoListBullet">&#9679; 
+команду открытия списка справочника <span class="Interface">ДополнительныеОтчетыИОбработки</span>.</p>
+
+<p class="Paragraph0c">См. пример в форме <span class="Interface">ПечатныеФормыОтчетыИОбработки</span>
+обработки <span class="Interface">ПанельАдминистрированияБСП</span>.</p>
+
+<a name="issogl1_особые_случаи_внедрения_подсистемы"><h2>Особые случаи внедрения подсистемы</h2></a>
+
+<p class="MsoListBullet">&#9679; 
+<A href="3.59. _25EE_25F1_25EE_25E1_25FB_25E5 _25F1_25EB_25F3_25F7_25E0_25E8 _25E2_25ED_25E5_25E4_25F0_25E5_20EA087B14A#_внедрение_подсистем_«дополнительные">Внедрение подсистем «Дополнительные отчеты и
+обработки» и «Управление доступом»</a>.</p>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Для настройки прав доступа пользователей к данным подсистемы
+«Дополнительные отчеты и обработки» следует использовать роли, указанные ниже.</p>
+
+<p class="Objectname">Таблица 3.26.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1.</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ДобавлениеИзменениеДополнительныхОтчетовИОбработок</span></p>
+  <p class="TextinTable81">Добавление
+  дополнительных обработок и отчетов в информационную базу; изменение
+  параметров публикации и объектов назначения обработок и отчетов</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">2.</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ЧтениеДополнительныхОтчетовИОбработок</span></p>
+  <p class="TextinTable81">Возможность
+  запуска внешних обработок.</p>
+  <p class="TextinTable81">При совместном использовании с подсистемой «<span class="Interface">Управление доступом</span>» для ограничения доступа к
+  отдельным дополнительным отчетам и обработкам используется вид доступа <span class="Interface">ДополнительныеОтчетыИОбработки</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Дополнительно следует создать вспомогательные роли или
+использовать подходящие роли, существующие в конфигурации, для обеспечения
+доступа к данным, которые не относятся к подсистеме «Дополнительные отчеты и
+обработки», но требуются для работы с ней.</p>
+
+<p class="Objectname">Таблица 3.27.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Вспомогательные роли и их
+   назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="MsoListNumber">1.   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">&lt;ЧтениеГлобальныхДополнительныхОтчетовИОбработок&gt;</span></p>
+  <p class="TextinTable81">Роль с установленным правом просмотра общих команд
+  доступа к глобальным отчетам и обработкам (созданных на шагах 2 и 3 раздела
+  настройки глобальных дополнительных отчетов и обработок). Назначается
+  пользователям вместе с ролью <span class="Interface">ЧтениеДополнительныхОтчетовИОбработок</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Примеры настройки прав доступа пользователей приведены
+ниже.</p>
+
+<p class="Objectname">Таблица 3.28.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Группа пользователей и ее
+   функции</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Состав ролей</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="MsoListNumber">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Администратор
+  дополнительных отчетов и обработок.</p>
+  <p class="TextinTable81">Имеет
+  возможность добавлять новые обработки в конфигурацию, публиковать их для
+  общего использования, задавать объекты назначения и использовать внешние
+  обработки в конфигурации</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">БазовыеПрава</span> (из подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЗапускТонкогоКлиента</span> (из подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ДобавлениеИзменениеДополнительныхОтчетовИОбработок</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="MsoListNumber">2.   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Пользователь
+  с правом выполнения дополнительных отчетов и обработок.</p>
+  <p class="TextinTable81">Имеет
+  возможность запускать обработки на исполнение</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">БазовыеПрава</span> или <span class="Interface">БазовыеПраваВнешнегоПользователя</span>
+  (из подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЗапускТонкогоКлиента</span> (из подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЧтениеДополнительныхОтчетовИОбработок</span>,</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">&lt;ЧтениеГлобальныхДополнительныхОтчетовИОбработок&gt;</span></p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<a name="issogl2_создание_нового_отчета_или_обработки"><h3>Создание нового отчета или обработки</h3></a>
+
+<p class="Paragraph0c">Дополнительные отчеты и обработки могут быть глобальными
+(виды «ДополнительнаяОбработка» и «ДополнительныйОтчет») и назначаемыми (виды
+«ЗаполнениеОбъекта», «Отчет», «ПечатнаяФорма» и «СозданиеСвязанныхОбъектов»).
+Глобальные команды размещаются в глобальном командном интерфейсе. Назначаемые команды
+используются вместе с объектами информационной базы и размещаются в контексте
+тех объектов, для которых они предназначаются. Примеры назначаемых обработок см.
+в справочнике <span class="Interface">Демо: Контрагенты</span> и в документе <span class="Interface">Демо: Счета на оплату покупателям</span> в демонстрационной
+конфигурации. Общую информацию о работе с внешними отчетами и обработками можно
+найти в разделе <a href="../../../v83doc/bookmark/dev/TI000000332" target="_top">5.12.2. «Внешние отчеты и обработки»</a>
+документации к платформе.</p>
+
+<p class="Paragraph0c">В общем виде последовательность создания дополнительной
+обработки (отчета) следующая:</p>
+
+<p class="Number81">1. 
+Создать внешнюю обработку (отчет).</p>
+
+<p class="Number81">2. 
+Регистрация дополнительной обработки в
+информационной базе происходит на основании сведений, которые поставляет сама
+обработка. Эти сведения должны возвращаться в виде структуры в функции <span class="Interface">СведенияОВнешнейОбработке</span> модуля обработки. Поля структуры
+имеют следующее назначение: </p>
+
+<p class="Objectname">Таблица 3.29.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Ключ</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Содержание</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Вид</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Строка, вид обработки, один из возможных: «ДополнительнаяОбработка»,
+  «ДополнительныйОтчет», «ЗаполнениеОбъекта», «Отчет», «ПечатнаяФорма» или «СозданиеСвязанныхОбъектов»</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Назначение</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Массив строк имен объектов метаданных в формате:
+  &lt;ИмяКлассаОбъектаМетаданного&gt;.[ * | &lt;ИмяОбъектаМетаданных&gt;]. </p>
+  <p class="TextinTable81">Например, «Документ.СчетЗаказ» или «Справочник.*».
+  Примечание: параметр имеет смысл только для назначаемых обработок, для глобальных
+  – не используется</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Наименование</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Наименование обработки, которым будет заполнено
+  наименование элемента справочника, краткое описание для идентификации
+  обработки администратором</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Версия</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Версия обработки в формате &lt;старший
+  номер&gt;.&lt;младший номер&gt; используется при загрузке обработок в
+  информационную базу. Например, 1.0</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">БезопасныйРежим</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Принимает значение <span class="Interface">Истина</span>
+  или <span class="Interface">Ложь</span> в зависимости от того, требуется
+  устанавливать или отключать безопасный режим при исполнении обработки
+  (отчета). Если <span class="Interface">Истина</span>, обработка (отчет) будет
+  запущена в безопасном режиме. При этом, в частности, не гарантируется корректная
+  работа дополнительных обработок под пользователями без полных прав в тех
+  случаях, когда обработка вызывает код конфигурации, который не рассчитан на
+  работу в безопасном режиме (в том числе неявно, когда срабатывает код модуля
+  объекта и подписок на события при записи данных). </p>
+  <p class="TextinTable81">Более подробно о безопасном режиме см. документацию к
+  платформе «1С:Предприятие»</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Информация</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Краткая информация по обработке, описание обработки</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Команды</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Команды, поставляемые обработкой. Таблица значений с
+  колонками:</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">Представление</span> –
+  представление команды в пользовательском интерфейсе.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">Идентификатор</span> –
+  идентификатор команды; любая строка, уникальная в пределах данной обработки
+  (отчета)*.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">Использование</span> –
+  вариант запуска команды:</p>
+  <p class="BulltTab2">&#9679; 
+  <span class="Interface">ОткрытиеФормы</span> –
+  открыть форму обработки;</p>
+  <p class="BulltTab2">&#9679; 
+  <span class="Interface">ВызовКлиентскогоМетода</span>
+  – вызвать клиентскую экспортную процедуру из модуля формы обработки;</p>
+  <p class="BulltTab2">&#9679; 
+  <span class="Interface">ВызовСерверногоМетода</span>
+  – вызвать серверную экспортную процедуру из модуля объекта обработки; </p>
+  <p class="BulltTab2">&#9679; 
+  <span class="Interface">СценарийВБезопасномРежиме</span>
+  – вызвать серверную экспортную функцию из модуля объекта для формирования
+  сценария выполнения (специальный вариант запуска для использования
+  программного интерфейса, расширяющего доступные разработчику дополнительной
+  обработки операции, при выполнении дополнительной обработки в безопасном
+  режиме);</p>
+  <p class="BulltTab2">&#9679; 
+  <span class="Interface">ЗаполнениеФормы</span> –
+  из модуля формы объекта вызвать серверную процедуру обработки для заполнения
+  данных формы без записи объекта в базу данных.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ПоказыватьОповещение –
+  Истина</span>, если требуется показать оповещение при начале и при завершении
+  работы обработки. Например, при запуске обработки без открытия формы.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">Модификатор</span> –
+  дополнительный модификатор команды. Используется для дополнительных обработок
+  печатных форм на основе табличных макетов. Для таких команд должен содержать
+  строку <span class="Interface">ПечатьMXL</span> (см. пример в демонстрационной
+  конфигурации).</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЗаменяемыеКоманды</span>
+  – используется для дополнительных обработок печатных форм, содержит
+  идентификаторы стандартных команд печати (строкой, через запятую), которые
+  заменяются обработкой</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ВерсияБСП</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Минимальная версия БСП, на которую рассчитывает код дополнительной
+  обработки. Должна быть задана не ниже 1.2.1.4. </p>
+  <p class="TextinTable81">Номер версии БСП задается в формате «РР.ПП.ВВ.СС» (РР
+  – старший номер редакции; ПП – младший номер редакции; ВВ – номер версии; СС
+  – номер сборки)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Разрешения</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Массив разрешений, предоставляемых дополнительной
+  обработке при использовании программного интерфейса, расширяющего доступные
+  разработчику дополнительной обработки операции, при выполнении дополнительной
+  обработки в безопасном режиме (подробнее см. раздел «<a href="#_расширение_безопасного_режима">Расширение
+  безопасного режима</a>»)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ОпределитьНастройкиФормы</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Булево</span>. Используется для
+  дополнительных отчетов, подключенных к подсистеме «Варианты отчетов» и
+  использующих общую форму отчета (подробнее см. шаг 3).</p>
+  <p class="TextinTable81">Когда <span class="Interface">Истина</span>, то
+  дополнительный отчет имеет программный интерфейс для тесной интеграции с
+  формой отчета, в том числе может переопределять некоторые настройки формы и
+  подписываться на ее события. В этом случае в модуле объекта отчета следует
+  определить процедуру по шаблону:</p>
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">
+// Настройки общей формы отчета подсистемы   &quot;Варианты отчетов&quot;.
+//
+// Параметры:
+//   Форма   - УправляемаяФорма, Неопределено - Форма отчета или форма настроек отчета.
+//         Неопределено, когда вызов без контекста.
+//     КлючВарианта - Строка, Неопределено - Имя предопределенного
+//         или уникальный идентификатор пользовательского варианта отчета.
+//         Неопределено, когда вызов без контекста.
+//     Настройки - Структура - см. возвращаемое значение
+//         ОтчетыКлиентСервер.ПолучитьНастройкиОтчетаПоУмолчанию().
+//
+Процедура ОпределитьНастройкиФормы(Форма,   КлючВарианта, Настройки) Экспорт
+    // Код   процедуры.
+КонецПроцедуры
+</pre>
+  </td>
+ </tr>
+</table>
+
+<p class="Notes">* Для обработок с печатными формами на основе макета табличного
+документа должен содержать список макетов, на основе которых нужно получить
+печатную форму (см. описание параметра <span class="Interface">ИменаМакетов</span>
+процедуры <span class="Interface">УправлениеПечатьюКлиент.ВыполнитьКомандуПечати</span>
+в разделе «<A href="3.33. _25EF_25E5_25F7_25E0_25F2_25FC.htm@_=1504708101#_печать">Печать</a>»).</p>
+
+<p class="Paragraph0c">Пример реализации функции <span class="Interface">СведенияОВнешнейОбработке</span>
+с использованием программного интерфейса:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Функция</span> СведенияОВнешнейОбработке<span class="operator">(</span><span class="operator">)</span> <span class="keyword">Экспорт</span>
+    ПараметрыРегистрации <span class="operator">=</span> ДополнительныеОтчетыИОбработки<span class="operator">.</span>СведенияОВнешнейОбработке<span class="operator">(</span><span class="string">&quot;2.2.2.1&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    ПараметрыРегистрации<span class="operator">.</span>Вид <span class="operator">=</span> ДополнительныеОтчетыИОбработкиКлиентСервер<span class="operator">.</span>ВидОбработки<span class="operator">&lt;</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">&gt;</span><span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    ПараметрыРегистрации<span class="operator">.</span>Версия <span class="operator">=</span> <span class="string">&quot;...&quot;</span><span class="operator">;</span>
+    Команда <span class="operator">=</span> ПараметрыРегистрации<span class="operator">.</span>Команды<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Команда<span class="operator">.</span>Представление <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = '&lt;Представление команды&gt;'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    Команда<span class="operator">.</span>Идентификатор <span class="operator">=</span> <span class="string">&quot;&lt;Имя команды&gt;&quot;</span><span class="operator">;</span>
+    Команда<span class="operator">.</span>Использование <span class="operator">=</span> ДополнительныеОтчетыИОбработкиКлиентСервер<span class="operator">.</span>ТипКоманды<span class="operator">&lt;</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">&gt;</span><span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Команда<span class="operator">.</span>ПоказыватьОповещение <span class="operator">=</span> <span class="operator">&lt;</span>Истина<span class="operator">/</span><span class="keyword">Ложь</span><span class="operator">&gt;</span><span class="operator">;</span>
+    <span class="keyword">Возврат</span> ПараметрыРегистрации<span class="operator">;</span> 
+<span class="keyword">КонецФункции</span></pre>
+
+<p class="Paragraph0c">В этом примере также демонстрируется возможность
+автоматического заполнения параметров <span class="Interface">Наименование</span>
+и <span class="Interface">Информация</span> из метаданных внешней обработки (берутся
+синоним и комментарий соответственно).</p>
+
+<p class="Paragraph0c">Пример реализации функции <span class="Interface">СведенияОВнешнейОбработке</span>
+с ручным определением структуры параметров:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Функция</span> СведенияОВнешнейОбработке<span class="operator">(</span><span class="operator">)</span> <span class="keyword">Экспорт</span>
+    ПараметрыРегистрации <span class="operator">=</span> <span class="keyword">Новый</span> Структура<span class="operator">;</span>
+    ПараметрыРегистрации<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;Вид&quot;</span><span class="operator">,</span> <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">)</span><span class="operator">;</span>
+    ПараметрыРегистрации<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;Назначение&quot;</span><span class="operator">,</span> <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">)</span><span class="operator">;</span>
+    ПараметрыРегистрации<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;Наименование&quot;</span><span class="operator">,</span> <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">)</span><span class="operator">;</span>
+    ПараметрыРегистрации<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;Версия&quot;</span><span class="operator">,</span> <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">)</span><span class="operator">;</span>
+    ПараметрыРегистрации<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;Информация&quot;</span><span class="operator">,</span> <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">)</span><span class="operator">;</span>
+    ПараметрыРегистрации<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;ВерсияБСП&quot;</span><span class="operator">,</span> <span class="string">&quot;1.2.1.4&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    Команды <span class="operator">=</span> <span class="keyword">Новый</span> ТаблицаЗначений<span class="operator">;</span>
+    Команды<span class="operator">.</span>Колонки<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;Представление&quot;</span><span class="operator">,</span> <span class="keyword">Новый</span> ОписаниеТипов<span class="operator">(</span><span class="string">&quot;Строка&quot;</span><span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+    Команды<span class="operator">.</span>Колонки<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;Идентификатор&quot;</span><span class="operator">,</span> <span class="keyword">Новый</span> ОписаниеТипов<span class="operator">(</span><span class="string">&quot;Строка&quot;</span><span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+    Команды<span class="operator">.</span>Колонки<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;Использование&quot;</span><span class="operator">,</span> <span class="keyword">Новый</span> ОписаниеТипов<span class="operator">(</span><span class="string">&quot;Строка&quot;</span><span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+    Команды<span class="operator">.</span>Колонки<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;ПоказыватьОповещение&quot;</span><span class="operator">,</span> <span class="keyword">Новый</span> ОписаниеТипов<span class="operator">(</span><span class="string">&quot;Булево&quot;</span><span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+    Команды<span class="operator">.</span>Колонки<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;Модификатор&quot;</span><span class="operator">,</span> <span class="keyword">Новый</span> ОписаниеТипов<span class="operator">(</span><span class="string">&quot;Строка&quot;</span><span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+    ПараметрыРегистрации<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;Команды&quot;</span><span class="operator">,</span> Команды<span class="operator">)</span><span class="operator">;</span>
+    Команда <span class="operator">=</span> ПараметрыРегистрации<span class="operator">.</span>Команды<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Команда<span class="operator">.</span>Представление <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = '&lt;Представление команды&gt;'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    Команда<span class="operator">.</span>Идентификатор <span class="operator">=</span> <span class="string">&quot;&lt;Имя команды&gt;&quot;</span><span class="operator">;</span>
+    Команда<span class="operator">.</span>Использование <span class="operator">=</span> ДополнительныеОтчетыИОбработкиКлиентСервер<span class="operator">.</span>ТипКоманды<span class="operator">&lt;</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">&gt;</span><span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    Команда<span class="operator">.</span>ПоказыватьОповещение <span class="operator">=</span> <span class="operator">&lt;</span>Истина<span class="operator">/</span><span class="keyword">Ложь</span><span class="operator">&gt;</span><span class="operator">;</span>
+    <span class="keyword">Возврат</span> ПараметрыРегистрации<span class="operator">;</span> 
+<span class="keyword">КонецФункции</span></pre>
+
+<p class="Number81">3. 
+Для дополнительных отчетов принять решение по
+поводу подключения к подсистеме «Варианты отчетов» (если подсистема она
+внедрена в конфигурацию).</p>
+
+<p class="Bullet0">Подробнее про возможности подсистемы «Варианты отчетов» см. в <span class="MsoHyperlink"><A href="3.8. _25E2_25E0_25F0_25E8_25E0_25ED_25F2_25FB _25EE_25F2_25F7_25E5_25F2_25EE_25E2.htm@_=1504708101#_варианты_отчетов">соответствующем разделе</a></span>.
+В частности, варианты дополнительного отчета, подключенного к подсистеме «Варианты
+отчетов», можно размещать в панелях отчетов программы, рядом с отчетами
+конфигурации.</p>
+
+<p class="Bullet0">Для подключения отчета к подсистеме «Варианты отчетов» в
+свойствах дополнительного отчета (меню <span class="Interface">Действия</span>,
+команда <span class="Interface">Свойства</span>) в поле <span class="Interface">Хранилище
+вариантов</span> следует выбрать объект <span class="Interface">ХранилищеВариантовОтчетов</span>.</p>
+
+<p class="Bullet0">Если дополнительный отчет подключен к подсистеме «Варианты
+отчетов» и использует общие формы <span class="Interface">ФормаОтчета</span>, <span class="Interface">ФормаНастроекОтчета</span> и <span class="Interface">ФормаВариантаОтчета</span>,
+то в функции <span class="Interface">СведенияОВнешнейОбработке</span> появляется
+возможность подключить обработчики, расширяющие поведение формы отчета. Для
+этого в свойстве <span class="Interface">ПараметрыРегистрации.ОпределитьНастройкиФормы</span>
+следует указать значение <span class="Interface">Истина</span> и в модуле объекта
+отчета определить процедуру по шаблону:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Настройки общей формы отчета подсистемы &quot;Варианты отчетов&quot;.</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//   Форма - УправляемаяФорма, Неопределено - Форма отчета или форма настроек отчета.</span>
+<span class="comment">//       Неопределено, когда вызов без контекста.</span>
+<span class="comment">//   КлючВарианта - Строка, Неопределено - Имя предопределенного</span>
+<span class="comment">//       или уникальный идентификатор пользовательского варианта отчета.</span>
+<span class="comment">//       Неопределено, когда вызов без контекста.</span>
+<span class="comment">//   Настройки - Структура - см. возвращаемое значение</span>
+<span class="comment">//       ОтчетыКлиентСервер.ПолучитьНастройкиОтчетаПоУмолчанию().</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> ОпределитьНастройкиФормы<span class="operator">(</span>Форма<span class="operator">,</span> КлючВарианта<span class="operator">,</span> Настройки<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="comment">// Код процедуры.</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<a name="issogl3_вариант_запуска_открытие_формы"><h4>Вариант запуска «Открытие формы»</h4></a>
+
+<p class="Paragraph0c">Для этого варианта запуска необходимо создать форму
+обработки, которая будет открыта при выполнении команды:</p>
+
+<p class="MsoListBullet">&#9679; 
+для глобальных отчетов и обработок – не
+требуется дополнительных действий;</p>
+
+<p class="MsoListBullet">&#9679; 
+для назначаемых отчетов и обработок – в форме
+обработки добавить параметр <span class="Interface">ОбъектыНазначения</span> типа
+<span class="Interface">Произвольный</span>. В этот параметр передается массив
+ссылок на объекты, для которых выполняется дополнительная обработка.</p>
+
+<p class="Warningword">Примечание</p>
+
+<p class="Notes">При использовании варианта запуска <span class="Interface">Открытие
+формы</span> требуется самостоятельно вызвать метод <span class="Interface">ОповеститьОбИзменении</span>
+после изменения объекта(ов), для того чтобы отразить изменения в
+пользовательском интерфейсе.</p>
+
+<p class="Paragraph0c">В форму передаются два параметра: <span class="Interface">ИдентификаторКоманды</span>
+и <span class="Interface">ДополнительнаяОбработкаСсылка</span> (ссылка на элемент
+справочника <span class="Interface">ДополнительныеОтчетыИОбработки</span>,
+который связан с данной дополнительной обработкой).</p>
+
+<a name="issogl3_вариант_запуска_вызов_клиентского_метода"><h4>Вариант запуска «Вызов клиентского метода»</h4></a>
+
+<p class="Paragraph0c">Для этого варианта запуска необходимо создать форму
+обработки и в модуле формы обработки завести экспортную процедуру определенного
+вида.</p>
+
+<p class="Paragraph0c">Для глобальных отчетов и обработок – реализовать
+экспортную процедуру <span class="Interface">ВыполнитьКоманду</span> с параметром
+<span class="Interface">ИдентификаторКоманды</span> (<span class="Interface">Строка</span>):</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ВыполнитьКоманду<span class="operator">(</span>ИдентификаторКоманды<span class="operator">)</span>
+  <span class="comment">// Реализация логики команды</span>
+  <span class="comment">// ...</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Для назначаемых обработок типа <span class="Interface">ПечатнаяФорма</span>
+реализовать экспортную процедуру <span class="Interface">Печать</span> с двумя
+параметрами: <span class="Interface">ИдентификаторКоманды</span> и <span class="Interface">ОбъектыНазначенияМассив</span>, где <span class="Interface">ИдентификаторКоманды</span>
+– строка, идентификатор команды; <span class="Interface">ОбъектыНазначенияМассив</span>
+– массив ссылок на объекты информационной базы, для которых выполняется
+дополнительная обработка:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> Печать<span class="operator">(</span>ИдентификаторКоманды<span class="operator">,</span> ОбъектыНазначенияМассив<span class="operator">)</span>
+  <span class="comment">// Реализация логики команды печати</span>
+  <span class="comment">// ...</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Для назначаемых обработок типа <span class="Interface">Создание
+связанных объектов</span> – реализовать экспортную процедуру <span class="Interface">ВыполнитьКоманду</span> с параметрами <span class="Interface">ИдентификаторКоманды</span>,
+<span class="Interface">ОбъектыНазначенияМассив</span> и <span class="Interface">СозданныеОбъекты</span>,
+где <span class="Interface">СозданныеОбъекты</span> – массив ссылок на созданные
+объекты:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ВыполнитьКоманду<span class="operator">(</span>ИдентификаторКоманды<span class="operator">,</span> ОбъектыНазначенияМассив<span class="operator">,</span> СозданныеОбъекты<span class="operator">)</span>
+  <span class="comment">// Реализация логики команды по созданию связанных объектов</span>
+  <span class="comment">// ...</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Для назначаемых обработок типа <span class="Interface">Заполнение
+объекта</span> и <span class="Interface">Отчет</span> реализовать экспортную
+процедуру <span class="Interface">ВыполнитьКоманду</span> с параметрами <span class="Interface">ИдентификаторКоманды</span>, <span class="Interface">ОбъектыНазначенияМассив</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ВыполнитьКоманду<span class="operator">(</span>ИдентификаторКоманды<span class="operator">,</span> ОбъектыНазначенияМассив<span class="operator">)</span>
+  <span class="comment">// Реализация логики команды по заполнению объекта</span>
+  <span class="comment">// ...</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Для всех типов дополнительных отчетов и обработок в форму
+передается параметр <span class="Interface">ДополнительнаяОбработкаСсылка</span>
+– ссылка на элемент справочника <span class="Interface">ДополнительныеОтчетыИОбработки</span>,
+который связан с данной дополнительной обработкой или отчетом.</p>
+
+<a name="issogl3_вариант_запуска_вызов_серверного_метода"><h4>Вариант запуска «Вызов серверного метода»</h4></a>
+
+<p class="Paragraph0c">Для этого варианта запуска необходимо в модуле обработки требуется
+завести экспортную процедуру определенного вида.</p>
+
+<p class="Paragraph0c">Для глобальных отчетов и глобальных обработок реализовать
+экспортную процедуру <span class="Interface">ВыполнитьКоманду</span> с
+параметрами <span class="Interface">ИдентификаторКоманды</span> и <span class="Interface">ПараметрыВыполненияКоманды</span>, где <span class="Interface">ПараметрыВыполненияКоманды</span>
+– структура со свойством <span class="Interface">ДополнительнаяОбработкаСсылка</span>
+(ссылка на элемент справочника <span class="Interface">ДополнительныеОтчетыИОбработки</span>,
+который связан с данной дополнительной обработкой):</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> ВыполнитьКоманду<span class="operator">(</span>ИдентификаторКоманды<span class="operator">,</span> ПараметрыВыполненияКоманды<span class="operator">)</span> <span class="keyword">Экспорт</span>
+  <span class="comment">// Реализация логики команды</span>
+  <span class="keyword">Если</span> ИдентификаторКоманды <span class="operator">=</span> <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span> <span class="keyword">Тогда</span>
+    ...
+  <span class="keyword">ИначеЕсли</span> <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Для назначаемых обработок типа <span class="Interface">Создание
+связанных объектов</span> реализовать экспортную процедуру <span class="Interface">ВыполнитьКоманду</span> с параметрами <span class="Interface">ИдентификаторКоманды</span>,
+<span class="Interface">ОбъектыНазначения</span>, <span class="Interface">СозданныеОбъекты</span>
+и <span class="Interface">ПараметрыВыполненияКоманды</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> ВыполнитьКоманду<span class="operator">(</span>ИдентификаторКоманды<span class="operator">,</span> ОбъектыНазначения<span class="operator">,</span> СозданныеОбъекты<span class="operator">,</span> ПараметрыВыполненияКоманды<span class="operator">)</span> <span class="keyword">Экспорт</span>
+  <span class="comment">// Реализация логики команды по созданию связанных объектов</span>
+  <span class="keyword">Если</span> ИдентификаторКоманды <span class="operator">=</span> <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span> <span class="keyword">Тогда</span>
+    ...
+  <span class="keyword">ИначеЕсли</span> <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Для назначаемых обработок типа <span class="Interface">ПечатнаяФорма</span>
+реализовать экспортную процедуру <span class="Interface">Печать</span> с
+параметрами <span class="Interface">МассивОбъектов</span>, <span class="Interface">КоллекцияПечатныхФорм</span>,
+<span class="Interface">ОбъектыПечати</span> и <span class="Interface">ПараметрыВывода</span>.
+Описание параметров см. в разделе «<A href="3.33. _25EF_25E5_25F7_25E0_25F2_25FC.htm@_=1504708101#_печать">Печать</a>».
+При этом в структуре <span class="Interface">ПараметрыВывода</span> содержится
+свойство <span class="Interface">ДополнительнаяОбработкаСсылка</span> (ссылка на
+элемент справочника <span class="Interface">ДополнительныеОтчетыИОбработки</span>,
+который связан с данной дополнительной обработкой).</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> Печать<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> КоллекцияПечатныхФорм<span class="operator">,</span> ОбъектыПечати<span class="operator">,</span> ПараметрыВывода<span class="operator">)</span> <span class="keyword">Экспорт</span>
+  <span class="comment">// Реализация логики команды печати</span>
+  <span class="keyword">Если</span> ИдентификаторКоманды <span class="operator">=</span> <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span> <span class="keyword">Тогда</span>
+    ...
+  <span class="keyword">ИначеЕсли</span> <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<a name="issogl3_пример_внешняя_печатная_форма"><h4>Пример: внешняя печатная форма</h4></a>
+
+<p class="Paragraph0c">Обработка с одной печатной формой:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Функция</span> СведенияОВнешнейОбработке<span class="operator">(</span><span class="operator">)</span> <span class="keyword">Экспорт</span>
+    ПараметрыРегистрации <span class="operator">=</span> ДополнительныеОтчетыИОбработки<span class="operator">.</span>СведенияОВнешнейОбработке<span class="operator">(</span><span class="string">&quot;2.3.1.73&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    ПараметрыРегистрации<span class="operator">.</span>Вид <span class="operator">=</span> ДополнительныеОтчетыИОбработкиКлиентСервер<span class="operator">.</span>ВидОбработкиПечатнаяФорма<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    ПараметрыРегистрации<span class="operator">.</span>Версия <span class="operator">=</span> <span class="string">&quot;1.3&quot;</span><span class="operator">;</span>
+    <span class="comment">// Определение объектов, к которым подключается эта обработка.</span>
+    ПараметрыРегистрации<span class="operator">.</span>Назначение<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;Документ._ДемоСчетНаОплатуПокупателю&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Добавление команды печати &quot;Счет на оплату&quot;.</span>
+    НоваяКоманда <span class="operator">=</span> ПараметрыРегистрации<span class="operator">.</span>Команды<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Представление <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Счет на оплату (внешняя печатная форма)'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Идентификатор <span class="operator">=</span> <span class="string">&quot;СчетНаОплату&quot;</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Использование <span class="operator">=</span> ДополнительныеОтчетыИОбработкиКлиентСервер<span class="operator">.</span>ТипКомандыВызовСерверногоМетода<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Модификатор <span class="operator">=</span> <span class="string">&quot;ПечатьMXL&quot;</span><span class="operator">;</span>
+    <span class="keyword">Возврат</span> ПараметрыРегистрации<span class="operator">;</span>
+<span class="keyword">КонецФункции</span>
+<span class="keyword">Процедура</span> Печать<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> КоллекцияПечатныхФорм<span class="operator">,</span> ОбъектыПечати<span class="operator">,</span> ПараметрыВывода<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    ПечатнаяФорма <span class="operator">=</span> УправлениеПечатью<span class="operator">.</span>СведенияОПечатнойФорме<span class="operator">(</span>КоллекцияПечатныхФорм<span class="operator">,</span> <span class="string">&quot;СчетНаОплату&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">Если</span> ПечатнаяФорма <span class="operator">&lt;</span><span class="operator">&gt;</span> <span class="keyword">Неопределено</span> <span class="keyword">Тогда</span>
+        ПечатнаяФорма<span class="operator">.</span>ТабличныйДокумент <span class="operator">=</span> СформироватьСчетНаОплатуПокупателю<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> ОбъектыПечати<span class="operator">)</span><span class="operator">;</span>
+        ПечатнаяФорма<span class="operator">.</span>СинонимМакета <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Счет на оплату'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="keyword">Функция</span> СформироватьСчетНаОплатуПокупателю<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> ОбъектыПечати<span class="operator">)</span>
+    ТабличныйДокумент <span class="operator">=</span> <span class="keyword">Новый</span> ТабличныйДокумент<span class="operator">;</span>
+     <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+    <span class="keyword">Возврат</span> ТабличныйДокумент<span class="operator">;</span>
+<span class="keyword">КонецФункции</span></pre>
+
+<p class="Paragraph0c">Для подмены встроенной команды печати необходимо указать ее
+идентификатор в параметре <span class="Interface">ЗаменяемыеКоманды</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// Добавление команды печати &quot;Счет на оплату&quot;.</span>
+    НоваяКоманда <span class="operator">=</span> ПараметрыРегистрации<span class="operator">.</span>Команды<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    ...
+    НоваяКоманда<span class="operator">.</span>ЗаменяемыеКоманды <span class="operator">=</span> <span class="string">&quot;СчетЗаказ&quot;</span><span class="operator">;</span> </pre>
+
+<p class="Paragraph0c">Список имеющихся команд печати с идентификаторами
+находится, как правило, в процедуре <span class="Interface">ДобавитьКомандыПечати</span>
+модуля менеджера объекта. Если подмену делать не надо, параметр можно не указывать.</p>
+
+<p class="Paragraph0c">Обработка может содержать несколько печатных форм:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Функция</span> СведенияОВнешнейОбработке<span class="operator">(</span><span class="operator">)</span> <span class="keyword">Экспорт</span>
+    ПараметрыРегистрации <span class="operator">=</span> ДополнительныеОтчетыИОбработки<span class="operator">.</span>СведенияОВнешнейОбработке<span class="operator">(</span><span class="string">&quot;2.3.1.73&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    ПараметрыРегистрации<span class="operator">.</span>Вид <span class="operator">=</span> ДополнительныеОтчетыИОбработкиКлиентСервер<span class="operator">.</span>ВидОбработкиПечатнаяФорма<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    ПараметрыРегистрации<span class="operator">.</span>Версия <span class="operator">=</span> <span class="string">&quot;1.3&quot;</span><span class="operator">;</span>
+    <span class="comment">// Определение объектов, к которым подключается эта обработка.</span>
+    ПараметрыРегистрации<span class="operator">.</span>Назначение<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;Документ._ДемоСчетНаОплатуПокупателю&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Добавление команды печати &quot;Счет на оплату&quot;.</span>
+    НоваяКоманда <span class="operator">=</span> ПараметрыРегистрации<span class="operator">.</span>Команды<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Представление <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Счет на оплату (внешняя печатная форма)'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Идентификатор <span class="operator">=</span> <span class="string">&quot;СчетНаОплату&quot;</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Использование <span class="operator">=</span> ДополнительныеОтчетыИОбработкиКлиентСервер<span class="operator">.</span>ТипКомандыВызовСерверногоМетода<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Модификатор <span class="operator">=</span> <span class="string">&quot;ПечатьMXL&quot;</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>ЗаменяемыеКоманды <span class="operator">=</span> <span class="string">&quot;СчетЗаказ&quot;</span><span class="operator">;</span>
+    <span class="comment">// Добавление команды печати &quot;Заказ покупателя&quot;.</span>
+    НоваяКоманда <span class="operator">=</span> ПараметрыРегистрации<span class="operator">.</span>Команды<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Представление <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Заказ покупателя (внешняя печатная форма)'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Идентификатор <span class="operator">=</span> <span class="string">&quot;ЗаказПокупателя&quot;</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Использование <span class="operator">=</span> ДополнительныеОтчетыИОбработкиКлиентСервер<span class="operator">.</span>ТипКомандыВызовСерверногоМетода<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Модификатор <span class="operator">=</span> <span class="string">&quot;ПечатьMXL&quot;</span><span class="operator">;</span>
+    <span class="keyword">Возврат</span> ПараметрыРегистрации<span class="operator">;</span>
+<span class="keyword">КонецФункции</span>
+<span class="keyword">Процедура</span> Печать<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> КоллекцияПечатныхФорм<span class="operator">,</span> ОбъектыПечати<span class="operator">,</span> ПараметрыВывода<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    ПечатнаяФорма <span class="operator">=</span> УправлениеПечатью<span class="operator">.</span>СведенияОПечатнойФорме<span class="operator">(</span>КоллекцияПечатныхФорм<span class="operator">,</span> <span class="string">&quot;СчетНаОплату&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">Если</span> ПечатнаяФорма <span class="operator">&lt;</span><span class="operator">&gt;</span> <span class="keyword">Неопределено</span> <span class="keyword">Тогда</span>
+        ПечатнаяФорма<span class="operator">.</span>ТабличныйДокумент <span class="operator">=</span> СформироватьСчетНаОплатуПокупателю<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> ОбъектыПечати<span class="operator">)</span><span class="operator">;</span>
+        ПечатнаяФорма<span class="operator">.</span>СинонимМакета <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Счет на оплату'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+    ПечатнаяФорма <span class="operator">=</span> УправлениеПечатью<span class="operator">.</span>СведенияОПечатнойФорме<span class="operator">(</span>КоллекцияПечатныхФорм<span class="operator">,</span> <span class="string">&quot;ЗаказПокупателя&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">Если</span> ПечатнаяФорма <span class="operator">&lt;</span><span class="operator">&gt;</span> <span class="keyword">Неопределено</span> <span class="keyword">Тогда</span>
+        ПечатнаяФорма<span class="operator">.</span>ТабличныйДокумент <span class="operator">=</span> СформироватьЗаказПокупателя<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> ОбъектыПечати<span class="operator">)</span><span class="operator">;</span>
+        ПечатнаяФорма<span class="operator">.</span>СинонимМакета <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Заказ покупателя (внешняя печатная форма)'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="keyword">Функция</span> СформироватьСчетНаОплатуПокупателю<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> ОбъектыПечати<span class="operator">)</span>
+    ТабличныйДокумент <span class="operator">=</span> <span class="keyword">Новый</span> ТабличныйДокумент<span class="operator">;</span>
+    <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+    <span class="keyword">Возврат</span> ТабличныйДокумент<span class="operator">;</span>
+<span class="keyword">КонецФункции</span>
+<span class="keyword">Функция</span> СформироватьЗаказПокупателя<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> ОбъектыПечати<span class="operator">)</span>
+    ТабличныйДокумент <span class="operator">=</span> <span class="keyword">Новый</span> ТабличныйДокумент<span class="operator">;</span>
+    <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+    <span class="keyword">Возврат</span> ТабличныйДокумент<span class="operator">;</span>
+<span class="keyword">КонецФункции</span></pre>
+
+<p class="Paragraph0c">Обработка может содержать команду печати комплекта
+печатных форм. Описание команды печати комплекта отличается от команды печати
+одной печатной формы тем, что параметр <span class="Interface">Идентификатор</span>
+содержит список идентификаторов печатных форм (этой обработки), входящих в
+комплект:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// Добавление команды печати &quot;Комплект документов&quot;.</span>
+    НоваяКоманда <span class="operator">=</span> ПараметрыРегистрации<span class="operator">.</span>Команды<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Представление <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Комплект документов (внешняя печатная форма)'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Идентификатор <span class="operator">=</span> <span class="string">&quot;СчетНаОплату,ЗаказПокупателя,ГарантийноеПисьмо&quot;</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Использование <span class="operator">=</span> ДополнительныеОтчетыИОбработкиКлиентСервер<span class="operator">.</span>ТипКомандыВызовСерверногоМетода<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Модификатор <span class="operator">=</span> <span class="string">&quot;ПечатьMXL&quot;</span><span class="operator">;</span></pre>
+
+<p class="Paragraph0c">Пример обработки с командой печати комплекта:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Функция</span> СведенияОВнешнейОбработке<span class="operator">(</span><span class="operator">)</span> <span class="keyword">Экспорт</span>
+    ПараметрыРегистрации <span class="operator">=</span> ДополнительныеОтчетыИОбработки<span class="operator">.</span>СведенияОВнешнейОбработке<span class="operator">(</span><span class="string">&quot;2.3.1.73&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    ПараметрыРегистрации<span class="operator">.</span>Вид <span class="operator">=</span> ДополнительныеОтчетыИОбработкиКлиентСервер<span class="operator">.</span>ВидОбработкиПечатнаяФорма<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    ПараметрыРегистрации<span class="operator">.</span>Версия <span class="operator">=</span> <span class="string">&quot;1.3&quot;</span><span class="operator">;</span>
+    <span class="comment">// Определение объектов, к которым подключается эта обработка.</span>
+    ПараметрыРегистрации<span class="operator">.</span>Назначение<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;Документ._ДемоСчетНаОплатуПокупателю&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Добавление команды печати &quot;Комплект документов&quot;.</span>
+    НоваяКоманда <span class="operator">=</span> ПараметрыРегистрации<span class="operator">.</span>Команды<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Представление <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Комплект документов (внешняя печатная форма)'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Идентификатор <span class="operator">=</span> <span class="string">&quot;СчетНаОплату,ЗаказПокупателя,ГарантийноеПисьмо&quot;</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Использование <span class="operator">=</span> ДополнительныеОтчетыИОбработкиКлиентСервер<span class="operator">.</span>ТипКомандыВызовСерверногоМетода<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Модификатор <span class="operator">=</span> <span class="string">&quot;ПечатьMXL&quot;</span><span class="operator">;</span>
+    <span class="keyword">Возврат</span> ПараметрыРегистрации<span class="operator">;</span>
+<span class="keyword">КонецФункции</span>
+<span class="keyword">Процедура</span> Печать<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> КоллекцияПечатныхФорм<span class="operator">,</span> ОбъектыПечати<span class="operator">,</span> ПараметрыВывода<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    ПечатнаяФорма <span class="operator">=</span> УправлениеПечатью<span class="operator">.</span>СведенияОПечатнойФорме<span class="operator">(</span>КоллекцияПечатныхФорм<span class="operator">,</span> <span class="string">&quot;СчетНаОплату&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">Если</span> ПечатнаяФорма <span class="operator">&lt;</span><span class="operator">&gt;</span> <span class="keyword">Неопределено</span> <span class="keyword">Тогда</span>
+        ПечатнаяФорма<span class="operator">.</span>ТабличныйДокумент <span class="operator">=</span> СформироватьСчетНаОплатуПокупателю<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> ОбъектыПечати<span class="operator">)</span><span class="operator">;</span>
+        ПечатнаяФорма<span class="operator">.</span>СинонимМакета <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Счет на оплату'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+    ПечатнаяФорма <span class="operator">=</span> УправлениеПечатью<span class="operator">.</span>СведенияОПечатнойФорме<span class="operator">(</span>КоллекцияПечатныхФорм<span class="operator">,</span> <span class="string">&quot;ЗаказПокупателя&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">Если</span> ПечатнаяФорма <span class="operator">&lt;</span><span class="operator">&gt;</span> <span class="keyword">Неопределено</span> <span class="keyword">Тогда</span>
+        ПечатнаяФорма<span class="operator">.</span>ТабличныйДокумент <span class="operator">=</span> СформироватьЗаказПокупателя<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> ОбъектыПечати<span class="operator">)</span><span class="operator">;</span>
+        ПечатнаяФорма<span class="operator">.</span>СинонимМакета <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Заказ покупателя (внешняя печатная форма)'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+    ПечатнаяФорма <span class="operator">=</span> УправлениеПечатью<span class="operator">.</span>СведенияОПечатнойФорме<span class="operator">(</span>КоллекцияПечатныхФорм<span class="operator">,</span> <span class="string">&quot;ГарантийноеПисьмо&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">Если</span> ПечатнаяФорма <span class="operator">&lt;</span><span class="operator">&gt;</span> <span class="keyword">Неопределено</span> <span class="keyword">Тогда</span>
+        ПечатнаяФорма<span class="operator">.</span>ТабличныйДокумент <span class="operator">=</span> СформироватьГарантийноеПисьмо<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> ОбъектыПечати<span class="operator">)</span><span class="operator">;</span>
+        ПечатнаяФорма<span class="operator">.</span>СинонимМакета <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Гарантийное письмо (внешняя печатная форма)'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="keyword">Функция</span> СформироватьСчетНаОплатуПокупателю<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> ОбъектыПечати<span class="operator">)</span>
+    ТабличныйДокумент <span class="operator">=</span> <span class="keyword">Новый</span> ТабличныйДокумент<span class="operator">;</span>
+    <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+    <span class="keyword">Возврат</span> ТабличныйДокумент<span class="operator">;</span>
+<span class="keyword">КонецФункции</span>
+<span class="keyword">Функция</span> СформироватьЗаказПокупателя<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> ОбъектыПечати<span class="operator">)</span>
+    ТабличныйДокумент <span class="operator">=</span> <span class="keyword">Новый</span> ТабличныйДокумент<span class="operator">;</span>
+    <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+    <span class="keyword">Возврат</span> ТабличныйДокумент<span class="operator">;</span>
+<span class="keyword">КонецФункции</span>
+<span class="keyword">Функция</span> СформироватьГарантийноеПисьмо<span class="operator">(</span>МассивОбъектов<span class="operator">,</span> ОбъектыПечати<span class="operator">)</span>
+    ТабличныйДокумент <span class="operator">=</span> <span class="keyword">Новый</span> ТабличныйДокумент<span class="operator">;</span>
+    <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+    <span class="keyword">Возврат</span> ТабличныйДокумент<span class="operator">;</span>
+<span class="keyword">КонецФункции</span></pre>
+
+<p class="Paragraph0c">Для назначаемых обработок типа <span class="Interface">Заполнение
+объекта</span> и других типов обработок необходимо реализовать экспортную
+процедуру <span class="Interface">ВыполнитьКоманду</span> с параметрами <span class="Interface">ИдентификаторКоманды</span>, <span class="Interface">ОбъектыНазначения</span>
+и <span class="Interface">ПараметрыВыполненияКоманды</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> ВыполнитьКоманду<span class="operator">(</span>ИдентификаторКоманды<span class="operator">,</span> ОбъектыНазначения<span class="operator">,</span> ПараметрыВыполненияКоманды<span class="operator">)</span> <span class="keyword">Экспорт</span>
+  <span class="comment">// Реализация логики команды по заполнению объекта</span>
+  <span class="keyword">Если</span> ИдентификаторКоманды <span class="operator">=</span> <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span> <span class="keyword">Тогда</span>
+    ...
+  <span class="keyword">ИначеЕсли</span> <span class="operator">.</span><span class="operator">.</span><span class="operator">.</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<a name="issogl3_пример_обработка_заполнения_данных_формы_без_записи_объекта"><h4>Пример: обработка заполнения данных формы без записи объекта</h4></a>
+
+<p class="Paragraph0c">Для типа обработок <span class="Interface">ЗаполнениеОбъекта</span>
+предусмотрена возможность работать напрямую с данными формы (а не со ссылкой на
+объект), что позволяет не выполнять принудительную запись объекта в форме ни
+до, ни после выполнения обработки.</p>
+
+<p class="Paragraph0c">Пример команды заполнения данных формы:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Функция</span> СведенияОВнешнейОбработке<span class="operator">(</span><span class="operator">)</span> <span class="keyword">Экспорт</span>
+    ПараметрыРегистрации <span class="operator">=</span>ДополнительныеОтчетыИОбработки<span class="operator">.</span>СведенияОВнешнейОбработке<span class="operator">(</span><span class="string">&quot;2.2.2.1&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    ПараметрыРегистрации<span class="operator">.</span>Вид <span class="operator">=</span>ДополнительныеОтчетыИОбработкиКлиентСервер<span class="operator">.</span>ВидОбработкиЗаполнениеОбъекта<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    ПараметрыРегистрации<span class="operator">.</span>Версия <span class="operator">=</span> <span class="string">&quot;1.2&quot;</span><span class="operator">;</span>
+    ПараметрыРегистрации<span class="operator">.</span>Назначение<span class="operator">.</span>Добавить<span class="operator">(</span><span class="string">&quot;Справочник._ДемоКонтрагенты&quot;</span><span class="operator">)</span><span class="operator">;</span>
+     НоваяКоманда <span class="operator">=</span> ПараметрыРегистрации<span class="operator">.</span>Команды<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Представление <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Заполнить реквизит &quot;</span><span class="string">&quot;ИНН&quot;</span><span class="string">&quot; не записывая объект (заполнение формы)'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Идентификатор <span class="operator">=</span> <span class="string">&quot;ЗаполнитьИНН&quot;</span><span class="operator">;</span>
+    НоваяКоманда<span class="operator">.</span>Использование <span class="operator">=</span> ДополнительныеОтчетыИОбработкиКлиентСервер<span class="operator">.</span>ТипКомандыЗаполнениеФормы<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">Возврат</span> ПараметрыРегистрации<span class="operator">;</span>
+ <span class="keyword">КонецФункции</span>
+<span class="keyword">Процедура</span> ВыполнитьКоманду<span class="operator">(</span>ИмяКоманды<span class="operator">,</span> ОбъектыНазначения<span class="operator">,</span> ПараметрыВыполнения<span class="operator">)</span> <span class="keyword">Экспорт</span>
+   <span class="keyword">Если</span> ИмяКоманды <span class="operator">=</span> <span class="string">&quot;ЗаполнитьИНН&quot;</span> <span class="keyword">Тогда</span>
+        Генератор <span class="operator">=</span> <span class="keyword">Новый</span> ГенераторСлучайныхЧисел<span class="operator">;</span>
+        ЭтаФорма <span class="operator">=</span> ПараметрыВыполнения<span class="operator">.</span>ЭтаФорма<span class="operator">;</span>
+        ЭтаФорма<span class="operator">.</span>Объект<span class="operator">.</span>ИНН <span class="operator">=</span> Формат<span class="operator">(</span>Генератор<span class="operator">.</span>СлучайноеЧисло<span class="operator">(</span><span class="number">1</span><span class="operator">,</span> <span class="number">999999999</span><span class="operator">)</span><span class="operator">,</span> <span class="string">&quot;ЧЦ=12; ЧДЦ=0; ЧВН=; ЧГ=&quot;</span><span class="operator">)</span><span class="operator">;</span>
+       ЭтаФорма<span class="operator">.</span>Модифицированность <span class="operator">=</span> <span class="keyword">Истина</span><span class="operator">;</span>
+         Сообщение <span class="operator">=</span> <span class="keyword">Новый</span> СообщениеПользователю<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+        Сообщение<span class="operator">.</span>Поле <span class="operator">=</span> <span class="string">&quot;Объект.ИНН&quot;</span><span class="operator">;</span>
+        Сообщение<span class="operator">.</span>Текст <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Поле &quot;</span><span class="string">&quot;ИНН&quot;</span><span class="string">&quot; успешно заполнено'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+        Сообщение<span class="operator">.</span>Сообщить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    ...
+ <span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Подробнее см. дополнительную обработку <span class="Interface">Демо: Обработка заполнения</span> в справочнике <span class="Interface">Дополнительные отчеты и обработки</span> демонстрационной конфигурации.</p>
+
+<a name="issogl3_пример_сохраняемые_параметры_дополнительной_обработки"><h4>Пример: сохраняемые параметры дополнительной обработки</h4></a>
+
+<p class="Paragraph0c">При необходимости задать параметры для дополнительной
+обработки можно воспользоваться реквизитом <span class="Interface">ХранилищеНастроек</span>
+справочника <span class="Interface">ДополнительныеОтчетыИОбработки</span>. Например,
+для заполнения документа <span class="Interface">Распределение прочих затрат</span>
+необходимо получать цены по определенному, специально созданному для этих целей
+виду цен. Этот вид цен можно задавать с помощью сохраняемого параметра. В общем
+виде в реквизите <span class="Interface">ХранилищеНастроек</span> можно сохранять
+произвольные параметры дополнительной обработки .(например, в виде структуры). Для
+доступа к реквизиту <span class="Interface">ХранилищеНастроек</span> в команду
+выполнения обработки передается ссылка на связанный с ней элемент справочника <span class="Interface">ДополнительныеОтчетыИОбработки</span>.</p>
+
+<p class="Paragraph0c">Пример кода для чтения параметра:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">ХранилищеНастроек <span class="operator">=</span> ОбщегоНазначения<span class="operator">.</span>ЗначениеРеквизита<span class="operator">(</span>ОбработкаСсылка<span class="operator">,</span><span class="string">&quot;ХранилищеНастроек&quot;</span><span class="operator">)</span><span class="operator">;</span>
+ НастройкиСтруктура <span class="operator">=</span> ХранилищеНастроек<span class="operator">.</span>Получить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span></pre>
+
+<p class="Paragraph0c">для записи:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">ДополнительнаяОбработкаОбъект <span class="operator">=</span> ОбъектСсылка<span class="operator">.</span>ПолучитьОбъект<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+ ДополнительнаяОбработкаОбъект<span class="operator">.</span>ХранилищеНастроек <span class="operator">=</span> НовыйХранилищеЗначения<span class="operator">(</span>НастройкиСтруктура<span class="operator">)</span><span class="operator">;</span>
+ ДополнительнаяОбработкаОбъект<span class="operator">.</span>Записать<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span></pre>
+
+<p class="Paragraph0c">Подробнее см. дополнительные обработки <span class="Interface">Демо: Загрузка номенклатуры из прайс-листа</span> в справочнике
+<span class="Interface">Дополнительные отчеты и обработки</span> демонстрационной
+конфигурации.</p>
+
+<a name="issogl2_фоновое_выполнение_длительных_операций"><h3>Фоновое выполнение длительных операций</h3></a>
+
+<p class="Paragraph0c">Для того чтобы длительные операции дополнительного объекта
+запускались в фоновом режиме, необходимо запустить выполнение команды в фоновом
+задании и после его завершения принять результат.</p>
+
+<p class="Paragraph0c">Программный интерфейс, помогающий запускать длительные
+операции в фоне, представлен следующими процедурами:</p>
+
+<p class="Number81">1. 
+Процедура <span class="Interface">ВыполнитьКомандуВФоне</span>
+общего модуля <span class="Interface">ДополнительныеОтчетыИОбработкиКлиент</span>.</p>
+
+<p class="Number81">2. 
+В общем модуле <span class="Interface">ДополнительныеОтчетыИОбработки</span>:
+<span class="Interface">ВыполнитьКомандуИзФормыВнешнегоОбъекта</span> и <span class="Interface">ВыполнитьКоманду</span>.</p>
+
+<p class="Paragraph0c">Рассмотрим подключение по шагам.</p>
+
+<p class="Paragraph0c"><span class="af1">Шаг 1.</span> Добавить реквизит управляемой
+формы для хранения ссылки внешнего объекта с типом <span class="Interface">СправочникСсылка.ДополнительныеОтчетыИОбработки</span>.
+Например, <span class="Interface">ОбъектСсылка</span>.</p>
+
+<p class="Paragraph0c"><span class="af1">Шаг 2.</span> В обработчике события управляемой
+формы <span class="Interface">ПриСозданииНаСервере сохранить ссылку внешнего
+объекта</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Процедура</span> ПриСозданииНаСервере<span class="operator">(</span>Отказ<span class="operator">,</span> СтандартнаяОбработка<span class="operator">)</span>
+    Параметры<span class="operator">.</span>Свойство<span class="operator">(</span><span class="string">&quot;ДополнительнаяОбработкаСсылка&quot;</span><span class="operator">,</span> ОбъектСсылка<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c"><span class="af1">Шаг 3.</span> Добавить функцию для выполнения
+команды в файловом режиме по шаблону (в блок служебных процедур и функций):</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Функция</span> ВыполнитьКомандуНапрямую<span class="operator">(</span>ИдентификаторКоманды<span class="operator">,</span> ПараметрыКоманды<span class="operator">)</span>
+    <span class="keyword">Возврат</span> ДополнительныеОтчетыИОбработки<span class="operator">.</span>ВыполнитьКомандуИзФормыВнешнегоОбъекта<span class="operator">(</span>ИдентификаторКоманды<span class="operator">,</span> ПараметрыКоманды<span class="operator">,</span> ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецФункции</span></pre>
+
+<p class="Paragraph0c"><span class="af1">Шаг 4.</span> В обработчике команды управляемой
+формы, которая инициирует длительную операцию, добавить код по шаблону:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ВыполнитьКомандуОбработки<span class="operator">(</span>Команда<span class="operator">)</span>
+    ИдентификаторКоманды <span class="operator">=</span> Команда<span class="operator">.</span>Имя<span class="operator">;</span> 
+    ПараметрыКоманды <span class="operator">=</span> <span class="keyword">Новый</span> Структура<span class="operator">;</span>
+    ПараметрыКоманды<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;ДополнительнаяОбработкаСсылка&quot;</span><span class="operator">,</span> ОбъектСсылка<span class="operator">)</span><span class="operator">;</span>
+    ПараметрыКоманды<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;СопровождающийТекст&quot;</span><span class="operator">,</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Вставить наименование выполняемой команды'&quot;</span><span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+    Состояние<span class="operator">(</span>ПараметрыКоманды<span class="operator">.</span>СопровождающийТекст<span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">Если</span> СтандартныеПодсистемыВызовСервера<span class="operator">.</span>ПараметрыРаботыКлиента<span class="operator">(</span><span class="operator">)</span><span class="operator">.</span>ИнформационнаяБазаФайловая <span class="keyword">Тогда</span>
+        РезультатВыполнения <span class="operator">=</span> ВыполнитьКомандуНапрямую<span class="operator">(</span>ИдентификаторКоманды<span class="operator">,</span> ПараметрыКоманды<span class="operator">)</span><span class="operator">;</span>
+        <span class="comment">// Добавить код обработки результата в РезультатВыполнения</span>
+        <span class="comment">// ...</span>
+    <span class="keyword">Иначе</span>
+        ДополнительныеОтчетыИОбработкиКлиент<span class="operator">.</span>ВыполнитьКомандуВФоне<span class="operator">(</span>ИдентификаторКоманды<span class="operator">,</span> ПараметрыКоманды<span class="operator">,</span> ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c"><span class="af1">Шаг 5.</span> В обработчике события управляемой
+формы <span class="Interface">ОбработкаВыбора</span> добавить код для приемки
+результата:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ОбработкаВыбора<span class="operator">(</span>ВыбранноеЗначение<span class="operator">,</span> ИсточникВыбора<span class="operator">)</span>
+    <span class="keyword">Если</span> ИсточникВыбора<span class="operator">.</span>ИмяФормы <span class="operator">=</span> ДополнительныеОтчетыИОбработкиКлиент<span class="operator">.</span>ИмяФормыДлительнойОперации<span class="operator">(</span><span class="operator">)</span> <span class="keyword">Тогда</span>
+        <span class="comment">// Добавить код приемки результата в ВыбранноеЗначение</span>
+        <span class="comment">// ...</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Warningword">Примечание</p>
+
+<p class="Notes">Длительные операции могут быть только серверными. </p>
+
+<p class="Paragraph0c"><a name="_расширение_безопасного_режима"></a>В демонстрационной
+базе БСП данная возможность представлена в обработках <span class="Interface">Демо:
+Управление полнотекстовым поиском</span>, <span class="Interface">Демо: Загрузка
+номенклатуры из прайс-листа (профили безопасности)</span>, <span class="Interface">Демо: Обработка заполнения</span> и <span class="Interface">Демо:
+Создание связанных объектов</span> в справочнике <span class="Interface">Дополнительные
+отчеты и обработки</span>.</p>
+
+<a name="issogl2_расширение_безопасного_режима"><h3>Расширение безопасного режима</h3></a>
+
+<p class="Paragraph0c">Подсистема «Дополнительные отчеты и обработки» содержит
+специальный программный интерфейс, предназначенный для расширения возможностей,
+доступных разработчику обработки в том случае, если требуется обеспечить
+работоспособность дополнительной обработки при подключении в безопасном режиме.</p>
+
+<p class="Paragraph0c">Следует учесть, что использование данного программного
+интерфейса усложняет процесс разработки дополнительного отчета или обработки и
+использовать его рекомендуется только в том случае, если будущий потребитель
+обработки предъявляет повышенные требования к безопасности (например, если
+обработка предназначается для размещения в сервисе «<a href="../../../../../https@1cfresh.com/default.htm" target="_blank">1С:Предприятие
+8 через Интернет»</a>).</p>
+
+<p class="Paragraph0c">В демонстрационной базе БСП возможность расширения
+безопасного режима представлена в обработке <span class="Interface">Демо:
+Загрузка номенклатуры из прайс-листа (сценарное выполнение)</span> в
+справочнике <span class="Interface">Дополнительные отчеты и обработки</span>. Эта
+обработка является аналогом обработки <span class="Interface">Демо: Загрузка
+номенклатуры из прайс-листа (профили безопасности)</span> и адаптирована к
+выполнению в безопасном режиме.</p>
+
+<a name="issogl3_состав_программного_интерфейса"><h4>Состав программного интерфейса</h4></a>
+
+<p class="Paragraph0c">Функции данного программного интерфейса расположены в
+общих модулях <span class="Interface">ДополнительныеОтчетыИОбработкиВБезопасномРежиме</span>
+и <span class="Interface">ДополнительныеОбработкиВБезопасномРежимеВызовСервера</span>.</p>
+
+<p class="Paragraph0c">В состав программного интерфейса входит следующий набор
+функций:</p>
+
+<p class="MsoListBullet">&#9679; 
+Функции для преобразования полученного от
+пользователя файла вызовом метода глобального контекста <span class="Interface">ПоместитьФайл</span>
+(или из другого источника, поскольку в безопасном режиме код дополнительной
+обработки не может взаимодействовать с файловой системой – требуется, чтобы
+дополнительная обработка оперировала адресом во временном хранилище, по которому
+расположены двоичные данные файла) в объект технологической платформы, позволяющий
+выполнить чтение и анализ содержимого файла:</p>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">ДополнительныеОтчетыИОбработкиВБезопасномРежиме</span>:</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">ЧтениеXMLИзДвоичныхДанных</span>;</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">ЧтениеHTMLИзДвоичныхДанных</span>;</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">ЧтениеFastInfosetИзДвоичныхДанных</span>;</p>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">ДополнительныеОтчетыИОбработкиВБезопасномРежимеВызовСервера</span>:</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">ТекстовыйДокументИзДвоичныхДанных</span>;</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">ТабличныйДокументИзДвоичныхДанных</span>;</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">РаспаковатьАрхив</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+Функции для аналогичного обратного
+преобразования:</p>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">ДополнительныеОтчетыИОбработкиВБезопасномРежиме</span>:</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">ЗаписьXMLВДвоичныеДанные</span>;</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">ЗаписьHTMLВДвоичныеДанные</span>;</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">ЗаписьFastInfosetВДвоичныеДанные</span>;</p>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">ДополнительныеОтчетыИОбработкиВБезопасномРежимеВызовСервера</span>:</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">ТекстовыйДокументВДвоичныеДанные</span>;</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">ТабличныйДокументВДвоичныеДанные</span>;</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">ФорматированныйДокументВДвоичныеДанные</span>;</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">УпаковатьФайлыВАрхив</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+Функции для интеграции с внешним программным
+обеспечением:</p>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">ДополнительныеОтчетыИОбработкиВБезопасномРежиме</span>:</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">СоздатьComОбъект</span>;</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">ПодключитьВнешнююКомпонентуИзОбщегоМакетаКонфигурации</span>;</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">ПодключитьВнешнююКомпонентуИзМакетаКонфигурации</span>;</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">ПолучитьФайлИзВнешнегоОбъекта</span>;</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">ПередатьФайлВоВнешнийОбъект</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+Функции для взаимодействия с сетевыми ресурсами:</p>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">ДополнительныеОтчетыИОбработкиВБезопасномРежиме</span>:</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">ПолучитьФайлИзИнтернета</span>;</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">ПередатьФайлВИнтернет</span>;</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">WSСоединение</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+Функции для выполнения операций, недоступных в
+безопасном режиме из-за того, что код конфигурации был разработан в расчете на
+выполнение в привилегированном режиме, автоматически установленном платформой:</p>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">ДополнительныеОтчетыИОбработкиВБезопасномРежиме</span>:</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">ПроведениеДокументов</span>.</p>
+
+<p class="Paragraph0c">Подробное описание параметров функций и возвращаемых ими
+значений приведено в комментариях к самим функциям.</p>
+
+<a name="issogl3_разрешения"><h4>Разрешения</h4></a>
+
+<p class="Paragraph0c">Ряд функций описываемого программного интерфейса требуют передачи
+параметра <span class="Interface">КлючСессии</span>. Для использования этих
+функций дополнительная обработка должна предварительно «запросить» разрешения на
+их выполнение.</p>
+
+<p class="Paragraph0c">«Запрос» разрешений реализуется путем заполнения свойства
+Разрешения структуры, возвращаемой функцией <span class="Interface">СведенияОВнешнейОбработке()</span>,
+массивом разрешений, которые нужны дополнительной обработке для выполнения.</p>
+
+<p class="Paragraph0c">Для формирования массива необходимо использовать
+специальные функции общего модуля <span class="Interface">ДополнительныеОтчетыИОбработкиВБезопасномРежимеИнтерфейс</span>.
+Эти функции названы по шаблону <span class="Interface">Разрешение*</span> и
+предполагают передачу в качестве параметров ограничений, достаточных для работы
+дополнительной обработки. Например, для функции <span class="Interface">РазрешениеПолучениеДанныхИзИнтернет()</span>
+это протокол, через который будет осуществляться подключение, адрес сервера, к
+которому будет выполняться подключение, и номер сетевого порта, через который
+будет выполняться подключение.</p>
+
+<p class="Paragraph0c">Следует учесть, что при предоставлении сформированных
+разрешений они будут предоставляться именно с учетом запрошенных ограничений.
+Если необходимо получить разрешение без ограничений (например, адрес сервера, к
+которому будет осуществляться подключение, не известен заранее, а будет введен
+пользователем), следует передавать в качестве значения параметра-ограничителя
+результат выполнения функции <span class="Interface">ДополнительныеОтчетыИОбработкиВБезопасномРежимеИнтерфейс.ЛюбоеЗначение()</span>.</p>
+
+<p class="Paragraph0c">Если дополнительной обработке предоставлены разрешения,
+для нее при каждом запуске генерируется ключ сессии расширения безопасного
+режима, связанный с разрешениями, предоставленными конкретной обработке.</p>
+
+<p class="Paragraph0c">Для команд со способом вызова <span class="Interface">ОткрытиеФормы</span>
+ключ сессии передается в качестве параметра формы <span class="Interface">КлючСессии</span>.</p>
+
+<a name="issogl3_способы_использования"><h4>Способы использования</h4></a>
+
+<p class="Paragraph0c">Из клиентского контекста дополнительной обработки доступны
+для вызова все экспортируемые функции общего модуля <span class="Interface">ДополнительныеОтчетыИОбработкиВБезопасномРежимеВызовСервера</span>.</p>
+
+<p class="Paragraph0c">Из серверного контекста дополнительной обработки
+невозможен непосредственный вызов функций описываемого программного интерфейса
+(при попытке выполнить такой вызов будет сгенерировано исключение).</p>
+
+<p class="Paragraph0c">Для использования программного интерфейса из серверного
+контекста дополнительных обработок реализован механизм <span class="Interface">выполнения
+сценария дополнительной обработки</span>. При использовании данного механизма
+предполагается, что дополнительная обработка должна сформировать сценарий
+своего выполнения, который может содержать как вызов процедур и функций самой
+обработки (в этом случае выполнение в любом случае будет происходить с
+установкой безопасного режима), так и вызов процедур и функций конфигурации
+(некоторые из которых могут выполняться без установки безопасного режима – в
+частности, в таком режиме могут выполняться все функции описываемого
+программного интерфейса). Важно, что для выполнения через данный механизм
+потенциально опасных действий (например, передача данных в Интернет) обработка
+должна предварительно «запросить» разрешения на выполнение этих действий.</p>
+
+<p class="Paragraph0c">Для использования механизма выполнения сценария
+дополнительной обработки в командах обработки, выполняющихся в серверном
+контексте, предназначен способ вызова команды дополнительной обработки <span class="Interface">СценарийВБезопасномРежиме</span>. При выполнении команды с
+таким вариантом запуска подсистема <span class="Interface">ДополнительныеОтчетыИОбработки</span>
+вызовет функцию объекта дополнительной обработки <span class="Interface">СформироватьСценарий()</span>.
+Параметры функции <span class="Interface">СформироватьСценарий()</span>
+аналогичны параметрам, передаваемым в процедуру <span class="Interface">ВыполнитьКоманду</span>
+при выполнении команд со способом вызова <span class="Interface">ВызовСерверногоМетода</span>.
+Результатом функции должна выступать таблица значений, содержащая сценарий
+выполнения дополнительной обработки.</p>
+
+<p class="Paragraph0c">Для сохранения контекста выполнения дополнительной
+обработки в ходе выполнения сценария предлагается использовать специальную
+коллекцию сохраняемых значений – любой этап сценария может сохранить результат
+выполнения в эту коллекцию под определенным именем, а также запросить передачу
+в качестве параметра процедуры или функции любого из сохраненных значений либо
+же самой коллекции.</p>
+
+<p class="Paragraph0c">При реализации функции <span class="Interface">СформироватьСценарий()</span>
+не следует вручную создавать структуру таблицы значений. Необходимо
+использовать следующие функции общего модуля <span class="Interface">ДополнительныеОтчетыИОбработкиВБезопасномРежимеИнтерфейс</span>:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">НовыйСценарий()</span> –
+функция возвращает объект, который в дальнейшем должен рассматриваться как сценарий
+выполнения дополнительной обработки.</p>
+
+<p class="MsoListBullet">&#9679; 
+Функции по добавлению этапов в сценарий:</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ДобавитьМетодКонфигурации()</span> – добавляет в сценарий
+выполнения дополнительной обработки вызов процедуры или функции конфигурации.
+Результат, возвращаемый функцией, должен рассматриваться как этап сценария
+выполнения дополнительной обработки;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ДобавитьМетодОбработки()</span> – добавляет в сценарий
+выполнения дополнительной обработки вызов процедуры или функции объекта
+дополнительной обработки. Результат, возвращаемый функцией, должен рассматриваться
+как этап сценария выполнения дополнительной обработки.</p>
+
+<p class="MsoListBullet">&#9679; 
+Функции по заполнению параметров, которые будут
+переданы в процедуру или функцию конфигурации/объекта внешней обработки:</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ДобавитьКлючСессии()</span> – добавляет в массив параметров
+текущий ключ сессии расширения безопасного режима;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ДобавитьЗначение()</span> – добавляет в массив параметров
+фиксированное значение произвольного типа;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ДобавитьСохраняемоеЗначение()</span> – добавляет в массив параметров
+сохраняемое значение;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ДобавитьКоллекциюСохраняемыхЗначений()</span> – добавляет в
+массив параметров коллекцию сохраняемых значений;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ДобавитьПараметрВыполненияКоманды()</span> – добавляет в массив
+параметров элемент структуры <span class="Interface">ПараметрыВыполненияКоманды</span>;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ДобавитьОбъектыНазначения()</span> – добавляет в массив
+параметров массив объектов назначения (актуально только для назначаемых
+дополнительных обработок).</p>
+
+<p class="Paragraph0c">При необходимости процесс выполнения сценария также может
+быть запущен с клиентского контекста дополнительной обработки (для команд со
+способом запуска <span class="Interface">ОткрытиеФормы</span>) с помощью функции <span class="Interface">ДополнительныеОтчетыИОбработкиВБезопасномРежимеВызовСервера.ВыполнитьСценарийВБезопасномРежиме()</span>.</p>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Все объекты метаданных подсистемы, содержащие данные,
+рекомендуется включать в планы обмена распределенной ИБ.</p>
+
+<p class="Paragraph0c">Для планов обмена автономного рабочего места (АРМ) в
+модели сервиса константу <span class="Interface">ИспользоватьДополнительныеОтчетыИОбработки</span>
+следует включать в состав планов обмена, но не включать в состав подписок на
+события (выполняющих регистрацию данных при записи). Данное требование
+объясняется тем, что в автономном рабочем месте использование дополнительных отчетов
+и обработок настраивается независимо от их использования в экземпляре сервиса и
+должно передаваться только при создании начального образа.</p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

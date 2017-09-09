@@ -1,0 +1,1015 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.42. &#1056;&#1072;&#1073;&#1086;&#1090;&#1072; &#1089; &#1082;&#1086;&#1085;&#1090;&#1088;&#1072;&#1075;&#1077;&#1085;&#1090;&#1072;&#1084;&#1080;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.42. _25F0_25E0_25E1_25EE_25F2_25E0 _25F1 _25EA_25EE_25ED_25F2_25F0_25E0_25E3_25E5_25ED_25F2_25E0_25EC_25E8.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_работа_с_контрагентами"></a><h1>3.42. Работа с контрагентами</h1>
+
+<p class="Paragraph0c">В соответствии с законом № 134-ФЗ от 28.06.2014 с I
+квартала 2015 года все плательщики НДС обязаны представлять в электронном виде декларации
+по НДС, в состав которых включены сведения о счетах-фактурах из книг покупок,
+книг продаж, журналов счетов-фактур. Отчеты с некорректными контрагентами не
+будут приняты ФНС. Для сокращения ошибок в данных была разработана подсистема
+«Работа с контрагентами».</p>
+
+<p class="Paragraph0c">Подсистема «Работа с контрагентами» позволяет реализовать
+проверку контрагентов по данным ФНС в справочнике контрагентов, документах,
+отчетах. Подсистема также включает механизм для автоматического заполнения
+реквизитов контрагентов по данным ЕГРЮЛ и ЕГРИП. </p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Paragraph0c">В определяемых типах <span class="Interface">Контрагент</span>
+(ссылки) и <span class="Interface">КонтрагентОбъект</span> (объекты) указать тип
+справочника контрагентов.</p>
+
+<p class="Paragraph0c">В случае если планируется переопределять интерфейсные
+решения рекомендуется снять с поддержки и доработать общий макет с инструкцией
+по проверке контрагентов <span class="Interface">ИнструкцияПоПроверкеКонтрагентов</span>.</p>
+
+<p class="Paragraph0c">Для определения объекта и ссылки на контрагента или
+документ по переданной форме необходимо заполнить процедуру <span class="Interface">ПолучитьОбъектИСсылкуПоФорме</span> общего модуля <span class="Interface">РаботаСКонтрагентамиКлиентСерверПереопределяемый</span>.
+Процедура обязательна для заполнения.</p>
+
+<p class="Paragraph0c">Для переопределения стандартных цветовых решений по выводу
+результатов проверки контрагентов необходимо заполнить процедуру <span class="Interface">ОпределитьЦветаРезультатовПроверки</span> модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Иностранные контрагенты не подлежат проверке. Для определения
+того, является ли контрагент иностранным, необходимо заполнить процедуру <span class="Interface">ОпределитьЯвляетсяЛиКонтрагентИностранным</span> модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Для доступа к настройкам проверки контрагентов необходимо
+использовать обработку <span class="Interface">ПанельАдминистрированияБСП</span>
+подсистемы «Настройка программы» либо команду <span class="Interface">НастройкиПроверкиКонтрагентов</span>
+для доступа к отдельной общей форме настроек <span class="Interface">НастройкиПроверкиКонтрагентов</span>.</p>
+
+<p class="Paragraph0c">Чтобы после срабатывания проверки в справочнике
+контрагентов поля ввода не очищались, необходимо полям ввода установить
+свойство <span class="Interface">ОбновлениеТекстаРедактирования</span> в значение
+<span class="Interface">При изменении значения</span>.</p>
+
+<p class="Paragraph0c">Если требуется отказаться от отображения стандартной
+блокирующей формы с предложением включить сервис проверки контрагентов, то
+необходимо переопределить стандартное поведение в процедуре <span class="Interface">ПредложитьВключитьПроверкуКонтрагентов</span> общего модуля <span class="Interface">РаботаСКонтрагентамиКлиентПереопределяемый</span>.</p>
+
+<a name="issogl1_проверка_в_справочнике_контрагентов"><h2>Проверка в справочнике контрагентов</h2></a>
+
+<p class="Paragraph0c">Для сохранения результатов проверки в форму карточки
+контрагента нужно добавить реквизит формы <span class="Interface">РеквизитыПроверкиКонтрагентов</span>
+произвольного типа.</p>
+
+<p class="Paragraph0c">В обработчик события <span class="Interface">ПриСозданииНаСервере</span>
+необходимо добавить вызов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ПриСозданииНаСервереКонтрагент<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> Параметры<span class="operator">)</span><span class="operator">;</span>
+<span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">В обработчик события <span class="Interface">ПередЗаписьюНаСервере</span>
+необходимо добавить вызов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ПередЗаписьюНаСервереКонтрагент<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> ТекущийОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">В обработчик события <span class="Interface">ПриОткрытии</span>
+необходимо добавить вызов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентовКлиент<span class="operator">.</span>ПриОткрытииКонтрагент<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">В обработчики событий изменения реквизитов ИНН, КПП, вида
+контрагента необходимо добавить запуск проверки контрагентов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентовКлиент<span class="operator">.</span>ЗапуститьПроверкуКонтрагентаВСправочнике<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">В модуль формы карточки контрагента нужно добавить
+следующие функции:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> Подключаемый_ПоказатьПредложениеИспользоватьПроверкуКонтрагентов<span class="operator">(</span><span class="operator">)</span>
+    ПроверкаКонтрагентовКлиент<span class="operator">.</span>ПредложитьВключитьПроверкуКонтрагентов<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+<span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> Подключаемый_ОбработатьРезультатПроверкиКонтрагентов<span class="operator">(</span><span class="operator">)</span>
+    ПроверкаКонтрагентовКлиент<span class="operator">.</span>ОбработатьРезультатПроверкиКонтрагентовВСправочнике<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">В форме списка и в форме выбора справочника контрагентов
+необходимо указать произвольный запрос динамического списка. В запросе добавить
+соединение с регистром сведений <span class="Interface">СостоянияКонтрагентов</span>
+и добавить поля <span class="Interface">ПроверкаКонтрагентовКонтрагентНеСуществует</span>
+и <span class="Interface">ПроверкаКонтрагентовСостояние</span>. После доработки
+запрос будет выглядеть следующим образом:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">ВЫБРАТЬ</span>
+    <span class="operator">&lt;</span>Поля контрагента<span class="operator">&gt;</span><span class="operator">,</span>
+    <span class="keyword">ВЫБОР</span>
+        <span class="keyword">КОГДА</span> СостоянияКонтрагентов<span class="operator">.</span>Состояние В <span class="operator">(</span>&Состояния<span class="operator">)</span>
+            <span class="keyword">ТОГДА</span> <span class="keyword">ИСТИНА</span>
+        <span class="keyword">ИНАЧЕ</span> <span class="keyword">ЛОЖЬ</span>
+    <span class="keyword">КОНЕЦ</span> <span class="keyword">КАК</span> ПроверкаКонтрагентовКонтрагентНеСуществует<span class="operator">,</span>
+    СостоянияКонтрагентов<span class="operator">.</span>Состояние <span class="keyword">КАК</span> ПроверкаКонтрагентовСостояние
+<span class="keyword">ИЗ</span>
+    Справочник<span class="operator">.</span>_ДемоКонтрагенты <span class="keyword">КАК</span> Справочник_ДемоКонтрагенты
+        ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений<span class="operator">.</span>СостоянияКонтрагентов <span class="keyword">КАК</span> СостоянияКонтрагентов
+            <span class="keyword">ПО</span> Справочник_ДемоКонтрагенты<span class="operator">.</span>Ссылка <span class="operator">=</span> СостоянияКонтрагентов<span class="operator">.</span>Контрагент
+            <span class="keyword">И</span> &ИспользованиеПроверкиВозможно</pre>
+
+<p class="Paragraph0c">В обработчик события <span class="Interface">ПриСозданииНаСервере</span>
+необходимо добавить следующий вызов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ПриСозданииНаСервереСписокКонтрагентов<span class="operator">(</span>Список<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами </span></pre>
+
+<p class="Paragraph0c">См. пример реализации справочника контрагентов – <span class="Interface">_ДемоКонтрагенты</span>.</p>
+
+<p class="Paragraph0c">Для определения имени справочника контрагентов, а также
+реквизитов, в которых хранятся ИНН и КПП, необходимо переопределить процедуру <span class="Interface">ОпределитьСвойстваСправочникаКонтрагенты</span> общего модуля <span class="Interface">РаботаСКонтрагентамиКлиентСерверПереопределяемый</span>.
+Процедура обязательна для заполнения.</p>
+
+<p class="Paragraph0c">Для вывода результата проверки контрагента в карточке
+контрагента необходимо переопределить процедуру <span class="Interface">ОтобразитьРезультатПроверкиКонтрагентаВСправочнике</span>
+общего модуля <span class="Interface">РаботаСКонтрагентамиКлиентСерверПереопределяемый</span>.
+Процедура обязательна для заполнения.</p>
+
+<p class="Paragraph0c">Для переопределения стандартного условного оформления в
+форме списка и выбора справочника контрагентов необходимо заполнить процедуру <span class="Interface">УстановитьУсловноеОформлениеСпискаКонтрагентов</span> модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Для дополнения стандартной структуры реквизита формы <span class="Interface">РеквизитыПроверкиКонтрагентов</span> своими параметрами необходимо
+реализовать процедуру <span class="Interface">ДополнитьРеквизитыФормыКонтрагент</span>
+модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Если требуется переопределить стандартный механизм
+определения, кем является контрагент: физическим или юридическим лицом, – то
+необходимо реализовать процедуру <span class="Interface">ОпределитьЮрИлиФизЛицоКонтрагент</span>
+модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Если требуется дополнить параметры запуска фонового
+задания при проверке справочника, то необходимо реализовать процедуру <span class="Interface">ДополнитьПараметрыЗапускаФоновогоЗадания</span> модуля <span class="Interface">РаботаСКонтрагентамиКлиентСерверПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Для справочника контрагента реализована возможность выполнить
+предварительную проверку ИНН, КПП и даты «на клиенте» до отправки данных на
+проверку на веб-сервис ФНС. </p>
+
+<p class="Paragraph0c">Если необходимо отключить режим предварительной проверки «на
+клиенте», то в процедуре <span class="Interface">ДополнитьРеквизитыФормыКонтрагент</span>
+общего модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый необходимо
+</span>в состав входящего параметра-структуры <span class="Interface">НовыеРеквизиты</span>
+надо добавить элемент <span class="Interface">ВыполнятьПредварительнуюПроверкуКонтрагента</span>,
+равный <span class="Interface">Ложь</span>.</p>
+
+<p class="Paragraph0c">В подсистеме «Работа с контрагентами» есть специальный
+режим, позволяющий проверять контрагентов даже при отключенной автоматической
+проверке. В карточке контрагента в подменю <span class="Interface">Еще</span>
+необходимо добавить кнопку и назвать ее, например, <span class="Interface">Проверить
+контрагента</span>. По этой кнопке вызывать процедуру <span class="Interface">ПроверитьКонтрагентаПоКнопке</span>
+общего модуля <span class="Interface">ПроверкаКонтрагентовКлиент</span>. В форме
+контрагента необходимо разместить экспортную переменную:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">
+// СтандартныеПодсистемы.РаботаСКонтрагентами
+&amp;НаКлиенте
+Перем ФормаДлительнойОперации Экспорт;
+// Конец СтандартныеПодсистемы.РаботаСКонтрагентами
+</pre>
+
+<a name="issogl1_проверка_контрагентов_в_документах"><h2>Проверка контрагентов в документах</h2></a>
+
+<p class="Paragraph0c">При реализации проверки контрагентов в документах
+необходимо в форме документа добавить реквизит формы <span class="Interface">РеквизитыПроверкиКонтрагентов</span>
+произвольного типа.</p>
+
+<p class="Paragraph0c">Проверка контрагентов в документе выполняется в фоновом
+режиме. Для этого в разделе объявления переменных необходимо добавить
+объявление клиентской переменной <span class="Interface">ПроверкаКонтрагентовПараметрыОбработчикаОжидания</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Перем</span> ПроверкаКонтрагентовПараметрыОбработчикаОжидания <span class="keyword">Экспорт</span><span class="operator">;</span>
+<span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">Если в документе есть табличные части, содержащие
+контрагентов, которых нужно проверять, то необходимо разместить колонку
+реквизита с именем <span class="Interface">Состояние</span> и <span class="Interface">ЭтоНекорректныйКонтрагент</span>:</p>
+
+<p class="MsoListBullet">&#9679; 
+Добавить колонку реквизита с именем <span class="Interface">Состояние</span> (тип <span class="Interface">ПеречислениеСсылка.СостоянияСуществованияКонтрагента</span>).</p>
+
+<p class="MsoListBullet">&#9679; 
+Добавить колонку реквизита с именем <span class="Interface">ЭтоНекорректныйКонтрагент</span> (тип <span class="Interface">Булево</span>).
+Данную колонку необходимо:</p>
+
+<p class="MsoListBullet2">&#9679;  вынести
+на форму;</p>
+
+<p class="MsoListBullet2">&#9679;  присвоить
+ей имя <span class="Interface">Имя таблицы + ЭтоНекорректныйКонтрагент</span>;</p>
+
+<p class="MsoListBullet2">&#9679;  сгруппировать
+с колонкой контрагента;</p>
+
+<p class="MsoListBullet2">&#9679;  в
+группе разместить второй колонкой (за контрагентом;</p>
+
+<p class="MsoListBullet2">&#9679;  установить
+свойства: </p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">Вид = Поле картинки</span>;</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">Заголовок = &quot;Есть
+ошибка по данным ФНС&quot;</span>;</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">Ширина</span> = 2; </p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">РастягиватьПоГоризонтали =
+Ложь</span>;</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">ГиперссылкаЯчейки = Истина</span>;</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">ОтображатьВШапке = Ложь</span>;</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">ПоложениеЗаголовка = Нет</span>;</p>
+
+<p class="MsoListBullet3">&#9679; 
+<span class="Interface">КартинкаЗначений = НекорректныйКонтрагент.</span></p>
+
+<p class="MsoListBullet">&#9679; 
+У группы колонок, объединяющих контрагента и признак
+некорректности необходимо установить свойства:</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">Группировка = Горизонтальная</span>;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ОтображатьВШапке = Истина</span>;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ОтображатьЗаголовок = Истина</span>;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">Группировка = Горизонтальная</span>;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ФиксацияВТаблице</span> как у колонки с контрагентом;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">РастягиватьПоГоризонтали = Ложь</span>;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">Ширина</span> = 17.</p>
+
+<p class="MsoListBullet">&#9679; 
+У колонки с контрагентом необходимо установить свойства:</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ФиксацияВТаблице</span> = Нет;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ОтображатьВШапке</span> = Нет;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">РастягиватьПоГоризонтали = Ложь</span>;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">Заголовок</span>.</p>
+
+<p class="Paragraph0c">См. пример размещения колонок в форме <span class="Interface">ФормаДокумента</span> документа <span class="Interface">_ДемоСчетФактураПолученный</span>
+(табличная часть <span class="Interface">Агентские услуги</span>). </p>
+
+<p class="Paragraph0c">Указанные выше пункты по добавлению колонок можно не выполнять,
+если не критична скорость открытия формы. В этом случае данные действия будут
+выполнены программно. </p>
+
+<p class="Paragraph0c">В обработчики событий <span class="Interface">ПриСозданииНаСервере</span>
+необходимо добавить вызов: </p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ПриСозданииНаСервереДокумент<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> Параметры<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">В обработчики событий <span class="Interface">ПриОткрытии</span>
+необходимо добавить вызов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентовКлиент<span class="operator">.</span>ПриОткрытииДокумент<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">В обработчики событий <span class="Interface">ПередЗаписьюНаСервере</span>
+необходимо добавить вызов: </p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ПередЗаписьюНаСервереДокумент<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> ТекущийОбъект<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">В обработчики событий <span class="Interface">ОбработкаОповещения</span>
+необходимо добавить вызов: </p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">     <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентовКлиент<span class="operator">.</span>ОбработкаОповещения<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> ИмяСобытия<span class="operator">,</span> Параметр<span class="operator">,</span> Источник<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">В обработчики событий <span class="Interface">ПослеЗаписиНаСервере</span>
+необходимо добавить вызов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ПослеЗаписиНаСервере<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> ТекущийОбъект<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">В обработчики событий <span class="Interface">ПриЗаписиНаСервере</span>
+необходимо добавить вызов: </p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ПриЗаписиНаСервере<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> ТекущийОбъект<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">В обработчики событий изменения реквизитов, требующих
+запуска проверки (изменение даты, контрагента и т. д.) необходимо добавить
+вызов: </p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентовКлиент<span class="operator">.</span>ЗапуститьПроверкуКонтрагентовВДокументе<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> Объект<span class="operator">.</span>Дата<span class="operator">)</span><span class="operator">;</span>
+<span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">При этом второй параметр функции <span class="Interface">ЗапуститьПроверкуКонтрагентовВДокументе</span>
+общего модуля <span class="Interface">ПроверкаКонтрагентовКлиент</span>
+необходимо указывать следующим образом:</p>
+
+<p class="MsoListBullet">&#9679; 
+дату, если произошло изменение даты документа;</p>
+
+<p class="MsoListBullet">&#9679; 
+таблицу формы, если произошло изменение
+контрагента или даты в таблице формы;</p>
+
+<p class="MsoListBullet">&#9679; 
+элемент управления, в котором произошло
+изменение, требующее запуска проверки контрагента.</p>
+
+<p class="Paragraph0c">В обработчик события выбора таблицы формы, в которой
+находятся проверяемые контрагенты, необходимо добавить вызов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентовКлиент<span class="operator">.</span>ТаблицаФормыВыбор<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> Элемент<span class="operator">,</span> Поле<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">В модуль формы документа нужно добавить следующие функции:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> Подключаемый_ПоказатьПредложениеИспользоватьПроверкуКонтрагентов<span class="operator">(</span><span class="operator">)</span>
+    ПроверкаКонтрагентовКлиент<span class="operator">.</span>ПредложитьВключитьПроверкуКонтрагентов<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+<span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> Подключаемый_ОбработатьРезультатПроверкиКонтрагентов<span class="operator">(</span><span class="operator">)</span>
+    ПроверкаКонтрагентовКлиент<span class="operator">.</span>ОбработатьРезультатПроверкиКонтрагентовВДокументе<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+<span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+<span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Процедура</span> ОтобразитьРезультатПроверкиКонтрагента<span class="operator">(</span><span class="operator">)</span> <span class="keyword">Экспорт</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ОтобразитьРезультатПроверкиКонтрагентаВДокументе<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+<span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+<span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Процедура</span> ПроверитьКонтрагентовФоновоеЗадание<span class="operator">(</span>ПараметрыФоновогоЗадания<span class="operator">)</span> <span class="keyword">Экспорт</span>    
+    ПроверкаКонтрагентов<span class="operator">.</span>ПроверитьКонтрагентовВДокументеФоновоеЗадание<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> ПараметрыФоновогоЗадания<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">В форме списка и в форме документов необходимо указать
+произвольный запрос динамического списка. В запросе добавить соединение с
+регистром сведений <span class="Interface">ДокументыСОшибкамиПроверкиКонтрагентов</span>
+и добавить поле <span class="Interface">СодержитНекорректныхКонтрагентов</span>.
+После доработки запрос будет выглядеть следующим образом:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">ВЫБРАТЬ</span>
+    <span class="operator">&lt;</span>Поля документа<span class="operator">&gt;</span><span class="operator">,</span>
+    <span class="keyword">ВЫБОР</span>
+        <span class="keyword">КОГДА</span> ДокументыСОшибкамиПроверкиКонтрагентов<span class="operator">.</span>Документ ЕСТЬ <span class="keyword">NULL</span> 
+            <span class="keyword">ТОГДА</span> <span class="keyword">ЛОЖЬ</span>
+        <span class="keyword">ИНАЧЕ</span> <span class="keyword">ИСТИНА</span>
+    <span class="keyword">КОНЕЦ</span> <span class="keyword">КАК</span> СодержитНекорректныхКонтрагентов
+<span class="keyword">ИЗ</span>
+    Документ<span class="operator">.</span>_ДемоПоступлениеТоваров <span class="keyword">КАК</span> Документ_ДемоПоступлениеТоваров
+    ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений<span class="operator">.</span>ДокументыСОшибкамиПроверкиКонтрагентов <span class="keyword">КАК</span> ДокументыСОшибкамиПроверкиКонтрагентов
+        <span class="keyword">ПО</span> Документ_ДемоПоступлениеТоваров<span class="operator">.</span>Ссылка <span class="operator">=</span> ДокументыСОшибкамиПроверкиКонтрагентов<span class="operator">.</span>Документ
+        <span class="keyword">И</span> &ИспользованиеПроверкиВозможно</pre>
+
+<p class="Paragraph0c">В обработчик события <span class="Interface">ПриСозданииНаСервере</span>
+необходимо добавить следующий вызов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ПриСозданииНаСервереСписокДокументов<span class="operator">(</span>Список<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами </span></pre>
+
+<p class="Paragraph0c">См. пример реализации документов <span class="Interface">_ДемоПоступлениеТоваров</span>,
+<span class="Interface">_ДемоСчетФактураПолученный</span>.</p>
+
+<p class="Paragraph0c">Условно документы разделены на два вида: </p>
+
+<p class="MsoListBullet">&#9679; 
+Документы (документ может быть одновременно
+нескольких видов):</p>
+
+<p class="MsoListBullet2">&#9679;  документы
+с контрагентом в шапке;</p>
+
+<p class="MsoListBullet2">&#9679;  документы
+с контрагентом в табличных частях;</p>
+
+<p class="MsoListBullet2">&#9679;  документы
+со счетом-фактурой в подвале.</p>
+
+<p class="MsoListBullet">&#9679; 
+Счета-фактуры.</p>
+
+<p class="Paragraph0c">Для определения того, к какому виду относится документ,
+необходимо заполнить процедуру <span class="Interface">ОпределитьВидДокумента</span>
+общего модуля <span class="Interface">РаботаСКонтрагентамиКлиентСерверПереопределяемый</span>.
+Обязательно к заполнению.</p>
+
+<p class="Paragraph0c">Для определения ссылки на счет-фактуру по форме
+документа-основания для выписки счета-фактуры необходимо заполнить процедуру <span class="Interface">ПолучитьСчетФактуру</span> общего модуля <span class="Interface">РаботаСКонтрагентамиКлиентСерверПереопределяемый</span>.
+Обязательна к заполнению.</p>
+
+<p class="Paragraph0c">Если документ является документом со счетом-фактурой в
+подвале формы, то необходимо заполнить процедуру <span class="Interface">СформироватьОписаниеДокументовСоСчетомФактуройВПодвале</span>
+общего модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.
+Обязательна к заполнению.</p>
+
+<p class="Paragraph0c">Если документ является документом с контрагентом в шапке,
+то необходимо заполнить процедуру <span class="Interface">СформироватьОписаниеДокументовСКонтрагентомВШапке</span>
+общего модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.
+Обязательна к заполнению.</p>
+
+<p class="Paragraph0c">Если документ является документом с контрагентом в
+табличных частях, то необходимо заполнить процедуру <span class="Interface">СформироватьОписаниеДокументовСТабличнымиЧастями</span>
+общего модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.
+Обязательна к заполнению.</p>
+
+<p class="Paragraph0c">Если документ является счетом-фактурой, то необходимо
+заполнить процедуру <span class="Interface">СформироватьОписаниеСчетовФактур</span>
+общего модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.
+Обязательна к заполнению.</p>
+
+<p class="Paragraph0c">Если документ является счетом-фактурой, то необходимо
+заполнить процедуру <span class="Interface">ПолучитьИменаРеквизитовКонтрагентовВСчетеФактуре</span>
+общего модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.
+Обязательна к заполнению.</p>
+
+<p class="Paragraph0c">Для определения даты в документах необходимо заполнить
+процедуру <span class="Interface">ОпределитьДатуВДокументе</span> общего модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>. Обязательна к
+заполнению.</p>
+
+<p class="Paragraph0c">Для определения даты в счетах-фактах необходимо заполнить
+процедуру <span class="Interface">ОпределитьДатуВСчетеФактуре</span> общего
+модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.
+Обязательна к заполнению.</p>
+
+<p class="Paragraph0c">Для переопределения стандартной обработки результата
+фонового задания по проверке контрагентов в документе необходимо заполнить
+процедуру <span class="Interface">ОтобразитьРезультатПроверкиКонтрагентаВДокументе</span>
+общего модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Для переопределения стандартного отображения результата
+проверки контрагентов в документе необходимо заполнить процедуру <span class="Interface">ПрорисоватьСостоянияКонтрагентовВДокументе</span> общего модуля
+<span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Для переопределения стандартного условного оформления в
+списке документов необходимо заполнить процедуру <span class="Interface">УстановитьУсловноеОформлениеСпискаДокументов</span>
+общего модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Для переопределения стандартного условного оформления в
+табличной части документа необходимо заполнить процедуру <span class="Interface">УстановитьУсловноеОформлениеТабличнойЧастиДокумента</span>
+общего модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Для переопределения необходимости вывода колонки с
+результатом проверки в табличной части необходимо заполнить процедуру <span class="Interface">ДобавитьКолонкиТаблицыФормыСРезультатамиПроверкиВТабличныеЧасти</span>
+общего модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Для определения необходимости проверки контрагентов в
+документе после срабатывания события, перехваченного в обработке оповещения,
+необходимо заполнить процедуру <span class="Interface">ОпределитьНеобходимостьПроверкиКонтрагентовВОбработкеОповещения</span>
+в переопределяемом общем модуле <span class="Interface">РаботаСКонтрагентамиКлиентПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Для переопределения сформированной подсистемой подсказки о
+результате проверки контрагента в документе необходимо заполнить процедуру <span class="Interface">ПослеФормированияПодсказкиВДокументе</span> в переопределяемом
+общем модуле <span class="Interface">РаботаСКонтрагентамиКлиентСерверПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Для дополнения стандартной структуры реквизита формы <span class="Interface">РеквизитыПроверкиКонтрагентов</span> своими параметрами
+необходимо реализовать процедуру <span class="Interface">ДополнитьРеквизитыФормыДокумент</span>
+модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Если требуется переопределить стандартный механизм заполнения
+данных о контрагентах счетов-фактур, то необходимо реализовать процедуру <span class="Interface">ЗаполнитьДанныеКонтрагентовВСчетеФактуре</span> модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Если требуется переопределить стандартный механизм
+определения сохраняемых данных о результатах проверки контрагентов счетов-фактур,
+то необходимо реализовать процедуру <span class="Interface">СохраняемыеРезультатыПроверкиСчетФактурыВДокументе</span>
+модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Если требуется переопределить стандартный механизм
+сохранения данных о результатах проверки счетов-фактур, выписанных на основании
+документа, то необходимо реализовать процедуру <span class="Interface">ЗапомнитьРезультатПроверкиКонтрагентовСчетФактурыДокументе</span>
+модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">В карточке контрагента в подменю <span class="Interface">Еще</span>
+необходимо добавить кнопку и назвать ее, например, <span class="Interface">Проверить
+контрагентов</span>. По этой кнопке вызывать процедуру <span class="Interface">ПроверитьКонтрагентовВДокументеПоКнопке</span>
+общего модуля <span class="Interface">ПроверкаКонтрагентовКлиент</span>. В форме
+документа необходимо разместить экспортную переменную:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">
+// СтандартныеПодсистемы.РаботаСКонтрагентами
+&amp;НаКлиенте
+Перем ФормаДлительнойОперации Экспорт;
+// Конец СтандартныеПодсистемы.РаботаСКонтрагентами
+</pre>
+
+<a name="issogl1_проверка_контрагентов_в_отчетах"><h2>Проверка контрагентов в отчетах</h2></a>
+
+<p class="Paragraph0c">В общем случае алгоритм проверки контрагентов в отчете
+следующий. Сначала формируется отчет без проверки контрагента, но результат
+формирования отчета запоминается (данные, полученный табличный документ,
+сформированный список всех контрагентов). После окончания формирования отчета в
+фоновом задании запускается проверка контрагентов. Для проверки контрагентов используются
+данные, полученные при первом формировании отчета. При отработке фонового
+здания вместо исходного отчета выводится отчет, в котором отображены результаты
+проверки контрагентов. Проверка контрагентов в отчете поддерживает возможность
+проверки отчета, выводимого с делением на разделы.</p>
+
+<p class="Paragraph0c">При реализации проверки контрагентов в отчетах необходимо
+в форме отчета добавить реквизит формы <span class="Interface">РеквизитыПроверкиКонтрагентов</span>
+произвольного типа.</p>
+
+<p class="Paragraph0c">Проверка контрагентов в отчете выполняется в фоновом
+режиме. Для этого необходимо в разделе объявления переменных необходимо
+добавить объявление клиентской переменной <span class="Interface">ПроверкаКонтрагентовПараметрыОбработчикаОжидания</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Перем</span> ПроверкаКонтрагентовПараметрыОбработчикаОжидания <span class="keyword">Экспорт</span><span class="operator">;</span>
+<span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">Для хранения перечня некорректных контрагентов необходимо
+добавить реквизит формы с типом таблица значений <span class="Interface">ПроверкаКонтрагентовНедействующиеКонтрагенты</span>.
+Данный реквизит необходим только для отчетов, выводимых без деления на блоки.
+Список колонок и их типы:</p>
+
+<p class="Picture"><IMG src="_img/bb4930f70ba50b6391a4d4b0238cf1d5/image032.png@_=1504708101" WIDTH="800" ALT HEIGHT="128"></p>
+
+<p class="Paragraph0c">Пример см. в форме <span class="Interface">ФормаОтчета</span>
+отчета <span class="Interface">_ДемоКнигаПокупок</span>.</p>
+
+<p class="Paragraph0c">Для отображения результата проверки контрагентов в отчете
+необходимо разместить панель проверки контрагентов, состоящую из следующих
+элементов управления, а также реквизит формы <span class="Interface">ПроверкаКонтрагентовПереключательРежимаОтображения</span>
+с обработчиком события <span class="Interface">ПриИзменении</span>.</p>
+
+<p class="Picture"><IMG src="_img/bb4930f70ba50b6391a4d4b0238cf1d5/image034.png@_=1504708101" WIDTH="404" ALT HEIGHT="270"></p>
+
+<p class="Paragraph0c">Пример см. в форме <span class="Interface">ФормаОтчета</span>
+отчета <span class="Interface">_ДемоКнигаПокупок</span>.</p>
+
+<p class="Paragraph0c">В обработчики событий <span class="Interface">ПриСозданииНаСервере</span>
+необходимо добавить вызов: </p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ПриСозданииНаСервереОтчет<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> ОтчетСРазделами<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">где <span class="Interface">ОтчетСРазделами</span> – это
+режим формирования отчета. Если отчет будет формироваться блоками (по
+разделам), то <span class="Interface">ОтчетСРазделами</span> должен равняться <span class="Interface">Истина</span>. Если отчет будет формироваться и выводиться
+одним целым, то <span class="Interface">ОтчетСРазделами</span> должен равняться <span class="Interface">Ложь.</span></p>
+
+<p class="Paragraph0c">В обработчики событий <span class="Interface">ПриОткрытии</span>
+необходимо добавить вызов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентовКлиент<span class="operator">.</span>ОтчетПриОткрытии<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">Для очистки результатов предыдущих проверок контрагентов в
+отчете перед формированием отчета необходимо добавить вызов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ПередФормированиемОтчета<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">При подготовке параметров формирования отчета необходимо
+добавить параметры, необходимые для последующего запуска проверки контрагентов.
+Для этого нужно добавить вызов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ДобавитьПараметрыДляПроверкиКонтрагентов<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> ПараметрыОтчета<span class="operator">,</span> ЭтоПервоеФормированиеОтчета<span class="operator">,</span> РезультатФормированияОтчета<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">Параметр <span class="Interface">РезультатФормированияОтчета</span>
+указывается только для случая формирования отчета без деления по разделам.</p>
+
+<p class="Paragraph0c">После формирования отчета для сохранения результатов
+формирования отчета и подготовки к запуску проверки необходимо добавить вызов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ЗапомнитьРезультатФормированияОтчета<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> РезультатВыполнения<span class="operator">,</span> АдресХранилища<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">где <span class="Interface">АдресХранилища</span> – адрес
+временного хранилища с результатом заполнения отчета. Во временном хранилище
+хранится структура с обязательным ключом <span class="Interface">ДанныеДляПроверкиКонтрагентов</span>.</p>
+
+<p class="Paragraph0c">Для возможности вывода результата формирования отчета без
+деления на разделы после отработки фонового задания по проверке контрагентов
+вместо стандартного вывода отчета необходимо добавить вызов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ВывестиОтчет<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> Результат<span class="operator">,</span> РезультатФормированияОтчета<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">Для возможности вывода результата формирования отчета с делением
+на разделы после отработки фонового задания по проверке контрагентов вместо
+стандартного вывода отчета необходимо добавить вызов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ВывестиРазделОтчета<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> Результат<span class="operator">,</span> ТекущийНомерРаздела<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">После формирования отчета для запуска фонового задания по
+проверке контрагентов необходимо добавить вызов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентовКлиент<span class="operator">.</span>ЗапуститьПроверкуКонтрагентовВОтчете<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">При изменении настроек отчета, влияющих на формирования
+отчета и результат проверки, например периода формирования отчета, необходимо
+сбрасывать результат предыдущих проверок контрагента при помощи вызова:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентовКлиентСервер<span class="operator">.</span>СброситьАктуальностьОтчета<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">При формировании данных отчета их необходимо запомнить для
+последующей проверки контрагентов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ЗапомнитьДанныеОтчета<span class="operator">(</span>СтруктураПараметров<span class="operator">,</span> Выборка<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">При завершении формирования отчета необходимо возвратить
+результат формирования отчета (табличный документ и список контрагентов), чтобы
+затем использовать при проверке контрагентов. Для этого необходимо добавить вызов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ДополнитьРезультатФормированияОтчетаДаннымиПоПроверкеКонтрагентов<span class="operator">(</span>РезультатФормирования<span class="operator">,</span> СтруктураПараметров<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">В момент вывода строк отчета определяется, нужно ли их
+выводить. Для этого используется функция:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">        <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+        <span class="keyword">Если</span> ПроверкаКонтрагентов<span class="operator">.</span>ВыводитьСтрокуОтчета<span class="operator">(</span>СтруктураПараметров<span class="operator">,</span> Контрагент<span class="operator">,</span> ИНН<span class="operator">,</span> КПП<span class="operator">,</span> Дата<span class="operator">)</span> <span class="keyword">Тогда</span>
+        <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">При формировании отчета выполняется формирования полного
+списка контрагентов. Для этого при выводе строк отчета необходимо использовать:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">        <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+            ПроверкаКонтрагентов<span class="operator">.</span>ДобавитьКонтрагентаНаПроверку<span class="operator">(</span>СтруктураПараметров<span class="operator">,</span> ОбластьТабличногоДокумента<span class="operator">.</span>Верх<span class="operator">,</span> Контрагент<span class="operator">,</span> ИНН<span class="operator">,</span> КПП<span class="operator">,</span> Дата<span class="operator">)</span><span class="operator">;</span>
+        <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">При формировании отчета, выводимого по разделам, список
+табличных документов разделов формируется следующим вызовом:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ДобавитьРазделОтчета<span class="operator">(</span>СтруктураПараметров<span class="operator">,</span> ЗаголовокЛиста<span class="operator">,</span> СчетчикСегментов<span class="operator">,</span> ТабличныйДокумент<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">//Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">В модуль формы отчета нужно добавить следующие функции:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">СтандартныеПодсистемы<span class="operator">.</span>РаботаСКонтрагентамиботаСКонтрагентами
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> Подключаемый_ПоказатьПредложениеИспользоватьПроверкуКонтрагентов<span class="operator">(</span><span class="operator">)</span>
+    ПроверкаКонтрагентовКлиент<span class="operator">.</span>ПредложитьВключитьПроверкуКонтрагентов<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+<span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+<span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Функция</span> ПроверитьКонтрагентов<span class="operator">(</span><span class="operator">)</span> <span class="keyword">Экспорт</span>
+    ПараметрыОтчета <span class="operator">=</span> ПодготовитьПараметрыОтчета<span class="operator">(</span><span class="keyword">Ложь</span><span class="operator">)</span><span class="operator">;</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ПроверитьКонтрагентовВОтчете<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> ПараметрыОтчета<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецФункции</span>
+<span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+<span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ПереключательРежимаОтображенияПриИзменении<span class="operator">(</span>Элемент<span class="operator">)</span>
+    ПереключитьРежимОтображенияОтчета<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">Следующие процедуры также необходимо добавить в модуль
+формы отчета в виде, который зависит от того, формируется отчет по разделам или
+нет.</p>
+
+<p class="Paragraph0c">Процедура <span class="Interface">ОтобразитьРезультатПроверкиКонтрагента</span>
+для случая формирования без деления по разделам:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+<span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Процедура</span> ОтобразитьРезультатПроверкиКонтрагента<span class="operator">(</span><span class="operator">)</span> <span class="keyword">Экспорт</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ОтобразитьРезультатПроверкиКонтрагентаВОтчете<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> Результат<span class="operator">,</span> РезультатФормированияОтчета<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">Процедура <span class="Interface">ОтобразитьРезультатПроверкиКонтрагента</span>
+для случая формирования c делением по разделам:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+<span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Процедура</span> ОтобразитьРезультатПроверкиКонтрагента<span class="operator">(</span><span class="operator">)</span> <span class="keyword">Экспорт</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ОтобразитьРезультатПроверкиКонтрагентаВОтчете<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> Результат<span class="operator">,</span> <span class="keyword">Неопределено</span><span class="operator">,</span> ТекущийНомерРаздела<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span></pre>
+
+<p class="Paragraph0c">Процедура <span class="Interface">ПереключитьРежимОтображенияОтчета</span>
+для случая формирования без деления по разделам:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Процедура</span> ПереключитьРежимОтображенияОтчета<span class="operator">(</span><span class="operator">)</span>
+    <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ПереключитьРежимОтображенияОтчета<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> Результат<span class="operator">,</span> РезультатФормированияОтчета<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Процедура <span class="Interface">ПереключитьРежимОтображенияОтчета</span>
+для случая формирования с делением по разделам:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Процедура</span> ПереключитьРежимОтображенияОтчета<span class="operator">(</span><span class="operator">)</span>
+    <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+        ПроверкаКонтрагентов<span class="operator">.</span>ПереключитьРежимОтображенияРазделаОтчета<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> Результат<span class="operator">,</span> ТекущийНомерРаздела<span class="operator">)</span><span class="operator">;</span>
+        <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">В модуль формы отчета нужно добавить функцию по проверке
+контрагентов. В данной функции необходимо добавить вызов функции по подготовке
+параметров отчета (индивидуальна для каждого отчета), а только затем запустить
+проверку контрагентов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Функция</span> ПроверитьКонтрагентов<span class="operator">(</span><span class="operator">)</span> <span class="keyword">Экспорт</span>
+    ПараметрыОтчета <span class="operator">=</span> ПодготовитьПараметрыОтчета<span class="operator">(</span><span class="keyword">Ложь</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+    ПроверкаКонтрагентов<span class="operator">.</span>ПроверитьКонтрагентовВОтчете<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> ПараметрыОтчета<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.РаботаСКонтрагентами</span>
+<span class="keyword">КонецФункции</span></pre>
+
+<p class="Paragraph0c">Пример см. в форме <span class="Interface">ФормаОтчета</span>
+отчета <span class="Interface">_ДемоКнигаПокупок</span>.</p>
+
+<p class="Paragraph0c">Для переопределения стандартного отображения результата
+проверки в отчете необходимо переопределить процедуру <span class="Interface">УстановитьВидПанелиПроверкиКонтрагентовВОтчете</span>
+общего модуля <span class="Interface">РаботаСКонтрагентамиКлиентСерверПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Для подсветки в отчете контрагента с ошибкой необходимо
+переопределить процедуру <span class="Interface">ВыделитьКонтрагентаСОшибкойВСтрокеОтчета</span>
+общего модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.
+Обязательна к заполнению.</p>
+
+<p class="Paragraph0c">Для формирования отчета, в котором используется проверка
+контрагентов, из общего модуля необходимо переопределить процедуру <span class="Interface">СформироватьОтчет</span> общего модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.
+Обязательна к заполнению.</p>
+
+<p class="Paragraph0c">Для вывода результата проверки контрагента в поле
+табличного документа необходимо переопределить процедуру <span class="Interface">ВывестиОтчет</span>
+общего модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.
+Обязательна к заполнению.</p>
+
+<p class="Paragraph0c">Для определения того, нужно ли выводить строку отчета в
+отчете по некорректным контрагентам, необходимо переопределить процедуру <span class="Interface">ОпределитьНужноЛиВыводитьСтрокуОтчета</span> общего модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>. Обязательна к
+заполнению.</p>
+
+<p class="Paragraph0c">Для переопределения стандартного отображения результата
+проверки в отчете необходимо переопределить процедуру <span class="Interface">ОтобразитьРезультатПроверкиКонтрагентаВОтчете</span>
+общего модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.</p>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Для настройки прав доступа пользователей к данным
+подсистемы «Работа с контрагентами» следует использовать роли, указанные ниже.</p>
+
+<p class="Objectname">Таблица 3.93.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">АдминистраторСистемы</span> (из
+  подсистемы «Базовая функциональность»)</p>
+  <p class="BulletTab">&#9679; 
+  Включение и отключение использования проверки
+  контрагентов,</p>
+  <p class="BulletTab">&#9679; 
+  Настройка регламентного задания по проверке
+  контрагентов в справочнике</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">БазовыеПрава</span></p>
+  <p class="TextinTable81">Для проверки контрагентов в справочнике, документах,
+  отчете</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">3. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ИспользованиеДосьеКонтрагента</span></p>
+  <p class="TextinTable81">Использование сервиса<span class="Interface"> Досье
+  контрагента</span></p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl1_заполнение_реквизитов_контрагентов"><h2>Заполнение реквизитов контрагентов</h2></a>
+
+<p class="Paragraph0c">Для реализации автоматического заполнения реквизитов
+контрагента по данным единых государственных реестров юридических лиц и
+предпринимателей (ЕРГЮЛ и ЕГРИП) следует использовать функции <span class="Interface">РеквизитыЮридическогоЛицаПоИНН</span> и <span class="Interface">РеквизитыПредпринимателяПоИНН</span>
+общего модуля <span class="Interface">ДанныеЕдиныхГосРеестров</span>. </p>
+
+<p class="Paragraph0c">Для автоматического заполнения реквизитов контрагента по
+наименованию используется общая форма <span class="Interface">ЗаполнениеРеквизитовКонтрагента</span>.
+При заполнении табличной части со списком подходящих контрагентов используется
+функция <span class="Interface">РеквизитыЮридическихЛицПоНаименованию</span> общего
+модуля <span class="Interface">ДанныеЕдиныхГосРеестров</span>. В общей форме
+также есть возможность указать ИНН контрагента для заполнения его реквизитов. </p>
+
+<p class="Paragraph0c">Пример автоматического заполнения реквизитов реализован в
+форме элемента справочника <span class="Interface">_ДемоКонтрагенты</span>
+демонстрационной конфигурации.</p>
+
+<a name="issogl1_досье_контрагента"><h2>Досье контрагента</h2></a>
+
+<p class="Paragraph0c">Отчет <span class="Interface">ДосьеКонтрагента</span>
+выводит расширенную информацию из ЕГРЮЛ и ЕГРИП о контрагенте, его видах
+деятельности, лицензиях, руководителе, учредителях, связях с другими
+контрагентами.</p>
+
+<p class="Paragraph0c">В получаемых от веб-сервиса данных ЕГРЮЛ и ЕГРИП о видах
+деятельности контрагента есть только информация о кодах по ОКВЭД. Для вывода в
+отчет информации о наименовании видов деятельности по ОКВЭД, соответствующих
+этим кодам, необходимо переопределить процедуру <span class="Interface">ЗаполнитьНаименованияВидовДеятельностиКонтрагента
+</span>общего модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>.
+Без переопределения в отчет выводится только информация о кодах по ОКВЭД, без
+наименований.</p>
+
+<p class="Paragraph0c">Роль <span class="Interface">ИспользованиеДосьеКонтрагента</span>,
+дающую доступ к формированию отчета, необходимо назначить профилям сотрудников,
+ответственных за работу с контрагнетами. В демонстрационной конфигурации эта
+роль включена в профили «Ответственный за нормативно-справочную информацию», «Руководитель»
+и «Бухгалтер».</p>
+
+<p class="Paragraph0c">Отчет может использоваться как для показа информации о
+существующем в информационной базе контрагенте, так и о контрагенте,
+отсутствующем в базе. Для поиска контрагентами в ЕГРЮЛ или ЕГРИП указывается
+его ИНН или наименование, при этом для поиска используется тот же механизм, что
+и для заполнения реквизитов контрагента.</p>
+
+<p class="Paragraph0c">Кроме информации из ЕГРЮЛ и ЕГРИП в отчет может выводиться
+информация о контрагенте по данным информационной базы. Может быть выведена
+произвольная информация, определяемая разработчиком конфигурации.</p>
+
+<p class="Paragraph0c">Для вывода информации о контрагенте из информационной базы
+необходимо переопределить процедуры <span class="Interface">ЗаполнитьОписаниеДанныхПрограммы
+</span>и <span class="Interface">ДополнитьИнформациюДаннымиПрограммы </span>общего
+модуля <span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>. Без
+переопределения никакая информация о контрагенте по данным информационной базы
+в этом режиме открытия отчета не выводится.</p>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<p class="Paragraph0c">Программный интерфейс подсистемы представлен экспортными
+функциями общих модулей:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">РаботаСКонтрагентамиКлиентПереопределяемый</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">РаботаСКонтрагентамиКлиентСерверПереопределяемый</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">РаботаСКонтрагентамиПереопределяемый</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПроверкаКонтрагентов</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПроверкаКонтрагентовВызовСервера</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПроверкаКонтрагентовВызовСервераПовтИсп</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПроверкаКонтрагентовКлиент</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПроверкаКонтрагентовКлиентСервер</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ПроверкаКонтрагентовКлиентСерверПовтИсп</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">РегламентированныеДанныеКлиентСервер</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ДанныеЕдиныхГосРеестров</span>.</p>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Константу <span class="Interface">ИспользоватьПроверкуКонтрагентов</span>
+рекомендуется включить в планы обмена распределенной ИБ (РИБ). Все остальные
+объекты метаданных подсистемы не следует включать в планы обмена РИБ.</p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

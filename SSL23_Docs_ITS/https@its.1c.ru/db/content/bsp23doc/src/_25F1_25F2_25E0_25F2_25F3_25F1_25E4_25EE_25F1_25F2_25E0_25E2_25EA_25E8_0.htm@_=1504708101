@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1057;&#1090;&#1072;&#1090;&#1091;&#1089;&#1044;&#1086;&#1089;&#1090;&#1072;&#1074;&#1082;&#1080;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25F1_25F2_25E0_25F2_25F3_25F1_25E4_25EE_25F1_25F2_25E0_25E2_25EA_25E8_0.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_отправкаsmsпереопределяемыйстатусдоставки"></a><h1>СтатусДоставки</h1>
+
+<pre> Запрашивает статус доставки SMS у поставщика услуг.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура СтатусДоставки(ИдентификаторСообщения, Провайдер, Логин, Пароль, Результат) Экспорт </pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  ИдентификаторСообщения - Строка - идентификатор, присвоенный SMS при отправке;
+  Логин              - Строка - логин для доступа к услуге отправки SMS.
+  Пароль             - Строка - пароль для доступа к услуге отправки SMS.
+  Результат          - Строка - (возвращаемое значение) статус доставки, 
+                                см. описание функции <a href="#_отправкаsmsстатусдоставки">ОтправкаSMS.СтатусДоставки</a>.</pre>
+<p class="Paragraph0c"><span class="Bold">Расположение</span></p>
+<pre> Общий модуль ОтправкаSMSПереопределяемый</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

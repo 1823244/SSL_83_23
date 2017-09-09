@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1055;&#1088;&#1080;&#1057;&#1086;&#1079;&#1076;&#1072;&#1085;&#1080;&#1080;&#1060;&#1086;&#1088;&#1084;&#1099;&#1053;&#1072;&#1089;&#1090;&#1088;&#1086;&#1081;&#1082;&#1080;&#1056;&#1077;&#1075;&#1080;&#1089;&#1090;&#1088;&#1072;&#1094;&#1080;&#1080;&#1057;&#1086;&#1073;&#1099;&#1090;&#1080;&#1081;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25EF_25F0_25E8_25F1_25EE_25E7_25E4_25E0_25ED_25E8_25E8_25F4_25EE_25F0_25EC_25FB_25ED_25E0_25F1_25F20829C6FDC9" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_защитаперсональныхданныхприсозданииформынастройкирегистрациисобытий"></a><h1>ПриСозданииФормыНастройкиРегистрацииСобытий</h1>
+
+<pre> Процедура выполняет подготовку формы настройки системы
+ для управления областями персональных данных,
+ а также считывает текущее состояние использования события "Доступ. Доступ".
+ В форме должны быть созданы:
+ - реквизит типа дерево значений, имя которого - "ОбластиПерсональныхДанных",
+ - таблица формы, связанная с этим реквизитом, 
+  имя которой так же - "ОбластиПерсональныхДанных".</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура ПриСозданииФормыНастройкиРегистрацииСобытий(Форма) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre> Форма - форма настройки системы.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> ЗащитаПерсональныхДанных.ПриСозданииФормыНастройкиРегистрацииСобытий(Форма)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

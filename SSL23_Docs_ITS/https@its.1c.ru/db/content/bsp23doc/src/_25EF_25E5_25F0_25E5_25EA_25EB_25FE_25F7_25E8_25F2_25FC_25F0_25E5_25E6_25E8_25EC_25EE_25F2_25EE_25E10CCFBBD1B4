@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1055;&#1077;&#1088;&#1077;&#1082;&#1083;&#1102;&#1095;&#1080;&#1090;&#1100;&#1056;&#1077;&#1078;&#1080;&#1084;&#1054;&#1090;&#1086;&#1073;&#1088;&#1072;&#1078;&#1077;&#1085;&#1080;&#1103;&#1054;&#1090;&#1095;&#1077;&#1090;&#1072;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25EF_25E5_25F0_25E5_25EA_25EB_25FE_25F7_25E8_25F2_25FC_25F0_25E5_25E6_25E8_25EC_25EE_25F2_25EE_25E1_25F0_25E0_25E6_25E5_25ED_25E8_25FF_25EE_25F2_25F7_25E5_25F2_25E0.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_проверкаконтрагентовпереключитьрежимотображенияотчета"></a><h1>ПереключитьРежимОтображенияОтчета</h1>
+
+<pre> Отображение результата проверки контрагента в отчете.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура ПереключитьРежимОтображенияОтчета(Форма, ПолеТабличногоДокумента, РезультатФормированияОтчета) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  Форма        - УправляемаяФорма - Форма отчета, в котором выполняется проверка контрагентов.
+  ПолеТабличногоДокумента   - ПолеФормы с видом ПолеТабличногоДокумента - поле, в которое необходимо выводить отчет.
+  РезультатФормированияОтчета  - ТабличныйДокумент - Документ, предназначенный для вывода в поле формы.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> ПроверкаКонтрагентов.ПереключитьРежимОтображенияОтчета(Форма, ПолеТабличногоДокумента, РезультатФормированияОтчета)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

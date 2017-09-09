@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1057;&#1088;&#1072;&#1074;&#1085;&#1080;&#1090;&#1100;&#1042;&#1077;&#1088;&#1089;&#1080;&#1080;&#1041;&#1077;&#1079;&#1053;&#1086;&#1084;&#1077;&#1088;&#1072;&#1057;&#1073;&#1086;&#1088;&#1082;&#1080;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25F1_25F0_25E0_25E2_25ED_25E8_25F2_25FC_25E2_25E5_25F0_25F1_25E8_25E8_25E1_25E5_25E7_25ED_25EE_25EC_25E5_25F0_25E0_25F1_25E1_25EE_25F0_25EA_25E8.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_общегоназначенияклиентсерверсравнитьверсиибезномерасборки"></a><h1>СравнитьВерсииБезНомераСборки</h1>
+
+<pre> Сравнить две строки версий.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция СравнитьВерсииБезНомераСборки(Знач СтрокаВерсии1, Знач СтрокаВерсии2) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  СтрокаВерсии1  - Строка - номер версии в формате РР.{П|ПП}.ЗЗ.
+  СтрокаВерсии2  - Строка - второй сравниваемый номер версии.</pre>
+<p class="Paragraph0c"><span class="Bold">Возвращаемое значение</span></p>
+<pre>   Число   - больше 0, если СтрокаВерсии1 &gt; СтрокаВерсии2; 0, если версии равны.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = ОбщегоНазначенияКлиентСервер.СравнитьВерсииБезНомераСборки(СтрокаВерсии1, СтрокаВерсии2)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Тонкий клиент, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

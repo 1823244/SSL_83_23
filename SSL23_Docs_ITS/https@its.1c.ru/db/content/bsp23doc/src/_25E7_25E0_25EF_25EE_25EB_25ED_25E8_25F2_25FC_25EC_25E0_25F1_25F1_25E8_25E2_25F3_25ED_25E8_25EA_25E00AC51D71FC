@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1047;&#1072;&#1087;&#1086;&#1083;&#1085;&#1080;&#1090;&#1100;&#1052;&#1072;&#1089;&#1089;&#1080;&#1074;&#1059;&#1085;&#1080;&#1082;&#1072;&#1083;&#1100;&#1085;&#1099;&#1084;&#1080;&#1047;&#1085;&#1072;&#1095;&#1077;&#1085;&#1080;&#1103;&#1084;&#1080;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25E7_25E0_25EF_25EE_25EB_25ED_25E8_25F2_25FC_25EC_25E0_25F1_25F1_25E8_25E2_25F3_25ED_25E8_25EA_25E006976E0D25" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_общегоназначениязаполнитьмассивуникальнымизначениями"></a><h1>ЗаполнитьМассивУникальнымиЗначениями</h1>
+
+<pre> Устарела. Следует использовать ОбщегоНазначенияКлиентСервер.ДополнитьМассив,
+ установив параметра ТолькоУникальныеЗначения в значение Истина.
+ Заполняет массив-приемник уникальными значениями из массива-источника.
+ Если элемент в массиве-приемнике уже существует, то добавления нового элемента не происходит.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура ЗаполнитьМассивУникальнымиЗначениями(МассивПриемник, МассивИсточник) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  МассивПриемник - Массив - массив, который заполняется уникальными значениями.
+  МассивИсточник - Массив - массив, из которого подбираются элементы в массив-приемник.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> ОбщегоНазначения.ЗаполнитьМассивУникальнымиЗначениями(МассивПриемник, МассивИсточник)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

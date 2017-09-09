@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1050;&#1083;&#1080;&#1077;&#1085;&#1090;&#1055;&#1086;&#1076;&#1082;&#1083;&#1102;&#1095;&#1077;&#1085;&#1063;&#1077;&#1088;&#1077;&#1079;&#1042;&#1077;&#1073;&#1057;&#1077;&#1088;&#1074;&#1077;&#1088;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25EA_25EB_25E8_25E5_25ED_25F2_25EF_25EE_25E4_25EA_25EB_25FE_25F7_25E5_25ED_25F7_25E5_25F0_25E5_25E7_25E2_25E5_25E1_25F1_25E5_25F0_25E2_25E5_25F0.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_общегоназначенияклиентклиентподключенчерезвебсервер"></a><h1>КлиентПодключенЧерезВебСервер</h1>
+
+<p class="Paragraph0c"><span class="Bold">1. Для вызова с клиента</span></p>
+<pre> Возвращает Истина, если клиентское приложение подключено к базе через веб-сервер.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция КлиентПодключенЧерезВебСервер() Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = ОбщегоНазначенияКлиент.КлиентПодключенЧерезВебСервер()</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Тонкий клиент, Толстый клиент</pre><pre>
+
+</pre>
+<p class="Paragraph0c"><span class="Bold">2. Для вызова с клиента и сервера</span></p>
+<pre> Возвращает Истина, если клиентское приложение подключено к базе через веб-сервер.
+ Если нет клиентского приложения, возвращается Ложь.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция КлиентПодключенЧерезВебСервер() Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = ОбщегоНазначенияКлиентСервер.КлиентПодключенЧерезВебСервер()</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Тонкий клиент, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

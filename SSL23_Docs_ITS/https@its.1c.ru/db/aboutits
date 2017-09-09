@@ -1,0 +1,389 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+	<head>
+		<!--[if lt IE 7]><html class="ie ie6"><![endif]-->
+		<!--[if IE 7]><html class="ie ie7"><![endif]-->
+		<!--[if IE 8]><html class="ie ie8"><![endif]-->
+		<!--[if IE 9]><html class="ie ie9"><![endif]-->
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title id="w_title" class="w">Об 1С:ИТС :: 1С:ИТС – единый договор для получения сервисов пользователями &quot;1С:Предприятие&quot;</title>		<!--[if gte IE 8]>--><base id="w_base" class="l" data-nonce="1504708084"  target="w_metadata_doc_frame"><!--<![endif]-->
+		
+		<link id="w_canonical" rel="canonical" class="l" href="aboutits">		<meta name="robots" content="noarchive">
+		<meta name="googlebot" content="noarchive">
+		<link rel="search" type="application/opensearchdescription+xml" title="1С:ИТС" href="../search/opensearch.xml">
+		<!--[]-->
+		<script type="text/javascript">
+window.deferred=[];window.errors=[];;
+function getCookie(n){n=n.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, '\\$1');var r=new RegExp('(?:^|; )' + n + '=([^;]+)(?:; |$)');var m=document.cookie.match(r);if(m)return m[1];};
+</script>		<script type="text/javascript">
+			deferred.push(function(){if(document.activeElement == document.body)SSP.DOM.focus(SSP.DOM.byId('w_content'));});
+		</script>
+		<script type="text/javascript">
+(function(){
+	var d = document, styles = {"core":"../common/page/css.css_","its":"../common/page/css/its.css_"};
+	for(var css in styles)
+	{
+		var t = window.getCookie ? parseInt(window.getCookie('CSS_' + css.toUpperCase()), 10) : null;
+		d.write('<' + 'link rel="stylesheet" type="text/css" href="' + styles[css] + (t ? '?_=' + t : '') + '">');
+	}
+})();
+</script><noscript><link rel="stylesheet" type="text/css" href="../common/page/css.css_"><link rel="stylesheet" type="text/css" href="../common/page/css/its.css_"></noscript>		<!--[if lt IE 9]>
+			<script onload="this.loaded=true" type="text/javascript" src="../static/html5shiv.js"></script>
+			<script onload="this.loaded=true" type="text/javascript" src="../static/wgxpath.js"></script>
+		<![endif]-->
+				<script type="text/javascript">
+(function(){
+	var d = document, scripts = {"core":"../common/page/js.js_","its":"../common/page/js/its.js_"}, late = /*@cc_on true || @*/window.opera;
+	for(var js in scripts)
+	{
+		var t = window.getCookie ? parseInt(window.getCookie('JS_' + js.toUpperCase()), 10) : null;
+		scripts[js] = scripts[js] + (t ? '?_=' + t : '');
+		if(!late)
+			d.write('<' + 'script type="text/javascript" onload="this.loaded=true" defer src="' + scripts[js] + '"></' + 'script>');
+	}
+	late && setTimeout(
+		function()
+		{
+			var o = (function(){return function(){this.loaded=true;};})();
+			for(var js in scripts)
+			{
+				var s = d.createElement('SCRIPT');
+				s.type = 'text/javascript';
+				s.onload = o;
+				s.async = false;
+				s.src = scripts[js];
+				d.body.appendChild(s);
+			}
+		},
+		0
+	);
+})();
+</script>				<link id="favicon_static" type="image/x-icon" rel="shortcut icon" href="../favicon.ico">
+	</head>
+	<body onload="_gzip_check()" class="scrolly ru its main main_main tabbed">
+		<div id="header">
+			<!--noindex-->
+			<table id="header_table">
+				<tr>
+					<td id="logo_its"><a href="../default.htm" class="inline-block prerender" target="_top"><span id="logo_its_img" class="inline-block"></span></a></td>
+					<td id="about_its"><a href="aboutits" class="inline-block prerender" target="_top"><span>Информационно-технологическое<br>сопровождение&nbsp;пользователей<br>1С:Предприятия</span></a></td>
+					<td id="search"><div id="w_search" class="w"><div id="w_search_wrapper">
+	<form id="search_form" name="search_form" method="GET" action="/db/aboutits/search/all" autocomplete="off" target="_top">
+		<input id="search_input" type="text" name="query" value="" spellcheck="false" data-autocomplete-notrim data-autocomplete-autosubmit data-autocomplete-cache>
+		<div id="search_controls">
+			<input id="search_reset" type="reset" value="" title="Очистить">
+			<input id="search_submit" type="submit" value="" title="Искать">
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+	deferred.push(function(){
+		App.Search.init(false);
+		var autocomplete = '/search/autocomplete.json?query={query}';
+		var userType = SSP.Bus.cookie('USER_TYPE');
+		var searchNew = SSP.Bus.cookie('SEARCH_NEW');
+		
+		if(searchNew === '0')
+			autocomplete = '/db/suggest.json?searchText={query}';
+		
+		SSP.Form.initAutocomplete('search_input', autocomplete);
+	});
+</script></div></td>
+					<td id="div_arrow"><span id="div_arrow_img" class="inline-block"></span></td>
+					<td id="user_login" class="authorized"><div id="w_user_login" class="w"><script type="text/javascript">
+	deferred.push(function(){App.User.init(true, 'BITRIX_SM_LOGIN', 'SUBSCRIBE_PERIOD', 'PARTWEB_LOGIN', 'FRESH_LOGIN', 'BITRIX_SM_UIDH', '../user/auth/ping.json', 1380);});
+</script>
+<div id="personal_info">
+	<div id="login"><script type="text/javascript">
+		if(!window.SSP)
+			try{var login = getCookie('BITRIX_SM_LOGIN');
+			if(login && login.match(/^[a-z0-9~!@#&\?\*\(\)\[\]\{\}'":;,\.\+=\\\/_-]+$/i))
+				document.write(login.replace(/"/g, '&quot;') + '<style>#personal_info{display:block!important}#login{display:block!important;height:26px}</style>');
+			}catch(e){};
+	</script></div>
+	<div id="access_info">
+		<a id="access_limited" href="../dostup" target="_top">Доступ&nbsp;ограничен</a>
+		<span id="access_till">доступ&nbsp;до&nbsp;<b id="subscribe_period"></b></span>
+	</div>
+	<div id="personal_links">
+		<a href="../personal/default.htm" target="_top">Личный&nbsp;кабинет</a><span>&nbsp;&nbsp;&nbsp;</span><a id="logout_link" href="../login/@action=logout" target="_top">Выйти</a>
+	</div>
+</div>
+<noscript><style>#personal_info{display:block!important}#login{display:block!important;height:26px}</style></noscript>
+</div></td>
+					<td id="div_ret"><span id="div_ret_img" class="inline-block"></span></td>
+					<td id="logo_1c"><a href="../../1c.ru/default.htm" class="inline-block" target="_top"><span id="logo_1c_img" class="inline-block"></span></a></td>
+				</tr>
+			</table>
+			<!--/noindex-->
+			<div id="navchain"><div id="navchain_inner">
+<div id="w_navchain" class="w"><!--noindex-->
+<a class="inline-block" href="../default.htm" target="_top">Главная</a>
+<!--/noindex-->
+<a class="inline-block" href="../section/info" target="_top">Дополнительная информация</a>
+<a class="inline-block" href="aboutits" target="_top" title="Об 1С:ИТС">Об 1С:ИТС</a>
+</div><!--noindex--><div id="w_toplinks" class="w"><a id="w_basket_count" class="inline-block" style="display:none" href="basket/edit" target="popup"></a>
+<span id="w_searchlink" class="w"><a class="inline-block" id="search_link" href="aboutits/search" style="display:none" target="_top" rel="nofollow"><span class="inline-block"></span> Результаты поиска</a>
+<script type="text/javascript">
+deferred.push(function()
+{
+	if(SSP.Bus.cookie('SEARCH'))
+		document.getElementById('search_link').style.display = '';
+});
+</script>
+<noscript><style>#search_link{display:inline-block!important}</style></noscript></span><a class="inline-block" href="aboutits" target="_top">Об ИС 1С:ИТС</a>
+<span id="w_siteselect" class="w" style="display:"><a href="javascript:" id="selected_country" class="inline-block country"></a>
+<ul class="clean" style="display:none">
+	<li><a class="inline-block country country_ru" href="javascript:">Россия</a></li>
+	<li><a class="inline-block country country_ua" href="javascript:">Украина</a></li>
+	<li><a class="inline-block country country_kz" href="javascript:">Казахстан</a></li>
+	<li><a class="inline-block country country_by" href="javascript:">Беларусь</a></li>
+	<li><a class="inline-block country country_md" href="javascript:">Молдова</a></li>
+	<li><a class="inline-block country country_az" href="javascript:">Азербайджан</a></li>
+	<li><a class="inline-block country country_lv" href="javascript:">Латвия</a></li>
+	<li><a class="inline-block country country_lt" href="javascript:">Литва</a></li>
+	<li><a class="inline-block country country_ee" href="javascript:">Эстония</a></li>
+	<li><a class="inline-block country country_kg" href="javascript:">Кыргызстан</a></li>
+	<li><a class="inline-block country country_uz" href="javascript:">Узбекистан</a></li>
+	<li><a class="inline-block country country_am" href="javascript:">Армения</a></li>
+	<li><a class="inline-block country country_ge" href="javascript:">Грузия</a></li>
+	<li><a class="inline-block country country_tj" href="javascript:">Таджикистан</a></li>
+	<li><a class="inline-block country country_eu" href="javascript:">Все страны</a></li>
+</ul>
+<script type="text/javascript">
+	deferred.push(function(){
+		App.Site.init({"ru":"\u0420\u043e\u0441\u0441\u0438\u044f","ua":"\u0423\u043a\u0440\u0430\u0438\u043d\u0430","kz":"\u041a\u0430\u0437\u0430\u0445\u0441\u0442\u0430\u043d","by":"\u0411\u0435\u043b\u0430\u0440\u0443\u0441\u044c","md":"\u041c\u043e\u043b\u0434\u043e\u0432\u0430","az":"\u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d","lv":"\u041b\u0430\u0442\u0432\u0438\u044f","lt":"\u041b\u0438\u0442\u0432\u0430","ee":"\u042d\u0441\u0442\u043e\u043d\u0438\u044f","kg":"\u041a\u044b\u0440\u0433\u044b\u0437\u0441\u0442\u0430\u043d","uz":"\u0423\u0437\u0431\u0435\u043a\u0438\u0441\u0442\u0430\u043d","am":"\u0410\u0440\u043c\u0435\u043d\u0438\u044f","ge":"\u0413\u0440\u0443\u0437\u0438\u044f","tj":"\u0422\u0430\u0434\u0436\u0438\u043a\u0438\u0441\u0442\u0430\u043d","eu":"\u0412\u0441\u0435 \u0441\u0442\u0440\u0430\u043d\u044b"});
+	});
+</script></span></div><!--/noindex-->			</div></div>
+<!--noindex--><ul id="l_tabs" class="tab tab1 l"><li id="w_main_tabclassifier" class="w png null" style="display:none"></li><li id="w_main_tabdocument" class="w png active" style="display:"><span class="inline-block"><a href="aboutits/content/2/hdoc" class="inline-block" target="_top">Документ</a></span></li><li id="w_main_tabsearch" class="w png null" style="display:none"><span class="inline-block"><a href="aboutits/search" class="inline-block" target="_top" rel="nofollow">Результаты поиска</a></span><script type="text/javascript">
+deferred.push(function()
+{
+	if(SSP.Bus.cookie('SEARCH'))
+		document.getElementById('w_main_tabsearch').style.display = '';
+});
+</script></li><li id="w_main_tabextendedsearch" class="w png null" style="display:none"></li><a href="javascript:" id="search_new_switch" style="font-style:italic;font-weight:bold;padding:0 10px 0 0;float:right;border:0"></a>
+<script type="text/javascript">
+	deferred.push(function(){
+		var cookie = SSP.Bus.cookie('SEARCH_NEW');
+		var a = SSP.DOM.byId('search_new_switch');
+		
+		if(!cookie || cookie === '1')
+			a.innerHTML = 'Вернуться на старую версию поиска';
+		else
+			a.innerHTML = 'Попробовать новую версию поиска';
+		
+		var handler = function(event)
+		{
+			if(!cookie || cookie === '1')
+				var newVersion = 0;
+			else
+				var newVersion = 1;
+			
+			SSP.Bus.cookie('SEARCH_NEW', newVersion);
+			
+			SSP.Bus.request('/db/search/versiontrack?new=' + newVersion.toString(), function(){
+				window.location.reload();
+			});
+		};
+		
+		SSP.DOM.listen(a, 'click', handler);
+	});
+</script></ul><!--/noindex-->		</div>
+<div id="w_content" class="l"><div id="l_classifier" class="l" style="display:none"></div><div id="l_content" class="l" style="display:none"><div id="l_doc" class="l" style="display:"><div id="w_metadata_doc_title" class="w" style="display:"><div id="doc_title" title="1С:ИТС – единый договор для получения сервисов пользователями &quot;1С:Предприятие&quot;">1С:ИТС – единый договор для получения сервисов пользователями &quot;1С:Предприятие&quot;</div><div id="l_doc_controls" class="l"><div id="w_review_link" class="w"><a href="review/edit/aboutits/2/1" class="popup" target="_top" rel="nofollow">Оставить отзыв</a></div><div id="w_metadata_print_button" class="l"><a id="w_metadata_print_href" target="print" class="inline-block nojs l" title="Версия для печати" rel="nofollow" onClick="return App.Its.Handler.printButtonClick.call(this, event)" href="content/aboutits/src/_25F7_25F2_25EE _25F2_25E0_25EA_25EE_25E5 1_25F1-_25E8_25F2_25F1.htm@_=1504708084#_print">&nbsp;</a></div><div id="w_search_highlight" class="w null down" title="Подсветка найденного" onClick="return App.Its.Handler.searchHighlightClick.call(this, event)"><a class="inline-block" href="javascript:" id="search_hl_prev">&nbsp;</a><a class="inline-block" href="javascript:" id="search_lamp">&nbsp;</a><a class="inline-block" href="javascript:" id="search_hl_next">&nbsp;</a>
+<noscript><style>#w_search_highlight{display:none!important}</style></noscript></div><div id="w_metadata_findinclassifier" class="l" style="display:none"><a id="w_metadata_findinclassifier_href" title="Найти в содержании" class="inline-block l" target="_top">&nbsp;</a></div></div></div><div id="l_toc" class="l" style="display:"><div id="w_metadata_toc" class="w" src="metadata/aboutits/toc/1_@_=1504708084" data-book="" style="display:"><ul class="toc tree top active mixed"><li class="expanded active" id="toc_2"><a href="aboutits">1С:ИТС – единый договор для получения сервисов пользователями &quot;1С:Предприятие&quot;</a><ul class="toc tree"><li class="doc" id="toc_13"><a href="content/aboutits/src/_25F3_25F1_25EB_25F3_25E3_25E8 _25EF_25EE _25E4_25EE_25E3_25EE_25E2_25EE_25F0_25F3 _25E8_25F2_25F1.htm@_=1504708084#">Что входит в состав 1С:ИТС?</a></li><li class="doc" id="toc_759"><a href="content/aboutits/src/_25F1_25EE_25F1_25F2_25E0_25E2__25F1_25F2_25E0_25F0_25F2_25FD_25E4_25EE.htm@_=1504708084#">Что входит в состав СтартЭДО?</a></li><li class="collapsed" id="toc_751"><a href="content/aboutits/src/_25E8_25F1 1_25F1 _25E8_25F2_25F1.htm@_=1504708084#">Информационная система 1С:ИТС</a><ul class="toc tree"><li class="collapsed" id="toc_3"><a href="content/aboutits/src/_25E8_25ED_25F4_25EE_25F0_25EC_25E0_25F6_25E8_25EE_25ED_25ED_25FB_25E5 _25F1_25E8_25F1_25F2_25E5_25EC_25FB _25E8_25F2_25F1.htm@_=1504708084#">Разделы информационной системы 1С:ИТС</a><ul class="toc tree"><li class="doc" id="toc_3_issogl1_1"><a href="content/aboutits/src/_25E8_25ED_25F4_25EE_25F0_25EC_25E0_25F6_25E8_25EE_25ED_25ED_25FB_25E5 _25F1_25E8_25F1_25F2_25E5_25EC_25FB _25E8_25F2_25F1.htm@_=1504708084#issogl1_1">Раздел &quot;Новости&quot;</a></li><li class="doc" id="toc_3_issogl1_2"><a href="content/aboutits/src/_25E8_25ED_25F4_25EE_25F0_25EC_25E0_25F6_25E8_25EE_25ED_25ED_25FB_25E5 _25F1_25E8_25F1_25F2_25E5_25EC_25FB _25E8_25F2_25F1.htm@_=1504708084#issogl1_2">Раздел &quot;Технологическая поддержка прикладных решений&quot;</a></li><li class="doc" id="toc_3_issogl1_12"><a href="content/aboutits/src/_25E8_25ED_25F4_25EE_25F0_25EC_25E0_25F6_25E8_25EE_25ED_25ED_25FB_25E5 _25F1_25E8_25F1_25F2_25E5_25EC_25FB _25E8_25F2_25F1.htm@_=1504708084#issogl1_12">Раздел &quot;Учет в государственных учреждениях&quot;</a></li><li class="doc" id="toc_3_issogl1_3"><a href="content/aboutits/src/_25E8_25ED_25F4_25EE_25F0_25EC_25E0_25F6_25E8_25EE_25ED_25ED_25FB_25E5 _25F1_25E8_25F1_25F2_25E5_25EC_25FB _25E8_25F2_25F1.htm@_=1504708084#issogl1_3">Раздел &quot;Бухгалтерский и налоговый учет&quot;</a></li><li class="doc" id="toc_3_issogl1_4"><a href="content/aboutits/src/_25E8_25ED_25F4_25EE_25F0_25EC_25E0_25F6_25E8_25EE_25ED_25ED_25FB_25E5 _25F1_25E8_25F1_25F2_25E5_25EC_25FB _25E8_25F2_25F1.htm@_=1504708084#issogl1_4">Раздел &quot;Налоги и взносы&quot;</a></li><li class="doc" id="toc_3_issogl1_5"><a href="content/aboutits/src/_25E8_25ED_25F4_25EE_25F0_25EC_25E0_25F6_25E8_25EE_25ED_25ED_25FB_25E5 _25F1_25E8_25F1_25F2_25E5_25EC_25FB _25E8_25F2_25F1.htm@_=1504708084#issogl1_5">Раздел &quot;Отчетность&quot;</a></li><li class="doc" id="toc_3_issogl1_6"><a href="content/aboutits/src/_25E8_25ED_25F4_25EE_25F0_25EC_25E0_25F6_25E8_25EE_25ED_25ED_25FB_25E5 _25F1_25E8_25F1_25F2_25E5_25EC_25FB _25E8_25F2_25F1.htm@_=1504708084#issogl1_6">Раздел &quot;Кадры и оплата труда&quot;</a></li><li class="doc" id="toc_3_issogl1_7"><a href="content/aboutits/src/_25E8_25ED_25F4_25EE_25F0_25EC_25E0_25F6_25E8_25EE_25ED_25ED_25FB_25E5 _25F1_25E8_25F1_25F2_25E5_25EC_25FB _25E8_25F2_25F1.htm@_=1504708084#issogl1_7">Раздел &quot;Юридическая поддержка&quot;</a></li><li class="doc" id="toc_3_issogl1_8"><a href="content/aboutits/src/_25E8_25ED_25F4_25EE_25F0_25EC_25E0_25F6_25E8_25EE_25ED_25ED_25FB_25E5 _25F1_25E8_25F1_25F2_25E5_25EC_25FB _25E8_25F2_25F1.htm@_=1504708084#issogl1_8">Раздел &quot;Отвечает аудитор &quot;</a></li><li class="doc" id="toc_3_issogl1_9"><a href="content/aboutits/src/_25E8_25ED_25F4_25EE_25F0_25EC_25E0_25F6_25E8_25EE_25ED_25ED_25FB_25E5 _25F1_25E8_25F1_25F2_25E5_25EC_25FB _25E8_25F2_25F1.htm@_=1504708084#issogl1_9">База нормативных документов</a></li><li class="doc" id="toc_3_issogl1_10"><a href="content/aboutits/src/_25E8_25ED_25F4_25EE_25F0_25EC_25E0_25F6_25E8_25EE_25ED_25ED_25FB_25E5 _25F1_25E8_25F1_25F2_25E5_25EC_25FB _25E8_25F2_25F1.htm@_=1504708084#issogl1_10">Раздел &quot;Книги и периодика&quot;</a></li><li class="doc" id="toc_3_issogl1_11"><a href="content/aboutits/src/_25E8_25ED_25F4_25EE_25F0_25EC_25E0_25F6_25E8_25EE_25ED_25ED_25FB_25E5 _25F1_25E8_25F1_25F2_25E5_25EC_25FB _25E8_25F2_25F1.htm@_=1504708084#issogl1_11">Раздел &quot;Разработка и администрирование&quot;</a></li><li class="doc" id="toc_3_issogl1_13"><a href="content/aboutits/src/_25E8_25ED_25F4_25EE_25F0_25EC_25E0_25F6_25E8_25EE_25ED_25ED_25FB_25E5 _25F1_25E8_25F1_25F2_25E5_25EC_25FB _25E8_25F2_25F1.htm@_=1504708084#issogl1_13">Раздел &quot;Строительство и ЖКХ&quot;</a></li><li class="doc" id="toc_3_issogl1_14"><a href="content/aboutits/src/_25E8_25ED_25F4_25EE_25F0_25EC_25E0_25F6_25E8_25EE_25ED_25ED_25FB_25E5 _25F1_25E8_25F1_25F2_25E5_25EC_25FB _25E8_25F2_25F1.htm@_=1504708084#issogl1_14">Раздел &quot;Медицина&quot;</a></li></ul></li><li class="doc" id="toc_4"><a href="content/aboutits/src/_25E8_25F2_25F1 _25EF_25F0_25EE_25F4.htm@_=1504708084#">Доступ к ИС 1С:ИТС по договору 1С:ИТС ПРОФ</a></li><li class="doc" id="toc_5"><a href="content/aboutits/src/_25E8_25F2_25F1 _25E1_25FE_25E4_25E6_25E5_25F2 _25EF_25F0_25EE_25F4.htm@_=1504708084#">Доступ к ИС 1С:ИТС по договору 1С:ИТС БЮДЖЕТ ПРОФ</a></li><li class="doc" id="toc_6"><a href="content/aboutits/src/_25E8_25F2_25F1 _25F1_25F2_25F0_25EE_25E8_25F2_25E5_25EB_25FC_25F1_25F2_25E2_25EE.htm@_=1504708084#">Доступ к ИС 1С:ИТС по договору 1С:ИТС Строительство и ЖКХ</a></li><li class="doc" id="toc_7"><a href="content/aboutits/src/_25E8_25F2_25F1 _25EC_25E5_25E4_25E8_25F6_25E8_25ED_25E0.htm@_=1504708084#">Доступ к ИС 1С:ИТС по договору 1С:ИТС Медицина</a></li><li class="doc" id="toc_8"><a href="content/aboutits/src/_25E8_25F2_25F1 _25F2_25E5_25F5_25ED_25EE.htm@_=1504708084#">Доступ к ИС 1С:ИТС по договору 1С:ИТС ТЕХНО</a></li><li class="doc" id="toc_9"><a href="content/aboutits/src/_25E8_25F2_25F1 _25E1_25FE_25E4_25E6_25E5_25F2.htm@_=1504708084#">Доступ к ИС 1С:ИТС по договору 1С:ИТС БЮДЖЕТ</a></li><li class="collapsed" id="toc_715"><a href="content/aboutits/src/_25EF_25E5_25F0_25E5_25F7_25E5_25ED_25FC _25F0_25E5_25EB_25E8_25E7_25EE_25E2.htm@_=1504708084#">Перечень релизов, опубликованных на DVD-выпусках ИС 1С:ИТС</a><ul class="toc tree"><li class="doc" id="toc_760"><a href="content/aboutits/src/_25EF_25E5_25F0_25E5_25F7_25E5_25ED_25FC _25F0_25E5_25EB_25E8_25E7_25EE_25E2 2017.htm@_=1504708084#">Перечень релизов, опубликованных в 2017 г.</a></li><li class="doc" id="toc_758"><a href="content/aboutits/src/_25EF_25E5_25F0_25E5_25F7_25E5_25ED_25FC _25F0_25E5_25EB_25E8_25E7_25EE_25E2 2016.htm@_=1504708084#">Перечень релизов, опубликованных в 2016 г.</a></li><li class="doc" id="toc_757"><a href="content/aboutits/src/_25EF_25E5_25F0_25E5_25F7_25E5_25ED_25FC _25F0_25E5_25EB_25E8_25E7_25EE_25E2 2015.htm@_=1504708084#">Перечень релизов, опубликованных в 2015 г.</a></li><li class="doc" id="toc_752"><a href="content/aboutits/src/_25EF_25E5_25F0_25E5_25F7_25E5_25ED_25FC _25F0_25E5_25EB_25E8_25E7_25EE_25E2 2014.htm@_=1504708084#">Перечень релизов, опубликованных в 2014 г.</a></li><li class="doc" id="toc_746"><a href="content/aboutits/src/_25EF_25E5_25F0_25E5_25F7_25E5_25ED_25FC _25F0_25E5_25EB_25E8_25E7_25EE_25E2 2013.htm@_=1504708084#">Перечень релизов, опубликованных в 2013 г.</a></li><li class="doc" id="toc_744"><a href="content/aboutits/src/_25EF_25E5_25F0_25E5_25F7_25E5_25ED_25FC _25F0_25E5_25EB_25E8_25E7_25EE_25E2 2012.htm@_=1504708084#">Перечень релизов, опубликованных в 2012 г.</a></li><li class="doc" id="toc_10"><a href="content/aboutits/src/_25EF_25E5_25F0_25E5_25F7_25E5_25ED_25FC _25F0_25E5_25EB_25E8_25E7_25EE_25E2 2011.htm@_=1504708084#">Перечень релизов, опубликованных в 2011 г.</a></li><li class="doc" id="toc_11"><a href="content/aboutits/src/_25EF_25E5_25F0_25E5_25F7_25E5_25ED_25FC _25F0_25E5_25EB_25E8_25E7_25EE_25E2 2010.htm@_=1504708084#">Перечень релизов, опубликованных в 2010 г.</a></li><li class="doc" id="toc_12"><a href="content/aboutits/src/_25EF_25E5_25F0_25E5_25F7_25E5_25ED_25FC _25F0_25E5_25EB_25E8_25E7_25EE_25E2 2009.htm@_=1504708084#">Перечень релизов, опубликованных в 2009 г.</a></li></ul></li></ul></li><li class="collapsed" id="toc_21"><a href="content/aboutits/src/_25EA_25F2_25EE _25E8 _25EA_25E0_25EA _25EC_25EE_25E6_25E5_25F2 _25E7_25E0_25EA_25EB_25FE_25F7_25E8_0065FF8425#">Кто и как может заключить договор 1С:ИТС?</a><ul class="toc tree"><li class="doc" id="toc_21_issogl1_who"><a href="content/aboutits/src/_25EA_25F2_25EE _25E8 _25EA_25E0_25EA _25EC_25EE_25E6_25E5_25F2 _25E7_25E0_25EA_25EB_25FE_25F7_25E8_0065FF8425#issogl1_who">Кто может заключить договор 1С:ИТС?</a></li><li class="doc" id="toc_21_issogl1_how"><a href="content/aboutits/src/_25EA_25F2_25EE _25E8 _25EA_25E0_25EA _25EC_25EE_25E6_25E5_25F2 _25E7_25E0_25EA_25EB_25FE_25F7_25E8_0065FF8425#issogl1_how">Как оформить договор сопровождения 1С:ИТС?</a></li><li class="doc" id="toc_21_issogl1_vid_dogovora"><a href="content/aboutits/src/_25EA_25F2_25EE _25E8 _25EA_25E0_25EA _25EC_25EE_25E6_25E5_25F2 _25E7_25E0_25EA_25EB_25FE_25F7_25E8_0065FF8425#issogl1_vid_dogovora">Какие существуют договоры 1С:ИТС?</a></li><li class="doc" id="toc_21_issogl1_kupon"><a href="content/aboutits/src/_25EA_25F2_25EE _25E8 _25EA_25E0_25EA _25EC_25EE_25E6_25E5_25F2 _25E7_25E0_25EA_25EB_25FE_25F7_25E8_0065FF8425#issogl1_kupon">Как получить льготное сопровождение?</a></li><li class="doc" id="toc_21_issogl1_long"><a href="content/aboutits/src/_25EA_25F2_25EE _25E8 _25EA_25E0_25EA _25EC_25EE_25E6_25E5_25F2 _25E7_25E0_25EA_25EB_25FE_25F7_25E8_0065FF8425#issogl1_long">На какой срок заключается договор 1С:ИТС?</a></li><li class="doc" id="toc_21_issogl1_reg"><a href="content/aboutits/src/_25EA_25F2_25EE _25E8 _25EA_25E0_25EA _25EC_25EE_25E6_25E5_25F2 _25E7_25E0_25EA_25EB_25FE_25F7_25E8_0065FF8425#issogl1_reg">Как стать официальным зарегистрированным пользователем &quot;1С:Предприятие&quot;?</a></li><li class="doc" id="toc_21_issogl1_sup"><a href="content/aboutits/src/_25EA_25F2_25EE _25E8 _25EA_25E0_25EA _25EC_25EE_25E6_25E5_25F2 _25E7_25E0_25EA_25EB_25FE_25F7_25E8_0065FF8425#issogl1_sup">Кому необходимо заключить договор 1С:ИТС?</a></li><li class="doc" id="toc_21_issogl1_many"><a href="content/aboutits/src/_25EA_25F2_25EE _25E8 _25EA_25E0_25EA _25EC_25EE_25E6_25E5_25F2 _25E7_25E0_25EA_25EB_25FE_25F7_25E8_0065FF8425#issogl1_many">Как правильно заключить договор 1С:ИТС, если организация использует несколько программ &quot;1С:Предприятие&quot;?</a></li><li class="doc" id="toc_21_issogl1_12"><a href="content/aboutits/src/_25EA_25F2_25EE _25E8 _25EA_25E0_25EA _25EC_25EE_25E6_25E5_25F2 _25E7_25E0_25EA_25EB_25FE_25F7_25E8_0065FF8425#issogl1_12">Особые условия заключения договора 1С:ИТС для учебных заведений (1С:ИТС ПРОФ ВУЗ)</a></li></ul></li><li class="doc" id="toc_22"><a href="content/aboutits/src/_25F0_25E5_25EA_25EE_25EC_25E5_25ED_25E4_25EE_25E2_25E0_25ED_25ED_25FB_25E5 _25F6_25E5_25ED_25FB.htm@_=1504708084#">Рекомендованные цены</a></li><li class="doc" id="toc_23"><a href="content/aboutits/src/_25E7_25E0_25EA_25E0_25E7_25E0_25F2_25FC _25EE_25F4_25EE_25F0_25EC_25EB_25E5_25ED_25E8_25E5 _25E4_25EE_25E3_25EE_25E2_25EE_25F0_25E0.htm@_=1504708084#">Заказ ИТС и сервисов 1С</a></li><li class="doc" id="toc_24"><a href="content/aboutits/src/_25EA_25E0_25EA _25EF_25EE_25EB_25F3_25F7_25E8_25F2_25FC _25E4_25EE_25F1_25F2_25F3_25EF _25EA _25E8_096BF09458#">Как получить доступ к Интернет-версии ИТС</a></li><li class="doc" id="toc_738"><a href="content/aboutits/src/_25EA_25E0_25EA _25E8_25F1_25EF_25EE_25EB_25FC_25E7_25EE_25E2_25E0_25F2_25FC _25E8_25F2_25F1.htm@_=1504708084#">Учебный курс &quot;Практическое использование информационной системы 1С:ИТС&quot;</a></li><li class="doc" id="toc_740"><a href="content/aboutits/src/_25E8_25ED_25F4_25E2_25FB_25EF_25F3_25F1_25EA_25E8.htm@_=1504708084#">Информационные выпуски</a></li></ul></li></ul></div></div><div id="w_metadata_toc_button" class="l" title="Скрыть оглавление" style="display:"><div id="toc_button"></div><noscript><style>#w_metadata_toc_button{display:none!important}</style></noscript></div><div id="l_doc_frame" class="l" data-doc="2" style="display:;width:69.3%"><div id="w_metadata_doc_tabs" class="w" style="display:none"></div><div id="l_doc_frame_inner" class="l loading null" style="display:"><script type="text/javascript">
+	if(!window.location.hash || window.location.hash === '#')
+		document.write('<iframe id="w_metadata_doc_frame" class="l" name="w_metadata_doc_frame" frameborder="0" scrolling="auto" src="content/aboutits/src/_25F7_25F2_25EE _25F2_25E0_25EA_25EE_25E5 1_25F1-_25E8_25F2_25F1.htm@_=1504708084"></iframe>');
+	else
+		document.write('<iframe src="' + (/*@cc_on false && @*/ true ? 'javascript:' : '../blank.htm') + '" id="w_metadata_doc_frame" name="w_metadata_doc_frame" class="l" frameborder="0" scrolling="auto"></iframe>');
+	
+	if(window.location.hash.match(/^#?(?:(?:content|bookmark):.+)?$/))
+		document.getElementById('l_content').style.display = '';
+</script><noscript><iframe id="w_metadata_doc_frame" class="l" name="w_metadata_doc_frame" frameborder="0" scrolling="auto" src="content/aboutits/src/_25F7_25F2_25EE _25F2_25E0_25EA_25EE_25E5 1_25F1-_25E8_25F2_25F1.htm@_=1504708084"></iframe></noscript></div></div></div></div><div id="l_search" class="l" style="display:none"></div><div id="l_extended_search" class="l" style="display:none"></div><script type="text/javascript">
+	deferred.push(function()
+	{
+		SSP.Bus.init(
+			'default.htm',
+			['browse', 'content', 'bookmark', 'search', 'extsearch'],
+			App.Its.Router,
+			{"w_bottomlinks":{"5":{"listen":[{"event":"mouseover","callback":"SSP.Widget.prototype.show"},{"event":"mouseout","callback":"SSP.Widget.prototype.hide"}],"trigger":[]}},"w_metadata_toc":{"5":{"listen":[{"event":"click","callback":"App.Its.Handler.tocClick"},{"event":"click","callback":"SSP.Tree.handleClick"}],"trigger":[]},"3":{"reload":["metadata/aboutits/toc/1_@_=1504708084"],"select":["toc_2"]}},"w_metadata_toc_button":{"5":{"listen":[{"event":"click","callback":"App.Its.Handler.tocButtonClick"}],"trigger":[]},"3":{"reload":[null]}},"w_metadata_doc_frame":{"5":{"listen":[{"event":"DOMContentLoaded","callback":"App.Its.Handler.docFrameDOMContentLoaded"}],"trigger":[]}},"w_title":{"3":{"reload":[null]}},"w_navchain":{"3":{"reload":[null]}},"w_searchlink":{"3":{"reload":[null]}},"w_search":{"3":{"reload":[null]}},"w_main_tabclassifier":{"3":{"reload":[null]}},"w_main_tabdocument":{"3":{"reload":[null]}},"w_main_tabsearch":{"3":{"reload":[null]}},"w_metadata_doc_title":{"3":{"reload":[null]}},"l_doc_frame_inner":{"3":{"reload":[null]}},"w_review_link":{"3":{"reload":[null]}},"w_metadata_findinclassifier":{"3":{"reload":[null]}}},
+			'../img/loading-tpt.gif',
+			false,
+			false
+		);
+		
+		App.Its.Handler.groups = {all: "Все разделы", news: "Новости", tech: "Технологическая поддержка прикладных решений", accnt: "Бухгалтерский и налоговый учет", abud: "Учет в государственных учреждениях", duty: "Налоги и взносы", report: "Отчетность", staff: "Кадры и оплата труда", law: "Юридическая поддержка", business: "Управление фирмой", consult: "Отвечает аудитор", garant: "База нормативных документов", books: "Книги и периодика", constr: "Строительство", med: "Медицина", dev: "Разработка и администрирование", partner: "Материалы для партнеров", info: "Дополнительная информация", history: "История поиска"};
+		
+		var grp = SSP.Bus.cookie('ITS_GRP');
+		
+		if(grp && grp !== 'all' && App.Its.Handler.groups[grp])
+		{
+			SSP.Bus.cookie('ITS_GRP', 0, undefined, '/');
+			
+			var navchain = document.getElementById('w_navchain');
+			var items = navchain.getElementsByTagName('A');
+			items.item(1).href = '../section/' + grp;
+			items.item(1).innerHTML = App.Its.Handler.groups[grp];
+		}
+		
+		App.Its.Router.selectedTab = App.Its.Router.getRememberedTab();
+		
+		App.Its.Handler.listenBasket(false);
+	});
+</script>
+<script type="text/javascript">
+	deferred.push(function()
+	{
+		var match = App.Its.Router.match(App.Its.Router.toInternal(window.location.toString()));
+		if(!match || !match.context.mode)
+			SSP.Widget('w_metadata_doc_frame').indicate(false);
+	});
+</script>
+<noscript><style>#l_content{display:block!important}</style></noscript>
+<script>
+	deferred.push(function()
+	{
+		setTimeout(function()
+		{
+			var match = App.Its.Router.match(App.Its.Router.toInternal(window.location.toString()));
+			if(match)
+			{
+				var content = SSP.Widget('l_content');
+				var classifier = SSP.Widget('l_classifier');
+				var search = SSP.Widget('l_search');
+				var extsearch = SSP.Widget('l_extended_search');
+				
+				if(content.node && content.getStyle('display') !== 'none'
+				|| classifier.node && classifier.getStyle('display') !== 'none'
+				|| search.node && search.getStyle('display') !== 'none'
+				|| extsearch.node && extsearch.getStyle('display') !== 'none')
+					return;
+				
+				if(match.context.mode === 'content' || match.context.mode === 'bookmark')
+					content.show();
+				else if(match.context.mode === 'browse')
+					classifier.show();
+				/*else if(match.context.mode === 'search')
+					search.show();*/
+				else if(match.context.mode === 'extsearch')
+					extsearch.show();
+			}
+		}, 1000);
+	});
+</script>
+<noscript><style>
+li.collapsed > ul
+{display:block!important}
+html.ie6 ul.top * li.collapsed ul
+{display:block!important}
+html.ie6 ul.top * li.collapsed ul
+{display:block!important}
+#w_search_history div.collapsed div,
+#w_search_history div.collapsed ul
+{display:block!important}
+ul.tree li.collapsed
+{background-image:none !important}
+ul.toc li.collapsed,
+html.ie6 #l_toc ul.top * li.collapsed,
+#w_search_history div.collapsed,
+#w_search_history li.collapsed
+{background-image:url('../img/its/tree/expanded.gif') !important}
+#l_toc a:active,
+#l_toc a:focus
+{background-color:#faefb5}
+</style></noscript>
+<!--[if IE 6]>
+	<style>
+		#l_nav, #w_metadata_navlist
+		{height:expression(document.readyState==='complete' ? (document.getElementById('l_classifier').clientHeight - 2) + 'px' : 'auto')}
+		#l_toc, #l_doc_frame
+		{height:expression(document.readyState==='complete' ? (document.getElementById('l_doc').clientHeight - document.getElementById('w_metadata_doc_title').clientHeight - 2) + 'px' : 'auto')}
+		#l_doc_frame_inner, #l_doc_frame_inner.tabbed
+		{height:expression(document.readyState==='complete' ? (document.getElementById('l_doc_frame').clientHeight - document.getElementById('w_metadata_doc_tabs').offsetHeight) + 'px' : 'auto')}
+	</style>
+<![endif]-->
+<!--[if lte IE 7]>
+	<style>
+		#w_section_sidebar a div, #w_section_sidebar span div
+		{margin-top:expression(document.readyState==='complete' ? (this.parentNode.offsetHeight - this.offsetHeight) / 2 + 'px' : 'auto')}
+		#w_section_sidebar li.local_search_count span div
+		{margin-top:0}
+	</style>
+<![endif]--></div>		<!--noindex-->
+		<div id="footer">
+			<div id="copyright">
+				&copy; ООО «1С». Все права защищены<br>
+				<a href="../terms_of_use/default.htm" target="_top">Информация об ограничениях</a>
+			</div>
+			<div id="contact">
+				<a href="mailto:web-its@1c.ru" target="_blank"><span id="contact_mailto_img" class="inline-block"></span>&nbsp;web-its@1c.ru</a><br>
+				<a href="javascript:" id="other_sites_link" onClick="document.getElementById('w_bottomlinks').style.display='block'">Другие сайты фирмы «1С»&#x25bc;</a>
+			</div>
+			<div id="w_bottomlinks" class="w"><ul class="clean">
+	<li><a href="../../www.1c.ru/default.htm" target="_top">www.1с.ru</a></li>
+	<li><a href="../../v8.1c.ru/default.htm" target="_top">1С:Предприятие 8</a></li>
+	<li><a href="../../solutions.1c.ru/default.htm" target="_top">1С Отраслевые решения</a></li>
+	<li><a href="../../www.buh.ru/default.htm" target="_top">БУХ.1С.ru</a></li>
+	<li><a href="../../link.1c.ru/default.htm" target="_top">1С:Линк</a></li>
+	<li><a href="../../consulting.1c.ru/default.htm" target="_top">1С:Консалтинг</a></li>
+	<li><a href="../../dist.1c.ru/default.htm" target="_top">1С:Дистрибьюция</a></li>
+	<li><a href="../../www.1csoft.ru/default.htm" target="_top">1Софт</a></li>
+	<li><a href="../../online.1c.ru/default.htm" target="_top">1С-Онлайн</a></li>
+	<li><a href="../../www.1c-interes.ru/default.htm" target="_top">1С Интерес</a></li>
+	<li><a href="../../edu.1c.ru/default.htm" target="_top">1С:Образование</a></li>
+	<li><a href="../../obr.1c.ru/default.htm" target="_top">Образовательные программы</a></li>
+	<li><a href="../../games.1c.ru/default.htm" target="_top">1С:Игры</a></li>
+</ul></div>		</div>
+		<div id="w_popup" class="w box-shadow"><div id="popup_controls">
+	<span id="popup_title"></span><a id="popup_close" href="javascript:"></a>
+</div>
+<div id="popup" tabindex="-1" class="l loading"></div>
+<script type="text/javascript">
+	deferred.push(function(){
+		App.Popup.init();
+	});
+</script></div>		<script type="text/javascript">
+			deferred.push(function(){App.Stat.init('UA-9034550-2', '38953945', '39255945', 'GA_PARAMS', 'USER_TYPE', false);});
+		</script>
+			<noscript>
+			<div><img src="../../https@mc.yandex.ru/watch/38953945" style="position:absolute; left:-9999px;" alt=""></div>
+		</noscript>
+			<noscript><style>
+			.noscript{display:inherit!important}
+			.script{display:none!important}
+			.w.loading > *,.l.loading > *{visibility:inherit}
+			.w.loading,.l.loading{cursor:inherit;background:inherit;background-position:inherit}
+			.l.loading{margin:inherit;padding:inherit}
+			#other_sites_link {display:none}
+			#contact {margin-top:12px}
+		</style></noscript>
+		<script type="text/javascript">
+			deferred.push(function(){App.Handler.initBodyCopy('ООО «1С»')});
+		</script>
+		<script type="text/javascript">
+			function _gzip_check()
+			{
+				if(document.cookie.match('GUNZIP=1'))
+					return;
+				
+				var links = document.getElementsByTagName('LINK');
+				for(var i = 0; i < links.length; i++)
+					if(links[i].rel === 'stylesheet'
+					&& (!links[i].media || links[i].media === 'all')
+					&& (links[i].href.indexOf('/') === 0 || links[i].href.indexOf(location.protocol + '//' + location.hostname + '/') === 0))
+					{
+						var styleSheet = links[i].styleSheet || links[i].sheet;
+						var rules = styleSheet ? (styleSheet.rules || styleSheet.cssRules) : null;
+						if(!styleSheet || rules.length === 0)
+						{
+							var date = new Date();
+							date.setYear(date.getFullYear() + 1);
+							document.cookie = 'GUNZIP=1; expires=' + date.toGMTString() + '; path=/; domain=' + location.hostname;
+							location.reload();
+							return;
+						}
+					}
+			}
+		</script>
+		<!--/noindex-->
+	</body>
+</html>

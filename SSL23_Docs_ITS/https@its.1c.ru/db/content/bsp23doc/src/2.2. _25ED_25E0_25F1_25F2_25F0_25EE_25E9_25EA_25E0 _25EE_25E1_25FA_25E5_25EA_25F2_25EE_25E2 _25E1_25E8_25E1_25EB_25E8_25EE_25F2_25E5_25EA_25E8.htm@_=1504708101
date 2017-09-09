@@ -1,0 +1,2432 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>2.2. &#1053;&#1072;&#1089;&#1090;&#1088;&#1086;&#1081;&#1082;&#1072; &#1086;&#1073;&#1098;&#1077;&#1082;&#1090;&#1086;&#1074; &#1073;&#1080;&#1073;&#1083;&#1080;&#1086;&#1090;&#1077;&#1082;&#1080;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="2.2. _25ED_25E0_25F1_25F2_25F0_25EE_25E9_25EA_25E0 _25EE_25E1_25FA_25E5_25EA_25F2_25EE_25E2 _25E1_25E8_25E1_25EB_25E8_25EE_25F2_25E5_25EA_25E8.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<h1>2.2. Настройка объектов библиотеки</h1>
+
+<p class="Paragraph0c">После завершения сравнения и объединения объекты
+метаданных библиотеки перенесены в конфигурацию, но еще не настроены. Для
+настройки перенесенных объектов библиотеки нужно выполнить инструкции согласно
+таблице 2.7. </p>
+
+<p class="Paragraph0c">В том случае, если действия при первом внедрении
+библиотеки и при обновлении ее версии различаются, инструкции в таблице 2.7
+явно делятся на части: «При первом внедрении» и «При обновлении версии
+библиотеки». Особого внимания требуют модули корневого объекта конфигурации и
+переопределяемые общие модули, так как автоматическое обновление таких узких
+мест конфигурации невозможно. После таблицы 2.7 также приведены общие
+инструкции по первоначальной настройке и обновлению объектов библиотеки в
+конфигурации.</p>
+
+<p class="Objectname">Таблица 2.7.
+Объекты библиотеки, которые требуют дополнительных действий после сравнения и
+объединения конфигурации с библиотекой</p>
+
+<p class="Paragraph0c"><span class="Interface">Общие объекты «Библиотеки
+стандартных подсистем»</span></p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Название объекта</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Инструкция</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="a1">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Модуль сеанса</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Перенести целиком обработчик <span class="Interface">УстановкаПараметровСеанса</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Модуль управляемого приложения.</p>
+  <p class="BulletTab">&#9679; 
+  Модуль обычного приложения</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении в обработчики <span class="Interface">ПередНачаломРаботыСистемы</span>, <span class="Interface">ПриНачалеРаботыСистемы</span>
+  и <span class="Interface">ПередЗавершениемРаботыСистемы</span> перенести блоки
+  кода, отмеченные комментарием:</p>
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">
+// СтандартныеПодсистемы
+… 
+// Конец СтандартныеПодсистемы
+</pre>
+  <p class="TextinTable81">Также перенести фрагменты кода из области определения
+  глобальных переменных.</p>
+  <p class="TextinTable81">При обновлении версии библиотеки перенести из файла поставки
+  библиотеки блоки кода по внедряемым подсистемам в обработчиках <span class="Interface">ПередНачаломРаботыСистемы</span>, <span class="Interface">ПриНачалеРаботыСистемы</span>,
+  <span class="Interface">ПередЗавершениемРаботыСистемы</span> и области
+  определения глобальных переменных:</p>
+  <a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">
+// &lt;ПутьПодсистемы&gt; 
+… 
+// Конец &lt;ПутьПодсистемы&gt;
+</pre>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">3. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Свойство <span class="Interface">Версия</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении установить в соответствии с шаблоном
+  Р.П.З.С, где: </p>
+  <p class="TextinTable81">Р – номер редакции (минимум 1 цифра); </p>
+  <p class="TextinTable81">П – номер подредакции (минимум 1 цифра); </p>
+  <p class="TextinTable81">З – номер версии (минимум 1 цифра); </p>
+  <p class="TextinTable81">С – номер сборки (минимум 1 цифра).</p>
+  <p class="TextinTable81">Например, 1.0.0.1. Подробнее см. статью на ИТС <a href="../../../v8std/content/-2145783164/hdoc" target="_top">Нумерация редакций и версий</a>.</p>
+  <p class="TextinTable81"> </p>
+  <p class="TextinTable81">При каждом обновлении увеличивать версии. </p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c"><span class="Interface">Общие объекты «Библиотеки
+стандартных подсистем» для конфигураций, рассчитанных на работу в модели
+сервиса</span></p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Название объекта</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Инструкция</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="a1">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Общий реквизит <span class="Interface">ОбластьДанныхОсновныеДанные</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Исключить из состава общего реквизита все
+  объекты конечной конфигурации, по которым предполагается общее наполнение для
+  всех областей.</p>
+  <p class="TextinTable81">При каждом обновлении:</p>
+  <p class="BulletTab">&#9679; 
+  Открыть состав общего реквизита и для всех
+  объектов библиотеки установить свойство <span class="Interface">Использование</span>
+  в значение, указанное в файле поставки библиотеки</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Общий реквизит <span class="Interface">ОбластьДанныхВспомогательныеДанные</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Исключить из состава общего реквизита все
+  объекты конечной конфигурации, к которым требуется доступ из сеансов с
+  неустановленным использованием разделения.</p>
+  <p class="TextinTable81">При каждом обновлении:</p>
+  <p class="BulletTab">&#9679; 
+  Открыть состав общего реквизита и для всех
+  объектов библиотеки установить свойство <span class="Interface">Использование</span>
+  в значение, указанное в файле поставки библиотеки</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">3. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Общие модули:</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ОбменСообщениямиПереопределяемый</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ОчередьЗаданийПереопределяемый</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">РаботаВМоделиСервисаПереопределяемый</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Рекомендуется придерживаться <a href="#_настройка_и_обновление">общего
+  подхода по настройке переопределяемых общих модулей</a></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">4. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Функциональная опция <span class="Interface">ИспользоватьРазделениеПоОбластямДанных</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Определить состав объектов конфигурации,
+  которые должны быть размещены в пользовательском интерфейсе только при работе
+  в модели сервиса (и не должны при работе в локальном режиме).</p>
+  <p class="BulletTab">&#9679; 
+  Включить эти объекты в состав функциональной
+  опции</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">5. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Функциональная опция <span class="Interface">НеИспользоватьРазделениеПоОбластямДанных</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Определить состав объектов конфигурации,
+  которые должны быть размещены в пользовательском интерфейсе только при работе
+  в локальном режиме (и не должны при работе в модели сервиса).</p>
+  <p class="BulletTab">&#9679; 
+  Включить эти объекты в состав функциональной
+  опции</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">6. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Общие команды <span class="Interface">ВыгрузитьДанныеВЛокальнуюВерсию</span>,
+  <span class="Interface">ВыгрузитьДанныеДляПереходаВСервис</span>, <span class="Interface">ДобавитьПользователейСервиса</span>, <span class="Interface">ЗагрузитьДанныеВОбласть</span>,
+  <span class="Interface">ЗагрузитьДанныеИзСервиса</span>, <span class="Interface">СоздатьРезервнуюКопию</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Разместить в командном интерфейсе конфигурации</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">7. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Общая форма <span class="Interface">НастройкиРезервногоКопированияПриложений</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Разместить в командном интерфейсе конфигурации</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c"><span class="Interface">Общие модули</span></p>
+
+<p class="Paragraph0c">Рекомендуется придерживаться <a href="#_настройка_и_обновление">общего
+подхода по настройке переопределяемых общих модулей</a>.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Название объекта</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Инструкция</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Базовая
+  функциональность»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ОбщегоНазначенияВызовСервераПереопределяемый</span>.</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ОбщегоНазначенияПереопределяемый</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. также дополнительные инструкции по настройке в разделе
+  «<A href="3.4. _25E1_25E0_25E7_25EE_25E2_25E0_25FF _25F4_25F3_25ED_25EA_25F6_25E8_25EE_25ED_25E0_25EB_25FC_25ED_25EE_25F1_25F2_25FC.htm@_=1504708101#_базовая_функциональность">Базовая
+  функциональность</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Бизнес-процессы и
+  задачи»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">2. 
+   </p>
+  </td>
+  <td colspan="2" valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">БизнесПроцессыИЗадачиПереопределяемый</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">БизнесПроцессыИЗадачиКлиентПереопределяемый</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Варианты отчетов»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">3. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ВариантыОтчетовПереопределяемый</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ОтчетыКлиентПереопределяемый</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ОтчетыПереопределяемый</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. также дополнительные инструкции по настройке в разделе
+  «<A href="3.8. _25E2_25E0_25F0_25E8_25E0_25ED_25F2_25FB _25EE_25F2_25F7_25E5_25F2_25EE_25E2.htm@_=1504708101#_варианты_отчетов">Варианты
+  отчетов</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Взаимодействия»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">4. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ВзаимодействияКлиентПереопределяемый</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ВзаимодействияКлиентСерверПовтИспПереопределяемый</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ВзаимодействияПереопределяемый</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. также дополнительные инструкции по настройке в разделе
+  «<A href="3.10. _25E2_25E7_25E0_25E8_25EC_25EE_25E4_25E5_25E9_25F1_25F2_25E2_25E8_25FF.htm@_=1504708101#_взаимодействия">Взаимодействия</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Групповое изменение
+  объектов»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">5. 
+   </p>
+  </td>
+  <td colspan="2" valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ГрупповоеИзменениеОбъектовПереопределяемый</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Даты запрета
+  изменения»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">6. 
+   </p>
+  </td>
+  <td colspan="2" valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ДатыЗапретаИзмененияПереопределяемый</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Дополнительные
+  отчеты и обработки»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">7. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ДополнительныеОтчетыИОбработкиПереопределяемый</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. также дополнительные инструкции по настройке в разделе
+  «<A href="3.14. _25E4_25EE_25EF_25EE_25EB_25ED_25E8_25F2_25E5_25EB_25FC_25ED_25FB_25E5 _25EE_25F2_25F7_25E5_25_03D6BEB1F3#_дополнительные_отчеты_и">Дополнительные
+  отчеты и обработки</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Заполнение объектов»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">8. 
+   </p>
+  </td>
+  <td colspan="2" valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЗаполнениеОбъектовПереопределяемый</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Запрет
+  редактирования реквизитов объектов»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">9. 
+   </p>
+  </td>
+  <td colspan="2" valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЗапретРедактированияРеквизитовОбъектовПереопределяемый</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Защита персональных
+  данных»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">10.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЗащитаПерсональныхДанныхПереопределяемый</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Описать заполнение полей, необходимых для печатной формы
+  согласия. Описать заполнение таблиц:</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">Сведения о персональных
+  данных</span>.</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">Области персональных данных</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Информация при
+  запуске»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">11.   </p>
+  </td>
+  <td colspan="2" valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ИнформацияПриЗапускеПереопределяемый</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Напоминания
+  пользователя»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">12.   </p>
+  </td>
+  <td colspan="2" valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">НапоминанияПользователяПереопределяемый</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Обмен данными»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">13.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ОбменДаннымиПереопределяемый</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. также дополнительные инструкции по настройке в разделе
+  «<A href="3.28. _25EE_25E1_25EC_25E5_25ED _25E4_25E0_25ED_25ED_25FB_25EC_25E8.htm@_=1504708101#_обмен_данными">Обмен
+  данными</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Обновление версии
+  ИБ»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">14.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ОбновлениеИнформационнойБазыКлиентПереопределяемый</span>.</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ОбновлениеИнформационнойБазыПереопределяемый</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. также дополнительные инструкции по настройке в разделе
+  «<A href="3.28. _25EE_25E1_25EC_25E5_25ED _25E4_25E0_25ED_25ED_25FB_25EC_25E8.htm@_=1504708101#_обновление_версии_иб">Обновление
+  версии ИБ</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Отправка SMS»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">15.  15.</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ОтправкаSMSПереопределяемый</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. также дополнительные инструкции по настройке в разделе
+  «<A href="3.29. _25EE_25E1_25ED_25EE_25E2_25EB_25E5_25ED_25E8_25E5 _25E2_25E5_25F0_25F1_25E8_25E8 _25E8_25E1.htm@_=1504708101#_обновление_конфигурации">Обновление
+  конфигурации</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Печать»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">16.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">УправлениеПечатьюПереопределяемый</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. также дополнительные инструкции по настройке в разделе
+  «<A href="3.33. _25EF_25E5_25F7_25E0_25F2_25FC.htm@_=1504708101#_печать">Печать</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Поиск и удаление
+  дублей»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">17.   </p>
+  </td>
+  <td colspan="2" valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ПоискИУдалениеДублейПереопределяемый</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Пользователи»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">18.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ПользователиПереопределяемый</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. также дополнительные инструкции по настройке в разделе
+  «<A href="3.37. _25EF_25EE_25EB_25FC_25E7_25EE_25E2_25E0_25F2_25E5_25EB_25E8.htm@_=1504708101#_пользователи">Пользователи</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Префиксация
+  объектов»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">19.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ПрефиксацияОбъектовКлиентСерверПереопределяемый</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. также дополнительные инструкции по настройке в разделе
+  «<A href="3.37. _25EF_25EE_25EB_25FC_25E7_25EE_25E2_25E0_25F2_25E5_25EB_25E8.htm@_=1504708101#_префиксация_объектов">Префиксация
+  объектов</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Работа с
+  контрагентами»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">20.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">РаботаСКонтрагентамиКлиентПереопределяемый</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">РаботаСКонтрагентамиКлиентСерверПереопределяемый</span>.</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">РаботаСКонтрагентамиПереопределяемый</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. также дополнительные инструкции по настройке в разделе
+  «<A href="3.42. _25F0_25E0_25E1_25EE_25F2_25E0 _25F1 _25EA_25EE_25ED_25F2_25F0_25E0_25E3_25E5_25ED_25F2_25E0_25EC_25E8.htm@_=1504708101#_работа_с_контрагентами">Работа
+  с контрагентами</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Работа с почтовыми
+  сообщениями»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">21.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ЭлектроннаяПочтаКлиентПереопределяемый</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. также дополнительные инструкции по настройке в разделе
+  «<A href="3.43. _25F0_25E0_25E1_25EE_25F2_25E0 _25F1 _25EF_25EE_25F7_25F2_25EE_25E2_25FB_25EC_25E8 _25F1_25EE_25EE_25E1_25F9_25E5_25ED_25E8_25FF_25EC_25E8.htm@_=1504708101#_работа_с_почтовыми">Работа
+  с почтовыми сообщениями</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Рассылка отчетов»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">22.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">РассылкаОтчетовПереопределяемый</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. также дополнительные инструкции по настройке в разделе
+  «<A href="3.45. _25F0_25E0_25F1_25F1_25FB_25EB_25EA_25E0 _25EE_25F2_25F7_25E5_25F2_25EE_25E2.htm@_=1504708101#_рассылка_отчетов">Рассылка
+  отчетов</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Свойства»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">23.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">УправлениеСвойствамиПереопределяемый</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. также дополнительные инструкции по настройке в разделе
+  «<A href="3.48. _25F1_25E2_25EE_25E9_25F1_25F2_25E2_25E0.htm@_=1504708101#_свойства">Свойства</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Структура
+  подчиненности»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">24.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">СтруктураПодчиненностиПереопределяемый</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. также дополнительные инструкции по настройке в разделе
+  «<A href="3.49. _25F1_25EA_25EB_25EE_25ED_25E5_25ED_25E8_25E5 _25EF_25F0_25E5_25E4_25F1_25F2_25E0_25E2_25EB_25_0801FDB10E#_структура_подчиненности">Структура
+  подчиненности</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Текущие дела»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">25.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ТекущиеДелаПереопределяемый</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. также дополнительные инструкции по настройке в разделе
+  «<A href="3.51. _25F2_25E5_25EA_25F3_25F9_25E8_25E5 _25E4_25E5_25EB_25E0.htm@_=1504708101#_текущие_дела">Текущие
+  дела</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Управление доступом»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">26.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">УправлениеДоступомПереопределяемый</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. также дополнительные инструкции по настройке в разделе
+  «<A href="3.53. _25F3_25EF_25F0_25E0_25E2_25EB_25E5_25ED_25E8_25E5 _25E4_25EE_25F1_25F2_25F3_25EF_25EE_25EC.htm@_=1504708101#_управление_доступом">Управление
+  доступом</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Файловые функции»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">27.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ФайловыеФункцииПереопределяемый</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. также дополнительные инструкции по настройке в разделе
+  «<A href="3.55. _25F4_25E0_25E9_25EB_25EE_25E2_25FB_25E5 _25F4_25F3_25ED_25EA_25F6_25E8_25E8.htm@_=1504708101#_файловые_функции">Файловые
+  функции</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Центр мониторинга»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">28.   </p>
+  </td>
+  <td colspan="2" valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЦентрМониторингаПереопределяемый</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Файловые функции»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">29.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ШаблоныСообщенийПереопределяемый</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">См. также дополнительные инструкции по настройке в разделе
+  «Шаблоны сообщений»</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c"><span class="Interface">Роли</span></p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Название объекта</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Инструкция</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Базовая
+  функциональность»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">БазовыеПрава</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">БазовыеПраваВнешнегоПользователя</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При внедрении совместно с подсистемой «Свойства», но
+  без подсистемы «Управление доступом» выполнить инструкции раздела «<A href="3.59. _25EE_25F1_25EE_25E1_25FB_25E5 _25F1_25EB_25F3_25F7_25E0_25E8 _25E2_25ED_25E5_25E4_25F0_25E5_20EA087B14A#_внедрение_подсистем_«свойства»_1">Внедрение
+  подсистем &quot;Свойства&quot; и &quot;Управление доступом&quot;</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">2. 
+  3.</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ПолныеПрава</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Со всех объектов метаданных снять права:</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">Право интерактивного
+  удаления</span>,</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">Интерактивное удаление
+  предопределенных данных</span>,</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">Интерактивная пометка
+  удаления предопределенных данных</span>,</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">Интерактивное снятие
+  пометки удаления предопределенных данных</span>,</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">Интерактивное удаление
+  помеченных предопределенных данных</span>. </p>
+  <p class="TextinTable81">При внедрении совместно с подсистемой «Работа в модели
+  сервиса» включить в роли права ко всем объектам, входящим в состав общего
+  реквизита-разделителя <span class="Interface">ОбластьДанныхОсновныеДанные</span>.</p>
+  <p class="TextinTable81">При внедрении без подсистемы «Работа в модели сервиса»
+  включить в роль все права, кроме перечисленных выше, на все объекты
+  метаданных конфигурации</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Свойства»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">3. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ИзменениеДополнительныхСведений</span>.</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ЧтениеДополнительныхСведений</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При внедрении в конфигурацию без подсистемы «Управление
+  доступом» выполнить инструкции раздела «<A href="3.59. _25EE_25F1_25EE_25E1_25FB_25E5 _25F1_25EB_25F3_25F7_25E0_25E8 _25E2_25ED_25E5_25E4_25F0_25E5_20EA087B14A#_внедрение_подсистем_«свойства»_1">Внедрение
+  подсистем &quot;Свойства&quot; и &quot;Управление доступом&quot;</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Защита персональных
+  данных»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">4. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">Создать роли</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Реализовать роли, предоставляющие доступ к объектам:</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span>документ
+  <span class="Interface">СогласиеНаОбработкуПерсональныхДанных</span>,</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span>документ
+  <span class="Interface">ОтзывСогласияНаОбработкуПерсональныхДанных</span>,</p>
+  <p class="BulletTab">&#9679; 
+  регистр сведений <span class="Interface">СогласияНаОбработкуПерсональныхДанных</span>.</p>
+  <p class="TextinTable81">См. пример роли <span class="Interface">_ДемоДобавлениеИзменениеСогласийНаОбработкуПерсональныхДанных</span>
+  и <span class="Interface">_ДемоЧтениеСогласийНаОбработкуПерсональныхДанных</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c"><span class="Interface">Критерии отбора</span></p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Название объекта</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Инструкция</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Структура
+  подчиненности»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">СвязанныеДокументы</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении, определив свойство <span class="Interface">Состав</span>, установить возможные типы родительских
+  документов, справочников и ПВХ в свойстве <span class="Interface">Тип</span> и
+  определить состав реквизитов дочерних документов, справочников и ПВХ, в
+  которых будет происходить поиск родительских объектов</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c"><span class="Interface">Регламентные задания</span></p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Название объекта</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Инструкция</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Управление итогами и
+  обработками»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ОбновлениеАгрегатов</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ПерестроениеАгрегатов</span>.</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">УстановкаПериодаРассчитанныхИтогов</span>.</p>
+  <p class="TextinTable81">Свойство <span class="Interface">Расписание</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении определить расписание регламентных
+  заданий. При каждом обновлении не переносить расписание из поставки</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c"><span class="Interface">Определяемые типы</span></p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Название объекта</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Инструкция</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Анкетирование»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">Респондент</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Принять решение по поводу состава объектов
+  конфигурации, которые должны быть сопоставлены респондентам анкет. Например,
+  справочники <span class="Interface">Респонденты</span>, <span class="Interface">Сотрудники</span>,
+  <span class="Interface">Партнеры</span>.</p>
+  <p class="BulletTab">&#9679; 
+  Указать допустимые типы респондентов в составе
+  типов свойства <span class="Interface">Тип</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Базовая
+  функциональность»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">Организация</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Если в конфигурации имеется справочник <span class="Interface">Организации</span>, при первом внедрении указать в свойстве <span class="Interface">Тип </span>ссылку на него</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Бизнес-процессы и
+  задачи»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">3. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">БизнесПроцесс</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении указать в свойстве <span class="Interface">Тип </span>ссылки на все бизнес-процессы в конфигурации</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">4. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ПредметЗадачи</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Принять решение по поводу состава объектов
+  конфигурации, которые должны быть основанием для бизнес-процесса <span class="Interface">Задание</span> или других бизнес-процессов (определить список
+  предметов задач). </p>
+  <p class="BulletTab">&#9679; 
+  Указать в свойстве <span class="Interface">Тип </span>ссылки
+  на предметы задач</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">5. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ОбъектАдресации</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  На основании полученных ролей исполнителей
+  составить список объектов, которые должны иметь ролевую адресацию (т. е.
+  определить «объекты адресации» – см. раздел «<A href="3.6. _25E1_25E8_25E7_25ED_25E5_25F1-_25EF_25F0_25EE_25F6_25E5_25F1_25F1_25FB _25E8 _25E7_25E0_25E4_25E0_25F7_25E8.htm@_=1504708101#_бизнес-процессы_и_задачи">Бизнес-процессы
+  и задачи</a>»).</p>
+  <p class="BulletTab">&#9679; 
+  Указать в свойстве <span class="Interface">Тип </span>ссылки
+  на «объекты адресации»</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">6. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ОтложенныеБизнесПроцессы</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Принять решение по поводу состава
+  бизнес-процессов, которые могут быть запущены отложенно.</p>
+  <p class="BulletTab">&#9679; 
+  Указать в свойстве <span class="Interface">Тип</span>
+  ссылки на данные бизнес-процессы</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Версионирование
+  объектов»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">7. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ВерсионируемыеДанные</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ВерсионируемыеДанныеОбъект</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении провести настройку состава типа согласно
+  инструкции в разделе «<A href="3.8. _25E2_25E0_25F0_25E8_25E0_25ED_25F2_25FB _25EE_25F2_25F7_25E5_25F2_25EE_25E2.htm@_=1504708101#_версионирование_объектов">Версионирование объектов</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Взаимодействия»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">8. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">КонтактВзаимодействия</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом и последующих внедрениях:</p>
+  <p class="BulletTab">&#9679; 
+  Принять решение по поводу состава объектов
+  конфигурации, которые должны указываться в качестве контактов взаимодействий.</p>
+  <p class="BulletTab">&#9679; 
+  Добавить допустимые типы контактов в состав
+  типов свойства <span class="Interface">Тип</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">9. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ПредметВзаимодействия</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом и последующих внедрениях:</p>
+  <p class="BulletTab">&#9679; 
+  Принять решение по поводу состава объектов
+  конфигурации, которые должны указываться в качестве предметов взаимодействий.</p>
+  <p class="BulletTab">&#9679; 
+  Добавить допустимые типы предметов в состав
+  типов свойства <span class="Interface">Тип</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Даты запрета
+  изменения»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">10.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">АдресатЗапретаИзменения</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Принять решение по поводу состава планов
+  обмена, для которых администратор будет настраивать даты запрета загрузки, и
+  добавить их типы в состав типов реквизита.</p>
+  <p class="TextinTable81">См. также дополнительные инструкции по настройке в разделе
+  «<A href="3.13. _25E4_25E0_25F2_25FB _25E7_25E0_25EF_25F0_25E5_25F2_25E0 _25E8_25E7_25EC_25E5_25ED_25E5_25ED_25E8_25FF.htm@_=1504708101#_даты_запрета_изменения">Даты
+  запрета изменения</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Дополнительные
+  отчеты и обработки»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">11.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ОбъектСДополнительнымиКомандами</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Принять решение по поводу состава объектов
+  конфигурации, с которыми необходимо использовать дополнительные отчеты и
+  обработки различных видов.</p>
+  <p class="BulletTab">&#9679; 
+  Перечислить типы этих объектов в свойстве <span class="Interface">Тип</span>.</p>
+  <p class="TextinTable81">Подробную инструкцию по настройке см. в разделе «<A href="3.14. _25E4_25EE_25EF_25EE_25EB_25ED_25E8_25F2_25E5_25EB_25FC_25ED_25FB_25E5 _25EE_25F2_25F7_25E5_25_03D6BEB1F3#_дополнительные_отчеты_и">Дополнительные
+  отчеты и обработки</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Заметки
+  пользователя»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">12.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ПредметЗаметок</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ПредметЗаметокОбъект</span></p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Определить состав объектов конфигурации, по
+  поводу которых пользователи должны иметь возможность вводить заметки.</p>
+  <p class="BulletTab">&#9679; 
+  Отметить выбранные типы объектов в свойстве <span class="Interface">Тип</span>.</p>
+  <p class="TextinTable81">Подробную инструкцию по настройке см. в разделе «<A href="3.17. _25E7_25E0_25EC_25E5_25F2_25EA_25E8 _25EF_25EE_25EB_25FC_25E7_25EE_25E2_25E0_25F2_25E5_25EB_25FF.htm@_=1504708101#_заметки_пользователя">Заметки
+  пользователя</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Защита персональных
+  данных»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">13.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">СубъектПерсональныхДанных</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении заполнить состав типов определяемого
+  типа <span class="Interface">СубъектПерсональныхДанных</span>. В качестве типа
+  выбрать сущность, являющуюся субъектом персональных данных в конфигурации</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Контактная
+  информация»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">14.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ВладелецКонтактнойИнформации</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Принять решение по поводу состава объектов
+  конфигурации, которые должны содержать контактную информацию. </p>
+  <p class="BulletTab">&#9679; 
+  Перечислить типы этих объектов в свойстве <span class="Interface">Тип</span>.</p>
+  <p class="TextinTable81">Инструкцию по настройке см. в разделе «<A href="3.24. _25EA_25EE_25ED_25F2_25E0_25EA_25F2_25ED_25E0_25FF _25E8_25ED_25F4_25EE_25F0_25EC_25E0_25F6_25E8_25FF.htm@_=1504708101#_контактная_информация">Контактная
+  информация</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Напоминания
+  пользователя»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">15.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ПредметНапоминания</span>.</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ПредметНапоминанияОбъект</span></p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Определить состав объектов ссылочного типа,
+  для которых требуется ввод пользовательских напоминаний.</p>
+  <p class="BulletTab">&#9679; 
+  Отметить выбранные типы объектов в свойстве <span class="Interface">Тип.</span></p>
+  <p class="TextinTable81">Подробную инструкцию по настройке см. в разделе «<A href="3.24. _25EA_25EE_25ED_25F2_25E0_25EA_25F2_25ED_25E0_25FF _25E8_25ED_25F4_25EE_25F0_25EC_25E0_25F6_25E8_25FF.htm@_=1504708101#_напоминания_пользователя">Напоминания
+  пользователя</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Настройка порядка
+  элементов»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">16.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ОбъектСНастраиваемымПорядком</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Принять решение по поводу состава объектов
+  конфигурации, для которых необходимо настраивать порядок элементов.</p>
+  <p class="BulletTab">&#9679; 
+  Перечислить типы этих объектов в свойстве <span class="Interface">Тип</span>.</p>
+  <p class="BulletTab">&#9679; 
+  Подробную инструкцию по настройке см. в
+  разделе «<A href="3.26. _25ED_25E0_25F1_25F2_25F0_25EE_25E9_25EA_25E0 _25EF_25EE_25F0_25FF_25E4_25EA_25E0 _25FD_25EB_25E5_25EC_25E5_25ED_25F2_25EE_25E2.htm@_=1504708101#_настройка_порядка_элементов">Настройка</a><span class="MsoHyperlink"> порядка
+  элементов</span>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Пользователи»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">17.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">Подразделение</span>.</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ФизическоеЛицо</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Принять решение о необходимости использования
+  реквизитов <span class="Interface">Подразделение</span> и <span class="Interface">ФизическоеЛицо</span> справочника <span class="Interface">Пользователи</span>.</p>
+  <p class="BulletTab">&#9679; 
+  Указать ссылки на соответствующие справочники
+  в определяемых типах</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">18.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ВнешнийПользователь</span>.</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ВнешнийПользовательОбъект</span>.</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">Пользователь</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Принять решение по поводу состава объектов
+  конфигурации, которые должны быть сопоставлены внешним пользователям системы.
+  Например, справочники <span class="Interface">Физические лица</span>, <span class="Interface">Сотрудники</span>, <span class="Interface">Партнеры</span>.</p>
+  <p class="BulletTab">&#9679; 
+  Перечислить допустимые типы внешних
+  пользователей в составе типов (в состав типа <span class="Interface">Пользователь</span>
+  также входит тип <span class="Interface">СправочникСсылка.Пользователи</span>)</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Присоединенные
+  файлы»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">19.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ПрисоединенныйФайл</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ПрисоединенныйФайлОбъект</span></p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ВладелецПрисоединенныхФайлов</span>.</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ВладелецПрисоединенныхФайловОбъект</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Принять решение по поводу состава объектов
+  конфигурации, которые должны содержать присоединенные файлы («объекты с
+  файлами»).</p>
+  <p class="BulletTab">&#9679; 
+  Перечислить типы этих объектов, а также типы
+  справочников файлов в свойстве <span class="Interface">Тип</span>. </p>
+  <p class="TextinTable81">Инструкцию по настройке см. в разделе «<A href="3.39. _25EF_25F0_25E8_25F1_25EE_25E5_25E4_25E8_25ED_25E5_25ED_25ED_25FB_25E5 _25F4_25E0_25E9_25EB_25FB.htm@_=1504708101#_присоединенные_файлы">Присоединенные
+  файлы</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Работа с
+  контрагентами»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">20.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">Контрагент</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">КонтрагентОбъект</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Указать тип справочника контрагентов в
+  свойстве <span class="Interface">Тип</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Работа с файлами»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">21.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ВладелецФайлов</span>.</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ВладелецФайлов Объект</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Принять решение по поводу состава объектов
+  конфигурации, которые должны содержать присоединенные файлы («объекты с
+  файлами»). </p>
+  <p class="BulletTab">&#9679; 
+  Перечислить типы этих объектов в свойстве <span class="Interface">Тип</span>. </p>
+  <p class="TextinTable81">Инструкцию по настройке см. в разделе «<A href="3.44. _25F0_25E0_25E1_25EE_25F2_25E0 _25F1 _25F4_25E0_25E9_25EB_25E0_25EC_25E8.htm@_=1504708101#_работа_с_файлами">Работа с
+  файлами</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Рассылка отчетов»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">22.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ПолучательРассылки</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Определить возможных получателей рассылки. Для
+  этих объектов должна вестись контактная информация о еmail-адресах.</p>
+  <p class="BulletTab">&#9679; 
+  Перечислить типы получателей рассылки в
+  свойстве <span class="Interface">Тип</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Свойства»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">23.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ВладелецДополнительныхСведений</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Принять решение по поводу состава объектов, в
+  которых должна использоваться подсистема (составить список «объектов с
+  дополнительными сведениями»).</p>
+  <p class="BulletTab">&#9679; 
+  Указать в свойстве <span class="Interface">Тип </span>ссылки
+  на объекты, в которых будет использоваться подсистема свойств («объекты с дополнительными
+  сведениями»).</p>
+  <p class="TextinTable81">Инструкцию по настройке см. в разделе «<A href="3.48. _25F1_25E2_25EE_25E9_25F1_25F2_25E2_25E0.htm@_=1504708101#_свойства">Свойства</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Управление доступом»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">24.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ВладелецНастроекПрав</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ВладелецНастроекПравОбъект</span>.</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ЗначениеДоступа</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЗначениеДоступаСГруппамиЗначенийДоступаОбъект</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ВладелецНаборовЗначенийДоступаОбъект</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ВладелецСОграничениемПоНаборамЗначенийДоступаОбъект</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ВладелецВнешнихЗначенийВНаборахЗначенийДоступаОбъект</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении выполнить настройку в
+  соответствии с описанием в разделе «<A href="3.53. _25F3_25EF_25F0_25E0_25E2_25EB_25E5_25ED_25E8_25E5 _25E4_25EE_25F1_25F2_25F3_25EF_25EE_25EC.htm@_=1504708101#_управление_доступом">Управление доступом</a>».</p>
+  <p class="TextinTable81">При каждом обновлении убедиться, что состав типов включает
+  в себя все поставляемые типы.</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Шаблона сообщений»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">25.   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ПредметШаблонаСообщения</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом и последующих внедрениях:</p>
+  <p class="BulletTab">&#9679; 
+  Принять решение по поводу состава объектов
+  конфигурации, которые должны указываться в качестве контактов взаимодействий.</p>
+  <p class="TextinTable81">Указать в свойстве <span class="Interface">Тип </span>ссылки
+  на предметы шаблонов сообщений.</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c"><span class="Interface">Общие формы</span></p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Название объекта</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Инструкция</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Отправка SMS»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">Общая форма НастройкаОтправкиSMS</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении поместить в командный интерфейс</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c"><span class="Interface">Общие команды </span></p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Название объекта</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Инструкция</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Интеграция с </span><span class="Interface">&quot;1С-Коннект</span><span class="Interface">&quot;
+  (</span><span class="Interface">&quot;Бухфон</span><span class="Interface">&quot;)»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">Запустить1СБухфон</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Принять решение по поводу места размещения
+  команды на рабочем столе и поместить в выбранную форму.</p>
+  <p class="BulletTab">&#9679; 
+  Увеличить размеры команды на форме до ширины
+  16, высоты 3.</p>
+  <p class="BulletTab">&#9679; 
+  В процедурах модуля формы прописать вызов
+  процедур подсистемы согласно описанию в главе 3 в разделе «<A href="3.21. _25E8_25ED_25F2_25E5_25E3_25F0_25E0_25F6_25E8_25FF _25F1 _1_25F1-_25EA_25EE_25ED_25ED_25E5_25EA_25F2 (_25E1_25F3_25F5_25F4_25EE_25ED)_.htm@_=1504708101#_интеграция_с_«1с-бухфон»_1">Интеграция
+  с &quot;1С-Коннект&quot; (&quot;Бухфон&quot;)</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">МастерЗапуска1СБухфон</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Разместить на форме настроек пользователя</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Обмен данными»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">3. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ВыполнитьОбменДанными</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ВыполнитьОбменДаннымиИнтерактивно</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">НастроитьПараметрыТранспортаСообщенийОбмена</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ОткрытьПравилаКонвертацииОбъектов</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ОткрытьПравилаРегистрацииОбъектов</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ОткрытьСценарииОбменовДанными</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ПерейтиВЖурналРегистрацииСобытийВыгрузкиДанных</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ПерейтиВЖурналРегистрацииСобытийЗагрузкиДанных</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">СоставОтправляемыхДанных</span>.</p>
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">УдалитьНастройкуСинхронизации</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении настроить согласно инструкции по
+  настройке в разделе «<A href="3.28. _25EE_25E1_25EC_25E5_25ED _25E4_25E0_25ED_25ED_25FB_25EC_25E8.htm@_=1504708101#_обмен_данными">Обмен
+  данными</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Структура
+  подчиненности»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">4. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">СтруктураПодчиненности</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении установить свойство <span class="Interface">Тип параметра команды</span> для тех документов, справочников
+  и ПВХ, которые предполагается выводить в отчет <span class="Interface">Структура
+  подчиненности</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Управление доступом»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">5. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">НастроитьПрава</span>,
+  свойство <span class="Interface">Тип параметра команды</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении выполнить настройку в
+  соответствии с описанием в разделе «<A href="3.53. _25F3_25EF_25F0_25E0_25E2_25EB_25E5_25ED_25E8_25E5 _25E4_25EE_25F1_25F2_25F3_25EF_25EE_25EC.htm@_=1504708101#_управление_доступом">Управление доступом</a>».</p>
+  <p class="TextinTable81">При каждом обновлении убедиться, что состав типов включает
+  состав поставляемых типов</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c"><span class="Interface">Общие макеты</span></p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Название объекта</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Инструкция</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Обновление версии
+  ИБ»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ОписаниеИзмененийСистемы</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении создать макет согласно разделу «<A href="3.28. _25EE_25E1_25EC_25E5_25ED _25E4_25E0_25ED_25ED_25FB_25EC_25E8.htm@_=1504708101#_обновление_версии_иб">Обновление
+  версии ИБ</a>» и в дальнейшем при разработке конфигурации сопровождать
+  его</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Работа с
+  контрагентами»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">2. 
+  2.</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ИнструкцияПоПроверкеКонтрагентов</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Доработать инструкцию в соответствии с особенностями
+  реализации проверки в конкретном прикладном решении</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c"><span class="Interface"> Справочники</span></p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Название объекта</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Инструкция</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Бизнес-процессы и задачи»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">РолиИсполнителей</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении создать необходимый набор предопределенных
+  элементов ролей исполнителей бизнес-процессов, предусмотренных в
+  конфигурации. Инструкцию по настройке см. в разделе «<A href="3.6. _25E1_25E8_25E7_25ED_25E5_25F1-_25EF_25F0_25EE_25F6_25E5_25F1_25F1_25FB _25E8 _25E7_25E0_25E4_25E0_25F7_25E8.htm@_=1504708101#_бизнес-процессы_и_задачи">Бизнес-процессы
+  и задачи</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Валюты»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">Валюты</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении поместить справочник <span class="Interface">Валюты</span> в командный интерфейс. Подробнее см. в разделе
+  «<A href="3.7. _25E2_25E0_25EB_25FE_25F2_25FB.htm@_=1504708101#_валюты">Валюты</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Контактная
+  информация»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">3. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ВидыКонтактнойИнформации</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении, если требуется, создать необходимый
+  набор предопределенных элементов справочника исходя из потребностей
+  конфигурации. Инструкцию по настройке см. в разделе «<A href="3.24. _25EA_25EE_25ED_25F2_25E0_25EA_25F2_25ED_25E0_25FF _25E8_25ED_25F4_25EE_25F0_25EC_25E0_25F6_25E8_25FF.htm@_=1504708101#_контактная_информация">Контактная
+  информация</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Оценка
+  производительности»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">4. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">КлючевыеОперации</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Если принято решение использовать предопределенные элементы,
+  то при первом внедрении создать необходимый набор предопределенных элементов
+  и произвести первоначальное заполнение реквизитов из формы списка. См. также
+  дополнительные инструкции в разделе «<A href="3.32. _25EE_25F6_25E5_25ED_25EA_25E0 _25EF_25F0_25EE_25E8_25E7_25E2_25EE_25E4_25E8_25F2_25E5_25EB_25FC_25ED_25EE_25F1_25F2_25E8.htm@_=1504708101#_оценка_производительности">Оценка производительности</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Пользователи»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">5. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ВнешниеПользователи</span>, команда <span class="Interface">ВнешнийДоступ</span>,
+  свойство <span class="Interface">Тип параметра команды</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Принять решение по поводу состава объектов
+  конфигурации, которые должны быть сопоставлены внешним пользователям системы.
+  Например, справочники <span class="Interface">Физические лица</span>, <span class="Interface">Сотрудники</span>, <span class="Interface">Партнеры</span>.</p>
+  <p class="BulletTab">&#9679; 
+  Перечислить допустимые типы внешних
+  пользователей в составе типов (в состав типа <span class="Interface">Пользователь</span>
+  также входит тип <span class="Interface">СправочникСсылка.Пользователи</span>)</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Свойства»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">6. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">НаборыДополнительныхРеквизитовИСведений</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении создать необходимый набор предопределенных
+  элементов для каждого «объекта со свойствами» в формате <span class="Interface">Тип_Имя</span>. Например, <span class="Interface">Справочник_ФизическиеЛица</span>
+  для справочника <span class="Interface">ФизическиеЛица</span>.</p>
+  <p class="TextinTable81">Инструкцию по настройке см. в разделе «<A href="3.48. _25F1_25E2_25EE_25E9_25F1_25F2_25E2_25E0.htm@_=1504708101#_свойства">Свойства</a>»</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c"><span class="Interface">Журналы документов</span></p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Название объекта</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Инструкция</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Защита персональных
+  данных»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">СогласияНаОбработкуПерсональныхДанных</span></p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Если не используется подсистема <span class="Interface">Настройки программы</span>, то при первом внедрении разместить
+  в командном интерфейсе</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c"><span class="Interface">Отчеты</span></p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Название объекта</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Инструкция</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Защита персональных
+  данных»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">СогласияНаОбработкуПерсональныхДанныхДействующие</span>.</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">СогласияНаОбработкуПерсональныхДанныхИстекающие</span></p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  Если не используется подсистема <span class="Interface">Настройки программы</span>, то при первом внедрении разместить
+  в командном интерфейсе</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c"><span class="Interface">Обработки</span></p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Название объекта</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Инструкция</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Информация при
+  запуске»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ИнформацияПриЗапуске</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Для макетов обработки при первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Принять решение по поводу состава страниц с
+  информацией, которые должны выводиться при запуске программы.</p>
+  <p class="BulletTab">&#9679; 
+  Загрузить страницы в макеты обработки согласно
+  инструкции к подсистеме</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Настройки программы»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">2. 
+  2.</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab"><span class="Interface">&#9679;  </span><span class="Interface">ПанельАдминистрированияБСП</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При каждом обновлении:</p>
+  <p class="BulletTab">&#9679; 
+  Если в форму панели были добавлены свои
+  объекты или внесены изменения, то выполнять сравнение/объединение всех форм
+  обработки для выяснения состава дополнений и изменений в поставке библиотеки</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Оценка
+  производительности»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">3. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ОценкаПроизводительности</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Если не используется подсистема <span class="Interface">Настройки
+  программы</span>, то при первом внедрении разместить в командном интерфейсе</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c"><span class="Interface">Планы видов характеристик</span></p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Название объекта</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Инструкция</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Анкетирование»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ВопросыДляАнкетирования</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении: </p>
+  <p class="BulletTab">&#9679; 
+  Принять решение по поводу состава объектов
+  конфигурации, которые должны указываться в качестве ответов на вопросы анкеты
+  (определить состав «типов ответов»).</p>
+  <p class="BulletTab">&#9679; 
+  Добавить допустимые типы ответов в состав
+  типов свойства <span class="Interface">Тип значения</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Бизнес-процессы и
+  задачи»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ОбъектыАдресацииЗадач</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении:</p>
+  <p class="BulletTab">&#9679; 
+  Указать в свойстве <span class="Interface">Тип</span>
+  плана видов характеристик, а также в свойстве <span class="Interface">Тип</span>
+  предопределенного элемента <span class="Interface">ВсеОбъектыАдресации</span>
+  этого плана видов характеристик все типы «объектов адресации».</p>
+  <p class="BulletTab">&#9679; 
+  Создать необходимый набор предопределенных
+  элементов для объектов адресации (инструкцию по настройке см. в разделе «<A href="3.6. _25E1_25E8_25E7_25ED_25E5_25F1-_25EF_25F0_25EE_25F6_25E5_25F1_25F1_25FB _25E8 _25E7_25E0_25E4_25E0_25F7_25E8.htm@_=1504708101#_бизнес-процессы_и_задачи">Бизнес-процессы
+  и задачи</a>»)</p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Свойства»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">3. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ДополнительныеРеквизитыИСведения</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении указать возможные типы значений
+  свойств. Состав типов данных может быть расширен любыми типами объектов
+  метаданных конфигурации. </p>
+  <p class="TextinTable81">Инструкцию по настройке см. в разделе «<A href="3.48. _25F1_25E2_25EE_25E9_25F1_25F2_25E2_25E0.htm@_=1504708101#_свойства">Свойства</a>»</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c"><span class="Interface">Бизнес-процессы</span></p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Название объекта</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Инструкция</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Подсистема «Бизнес-процессы и
+  задачи»</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="a1">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">Задание</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">При первом внедрении в свойстве <span class="Interface">Вводится
+  на основании</span> указать ссылки на объекты метаданных, по которым необходимо
+  создавать задания (предметы задач). Инструкцию по настройке см. в разделе «<A href="3.6. _25E1_25E8_25E7_25ED_25E5_25F1-_25EF_25F0_25EE_25F6_25E5_25F1_25F1_25FB _25E8 _25E7_25E0_25E4_25E0_25F7_25E8.htm@_=1504708101#_бизнес-процессы_и_задачи">Бизнес-процессы
+  и задачи</a>»</p>
+  </td>
+ </tr>
+</table>
+
+<a name="_настройка_и_обновление"></a><a name="issogl1_настройка_и_обновление_переопределяемых_общих_модулей_библиотеки"><h2>Настройка и обновление переопределяемых общих модулей библиотеки</h2></a>
+
+<p class="Paragraph0c">Для настройки в конфигурации переопределяемых общих
+модулей рекомендуется придерживаться общего подхода:</p>
+
+<p class="Number81">1. 
+<span class="Interface">При первой настройке</span>
+переопределяемого общего модуля следует ознакомиться с документацией к его экспортным
+процедурам и функциям, приведенной в комментариях к ним. И при необходимости
+вписать реализацию в экспортные процедуры и функции модуля. </p>
+
+<p class="Number81">2. 
+<span class="Interface">При каждом последующем
+обновлении</span> переопределяемого общего модуля требуется перенести новые экспортные
+процедуры и функции, удалить устаревшие и убедиться, что комментарии,
+количество и имена параметров у всех функций совпадают с их библиотечными
+эквивалентами. При необходимости вписать реализацию в новые экспортные
+процедуры и функции модуля, а также актуализировать реализацию уже существующих
+функций, если в новой версии библиотеки было изменено их назначение или состав
+параметров.</p>
+
+<a name="issogl1_удаление_лишних_связей_с_неиспользуемыми_подсистемами"><h2>Удаление лишних связей с неиспользуемыми подсистемами</h2></a>
+
+<p class="Paragraph0c">Некоторые объекты библиотеки могут поставляться по
+умолчанию уже настроенными для работы с другими подсистемами библиотеки. В этом
+случае необходимо оставить в них только те блоки кода, которые относятся к
+внедряемым подсистемам. Блок кода, относящийся к той или иной подсистеме,
+отмечается начальным и конечным комментариями:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// &lt;ПутьКПодсистеме&gt; </span>
+… 
+<span class="comment">// Конец &lt;ПутьКПодсистеме&gt;</span></pre>
+
+<p class="Paragraph0c">Например, если в конфигурацию не была внедрена подсистема
+«Адресный классификатор», то необходимо удалить все фрагменты кода, отмеченные
+комментариями:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.АдресныйКлассификатор</span>
+… 
+<span class="comment">// Конец СтандартныеПодсистемы.АдресныйКлассификатор</span></pre>
+
+<p class="Paragraph0c">Или, например, если в конфигурацию не была внедрена
+подсистема «Обмен сообщениями», то необходимо удалить все фрагменты кода,
+отмеченные комментариями:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.РаботаВМоделиСервиса.ОбменСообщениями</span>
+… 
+<span class="comment">// Конец СтандартныеПодсистемы.РаботаВМоделиСервиса.ОбменСообщениями</span></pre>
+
+<p class="Paragraph0c">Для массового удаления фрагментов кода подсистем, которые
+не используются в конфигурации, можно воспользоваться обработкой <span class="Interface">ПервоеВнедрениеБСП.epf</span>. Перед ее запуском может также
+потребоваться: </p>
+
+<p class="MsoListBullet">&#9679; 
+закомментировать код модулей управляемого и
+обычного приложений, а также модуля сеанса – для возможности запуска обработки;</p>
+
+<p class="MsoListBullet">&#9679; 
+включить возможность изменения в настройках
+поддержки для библиотечных объектов.</p>
+
+<a name="issogl1_особенности_обновления_на_конкретную_версию_библиотеки"><h2>Особенности обновления на конкретную версию библиотеки</h2></a>
+
+<p class="Paragraph0c">Особенности обновления каждой конкретной версии библиотеки
+описаны в сопроводительном документе <span class="Interface">updateSSL.htm</span>,
+входящем в поставку библиотеки. При обновлении через несколько версий
+необходимо последовательно выполнить все шаги, описанные в этом документе,
+начиная с самой младшей версии.</p>
+
+<a name="issogl1_увеличение_номера_версии_конфигурации"><h2>Увеличение номера версии конфигурации</h2></a>
+
+<p class="Paragraph0c">После завершения внедрения (обновления) библиотеки в
+конфигурацию следует увеличить номер версии конфигурации. Это необходимо для
+того, чтобы смогли выполниться все процедуры обновления данных информационной
+базы, предусмотренные в новой версии библиотеки. См. также раздел «<A href="3.4. _25E1_25E0_25E7_25EE_25E2_25E0_25FF _25F4_25F3_25ED_25EA_25F6_25E8_25EE_25ED_25E0_25EB_25FC_25ED_25EE_25F1_25F2_25FC.htm@_=1504708101#_обновление_вспомогательных_данных">Обновление
+вспомогательных данных во время разработки</a>».</p>
+
+<a name="issogl1_контроль_корректности_внедрения_и_обновления"><h2>Контроль корректности внедрения и обновления</h2></a>
+
+<p class="Paragraph0c">Рекомендуется выполнить следующие контрольные процедуры:</p>
+
+<p class="Number81">1. 
+Проверить конфигурацию с установленным флажком <span class="Interface">Расширенная проверка</span> (конфигуратор – меню <span class="Interface">Конфигурация – Проверка конфигурации…</span>).</p>
+
+<p class="Number81">2. 
+Запустить конфигурацию в режиме обновления с
+предыдущей версии, а также в режиме первоначального заполнения (на «пустой»
+информационной базе).</p>
+
+<p class="Number81">3. 
+Воспользоваться специальным инструментом – внешней
+обработкой <span class="Interface">ПроверкаВнедренияБСП.erf</span> из дистрибутива
+библиотеки. </p>
+
+<p class="Paragraph0c">С помощью этих процедур можно быстро выявить проблемы
+несовместимости, связанные с объектами библиотеки, которые были переименованы
+или удалены в новой версии библиотеки, а также различные ошибки из-за человеческого
+фактора, связанные с ручными операциями при внедрении (обновлении). Кроме того,
+помощник внедрения позволяет выявить несоответствия между запланированным и
+фактическим объемом внедрения библиотеки в конфигурацию.</p>
+
+<a name="issogl1_внедрение_подсистем_библиотеки_в_объекты_конфигурации_и_разработка_ролей"><h2>Внедрение подсистем библиотеки в объекты конфигурации и разработка ролей</h2></a>
+
+<p class="Paragraph0c">Некоторые подсистемы предназначены для внедрения
+непосредственно в объекты конфигурации-потребителя и поэтому предполагают
+тесную интеграцию с объектами конфигурации. Для этого в соответствующих
+разделах главы 3 «<A href="_25E3_25EB_25E0_25E2_25E0 3. _25ED_25E0_25F1_25F2_25F0_25EE_25E9_25EA_25E0 _25E8 _25E8_25F1_25EF_25E0289016194#_настройка_и_использование">Настройка и использование подсистем при разработке
+конфигурации» предусмотрены отдельные инструкции</a>».</p>
+
+<p class="Paragraph0c">Там же даны рекомендации по настройке прав доступа
+пользователей. В большинстве случаев подсистемы предоставляют готовый набор
+ролей к своим объектам. Однако могут быть случаи, когда разработка системы
+ролей, в том числе настройка ролей конфигурации для объектов, поставляемых
+библиотекой, остается за разработчиком конфигурации. </p>
+
+<a name="issogl1_разработка_справочной_информации_к_объектам_библиотеки"><h2>Разработка справочной информации к объектам библиотеки</h2></a>
+
+<p class="Paragraph0c">Большинство объектов библиотеки не содержат справочной
+информации, поскольку ее содержимое сильно зависит от специфики
+конфигурации-потребителя. Справочную информацию к объектам библиотеки следует
+разрабатывать непосредственно в конфигурации.</p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

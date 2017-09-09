@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1057;&#1086;&#1093;&#1088;&#1072;&#1085;&#1077;&#1085;&#1085;&#1099;&#1081;&#1042;&#1072;&#1088;&#1080;&#1072;&#1085;&#1090;&#1053;&#1072;&#1089;&#1090;&#1088;&#1086;&#1081;&#1082;&#1080;&#1059;&#1079;&#1083;&#1072;&#1055;&#1083;&#1072;&#1085;&#1072;&#1054;&#1073;&#1084;&#1077;&#1085;&#1072;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25F1_25EE_25F5_25F0_25E0_25ED_25E5_25ED_25ED_25FB_25E9_25E2_25E0_25F0_25E8_25E0_25ED_25F2_25ED_25E00AB68D6D41" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_обменданнымисерверсохраненныйвариантнастройкиузлапланаобмена"></a><h1>СохраненныйВариантНастройкиУзлаПланаОбмена</h1>
+
+<pre> Возвращает идентификатор сохраненного варианта настройки плана обмена.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция СохраненныйВариантНастройкиУзлаПланаОбмена(УзелПланаОбмена) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>   УзелПланаОбмена         - ПланОбменаСсылка - узел плана обмена, для которого необходимо получить переопределяемое
+                                                имя.</pre>
+<p class="Paragraph0c"><span class="Bold">Возвращаемое значение</span></p>
+<pre>  Строка - идентификатор сохраненной настройки как он задан в конфигураторе.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = ОбменДаннымиСервер.СохраненныйВариантНастройкиУзлаПланаОбмена(УзелПланаОбмена)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

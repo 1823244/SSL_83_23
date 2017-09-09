@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1047;&#1072;&#1087;&#1080;&#1089;&#1072;&#1090;&#1100;&#1054;&#1073;&#1098;&#1077;&#1082;&#1090;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25E7_25E0_25EF_25E8_25F1_25E0_25F2_25FC_25EE_25E1_25FA_25E5_25EA_25F2.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_обновлениеинформационнойбазызаписатьобъект"></a><h1>ЗаписатьОбъект</h1>
+
+<pre> Записывает изменения в переданном объекте ссылочного типа.
+ Для использования в обработчиках обновления.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура ЗаписатьОбъект(Знач Объект, Знач РегистрироватьНаУзлахПлановОбмена = Неопределено, 
+	Знач ВключитьБизнесЛогику = Ложь, ДокументРежимЗаписи = Неопределено) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>   Объект                            - Произвольный - записываемый объект ссылочного типа. Например, СправочникОбъект.
+   РегистрироватьНаУзлахПлановОбмена - Булево       - включает регистрацию на узлах планов обмена при записи объекта.
+   ВключитьБизнесЛогику              - Булево       - включает бизнес-логику при записи объекта.
+   ДокументРежимЗаписи              - ДокументРежимЗаписи - имеет смысл только для данных типа ДокументОбъект - режим записи документа.
+           Если параметр не передан, то документ записывается в режиме "Запись".</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> ОбновлениеИнформационнойБазы.ЗаписатьОбъект(Объект, РегистрироватьНаУзлахПлановОбмена, ВключитьБизнесЛогику, ДокументРежимЗаписи)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

@@ -1,0 +1,1435 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1055;&#1088;&#1080;&#1083;&#1086;&#1078;&#1077;&#1085;&#1080;&#1077; 1. &#1060;&#1086;&#1088;&#1084;&#1072;&#1090; &#1092;&#1072;&#1081;&#1083;&#1072; &#1089;&#1086;&#1086;&#1073;&#1097;&#1077;&#1085;&#1080;&#1103; &#1086;&#1073;&#1084;&#1077;&#1085;&#1072; &#1076;&#1072;&#1085;&#1085;&#1099;&#1084;&#1080;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25EF_25F0_25E8_25EB_25EE_25E6_25E5_25ED_25E8_25E5 1. _25F4_25EE_25F0_25EC_25E0_25F2 _25F4_25E0_25E90A325E3DFC" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<h1>Приложение 1. Формат файла сообщения обмена данными</h1>
+
+<p class="Paragraph0c">Данный документ описывает формат файла сообщения обмена данными, который используется подсистемой «Обмен данными» конфигурации «Библиотека стандартных подсистем, редакция. 1.2». Версия формата: 3.2.</p>
+
+<p class="Paragraph0c">С помощью сообщений обмена выполняется обмен данными между информационными базами различных конфигураций, а также со сторонними базами данных. Возможна передача данных как ссылочных типов, так и наборов записей регистров. Помимо самих данных, сообщение обмена содержит в себе также правила для загрузки этих данных. </p>
+
+<p class="Paragraph0c">Сообщение обмена представляет из себя xml-файл в кодировке UTF-8.</p>
+
+<a name="_файлобмена"></a><a name="_термины"></a><a name="issogl1_термины"><h2>Термины</h2></a> <p class="MsoListBullet">&#9679; <span class="Interface">Сообщение обмена</span> – xml-файл, в котором содержатся структурированные в соответствии с форматом данные, выгруженные из информационной базы-источника для загрузки в базу-приемник.</p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">База-источник</span> – информационная база данных, которая служит источником для выгрузки данных в сообщение обмена.</p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">База-приемник</span> – информационная база данных, в которую выполняется загрузка данных сообщения обмена.</p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">Узел-отправитель</span> – предопределенный элемент плана обмена базы-источника, от имени которого выполняется формирование сообщения обмена.</p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">Узел-получатель</span> – элемент плана обмена базы-приемника, для которого предназначено сообщение обмена.</p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">Интерактивная загрузка</span> – процесс загрузки данных с использованием сервиса интерактивной загрузки подсистемы «Обмен данными». При интерактивной загрузке данных можно выполнять предварительный просмотр загружаемых данных и выполнять сопоставление объектов информационных баз.</p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">Коллизия изменений</span> – событие, которое возникает при загрузке данных, заключающееся в том, что один и тот же объект изменен в базе-источнике и базе-приемнике. Для автоматического решения коллизий изменений в правилах обмена настраиваются приоритеты объектов при загрузке.</p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">Фильтр ограничения миграции данных</span> – вспомогательный сервис подсистемы «Обмен данными», который позволяет настраивать ограничения миграции данных между парами обменивающихся конфигураций.</p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">Информация сопоставления объектов</span> – информация сопоставления объектов базы-источника объектам базы-приемника. Эта информация используется для задания соответствия одного и того же с прикладной точки зрения объекта, разным объектам ссылочного типа. Если информацию сопоставления объектов не использовать, то это приведет к появлению дублей объектов в обменивающихся базах.</p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">Обработчик события</span> – произвольный текст на встроенном языке «1С:Предприятия», который выполняется в процессе обмена данными. Подробнее об обработчиках событий см. справку к конфигурации «Конвертация данных», меню <span class="Interface">Справка – Информация об обработчиках</span>.</p>
+
+<a name="_аббревиатуры"></a><a name="issogl1_аббревиатуры"><h2>Аббревиатуры</h2></a> <p class="MsoListBullet">&#9679; <span class="Interface">ПКО</span> – правило конвертации объектов,</p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">ПКС</span> – правило конвертации свойств объекта,</p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">ПКЗ</span> – правило конвертации значений объекта,</p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">ПКГС</span> – правило конвертации группы свойств.</p>
+
+<p class="Warningword">Примечание</p>
+
+<p class="Notes">Подробнее см. справку к конфигурации «Конвертация данных», меню <span class="Interface">Справка – Быстрое освоение</span>.</p>
+
+<a name="issogl1_типы_данных"><h2>Типы данных</h2></a> <p class="Paragraph0c">Для чтения значений, которые хранятся в файле сообщения обмена, используется метод глобального контекста платформы «1С:Предприятие» <span class="Interface">XMLЗначение()</span>, для записи – применяется <span class="Interface">XMLСтрока()</span>. Представление значения в файле определяется типом самого значения: </p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">Строка</span> – представляется в виде строки.</p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">Булево</span> – значение <span class="Interface">Истина</span> имеет представление &quot;true&quot;, а значение <span class="Interface">Ложь</span> – &quot;false&quot; </p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">Дата</span> – в виде представления типа dateTime схемы XML (см. <a href="../../../../../www.w3.org/TR/xmlschema-2/#dateTime" target="_blank">http://www.w3.org/TR/xmlschema-2/#dateTime</a>).</p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">Число</span> – в виде представления типа decimal схемы XML (см. <a href="../../../../../www.w3.org/TR/xmlschema-2/#decimal" target="_blank">http://www.w3.org/TR/xmlschema-2/#decimal</a>).</p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">Значение системного перечисления</span> – хранится строковое представление имени значения перечисления.</p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">УникальныйИдентификатор</span> – хранится строковое представление уникального идентификатор.</p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">Ссылки</span> – в виде строкового представления уникального идентификатора.</p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">ХранилищеЗначения</span> и <span class="Interface">ДвоичныеДанные</span> – в виде строки в формате base64.</p>
+
+<a name="issogl1_значения_по_умолчанию"><h2>Значения по умолчанию</h2></a> <p class="Paragraph0c">Если атрибут узла является необязательным, то его можно не указывать. В случае, если атрибут узла не указан, то используется его значение по умолчанию. Значение по умолчанию зависит от типа значения атрибута, если не указано иное:</p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">Строка</span> – пустая строка,</p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">Булево</span> – <span class="Interface">Ложь</span>,</p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">Дата</span> – пустая дата,</p>
+
+<p class="MsoListBullet">&#9679; <span class="Interface">Число</span> – ноль.</p>
+
+<a name="issogl1_заголовок_файла"><h2>Заголовок файла</h2></a> <p class="Paragraph0c">Заголовок файла сообщения обмена должен содержать описание кодировки файла в формате UTF-8:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</pre> <p class="Paragraph0c">Далее приводится описание узлов файла сообщения обмена:</p>
+
+<p class="MsoListBullet">&#9679; <a href="#_файлобмена_1">ФайлОбмена</a></p>
+
+<p class="MsoListBullet2">&#9679; <a href="#_данныепообмену">ДанныеПоОбмену</a></p>
+
+<p class="MsoListBullet2">&#9679; <a href="#_объект">Объект</a></p>
+
+<p class="MsoListBullet3">&#9679; <a href="#_ссылка">Ссылка</a></p>
+
+<p class="MsoListBullet3">&#9679; <a href="#_свойство">Свойство</a></p>
+
+<p class="MsoListBullet3">&#9679; <a href="#_значениепараметра">ЗначениеПараметра</a></p>
+
+<p class="MsoListBullet3">&#9679; <a href="#_табличнаячасть">ТабличнаяЧасть</a></p>
+
+<p class="MsoListBullet3">&#9679; <a href="#_наборзаписей">НаборЗаписей</a></p>
+
+<p class="MsoListBullet2">&#9679; <a href="#_наборзаписейрегистра">НаборЗаписейРегистра</a></p>
+
+<p class="MsoListBullet3">&#9679; <a href="#_отбор">Отбор</a></p>
+
+<p class="MsoListBullet3">&#9679; <a href="#_строкинаборазаписей">СтрокиНабораЗаписей</a></p>
+
+<p class="MsoListBullet2">&#9679; <a href="#_информацияорегистрацииобъекта">ИнформацияОРегистрацииОбъекта</a></p>
+
+<p class="MsoListBullet2">&#9679; <a href="#_корректировкаинформацииорегистрации">КорректировкаИнформацииОРегистрацииОбъекта</a></p>
+
+<p class="MsoListBullet2">&#9679; <a href="#_удалениеобъекта">УдалениеОбъекта</a></p>
+
+<p class="MsoListBullet2">&#9679; <a href="#_значениепараметра">ЗначениеПараметра</a></p>
+
+<p class="MsoListBullet2">&#9679; <a href="#_алгоритмпослезагрузкипараметров">АлгоритмПослеЗагрузкиПараметров</a></p>
+
+<p class="MsoListBullet2">&#9679; <a href="#_правилаобмена_2">ПравилаОбмена</a></p>
+
+<p class="MsoListBullet3">&#9679; <a href="#_правилаконвертацииобъектов">ПравилаКонвертацииОбъектов</a></p>
+
+<p class="MsoListBullet3">&#9679; <a href="#_параметры">Параметры</a></p>
+
+<p class="MsoListBullet3">&#9679; <a href="#_алгоритмы">Алгоритмы</a></p>
+
+<p class="MsoListBullet3">&#9679; <a href="#_запросы">Запросы</a></p>
+
+<a name="_файлобмена_1"></a><a name="issogl1_файлобмена"><h2>ФайлОбмена</h2></a> <p class="Paragraph0c">Узел <span class="Interface">ФайлОбмена </span>(обязательный). Использование: однократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Корневой узел сообщения обмена. Сообщение обмена должно начинаться с этого узла. Содержит дочерние узлы, которые условно подразделяются на узлы заголовка сообщения, узлы данных сопоставления и узлы с данными сообщения. </p>
+
+<p class="Bullet0">Узлы заголовка сообщения содержат вспомогательную информацию о данных сообщения и включаются однократно в файл. Узлы с данными сопоставления содержат данные о сопоставлении объектов и включаются многократно в файл. Узлы с данными сообщения содержат сами данные и включаются многократно в файл.</p>
+
+<p class="Paragraph0c">Последовательность расположения дочерних узлов регламентирована: </p>
+
+<p class="Number81">1. Заголовок (обязательный),</p>
+
+<p class="Number81">2. Данные сопоставления (необязательный),</p>
+
+<p class="Number81">3. Данные (необязательный).</p>
+
+<p class="Paragraph0c">Последовательность узлов заголовка регламентировано: </p>
+
+<p class="Number81">1. <span class="Interface">ПравилаОбмена</span>,</p>
+
+<p class="Number81">2. <span class="Interface">ДанныеПоОбмену</span>,</p>
+
+<p class="Number81">3. <span class="Interface">Алгоритм</span>,</p>
+
+<p class="Number81">4. <span class="Interface">ЗначениеПараметра</span>,</p>
+
+<p class="Number81">5. <span class="Interface">АлгоритмПослеЗагрузкиПараметров</span>.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0"><span class="Interface">ВерсияФормата</span> (обязательный) – <span class="Interface">Строка</span>. Версия формата сообщения обмена.</p>
+
+<p class="Bullet0"><span class="Interface">ДатаВыгрузки</span> (необязательный) – <span class="Interface">Дата</span>. Дата формирования сообщения обмена.</p>
+
+<p class="Bullet0"><span class="Interface">ИмяКонфигурацииИсточника</span> (необязательный) – <span class="Interface">Строка</span>. Наименование конфигурации базы-источника.</p>
+
+<p class="Bullet0"><span class="Interface">ИмяКонфигурацииПриемника</span> (необязательный) – <span class="Interface">Строка</span>. Наименование конфигурации базы-приемника.</p>
+
+<p class="Bullet0"><span class="Interface">ИдПравилКонвертации</span> (необязательный) – <span class="Interface">УникальныйИдентификатор</span>. Уникальный идентификатор правил конвертации в конфигурации «Конвертация данных». Используется при обновлении правил обмена.</p>
+
+<p class="Bullet0"><span class="Interface">Комментарий</span> (необязательный) – <span class="Interface">Строка</span>. Произвольный комментарий к выгружаемым данным.</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</p>
+
+<p class="MsoNormal"><a href="#_файлобмена_1">&lt;ФайлОбмена&gt;</a></p>
+
+<p class="MsoNormal"> </p>
+
+<p class="MsoNormal">{ ЗАГОЛОВОК</p>
+
+<p class="MsoNormal"> </p>
+
+<p class="MsoNormal"><a href="#_правилаобмена">&lt;ПравилаОбмена&gt;…&lt;/ПравилаОбмена&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_данныепообмену">&lt;ДанныеПоОбмену&gt;…&lt;/ДанныеПоОбмену&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_значениепараметра">&lt;ЗначениеПараметра&gt;…&lt;/ЗначениеПараметра&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_алгоритмпослезагрузкипараметров">&lt;АлгоритмПослеЗагрузкиПараметров&gt;…&lt;/АлгоритмПослеЗагрузкиПараметров&gt;</a></p>
+
+<p class="MsoNormal"> </p>
+
+<p class="MsoNormal">ЗАГОЛОВОК }</p>
+
+<p class="MsoNormal"> </p>
+
+<p class="MsoNormal">{ДАННЫЕ СОПОСТАВЛЕНИЯ</p>
+
+<p class="MsoNormal"> </p>
+
+<p class="MsoNormal"><a href="#_информацияорегистрацииобъекта">&lt;ИнформацияОРегистрацииОбъекта&gt;…&lt;/ИнформацияОРегистрацииОбъекта&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_корректировкаинформацииорегистрации">&lt;КорректировкаИнформацииОРегистрацииОбъекта&gt;…&lt;/КорректировкаИнформацииОРегистрацииОбъекта&gt; </a></p>
+
+<p class="MsoNormal"> </p>
+
+<p class="MsoNormal">ДАННЫЕ СОПОСТАВЛЕНИЯ}</p>
+
+<p class="MsoNormal"> </p>
+
+<p class="MsoNormal">{ДАННЫЕ</p>
+
+<p class="MsoNormal"> </p>
+
+<p class="MsoNormal"><a href="#_объект">&lt;Объект&gt;…&lt;/Объект&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_наборзаписейрегистра">&lt;НаборЗаписейРегистра&gt;…&lt;/НаборЗаписейРегистра&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_удалениеобъекта">&lt;УдалениеОбъекта&gt;…&lt;/УдалениеОбъекта&gt;</a> </p>
+
+<p class="MsoNormal"> </p>
+
+<p class="MsoNormal">ДАННЫЕ }</p>
+
+<p class="MsoNormal"> </p>
+
+<p class="MsoNormal"><a href="#_файлобмена_1">&lt;/ФайлОбмена&gt;</a></p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_res">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ФайлОбмена ВерсияФормата=&quot;3.0&quot; ДатаВыгрузки=&quot;2010-07-30T17:09:02&quot; ИмяКонфигурацииИсточника=&quot;УправлениеТорговлей&quot; ИмяКонфигурацииПриемника=&quot;БухгалтерияПредприятия&quot; ИдПравилКонвертации=&quot;24451442-943d-4182-bc1b-42e04d1fdf33&quot; Комментарий=&quot;&quot;&gt;
+&lt;/ФайлОбмена&gt;</pre>
+
+<a name="_данныепообмену"></a><a name="issogl2_данныепообмену"><h3>ДанныеПоОбмену</h3></a> <p class="Paragraph0c">Узел <span class="Interface">ДанныеПоОбмену </span>(обязательный). Использование: однократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит информацию о плане обмена для загрузки данных и информацию механизма квитирования сообщений обмена.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0"><span class="Interface">ПланОбмена</span> (обязательный) – <span class="Interface">Строка</span>. Имя плана обмена, как объекта метаданных конфигурации, для которого предназначено сообщение обмена.</p>
+
+<p class="Bullet0"><span class="Interface">Кому</span> (обязательный) – <span class="Interface">Строка</span>. Код узла плана обмена базы-приемника, для которого предназначено сообщение.</p>
+
+<p class="Bullet0"><span class="Interface">ОтКого</span> (обязательный) – <span class="Interface">Строка</span>. Код предопределенного узла плана обмена базы-источника, от имени которого отправлено сообщение.</p>
+
+<p class="Bullet0"><span class="Interface">НомерИсходящегоСообщения</span> (обязательный) – <span class="Interface">Число</span>. Номер исходящего сообщения узла-отправителя.</p>
+
+<p class="Bullet0"><span class="Interface">НомерВходящегоСообщения</span> (обязательный) – <span class="Interface">Число</span>. Номер последнего успешно-принятого сообщения от узла-получателя в узле-отправителе.</p>
+
+<p class="Bullet0"><span class="Interface">УдалитьРегистрациюИзменений</span> (обязательный) – <span class="Interface">Булево</span>. Признак необходимости удаления регистрации изменений на узле-получателе при получении сообщения.</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="Bullet0">не содержит дочерних узлов.</p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>ДанныеПоОбмену ПланОбмена<span class="operator">=</span><span class="string">&quot;ОбменУправлениеТорговлейБухгалтерияПредприятия&quot;</span> Кому<span class="operator">=</span><span class="string">&quot;001&quot;</span> ОтКого<span class="operator">=</span><span class="string">&quot;000&quot;</span> НомерИсходящегоСообщения<span class="operator">=</span><span class="string">&quot;32&quot;</span> НомерВходящегоСообщения<span class="operator">=</span><span class="string">&quot;31&quot;</span> УдалитьРегистрациюИзменений<span class="operator">=</span><span class="string">&quot;true&quot;</span><span class="operator">/</span><span class="operator">&gt;</span></pre>
+
+<a name="_объект"></a><a name="issogl2_объект"><h3>Объект</h3></a> <p class="Paragraph0c">Узел <span class="Interface">Объект</span> (необязательный). Использование: многократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Узел содержит один объект загрузки. В качестве объекта загрузки может выступать любой объект ссылочного типа: документ, элемент справочника и пр. Узел содержит дочерние узлы, в которых содержатся значения свойств, значения параметров, табличные части и таблицы движений (для документов) объекта загрузки.</p>
+
+<p class="Bullet0">Узел формируется на основании правил описанных в <a href="#_аббревиатуры">ПКО</a>.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0"><span class="Interface">Тип</span> (обязательный) – <span class="Interface">Строка</span>. Строковое представление типа объекта. Используется для получения типа объекта функцией <span class="Interface">Тип()</span>.</p>
+
+<p class="Bullet0"><span class="Interface">ИмяПравила</span> (обязательный) – <span class="Interface">Строка</span>. Имя правила конвертации объекта. Используется для идентификации загружаемого объекта с правилом конвертации (см. узел <span class="Interface">Код </span>для узла <a href="#_правило">Правило</a>).</p>
+
+<p class="Bullet0"><span class="Interface">Нпп</span> (необязательный) – <span class="Interface">Число</span>. Номер выгружаемого объекта в файле в порядке выгрузки. Используется при отладке процесса обмена и для кэширования выгружаемых данных. Пример использования атрибута для кэширования выгружаемых данных приведен в разделе описания узла <a href="#_нпп">Нпп</a>.</p>
+
+<p class="Bullet0"><span class="Interface">Источник</span> (необязательный) – <span class="Interface">Строка</span>. Произвольное описание объекта для вывода в протокол обмена данными.</p>
+
+<p class="Bullet0"><span class="Interface">ПриоритетОбъектаОбмена</span> (необязательный) – <span class="Interface">Строка</span>. Приоритет объекта загрузки в случае возникновения <a href="#_термины">коллизии изменений</a>. Возможные значения: &quot;Выше&quot;, &quot;Ниже&quot;, &quot;Совпадает&quot;. Значение по умолчанию – &quot;Выше&quot;. Соответствует значению параметра <a href="#_аббревиатуры">ПКО</a> &quot;Приоритет объекта загрузки&quot;.</p>
+
+<p class="Bullet0"><span class="Interface">РежимЗаписи</span> (необязательный) – <span class="Interface">Строка</span>. Режим записи документа. Актуален только для типа объекта <span class="Interface">Документ</span>. Возможные значения: &quot;Запись&quot; (документ будет записан), &quot;Проведение&quot; (документ будет записан в режиме проведения), &quot;ОтменаПроведения&quot; (документ будет записан в режиме отмены проведения). Значение по умолчанию – &quot;Запись&quot;. Соответствует значению параметра <span class="Interface">РежимЗаписи</span> <a href="#_файлобмена">обработчика события</a> <a href="#_аббревиатуры">ПКО</a> &quot;Перед выгрузкой&quot;.</p>
+
+<p class="Bullet0"><span class="Interface">РежимПроведения</span> (необязательный) – <span class="Interface">Строка</span>. Режим проведения документа. Актуален только для типа объекта <span class="Interface">Документ</span>. Возможные значения: &quot;Неоперативный&quot;, &quot;Оперативный&quot;. Значение по умолчанию – &quot;Неоперативный&quot;. Соответствует значению параметра <span class="Interface">РежимПроведения</span> <a href="#_файлобмена">обработчика события</a> <a href="#_аббревиатуры">ПКО</a> &quot;Перед выгрузкой&quot;.</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_объект">&lt;Объект&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_ссылка">&lt;Ссылка&gt;…&lt;/Ссылка&gt; </a></p>
+
+<p class="MsoNormal"><a href="#_свойство">&lt;Свойство&gt;…&lt;/Свойство&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_значениепараметра">&lt;ЗначениеПараметра&gt;…&lt;/ЗначениеПараметра&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_табличнаячасть">&lt;ТабличнаяЧасть&gt;…&lt;/ТабличнаяЧасть&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_наборзаписей">&lt;НаборЗаписей&gt;…&lt;/НаборЗаписей&gt; </a></p>
+
+<p class="MsoNormal"><a href="#_объект">&lt;/Объект&gt;</a> </p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>Объект Нпп<span class="operator">=</span><span class="string">&quot;24&quot;</span> 
+Тип<span class="operator">=</span><span class="string">&quot;СправочникСсылка.Номенклатура&quot;</span> 
+ИмяПравила<span class="operator">=</span><span class="string">&quot;Номенклатура&quot;</span><span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Ссылка<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;{УникальныйИдентификатор}&quot;</span> 
+Тип<span class="operator">=</span><span class="string">&quot;Строка&quot;</span> 
+ТипИсточника<span class="operator">=</span><span class="string">&quot;СправочникСсылка.Номенклатура&quot;</span> 
+ТипПриемника<span class="operator">=</span><span class="string">&quot;СправочникСсылка.Номенклатура&quot;</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span>bd72d927<span class="operator">-</span><span class="number">55bc</span><span class="operator">-</span><span class="number">11d9</span><span class="operator">-</span><span class="number">848a</span><span class="operator">-</span><span class="number">00112f43529a</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;ЭтоГруппа&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Булево&quot;</span><span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="keyword">false</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>Ссылка<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Код&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Строка&quot;</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="number">00000000057</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Наименование&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Строка&quot;</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span>Комбайн кухонный BINATONE FP <span class="number">67</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Родитель&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;СправочникСсылка.Номенклатура&quot;</span><span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Ссылка<span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;{УникальныйИдентификатор}&quot;</span>
+Тип<span class="operator">=</span><span class="string">&quot;Строка&quot;</span> 
+ТипИсточника<span class="operator">=</span><span class="string">&quot;СправочникСсылка.Номенклатура&quot;</span> 
+ТипПриемника<span class="operator">=</span><span class="string">&quot;СправочникСсылка.Номенклатура&quot;</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span>bd72d925<span class="operator">-</span><span class="number">55bc</span><span class="operator">-</span><span class="number">11d9</span><span class="operator">-</span><span class="number">848a</span><span class="operator">-</span><span class="number">00112f43529a</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+            <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;ЭтоГруппа&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Булево&quot;</span><span class="operator">&gt;</span>
+                <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="keyword">true</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+            <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>Ссылка<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;НаименованиеПолное&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Строка&quot;</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span>Комбайн кухонный BINATONE FP <span class="number">67</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;СтавкаНДС&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;ПеречислениеСсылка.СтавкиНДС&quot;</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span>НДС18<span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Услуга&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Булево&quot;</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="keyword">false</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>Объект<span class="operator">&gt;</span></pre>
+
+<a name="_ссылка"></a><a name="issogl3_ссылка"><h4>Ссылка</h4></a> <p class="Bullet0">Узел <span class="Interface">Ссылка </span>(необязательный). Использование: однократно; в самом начале родительского узла <span class="Interface">Объект</span>.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит значения свойств и параметров для идентификации (поиска) объекта загрузки в базе-приемнике. Узел может содержать <a href="#_свойство">служебные свойства</a>. </p>
+
+<p class="Bullet0">Для элементов иерархических справочников свойство <span class="Interface">ЭтоГруппа</span> должно находиться в узле <a href="#_ссылка">Ссылка</a>. </p>
+
+<p class="Bullet0">Свойства, расположенные в этом узле принято называть свойствами поиска.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0"><span class="Interface">Нпп</span> (необязательный) – <span class="Interface">Число</span>. Номер выгружаемой ссылки (объекта) в файле в порядке выгрузки. Используется при отладке процесса обмена и для кэширования выгружаемых данных. Пример использования атрибута для кэширования выгружаемых данных приведен в разделе описания узла <a href="#_нпп">Нпп</a>.</p>
+
+<p class="Bullet0"><span class="Interface">РегистрироватьОбъектНаУзлеОтправителе</span> (необязательный) – <span class="Interface">Булево</span>. Признак того, что объект необходимо зарегистрировать к выгрузке для узла-отправителя (отправка объекта назад). Соответствует значению параметра <span class="Interface">РегистрироватьОбъектНаУзлеОтправителе</span> <a href="#_файлобмена">обработчика события</a> <a href="#_аббревиатуры">ПКО</a> &quot;Перед выгрузкой&quot;.</p>
+
+<p class="Bullet0"><span class="Interface">НеСоздаватьЕслиНеНайден</span> (необязательный) – <span class="Interface">Булево</span>. Отказ от создания нового объекта. Используется если необходимо выполнять только обновление существующих объектов. <span class="Interface">Истина</span> – будет обновлен только существующий объект в базе-приемнике. Соответствует значению параметра <a href="#_аббревиатуры">ПКО</a> &quot;Не создавать новый объект в приемнике, если он НЕ найден&quot;.</p>
+
+<p class="Bullet0"><span class="Interface">ПриоритетОбъектаОбмена</span> (необязательный) – <span class="Interface">Строка</span>. Приоритет загружаемого объекта в случае возникновения коллизии изменений. Возможные значения: &quot;Выше&quot;, &quot;Ниже&quot;, &quot;Совпадает&quot;. Значение по умолчанию – &quot;Выше&quot;. Соответствует значению параметра <a href="#_аббревиатуры">ПКО</a> &quot;Приоритет объекта загрузки&quot;.</p>
+
+<p class="Bullet0"><span class="Interface">ПродолжитьПоиск</span> (необязательный) – <span class="Interface">Булево</span>. Определяет режим поиска объекта в случае, если по уникальному идентификатору ссылки объект не был найден. <span class="Interface">Истина</span> – поиск объекта будет продолжен по полям поиска и по алгоритму поиска (если задан); <span class="Interface">Ложь</span> – дополнительный поиск не выполняется.</p>
+
+<p class="Bullet0">Атрибут используется только, если поиск объекта в базе-приемнике выполняется по уникальному идентификатору ссылки, т. е. в узле присутствует свойство <span class="Interface">{УникальныйИдентификатор}</span>. Рекомендуется использовать только для справочников-классификаторов.</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_ссылка">&lt;<b>Ссылка</b>&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_свойство">&lt;Свойство&gt;…&lt;/Свойство&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_значениепараметра">&lt;ЗначениеПараметра&gt;…&lt;/ЗначениеПараметра&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_ссылка">&lt;/<b>Ссылка</b>&gt;</a> </p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>Ссылка<span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;{УникальныйИдентификатор}&quot;</span> 
+Тип<span class="operator">=</span><span class="string">&quot;Строка&quot;</span> 
+ТипИсточника<span class="operator">=</span><span class="string">&quot;СправочникСсылка.Номенклатура&quot;</span> 
+ТипПриемника<span class="operator">=</span><span class="string">&quot;СправочникСсылка.Номенклатура&quot;</span><span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Значение<span class="operator">&gt;</span>bd72d927<span class="operator">-</span><span class="number">55bc</span><span class="operator">-</span><span class="number">11d9</span><span class="operator">-</span><span class="number">848a</span><span class="operator">-</span><span class="number">00112f43529a</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;ЭтоГруппа&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Булево&quot;</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="keyword">false</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>Ссылка<span class="operator">&gt;</span></pre>
+
+<a name="_свойство"></a><a name="issogl3_свойство"><h4>Свойство</h4></a> <p class="Paragraph0c">Узел <span class="Interface">Свойство</span> (необязательный).<span class="Interface"> </span>Использование: многократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит значение свойства объекта загрузки. В качестве значения свойства может быть значение примитивного типа; дочерний узел <a href="#_ссылка">Ссылка</a>, если свойство имеет ссылочный тип; порядковый номер ссылки (<span class="Interface">Нпп</span>) в файле сообщения обмена, если ссылка была выгружена ранее; произвольное выражение; пустое значение.</p>
+
+<p class="Bullet0">Узел формируется на основании правил описанных в <a href="#_аббревиатуры">ПКС</a>.</p>
+
+<p class="Bullet0">Узлы <span class="Interface">Свойства</span> бывают трех типов: </p>
+
+<p class="MsoListBullet2">&#9679; свойства объекта</p>
+
+<p class="MsoListBullet2">&#9679; свойства субконто</p>
+
+<p class="MsoListBullet2">&#9679; служебные свойства</p>
+
+<p class="Bullet0">Свойства объекта предназначены для передачи данных непосредственно в свойства объекта в базе-приемнике. В таком случае, атрибут <span class="Interface">Имя </span>совпадает с именем свойства объекта в базе-приемнике (так как оно задано в <span class="Interface">Конфигураторе</span>).</p>
+
+<p class="Bullet0">Свойства субконто предназначены для передачи значений субконто Дт и субконто Кт в движениях документов. Атрибут <span class="Interface">Имя</span> принимает только два значения:</p>
+
+<p class="MsoListBullet2">&#9679; атрибут <span class="Interface">Имя</span> = Ключ</p>
+
+<p class="MsoListBullet2">&#9679; атрибут <span class="Interface">Имя</span> = Значение</p>
+
+<p class="Bullet0">Свойства субконто используются только для узла <a href="#_запись">Запись</a>.</p>
+
+<p class="Bullet0">Служебные свойства предназначены для идентификации ссылочного объекта в базе-приемнике при его загрузке. Имена служебных свойств заключаются в фигурные скобки &quot;{&quot; и &quot;}&quot;.</p>
+
+<p class="Bullet0">Предусмотрены следующие имена служебных свойств: </p>
+
+<p class="MsoListBullet2">&#9679; атрибут <span class="Interface">Имя</span> = {УникальныйИдентификатор}</p>
+
+<p class="MsoListBullet2">&#9679; атрибут <span class="Interface">Имя</span> = {ИмяПредопределенногоЭлемента}</p>
+
+<p class="Warningword">Важно!</p>
+
+<p class="Notes">Служебные свойства могут быть использованы только для узла <span class="Interface">Ссылка.</span></p>
+
+<p class="Warningword">Примечание</p>
+
+<p class="Notes">Для элементов иерархических справочников свойство с именем <span class="Interface">ЭтоГруппа</span> должно находиться в узле <a href="#_ссылка">Ссылка</a>.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0"><span class="Interface">Имя</span> (обязательный) – <span class="Interface">Строка</span>. Имя свойства объекта в базе-получателе, как оно задано в конфигураторе. Для свойств субконто атрибут может принимать только два значения &quot;Ключ&quot; и &quot;Значение&quot;.</p>
+
+<p class="Bullet0"><span class="Interface">Тип</span> (обязательный) – <span class="Interface">Строка</span>. Строковое представление типа свойства.</p>
+
+<p class="Bullet0"><span class="Interface">ИмяПКО</span> (необязательный) – <span class="Interface">Строка</span>. Имя <a href="#_аббревиатуры">ПКО</a>, по которому было конвертировано значение свойства. Атрибут следует задавать только в том случае, если для идентификации значения свойства используется алгоритм поиска. Алгоритм поиска задается в <a href="#_файлобмена">обработчике события</a> <a href="#_аббревиатуры">ПКО</a> «Поля поиска».</p>
+
+<p class="Bullet0"><span class="Interface">НеЗамещать</span> (необязательный) – <span class="Interface">Булево</span>. <span class="Interface">Истина</span> – значение свойства не будет изменено у существующего объекта в базе-приемнике, если при загрузке объект будет найден. Соответствует значению параметра <a href="#_аббревиатуры">ПКС</a> &quot;Не замещать значение свойства у существующих объектов в приемнике&quot;.</p>
+
+<p class="Bullet0"><span class="Interface">ПоискПоДатеНаРавенство</span> (необязательный) – <span class="Interface">Булево</span>. Признак поиска документов на строгое равенство дате. Если атрибут не задан, то поиск документов будет выполняется в пределах заданной периодичности номера документа. Используется только, если атрибут <span class="Interface">Имя</span> равен значению <span class="Interface">Дата</span>. Соответствует значению параметра <a href="#_аббревиатуры">ПКС</a> &quot;Поиск по дате на равенство&quot;.</p>
+
+<p class="Bullet0">Атрибуты для служебного свойства <span class="Interface">{УникальныйИдентификатор}</span>:</p>
+
+<p class="MsoListBullet2">&#9679; <span class="Interface">ТипИсточника</span> (обязательный) – <span class="Interface">Строка</span>. Строковое представление типа объекта в базе-источнике.</p>
+
+<p class="MsoListBullet2">&#9679; <span class="Interface">ТипПриемника</span> (обязательный) – <span class="Interface">Строка</span>. Строковое представление типа объекта в базе-приемнике.</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_свойство">&lt;<b>Свойство</b>&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_значение">&lt;Значение&gt;…&lt;/Значение&gt; </a></p>
+
+<p class="MsoNormal"><a href="#_ссылка">&lt;Ссылка&gt;…&lt;/Ссылка&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_нпп">&lt;Нпп&gt;…&lt;/Нпп&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_выражение">&lt;Выражение&gt;…&lt;/Выражение&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_пусто">&lt;Пусто&gt;&lt;/Пусто&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_свойство">&lt;/<b>Свойство</b>&gt;</a> </p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;ВидОперации&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;ПеречислениеСсылка.ВидыОперацийПоступлениеТоваровУслуг&quot;</span><span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Значение<span class="operator">&gt;</span>ПокупкаКомиссия<span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span></pre>
+
+<a name="_значение"></a><a name="issogl3_значение"><h4>Значение</h4></a> <p class="Bullet0">Узел <span class="Interface">Значение</span> (необязательный). Использование: однократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит значение свойства в строковом представлении.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0"><span class="Interface">Свойство</span> (необязательный) – <span class="Interface">Строка</span>. Имя свойства, по которому выполняется поиск объекта по переданному в узле значению.</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_значение">&lt;<b>Значение</b>&gt;</a>СтрокаXML<a href="#_значение">&lt;/<b>Значение</b>&gt;</a></p>
+
+<p class="MsoNormal"> </p>
+
+<p class="Paragraph0c">СтрокаXML – <span class="Interface">Строка</span>, содержащая строковое представление значения.</p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>Значение<span class="operator">&gt;</span>НДС18<span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span></pre>
+
+<a name="_нпп"></a><a name="issogl3_нпп"><h4>Нпп</h4></a> <p class="Paragraph0c">Узел <span class="Interface">Нпп </span>(необязательный). Использование: однократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит номер ранее выгруженного объекта в файле сообщения по порядку выгрузки.</p>
+
+<p class="Bullet0">Используется для оптимизации процесса загрузки данных. Эффективно использовать, если объект неоднократно выгружается в сообщение обмена. В этом случае информация по объекту выгружается в файл только один раз. При последующих обращениях к объекту используется его порядковый номер в сообщении обмена.</p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>: </p>
+
+<p class="Bullet0">Представлен фрагмент сообщения обмена с двумя объектами. Первый объект – это группа справочника номенклатуры «Материалы и комплектующие». Порядковый номер элемента в сообщении обмена – 1. Второй объект – это элемент справочника номенклатуры &quot;Компрессор&quot;, который находится в папке «Материалы и комплектующие». Порядковый номер элемента в сообщении обмена – 2. В качестве свойства <span class="Interface">Родитель</span> второго объекта используется узел <span class="Interface">Нпп</span> для ссылки на ранее выгруженный объект с порядковым номером 1. Таким образом, группа справочника будет выгружена в сообщение обмена только один раз.</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>Объект Нпп<span class="operator">=</span><span class="string">&quot;1&quot;</span>
+    Тип<span class="operator">=</span><span class="string">&quot;СправочникСсылка.Номенклатура&quot;</span>
+    ИмяПравила<span class="operator">=</span><span class="string">&quot;Номенклатура&quot;</span><span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>Ссылка Нпп<span class="operator">=</span><span class="string">&quot;1&quot;</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;{УникальныйИдентификатор}&quot;</span><span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="number">213d87ae</span><span class="operator">-</span><span class="number">33d5</span><span class="operator">-</span><span class="number">11de</span><span class="operator">-</span>b58f<span class="operator">-</span><span class="number">00055d80a2b9</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Наименование&quot;</span><span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span>Материалы <span class="keyword">и</span> комплектующие<span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Родитель&quot;</span><span class="operator">/</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;ЭтоГруппа&quot;</span><span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="keyword">true</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span><span class="operator">/</span>Ссылка<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;ПометкаУдаления&quot;</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="keyword">false</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>Объект<span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Объект Нпп<span class="operator">=</span><span class="string">&quot;2&quot;</span>
+    Тип<span class="operator">=</span><span class="string">&quot;СправочникСсылка.Номенклатура&quot;</span>
+    ИмяПравила<span class="operator">=</span><span class="string">&quot;Номенклатура&quot;</span><span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>Ссылка Нпп<span class="operator">=</span><span class="string">&quot;2&quot;</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;{УникальныйИдентификатор}&quot;</span><span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="number">213d87ae</span><span class="operator">-</span><span class="number">44d5</span><span class="operator">-</span><span class="number">11de</span><span class="operator">-</span>b58f<span class="operator">-</span><span class="number">00055d81a2b0</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Наименование&quot;</span><span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span>Компрессор<span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Родитель&quot;</span>
+            <span class="operator">&lt;</span>Нпп<span class="operator">&gt;</span><span class="number">1</span><span class="operator">&lt;</span><span class="operator">/</span>Нпп<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;ЭтоГруппа&quot;</span><span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="keyword">false</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span><span class="operator">/</span>Ссылка<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;ПометкаУдаления&quot;</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="keyword">false</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>Объект<span class="operator">&gt;</span></pre> <p class="Paragraph0c"><span class="Interface">Атрибуты</span>: </p>
+
+<p class="Bullet0">нет</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_нпп">&lt;<b>Нпп</b>&gt;</a>СтрокаXML<a href="#_нпп">&lt;/<b>Нпп</b>&gt;</a> </p>
+
+<p class="MsoNormal"> </p>
+
+<p class="Paragraph0c">СтрокаXML – <span class="Interface">Строка</span>, содержащая строковое представление значения (числа).</p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>Нпп<span class="operator">&gt;</span><span class="number">122</span><span class="operator">&lt;</span><span class="operator">/</span>Нпп<span class="operator">&gt;</span></pre>
+
+<a name="_выражение"></a><a name="issogl3_выражение"><h4>Выражение</h4></a> <p class="Paragraph0c">Узел <span class="Interface">Выражение</span> (необязательный). Использование: однократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит выражение, которое требуется вычислить, для получения значения свойства. Значение вычисляется с использованием платформенного метода <span class="Interface">Вычислить()</span>.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0">нет</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_выражение">&lt;<b>Выражение</b>&gt;</a>СтрокаXML<a href="#_выражение">&lt;/<b>Выражение</b>&gt;</a> </p>
+
+<p class="Paragraph0c">СтрокаXML – <span class="Interface">Строка</span>, содержащая строковое представление значения.</p>
+
+<a name="_пусто"></a><a name="issogl3_пусто"><h4>Пусто</h4></a> <p class="Paragraph0c">Узел <span class="Interface">Пусто</span> (необязательный). Использование: однократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Используется для указания того, что значение свойства объекта принимает пустое значение заданного типа.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0">нет</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_пусто">&lt;<b>Пусто</b>&gt;&lt;/<b>Пусто</b>&gt;</a> </p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>Пусто<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">/</span><span class="operator">&gt;</span></pre>
+
+<a name="_значениепараметра"></a><a name="issogl3_значениепараметра"><h4>ЗначениеПараметра</h4></a> <p class="Paragraph0c">Узел <span class="Interface">ЗначениеПараметра </span>(необязательный).<span class="Interface"> </span>Использование: многократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит значение произвольного параметра для объекта загрузки. В параметре объекта могут быть переданы такие же значения, как в узле <a href="#_свойство">Свойство</a>.</p>
+
+<p class="Bullet0">Параметры объекта доступны в обработчике <span class="Interface">После загрузки</span> правил обмена в качестве переменной <span class="Interface">ПараметрыОбъекта</span> (подробнее см. описание обработчика &quot;После загрузки&quot; правила конвертации объектов в конфигурации «Конвертация данных»). </p>
+
+<p class="Bullet0">Параметры объекта используются для передачи произвольных вспомогательных данных.</p>
+
+<p class="Bullet0">Узел формируется на основании правил описанных в <a href="#_аббревиатуры">ПКС</a>.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0"><span class="Interface">Имя</span> (обязательный) – <span class="Interface">Строка</span>. Имя свойства объекта в базе-получателе, как оно задано в конфигураторе. </p>
+
+<p class="Bullet0"><span class="Interface">Тип</span> (обязательный) – <span class="Interface">Строка</span>. Строковое представление типа свойства.</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_значениепараметра">&lt;<b>ЗначениеПараметра</b>&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_значение">&lt;Значение&gt;…&lt;/Значение&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_ссылка">&lt;Ссылка&gt;…&lt;/Ссылка&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_нпп">&lt;Нпп&gt;…&lt;/Нпп&gt; </a></p>
+
+<p class="MsoNormal"><a href="#_выражение">&lt;Выражение&gt;…&lt;/Выражение&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_пусто">&lt;Пусто&gt;&lt;/Пусто&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_значениепараметра">&lt;/<b>ЗначениеПараметра</b>&gt;</a> </p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>ЗначениеПараметра Имя<span class="operator">=</span><span class="string">&quot;НаименованиеПолное&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Строка&quot;</span><span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Значение<span class="operator">&gt;</span>Сигары кубинские<span class="operator">,</span> <span class="number">20</span> шт<span class="operator">.</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>ЗначениеПараметра<span class="operator">&gt;</span></pre>
+
+<a name="_табличнаячасть"></a><a name="issogl3_табличнаячасть"><h4>ТабличнаяЧасть</h4></a> <p class="Paragraph0c">Узел <span class="Interface">ТабличнаяЧасть </span>(необязательный).<span class="Interface"> </span>Использование: многократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит данные табличной части объекта загрузки. Узел формируется на основании правил описанных в <a href="#_аббревиатуры">ПКГС</a>.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0"><span class="Interface">Имя</span> (обязательный) – <span class="Interface">Строка</span>. Имя табличной части объекта в базе-приемнике, как оно задано в конфигураторе.</p>
+
+<p class="Bullet0"><span class="Interface">НеЗамещать</span> (необязательный) – <span class="Interface">Булево</span>. <span class="Interface">Истина</span> – табличная часть не будет замещена у существующего объекта в базе-приемнике, если при загрузке объект будет найден. Соответствует значению параметра <a href="#_аббревиатуры">ПКГС</a> &quot;Не замещать значение свойства у существующих объектов ИБ&quot;.</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_табличнаячасть">&lt;<b>ТабличнаяЧасть</b>&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_запись">&lt;Запись&gt;…&lt;/Запись&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_табличнаячасть">&lt;/<b>ТабличнаяЧасть</b>&gt;</a> </p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>ТабличнаяЧасть Имя<span class="operator">=</span><span class="string">&quot;Товары&quot;</span><span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Запись<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Цена&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Число&quot;</span><span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="number">26</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Сумма&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Число&quot;</span><span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="number">10400</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;СтавкаНДС&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;ПеречислениеСсылка.СтавкиНДС&quot;</span><span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span>НДС18<span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;СуммаНДС&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Число&quot;</span><span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="number">1586</span><span class="number">.</span><span class="number">44</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span><span class="operator">/</span>Запись<span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Запись<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Цена&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Число&quot;</span><span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="number">35</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Сумма&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Число&quot;</span><span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="number">350</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;СтавкаНДС&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;ПеречислениеСсылка.СтавкиНДС&quot;</span><span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span>БезНДС<span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;СуммаНДС&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Число&quot;</span><span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="number">0</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span><span class="operator">/</span>Запись<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>ТабличнаяЧасть<span class="operator">&gt;</span></pre>
+
+<a name="_запись"></a><a name="issogl3_запись"><h4>Запись</h4></a> <p class="Paragraph0c">Узел <span class="Interface">Запись </span>(необязательный). Использование: многократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит данные одной строки табличной части или записи движения документа. Узел формируется на основании правил описанных в <a href="#_аббревиатуры">ПКС</a>.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0">нет</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_запись">&lt;<b>Запись</b>&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_свойство">&lt;Свойство&gt;…&lt;/Свойство&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_значениепараметра">&lt;ЗначениеПараметра&gt;…&lt;/ЗначениеПараметра&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_субконтодт">&lt;СубконтоДт&gt;…&lt;/СубконтоДт&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_субконтокт">&lt;СубконтоКт&gt;…&lt;/СубконтоКт&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_запись">&lt;/<b>Запись</b>&gt;</a> </p>
+
+<p class="Warningword">Примечание</p>
+
+<p class="Notes">Дочерние узлы <a href="#_субконтодт">СубконтоДт</a> и <a href="#_субконтокт">СубконтоКт</a> используются только для передачи значений субконто движений документов.</p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>Запись<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Цена&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Число&quot;</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="number">26</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Сумма&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Число&quot;</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="number">10400</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;СтавкаНДС&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;ПеречислениеСсылка.СтавкиНДС&quot;</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span>НДС18<span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;СуммаНДС&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Число&quot;</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="number">1586</span><span class="number">.</span><span class="number">44</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>Запись<span class="operator">&gt;</span></pre>
+
+<a name="_субконтодт"></a><a name="issogl4_субконтодт"><h5>СубконтоДт</h5></a> <p class="Paragraph0c">Узел <span class="Interface">СубконтоДт </span>(необязательный). Использование: многократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит значение субконто Дт записи набора движений документа. Узел состоит из двух дочерних <a href="#_свойство">свойств субконто</a>, одно из которых содержит значение ключа записи, а второе содержит значение субконто. Узел формируется на основании правил описанных в <a href="#_аббревиатуры">ПКС</a>.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0">нет</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_субконтодт">&lt;<b>СубконтоДт</b>&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_свойство">&lt;Свойство&gt;…&lt;/Свойство&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_свойство">&lt;Свойство&gt;…&lt;/Свойство&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_субконтодт">&lt;/<b>СубконтоДт</b>&gt;</a> </p>
+
+<a name="_субконтокт"></a><a name="issogl4_субконтокт"><h5>СубконтоКт</h5></a> <p class="Paragraph0c">Узел <span class="Interface">СубконтоКт </span>(необязательный). Использование: многократно.</p>
+
+<p class="MsoNormal"> </p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит значение субконто Кт записи набора движений документа. Узел состоит из двух дочерних <a href="#_свойство">свойств субконто</a>, одно из которых содержит значение ключа записи, а второе содержит значение субконто. Узел формируется на основании правил описанных в <a href="#_аббревиатуры">ПКС</a>.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0">нет</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_субконтокт">&lt;<b>СубконтоКт</b>&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_свойство">&lt;Свойство&gt;…&lt;/Свойство&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_свойство">&lt;Свойство&gt;…&lt;/Свойство&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_субконтокт">&lt;/<b>СубконтоКт</b>&gt;</a> </p>
+
+<a name="_наборзаписей"></a><a name="issogl3_наборзаписей"><h4>НаборЗаписей</h4></a> <p class="Paragraph0c">Узел <span class="Interface">НаборЗаписей</span> (необязательный). Использование: многократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит данные движений документа. Узел формируется на основании правил описанных в <a href="#_аббревиатуры">ПКГС</a>.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0"><span class="Interface">Имя</span> (обязательный) – <span class="Interface">Строка</span>. Имя таблицы движений объекта в базе-приемнике, как оно задано в конфигураторе.</p>
+
+<p class="Bullet0"><span class="Interface">НеЗамещать</span> (необязательный) – <span class="Interface">Булево</span>. <span class="Interface">Истина</span> – движения объекта не будут замещены, если при загрузке объект будет найден. Соответствует значению параметра <a href="#_аббревиатуры">ПКГС</a> &quot;Не замещать значение свойства у существующих объектов ИБ&quot;.</p>
+
+<p class="Bullet0"><span class="Interface">НеОчищать</span> (необязательный) – <span class="Interface">Булево</span>. <span class="Interface">Истина</span> – существующие записи набора движений объекта не будут очищены при загрузке. Соответствует значению параметра НеОчищать <a href="#_файлобмена">обработчика события</a> <a href="#_аббревиатуры">ПКГС</a> &quot;Перед обработкой&quot;.</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_наборзаписей">&lt;<b>НаборЗаписей</b>&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_запись">&lt;Запись&gt;…&lt;/Запись&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_наборзаписей">&lt;/<b>НаборЗаписей</b>&gt;</a> </p>
+
+<a name="_наборзаписейрегистра"></a><a name="issogl2_наборзаписейрегистра"><h3>НаборЗаписейРегистра</h3></a> <p class="Paragraph0c">Узел <span class="Interface">НаборЗаписейРегистра </span>(необязательный). Использование: многократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит один объект загрузки. В качестве объекта загрузки выступает набор записей регистра сведений. Узел содержит дочерние узлы, в которых содержатся значения отбора и строки набора записей регистра сведений.</p>
+
+<p class="Bullet0">Узел формируется на основании правил описанных в <a href="#_аббревиатуры">ПКО</a>.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0"><span class="Interface">Тип</span> (обязательный) – <span class="Interface">Строка</span>. Строковое представление типа объекта. Используется для получения типа объекта функцией <span class="Interface">Тип()</span>.</p>
+
+<p class="Bullet0"><span class="Interface">ИмяПравила</span> (обязательный) – <span class="Interface">Строка</span>. Имя правила конвертации объекта.</p>
+
+<p class="Bullet0"><span class="Interface">Нпп</span> (необязательный) – <span class="Interface">Число</span>. Номер выгружаемого объекта в файле в порядке выгрузки. Используется при отладке процесса обмена и для кэширования выгружаемых данных. Пример использования атрибута для кэширования выгружаемых данных приведен в разделе описания узла <a href="#_нпп">Нпп</a>.</p>
+
+<p class="Bullet0"><span class="Interface">ПриоритетОбъектаОбмена</span> (необязательный) – <span class="Interface">Строка</span>. Приоритет объекта загрузки в случае возникновения коллизии изменений. Возможные значения: &quot;Выше&quot;, &quot;Ниже&quot;, &quot;Совпадает&quot;. Значение по умолчанию – &quot;Выше&quot;. Соответствует значению параметра <a href="#_аббревиатуры">ПКО</a> &quot;Приоритет объекта загрузки&quot;.</p>
+
+<p class="Bullet0"><span class="Interface">ПустойНабор</span> (необязательный) – <span class="Interface">Булево</span>. Признак того, что загружаемый объект содержит пустой набор записей регистра. <span class="Interface">Истина</span> – не происходит создание новых объектов из значений отбора регистра.</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_наборзаписейрегистра">&lt;<b>НаборЗаписейРегистра</b>&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_отбор">&lt;Отбор&gt;…&lt;/Отбор&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_строкинаборазаписей">&lt;СтрокиНабораЗаписей&gt;…&lt;/СтрокиНабораЗаписей&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_наборзаписейрегистра">&lt;/<b>НаборЗаписейРегистра</b>&gt;</a> </p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>НаборЗаписейРегистра Нпп<span class="operator">=</span><span class="string">&quot;34&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;РегистрСведенийНаборЗаписей.КурсыВалют&quot;</span> ИмяПравила<span class="operator">=</span><span class="string">&quot;КурсыВалют&quot;</span><span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>Отбор<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Валюта&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;СправочникСсылка.Валюты&quot;</span><span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Ссылка<span class="operator">&gt;</span>
+                <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Код&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Строка&quot;</span><span class="operator">&gt;</span>
+                    <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="number">036</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+                <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>Ссылка<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span><span class="operator">/</span>Отбор<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>СтрокиНабораЗаписей<span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Объект<span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Валюта&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;СправочникСсылка.Валюты&quot;</span><span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Ссылка<span class="operator">&gt;</span>
+                    <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Код&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Строка&quot;</span><span class="operator">&gt;</span>
+                        <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="number">036</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+                    <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>Ссылка<span class="operator">&gt;</span>
+            <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Кратность&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Число&quot;</span><span class="operator">&gt;</span>
+                <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="number">1</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+            <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Курс&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Число&quot;</span><span class="operator">&gt;</span>
+                <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="number">1</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+            <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>Объект<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span><span class="operator">/</span>СтрокиНабораЗаписей<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>НаборЗаписейРегистра<span class="operator">&gt;</span></pre>
+
+<a name="_отбор"></a><a name="issogl3_отбор"><h4>Отбор</h4></a> <p class="Paragraph0c">Узел <span class="Interface">Отбор</span> (необязательный). Использование: однократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит значения свойств отбора набора записей регистра сведений.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0">нет</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_отбор">&lt;<b>Отбор</b>&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_свойство">&lt;Свойство&gt;…&lt;/Свойство&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_значениепараметра">&lt;ЗначениеПараметра&gt;…&lt;/ЗначениеПараметра&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_отбор">&lt;/<b>Отбор</b>&gt;</a> </p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>Отбор<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Валюта&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;СправочникСсылка.Валюты&quot;</span><span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Ссылка<span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Код&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Строка&quot;</span><span class="operator">&gt;</span>
+                <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="number">036</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+            <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>Ссылка<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>Отбор<span class="operator">&gt;</span></pre>
+
+<a name="_строкинаборазаписей"></a><a name="issogl3_строкинаборазаписей"><h4>СтрокиНабораЗаписей</h4></a> <p class="Paragraph0c">Узел <span class="Interface">СтрокиНабораЗаписей</span> (необязательный). Использование: однократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит строки набора записей регистра сведений. Строки набора представлены дочерними узлами <a href="#_объект">Объект</a>. Дочерние узлы <a href="#_объект">Объект</a> могут содержать только узлы <a href="#_свойство">Свойство</a> и <a href="#_значениепараметра">ЗначениеПараметра</a>.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0">нет</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_строкинаборазаписей">&lt;<b>СтрокиНабораЗаписей</b>&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_объект">&lt;Объект&gt;…&lt;/Объект&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_строкинаборазаписей">&lt;/<b>СтрокиНабораЗаписей</b>&gt;</a> </p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>СтрокиНабораЗаписей<span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Объект<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Валюта&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;СправочникСсылка.Валюты&quot;</span><span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Ссылка<span class="operator">&gt;</span>
+                <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Код&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Строка&quot;</span><span class="operator">&gt;</span>
+                    <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="number">036</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+                <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>Ссылка<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Кратность&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Число&quot;</span><span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="number">1</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;Курс&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Число&quot;</span><span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="number">1</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>Объект<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>СтрокиНабораЗаписей<span class="operator">&gt;</span></pre>
+
+<a name="_удалениеобъекта"></a><a name="issogl2_удалениеобъекта"><h3>УдалениеОбъекта</h3></a> <p class="Paragraph0c">Узел <span class="Interface">УдалениеОбъекта </span>(необязательный). Использование: многократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит информацию об удаленном объекте ссылочного типа в базе-источнике. Используется, когда требуется выполнить удаление объекта ссылочного типа в базе-приемнике при различных сценариях обмена. Например, при выгрузке данных средствами подсистемы «Обмен данными» объект может считаться удаленным, если он был зарегистрирован к выгрузке, однако не прошел <a href="#_файлобмена">фильтр ограничения миграции данных</a>.</p>
+
+<p class="Bullet0">При удалении объекта его идентификация (поиск) выполняется по уникальному идентификатору ссылки. При загрузке уникальный идентификатор источника будет заменен на уникальный идентификатор приемника через <a href="#_файлобмена">информацию сопоставления объектов</a> (при необходимости).</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0"><span class="Interface">УникальныйИдентификатор</span> (обязательный) – <span class="Interface">Строка</span>. Строковое представление уникального идентификатора ссылки удаленного объекта в базе-источнике. При загрузке уникальный идентификатор источника будет заменен на уникальный идентификатор приемника через информацию сопоставления объектов (при необходимости).</p>
+
+<p class="Bullet0"><span class="Interface">ТипПриемника</span> (обязательный) – <span class="Interface">Строка</span>. Строковое представление типа объекта в базе-приемнике.</p>
+
+<p class="Bullet0"><span class="Interface">ТипИсточника</span> (необязательный) – <span class="Interface">Строка</span>. Строковое представление типа объекта в базе-источнике.</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="Bullet0">не содержит дочерних узлов.</p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>УдалениеОбъекта ТипПриемника<span class="operator">=</span><span class="string">&quot;ДокументСсылка.АвансовыйОтчет&quot;</span> ТипИсточника<span class="operator">=</span><span class="string">&quot;ДокументСсылка.АвансовыйОтчет&quot;</span> УникальныйИдентификатор<span class="operator">=</span><span class="string">&quot;49278eee-7ef4-11df-866e-00d0d0817f92&quot;</span><span class="operator">/</span><span class="operator">&gt;</span></pre>
+
+<a name="_информацияорегистрацииобъекта"></a><a name="issogl2_информацияорегистрацииобъекта"><h3>ИнформацияОРегистрацииОбъекта</h3></a> <p class="Paragraph0c">Узел <span class="Interface">ИнформацияОРегистрацииОбъекта</span> (необязательный). Использование: многократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит информацию о сопоставлении одного объекта базы-источника одному объекту базы-приемника.</p>
+
+<p class="Bullet0">Информация сопоставления объектов используется при загрузке ссылочных объектов. При загрузке объектов выполняется поиск на возможность замены ссылки объекта базы-источника на ссылку объекта базы-приемника. Это позволяет избежать дублирования объектов при загрузке.</p>
+
+<p class="Bullet0">Информация сопоставления выгружается в сообщение обмена автоматически при наличии изменений в информации сопоставления.</p>
+
+<p class="Bullet0">Узлы располагаются в начале сообщения, в разделе данных сопоставления и до основных данных сообщения обмена.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0"><span class="Interface">УникальныйИдентификаторИсточника</span> (обязательный) – <span class="Interface">Строка</span>. Строковое представление уникального идентификатора ссылки объекта в базе-источнике.</p>
+
+<p class="Bullet0"><span class="Interface">УникальныйИдентификаторПриемника</span> (обязательный) – <span class="Interface">Строка</span>. Строковое представление уникального идентификатора ссылки объекта в базе-приемнике.</p>
+
+<p class="Bullet0"><span class="Interface">ТипПриемника</span> (обязательный) – <span class="Interface">Строка</span>. Строковое представление типа объекта в базе-приемнике.</p>
+
+<p class="Bullet0"><span class="Interface">ТипИсточника</span> (необязательный) – <span class="Interface">Строка</span>. Строковое представление типа объекта в базе-источнике.</p>
+
+<p class="Bullet0"><span class="Interface">ПустойНабор</span> (необязательный) – <span class="Interface">Булево</span>. Признак пустого набора записей регистра сопоставления. <span class="Interface">Истина</span> – текущая информация о сопоставлении объекта будет удалена при загрузке.</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>: </p>
+
+<p class="Bullet0">не содержит дочерних узлов.</p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>ИнформацияОРегистрацииОбъекта УникальныйИдентификаторИсточника<span class="operator">=</span><span class="string">&quot;49278eee-7ef4-11df-866e-00d0d0817f92&quot;</span> УникальныйИдентификаторПриемника<span class="operator">=</span><span class="string">&quot;49278eee-7ef4-33df-877e-00d0d0817f93&quot;</span> ТипИсточника<span class="operator">=</span><span class="string">&quot;ДокументСсылка.АвансовыйОтчет&quot;</span> ТипПриемника<span class="operator">=</span><span class="string">&quot;ДокументСсылка.АвансовыйОтчет&quot;</span> ПустойНабор<span class="operator">=</span><span class="string">&quot;false&quot;</span><span class="operator">/</span><span class="operator">&gt;</span></pre>
+
+<a name="_отбор"></a><a name="_значение"></a><a name="_корректировкаинформацииорегистрации"></a><a name="issogl2_корректировкаинформацииорегистрацииобъекта"><h3>КорректировкаИнформацииОРегистрацииОбъекта</h3></a> <p class="Paragraph0c">Узел <span class="Interface">КорректировкаИнформацииОРегистрацииОбъекта</span> (необязательный). Использование: многократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит данные для корректировки информации сопоставления объектов.</p>
+
+<p class="Bullet0">Корректировка информации сопоставления используется для приведения информации сопоставления объектов в правильное состояние после сбоя сопоставления или порчи исходной информации сопоставления. </p>
+
+<p class="Bullet0">При загрузке корректировка информации сопоставления используется следующим образом:</p>
+
+<p class="MsoListBullet2">&#9679; если в безе-приемнике нет объекта, для которого загружается информация сопоставления, то корректировка игнорируется,</p>
+
+<p class="MsoListBullet2">&#9679; если в базе-приемнике уже есть информация сопоставления, то корректировка игнорируется.</p>
+
+<p class="Bullet0">Узлы располагаются в начале сообщения, в разделе данных сопоставления и до основных данных сообщения обмена, но после узлов о информации регистрации объектов.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0"><span class="Interface">УникальныйИдентификатор</span> (обязательный) – <span class="Interface">Строка</span>. Строковое представление уникального идентификатора ссылки объекта в базе-источнике.</p>
+
+<p class="Bullet0"><span class="Interface">ТипИсточника</span> (обязательный) – <span class="Interface">Строка</span>. Строковое представление типа объекта в базе-источнике.</p>
+
+<p class="Bullet0"><span class="Interface">ТипПриемника</span> (обязательный) – <span class="Interface">Строка</span>. Строковое представление типа объекта в базе-приемнике.</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="Bullet0">не содержит дочерних узлов.</p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>КорректировкаИнформацииОРегистрацииОбъекта УникальныйИдентификатор<span class="operator">=</span><span class="string">&quot;49278eee-7ef4-11df-866e-00d0d0817f92&quot;</span> ТипИсточника<span class="operator">=</span><span class="string">&quot;ДокументСсылка.АвансовыйОтчет&quot;</span> ТипПриемника<span class="operator">=</span><span class="string">&quot;ДокументСсылка.АвансовыйОтчет&quot;</span><span class="operator">/</span><span class="operator">&gt;</span></pre>
+
+<a name="issogl2_значениепараметра"><h3>ЗначениеПараметра</h3></a> <p class="Paragraph0c">Узел <span class="Interface">ЗначениеПараметра </span>(необязательный). Использование: многократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит дочерний узел со значением параметра. Полученное из файла значение параметра добавляется в структуру <span class="Interface">Параметры</span>.</p>
+
+<p class="Warningword">Примечание</p>
+
+<p class="Notes">После загрузки значения параметра из файла выполняется обработчик параметра <span class="Interface">После загрузки</span> (если определен).</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0"><span class="Interface">Имя</span> (обязательный) – <span class="Interface">Строка</span>. Имя параметра, для которого предназначено значение. Используется для идентификации значения параметра с правилом параметра (см. атрибут <span class="Interface">Код</span> для узла <a href="#_параметр">Параметр</a>). Имя должно соответствовать требованиям, предъявляемым к ключу платформенного объекта <span class="Interface">Структура</span>.</p>
+
+<p class="Bullet0"><span class="Interface">Тип</span> (обязательный) – <span class="Interface">Строка</span>. Строковое представление типа значения параметра. Используется для получения типа платформенной функцией <span class="Interface">Тип()</span>.</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_значениепараметра">&lt;<b>ЗначениеПараметра</b>&gt;</a> </p>
+
+<p class="MsoNormal"><a href="#_значение">&lt;Значение&gt;… &lt;/Значение&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_ссылка">&lt;Ссылка&gt;… &lt;/Ссылка&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_пусто">&lt;Пусто&gt;&lt;/Пусто&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_значениепараметра">&lt;/<b>ЗначениеПараметра</b>&gt;</a></p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>ЗначениеПараметра Имя<span class="operator">=</span><span class="string">&quot;НоменклатураПоУмолчанию&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;СправочникСсылка.Номенклатура&quot;</span><span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Ссылка<span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;{УникальныйИдентификатор}&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Строка&quot;</span> ТипИсточника<span class="operator">=</span><span class="string">&quot;СправочникСсылка.Номенклатура&quot;</span> ТипПриемника<span class="operator">=</span><span class="string">&quot;СправочникСсылка.Номенклатура&quot;</span><span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Значение<span class="operator">&gt;</span>0e33e509<span class="operator">-</span><span class="number">512e</span><span class="operator">-</span><span class="number">11df</span><span class="operator">-</span>abe6<span class="operator">-</span><span class="number">001eec035cea</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Свойство Имя<span class="operator">=</span><span class="string">&quot;ЭтоГруппа&quot;</span> Тип<span class="operator">=</span><span class="string">&quot;Булево&quot;</span><span class="operator">&gt;</span>
+            <span class="operator">&lt;</span>Значение<span class="operator">&gt;</span><span class="keyword">false</span><span class="operator">&lt;</span><span class="operator">/</span>Значение<span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="operator">/</span>Свойство<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>Ссылка<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>ЗначениеПараметра<span class="operator">&gt;</span></pre>
+
+<a name="_алгоритмпослезагрузкипараметров"></a><a name="issogl2_алгоритмпослезагрузкипараметров"><h3>АлгоритмПослеЗагрузкиПараметров</h3></a> <p class="Paragraph0c">Узел <span class="Interface">АлгоритмПослеЗагрузкиПараметров</span> (необязательный). Использование: однократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит текст <a href="#_файлобмена">обработчика события</a> конвертации &quot;После загрузки параметров&quot;.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0">нет</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_алгоритмпослезагрузкипараметров">&lt;<b>АлгоритмПослеЗагрузкиПараметров</b>&gt;СтрокаXML&lt;/<b>АлгоритмПослеЗагрузкиПараметров</b>&gt;</a></p>
+
+<a name="_правилаобмена_1"></a><a name="_правилаобмена_2"></a><a name="_правилаобмена"></a><a name="issogl2_правилаобмена"><h3>ПравилаОбмена</h3></a> <p class="Paragraph0c">Узел <span class="Interface">ПравилаОбмена</span> (обязательный). Использование: однократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит правила обмена для загрузки данных сообщения обмена – глобальные обработчики событий, параметры, алгоритмы, запросы, правила конвертации объектов и др. Подробнее о правилах обмена см. встроенную справку в конфигурации «Конвертация данных», меню <span class="Interface">Справка – Быстрое освоение</span>.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0">нет</p>
+
+<p class="Paragraph0c"><span class="Interface">Узлы</span>:</p>
+
+<p class="Bullet0"><span class="Interface">&lt;ВерсияФормата&gt; </span>(необязательный) – <span class="Interface">Строка</span>. Версия формата правил обмена данными.</p>
+
+<p class="Bullet0"><span class="Interface">&lt;Ид&gt; </span>(необязательный) – <span class="Interface">УникальныйИдентификатор</span>. Уникальный идентификатор правил конвертации в конфигурации «Конвертация данных». </p>
+
+<p class="Bullet0"><span class="Interface">&lt;Наименование&gt; </span>(необязательный) – <span class="Interface">Строка</span>. Наименование правил обмена в конфигурации «Конвертация данных».</p>
+
+<p class="Bullet0"><span class="Interface">&lt;ДатаВремяСоздания&gt; </span>(необязательный) – <span class="Interface">Дата</span>. Дата создания файла правил обмена. </p>
+
+<p class="Bullet0"><span class="Interface">&lt;Источник&gt; </span>(необязательный) – <span class="Interface">Строка</span>. Наименование конфигурации-источника. Содержит номер версии конфигурации-источника.</p>
+
+<p class="Bullet0"><span class="Interface">&lt;Приемник&gt; </span>(необязательный) – <span class="Interface">Строка</span>. Наименование конфигурации-приемника. Содержит номер версии конфигурации-приемника.</p>
+
+<p class="Bullet0"><span class="Interface">&lt;ПередЗагрузкойОбъекта&gt; </span>(необязательный) – <span class="Interface">Строка</span>. Текст <a href="#_файлобмена">обработчика события</a> конвертации &quot;Перед загрузкой объекта&quot;.</p>
+
+<p class="Bullet0"><span class="Interface">&lt;ПослеЗагрузкиОбъекта&gt; </span>(необязательный) – <span class="Interface">Строка</span>. Текст <a href="#_файлобмена">обработчика события</a> конвертации &quot;После загрузки объекта&quot;.</p>
+
+<p class="Bullet0"><span class="Interface">&lt;ПередЗагрузкойДанных&gt; </span>(необязательный) – <span class="Interface">Строка</span>. Текст <a href="#_файлобмена">обработчика события</a> конвертации &quot;Перед загрузкой данных&quot;.</p>
+
+<p class="Bullet0"><span class="Interface">&lt;ПослеЗагрузкиДанных&gt; </span>(необязательный) – <span class="Interface">Строка</span>. Текст <a href="#_файлобмена">обработчика события</a> конвертации &quot;После загрузки данных&quot;.</p>
+
+<p class="Bullet0"><span class="Interface">&lt;ПриПолученииИнформацииОбУдалении&gt; </span>(необязательный) – <span class="Interface">Строка</span>. Текст <a href="#_файлобмена">обработчика события</a> конвертации &quot;При получении удаления&quot;.</p>
+
+<p class="Bullet0"><span class="Interface">&lt;ПослеПолученияИнформацииОбУзлахОбмена&gt; </span>(необязательный) – <span class="Interface">Строка</span>. Текст <a href="#_файлобмена">обработчика события</a> конвертации &quot;После получения узлов обмена&quot;.</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_правилаобмена_1">&lt;<b>ПравилаОбмена</b>&gt;</a></p>
+
+<p class="MsoNormal">&lt;ВерсияФормата&gt;СтрокаXML&lt;/ВерсияФормата&gt;</p>
+
+<p class="MsoNormal">    &lt;Ид&gt;СтрокаXML&lt;/Ид&gt;</p>
+
+<p class="MsoNormal">    &lt;Наименование&gt;СтрокаXML&lt;/Наименование&gt;</p>
+
+<p class="MsoNormal">    &lt;ДатаВремяСоздания&gt;СтрокаXML&lt;/ДатаВремяСоздания&gt;</p>
+
+<p class="MsoNormal">    &lt;Источник&gt;СтрокаXML&lt;/Источник&gt;</p>
+
+<p class="MsoNormal">    &lt;Приемник&gt;СтрокаXML&lt;/Приемник&gt;</p>
+
+<p class="MsoNormal">    &lt;ПередЗагрузкойОбъекта&gt;СтрокаXML&lt;/ПередЗагрузкойОбъекта&gt;</p>
+
+<p class="MsoNormal">    &lt;ПослеЗагрузкиОбъекта&gt;СтрокаXML&lt;/ПослеЗагрузкиОбъекта&gt;</p>
+
+<p class="MsoNormal">    &lt;ПередЗагрузкойДанных&gt;СтрокаXML&lt;/ПередЗагрузкойДанных&gt;</p>
+
+<p class="MsoNormal">    &lt;ПослеЗагрузкиДанных&gt;СтрокаXML&lt;/ПослеЗагрузкиДанных&gt;</p>
+
+<p class="MsoNormal">    &lt;ПриПолученииИнформацииОбУдалении&gt;СтрокаXML&lt;/ПриПолученииИнформацииОбУдалении&gt;</p>
+
+<p class="MsoNormal">    &lt;ПослеПолученияИнформацииОбУзлахОбмена&gt;СтрокаXML&lt;/ПослеПолученияИнформацииОбУзлахОбмена&gt;</p>
+
+<p class="MsoNormal">    <a href="#_правилаконвертацииобъектов">&lt;ПравилаКонвертацииОбъектов&gt;…&lt;/ПравилаКонвертацииОбъектов&gt;</a>    </p>
+
+<p class="MsoNormal">    <a href="#_параметры">&lt;Параметры&gt;…&lt;/Параметры&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_алгоритмы">&lt;Алгоритмы&gt;…&lt;/Алгоритмы&gt;</a></p>
+
+<p class="MsoNormal">    <a href="#_запросы">&lt;Запросы&gt;…&lt;/Запросы&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_правилаобмена_1">&lt;/<b>ПравилаОбмена</b>&gt;</a></p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">(</span>только заголовок правил обмена<span class="operator">)</span>
+<span class="operator">&lt;</span>ПравилаОбмена<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>ВерсияФормата<span class="operator">&gt;</span><span class="number">2</span><span class="number">.</span><span class="number">01</span><span class="operator">&lt;</span><span class="operator">/</span>ВерсияФормата<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>Ид<span class="operator">&gt;</span><span class="number">24451442</span><span class="operator">-</span><span class="number">943d</span><span class="operator">-</span><span class="number">4182</span><span class="operator">-</span>bc1b<span class="operator">-</span><span class="number">42e04d1fdf33</span><span class="operator">&lt;</span><span class="operator">/</span>Ид<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>Наименование<span class="operator">&gt;</span>УправлениеТорговлей<span class="operator">-</span>БухгалтерияПредприятия<span class="operator">&lt;</span><span class="operator">/</span>Наименование<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>ДатаВремяСоздания<span class="operator">&gt;</span><span class="number">2010</span><span class="operator">-</span><span class="number">07</span><span class="operator">-</span><span class="number">22T19:17:04</span><span class="operator">&lt;</span><span class="operator">/</span>ДатаВремяСоздания<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>Источник<span class="operator">&gt;</span>УправлениеТорговлей<span class="operator">&lt;</span><span class="operator">/</span>Источник<span class="operator">&gt;</span>
+    <span class="operator">&lt;</span>Приемник<span class="operator">&gt;</span>БухгалтерияПредприятия<span class="operator">&lt;</span><span class="operator">/</span>Приемник<span class="operator">&gt;</span>
+    ...
+<span class="operator">&lt;</span><span class="operator">/</span>ПравилаОбмена<span class="operator">&gt;</span></pre>
+
+<a name="_правилаконвертацииобъектов"></a><a name="issogl3_правилаконвертацииобъектов"><h4>ПравилаКонвертацииОбъектов</h4></a> <p class="Paragraph0c">Узел <span class="Interface">ПравилаКонвертацииОбъектов</span> (необязательный). Использование: однократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит дочерние узлы правил конвертации объектов.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0">нет</p>
+
+<p class="MsoNormal"><a href="#_правилаконвертацииобъектов">&lt;<b>ПравилаКонвертацииОбъектов</b>&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_правило">&lt;Правило&gt;…&lt;/Правило&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_правилаконвертацииобъектов">&lt;/<b>ПравилаКонвертацииОбъектов</b>&gt;</a></p>
+
+<a name="_правило"></a><a name="issogl3_правило"><h4>Правило</h4></a> <p class="Paragraph0c">Узел <span class="Interface">Правило </span>(необязательный). Использование: многократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит описание одного правила конвертации объекта базы-источника в объект базы-приемника. Правило содержит вспомогательную информацию, которая используется при загрузке объектов по данному правилу.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0">нет</p>
+
+<p class="Paragraph0c"><span class="Interface">Узлы</span>:</p>
+
+<p class="Bullet0"><span class="Interface">&lt;Код&gt; (обязательный)</span> – <span class="Interface">Строка</span>. Имя правила конвертации. Имя правила должно быть уникальным в пространстве имен правил конвертации в текущем сообщении обмена. Используется для идентификации загружаемого объекта с правилом конвертации (см. атрибут <span class="Interface">ИмяПравила</span> для узла <a href="#_объект">Объект</a>).</p>
+
+<p class="Bullet0"><span class="Interface">&lt;Источник&gt; </span>(обязательный) – <span class="Interface">Строка</span>. Строковое представление типа объекта базы-источника.</p>
+
+<p class="Bullet0"><span class="Interface">&lt;Приемник&gt; (обязательный)</span> – <span class="Interface">Строка</span>. Строковое представление типа объекта базы-приемника.</p>
+
+<p class="Bullet0"><span class="Interface">&lt;СинхронизироватьПоИдентификатору&gt; </span>(необязательный) – <span class="Interface">Булево</span>. <span class="Interface">Истина</span> – идентификация (поиск) объекта при загрузке будет выполняться по уникальному идентификатору ссылки. Также будет задействован механизм сопоставления объектов для подмены ссылки объекта базы-источника на ссылку объекта базы-приемника (при необходимости). <span class="Interface">Ложь</span> – идентификация объекта при загрузке будет выполняться по свойствам, указанным в узле <a href="#_ссылка">Ссылка</a> (свойствам поиска).</p>
+
+<p class="Bullet0"><span class="Interface">&lt;ПродолжитьПоискПоПолямПоискаЕслиПоИдентификаторуНеНашли&gt; </span>(необязательный) – <span class="Interface">Булево</span>. <span class="Interface">Истина</span> – идентификация (поиск) объекта при загрузке будет выполняться по свойствам, указанным в узле <a href="#_ссылка">Ссылка</a>, при условии, что объект не будет идентифицирован по уникальному идентификатору ссылки. Используется только если, узел <span class="Interface">&lt;СинхронизироватьПоИдентификатору&gt;</span> содержит значение <span class="Interface">Истина</span>.</p>
+
+<p class="Bullet0"><span class="Interface">&lt;ГенерироватьНовыйНомерИлиКодЕслиНеУказан&gt; </span>(необязательный) – <span class="Interface">Булево</span>. <span class="Interface">Истина</span> – будет назначен код или номер объекту перед записью в базу-приемник, если код или номер не были назначены объекту в процессе загрузки.</p>
+
+<p class="Bullet0"><span class="Interface">&lt;ПередЗагрузкой&gt; </span>(необязательный) – <span class="Interface">Строка</span>. Текст <a href="#_файлобмена">обработчика события</a> правил конвертации объектов <span class="Interface">Перед загрузкой</span>.</p>
+
+<p class="Bullet0"><span class="Interface">&lt;ПриЗагрузке&gt; </span>(необязательный) – <span class="Interface">Строка</span>. Текст <a href="#_файлобмена">обработчика события</a> правил конвертации объектов <span class="Interface">При загрузке</span>.</p>
+
+<p class="Bullet0"><span class="Interface">&lt;ПослеЗагрузки&gt; </span>(необязательный) – <span class="Interface">Строка</span>. Текст <a href="#_файлобмена">обработчика события</a> правил конвертации объектов <span class="Interface">После загрузки</span>.</p>
+
+<p class="Paragraph0c">Узлы для поддержки <a href="#_файлобмена"><b>интерактивной загрузки</b></a>:</p>
+
+<p class="Bullet0"><span class="Interface">&lt;ПоляТаблицы&gt; </span>(обязательный) – <span class="Interface">Строка</span>. Список всех реквизитов шапки объекта, которые участвуют в обмене, разделенные символом запятой.</p>
+
+<p class="Bullet0"><span class="Interface">&lt;ПоляПоиска&gt; </span>(обязательный) – <span class="Interface">Строка</span>. Список реквизитов шапки объекта, которые используются как поля поиска, разделенные символом запятой.</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_правило">&lt;<b>Правило</b>&gt;</a></p>
+
+<p class="MsoNormal">&lt;Код&gt;СтрокаXML&lt;/Код&gt;(Строка)</p>
+
+<p class="MsoNormal">&lt;Источник &gt;СтрокаXML&lt;/Источник&gt;</p>
+
+<p class="MsoNormal">&lt;Приемник &gt;СтрокаXML&lt;/Приемник&gt;(строка)</p>
+
+<p class="MsoNormal">&lt;СинхронизироватьПоИдентификатору&gt;СтрокаXML&lt;/СинхронизироватьПоИдентификатору&gt;</p>
+
+<p class="MsoNormal">&lt;ПродолжитьПоискПоПолямПоискаЕслиПоИдентификаторуНеНашли&gt;СтрокаXML&lt;/ПродолжитьПоискПоПолямПоискаЕслиПоИдентификаторуНеНашли&gt;</p>
+
+<p class="MsoNormal">&lt;ГенерироватьНовыйНомерИлиКодЕслиНеУказан&gt;СтрокаXML&lt;/ГенерироватьНовыйНомерИлиКодЕслиНеУказан&gt;</p>
+
+<p class="MsoNormal">&lt;ПередЗагрузкой&gt;СтрокаXML&lt;/ПередЗагрузкой&gt;</p>
+
+<p class="MsoNormal">&lt;ПриЗагрузке &gt;СтрокаXML&lt;/ПриЗагрузке&gt;</p>
+
+<p class="MsoNormal">&lt;ПослеЗагрузки &gt;СтрокаXML&lt;/ПослеЗагрузки&gt;</p>
+
+<p class="MsoNormal">&lt;ПоляТаблицы &gt;СтрокаXML&lt;/ПоляТаблицы&gt;</p>
+
+<p class="MsoNormal">&lt;ПоляПоиска &gt;СтрокаXML&lt;/ПоляПоиска&gt;</p>
+
+<p class="MsoNormal"><a href="#_правило">&lt;/<b>Правило</b>&gt;</a></p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>Правило<span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Код<span class="operator">&gt;</span>Организации<span class="operator">&lt;</span><span class="operator">/</span>Код<span class="operator">&gt;</span>
+<span class="operator">&lt;</span>СинхронизироватьПоИдентификатору<span class="operator">&gt;</span><span class="keyword">true</span><span class="operator">&lt;</span><span class="operator">/</span>СинхронизироватьПоИдентификаторy<span class="operator">&gt;</span>
+<span class="operator">&lt;</span>ГенерироватьНовыйНомерИлиКодЕслиНеУказан<span class="operator">&gt;</span><span class="keyword">true</span><span class="operator">&lt;</span><span class="operator">/</span>ГенерироватьНовыйНомерИлиКодЕслиНеУказан<span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Источник<span class="operator">&gt;</span>СправочникСсылка<span class="operator">.</span>Организации<span class="operator">&lt;</span><span class="operator">/</span>Источник<span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Приемник<span class="operator">&gt;</span>СправочникСсылка<span class="operator">.</span>Организации<span class="operator">&lt;</span><span class="operator">/</span>Приемник<span class="operator">&gt;</span>
+<span class="operator">&lt;</span>ПоляТаблицы<span class="operator">&gt;</span>ИНН<span class="operator">,</span>КПП<span class="operator">,</span>НаименованиеСокращенное<span class="operator">,</span>Наименование<span class="operator">,</span>ЮрФизЛицо<span class="operator">,</span>КодПоОКАТО<span class="operator">,</span>КодПоОКПО<span class="operator">,</span>НаименованиеПолное<span class="operator">&lt;</span><span class="operator">/</span>ПоляТаблицы<span class="operator">&gt;</span>
+<span class="operator">&lt;</span>ПоляПоиска<span class="operator">&gt;</span>ИНН<span class="operator">,</span>КПП<span class="operator">,</span>НаименованиеСокращенное<span class="operator">&lt;</span><span class="operator">/</span>ПоляПоиска<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>Правило<span class="operator">&gt;</span></pre>
+
+<a name="_параметры"></a><a name="issogl3_параметры"><h4>Параметры</h4></a> <p class="Paragraph0c">Узел <span class="Interface">Параметры</span> (необязательный). Использование: однократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит дочерние узлы параметров загрузки.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0">нет</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_параметры">&lt;<b>Параметры</b>&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_параметр">&lt;Параметр&gt;&lt;/Параметр&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_параметры">&lt;/<b>Параметры</b>&gt;</a></p>
+
+<a name="_параметр"></a><a name="issogl4_параметр"><h5>Параметр</h5></a> <p class="Paragraph0c">Узел <span class="Interface">Параметр</span> (необязательный). Использование: многократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит описание параметра, который используется при загрузке данных. Параметр добавляется в структуру <span class="Interface">Параметры</span>. Эта структура используется для получения значений параметров и доступна из любого обработчика события загрузки данных. </p>
+
+<p class="Bullet0">Добавляется только ключ структуры. Значение параметра не передается. Для передачи значений параметров используется узел <span class="Interface">ЗначениеПараметра</span>.</p>
+
+<p class="Warningword">Примечание</p>
+
+<p class="Notes">Подробнее о структуре <span class="Interface">Параметры</span> см. встроенную справку в конфигурации «Конвертация данных», меню <span class="Interface">Справка – Информация об обработчиках</span>.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0"><span class="Interface">Имя</span> (обязательный) – <span class="Interface">Строка</span>. Имя параметра. Имя должно соответствовать требованиям, предъявляемым к ключу платформенного объекта <span class="Interface">Структура</span>.</p>
+
+<p class="Bullet0"><span class="Interface">Наименование</span> (необязательный) – <span class="Interface">Строка</span>. Пользовательское описание параметра.</p>
+
+<p class="Bullet0"><span class="Interface">ПослеЗагрузкиПараметра</span> (необязательный) – <span class="Interface">Строка</span>. Текст обработчика параметра <span class="Interface">После загрузки</span>.</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_параметр">&lt;<b>Параметр</b>&gt;&lt;/<b>Параметр</b>&gt;</a></p>
+
+<a name="_алгоритмы"></a><a name="issogl3_алгоритмы"><h4>Алгоритмы</h4></a> <p class="Paragraph0c">Узел <span class="Interface">Алгоритмы</span> (необязательный). Использование: однократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит дочерние узлы алгоритмов для загрузки данных.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0">нет</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_алгоритмы">&lt;<b>Алгоритмы</b>&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_алгоритм_1">&lt;Алгоритм&gt;…&lt;/Алгоритм&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_алгоритмы">&lt;/<b>Алгоритмы</b>&gt;</a></p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>Алгоритмы<span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Алгоритм ИспользуетсяПриЗагрузке<span class="operator">=</span><span class="string">&quot;true&quot;</span> Имя<span class="operator">=</span><span class="string">&quot;ЗаполнитьСтатьюДоходов&quot;</span><span class="operator">&gt;</span>
+<span class="operator">&lt;</span>Текст<span class="operator">&gt;</span>Значение <span class="operator">=</span> Параметры<span class="operator">.</span>СтатьяДоходовПоУмолчанию<span class="operator">;</span><span class="operator">&lt;</span><span class="operator">/</span>Текст<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>Алгоритм<span class="operator">&gt;</span>
+<span class="operator">&lt;</span><span class="operator">/</span>Алгоритмы<span class="operator">&gt;</span></pre>
+
+<a name="_алгоритм_1"></a><a name="issogl3_алгоритм"><h4>Алгоритм</h4></a> <p class="Paragraph0c">Узел <span class="Interface">Алгоритм</span> (необязательный). Использование: многократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит текст алгоритма, который используется при загрузке данных. Параметр добавляется в структуру <span class="Interface">Алгоритмы</span>. Эта структура используется для получения кода алгоритмов и доступна из любого обработчика события загрузки данных. </p>
+
+<p class="Warningword">Примечание</p>
+
+<p class="Notes">Подробнее об использовании алгоритмов см. встроенную справку в конфигурации «Конвертация данных».</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0"><span class="Interface">Имя</span> (обязательный) – <span class="Interface">Строка</span>. Имя алгоритма. Имя должно соответствовать требованиям, предъявляемым к ключу платформенного объекта <span class="Interface">Структура</span>.</p>
+
+<p class="Bullet0"><span class="Interface">ИспользуетсяПриЗагрузке</span> (обязательный) – <span class="Interface">Булево</span>. Атрибут должен всегда принимать значение <span class="Interface">Истина</span>. </p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_алгоритм_1">&lt;<b>Алгоритм</b>&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_текст">&lt;Текст&gt;СтрокаXML&lt;/Текст&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_алгоритм_1">&lt;/<b>Алгоритм</b>&gt;</a></p>
+
+<a name="_запросы"></a><a name="issogl3_запросы"><h4>Запросы</h4></a> <p class="Paragraph0c">Узел <span class="Interface">Запросы</span> (необязательный). Использование: однократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит дочерние узлы запросов для обработчиков загрузки данных.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0">нет</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_запросы">&lt;<b>Запросы</b>&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_запрос">&lt;Запрос&gt;…&lt;/Запрос&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_запросы">&lt;/<b>Запросы</b> &gt;</a></p>
+
+<a name="_запрос"></a><a name="issogl3_запрос"><h4>Запрос</h4></a> <p class="Paragraph0c">Узел <span class="Interface">Запрос </span>(необязательный). Использование: многократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит текст запроса, который используется в обработчиках при загрузке данных. Параметр добавляется в структуру <span class="Interface">Запросы</span>. Эта структура используется для получения запросов и доступна из любого обработчика события загрузки данных. </p>
+
+<p class="Warningword">Примечание</p>
+
+<p class="Notes">Подробнее об использовании запросов см. встроенную справку в конфигурации «Конвертация данных».</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0"><span class="Interface">Имя</span> (обязательный) – <span class="Interface">Строка</span>. Имя запроса. Имя должно соответствовать требованиям, предъявляемым к ключу платформенного объекта <span class="Interface">Структура</span>.</p>
+
+<p class="Bullet0"><span class="Interface">ИспользуетсяПриЗагрузке</span> (обязательный) – <span class="Interface">Булево</span>. Атрибут должен всегда принимать значение <span class="Interface">Истина</span>. </p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_запрос">&lt;<b>Запрос</b>&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_текст">&lt;Текст&gt;СтрокаXML&lt;/Текст&gt;</a></p>
+
+<p class="MsoNormal"><a href="#_запрос">&lt;/<b>Запрос</b>&gt;</a></p>
+
+<a name="_текст"></a><a name="issogl4_текст"><h5>Текст</h5></a> <p class="Paragraph0c">Узел <span class="Interface">Текст</span> (обязательный). Использование: однократно.</p>
+
+<p class="Paragraph0c"><span class="Interface">Описание</span>:</p>
+
+<p class="Bullet0">Содержит текст запроса или текст алгоритма.</p>
+
+<p class="Paragraph0c"><span class="Interface">Атрибуты</span>:</p>
+
+<p class="Bullet0">нет.</p>
+
+<p class="Paragraph0c"><span class="Interface">Формат</span>:</p>
+
+<p class="MsoNormal"><a href="#_текст">&lt;<b>Текст</b>&gt;СтрокаXML&lt;/<b>Текст</b>&gt;</a></p>
+
+<p class="Paragraph0c"><span class="Interface">Пример</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="operator">&lt;</span>Текст<span class="operator">&gt;</span>Значение <span class="operator">=</span> Параметры<span class="operator">.</span>СтатьяДоходовПоУмолчанию<span class="operator">;</span><span class="operator">&lt;</span><span class="operator">/</span>Текст<span class="operator">&gt;</span></pre>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

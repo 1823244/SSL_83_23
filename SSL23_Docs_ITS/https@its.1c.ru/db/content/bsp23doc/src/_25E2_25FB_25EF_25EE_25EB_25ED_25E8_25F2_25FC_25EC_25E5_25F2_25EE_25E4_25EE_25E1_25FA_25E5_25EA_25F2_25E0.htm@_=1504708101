@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1042;&#1099;&#1087;&#1086;&#1083;&#1085;&#1080;&#1090;&#1100;&#1052;&#1077;&#1090;&#1086;&#1076;&#1054;&#1073;&#1098;&#1077;&#1082;&#1090;&#1072;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25E2_25FB_25EF_25EE_25EB_25ED_25E8_25F2_25FC_25EC_25E5_25F2_25EE_25E4_25EE_25E1_25FA_25E5_25EA_25F2_25E0.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_работавбезопасномрежимевыполнитьметодобъекта"></a><h1>ВыполнитьМетодОбъекта</h1>
+
+<pre> Выполнить экспортную процедуру объекта встроенного языка по имени.
+ При включении профилей безопасности для вызова оператора Выполнить() используется
+ переход в безопасный режим с профилем безопасности, используемом для информационной базы
+ (если выше по стеку не был установлен другой безопасный режим).</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура ВыполнитьМетодОбъекта(Знач Объект, Знач ИмяМетода, Знач Параметры = Неопределено) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  Объект - Произвольный - объект встроенного языка 1С:Предприятия, содержащий методы (например, ОбработкаОбъект),
+  ИмяМетода - Строка - имя экспортной процедуры модуля объекта обработки.
+ Параметры - Массив - параметры передаются в процедуру &lt;ИмяПроцедуры&gt;
+  в порядке расположения элементов массива.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> РаботаВБезопасномРежиме.ВыполнитьМетодОбъекта(Объект, ИмяМетода, Параметры)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

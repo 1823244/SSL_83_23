@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1050;&#1086;&#1083;&#1080;&#1095;&#1077;&#1089;&#1090;&#1074;&#1086;&#1069;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074;&#1042;&#1058;&#1088;&#1072;&#1085;&#1079;&#1072;&#1082;&#1094;&#1080;&#1080;&#1047;&#1072;&#1075;&#1088;&#1091;&#1079;&#1082;&#1080;&#1044;&#1072;&#1085;&#1085;&#1099;&#1093;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25EA_25EE_25EB_25E8_25F7_25E5_25F1_25F2_25E2_25EE_25FD_25EB_25E5_25EC_25E5_25ED_25F2_25EE_25E2_25E20444F90D7A" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_обменданнымисерверколичествоэлементоввтранзакциизагрузкиданных"></a><h1>КоличествоЭлементовВТранзакцииЗагрузкиДанных</h1>
+
+<pre> Возвращает допустимое количество элементов, обрабатываемых в одной транзакции загрузки данных.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция КоличествоЭлементовВТранзакцииЗагрузкиДанных() Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>   Нет.</pre>
+<p class="Paragraph0c"><span class="Bold">Возвращаемое значение</span></p>
+<pre>   Число</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = ОбменДаннымиСервер.КоличествоЭлементовВТранзакцииЗагрузкиДанных()</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

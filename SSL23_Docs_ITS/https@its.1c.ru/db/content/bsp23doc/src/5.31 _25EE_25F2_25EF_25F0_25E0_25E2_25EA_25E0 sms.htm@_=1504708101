@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>5.31 &#1054;&#1090;&#1087;&#1088;&#1072;&#1074;&#1082;&#1072; SMS</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="5.31 _25EE_25F2_25EF_25F0_25E0_25E2_25EA_25E0 sms.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<h1>5.31 Отправка SMS</h1>
+
+<p class="Paragraph0c"><a name="_настройки_программы"></a>В программе
+предусмотрена отправка SMS.</p>
+
+<p class="Paragraph0c">Посредством SMS возможно:</p>
+
+<p class="Bullet1">&#9632; 
+Информирование технических специалистов о
+неполадках баз данных 1С;</p>
+
+<p class="Bullet1">&#9632; 
+Автоматическое подтверждение совершенных
+клиентом платежей и других операций;</p>
+
+<p class="Bullet1">&#9632; 
+Информирование клиента о событиях: день
+рождения, дата очередного платежа и прочее;</p>
+
+<p class="Bullet1">&#9632; 
+Массовое оповещение клиентов о товарах, услугах,
+акциях и специальных предложениях.</p>
+
+<p class="Paragraph0c">Для возможности отправки SMS необходимо:</p>
+
+<p class="Bullet1">&#9632; 
+Заключить договор с любым из поддерживаемых
+поставщиков услуги;</p>
+
+<p class="Bullet1">&#9632; 
+Получить логин и пароль у поставщика услуги;</p>
+
+<p class="Bullet1">&#9632; 
+Произвести соответствующие настройки, см. раздел
+<a href="#_настройка_программы_27">Настройка программы</a>.</p>
+
+<p class="Paragraph0c">Поддерживаемые
+провайдеры:</p>
+
+<p class="Bullet1">&#9632; 
+GSM-INFORM;</p>
+
+<p class="Bullet1">&#9632; 
+SMS.RU;</p>
+
+<p class="Bullet1">&#9632; 
+SMS-ЦЕНТР;</p>
+
+<p class="Bullet1">&#9632; 
+Билайн;</p>
+
+<p class="Bullet1">&#9632; 
+МТС;</p>
+
+<p class="Bullet1">&#9632; 
+СМС-Услуги.</p>
+
+<p class="Paragraph0c">Для настройки отправки SMS необходимы права
+администратора. Для отправки SMS
+не требуется особых ролей.</p>
+
+<a name="_настройка_программы_27"></a><a name="issogl1_настройка_программы"><h2>Настройка программы</h2></a>
+
+<p class="Paragraph0c">Перед началом использования возможности отправки SMS необходимо настроить
+параметры отправки. Для этого выполните команду <span class="Interface">Настройка
+отправки SMS</span> раздела <span class="Note"><b>Администрирование</b></span><span class="Interface"> – Органайзер – Отправка </span><span class="Interface">SMS</span>. </p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2513.png@_=1504708101" WIDTH="800" ALT HEIGHT="395"></p>
+
+<p class="Paragraph0c">Выберите с помощью
+кнопки <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image620.png@_=1504708101" WIDTH="26" ALT HEIGHT="28"> из
+списка <span class="Interface">Провайдера</span>, с которым заключен договор, <span class="Note">например,<b> Билайн</b></span>.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2515.png@_=1504708101" WIDTH="484" ALT HEIGHT="342"></p>
+
+<p class="Paragraph0c">В полях <span class="Interface">Логин</span> и <span class="Interface">Пароль</span> укажите
+данные, указанные в договоре с провайдером. Подробнее об этой услуге провайдера
+можно узнать на его сайте.</p>
+
+<p class="Paragraph0c">В настройках
+отправки SMS также можно указать <span class="Interface">Имя отправителя</span>
+(поддерживается только латиница), <span class="Note">например, <b>SysAdmin</b></span>. В этом случае SMS будут приходить с указанного
+имени, а не с номера телефона отправителя.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2517.png@_=1504708101" WIDTH="482" ALT HEIGHT="250"></p>
+
+<a name="issogl1_отправка_sms"><h2>Отправка SMS</h2></a>
+
+<p class="Paragraph0c">В списке <span class="Note"><b>Демо: Контрагенты</b></span> имеется возможность
+отправки SMS. </p>
+
+<p class="Paragraph0c">Нажав кнопку <IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2519.png@_=1504708101" WIDTH="30" ALT HEIGHT="29">,
+выберите команду <span class="Interface">Отправить SMS</span>. SMS будет отправлено выбранному
+контрагенту.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2521.png@_=1504708101" WIDTH="800" ALT HEIGHT="546"></p>
+
+<p class="Paragraph0c">Для того чтобы была возможность отправки SMS, необходимо произвести
+соответствующие настройки (см. раздел <a href="#_настройка_программы_27">Настройка
+программы</a>).</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2523.png@_=1504708101" WIDTH="462" ALT HEIGHT="274"></p>
+
+<p class="Paragraph0c">Заполните необходимые данные:</p>
+
+<p class="Bullet1"><span class="Paragraph0c0">&#9632; 
+</span><span class="Interface">Текст сообщения</span><span class="Paragraph0c0"> – максимальная
+длина текста одного сообщения составляет 140 символов (160 символов в латинице
+или 70 символов в кириллице). Провайдеры могут поддерживать отправку «длинных
+SMS» (несколько склеенных между собой SMS). Максимальная длина таких SMS
+определяется оператором, например, Билайн – 480 символов (в латинице), МТС – 1000
+символов (в латинице). Необходимо учитывать, что некоторые модели телефонов не
+умеют склеивать длинные SMS; </span></p>
+
+<p class="Bullet1">&#9632; 
+<span class="Paragraph0c0">Под текстом сообщения в поле </span><span class="Interface">Длина сообщения</span><span class="Paragraph0c0"> программа выводит количество </span><span class="Interface">символов</span><span class="Paragraph0c0">;</span></p>
+
+<p class="Bullet1"><span class="Paragraph0c0">&#9632; 
+</span><span class="Interface">Отправлять в
+транслите</span><span class="Paragraph0c0">
+– включите флажок, для того чтобы использовать эту возможность;</span></p>
+
+<p class="Bullet1"><span class="Paragraph0c0">&#9632; 
+</span><span class="Interface">Имя отправителя</span><span class="Paragraph0c0"> – включите
+флажок, для того чтобы показывать имя отправителя, укажите (поддерживается
+только латиница), от кого сообщение (если данная услуга предоставляется
+выбранным провайдером), </span><span class="Note">например, <b>Otdel prodaj</b></span><span class="Paragraph0c0">. Если не
+указывать этот параметр, то имя отправителя будет взято из настроек отправки </span><span class="Paragraph0c0">SMS</span><span class="Paragraph0c0">.</span></p>
+
+<p class="Paragraph0c">Нажав кнопку <span class="Interface">Настройка отправки SMS</span>,
+можно изменить параметры отправки SMS. Подробнее см. раздел <a href="#_настройка_программы_27">Настройка
+программы</a>.</p>
+
+<p class="Paragraph0c"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2525.png@_=1504708101" WIDTH="490" ALT HEIGHT="521"></p>
+
+<p class="Paragraph0c">С помощью соответствующей кнопки можно <span class="Interface">Отправить</span> сообщение. Состояние отправки можно посмотреть
+в журнале регистрации. Подробнее см. раздел документации Настройки программы.</p>
+
+<p class="Picture"><IMG src="_img/6a86e8eeb8675758b0754db5426adc35/image2527.png@_=1504708101" WIDTH="467" ALT HEIGHT="504"></p>
+
+<p class="Paragraph0c">Возможные статусы доставки:</p>
+
+<p class="Bullet1"><span class="Interface">&#9632; 
+</span><span class="Interface">Не отправлялось</span><span class="Paragraph0c0">;</span></p>
+
+<p class="Bullet1"><span class="Interface">&#9632; 
+</span><span class="Interface">Отправляется</span><span class="Paragraph0c0">;</span></p>
+
+<p class="Bullet1"><span class="Interface">&#9632; 
+</span><span class="Interface">Отправлено</span><span class="Paragraph0c0">;</span></p>
+
+<p class="Bullet1"><span class="Interface">&#9632; 
+</span><span class="Interface">Не отправлено</span><span class="Paragraph0c0">;</span></p>
+
+<p class="Bullet1"><span class="Interface">&#9632; 
+</span><span class="Interface">Доставлено</span><span class="Paragraph0c0">;</span></p>
+
+<p class="Bullet1"><span class="Paragraph0c0">&#9632; 
+</span><span class="Interface">Не доставлено</span><span class="Paragraph0c0">;</span></p>
+
+<p class="Bullet1"><span class="Interface">&#9632; 
+</span><span class="Interface">Ошибка</span><span class="Paragraph0c0">.</span></p>
+
+<p class="Paragraph0c">В программе
+предусмотрен ввод документа <span class="Interface">Сообщение SMS</span> с
+последующей рассылкой сообщений одному или нескольким адресатам, а также
+хранение таких документов. Подробнее об
+этом см. раздел документации Взаимодействия. </p>
+
+<a name="issogl1_роли_для_отправки_sms"><h2>Роли для отправки SMS</h2></a>
+
+<p class="Paragraph0c">Для отправки SMS необходимо назначить следующие роли:</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Роль</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Краткое описание</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Отправка </span><span class="Interface">SMS</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Дает
+  право отправлять сообщения SMS.</p>
+  </td>
+ </tr>
+</table>
+	</body>
+</html>

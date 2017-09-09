@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1057;&#1083;&#1086;&#1074;&#1072;&#1088;&#1100;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25F1_25EB_25EE_25E2_25E0_25F0_25FC.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_дополнительныеотчетыиобработкивбезопасномрежимеповтиспсловарь"></a><h1>Словарь</h1>
+
+<pre> Возвращает словарь синонимов видов разрешений дополнительных отчетов и обработок
+ и их параметров (для отображения в пользовательском интерфейсе).</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция Словарь() Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Возвращаемое значение</span></p>
+<pre>  ФиксированноеСоответствие:
+    Ключ - ТипXDTO, соответствующий виду разрешения,
+    Значение - Структура, ключи:
+      Представление - строка, краткое представление вида разрешения,
+      Описание - строка, подробное описание вида разрешения,
+      Параметры - ТаблицаЗначений, колонки:
+        Имя - строка, имя свойства, определенного для ТипаXDTO,
+        Описание - строка, описание последствий параметра разрешения для
+          указанного значения параметра,
+        ОписаниеЛюбогоЗначения - строка, описание последствий параметра
+          разрешения для неуказанного значения параметра.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = ДополнительныеОтчетыИОбработкиВБезопасномРежимеПовтИсп.Словарь()</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

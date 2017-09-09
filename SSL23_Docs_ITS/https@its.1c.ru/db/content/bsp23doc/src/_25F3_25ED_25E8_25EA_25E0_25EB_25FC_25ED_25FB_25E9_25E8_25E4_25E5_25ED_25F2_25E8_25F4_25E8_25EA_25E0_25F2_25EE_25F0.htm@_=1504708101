@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1059;&#1085;&#1080;&#1082;&#1072;&#1083;&#1100;&#1085;&#1099;&#1081;&#1048;&#1076;&#1077;&#1085;&#1090;&#1080;&#1092;&#1080;&#1082;&#1072;&#1090;&#1086;&#1088;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25F3_25ED_25E8_25EA_25E0_25EB_25FC_25ED_25FB_25E9_25E8_25E4_25E5_25ED_25F2_25E8_25F4_25E8_25EA_25E0_25F2_25EE_25F0.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_регламентныезаданиясерверуникальныйидентификатор"></a><h1>УникальныйИдентификатор</h1>
+
+<pre> Возвращает уникальный идентификатор регламентного задания.
+  Перед вызовом требуется иметь право Администрирования или УстановитьПривилегированныйРежим.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция УникальныйИдентификатор(Знач Идентификатор) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  Идентификатор - ОбъектМетаданных - объект метаданных регламентного задания для поиска
+                  регламентного задания.
+                - УникальныйИдентификатор - идентификатор регламентного задания.
+                - Строка - строка уникального идентификатора регламентного задания.
+                - РегламентноеЗадание - регламентное задание.</pre>
+<p class="Paragraph0c"><span class="Bold">Возвращаемое значение</span></p>
+<pre>  УникальныйИдентификатор - УИ объекта регламентного задания.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = РегламентныеЗаданияСервер.УникальныйИдентификатор(Идентификатор)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

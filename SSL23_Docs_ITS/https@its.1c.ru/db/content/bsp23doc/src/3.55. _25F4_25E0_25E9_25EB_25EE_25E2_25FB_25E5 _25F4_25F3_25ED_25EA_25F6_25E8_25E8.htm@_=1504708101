@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.55. &#1060;&#1072;&#1081;&#1083;&#1086;&#1074;&#1099;&#1077; &#1092;&#1091;&#1085;&#1082;&#1094;&#1080;&#1080;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.55. _25F4_25E0_25E9_25EB_25EE_25E2_25FB_25E5 _25F4_25F3_25ED_25EA_25F6_25E8_25E8.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_файловые_функции"></a><h1>3.55. Файловые функции</h1>
+
+<p class="Paragraph0c">Подсистема «Файловые функции» не имеет самостоятельной
+прикладной ценности. Она включает в себя общую файловую функциональность
+(функции, общие формы и др.), необходимую для работы других подсистем, таких
+как: «Работа с файлами», «Присоединенные файлы», «Поставляемые данные». </p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<a name="issogl2_размещение_в_командном_интерфейсе"><h3>Размещение в командном интерфейсе</h3></a>
+
+<p class="Paragraph0c">В случае если в конфигурации не используется подсистема
+«Настройки программы», на рабочем месте администратора программы необходимо
+разместить константы:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ЗапрещатьЗагрузкуФайловПоРасширению</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ИзвлекатьТекстыФайловНаСервере</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">МаксимальныйРазмерФайла</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">СписокЗапрещенныхРасширений</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">СписокРасширенийТекстовыхФайлов</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">СписокРасширенийФайловOpenDocument</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ХранитьФайлыВТомахНаДиске</span>.</p>
+
+<p class="Paragraph0c">См. пример в демонстрационной конфигурации в форме <span class="Interface">НастройкиРаботыСФайлами</span> обработки <span class="Interface">ПанельАдминистрированияБСП</span>.</p>
+
+<p class="Paragraph0c">Затем разместить в командном интерфейсе администратора
+программы следующие объекты метаданных:</p>
+
+<p class="MsoListBullet">&#9679; 
+справочник <span class="Interface">ТомаХраненияФайлов</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+обработка <span class="Interface">АвтоматическоеИзвлечениеТекстов</span>.</p>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Для настройки прав доступа пользователей к данным
+подсистемы «Файловые функции» следует использовать следующие роли:</p>
+
+<p class="Objectname">Таблица 3.114.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Полные права</span></p>
+  <p class="TextinTable81">Настройка подсистемы, создание томов для хранения
+  файлов на диске</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Базовые права</span></p>
+  <p class="TextinTable81">Право просмотра общих форм</p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<p class="Paragraph0c">При разработке конфигурации никаких дополнительных
+действий не требуется.</p>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Если подсистема используется совместно с подсистемой
+«Обмен данными», то в модуле менеджера плана обмена распределенной
+информационной базы (РИБ) необходимо вписать реализацию в экспортную функцию <span class="Interface">ИмяФормыСозданияНачальногоОбраза</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Функция</span> ИмяФормыСозданияНачальногоОбраза<span class="operator">(</span><span class="operator">)</span> <span class="keyword">Экспорт</span>
+        <span class="keyword">Возврат</span> <span class="string">&quot;ОбщаяФорма.СозданиеНачальногоОбразаСФайлами&quot;</span><span class="operator">;</span>
+    <span class="keyword">КонецФункции</span></pre>
+
+<p class="Paragraph0c">А также указать этот план обмена в качестве типа параметра
+общей команды <span class="Interface">СозданиеНачальногоОбразаСФайлами</span>.
+Пример плана обмена с поддержкой миграции файлов в томах на диске см. в
+демонстрационной конфигурации – <span class="Interface">_ДемоОбменВРаспределеннойИнформационнойБазеСВнешнимиФайлами</span>.</p>
+
+<p class="Paragraph0c">В планы обмена рекомендуется включать все объекты
+метаданных подсистемы, кроме:</p>
+
+<p class="MsoListBullet">&#9679; 
+регистра сведений <span class="Interface">НомераОтсканированныхФайлов</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+регистра сведений <span class="Interface">СтатусыСинхронизацииФайловСОблачнымСервисом</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+регистра сведений <span class="Interface">НастройкиСинхронизацииФайлов</span>,
+</p>
+
+<p class="MsoListBullet">&#9679; 
+константы <span class="Interface">ИзвлекатьТекстыФайловНаСервере</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+константы <span class="Interface">ХранитьФайлыВТомахНаДиске</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+константы <span class="Interface">СинхронизироватьФайлы</span>,
+</p>
+
+<p class="MsoListBullet">&#9679; 
+справочника <span class="Interface">УчетныеЗаписиСинхронизацииФайлов</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+справочника <span class="Interface">ТомаХраненияФайлов</span>.
+</p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

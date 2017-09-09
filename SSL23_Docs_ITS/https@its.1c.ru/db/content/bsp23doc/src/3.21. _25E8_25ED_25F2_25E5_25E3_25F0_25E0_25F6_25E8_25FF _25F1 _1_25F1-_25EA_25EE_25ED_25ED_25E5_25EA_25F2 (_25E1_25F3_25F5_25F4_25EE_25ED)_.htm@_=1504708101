@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.21. &#1048;&#1085;&#1090;&#1077;&#1075;&#1088;&#1072;&#1094;&#1080;&#1103; &#1089; &#171;1&#1057;-&#1050;&#1086;&#1085;&#1085;&#1077;&#1082;&#1090; (&#1041;&#1091;&#1093;&#1092;&#1086;&#1085;)&#187;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.21. _25E8_25ED_25F2_25E5_25E3_25F0_25E0_25F6_25E8_25FF _25F1 _1_25F1-_25EA_25EE_25ED_25ED_25E5_25EA_25F2 (_25E1_25F3_25F5_25F4_25EE_25ED)_.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_интеграция_с_«1с-бухфон»_1"></a><h1>3.21. Интеграция с «1С-Коннект (Бухфон)»</h1>
+
+<p class="Paragraph0c">Подсистема предоставляет возможность пользователям
+инфраструктуры «1С-Коннект» (Бухфон) запускать приложение из конфигурации. В
+интерфейсе пользователя представляет собой кнопку на рабочем столе и форму для
+настроек. Разработчик может по своему усмотрению настроить расположение кнопки,
+а также место вызова настроек. Использование всей подсистемы регулируется
+функциональной опцией. Имеется возможность в переопределяемом модуле указать
+свои действия при изменении настроек пользователем. Например, скрыть форму,
+если кнопка не выводится на форму и является единственным элементом формы.</p>
+
+<p class="Paragraph0c">Настройки кнопки включают в себя признак отображения, логин/пароль
+и разрешение на их подстановку в программу при запуске. Настройки хранятся в
+разрезе пользователей и клиента «1С» (при запуске пользователем базы с другого
+ПК требуется указать настройки повторно, так как расположение файла заведомо
+неизвестно).</p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Paragraph0c">Нужно определить форму на рабочем столе для размещения
+кнопки запуска «1С-Коннект». Добавить общую команду <span class="Interface">Запустить1СБухфон</span>
+на выбранную форму. </p>
+
+<p class="Paragraph0c">В процедуру модуля формы <span class="Interface">ПриСозданииНаСервере</span>
+добавить следующий код:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.Интеграция1СБухфон</span>
+<span class="keyword">Если</span> ПравоДоступа<span class="operator">(</span><span class="string">&quot;Просмотр&quot;</span><span class="operator">,</span> Метаданные<span class="operator">.</span>ОбщиеКоманды<span class="operator">.</span>Запустить1СБухфон<span class="operator">)</span> <span class="keyword">Тогда</span>
+    Интеграция1СБухфон<span class="operator">.</span>ПриСозданииНаСервере<span class="operator">(</span>Элементы<span class="operator">.</span><span class="operator">&lt;</span>Имя элемента<span class="operator">&gt;</span><span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="comment">// Конец СтандартныеПодсистемы.Интеграция1СБухфон</span></pre>
+
+<p class="Paragraph0c">В процедуру модуля формы <span class="Interface">ОбработкаОповещения</span>
+добавить код:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.Интеграция1СБухфон</span>
+<span class="keyword">Если</span> Элементы<span class="operator">.</span>Найти<span class="operator">(</span><span class="string">&quot;&lt;Имя элемента&gt;&quot;</span><span class="operator">)</span> <span class="operator">&lt;</span><span class="operator">&gt;</span> <span class="keyword">Неопределено</span> <span class="keyword">Тогда</span>
+    Интеграция1СБухфонКлиент<span class="operator">.</span>ОбработкаОповещения<span class="operator">(</span>ИмяСобытия<span class="operator">,</span> Элементы<span class="operator">.</span><span class="operator">&lt;</span>Имя элемента<span class="operator">&gt;</span><span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="comment">// Конец СтандартныеПодсистемы.Интеграция1СБухфон</span></pre>
+
+<p class="Paragraph0c">Пример размещения см. в общей форме <span class="Interface">_ДемоПоддержкаПользователей</span>.</p>
+
+<p class="Paragraph0c">Далее необходимо разместить общую команду <span class="Interface">Настройка1СБухфон</span> в форме персональных настроек
+пользователя. Пример размещения см. в общей форме <span class="Interface">_ДемоМоиНастройки</span>.</p>
+
+<p class="Paragraph0c">Если в конфигурации не используется подсистема «Настройки
+программы», то в рабочем месте администратора программы необходимо разместить
+константу <span class="Interface">ИспользоватьИнтеграцию1СБухфон</span>. См.
+пример в форме <span class="Interface">ОбщиеНастройки</span> обработки <span class="Interface">ПанельАдминистрированияБСП</span>.</p>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Необходимо принять решение по поводу категории
+пользователей, для которой должна быть доступна подсистема, и добавить роль <span class="Interface">Интеграция1СБухфон</span> в необходимые профили групп доступа.</p>
+
+<p class="Objectname">Таблица 3.38.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1.</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">БазовыеПрава </span></p>
+  <p class="TextinTable81">Обязательная роль для работы с подсистемой</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">2.</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Интеграция1СБухфон</span></p>
+  <p class="TextinTable81">Персональная настройка и запуск «1С-Коннект»</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Примеры настройки прав доступа пользователей приведены
+ниже.</p>
+
+<p class="Objectname">Таблица 3.39.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Группа пользователей и ее функции</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Состав ролей</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Администратор.</p>
+  <p class="TextinTable81">Включение или запрет интеграции с «1С-Коннект»</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПолныеПрава</span> (из
+  подсистемы «Базовая функциональность»).</p>
+  <p class="TextinTable81"><span class="Interface">ЗапускТонкогоКлиента</span> (из
+  подсистемы «Базовая функциональность»)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Бухгалтер.</p>
+  <p class="TextinTable81">Персональная настройка и запуск «1С-Коннект»</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">БазовыеПрава</span> (из
+  подсистемы «Базовая функциональность»).</p>
+  <p class="TextinTable81"><span class="Interface">ЗапускТонкогоКлиента</span> (из
+  подсистемы «Базовая функциональность»).</p>
+  <p class="TextinTable81"><span class="Interface">Интеграция1СБухфон</span></p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Все объекты метаданных подсистемы, содержащие данные,
+рекомендуется включать в планы обмена распределенной ИБ (РИБ).</p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1055;&#1088;&#1077;&#1076;&#1086;&#1087;&#1088;&#1077;&#1076;&#1077;&#1083;&#1077;&#1085;&#1085;&#1099;&#1081;&#1069;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25EF_25F0_25E5_25E4_25EE_25EF_25F0_25E5_25E4_25E5_25EB_25E5_25ED_25ED_25FB_25E9_25FD_25EB_25E5_25EC_25E5_25ED_25F2.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_общегоназначенияклиентсерверпредопределенныйэлемент"></a><h1>ПредопределенныйЭлемент</h1>
+
+<pre> Получает ссылку предопределенного элемента по его полному имени.
+ Предопределенные элементы могут содержаться только в следующих объектах:
+ справочники, планы видов характеристик, планы счетов и планы видов расчета.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция ПредопределенныйЭлемент(ПолноеИмяПредопределенного) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>   ПолноеИмяПредопределенного - Строка - Полный путь к предопределенному элементу, включая его имя.
+     Формат полностью аналогичен функции глобального контекста ПредопределенноеЗначение().
+     Например:
+       "Справочник.ВидыКонтактнойИнформации.EmailПользователя"
+       "ПланСчетов.Хозрасчетный.Материалы"
+       "ПланВидовРасчета.Начисления.ОплатаПоОкладу".</pre>
+<p class="Paragraph0c"><span class="Bold">Возвращаемое значение</span></p>
+<pre>   ЛюбаяСсылка - ссылка на предопределенный элемент.
+   Неопределено - если элемент не найден, или на него нет прав.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = ОбщегоНазначенияКлиентСервер.ПредопределенныйЭлемент(ПолноеИмяПредопределенного)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Тонкий клиент, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

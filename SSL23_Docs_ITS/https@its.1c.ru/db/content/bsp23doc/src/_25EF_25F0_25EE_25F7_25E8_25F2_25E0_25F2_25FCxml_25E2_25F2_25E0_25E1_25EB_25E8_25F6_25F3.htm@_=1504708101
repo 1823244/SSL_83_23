@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1055;&#1088;&#1086;&#1095;&#1080;&#1090;&#1072;&#1090;&#1100;XML&#1042;&#1058;&#1072;&#1073;&#1083;&#1080;&#1094;&#1091;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25EF_25F0_25EE_25F7_25E8_25F2_25E0_25F2_25FCxml_25E2_25F2_25E0_25E1_25EB_25E8_25F6_25F3.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_общегоназначенияпрочитатьxmlвтаблицу"></a><h1>ПрочитатьXMLВТаблицу</h1>
+
+<pre> Преобразует текст формата XML в таблицу значений,
+ при этом колонки таблицы формируются на основе описания в XML.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Функция ПрочитатьXMLВТаблицу(Знач XML) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>  XML     - текст в формате XML или ЧтениеXML.
+ Схема XML:
+ &lt;?xml version="1.0" encoding="utf-8"?&gt;
+  &lt;xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http:www.w3.org/2001/XMLSchema"&gt;
+   &lt;xs:element name="Items"&gt;
+    &lt;xs:complexType&gt;
+     &lt;xs:sequence&gt;
+      &lt;xs:element maxOccurs="unbounded" name="Item"&gt;
+       &lt;xs:complexType&gt;
+        &lt;xs:attribute name="Code" type="xs:integer" use="required" /&gt;
+        &lt;xs:attribute name="Name" type="xs:string" use="required" /&gt;
+        &lt;xs:attribute name="Socr" type="xs:string" use="required" /&gt;
+        &lt;xs:attribute name="Index" type="xs:string" use="required" /&gt;
+       &lt;/xs:complexType&gt;
+      &lt;/xs:element&gt;
+     &lt;/xs:sequence&gt;
+    &lt;xs:attribute name="Description" type="xs:string" use="required" /&gt;
+    &lt;xs:attribute name="Columns" type="xs:string" use="required" /&gt;
+   &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+ &lt;/xs:schema&gt;
+ Примеры XML-файлов см. в демонстрационной конфигурации.
+ Пример использования:
+   КлассификаторТаблица = ПрочитатьXMLВТаблицу(
+     Справочники.Валюты.ПолучитьМакет("ОбщероссийскийКлассификаторВалют").ПолучитьТекст()).Данные;</pre>
+<p class="Paragraph0c"><span class="Bold">Возвращаемое значение</span></p>
+<pre>  Структура - с полями 
+    * ИмяТаблицы - Строка
+    * Данные - ТаблицаЗначений.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> Результат = ОбщегоНазначения.ПрочитатьXMLВТаблицу(XML)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

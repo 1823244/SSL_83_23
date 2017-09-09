@@ -1,0 +1,986 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.48. &#1057;&#1074;&#1086;&#1081;&#1089;&#1090;&#1074;&#1072;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.48. _25F1_25E2_25EE_25E9_25F1_25F2_25E2_25E0.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_свойства"></a><h1>3.48. Свойства</h1>
+
+<p class="Paragraph0c">Подсистема «Свойства» позволяет создавать и редактировать
+в режиме <span class="Interface">1С:Предприятие</span> дополнительные свойства
+произвольных объектов конфигурации (не внося изменения в саму конфигурацию).
+При этом дополнительные свойства можно выводить как в списках, так и в отчетах
+программы, как и обычные реквизиты объектов. Объектами со свойствами могут быть
+любые объекты ссылочного типа.. </p>
+
+<p class="Paragraph0c">Дополнительные свойства объектов могут быть двух видов: </p>
+
+<p class="MsoListBullet">&#9679; 
+дополнительные реквизиты - это свойства, которые
+хранятся в самом объекте (в специализированной табличной части). Дополнительные
+реквизиты являются неотъемлемой частью объекта, вводятся при его редактировании
+и доступны для редактирования тем же пользователям, которым доступен и сам
+объект со свойствами. Например, реквизиты вес, размеры, цвет справочника
+товары.</p>
+
+<p class="MsoListBullet">&#9679; 
+дополнительные сведения - не являются
+неотъемлемыми свойствами объекта. Они, как правило, доступны для редактирования
+тем пользователям, которые не имеют доступа к самому объекту. При внедрении
+подсистемы совместно с подсистемой «Управление доступом» имеется возможность
+ограничивать доступ пользователей к отдельным дополнительным сведениям.
+Например, дата ближайшей поставки товара.</p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Paragraph0c">Перед внедрением подсистемы в конфигурацию необходимо
+принять решение о составе объектов конфигурации, которые пользователи смогут
+расширять дополнительными свойствами.В этот список следует включить те объекты,
+свойства которых с большой вероятностью потребуется определять пользователю.
+Такими объектами, как правило, являются справочники, которые имеют слишком
+универсальный характер. Пример – справочник товаров, для которого только при
+внедрении будет понятна востребованность таких свойств, как вес, размеры, цвет
+и т. д.</p>
+
+<p class="Paragraph0c">После чего выбрать, какие виды дополнительных свойств
+необходимы в выбранных объектах:</p>
+
+<p class="MsoListBullet">&#9679; 
+только дополнительные реквизиты,</p>
+
+<p class="MsoListBullet">&#9679; 
+только дополнительные сведения,</p>
+
+<p class="MsoListBullet">&#9679; 
+дополнительные свойства обоих типов.</p>
+
+<p class="Paragraph0c">Затем необходимо принять решение по поводу доступных (для
+выбора пользователем) типов значений дополнительных свойств. При работе
+пользователь сможет создавать дополнительные свойства таких типов для всех
+объектов, в которых будет внедрена подсистема «Свойства». Как правило, в этот
+список включаются некоторые справочники и перечисления конфигурации. Не
+рекомендуется включать в состав типов дополнительных свойств такие объекты, как
+документы, задачи, бизнес-процессы и пр. Также не рекомендуется избыточно
+расширять состав типов значений дополнительных свойств, т. к. это приведет к
+усложнению настройки системы пользователем.</p>
+
+<a name="issogl2_настройка_объектов_с_дополнительными_реквизитами"><h3>Настройка объектов с дополнительными реквизитами</h3></a>
+
+<p class="Number81">1. 
+Создать табличную часть <span class="Interface">ДополнительныеРеквизиты</span>
+с реквизитами:</p>
+
+<p class="Objectname">Таблица 3.101.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Имя</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Тип</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Подсказка</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Свойство</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПланВидовХарактеристикСсылка.ДополнительныеРеквизитыИСведения</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Дополнительный реквизит</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Значение</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Характеристика.ДополнительныеРеквизитыИСведения</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Значение дополнительного реквизита</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ТекстоваяСтрока</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Строка неограниченной длины</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Полный текст строкового дополнительного реквизита</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Bullet0">Реквизиту <span class="Interface">Значение</span> в свойстве <span class="Interface">Связи параметров выбора</span> установить связь: <span class="Interface">Отбор.Владелец</span> (<span class="Interface">ДополнительныеРеквизиты.Свойство</span>).</p>
+
+<p class="Number81">2. 
+В форме объекта рекомендуется создать
+специальную группу полей или страницу с наименованием <span class="Interface">ГруппаДополнительныеРеквизиты</span>
+для размещения элементов управления, редактирующих свойства объекта. </p>
+
+<p class="Number81">3. 
+В обработчике события <span class="Interface">ПриСозданииНаСервере</span>
+формы объекта необходимо выполнить вызов:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.Свойства</span>
+ДополнительныеПараметры <span class="operator">=</span> <span class="keyword">Новый</span> Структура<span class="operator">;</span>
+ДополнительныеПараметры<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;ИмяЭлементаДляРазмещения&quot;</span><span class="operator">,</span> <span class="string">&quot;ГруппаДополнительныеРеквизиты&quot;</span><span class="operator">)</span><span class="operator">;</span>
+УправлениеСвойствами<span class="operator">.</span>ПриСозданииНаСервере<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> ДополнительныеПараметры<span class="operator">)</span><span class="operator">;</span>
+<span class="comment">// Конец СтандартныеПодсистемы.Свойства</span></pre>
+
+<p class="Bullet0">где <span class="Interface">ГруппаДополнительныеРеквизиты</span>
+– имя группы формы, созданной на шаге 2, в которой будут располагаться поля
+формы, предназначенные для редактирования дополнительных реквизитов. Если этот
+параметр не указывать, то элементы управления для редактирования свойств будут
+размещаться в нижней части формы.</p>
+
+<p class="Bullet0">При использования формы для работы с разными объектами следует
+передать параметр <span class="Interface">ПроизвольныйОбъект</span> со значением <span class="Interface">Истина</span> и в дальнейшем вызывать процедуру <span class="Interface">ОбновитьЭлементыДополнительныхРеквизитов</span> для разных
+объектов.</p>
+
+<p class="Number81">4. 
+В модуле формы каждого объекта со свойствами
+необходимо добавить процедуру:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">#Область ОбработчикиКомандФормы</span>
+<span class="comment">// ОБРАБОТЧИКИ КОМАНД ФОРМЫ</span>
+...
+<span class="comment">// СтандартныеПодсистемы.Свойства</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> Подключаемый_РедактироватьСоставСвойств<span class="operator">(</span><span class="operator">)</span>
+    УправлениеСвойствамиКлиент<span class="operator">.</span>РедактироватьСоставСвойств<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> Объект<span class="operator">.</span>Ссылка<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="comment">// Конец СтандартныеПодсистемы.Свойства</span>
+<span class="preprocessor">#КонецОбласти</span></pre>
+
+<p class="Number81">5. 
+В обработчике события <span class="Interface">ПриОткрытии</span>
+добавить код:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.Свойства</span>
+    УправлениеСвойствамиКлиент<span class="operator">.</span>ПослеЗагрузкиДополнительныхРеквизитов<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="comment">// Конец СтандартныеПодсистемы.Свойства</span></pre>
+
+<p class="Number81">6. 
+В обработчике события <span class="Interface">ОбработкаОповещения</span>
+добавить код:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.Свойства </span>
+<span class="keyword">Если</span> УправлениеСвойствамиКлиент<span class="operator">.</span>ОбрабатыватьОповещения<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> ИмяСобытия<span class="operator">,</span> Параметр<span class="operator">)</span> <span class="keyword">Тогда</span>
+    ОбновитьЭлементыДополнительныхРеквизитов<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    УправлениеСвойствамиКлиент<span class="operator">.</span>ПослеЗагрузкиДополнительныхРеквизитов<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="comment">// Конец СтандартныеПодсистемы.Свойства</span></pre>
+
+<p class="Number81">7. 
+Добавить вспомогательные процедуры:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">#Область СлужебныеПроцедурыИФункции</span>
+<span class="comment">// СтандартныеПодсистемы.Свойства </span>
+<span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Процедура</span> ОбновитьЭлементыДополнительныхРеквизитов<span class="operator">(</span><span class="operator">)</span>
+    УправлениеСвойствами<span class="operator">.</span>ОбновитьЭлементыДополнительныхРеквизитов<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ОбновитьЗависимостиДополнительныхРеквизитов<span class="operator">(</span><span class="operator">)</span>
+    УправлениеСвойствамиКлиент<span class="operator">.</span>ОбновитьЗависимостиДополнительныхРеквизитов<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> Подключаемый_ПриИзмененииДополнительногоРеквизита<span class="operator">(</span>Элемент<span class="operator">)</span>
+    УправлениеСвойствамиКлиент<span class="operator">.</span>ОбновитьЗависимостиДополнительныхРеквизитов<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="comment">// Конец СтандартныеПодсистемы.Свойства</span>
+<span class="preprocessor">#КонецОбласти</span></pre>
+
+<p class="Number81">8. 
+В обработчике события <span class="Interface">ПриЧтенииНаСервере</span>
+добавить код:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.Свойства</span>
+УправлениеСвойствами<span class="operator">.</span>ПриЧтенииНаСервере<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> ТекущийОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="comment">// Конец СтандартныеПодсистемы.Свойства</span></pre>
+
+<p class="Number81">9. 
+В обработчике события <span class="Interface">ОбработкаПроверкиЗаполненияНаСервере</span>
+добавить код:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.Свойства</span>
+УправлениеСвойствами<span class="operator">.</span>ОбработкаПроверкиЗаполнения<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> Отказ<span class="operator">,</span> ПроверяемыеРеквизиты<span class="operator">)</span><span class="operator">;</span>
+<span class="comment">// Конец СтандартныеПодсистемы.Свойства</span></pre>
+
+<p class="Number81">10. 
+В обработчике события <span class="Interface">ПередЗаписьюНаСервере</span>
+добавить код:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.Свойства</span>
+УправлениеСвойствами<span class="operator">.</span>ПередЗаписьюНаСервере<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> ТекущийОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="comment">// Конец СтандартныеПодсистемы.Свойства</span></pre>
+
+<a name="issogl2_настройка_отложенной_инициализации_дополнительных_реквизитов"><h3>Настройка отложенной инициализации дополнительных реквизитов</h3></a>
+
+<p class="Paragraph0c">Дополнительные реквизиты, расположенные на отдельной
+странице (закладке) формы, необходимо загружать отложенно. Это позволит
+существенно ускорить открытие форм. </p>
+
+<p class="Warningword">Важно!</p>
+
+<p class="Notes">При отложенной инициализации будет невозможно выполнить
+перемещение дополнительных реквизитов при помощи команды <span class="Interface">Изменить
+форму</span> из группы, в которой они расположены.</p>
+
+<p class="Number81">1. 
+В обработчике события <span class="Interface">ПриСозданииНаСервере</span>
+формы объекта, в блоке кода:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.Свойства</span>
+ДополнительныеПараметры <span class="operator">=</span> <span class="keyword">Новый</span> Структура<span class="operator">;</span>
+ДополнительныеПараметры<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;ИмяЭлементаДляРазмещения&quot;</span><span class="operator">,</span> <span class="string">&quot;ГруппаДополнительныеРеквизиты&quot;</span><span class="operator">)</span><span class="operator">;</span>
+УправлениеСвойствами<span class="operator">.</span>ПриСозданииНаСервере<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> ДополнительныеПараметры<span class="operator">)</span><span class="operator">;</span>
+<span class="comment">// Конец СтандартныеПодсистемы.Свойства</span></pre>
+
+<p class="Paragraph0c">дополнить структуру новым параметром <span class="Interface">ОтложеннаяИнициализация</span>:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">ДополнительныеПараметры<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;ОтложеннаяИнициализация&quot;</span><span class="operator">,</span> <span class="keyword">Истина</span><span class="operator">)</span><span class="operator">;</span></pre>
+
+<p class="Number81">2. 
+В обработчике <span class="Interface">ПриСменеСтраницы</span>
+группы страниц, в которой выводятся дополнительные реквизиты, добавить код:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.Свойства</span>
+    <span class="keyword">Если</span> ТекущаяСтраница<span class="operator">.</span>Имя <span class="operator">=</span> <span class="string">&quot;СтраницаДополнительно&quot;</span>
+        <span class="keyword">И</span> <span class="keyword">Не</span> ЭтотОбъект<span class="operator">.</span>ПараметрыСвойств<span class="operator">.</span>ВыполненаОтложеннаяИнициализация <span class="keyword">Тогда</span>
+        СвойстваВыполнитьОтложеннуюИнициализацию<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+        УправлениеСвойствамиКлиент<span class="operator">.</span>ПослеЗагрузкиДополнительныхРеквизитов<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="comment">// Конец СтандартныеПодсистемы.Свойства</span></pre>
+
+<p class="Paragraph0c">где имя страницы <span class="Interface">СтраницаДополнительно</span>
+– имя страницы, на которой расположена группа <span class="Interface">ГруппаДополнительныеРеквизиты</span>.
+Если <span class="Interface">ГруппаДополнительныеРеквизиты </span>является<span class="Interface"> </span>страницей, то используется ее имя.</p>
+
+<p class="Number81">3. 
+Добавить вспомогательную процедуру:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">#Область СлужебныеПроцедурыИФункции</span>
+<span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Процедура</span> СвойстваВыполнитьОтложеннуюИнициализацию<span class="operator">(</span><span class="operator">)</span>
+    УправлениеСвойствами<span class="operator">.</span>ЗаполнитьДополнительныеРеквизитыВФорме<span class="operator">(</span>ЭтотОбъект<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="preprocessor">#КонецОбласти</span></pre>
+
+<a name="issogl2_настройка_объектов_с_дополнительными_сведениями"><h3>Настройка объектов с дополнительными сведениями</h3></a>
+
+<p class="Paragraph0c">Перечислить типы объектов с дополнительными сведениями в
+составе определяемого типа <span class="Interface">ВладелецДополнительныхСведений</span>.
+Поддерживаемые типы объектов – документы, справочники, планы видов
+характеристик, планы счетов, планы видов расчета, бизнес-процессы и задачи.</p>
+
+<a name="issogl2_настройка_динамических_списков"><h3>Настройка динамических списков</h3></a>
+
+<p class="Paragraph0c">Для возможности отображения дополнительных реквизитов и
+сведений в формах списков объектов со свойствами необходимо добавить поле <span class="Interface">Ссылка</span> из запроса динамического списка в таблицу формы,
+связанную с этим динамическим списком. При этом добавленное поле <span class="Interface">Ссылка</span> следует по умолчанию скрыть от пользователей,
+сняв флаг <span class="Interface">Видимость</span> в свойстве <span class="Interface">Пользовательская видимость.</span></p>
+
+<a name="issogl2_настройка_наборов_свойств_объектов"><h3>Настройка наборов свойств объектов</h3></a>
+
+<p class="MsoNormal">В большинстве случаев достаточно одного набора свойств для
+объекта метаданных, например, у всех элементов справочника товаров должны быть
+такие свойства, как вес, размеры, цвет и т.д. Для этого необходимо:</p>
+
+<p class="Number81">1. 
+В справочнике <span class="Interface">НаборыДополнительныхРеквизитовИСведений</span>
+создать предопределенный элемент с именем <span class="Interface">Справочник_&lt;ИмяОбъекта&gt;</span>,
+если объект – справочник; <span class="Interface">Документ_&lt;ИмяОбъекта&gt;</span>,
+если объект – документ, и т. д. Например: <span class="Interface">Справочник_Сотрудники</span>,
+<span class="Interface">Документ_АвансовыйОтчет</span>, <span class="Interface">БизнесПроцесс_Продажа</span>.
+Наименование элемента при этом заполнять не требуется (оно будет заполнено
+автоматически на основании представления списка того объекта, к которому относится
+данный элемент).</p>
+
+<p class="Number81">2. 
+Добавить в обработчике обновления информационной
+базы вызов процедуры <span class="Interface">УстановитьПараметрыНабораСвойств</span>
+общего модуля <span class="Interface">УправлениеСвойствами</span> для заполнения
+настроек добавленного набора свойств.</p>
+
+<a name="issogl2_особые_случаи_настройки_наборов_свойств"><h3>Особые случаи настройки наборов свойств</h3></a>
+
+<a name="issogl3_настройка_объектов_с_разными_наборами_свойств_у_разных_групп_объектов"><h4>Настройка объектов с разными наборами свойств у разных групп объектов</h4></a>
+
+<p class="MsoNormal">В отдельных случаях может быть необходима более гибкая
+настройка. Например, в зависимости от вида товара у него могут быть уникальные
+характеристики: у картриджей для принтеров требуется свойство - <span class="Interface">Тип принтера</span>, а у мебели - <span class="Interface">Материал.
+</span></p>
+
+<p class="Paragraph0c">При этом подходе набор свойств, применяемый для
+конкретного экземпляра объекта, определяется по группе объектов, содержащей
+ссылку на набор свойств. В демонстрационной конфигурации этот вариант
+применения свойств показан на справочнике <span class="Interface">_ДемоНоменклатура</span>.
+В каждом элементе справочника применяется тот или иной набор свойств в
+зависимости от вида номенклатуры (группы объектов). Справочник <span class="Interface">_ДемоНоменклатура</span> имеет реквизит <span class="Interface">ВидНоменклатуры</span>,
+и в зависимости от его значения элемент справочника получает тот или иной набор
+дополнительных свойств, ссылка на который извлекается в объекте справочника <span class="Interface">_ДемоВидыНоменклатура</span>. Для настройки требуется
+следующее:</p>
+
+<p class="Number81">1. 
+Создать справочник, значения которого
+соответствуют разным наборам свойств объекта со свойствами. Например, для справочника
+<span class="Interface">_ДемоНоменклатура</span> в демонстрационной конфигурации
+это справочник <span class="Interface">_ДемоВидыНоменклатуры</span>.</p>
+
+<p class="Number81">2. 
+В этом справочнике добавить реквизит <span class="Interface">НаборСвойств</span> типа <span class="Interface">СправочникСсылка.НаборыДополнительныхРеквизитовИСведений</span>.
+Включить реквизит в состав функциональной опции (если нет, создать) <span class="Interface">ИспользоватьДополнительныеРеквизитыИСведения&lt;Имя
+конфигурации&gt;</span>. Если справочник группирует объекты более чем одного
+типа, допустимо добавить два и более реквизитов с подходящими именами,
+например: <span class="Interface">НаборСвойствОшибок</span>, <span class="Interface">НаборСвойствЗадач</span>.</p>
+
+<p class="Number81">3. 
+В обработчике <span class="Interface">ПередЗаписью</span>
+модуля объекта этого справочника выполнить вызов <span class="Interface">УправлениеСвойствами</span>.
+<span class="Interface">ПриЗаписиВидаОбъекта</span> и передать туда в качестве
+параметров записываемый объект и имя набора свойств, например:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.Свойства</span>
+УправлениеСвойствами<span class="operator">.</span>ПередЗаписьюВидаОбъекта<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> <span class="string">&quot;Справочник_ДемоНоменклатура&quot;</span><span class="operator">)</span><span class="operator">;</span>
+<span class="comment">// Конец СтандартныеПодсистемы.Свойства</span></pre>
+
+<p class="Bullet0">Если справочник группирует объекты более чем одного типа,
+следует сделать два или более вызова, указав имена используемых реквизитов,
+например:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// СтандартныеПодсистемы.Свойства</span>
+УправлениеСвойствами<span class="operator">.</span>ПередЗаписьюВидаОбъекта<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> <span class="string">&quot;Справочник_ДемоОшибки&quot;</span><span class="operator">,</span><span class="string">&quot;НаборСвойствОшибок&quot;</span><span class="operator">)</span><span class="operator">;</span>
+УправлениеСвойствами<span class="operator">.</span>ПередЗаписьюВидаОбъекта<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> <span class="string">&quot;Справочник_ДемоЗадачи&quot;</span><span class="operator">,</span><span class="string">&quot;НаборСвойствЗадач&quot;</span><span class="operator">)</span><span class="operator">;</span>
+<span class="comment">// Конец СтандартныеПодсистемы.Свойства</span></pre>
+
+<p class="Number81">4. 
+В объекте – владельце свойств создать реквизит,
+значения которого определяют применение того или иного набора свойств для
+конкретного экземпляра объекта. Для справочника <span class="Interface">_ДемоНоменклатура</span>
+это реквизит <span class="Interface">ВидНоменклатуры</span> типа <span class="Interface">СправочникСсылка._ДемоВидыНоменклатуры</span>.</p>
+
+<p class="Number81">5. 
+В модуле формы объекта реализовать обработчик <span class="Interface">ПриИзменении</span> для элемента формы, редактирующего этот
+реквизит. Для справочника <span class="Interface">_ДемоНоменклатура</span> это обработчик:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ВидНоменклатурыПриИзменении<span class="operator">(</span>Элемент<span class="operator">)</span>
+    ОбновитьЭлементыДополнительныхРеквизитов<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Number81">6. 
+В процедуре <span class="Interface">ЗаполнитьНаборыСвойствОбъекта</span>
+общего модуля <span class="Interface">УправлениеСвойствамиПереопределяемый</span>
+вставить условие, заполняющее набор свойств для конкретного объекта. Например,
+для <span class="Interface">_ДемоНоменклатура</span> это следующее условие:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> ЗаполнитьНаборыСвойствОбъекта<span class="operator">(</span>Объект<span class="operator">,</span> ТипСсылки<span class="operator">,</span> НаборыСвойств<span class="operator">,</span> СтандартнаяОбработка<span class="operator">,</span> КлючНазначения<span class="operator">)</span> <span class="keyword">Экспорт</span>
+…
+    <span class="keyword">Если</span> ТипСсылки <span class="operator">=</span> Тип<span class="operator">(</span><span class="string">&quot;СправочникСсылка._ДемоНоменклатура&quot;</span><span class="operator">)</span> <span class="keyword">Тогда</span>
+        ЗаполнитьНаборСвойствПоВидуНоменклатуры<span class="operator">(</span>
+            Объект<span class="operator">,</span> ТипСсылки<span class="operator">,</span> НаборыСвойств<span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+…
+<span class="keyword">КонецПроцедуры</span>
+<span class="keyword">Процедура</span> ЗаполнитьНаборСвойствПоВидуНоменклатуры<span class="operator">(</span>Номенклатура<span class="operator">,</span> ТипСсылки<span class="operator">,</span> НаборыСвойств<span class="operator">)</span>
+    <span class="keyword">Если</span> ТипЗнч<span class="operator">(</span>Номенклатура<span class="operator">)</span> <span class="operator">=</span> ТипСсылки <span class="keyword">Тогда</span>
+        Номенклатура <span class="operator">=</span> ОбщегоНазначения<span class="operator">.</span>ЗначенияРеквизитовОбъекта<span class="operator">(</span>
+            Номенклатура<span class="operator">,</span> <span class="string">&quot;ЭтоГруппа, ВидНоменклатуры&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+    <span class="keyword">Если</span> Номенклатура<span class="operator">.</span>ЭтоГруппа <span class="operator">=</span> <span class="keyword">Ложь</span> <span class="keyword">Тогда</span>
+        Строка <span class="operator">=</span> НаборыСвойств<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+        Строка<span class="operator">.</span>Набор <span class="operator">=</span> ОбщегоНазначения<span class="operator">.</span>ЗначениеРеквизитаОбъекта<span class="operator">(</span>
+            Номенклатура<span class="operator">.</span>ВидНоменклатуры<span class="operator">,</span> <span class="string">&quot;НаборСвойств&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Bullet0">Если справочник группирует объекты более чем одного типа,
+следует вписать в условие несколько типов, например:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    <span class="keyword">Если</span> ТипСсылки <span class="operator">=</span> Тип<span class="operator">(</span><span class="string">&quot;СправочникСсылка._ДемоОшибки&quot;</span><span class="operator">)</span>
+     <span class="keyword">ИЛИ</span> ТипСсылки <span class="operator">=</span> Тип<span class="operator">(</span><span class="string">&quot;СправочникСсылка._ДемоЗадачи&quot;</span><span class="operator">)</span> <span class="keyword">Тогда</span>
+        ЗаполнитьНаборСвойствПоПроекту<span class="operator">(</span>
+            Объект<span class="operator">,</span> ТипСсылки<span class="operator">,</span> НаборыСвойств<span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span></pre>
+
+<p class="Number81">7. 
+В справочнике <span class="Interface">НаборыДополнительныхРеквизитовИСведений</span>
+создать предопределенную группу с именем <span class="Interface">Справочник_&lt;ИмяОбъекта&gt;</span>,
+если объект – справочник: <span class="Interface">Документ_&lt;ИмяОбъекта&gt;</span>,
+если объект – документ, и т. д. Например, для справочника <span class="Interface">_ДемоНоменклатура</span> создана предопределенная группа <span class="Interface">Справочник__ДемоНоменклатура</span>. Наименование элемента при
+этом заполнять не требуется (оно будет заполнено автоматически на основании
+представления списка того объекта, к которому относится данный элемент).</p>
+
+<p class="Number81">8. 
+Добавить в обработчике обновления информационной
+базы вызов процедуры <span class="Interface">УстановитьПараметрыНабораСвойств</span>
+общего модуля <span class="Interface">УправлениеСвойствами</span> для заполнения
+настроек добавленного набора свойств.</p>
+
+<a name="issogl3_настройка_объектов_с_несколькими_объединяющимися_наборами_свойств"><h4>Настройка объектов с несколькими объединяющимися наборами свойств</h4></a>
+
+<p class="Paragraph0c">Наборы свойств при этом должны объединяться в зависимости
+от тех или иных реквизитов объекта. Например, в справочнике партнеры могут быть
+введены клиенты, поставщики, конкуренты и партнеров, с которыми связывают
+прочие отношения. При этом один и тот же партнер может одновременно быть и тем,
+и другим, и третьим, а его дополнительные свойства должны динамически
+выводиться в зависимости от того, каких он типов.  </p>
+
+<p class="Paragraph0c">В демонстрационной конфигурации этот вариант показан на
+справочнике <span class="Interface">_ДемоПартнеры</span>. В нем введены реквизиты
+<span class="Interface">Клиент</span>, <span class="Interface">Поставщик</span>, <span class="Interface">Конкурент</span>, <span class="Interface">ПрочиеОтношения</span>
+типа <span class="Interface">Булево</span>, которые и определяют применение
+одного или сразу нескольких наборов свойств.</p>
+
+<p class="Paragraph0c">При этом подходе справочник имеет один предопределенный
+набор свойств для всех экземпляров объектов, а также несколько предопределенных
+наборов свойств, которые могут применяться к экземплярам данного объекта по тем
+или иным условиям.</p>
+
+<p class="Paragraph0c">Последовательность настройки такого объекта:</p>
+
+<p class="Number81">1. 
+Принять решение по поводу наборов свойств
+объекта. Например, для справочника <span class="Interface">_ДемоПартнеры</span>
+демонстрационной конфигурации это четыре набора свойств: реквизиты <span class="Interface">Клиент</span>, <span class="Interface">Поставщик</span>, <span class="Interface">Конкурент</span>, <span class="Interface">ПрочиеОтношения</span>.</p>
+
+<p class="Number81">2. 
+Выявить реквизиты объекта, значения которых
+определяют применение того или иного набора свойств для конкретного экземпляра
+объекта. Например, для справочника <span class="Interface">_ДемоПартнеры</span>
+демонстрационной конфигурации это реквизиты <span class="Interface">Клиент</span>,
+<span class="Interface">Поставщик</span>, <span class="Interface">Конкурент</span>,
+<span class="Interface">ПрочиеОтношения</span>.</p>
+
+<p class="Number81">3. 
+В справочнике <span class="Interface">НаборыДополнительныхРеквизитовИСведений</span>
+создать предопределенную группу с именем <span class="Interface">Справочник_&lt;ИмяОбъекта&gt;</span>,
+если объект – справочник; <span class="Interface">Документ_&lt;ИмяОбъекта&gt;</span>,
+если объект – документ, и т. д. Например, <span class="Interface">Справочник_Контрагенты</span>.
+Наименование элемента при этом заполнять не требуется (оно будет заполнено автоматически
+на основании представления списка того объекта, к которому относится данный элемент).</p>
+
+<p class="Number81">4. 
+В этой предопределенной группе для каждого из
+наборов свойств создать предопределенный элемент с именами <span class="Interface">Справочник_&lt;ИмяОбъекта&gt;_&lt;ИмяНабораСвойств&gt;</span>,
+например <span class="Interface">Справочник_Партнеры_Клиенты</span>. Прим этом
+наименование элемента следует задавать краткое, например <span class="Interface">Клиенты</span>;
+оно не должно содержать имя и тип объекта метаданных.</p>
+
+<p class="Number81">5. 
+В этой предопределенной группе создать предопределенный
+элемент с именем <span class="Interface">Справочник_&lt;ИмяОбъекта&gt;_Общие</span>
+и наименованием <span class="Interface">Общие</span>, который будет содержать
+общие свойства для всех объектов.</p>
+
+<p class="Number81">6. 
+В общем модуле <span class="Interface">УправлениеСвойствамиПереопределяемый</span>
+в процедуре <span class="Interface">ЗаполнитьНаборыСвойствОбъекта</span> следует
+вписать условие для данного типа объектов. Для справочника <span class="Interface">_ДемоПартнеры</span> это код вида:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> ЗаполнитьНаборыСвойствОбъекта<span class="operator">(</span>Объект<span class="operator">,</span> ТипСсылки<span class="operator">,</span> НаборыСвойств<span class="operator">,</span> СтандартнаяОбработка<span class="operator">)</span> <span class="keyword">Экспорт</span>
+…
+    <span class="keyword">Если</span> ТипСсылки <span class="operator">=</span> Тип<span class="operator">(</span><span class="string">&quot;СправочникСсылка._ДемоПартнеры&quot;</span><span class="operator">)</span> <span class="keyword">Тогда</span>
+        ЗаполнитьНаборыСвойствПартнера<span class="operator">(</span>Объект<span class="operator">,</span> ТипСсылки<span class="operator">,</span> НаборыСвойств<span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+…
+<span class="keyword">КонецПроцедуры</span>
+<span class="keyword">Процедура</span> ЗаполнитьНаборыСвойствПартнера<span class="operator">(</span>Партнер<span class="operator">,</span> ТипСсылки<span class="operator">,</span> НаборыСвойств<span class="operator">)</span>
+    <span class="keyword">Если</span> ТипЗнч<span class="operator">(</span>Партнер<span class="operator">)</span> <span class="operator">=</span> ТипСсылки <span class="keyword">Тогда</span>
+        Объект <span class="operator">=</span> ОбщегоНазначения<span class="operator">.</span>ЗначенияРеквизитовОбъекта<span class="operator">(</span>
+            Партнер<span class="operator">,</span> <span class="string">&quot;Клиент, Конкурент, Поставщик, ПрочиеОтношения, ЭтоГруппа&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="keyword">Иначе</span>
+        Объект <span class="operator">=</span> Партнер<span class="operator">;</span>
+    <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+    <span class="keyword">Если</span> Объект<span class="operator">.</span>ЭтоГруппа <span class="operator">=</span> <span class="keyword">Ложь</span> <span class="keyword">Тогда</span>
+        Строка <span class="operator">=</span> НаборыСвойств<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+        Строка<span class="operator">.</span>Набор <span class="operator">=</span> Справочники<span class="operator">.</span>НаборыДополнительныхРеквизитовИСведений<span class="operator">.</span>Справочник_Партнеры_Общие<span class="operator">;</span>
+        Строка<span class="operator">.</span>Отображение <span class="operator">=</span> ОтображениеОбычнойГруппы<span class="operator">.</span>Линия<span class="operator">;</span>
+        Строка<span class="operator">.</span>ОтображатьЗаголовок <span class="operator">=</span> <span class="keyword">Истина</span><span class="operator">;</span>
+        Строка<span class="operator">.</span>Заголовок <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Для всех партнеров'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+        <span class="keyword">Если</span> Объект<span class="operator">.</span>Клиент <span class="keyword">Тогда</span>
+            Строка <span class="operator">=</span> НаборыСвойств<span class="operator">.</span>Добавить<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+            Строка<span class="operator">.</span>Набор <span class="operator">=</span> Справочники<span class="operator">.</span>НаборыДополнительныхРеквизитовИСведений<span class="operator">.</span>Справочник_Партнеры_Клиенты<span class="operator">;</span>
+            Строка<span class="operator">.</span>Отображение <span class="operator">=</span> ОтображениеОбычнойГруппы<span class="operator">.</span>Линия<span class="operator">;</span>
+            Строка<span class="operator">.</span>ОтображатьЗаголовок <span class="operator">=</span> <span class="keyword">Истина</span><span class="operator">;</span>
+            Строка<span class="operator">.</span>Заголовок <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Для клиентов'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+        <span class="keyword">КонецЕсли</span><span class="operator">;</span>
+…
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Bullet0">В приведенном примере проверяются значения реквизитов
+справочника <span class="Interface">Клиент</span>, <span class="Interface">Поставщик</span>,
+<span class="Interface">Конкурент</span>, <span class="Interface">ПрочиеОтношения</span>
+и наборы свойств добавляются в таблицу <span class="Interface">НаборыСвойств</span>.
+В поле <span class="Interface">Набор</span> устанавливается ссылка на набор
+свойств, а в остальные поля могут быть установлены значения оформления набора в
+форме.</p>
+
+<p class="Number81">7. 
+В форме объекта необходимо реализовать
+обработчики <span class="Interface">ПриИзменении</span> для тех реквизитов,
+которые определят состав наборов свойств, применяемых для данного экземпляра
+объекта. Например, для формы справочника <span class="Interface">_ДемоПартнеры</span>
+это обработчики вида:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> КлиентПриИзменении<span class="operator">(</span>Элемент<span class="operator">)</span>
+    <span class="comment">// СтандартныеПодсистемы.Свойства</span>
+    ОбновитьЭлементыДополнительныхРеквизитов<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">// Конец СтандартныеПодсистемы.Свойства</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<a name="issogl2_настройка_дополнительных_характеристик_объектов_метаданных"><h3>Настройка дополнительных характеристик объектов метаданных</h3></a>
+
+<p class="Paragraph0c">Для каждого объекта конфигурации со свойствами необходимо
+открыть и заполнить диалог редактирования дополнительных характеристик.</p>
+
+<p class="Paragraph0c">Если для объекта настроены дополнительные реквизиты:</p>
+
+<p class="Objectname">Таблица 3.102.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Поле ключа</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Поле отбора видов</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Значение отбора видов</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Виды характеристик</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Справочник.НаборыДополнительныхРеквизитовИСведений.ТабличнаяЧасть.ДополнительныеРеквизиты</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Свойство</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Ссылка</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">&lt;Предопределенный элемент
+  справочника НаборыДополнительныхРеквизитовИСведений&gt;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Значения характеристик</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Справочник.&lt;Имя объекта со
+  свойствами&gt;.ТабличнаяЧасть.ДополнительныеРеквизиты</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Ссылка</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Свойство</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Значение</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Если для объекта настроены дополнительные сведения:</p>
+
+<p class="Objectname">Таблица 3.103.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Поле ключа</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Поле отбора видов</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Значение отбора видов</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Виды характеристик</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Справочник.НаборыДополнительныхРеквизитовИСведений.ТабличнаяЧасть.ДополнительныеСведения</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Свойство</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Ссылка</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">&lt;Предопределенный элемент
+  справочника НаборыДополнительныхРеквизитовИСведений&gt;</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class="Objectname">Таблица 3.104.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">Значения характеристик</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Поле объекта</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Поле вида</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Поле значения</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+  <p class="TextinTable81"><span class="Interface">РегистрСведений.ДополнительныеСведения</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">Объект</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Свойство</p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Значение</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">где <span class="Interface">&lt;Предопределенный элемент
+(группа) справочника НаборыДополнительныхРеквизитовИСведений&gt;</span> –
+предопределенный элемент (группа), созданный на предыдущем этапе.</p>
+
+<a name="issogl2_отключение_неиспользуемых_наборов_свойств"><h3>Отключение неиспользуемых наборов свойств</h3></a>
+
+<p class="Paragraph0c">В случае если объект, использующий набор свойств, отключен
+по функциональной опции, имеется возможность отключить неиспользуемый набор
+свойств. Для этого можно воспользоваться свойством <span class="Interface">Используется</span>
+набора свойств. При установке значения свойства <span class="Interface">Используется</span>
+в значение <span class="Interface">Ложь</span> набор свойств перестает
+отображаться в форме списка, также свойства перестают отображаться в форме
+объекта-владельца. Для отключения неиспользуемого набора свойств необходимо:</p>
+
+<p class="MsoListBullet">&#9679; 
+Написать обработчик обновления, отключающий
+неиспользуемые наборы свойств при переходе на новую версию. Пример кода
+обработчика:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    ПараметрыНабора <span class="operator">=</span> УправлениеСвойствами<span class="operator">.</span>СтруктураПараметровНабораСвойств<span class="operator">(</span><span class="operator">)</span><span class="operator">;</span>
+    ПараметрыНабора<span class="operator">.</span>Используется <span class="operator">=</span> ПолучитьФункциональнуюОпцию<span class="operator">(</span><span class="string">&quot;ИспользоватьВнешнихПользователей&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    УправлениеСвойствами<span class="operator">.</span>УстановитьПараметрыНабораСвойств<span class="operator">(</span><span class="string">&quot;Справочник_ВнешниеПользователи&quot;</span><span class="operator">,</span> ПараметрыНабора<span class="operator">)</span><span class="operator">;</span></pre>
+
+<p class="MsoListBullet">&#9679; 
+Добавить аналогичный код в событие при изменении
+значения функциональной опции. См. пример в подписке _<span class="Interface">ДемоОбновитьИспользованиеВнешнихПользователей</span>.</p>
+
+<a name="issogl2_размещение_в_командном_интерфейсе"><h3>Размещение в командном интерфейсе</h3></a>
+
+<p class="Paragraph0c">Для использования подсистемы необходимо разместить в
+командном интерфейсе объект метаданных:</p>
+
+<p class="MsoListBullet">&#9679; 
+Справочник <span class="Interface">НаборыДополнительныхРеквизитовИСведений</span>
+– для работы по просмотру и редактированию состава свойств (редактором состава
+свойств и администратором).</p>
+
+<p class="Paragraph0c">В случае если в конфигурации не используется подсистема
+«Настройки программы», в рабочем месте администратора программы необходимо
+разместить константы:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ИспользоватьДополнительныеРеквизитыИСведения</span>
+– для включения и выключения подсистемы;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ИспользоватьОбщиеДополнительныеЗначения</span>
+– для включения и выключения команды добавления свойств с общим списком значений
+(по образцу);</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ИспользоватьОбщиеДополнительныеРеквизитыИСведения</span>
+– для включения и выключения команды добавления общих свойств.</p>
+
+<p class="Paragraph0c">См. пример в форме <span class="Interface">ОбщиеНастройки</span>
+обработки <span class="Interface">ПанельАдминистрированияБСП</span>.</p>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Для настройки прав доступа пользователей к данным
+подсистемы «Свойства» следует использовать роли:</p>
+
+<p class="Objectname">Таблица 3.105.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">БазовыеПрава</span></p>
+  <p class="TextinTable81">Чтение наборов свойств и дополнительных свойств.
+  Просмотр значений свойств объектов</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ЧтениеДополнительныхСведений</span></p>
+  <p class="TextinTable81">Чтение дополнительных сведений.</p>
+  <p class="TextinTable81">При совместном использовании с подсистемой «Управление
+  доступом» имеется возможность ограничивать доступ пользователей к отдельным
+  дополнительным сведениям. См. раздел «<A href="3.59. _25EE_25F1_25EE_25E1_25FB_25E5 _25F1_25EB_25F3_25F7_25E0_25E8 _25E2_25ED_25E5_25E4_25F0_25E5_20EA087B14A#_особые_случаи_внедрения">Особые случаи
+  внедрения подсистем</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">3. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ИзменениеДополнительныхСведений</span></p>
+  <p class="TextinTable81">Добавление и изменение дополнительных сведений.</p>
+  <p class="TextinTable81">При совместном использовании с подсистемой «Управление
+  доступом» имеется возможность ограничивать доступ пользователей к отдельным
+  дополнительным сведениям. См. раздел «<A href="3.59. _25EE_25F1_25EE_25E1_25FB_25E5 _25F1_25EB_25F3_25F7_25E0_25E8 _25E2_25ED_25E5_25E4_25F0_25E5_20EA087B14A#_особые_случаи_внедрения">Особые случаи
+  внедрения подсистемы</a>»</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">4. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ДобавлениеИзменениеДополнительныхРеквизитовИСведений</span></p>
+  <p class="TextinTable81">Добавление и изменение свойств, наборов свойств,
+  значений свойств объектов</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">5. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПолныеПрава</span> (из
+  подсистемы «Базовая функциональность»)</p>
+  <p class="TextinTable81">Включение и отключение использования свойств. Удаление
+  помеченных на удаление объектов подсистемы</p>
+  </td>
+ </tr>
+</table>
+
+<p class="Paragraph0c">Пример настройки прав доступа пользователей:</p>
+
+<p class="Objectname">Таблица 3.106.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Группа пользователей и ее
+   функции</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Состав ролей</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Ответственный за настройку состава дополнительных
+  свойств</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">БазовыеПрава</span> (из
+  подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ДобавлениеИзменениеДополнительныхРеквизитовИСведений</span>,</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЗапускТонкогоКлиента</span>
+  (из подсистемы «Базовая функциональность»)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">2. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Просмотр значений дополнительных сведений объектов
+  информационной базы</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">БазовыеПрава</span> (из
+  подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЧтениеДополнительныхСведений</span>,</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЗапускТонкогоКлиента</span>
+  (из подсистемы «Базовая функциональность»)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">3. 
+   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81">Редактирование значений дополнительных сведений
+  объектов информационной базы</p>
+  </td>
+  <td valign="top">
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">БазовыеПрава</span> (из
+  подсистемы «Базовая функциональность»),</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ИзменениеДополнительныхСведений</span>,</p>
+  <p class="BulletTab">&#9679; 
+  <span class="Interface">ЗапускТонкогоКлиента</span>
+  (из подсистемы «Базовая функциональность»)</p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl1_особые_случаи_внедрения_подсистемы"><h2>Особые случаи внедрения подсистемы</h2></a>
+
+<p class="MsoListBullet">&#9679; 
+<A href="3.59. _25EE_25F1_25EE_25E1_25FB_25E5 _25F1_25EB_25F3_25F7_25E0_25E8 _25E2_25ED_25E5_25E4_25F0_25E5_20EA087B14A#_внедрение_подсистемы_«свойства»">Внедрение подсистемы «Свойства» без
+подсистемы «Взаимодействия»</a>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<A href="3.59. _25EE_25F1_25EE_25E1_25FB_25E5 _25F1_25EB_25F3_25F7_25E0_25E8 _25E2_25ED_25E5_25E4_25F0_25E5_20EA087B14A#_внедрение_подсистемы_«свойства»_1">Внедрение подсистемы «Свойства» без
+подсистемы «Работа с файлами»</a>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<A href="3.59. _25EE_25F1_25EE_25E1_25FB_25E5 _25F1_25EB_25F3_25F7_25E0_25E8 _25E2_25ED_25E5_25E4_25F0_25E5_20EA087B14A#_внедрение_подсистем_«свойства»_1">Внедрение подсистем «Свойства» и «Управление
+доступом»</a>.</p>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<p class="Paragraph0c">При создании новых прикладных объектов метаданных нужно
+повторно выполнять соответствующую часть процедуры настройки, описанной выше.</p>
+
+<a name="issogl2_переименование_предопределенных_элементов_справочника_наборы_дополнительных_реквизитов_и_сведений"><h3>Переименование предопределенных элементов справочника «Наборы дополнительных реквизитов и сведений»</h3></a>
+
+<p class="Paragraph0c">При изменении наименования предопределенного элемента
+справочника <span class="Interface">НаборыДополнительныхРеквизитовИСведений</span>
+требуется добавить оперативный обработчик обновления, в котором вызвать
+процедуру <span class="Interface">ОбновитьНаименованияНаборовИСвойств</span>
+модуля <span class="Interface">УправлениеСвойствами</span>.</p>
+
+<p class="Paragraph0c">При изменении представления объекта метаданных, который
+соответствует предопределенному элементу, обработчик обновления добавлять не
+требуется.</p>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Для настройки обмена данными следует руководствоваться
+общими правилами.</p>
+
+<p class="Paragraph0c">В планы обмена распределенной информационной базы (РИБ)
+рекомендуется включать все объекты метаданных подсистемы.</p>
+
+<p class="Paragraph0c">В планах обмена распределенной информационной базы (РИБ)
+рекомендуется отключать регистрацию изменений для следующих объектов метаданных
+подсистемы (см. также раздел «<A href="3.28. _25EE_25E1_25EC_25E5_25ED _25E4_25E0_25ED_25ED_25FB_25EC_25E8.htm@_=1504708101#_особенности_создания_начального">Особенности создания начального образа
+подчиненного узла распределенной ИБ</a>»):</p>
+
+<p class="MsoListBullet">&#9679; 
+константа <span class="Interface">ПараметрыДополнительныхРеквизитовИСведений</span>.</p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

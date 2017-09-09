@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.5. &#1041;&#1072;&#1085;&#1082;&#1080;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.5. _25E1_25E0_25ED_25EA_25E8.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<h1>3.5. Банки</h1>
+
+<p class="Paragraph0c">Подсистема «Банки» предназначена для загрузки, хранения и
+предоставления другим подсистемам конфигурации классификатора банков. Загрузка
+классификатора может производиться как автоматически (при помощи регламентного
+задания с сайта 1С), так и вручную (с сайта 1С, с диска ИТС). </p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Paragraph0c">Для использования подсистемы в конфигурации необходимо
+разместить в пользовательском интерфейсе ответственного за НСИ ссылку на справочник
+<span class="Interface">КлассификаторБанковРФ</span>.</p>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Для настройки прав доступа пользователей к данным
+подсистемы «Банки» следует использовать роли, приведенные ниже.</p>
+
+<p class="Objectname">Таблица 3.11.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">№</span></p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">1.   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">БазовыеПрава </span>(из
+  подсистемы «Базовая функциональность»)</p>
+  <p class="TextinTable81">Чтение записей классификатора банков РФ</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">2.   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ДобавлениеИзменениеБанков</span></p>
+  <p class="TextinTable81">Загрузка классификатора банков РФ</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="TextinTable81">3.   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПолныеПрава</span>, <span class="Interface">АдминистрированиеСистемы </span>(из подсистемы «Базовая
+  функциональность»)</p>
+  <p class="TextinTable81">Редактирование, удаление помеченных на удаление
+  записей классификатора банков РФ</p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<p class="Paragraph0c">Данные классификатора банков РФ хранятся в справочнике <span class="Interface">КлассификаторБанковРФ</span>. Данные о банках, измененные
+пользователем вручную, хранятся в справочниках банковских счетов. См.
+справочник <span class="Interface">_ДемоБанковскиеСчета</span> в демонстрационной
+конфигурации.</p>
+
+<p class="Paragraph0c">Для обращения к данным банковского счета при формировании
+печатной формы нужно применять следующий подход, проиллюстрированный на примере
+документа <span class="Interface">_ДемоСчетНаОплатуПокупателю</span>. Фрагмент
+текста запроса для выбора реквизитов банка:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">ВЫБОР</span>
+        <span class="keyword">КОГДА</span> БанковскийСчетКонтрагента<span class="operator">.</span>РучноеИзменениеРеквизитовБанка
+            <span class="keyword">ТОГДА</span> БанковскийСчетКонтрагента<span class="operator">.</span>БИКБанка
+        <span class="keyword">ИНАЧЕ</span> КлассификаторБанковРФ<span class="operator">.</span>Код
+    <span class="keyword">КОНЕЦ</span> <span class="keyword">КАК</span> БИКБанк<span class="operator">,</span>
+    <span class="keyword">ВЫБОР</span>
+        <span class="keyword">КОГДА</span> БанковскийСчетКонтрагента<span class="operator">.</span>РучноеИзменениеРеквизитовБанка
+            <span class="keyword">ТОГДА</span> БанковскийСчетКонтрагента<span class="operator">.</span>НаименованиеБанка
+        <span class="keyword">ИНАЧЕ</span> КлассификаторБанковРФ<span class="operator">.</span>Наименование
+    <span class="keyword">КОНЕЦ</span> <span class="keyword">КАК</span> НаименованиеБанка<span class="operator">,</span>
+    <span class="keyword">ВЫБОР</span>
+        <span class="keyword">КОГДА</span> БанковскийСчетКонтрагента<span class="operator">.</span>РучноеИзменениеРеквизитовБанка
+            <span class="keyword">ТОГДА</span> БанковскийСчетКонтрагента<span class="operator">.</span>КоррСчетБанка
+        <span class="keyword">ИНАЧЕ</span> КлассификаторБанковРФ<span class="operator">.</span>КоррСчет
+    <span class="keyword">КОНЕЦ</span> <span class="keyword">КАК</span> КоррСчетБанка<span class="operator">,</span>
+    <span class="keyword">ВЫБОР</span>
+        <span class="keyword">КОГДА</span> БанковскийСчетКонтрагента<span class="operator">.</span>РучноеИзменениеРеквизитовБанка
+            <span class="keyword">ТОГДА</span> БанковскийСчетКонтрагента<span class="operator">.</span>ГородБанка
+        <span class="keyword">ИНАЧЕ</span> КлассификаторБанковРФ<span class="operator">.</span>Город
+    <span class="keyword">КОНЕЦ</span> <span class="keyword">КАК</span> ГородБанка<span class="operator">,</span>
+    <span class="keyword">ВЫБОР</span>
+        <span class="keyword">КОГДА</span> БанковскийСчетКонтрагента<span class="operator">.</span>РучноеИзменениеРеквизитовБанкаДляРасчетов
+            <span class="keyword">ТОГДА</span> БанковскийСчетКонтрагента<span class="operator">.</span>БИКБанкаДляРасчетов
+        <span class="keyword">ИНАЧЕ</span> КлассификаторБанковКорреспондентовРФ<span class="operator">.</span>Код
+    <span class="keyword">КОНЕЦ</span> <span class="keyword">КАК</span> БИКБанкаДляРасчетов<span class="operator">,</span>
+    <span class="keyword">ВЫБОР</span>
+        <span class="keyword">КОГДА</span> БанковскийСчетКонтрагента<span class="operator">.</span>РучноеИзменениеРеквизитовБанкаДляРасчетов
+            <span class="keyword">ТОГДА</span> БанковскийСчетКонтрагента<span class="operator">.</span>НаименованиеБанкаДляРасчетов
+        <span class="keyword">ИНАЧЕ</span> КлассификаторБанковКорреспондентовРФ<span class="operator">.</span>Наименование
+    <span class="keyword">КОНЕЦ</span> <span class="keyword">КАК</span> НаименованиеБанкаДляРасчетов<span class="operator">,</span>
+    <span class="keyword">ВЫБОР</span>
+        <span class="keyword">КОГДА</span> БанковскийСчетКонтрагента<span class="operator">.</span>РучноеИзменениеРеквизитовБанкаДляРасчетов
+            <span class="keyword">ТОГДА</span> БанковскийСчетКонтрагента<span class="operator">.</span>КоррСчетБанкаДляРасчетов
+        <span class="keyword">ИНАЧЕ</span> КлассификаторБанковКорреспондентовРФ<span class="operator">.</span>КоррСчет
+    <span class="keyword">КОНЕЦ</span> <span class="keyword">КАК</span> КоррСчетБанкаДляРасчетов<span class="operator">,</span>
+    <span class="keyword">ВЫБОР</span>
+        <span class="keyword">КОГДА</span> БанковскийСчетКонтрагента<span class="operator">.</span>РучноеИзменениеРеквизитовБанкаДляРасчетов
+            <span class="keyword">ТОГДА</span> БанковскийСчетКонтрагента<span class="operator">.</span>ГородБанкаДляРасчетов
+        <span class="keyword">ИНАЧЕ</span> КлассификаторБанковКорреспондентовРФ<span class="operator">.</span>Город
+    <span class="keyword">КОНЕЦ</span> <span class="keyword">КАК</span> ГородБанкаДляРасчетов<span class="operator">,</span>
+    СчетНаОплатуПокупателю<span class="operator">.</span>Контрагент<span class="operator">.</span>НаименованиеПолное <span class="keyword">КАК</span> ПолучательНаименованиеПолное<span class="operator">,</span>
+    БанковскийСчетКонтрагента<span class="operator">.</span>НомерСчета <span class="keyword">КАК</span> ПолучательНомерСчета
+<span class="keyword">ИЗ</span>
+    Документ<span class="operator">.</span>_ДемоСчетНаОплатуПокупателю <span class="keyword">КАК</span> СчетНаОплатуПокупателю
+        ЛЕВОЕ СОЕДИНЕНИЕ Справочник<span class="operator">.</span>КлассификаторБанковРФ <span class="keyword">КАК</span> КлассификаторБанковРФ
+        <span class="keyword">ПО</span> СчетНаОплатуПокупателю<span class="operator">.</span>БанковскийСчет<span class="operator">.</span>Банк <span class="operator">=</span> КлассификаторБанковРФ<span class="operator">.</span>Ссылка
+        ЛЕВОЕ СОЕДИНЕНИЕ Справочник<span class="operator">.</span>КлассификаторБанковРФ <span class="keyword">КАК</span> КлассификаторБанковКорреспондентовРФ
+        <span class="keyword">ПО</span> СчетНаОплатуПокупателю<span class="operator">.</span>БанковскийСчет<span class="operator">.</span>БанкДляРасчетов <span class="operator">=</span> КлассификаторБанковКорреспондентовРФ<span class="operator">.</span>Ссылка
+        ЛЕВОЕ СОЕДИНЕНИЕ Справочник<span class="operator">.</span>_ДемоБанковскиеСчета <span class="keyword">КАК</span> БанковскийСчетКонтрагента
+        <span class="keyword">ПО</span> СчетНаОплатуПокупателю<span class="operator">.</span>БанковскийСчет <span class="operator">=</span> БанковскийСчетКонтрагента</pre>
+
+<p class="Paragraph0c">Пример кода по выводу реквизитов банка в табличный
+документ:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">ДанныеПечати <span class="operator">=</span> <span class="keyword">Новый</span> Структура<span class="operator">;</span>
+<span class="comment">//...</span>
+<span class="keyword">Если</span> ПустаяСтрока<span class="operator">(</span>Шапка<span class="operator">.</span>БИКБанкаДляРасчетов<span class="operator">)</span> <span class="keyword">Тогда</span>
+    ДанныеПечати<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;БанкПолучателяПредставление&quot;</span><span class="operator">,</span> СокрЛП<span class="operator">(</span>Шапка<span class="operator">.</span>НаименованиеБанка<span class="operator">)</span> <span class="operator">+</span> <span class="string">&quot; &quot;</span> <span class="operator">+</span> СокрЛП<span class="operator">(</span>Шапка<span class="operator">.</span>ГородБанка<span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+    ДанныеПечати<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;ПредставлениеПоставщика&quot;</span><span class="operator">,</span> СокрЛП<span class="operator">(</span>Шапка<span class="operator">.</span>ПолучательНаименованиеПолное<span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+    ДанныеПечати<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;БИКБанкаПолучателя&quot;</span><span class="operator">,</span> СокрЛП<span class="operator">(</span>Шапка<span class="operator">.</span>БИКБанк<span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+    ДанныеПечати<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;СчетБанкаПолучателяПредставление&quot;</span><span class="operator">,</span> СокрЛП<span class="operator">(</span>Шапка<span class="operator">.</span>КоррСчетБанка<span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+    ДанныеПечати<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;СчетПолучателяПредставление&quot;</span><span class="operator">,</span> СокрЛП<span class="operator">(</span>Шапка<span class="operator">.</span>ПолучательНомерСчета<span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">Иначе</span>
+    ДанныеПечати<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;БанкПолучателяПредставление&quot;</span><span class="operator">,</span> СокрЛП<span class="operator">(</span>Шапка<span class="operator">.</span>НаименованиеБанкаДляРасчетов<span class="operator">)</span> <span class="operator">+</span> <span class="string">&quot; &quot;</span> <span class="operator">+</span> СокрЛП<span class="operator">(</span>Шапка<span class="operator">.</span>ГородБанкаДляРасчетов<span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+    ДанныеПечати<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;ПредставлениеПоставщика&quot;</span><span class="operator">,</span> СокрЛП<span class="operator">(</span>Шапка<span class="operator">.</span>ПолучательНаименованиеПолное<span class="operator">)</span> <span class="operator">+</span> <span class="string">&quot; р/с &quot;</span> <span class="operator">+</span> СокрЛП<span class="operator">(</span>Шапка<span class="operator">.</span>ПолучательНомерСчета<span class="operator">)</span> <span class="operator">+</span> <span class="string">&quot; в &quot;</span> <span class="operator">+</span> СокрЛП<span class="operator">(</span>Шапка<span class="operator">.</span>НаименованиеБанка<span class="operator">)</span><span class="operator">+</span> <span class="string">&quot; &quot;</span> <span class="operator">+</span> СокрЛП<span class="operator">(</span>Шапка<span class="operator">.</span>ГородБанка<span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+    ДанныеПечати<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;БИКБанкаПолучателя&quot;</span><span class="operator">,</span> СокрЛП<span class="operator">(</span>Шапка<span class="operator">.</span>БИКБанкаДляРасчетов<span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+    ДанныеПечати<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;СчетБанкаПолучателяПредставление&quot;</span><span class="operator">,</span> СокрЛП<span class="operator">(</span>Шапка<span class="operator">.</span>КоррСчетБанкаДляРасчетов<span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+    ДанныеПечати<span class="operator">.</span>Вставить<span class="operator">(</span><span class="string">&quot;СчетПолучателяПредставление&quot;</span><span class="operator">,</span> СокрЛП<span class="operator">(</span>Шапка<span class="operator">.</span>КоррСчетБанка<span class="operator">)</span><span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецЕсли</span><span class="operator">;</span>
+<span class="comment">//...</span>
+<span class="keyword">Для</span> <span class="keyword">Каждого</span> ИмяОбласти <span class="keyword">Из</span> МассивОбластейМакета <span class="keyword">Цикл</span>
+    ОбластьМакета <span class="operator">=</span> Макет<span class="operator">.</span>ПолучитьОбласть<span class="operator">(</span>ИмяОбласти<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">//...</span>
+        ЗаполнитьЗначенияСвойств<span class="operator">(</span>ОбластьМакета<span class="operator">.</span>Параметры<span class="operator">,</span> ДанныеПечати<span class="operator">)</span><span class="operator">;</span>
+        ТабличныйДокумент<span class="operator">.</span>Вывести<span class="operator">(</span>ОбластьМакета<span class="operator">)</span><span class="operator">;</span>
+    <span class="comment">//...</span>
+<span class="keyword">КонецЦикла</span><span class="operator">;</span></pre>
+
+<p class="Paragraph0c">Пример реализации печатной формы см. в демонстрационной
+конфигурации в документе <span class="Interface">_ДемоСчетНаОплатуПокупателю</span>.</p>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c">Все объекты метаданных подсистемы, содержащие данные,
+кроме константы <span class="Interface">ИспользоватьАльтернативныйСерверДляЗагрузкиКлассификатораБанков</span>
+рекомендуется включать в планы обмена распределенной ИБ (РИБ). </p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>

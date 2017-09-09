@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>&#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1080;&#1090;&#1100;&#1050;&#1086;&#1084;&#1084;&#1077;&#1085;&#1090;&#1072;&#1088;&#1080;&#1081;&#1050;&#1086;&#1085;&#1090;&#1072;&#1082;&#1090;&#1085;&#1086;&#1081;&#1048;&#1085;&#1092;&#1086;&#1088;&#1084;&#1072;&#1094;&#1080;&#1080;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="_25F3_25F1_25F2_25E0_25ED_25EE_25E2_25E8_25F2_25FC_25EA_25EE_25EC_25EC_25E5_25ED_25F2_25E0_25F0_25E80694FAADFB" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_управлениеконтактнойинформациейустановитькомментарийконтактнойинформации"></a><h1>УстановитьКомментарийКонтактнойИнформации</h1>
+
+<pre> Получает комментарий для контактной информации.</pre>
+<p class="Paragraph0c"><span class="Bold">Синтаксис</span></p>
+<pre> Процедура УстановитьКомментарийКонтактнойИнформации(XMLСтрока, Знач Комментарий) Экспорт</pre>
+<p class="Paragraph0c"><span class="Bold">Параметры</span></p>
+<pre>   XMLСтрока   - ОбъектXDTO, Строка - объект или XML контактной информации. 
+   Комментарий - Строка - новое значение комментария.</pre>
+<p class="Paragraph0c"><span class="Bold">Пример вызова</span></p>
+<pre> УправлениеКонтактнойИнформацией.УстановитьКомментарийКонтактнойИнформации(XMLСтрока, Комментарий)</pre>
+<p class="Paragraph0c"><span class="Bold">Доступность</span></p>
+<pre> Сервер, Толстый клиент, Внешнее соединение</pre>
+	</body>
+</html>

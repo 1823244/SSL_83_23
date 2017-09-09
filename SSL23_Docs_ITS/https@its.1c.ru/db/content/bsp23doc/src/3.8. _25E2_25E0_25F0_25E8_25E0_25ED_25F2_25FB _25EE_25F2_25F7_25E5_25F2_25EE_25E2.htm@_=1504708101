@@ -1,0 +1,832 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+		<title>3.8. &#1042;&#1072;&#1088;&#1080;&#1072;&#1085;&#1090;&#1099; &#1086;&#1090;&#1095;&#1077;&#1090;&#1086;&#1074;</title>
+		<LINK REL="stylesheet" href="style.css@_=1504708101">
+		<SCRIPT src="script.js@_=1504708101" TYPE="text/javascript"></script>		<!--[if !IE]>--><SCRIPT src="zeroclipboard.js@_=1504708101" TYPE="text/javascript"></script><!--<![endif]-->
+	<meta name="robots" content="noarchive">
+<meta name="googlebot" content="noarchive">
+<link href="3.8. _25E2_25E0_25F0_25E8_25E0_25ED_25F2_25FB _25EE_25F2_25F7_25E5_25F2_25EE_25E2.htm" rel="canonical">
+<link href="../../../../static/its.content.css@_=1490872753" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="../../../../static/its.content.js@_=1489758009"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="../../../../static/html5shiv.js@_=1500896273"></script><![endif]-->
+
+</head>
+	<body class="bspdoc">
+<a name="_варианты_отчетов"></a><h1>3.8. Варианты отчетов</h1>
+
+<p class="Paragraph0c">Подсистема «Варианты отчетов» отображает все отчеты
+раздела на панели отчетов, предоставляет совместный доступ к пользовательским
+вариантам отчетов и предоставляет универсальную форму для отчетов конфигурации.</p>
+
+<p class="Paragraph0c">Варианты отчетов, созданные разработчиком (через
+конфигуратор), называются предопределенными, а сохраненные пользователем (в
+режиме <span class="Interface">1С:Предприятие</span>) – пользовательскими.</p>
+
+<p class="Paragraph0c">Предопределенные варианты отчетов могут быть контекстными
+или неконтекстными: </p>
+
+<p class="MsoListBullet">&#9679; 
+контекстные варианты отчетов могут
+использоваться только в контексте работы с каким-либо объектом программы (например,
+отчет по сотруднику, подразделению и т. п.). Как правило, такие варианты
+отчетов открываются из формы объекта;</p>
+
+<p class="MsoListBullet">&#9679; 
+неконтекстные варианты отчетов могут одинаково
+открываться из любого места программы (например, из панели отчетов), не требуя
+передачи контекста. Как правило, такие варианты отчетов открываются из
+командного интерфейса.</p>
+
+<p class="Paragraph0c">Начальные настройки предопределенных вариантов отчетов
+зачитываются из метаданных, и их можно изменить на этапе внедрения подсистемы.
+При размещении отчетов в подсистемах конфигурации рекомендуется придерживаться рекомендаций
+стандарта «<a href="../../../v8std/content/2149184223/hdoc" target="_top">Группировка команд</a>» (на сайте ИТС).</p>
+
+<p class="Paragraph0c">Размещение варианта отчета на панели отчетов можно
+изменить при сохранении или из его карточки. Настройки размещения выводятся в
+виде дерева подсистем с флажком использования и важностью.</p>
+
+<p class="Paragraph0c">На панели отчетов раздела каждый пользователь может
+изменить настройки видимости и быстрого доступа к вариантам отчетов под себя,
+переключившись в режим настройки.</p>
+
+<p class="Paragraph0c">Также на панели отчетов предусмотрен поиск по свойствам
+отчета: наименованию, описанию, наименованиям подсистем (разделов и групп
+командного интерфейса), полей, отборов и пользовательских настроек.</p>
+
+<a name="issogl1_настройка"><h2>Настройка</h2></a>
+
+<p class="Paragraph0c">После завершения переноса объектов подсистемы необходимо
+выполнить ее настройку:</p>
+
+<p class="Number81">1. 
+Подключить хранилище вариантов отчетов.</p>
+
+<p class="Number81">2. 
+Подключить форму отчета.</p>
+
+<p class="Number81">3. 
+Подключить подсистему к разделам командного интерфейса.</p>
+
+<p class="Number81">4. 
+Изменить настройки вариантов отчетов.</p>
+
+<p class="Number81">5. 
+Подключить обработчики полного обновления.</p>
+
+<a name="issogl2_подключить_хранилище_вариантов_отчетов"><h3>Подключить хранилище вариантов отчетов</h3></a>
+
+<p class="Paragraph0c">Необходимо принять решение по поводу варианта внедрения
+хранилища подсистемы:</p>
+
+<p class="Number81">1. 
+Если конфигурация ранее не выпускалась (т. е.
+пользователи не сохраняли в своих базах никаких вариантов отчетов), то следует выбрать
+один из двух способов внедрения: </p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">Полный</span>, если к подсистеме необходимо подключить все
+отчеты конфигурации, а также все внешние (дополнительные) отчеты. Для этого
+необходимо установить хранилище настроек <span class="Interface">ХранилищеВариантовОтчетов</span>
+в свойстве конфигурации «Хранилище вариантов отчетов»;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">Частичный</span>, если необходимо подключить подсистему
+выборочно только для некоторой части отчетов. Для этого необходимо установить
+хранилище настроек <span class="Interface">ХранилищеВариантовОтчетов</span> в
+свойстве <span class="Interface">Хранилище вариантов отчетов</span> каждого
+отчета, который нужно подключить к хранилищу подсистемы.</p>
+
+<p class="Number81">2. 
+Если конфигурация уже выпускалась, т. е.
+существует вероятность того, что пользователи сохраняли в своих базах варианты
+отчетов, то следует использовать только <span class="Interface">Частичный способ
+внедрения</span>. В этом случае ранее сохраненные пользователями варианты
+отчетов будут перенесены в хранилище подсистемы автоматически. </p>
+
+<p class="Bullet0">В противном случае, если в такой ситуации был выбран сценарий
+внедрения <span class="Interface">Полный</span>, подсистема не сможет
+автоматически перенести ранее сохраненные пользователями варианты отчетов. В
+этом случае необходимо:</p>
+
+<p class="MsoListBullet2">&#9679;  включить
+в сопроводительную документацию к конфигурации инструкцию (или донести эту
+информацию другими способами) для администратора (пользователя, который
+выполняет обновление конфигурации), что он должен запустить обработку перехода
+перед обновлением; </p>
+
+<p class="MsoListBullet2">&#9679;  разработать
+и включить в состав дистрибутива обработку перехода. Пример подобной обработки
+входит в состав демонстрационной конфигурации – <span class="Interface">ИнструментыРазработчикаВариантыОтчетовПереносВариантовОтчетов.epf</span>.</p>
+
+<a name="_подключить_форму_отчета"></a><a name="issogl2_подключить_форму_отчета"><h3>Подключить форму отчета</h3></a>
+
+<p class="Paragraph0c">Необходимо принять решение по поводу варианта внедрения
+формы отчета:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Полный</span>, если к
+подсистеме необходимо подключить все отчеты без основной формы. Для этого
+необходимо указать в свойствах конфигурации общие формы, поставляемые
+подсистемой: </p>
+
+<p class="MsoListBullet2">&#9679;  основная
+форма отчета – <span class="Interface">ФормаОтчета</span>; </p>
+
+<p class="MsoListBullet2">&#9679;  основная
+форма настроек отчета – <span class="Interface">ФормаНастроекОтчета</span>;</p>
+
+<p class="MsoListBullet2">&#9679;  основная
+форма варианта отчета – <span class="Interface">ФормаВариантаОтчета</span>;</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Частичный</span>, если
+необходимо подключить подсистему выборочно только для части отчетов без
+основной формы. Для этого необходимо указать в свойствах каждого отчета общие
+формы, поставляемые подсистемой: </p>
+
+<p class="MsoListBullet2">&#9679;  основная
+форма – <span class="Interface">ФормаОтчета</span>; </p>
+
+<p class="MsoListBullet2">&#9679;  основная
+форма настроек – <span class="Interface">ФормаНастроекОтчета</span>;</p>
+
+<p class="MsoListBullet2">&#9679;  основная
+форма варианта – <span class="Interface">ФормаВариантаОтчета</span>.</p>
+
+<p class="Paragraph0c">Внимание: не поддерживается ситуация, когда отчет
+подключен только к некоторым из указанных форм. В частности, в случае «Полного»
+варианта внедрения, если для отчета на СКД определена собственная основная форма,
+то для него также следует определить собственную форму настроек (либо в
+свойствах этого отчета указать общую форму <span class="Interface">ВспомогательнаяФормаНастроекОтчета</span>).
+Это требование также распространяется на дополнительные и внешние отчеты,
+использующиеся в конфигурации с «Полным» вариантом внедрения формы отчета.</p>
+
+<p class="Paragraph0c">В формах отчетов, которые не подключены к общей форме <span class="Interface">ФормаОтчета</span>, необходимо определить обработчик события <span class="Interface">ПриСохраненииПользовательскихНастроекНаСервере</span> и
+добавить в него код по шаблону:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаСервере</span>
+<span class="keyword">Процедура</span> ПриСохраненииПользовательскихНастроекНаСервере<span class="operator">(</span>Настройки<span class="operator">)</span>
+    ВариантыОтчетов<span class="operator">.</span>ПриСохраненииПользовательскихНастроекНаСервере<span class="operator">(</span>ЭтотОбъект<span class="operator">,</span> Настройки<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">В противном случае названия настроек этих отчетов не будут
+находиться системой поиска вариантов отчетов.</p>
+
+<a name="issogl2_подключить_подсистему_к_разделам_командного_интерфейса"><h3>Подключить подсистему к разделам командного интерфейса</h3></a>
+
+<p class="Paragraph0c">Необходимо определить разделы командного интерфейса, в
+которых должны быть размещены панели отчетов. Рекомендуется выбрать все
+разделы, для которых предусмотрены отчеты. </p>
+
+<p class="Paragraph0c">Для каждого раздела необходимо создать отдельную общую
+команду для вызова панели отчетов:</p>
+
+<p class="MsoListBullet">&#9679; 
+Имя команды рекомендуется задавать по шаблону <span class="Interface">ПанельОтчетовИмяРаздела</span>. Синоним команды рекомендуется
+заполнить по принципу: «Отчеты по &lt;ПредставлениеРаздела&gt;». Например:
+«Отчеты по работе с файлами».</p>
+
+<p class="MsoListBullet">&#9679; 
+В обработчике команды необходимо вставить вызов
+по шаблону:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">&amp;НаКлиенте</span>
+<span class="keyword">Процедура</span> ОбработкаКоманды<span class="operator">(</span>ПараметрКоманды<span class="operator">,</span> ПараметрыВыполнения<span class="operator">)</span>
+    ВариантыОтчетовКлиент<span class="operator">.</span>ПоказатьПанельОтчетов<span class="operator">(</span><span class="string">&quot;ИмяРаздела&quot;</span><span class="operator">,</span> ПараметрыВыполнения<span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">Выбранные разделы необходимо перечислить в процедуре <span class="Interface">ОпределитьРазделыСВариантамиОтчетов</span> общего модуля <span class="Interface">ВариантыОтчетовПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Предусмотрена возможность выводить панель отчетов в панели
+функций начальной страницы (рабочего стола): </p>
+
+<p class="MsoListBullet">&#9679; 
+Создать общую команду, например <span class="Interface">_ДемоПанельОтчетовНачальнаяСтраница</span>, и размесить ее в командном
+интерфейсе основного раздела. В обработчике команды необходимо вставить вызов
+по шаблону:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">ВариантыОтчетовКлиент<span class="operator">.</span>ПоказатьПанельОтчетов<span class="operator">(</span>ВариантыОтчетовКлиентСервер<span class="operator">.</span>ИдентификаторНачальнойСтраницы<span class="operator">(</span><span class="operator">)</span><span class="operator">,</span> ПараметрыВыполнения<span class="operator">)</span><span class="operator">;</span></pre>
+
+<p class="MsoListBullet">&#9679; 
+А в модуле менеджера отчета разместить процедуру
+по шаблону:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="keyword">Процедура</span> НастроитьВариантыОтчета<span class="operator">(</span>Настройки<span class="operator">,</span> НастройкиОтчета<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    НастройкиОтчета<span class="operator">.</span>Размещение<span class="operator">.</span>Вставить<span class="operator">(</span>ВариантыОтчетовКлиентСервер<span class="operator">.</span>ИдентификаторНачальнойСтраницы<span class="operator">(</span><span class="operator">)</span><span class="operator">,</span> <span class="string">&quot;Важный&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    НастройкиВарианта <span class="operator">=</span> ВариантыОтчетов<span class="operator">.</span>ОписаниеВарианта<span class="operator">(</span>Настройки<span class="operator">,</span> НастройкиОтчета<span class="operator">,</span> <span class="string">&quot;СчетаНаОплату&quot;</span><span class="operator">)</span><span class="operator">;</span>
+    НастройкиВарианта<span class="operator">.</span>Описание <span class="operator">=</span> НСтр<span class="operator">(</span><span class="string">&quot;ru = 'Список счетов на оплату.'&quot;</span><span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="Paragraph0c">В заключение рекомендуется скрыть отчеты, подключенные к
+подсистеме, из панели действий выбранных разделов командного интерфейса.</p>
+
+<a name="_изменить_настройки_вариантов"></a><a name="issogl2_изменить_настройки_вариантов_отчетов"><h3>Изменить настройки вариантов отчетов</h3></a>
+
+<p class="Paragraph0c">Настройки вариантов отчетов задаются в процедуре <span class="Interface">НастроитьВариантыОтчетов</span> общего модуля <span class="Interface">ВариантыОтчетовПереопределяемый</span>. Настройки можно менять
+непосредственно в переопределяемом модуле (удобно в небольших конфигурациях)
+или в модуле менеджера отчета (удобно при совместной разработке и больше
+соответствует библиотечному подходу). Для этого в процедуре <span class="Interface">НастроитьВариантыОтчетов</span> общего модуля <span class="Interface">ВариантыОтчетовПереопределяемый</span> следует разместить вызов
+модуля менеджера отчета по шаблону:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">    ВариантыОтчетов<span class="operator">.</span>НастроитьОтчетВМодулеМенеджера<span class="operator">(</span>Настройки<span class="operator">,</span> Метаданные<span class="operator">.</span>Отчеты<span class="operator">.</span>ИмяОтчета<span class="operator">)</span><span class="operator">;</span></pre>
+
+<p class="Paragraph0c">А в модуле менеджера отчета разместить процедуру по
+шаблону:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">#Если Сервер Или ТолстыйКлиентОбычноеПриложение Или ВнешнееСоединение Тогда</span>
+<span class="preprocessor">#Область СлужебныйПрограммныйИнтерфейс</span>
+<span class="comment">// Настройки размещения в панели отчетов.</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//   Настройки – Коллекция – Используется для описания настроек отчетов и вариантов</span>
+<span class="comment">//       см. описание к ВариантыОтчетов.ДеревоНастроекВариантовОтчетовКонфигурации().</span>
+<span class="comment">//   НастройкиОтчета – СтрокаДереваЗначений – Настройки размещения всех вариантов отчета.</span>
+<span class="comment">//       См. &quot;Реквизиты для изменения&quot; функции ВариантыОтчетов.ДеревоНастроекВариантовОтчетовКонфигурации().</span>
+<span class="comment">//</span>
+<span class="comment">// Описание:</span>
+<span class="comment">//   См. ВариантыОтчетовПереопределяемый.НастроитьВариантыОтчетов().</span>
+<span class="comment">//</span>
+<span class="comment">// Вспомогательные методы:</span>
+<span class="comment">//   НастройкиВарианта = ВариантыОтчетов.ОписаниеВарианта(Настройки, НастройкиОтчета, &quot;&lt;ИмяВарианта&gt;&quot;);</span>
+<span class="comment">//   ВариантыОтчетов.УстановитьРежимВыводаВПанеляхОтчетов(Настройки, НастройкиОтчета, Истина/Ложь); </span>
+<span class="comment">// Отчет</span>
+<span class="comment">//   поддерживает только этот режим.</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> НастроитьВариантыОтчета<span class="operator">(</span>Настройки<span class="operator">,</span> НастройкиОтчета<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    НастройкиВарианта <span class="operator">=</span> ВариантыОтчетов<span class="operator">.</span>ОписаниеВарианта<span class="operator">(</span>Настройки<span class="operator">,</span> НастройкиОтчета<span class="operator">,</span> <span class="string">&quot;ИмяВарианта&quot;</span><span class="operator">)</span><span class="operator">;</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="preprocessor">#КонецОбласти</span>
+<span class="preprocessor">#КонецЕсли</span></pre>
+
+<p class="Paragraph0c">Объекты <span class="Interface">НастройкиОтчета</span> и <span class="Interface">НастройкиВарианта</span> содержат следующие свойства, которые
+можно менять:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Включен</span> – если
+установить в <span class="Interface">Ложь</span>, то вариант отчета не
+регистрируется в справочнике и как следствие не выводится в панелях отчетов и
+других формах подсистемы (всегда скрыт от пользователей). При этом вариант
+отчета остается в конфигурации, и его по-прежнему можно открывать при
+программном открытии формы отчета. Например, может потребоваться отключение
+контекстных вариантов отчетов.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Описание</span> – служит
+подсказкой на панели отчетов и содержит более подробное описание варианта
+отчета. <span class="Interface">Описание</span> можно не заполнять для
+контекстных вариантов отчетов (которые не выводятся в панелях и списках отчетов).
+В противном случае <span class="Interface">Описание</span> обязательно для
+заполнения.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ВидимостьПоУмолчанию</span>
+– если установить в <span class="Interface">Ложь</span>, то вариант отчета по
+умолчанию будет скрыт на панелях отчетов. Скрытый вариант отчета можно вывести
+на панель отчетов администратору – сразу для всех пользователей (через форму
+элемента), пользователю – на свою панель отчетов (через режим настройки).
+Например, может потребоваться скрывать менее частотные варианты отчетов.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Описание</span> – служит
+подсказкой на панели отчетов и содержит более подробное описание варианта
+отчета.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Размещение</span> – служит
+для привязки вариантов отчетов к подсистемам конфигурации. Подсистемы первого
+уровня считаются разделами, второго и выше – группами. Если вариант включен в
+раздел, то на панели отчетов он будет выведен без группы. При необходимости для
+каждой подсистемы можно указать <span class="Interface">Важность</span>:</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">Важный</span> – вариант отчета будет выделен жирным шрифтом и
+размещен в начале группы.</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">СмТакже</span> – вариант отчета будет выведен внизу панели отчетов,
+в группе <span class="Interface">См. также</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ФункциональныеОпции</span>
+– служит для скрытия вариантов отчетов по функциональным опциям. Содержит
+массив строк из имен функциональных опций конфигурации. Вариант отчета
+считается включенным в том случае, если включена одна из функциональных опций
+отчета (если они указаны) и одна из функциональных опций варианта отчета (если
+они указаны).</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">НастройкиДляПоиска</span>
+– дополнительные сведения для поиска этого варианта отчета. Является структурой
+со следующими свойствами:</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">НаименованияПолей</span> – представления полей варианта отчета;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">НаименованияПараметровИОтборов</span> – представления настроек
+варианта отчета;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">КлючевыеСлова </span>– дополнительная терминология (в т.ч.
+специализированная или устаревшая).</p>
+
+<p class="Bullet0">Разделитель терминов: <span class="Interface">Символы.ПС</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ОпределитьНастройкиФормы</span>
+– включает переопределение настроек формы отчета. Внимание: свойство доступно
+только для объекта <span class="Interface">НастройкиОтчета</span>. Если
+установить в значение <span class="Interface">Истина</span>, то в модуле объекта
+отчета следует определить процедуру <span class="Interface">ОпределитьНастройкиФормы</span>
+по шаблону:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="preprocessor">#Если Сервер Или ТолстыйКлиентОбычноеПриложение Или ВнешнееСоединение Тогда</span>
+<span class="preprocessor">#Область ПрограммныйИнтерфейс</span>
+<span class="comment">// Настройки общей формы отчета подсистемы &quot;Варианты отчетов&quot;.</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//   Форма - УправляемаяФорма, Неопределено - Форма отчета или форма настроек отчета.</span>
+<span class="comment">//       Неопределено когда вызов без контекста.</span>
+<span class="comment">//   КлючВарианта - Строка, Неопределено - Имя предопределенного</span>
+<span class="comment">//       или уникальный идентификатор пользовательского варианта отчета.</span>
+<span class="comment">//       Неопределено когда вызов без контекста.</span>
+<span class="comment">//   Настройки - Структура - см. возвращаемое значение</span>
+<span class="comment">//       ОтчетыКлиентСервер.ПолучитьНастройкиОтчетаПоУмолчанию().</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> ОпределитьНастройкиФормы<span class="operator">(</span>Форма<span class="operator">,</span> КлючВарианта<span class="operator">,</span> Настройки<span class="operator">)</span> <span class="keyword">Экспорт</span>
+<span class="keyword">КонецПроцедуры</span>
+<span class="preprocessor">#КонецОбласти</span>
+<span class="preprocessor">#КонецЕсли</span></pre>
+
+<p class="Paragraph0c">Подробнее про изменение настроек формы отчета см. раздел «<a href="#_изменить_настройки_формы">Изменить
+настройки формы отчета</a>».</p>
+
+<a name="_изменить_настройки_формы"></a><a name="issogl2_изменить_настройки_формы_отчета"><h3>Изменить настройки формы отчета</h3></a>
+
+<p class="Paragraph0c">Настройки формы отчета задаются в процедуре <span class="Interface">ОпределитьНастройкиФормы</span> модуля объекта отчета. Как
+определить эту процедуру, уже описано выше. Настройки для изменения передаются
+трем параметрам этой процедуры и содержат следующие свойства:</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ФормироватьСразу</span> –
+если установить в значение <span class="Interface">Истина</span>, то отчет будет
+формироваться после открытия, после выбора пользовательских настроек и после
+выбора другого варианта отчета. По умолчанию – <span class="Interface">Ложь</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">ВыводитьСуммуВыделенныхЯчеек</span>
+– если установить в значение <span class="Interface">Ложь</span>, то в отчете не
+будет выводиться поле с автоматически рассчитываемой суммой выделенных ячеек.
+По умолчанию – <span class="Interface">Истина</span>.</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">Печать – Структура</span>
+– параметры печати табличного документа (могут переопределяться пользователем):</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ПолеСверху – Число</span> – отступ сверху при печати (в миллиметрах);</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ПолеСлева – Число</span> – отступ слева при печати (в миллиметрах);</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ПолеСнизу – Число</span> – отступ снизу при печати (в миллиметрах);</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ПолеСправа – Число</span> – отступ справа при печати (в миллиметрах);</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">ОриентацияСтраницы – ОриентацияСтраницы</span> – «Портрет» или
+«Ландшафт»;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">АвтоМасштаб – Булево</span> – автоматически подгонять масштаб
+под размер страницы;</p>
+
+<p class="MsoListBullet2">&#9679;  <span class="Interface">МасштабПечати – Число</span> – масштаб изображения (в процентах).</p>
+
+<p class="MsoListBullet">&#9679; 
+<span class="Interface">События – Структура</span>
+– события, для которых определены обработчики в модуле объекта отчета
+(обработчики событий рекомендуется определять в области <span class="Interface">ПрограммныйИнтерфейс</span>,
+после процедуры <span class="Interface">ОпределитьНастройкиФормы</span>):</p>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">ПриСозданииНаСервере</span>
+– если установить в значение <span class="Interface">Истина</span>, то в модуле
+объекта отчета следует определить процедуру <span class="Interface">ПриСозданииНаСервере</span>
+по шаблону:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Вызывается в обработчике одноименного события формы отчета после выполнения кода формы.</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//   Форма - УправляемаяФорма - Форма отчета.</span>
+<span class="comment">//   Отказ - Передается из параметров обработчика &quot;как есть&quot;.</span>
+<span class="comment">//   СтандартнаяОбработка - Передается из параметров обработчика &quot;как есть&quot;.</span>
+<span class="comment">//</span>
+<span class="comment">// См. также:</span>
+<span class="comment">//   &quot;УправляемаяФорма.ПриСозданииНаСервере&quot; в синтакс-помощнике.</span>
+<span class="comment">//</span>
+<span class="comment">// Пример 1 - Добавление команды с обработчиком в &quot;ОтчетыКлиентПереопределяемый.ОбработчикКоманды&quot;:</span>
+<span class="comment">// Команда = Форма.Команды.Добавить(&quot;МояОсобеннаяКоманда&quot;);</span>
+<span class="comment">// Команда.Действие = &quot;Подключаемый_Команда&quot;;</span>
+<span class="comment">// Команда.Заголовок = НСтр(&quot;ru = 'Моя команда...'&quot;);</span>
+<span class="comment">// </span>
+<span class="comment">// Кнопка = Форма.Элементы.Добавить(Команда.Имя, Тип(&quot;КнопкаФормы&quot;), Форма.Элементы.&lt;ИмяПодменю&gt;);</span>
+<span class="comment">// Кнопка.ИмяКоманды = Команда.Имя;</span>
+<span class="comment">// </span>
+<span class="comment">// Форма.ПостоянныеКоманды.Добавить(КомандаСоздать.Имя);</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> ПриСозданииНаСервере<span class="operator">(</span>Форма<span class="operator">,</span> Отказ<span class="operator">,</span> СтандартнаяОбработка<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="comment">// Обработка события.</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">ПередЗагрузкойНастроекВКомпоновщик
+</span>– если установить в значение <span class="Interface">Истина</span>, то в
+модуле объекта отчета следует определить процедуру <span class="Interface">ПередЗагрузкойНастроекВКомпоновщик
+</span>по шаблону:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Вызывается перед загрузкой новых настроек. Используется для изменения схемы компоновки.</span>
+<span class="comment">//   Например, если схема отчета зависит от ключа варианта или параметров отчета.</span>
+<span class="comment">//   Чтобы изменения схемы вступили в силу следует вызывать метод ОтчетыСервер.ПодключитьСхему().</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//   Контекст - Произвольный - </span>
+<span class="comment">//       Параметры контекста, в котором используется отчет.</span>
+<span class="comment">//       Используется для передачи в параметрах метода ОтчетыСервер.ПодключитьСхему().</span>
+<span class="comment">//   КлючСхемы - Строка -</span>
+<span class="comment">//       Идентификатор текущей схемы компоновщика настроек.</span>
+<span class="comment">//       По умолчанию не заполнен (это означает что компоновщик инициализирован на основании основной схемы).</span>
+<span class="comment">//       Используется для оптимизации, чтобы переинициализировать компоновщик как можно реже).</span>
+<span class="comment">//       Может не использоваться, если переинициализация выполняется безусловно.</span>
+<span class="comment">//   КлючВарианта - Строка, Неопределено -</span>
+<span class="comment">//       Имя предопределенного или уникальный идентификатор пользовательского варианта отчета.</span>
+<span class="comment">//       Неопределено, когда вызов для варианта расшифровки или без контекста.</span>
+<span class="comment">//   НовыеНастройкиКД - НастройкиКомпоновкиДанных, Неопределено -</span>
+<span class="comment">//       Настройки варианта отчета, которые будут загружены в компоновщик настроек после его инициализации.</span>
+<span class="comment">//       Неопределено, когда настройки варианта не надо загружать (уже загружены ранее).</span>
+<span class="comment">//   НовыеПользовательскиеНастройкиКД - ПользовательскиеНастройкиКомпоновкиДанных, Неопределено -</span>
+<span class="comment">//       Пользовательские настройки, которые будут загружены в компоновщик настроек после его инициализации.</span>
+<span class="comment">//       Неопределено, когда пользовательские настройки не надо загружать (уже загружены ранее).</span>
+<span class="comment">//</span>
+<span class="comment">// Примеры:</span>
+<span class="comment">// 1. Компоновщик отчета инициализируется на основании схемы из общих макетов:</span>
+<span class="comment">//    Если КлючСхемы &lt;&gt; &quot;1&quot; Тогда</span>
+<span class="comment">//        КлючСхемы = &quot;1&quot;;</span>
+<span class="comment">//        СхемаКД = ПолучитьОбщийМакет(&quot;МояОбщаяСхемаКомпоновки&quot;);</span>
+<span class="comment">//        ОтчетыСервер.ПодключитьСхему(ЭтотОбъект, Контекст, СхемаКД, КлючСхемы);</span>
+<span class="comment">//    КонецЕсли;</span>
+<span class="comment">//</span>
+<span class="comment">// 2. Схема зависит от значения параметра, выведенного в пользовательские настройки отчета:</span>
+<span class="comment">//    Если ТипЗнч(НовыеПользовательскиеНастройкиКД) = Тип(&quot;ПользовательскиеНастройкиКомпоновкиДанных&quot;) Тогда</span>
+<span class="comment">//        ПолноеИмяОбъектаМетаданных = &quot;&quot;;</span>
+<span class="comment">//        Для Каждого ЭлементКД Из НовыеПользовательскиеНастройкиКД.Элементы Цикл</span>
+<span class="comment">//            Если ТипЗнч(ЭлементКД) = Тип(&quot;ЗначениеПараметраНастроекКомпоновкиДанных&quot;) Тогда</span>
+<span class="comment">//                ИмяПараметра = Строка(ЭлементКД.Параметр);</span>
+<span class="comment">//                Если ИмяПараметра = &quot;ОбъектМетаданных&quot; Тогда</span>
+<span class="comment">//                    ПолноеИмяОбъектаМетаданных = ЭлементКД.Значение;</span>
+<span class="comment">//                КонецЕсли;</span>
+<span class="comment">//            КонецЕсли;</span>
+<span class="comment">//        КонецЦикла;</span>
+<span class="comment">//        Если КлючСхемы &lt;&gt; ПолноеИмяОбъектаМетаданных Тогда</span>
+<span class="comment">//            КлючСхемы = ПолноеИмяОбъектаМетаданных;</span>
+<span class="comment">//            СхемаКД = Новый СхемаКомпоновкиДанных;</span>
+<span class="comment">//            // Наполнение схемы...</span>
+<span class="comment">//            ОтчетыСервер.ПодключитьСхему(ЭтотОбъект, Контекст, СхемаКД, КлючСхемы);</span>
+<span class="comment">//        КонецЕсли;</span>
+<span class="comment">//    КонецЕсли;</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> ПередЗагрузкойНастроекВКомпоновщик<span class="operator">(</span>Контекст<span class="operator">,</span> КлючСхемы<span class="operator">,</span> КлючВарианта<span class="operator">,</span> НовыеНастройкиКД<span class="operator">,</span> НовыеПользовательскиеНастройкиКД<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="comment">// Обработка события.</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">ПередЗагрузкойВариантаНаСервере</span>
+– если установить в значение <span class="Interface">Истина</span>, то в модуле
+объекта отчета следует определить процедуру <span class="Interface">ПередЗагрузкойВариантаНаСервере</span>
+по шаблону:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Вызывается в обработчике одноименного события формы отчета после выполнения кода формы.</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//   Форма - УправляемаяФорма - Форма отчета.</span>
+<span class="comment">//   НовыеНастройкиКД - НастройкиКомпоновкиДанных - Настройки для загрузки в компоновщик настроек.</span>
+<span class="comment">//</span>
+<span class="comment">// См. также:</span>
+<span class="comment">//   &quot;Расширение управляемой формы для отчета.ПриЗагрузкеВариантаНаСервере&quot; в синтакс-помощнике.</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> ПередЗагрузкойВариантаНаСервере<span class="operator">(</span>Форма<span class="operator">,</span> НовыеНастройкиКД<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="comment">// Обработка события.</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">ПриЗагрузкеВариантаНаСервере</span>
+– если установить в значение <span class="Interface">Истина</span>, то в модуле
+объекта отчета следует определить процедуру <span class="Interface">ПриЗагрузкеВариантаНаСервере</span>
+по шаблону:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Вызывается в обработчике одноименного события формы отчета после выполнения кода формы.</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//   Форма - УправляемаяФорма - Форма отчета.</span>
+<span class="comment">//   НовыеНастройкиКД - НастройкиКомпоновкиДанных - Настройки для загрузки в компоновщик настроек.</span>
+<span class="comment">//</span>
+<span class="comment">// См. также:</span>
+<span class="comment">//   &quot;Расширение управляемой формы для отчета.ПриЗагрузкеВариантаНаСервере&quot; в синтакс-помощнике.</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> ПриЗагрузкеВариантаНаСервере<span class="operator">(</span>Форма<span class="operator">,</span> НовыеНастройкиКД<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="comment">// Обработка события.</span>
+<span class="keyword">КонецПроцедуры</span> </pre>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">ПриЗагрузкеПользовательскихНастроекНаСервере</span>
+– если установить в значение <span class="Interface">Истина</span>, то в модуле
+объекта отчета следует определить процедуру <span class="Interface">ПриЗагрузкеПользовательскихНастроекНаСервере</span>
+по шаблону:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Вызывается в обработчике одноименного события формы отчета после выполнения кода формы.</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//   Форма - УправляемаяФорма - Форма отчета.</span>
+<span class="comment">//   НовыеПользовательскиеНастройкиКД - ПользовательскиеНастройкиКомпоновкиДанных -</span>
+<span class="comment">//       Пользовательские настройки для загрузки в компоновщик настроек.</span>
+<span class="comment">//</span>
+<span class="comment">// См. также:</span>
+<span class="comment">//   &quot;Расширение управляемой формы для отчета.ПриЗагрузкеПользовательскихНастроекНаСервере&quot;</span>
+<span class="comment">//    в синтакс-помощнике.</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> ПриЗагрузкеПользовательскихНастроекНаСервере<span class="operator">(</span>Форма<span class="operator">,</span> НовыеПользовательскиеНастройкиКД<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="comment">// Обработка события.</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">ПередЗаполнениемПанелиБыстрыхНастроек</span>
+– если установить в значение <span class="Interface">Истина</span>, то в модуле
+объекта отчета следует определить процедуру <span class="Interface">ПередЗаполнениемПанелиБыстрыхНастроек</span>
+по шаблону:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Вызывается до перезаполнения панели настроек формы отчета.</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//   Форма - УправляемаяФорма - Форма отчета.</span>
+<span class="comment">//   ПараметрыЗаполнения - Структура - Параметры, которые будут загружены в отчет.</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> ПередЗаполнениемПанелиБыстрыхНастроек<span class="operator">(</span>Форма<span class="operator">,</span> ПараметрыЗаполнения<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="comment">// Обработка события.</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">ПослеЗаполненияПанелиБыстрыхНастроек</span>
+– если установить в значение <span class="Interface">Истина</span>, то в модуле
+объекта отчета следует определить процедуру <span class="Interface">ПослеЗаполненияПанелиБыстрыхНастроек</span>
+по шаблону:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Вызывается после перезаполнения панели настроек формы отчета.</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//   Форма - УправляемаяФорма - Форма отчета.</span>
+<span class="comment">//   ПараметрыЗаполнения - Структура - Параметры, которые будут загружены в отчет.</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> ПослеЗаполненияПанелиБыстрыхНастроек<span class="operator">(</span>Форма<span class="operator">,</span> ПараметрыЗаполнения<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="comment">// Обработка события.</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">КонтекстныйВызовСервера</span>
+– если установить в значение <span class="Interface">Истина</span>, то в модуле
+объекта отчета следует определить процедуру <span class="Interface">КонтекстныйВызовСервера</span>
+по шаблону:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Обработчик контекстного вызова сервера.</span>
+<span class="comment">//   Позволяет выполнить контекстный вызов сервера когда это требуется из клиентского общего модуля.</span>
+<span class="comment">//   Например, из ОтчетыКлиентПереопределяемый.ОбработчикКоманды().</span>
+<span class="comment">//</span>
+<span class="comment">// Параметры:</span>
+<span class="comment">//   Форма  - УправляемаяФорма</span>
+<span class="comment">//   Ключ      - Строка    - Ключ операции, которую необходимо выполнить в контекстном вызове.</span>
+<span class="comment">//   Параметры - Структура - Параметры вызова сервера.</span>
+<span class="comment">//   Результат - Структура - Результат работы сервера, возвращается на клиент.</span>
+<span class="comment">//</span>
+<span class="comment">// См. также:</span>
+<span class="comment">//   ОбщаяФорма.ФормаОтчета.ВыполнитьКонтекстныйВызовСервера().</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> КонтекстныйВызовСервера<span class="operator">(</span>Форма<span class="operator">,</span> Ключ<span class="operator">,</span> Параметры<span class="operator">,</span> Результат<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="comment">// Обработка события.</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">ПриОпределенииПараметровВыбора</span>
+– если установить в значение <span class="Interface">Истина</span>, то в модуле
+объекта отчета следует определить процедуру <span class="Interface">ПриОпределенииПараметровВыбора</span>
+по шаблону:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Вызывается в форме отчета перед выводом настройки.</span>
+<span class="comment">//   Подробнее - см. ОтчетыПереопределяемый.ПриОпределенииПараметровВыбора().</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> ПриОпределенииПараметровВыбора<span class="operator">(</span>Форма<span class="operator">,</span> СвойстваНастройки<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="comment">// Обработка события.</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<p class="MsoListBullet2">&#9679; 
+<span class="Interface">ДополнитьСвязиОбъектовМетаданных</span>
+– если установить в значение <span class="Interface">Истина</span>, то в модуле
+объекта отчета следует определить процедуру <span class="Interface">ДополнитьСвязиОбъектовМетаданных</span>
+по шаблону:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev"><span class="comment">// Дополнительные связи настроек этого отчета.</span>
+<span class="comment">//   Подробнее - см. ОтчетыПереопределяемый.ДополнитьСвязиОбъектовМетаданных().</span>
+<span class="comment">//</span>
+<span class="keyword">Процедура</span> ДополнитьСвязиОбъектовМетаданных<span class="operator">(</span>СвязиОбъектовМетаданных<span class="operator">)</span> <span class="keyword">Экспорт</span>
+    <span class="comment">// Обработка события.</span>
+<span class="keyword">КонецПроцедуры</span></pre>
+
+<a name="issogl2_подключить_обработчики_полного_обновления"><h3>Подключить обработчики полного обновления</h3></a>
+
+<p class="Paragraph0c">При выпуске новых версий конфигурации с существенными
+изменениями в метаданных (добавлены/удалены/переименованы объекты метаданных)
+рекомендуется проводить полное обновление всех вспомогательных данных по
+отчетам. В противном случае поиск по отчетам не будет работать или будет
+работать не точно. Для полного обновления необходимо сделать следующее.</p>
+
+<p class="Paragraph0c">В процедуре <span class="Interface">ПриДобавленииОбработчиковОбновления</span>
+модуля прикладного решения (который указывается при внедрении подсистемы «Обновление
+версии ИБ» в процедуре <span class="Interface">ПриДобавленииПодсистем</span>
+модуля <span class="Interface">ПодсистемыКонфигурацииПереопределяемый</span>)
+вставить вызов по шаблону:</p>
+
+<a class="copy_source" href="#_top" onClick="return false">Копировать в буфер обмена</a>
+<pre class="src_dev">ВариантыОтчетов<span class="operator">.</span>ДобавитьОбработчикиПолногоОбновления<span class="operator">(</span>Обработчики<span class="operator">,</span> <span class="string">&quot;&lt;ВерсияКонфигурации&gt;&quot;</span><span class="operator">)</span><span class="operator">;</span></pre>
+
+<p class="Bullet0">где <span class="Interface">ВерсияКонфигурации</span> – номер
+последнего функционального релиза прикладного решения, в котором были изменения
+в представлениях объектов метаданных или их реквизитах, данные которых могут
+выводиться в отчетах. </p>
+
+<a name="issogl2_настройка_прав_доступа_пользователей"><h3>Настройка прав доступа пользователей</h3></a>
+
+<p class="Paragraph0c">Для настройки прав доступа пользователей к данным
+подсистемы нужно использовать роли, приведенные ниже.</p>
+
+<p class="Objectname">Таблица 3.16.</p>
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0">
+ <thead>
+  <tr>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">№</span></p>
+   </td>
+   <td valign="top">
+   <p class="TextinTable81"><span class="Interface">Роли и их назначение</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td valign="top">
+  <p class="MsoListNumber">1.   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ПолныеПрава </span>(из подсистемы «Базовая
+  функциональность»)</p>
+  <p class="TextinTable81">Администрирование вариантов отчетов</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="MsoListNumber">2.   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ДобавлениеИзменениеВариантовОтчетов</span></p>
+  <p class="TextinTable81">Администрирование вариантов отчетов.</p>
+  <p class="TextinTable81">Если у пользователя нет права <span class="Interface">СохранениеДанныхПользователя</span>,
+  то отключаются все возможности по сохранению настроек подсистемы</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="MsoListNumber">3.   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ДобавлениеИзменениеЛичныхВариантовОтчетов</span></p>
+  <p class="TextinTable81">Добавление и изменение своих вариантов отчетов (доступных только
+  автору).</p>
+  <p class="TextinTable81">Просмотр общих вариантов отчетов (доступных всем пользователям).</p>
+  <p class="TextinTable81">Если у пользователя нет права <span class="Interface">СохранениеДанныхПользователя</span>,
+  то отключаются все возможности по сохранению настроек подсистемы</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="MsoListNumber">4.   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ЧтениеВариантовОтчетов</span></p>
+  <p class="TextinTable81">Аудит вариантов отчетов.</p>
+  <p class="TextinTable81">Просмотр любых вариантов отчетов без права изменения</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="MsoListNumber">5.   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">БазовыеПрава или БазовыеПраваВнешнегоПользователя
+  </span>(из подсистемы «Базовая функциональность»)</p>
+  <p class="TextinTable81">Просмотр общих вариантов отчетов (доступных всем пользователям)</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign="top">
+  <p class="MsoListNumber">6.   </p>
+  </td>
+  <td valign="top">
+  <p class="TextinTable81"><span class="Interface">ИспользованиеУниверсальногоОтчета</span></p>
+  <p class="TextinTable81">Доступ к отчету<span class="Interface"> Универсальный
+  отчет</span></p>
+  </td>
+ </tr>
+</table>
+
+<a name="issogl1_использование_при_разработке_конфигурации"><h2>Использование при разработке конфигурации</h2></a>
+
+<p class="Paragraph0c">Обновление данных справочника <span class="Interface">Варианты
+отчетов</span> происходит автоматически при смене версии в следующих случаях:</p>
+
+<p class="MsoListBullet">&#9679; 
+начальное заполнение;</p>
+
+<p class="MsoListBullet">&#9679; 
+добавление или удаление вариантов отчетов;</p>
+
+<p class="MsoListBullet">&#9679; 
+добавление или удаление вариантов отчетов из
+подсистем;</p>
+
+<p class="MsoListBullet">&#9679; 
+изменения наименования варианта отчета;</p>
+
+<p class="MsoListBullet">&#9679; 
+изменение ключа варианта отчета. Регистрация
+изменений выполняется в процедуре <span class="Interface">ЗарегистрироватьИзмененияКлючейВариантовОтчетов</span>
+общего модуля <span class="Interface">ВариантыОтчетовПереопределяемый</span>.</p>
+
+<p class="Paragraph0c">Для всех остальных случаев обновления данных справочника в
+прикладной конфигурации следует разрабатывать свои обработчики обновления.</p>
+
+<p class="Paragraph0c">При необходимости перезаполнения предопределенных
+вариантов отчетов можно воспользоваться процедурой <span class="Interface">Обновить</span>
+общего модуля <span class="Interface">ВариантыОтчетов</span>. Например, это может
+потребоваться при изменении настроек программы, если некоторые варианты отчетов
+отключаются по условиям в зависимости от настроек программы.</p>
+
+<p class="Paragraph0c">При необходимости сбросить пользовательские настройки
+отчетов можно воспользоваться процедурой <span class="Interface">СброситьПользовательскиеНастройки</span>
+общего модуля <span class="Interface">ВариантыОтчетов</span>. Например, это может
+потребоваться чтобы «пробросить» изменения в настройках вариантов отчетов пользователям
+этого варианта. </p>
+
+<a name="issogl2_контекстные_варианты_отчетов"><h3>Контекстные варианты отчетов</h3></a>
+
+<p class="Paragraph0c">Для контекстных вариантов отчетов в подсистеме
+предусмотрены две возможности:</p>
+
+<p class="MsoListBullet">&#9679; 
+Отключение варианта отчета. Более подробно об
+отключении написано выше в разделе «<a href="#_изменить_настройки_вариантов">Изменить настройки вариантов отчетов</a>».</p>
+
+<p class="MsoListBullet">&#9679; 
+При использовании поставляемой формы отчета –
+отключение кнопок работы с вариантом отчета (выбор, изменение и сохранение).
+Для этого в параметрах открытия формы необходимо передать ключ <span class="Interface">ВидимостьКомандВариантовОтчетов</span> со значением <span class="Interface">Ложь</span>.</p>
+
+<a name="issogl2_настройка_обмена_данными"><h3>Настройка обмена данными</h3></a>
+
+<p class="Paragraph0c"><a name="_версионирование_объектов"></a>Для настройки
+обмена данными следует руководствоваться общими правилами.</p>
+
+<p class="Paragraph0c">В планы обмена распределенной информационной базы (РИБ)
+рекомендуется включать все объекты метаданных подсистемы, кроме:</p>
+
+<p class="MsoListBullet">&#9679; 
+справочника <span class="Interface">ПредопределенныеВариантыОтчетовРасширений</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+регистра сведений <span class="Interface">ПредопределенныеВариантыОтчетовВерсийРасширений</span>.</p>
+
+<p class="Paragraph0c">Из остальных планов обмена (не РИБ) рекомендуется
+исключать следующие объекты метаданных:</p>
+
+<p class="MsoListBullet">&#9679; 
+справочник <span class="Interface">ПредопределенныеВариантыОтчетовРасширений</span>,</p>
+
+<p class="MsoListBullet">&#9679; 
+регистр сведений <span class="Interface">ПредопределенныеВариантыОтчетовВерсийРасширений</span>.</p>		<script type="text/javascript">listenCopy('zeroclipboard.swf');</script>
+	</body>
+</html>
